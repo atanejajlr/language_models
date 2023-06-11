@@ -1,0 +1,293 @@
+<html>
+<head>
+  <title>Preview of the frequency-domain method of dynamic analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQFDmxpqBQl8dg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/preview-frequency-domain-method-dynamic-analysis-ajay-taneja">Preview of the frequency-domain method of dynamic analysis</a></h1>
+    <p class="created">Created on 2015-02-26 04:26</p>
+  <p class="published">Published on 2015-02-28 21:30</p>
+  <div>
+  <p> </p> 
+  <h2>1. INTRODUCTION</h2> 
+  <p>The aim of this write up is to illustrate all the essential elements of the “frequency-domain” method of dynamic analysis for a SDOF system. It is not attempted herein to extensively describe the frequency-domain method but to just present the basic concepts and stages in this method of dynamic analysis.</p> 
+  <p>The “time-domain” method of dynamic analysis involves solving the governing differential equation(s) wherein the loading function is a function of time “t” -p(t)].- In the frequency domain method the loading function, the function p (t) is instead expressed as a linear combination of sines or cosines or (more convenient mathematically) complex exponentials such as exp (iωt). Thus, a problem in time domain “t” becomes then a problem in frequency domain “ω”. This, makes the dynamic problem much easier to solve numerically.</p> 
+  <p>The various stages in the frequency-domain method of analysis could be briefly described as below;</p> 
+  <p>i. The first stage -as evident from the lines stated above, is to convert the applied loading expression from time domain to the frequency domain form.</p> 
+  <p>ii. In the second stage, having expressed the periodic loading as a series of harmonic terms, the response to each of the individual harmonic loading is determined.</p> 
+  <p>iii. In the third stage, the total periodic response of the undamped structure is expressed as the sum of the individual responses obtained in stage ii.</p> 
+  <p>The frequency domain method is limited to those systems for which the governing differential equation is linear. It is this linearity (also known as the principle of superposition) which allows us to combine the individual responses in step iii above.</p> 
+  <p>It may be noted that the analysis through frequency-domain method could include any type of loading: periodic or non-periodic. However, the discussion in this write-up, is deliberately restricted only to periodic loading to demonstrate the basic ingredients of the frequency-domain method than to rigorously get into extensive details about this method.</p> 
+  <p>The content of this write-up is organized as below;</p> 
+  <p>Section 2 of this write-up describes how an arbitrary periodic loading of period Tp can be conveniently expressed in a Fourier series form with harmonic loading components at discrete values of frequency.</p> 
+  <p>Section 3 expresses the exponential form of Fourier series.</p> 
+  <p>Section 4 describes the response of linear system to Fourier series loading i.e. the response to individual harmonic terms / loading components at discrete frequency values.</p> 
+  <p>Section 5 concerns the total periodic response of the undamped structure then can be expressed as the sum of the individual responses to the loading terms.</p> 
+  <h1>2. FOURIER SERIES EXPRESSIONS OF PERIODIC LOADING</h1> 
+  <p>Let us consider a single degree of freedom system subjected to an arbitrary periodic loading as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH5W3n05-Mpkg" src="https://media.licdn.com/dms/image/C5112AQH5W3n05-Mpkg/article-inline_image-shrink_400_744/0/1520240475575?e=1691625600&amp;v=beta&amp;t=tIVFM2xuuR5NDzjc0PO1uwJHCA0xy6LZXRSyWEmfXs4"> 
+  </div> 
+  <p>Figure: Arbitrary periodic loading</p> 
+  <p>This periodic loading can be expressed in the Fourier series form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFWnjz_KWHgsw" src="https://media.licdn.com/dms/image/C5112AQFWnjz_KWHgsw/article-inline_image-shrink_400_744/0/1520040596003?e=1691625600&amp;v=beta&amp;t=ReYYURQ9RCNZ5gVapy9ckgJ6VSROzuX5JBKTghXEF7A"> 
+  </div> 
+  <p>In which;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGTBn4qeey6SQ" src="https://media.licdn.com/dms/image/C5112AQGTBn4qeey6SQ/article-inline_image-shrink_400_744/0/1520241043376?e=1691625600&amp;v=beta&amp;t=PKQWIA-eyx7oSLfwqqIVaxrm8d24JMwlvrbyzZl9iTw"> 
+  </div> 
+  <p>and the harmonic amplitude coefficients could be evaluated using the expressions;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH8y5HsMe23Sg" src="https://media.licdn.com/dms/image/C5112AQH8y5HsMe23Sg/article-inline_image-shrink_400_744/0/1520113593427?e=1691625600&amp;v=beta&amp;t=0rzju5oJ_EYmDcezf4Rg0j5CKsYMAFBJ2ULrNZtDbz8"> 
+  </div> 
+  <h3>Numerical evaluation of the harmonic amplitude coefficients</h3> 
+  <p>When p(t) is of arbitrary periodic form, the integrals concerning the amplitude coefficients above will have to be evaluated numerically. This can be done by dividing the period Tp into ‘N’ equal intervals Δt (Tp = N Δt), evaluating the ordinates of the integrand in each integral at discrete values of t = tm = m Δt (m = 0, 1, 2… N) denoted by q0, q1, q2, q3... qN and then applying the trapezoidal rule of integration in accordance with;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF6WGfVja1PQg" src="https://media.licdn.com/dms/image/C5112AQF6WGfVja1PQg/article-inline_image-shrink_400_744/0/1520169316925?e=1691625600&amp;v=beta&amp;t=26CJSnWTZGyJM8lq_0AgkquBdEjRH_59bp9tCZam3Ec"> 
+  </div> 
+  <p>The harmonic amplitude coefficients then can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG_WLnSou19mQ" src="https://media.licdn.com/dms/image/C5112AQG_WLnSou19mQ/article-inline_image-shrink_400_744/0/1520241082494?e=1691625600&amp;v=beta&amp;t=887YB2IFOM9JX4jVbw0dr9JUkJmxOmFdqvIlbdU6SHs"> 
+  </div> 
+  <p>It should be noted that, the evaluation of the harmonic amplitude coefficients may be carried out by other numerical integration procedures like Gaussian quadrature which might be equally accurate (and reasonably fast / faster) as the trapezoidal rule illustrated above. The discussion here is limited to trapezoidal rule of integration in order to maintain the focus of the main topic under discussion.</p> 
+  <h1>3. EXPONENTIAL FORM OF FOURIER SERIES</h1> 
+  <p>The exponential form of the Fourier series equivalent is obtained by substituting the Euler relations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQECb8QsE_I2YA" src="https://media.licdn.com/dms/image/C5112AQECb8QsE_I2YA/article-inline_image-shrink_400_744/0/1520168529272?e=1691625600&amp;v=beta&amp;t=ezLdkJBPjif6aiX5s7PRFfCZHWEnvgdfS-3xQzkzK_k"> 
+  </div> 
+  <p>into the Fourier series expressions of section 2 will lead to expressing p(t) as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGIVOFrKRzpNQ" src="https://media.licdn.com/dms/image/C5112AQGIVOFrKRzpNQ/article-inline_image-shrink_400_744/0/1520111518511?e=1691625600&amp;v=beta&amp;t=bwQxadfToCFiXbwWeJ2jK3KjNXXEzNJTXCPKcOf4Inw"> 
+  </div> 
+  <p>in which the complex amplitude coefficients are given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGzkBHcSnFFJQ" src="https://media.licdn.com/dms/image/C5112AQGzkBHcSnFFJQ/article-inline_image-shrink_400_744/0/1520241813518?e=1691625600&amp;v=beta&amp;t=XLElPmjMdztH07iq1BjI5A93uREVZSGkQc9nCWRyko4"> 
+  </div> 
+  <p>The above equation may be numerically evaluated by the trapezoidal rule by evaluating the function q (t) = ;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE-G72mnT2QMQ" src="https://media.licdn.com/dms/image/C5112AQE-G72mnT2QMQ/article-inline_image-shrink_400_744/0/1520198264587?e=1691625600&amp;v=beta&amp;t=Fl-to79eN5IQNu5DC2qJqegFQPNYo51vvhRsuxmftuw"> 
+  </div> 
+  <p>at discrete values of t = tm = mΔt, making the substitutions ;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH-LhRrHxqnmg" src="https://media.licdn.com/dms/image/C5112AQH-LhRrHxqnmg/article-inline_image-shrink_400_744/0/1520198184672?e=1691625600&amp;v=beta&amp;t=4VQySoEFI9Qa_Lg6CgbgyNaYCFLAZYzMU2u-buc464c"> 
+  </div> 
+  <p>and</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGbiNLUHjZguw" src="https://media.licdn.com/dms/image/C5112AQGbiNLUHjZguw/article-inline_image-shrink_400_744/0/1520168383511?e=1691625600&amp;v=beta&amp;t=gDMwMRW-B9oKcazbrrsSSLEZ8UEOh3-QUkBx7_yw0zc"> 
+  </div> 
+  <p>And finally leading to;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFC74tZvRAeIw" src="https://media.licdn.com/dms/image/C5112AQFC74tZvRAeIw/article-inline_image-shrink_400_744/0/1520238744152?e=1691625600&amp;v=beta&amp;t=_fj27vKLUPcHrC_6ZU53U4xCwwro47Q0pMjos0Vs-LE"> 
+  </div> 
+  <h1>4. RESPONSE TO INDIVIDUAL HARMONIC / LOADING COMPONENTS AT DISCRETE VALUES OF FREQUENCY</h1> 
+  <p>Having expressed the periodic loading as a series of harmonic terms, the response of a linear system to this loading may be obtained by simply adding up the responses to the individual harmonic loadings.</p> 
+  <p>The response of a SDOF undamped system starting from rest [i.e. initial velocity and displacement at t=0 are zero] to a harmonic loading of frequency is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFzudEgcZiaYA" src="https://media.licdn.com/dms/image/C5112AQFzudEgcZiaYA/article-inline_image-shrink_400_744/0/1520172329115?e=1691625600&amp;v=beta&amp;t=j6HJUpJkS0fpeQrv3E7-xcjcmahQo0Rlrr4s0SwyqwQ"> 
+  </div> 
+  <p>Therefore, the steady state response produced by the by the nth sine wave harmonic (after omitting the transient response term) is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGwWr4bvOMW3w" src="https://media.licdn.com/dms/image/C5112AQGwWr4bvOMW3w/article-inline_image-shrink_400_744/0/1520109442389?e=1691625600&amp;v=beta&amp;t=ikVIEHOK8svW3h7Er0n0Z-UgVGpZjCik_jXDFbnRCKs"> 
+  </div> 
+  <p>Where;</p> 
+  <p>bn is the amplitude coefficient corresponding to the nth sine wave</p> 
+  <p>βn is the ratio of the forcing frequency corresponding to the nth sine wave to the natural frequency.</p> 
+  <p> </p> 
+  <p>The above response corresponding to an nth sine wave ignores the transient vibration term, that is: considers the system as an undamped system. However, it may be noted that in a real physical worl there is really no such thing as an undamped system.</p> 
+  <p>We are really studying a system with very, very small damping, so that we may ignore damping while studying the response of the system over the short term. However, over long times, even very small damping will remove the transient response, so it is very reasonable to assume that it is gone. Since all systems have at least a little damping, ignoring the transient response is actually making the mathematical model a BETTER description of the system, even though it seems at first as if we are losing something !</p> 
+  <p>Similarly, the steady state response produced by the nth cosine wave is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFoOcX1QgOOng" src="https://media.licdn.com/dms/image/C5112AQFoOcX1QgOOng/article-inline_image-shrink_400_744/0/1520173191123?e=1691625600&amp;v=beta&amp;t=49QS9_Huyg4OSCpyg7hQK4JU_fvbABDVf05O0MNU9do"> 
+  </div> 
+  <p>Finally, the steady state response to the constant a0 is the static deflection;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHQ1e0TP69XUw" src="https://media.licdn.com/dms/image/C5112AQHQ1e0TP69XUw/article-inline_image-shrink_400_744/0/1520240336454?e=1691625600&amp;v=beta&amp;t=bp9LKI_qOYGY6dVF7s7w9dWUcwQR7BZO3U2-LhT-qxg"> 
+  </div> 
+  <p>The total periodic response of the undamped system can be expressed as the sum of the individual responses to the loading terms as follows;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFSiIfP5FFaxw" src="https://media.licdn.com/dms/image/C5112AQFSiIfP5FFaxw/article-inline_image-shrink_400_744/0/1520170635668?e=1691625600&amp;v=beta&amp;t=egLNVlNJZBR6y4xUlXiqOHId-tUaw1CH2RzXaDSZj-U"> 
+  </div> 
+  <h3>RESPONSES IN THE EXPONENTIAL FORM</h3> 
+  <p>If the periodic loading is expressed in terms of individual harmonics of the exonential form (section 3), the nth harmonic steady state response of the undamped SDOF system will be;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFa5gOGMRWtLg" src="https://media.licdn.com/dms/image/C5112AQFa5gOGMRWtLg/article-inline_image-shrink_400_744/0/1520242268896?e=1691625600&amp;v=beta&amp;t=4P-00aFWgdb-dYut_7Iv3FtHI1fV7xmb8YHKzB3t00g"> 
+  </div> 
+  <p>where the complex loading coefficient Pn is given through the expression in section 3 and Hn</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF5sb7gE_fjgg" src="https://media.licdn.com/dms/image/C5112AQF5sb7gE_fjgg/article-inline_image-shrink_400_744/0/1520100338312?e=1691625600&amp;v=beta&amp;t=bVWoKetw7R3Cgb5Mp1gtKssQCFDKlizoe8EozJfh-Cw"> 
+  </div> 
+  <p>Using the principle of superposition, the total steady state response of SDOD freedom system to the periodic loading is (in exponential form);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE7KG5SPeNd9A" src="https://media.licdn.com/dms/image/C5112AQE7KG5SPeNd9A/article-inline_image-shrink_400_744/0/1520173171656?e=1691625600&amp;v=beta&amp;t=jbHLsT_Ph5pDHtPN-KzalPUEz5BdOI74Bx8EWbx8uyw"> 
+  </div> 
+  <h1>5. SUMMARY OF THE STEPS IN FREQUENCY DOMAIN METHOD OF ANALYSIS</h1> 
+  <p>A summary of the steps in carrying out dynamic analysis in the frequency-domain can be described as below;</p> 
+  <p>1. The first stage wherein the Fourier coefficients of periodic loading are evaluated, may be looked upon as the conversion of the applied loading expression from the time-domain to the frequency-domain form. In other words, the values pm = p™ which express the applied load at a sequence of time, tm, are replaced by complex terms Pn = P(i) which express the harmonic load amplitudes at specified sequence of frequencies, . These values constitute the frequency domain expression for the loading.</p> 
+  <p>2. In the second stage of analysis, the single degree of freedom response for a given frequency is characterised by the complex frequency response coefficient, Hn, which expresses the harmonic response amplitude due to a unit harmonic loading at the frequency. When the response coefficient is multiplied by the complex Fourier series coefficient Pn that expresses the harmonic input amplitude at that frequency, the result is the complex response amplitude Vn, for that frequency. Thus, the complete set of values Vn for all the considered frequencies, constitute the frequency­domain expression of system response.It should be notes that the frequency response coefficient will be complex in case of a damped response but will be real in case of undamped response.</p> 
+  <p>3. In the final stage of the analysis, the frequency­domain response is converted back to the time domain by superposing the response components determined for all of the frequencies included in the Fourier series loading expression. In this superposition operation, it is necessary to evaluate all of the response harmonics at the same instants of time, tm, recognizing the relative phase relationships associated with each frequency. When these response harmonics are added together, the final result is the time­domain expression of the response history, vm = v(tm).</p> 
+  <p>Following points are important to note;</p> 
+  <p>a) The exponential form expressed in section 3 appears attractive in the mathematical sense but for a computer programming [ using a more engineering term ‘methods development purpose’] the form of section 2 is of direct application.</p> 
+  <p>b) In the exponential form of the equation expressed in section 3;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEhoZGo__vPNg" src="https://media.licdn.com/dms/image/C5112AQEhoZGo__vPNg/article-inline_image-shrink_400_744/0/1520195606207?e=1691625600&amp;v=beta&amp;t=2mQAxsoI6zfyOKTg0kkG61aqTcTbu8elWVxnLoLGBbs"> 
+  </div> 
+  <p>The negative frequencies do not represent anything with a clear physical interpretation. It is best to think of exp(iw) as a vector rotating counter-clockwise in the complex plane, and exp(iw) = exp(-w) as a vector rotating clockwise. Adding them cancels the imaginary part, giving cosine, and subtracting them cancels the real part, giving i*sin. The negative frequencies are present in order to make the final answer real instead of complex, because they allow you to combine the complex exponentials in to sin and cos terms.</p> 
+  <p> A clear understanding of the Euler expression in a physical sense can be got from the link below;</p> 
+  <p> <a href="http://betterexplained.com/articles/intuitive-understanding-of-eulers-formula/" target="_blank">http://betterexplained.com/articles/intuitive-understanding-of-eulers-formula/</a></p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p class="left"> </p> 
+  <p> </p>
+ 
+</div>
+</body>
+</html>

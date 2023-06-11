@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>On Machine Learning and Deep Learning - Online courses and text books - A point of view – Evaluation Metrics (Part 2)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQFY1Y3fSyWhEA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/machine-learning-deep-online-courses-text-books-point-ajay-taneja-1f">On Machine Learning and Deep Learning - Online courses and text books - A point of view – Evaluation Metrics (Part 2)</a></h1>
+    <p class="created">Created on 2020-10-04 18:41</p>
+  <p class="published">Published on 2020-10-04 19:11</p>
+  <div><p><strong>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Introduction:</strong></p><p>This article is the continuation of my series of notes on some of the topics involving Machine / Deep Learning. Most of the notes summarized in these blogs are a consolidation of the following online courses / text books;</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deep Learning Specialization course at deeplearning.ai</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Approaching (Almost) Any Machine Learning Text Book – Abhishek Thakur</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Machine Learning Yearning – Technical Strategy for AI Engineers in the Era of Deep Learning – Andrew Ng</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sources from the Web in general</p><p>&nbsp;As I have stated earlier, I’m compiling a series of such notes in order to form a future reference as I apply these concepts in my work. However, I’m more than happy if these notes are useful to my LinkedIn community comprising of some Machine and Deep Learning enthusiasts!</p><p> This article lays emphasis on the topic of “Evaluation Metrics”.&nbsp;Evaluation Metrics form a significant step during the building of a Machine Learning model- these metrics provide a measure of the accuracy of a machine learning model thus indicating how robust the model is. There are different evaluation metrics that may be considered whilst solving a regression or a classification problem which forms the focus of this article.</p><p><strong>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluation Metric for Regression and Classification Problems:</strong></p><p>Talking of evaluation metrics, these have to be dealt differently for regression and classification problems. Whereas for regression problems the evaluation metrics are straight forward to explain / select but for classification problems several evaluation metrics come into play depending upon the distribution of data set: equally distributed or skewed data sets. This article goes into the details of the evaluation metrics generally used for regression and classification problems – for minute details of these metrics the above course lectures/literature provide further explanation</p><p><strong>Evaluation Metrics for Regression Problems:</strong></p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Absolute Error</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mean Absolute Error</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Root Mean Squared Error</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R2 (R squared) – also known as coefficient of determination</p><p>Some of the common metrics used in regression are: error and absolute error- whereas error is the difference between the true value and the predicted value, the absolute error is just the absolute of the difference</p><p><strong>Mean absolute error (MAE)</strong></p><p>The MAE measures the average magnitude of the errors in a set of forecasts/predictions, without considering their direction. It measures&nbsp;<em>accuracy</em>&nbsp;for continuous variables.</p><p><strong>Root Mean Squared Error</strong></p><p>In this case, the difference between the predicted and the corresponding observed value are each squared and the averaged over the sample. Finally, the square root of the average is taken. </p><p>It should be underscored here that since the errors are squared before they are averaged, the RMSE gives relatively high weight to large errors. This indicates that RMSE is most useful when it is large errors are particularly undesirable and thus enable the AI practitioner to refine the model further.</p><p><strong>R2 (R squared)</strong></p><p>It is also known as the&nbsp;<strong>coefficient of determination</strong>. This metric gives an indication of how good a model fits a given dataset. It indicates how close the regression line&nbsp;(i.e. the predicted values plotted) is to the actual data values. The&nbsp;<strong>R squared value lies between 0 and 1&nbsp;</strong>where 0 indicates that this model doesn't fit the given data and 1 indicates that the model fits perfectly to the dataset provided.</p><p>A more intuitive understanding of R-Squared can be got from the graphical representation showing the variance (and the numerical measure) between the measured and predicted values a highlighted below;</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHoF4V9mIwSLA" src="https://media.licdn.com/dms/image/C4D12AQHoF4V9mIwSLA/article-inline_image-shrink_400_744/0/1601837222247?e=1691625600&amp;v=beta&amp;t=lcpR3NsuPFLWsATfcikJpZDVlQQSlK1dEI0DBADLziw"></div><p><strong>                                          Figure: Low and High R-squared values</strong></p><p>A high R-squared value (~87.5%) indicated that the regression model / regression line is closer to the data points than the one with low R-squared value (~38 %)</p><p><strong>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluation Metrics for Classification Problems:</strong></p><p>Evaluation metrics for classification problems have to be thoughtfully selected. Some of the commonly used evaluation metrics for classification problems include;</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accuracy</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Precision</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recall</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F1- Score</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Area under the ROC (Receiver Operating Characteristic) Curve or simply AOC</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logarithmic Loss</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Precision @ K (P @ K)</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Precision @ K(AP@K)</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mean Average Precision @ K (MAVP @ K)</p><p>These metrics are briefly discussed below;</p><p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Accuracy</strong>: “Accuracy” is well suited and the simplest evaluation metric for a binary classification problem wherein we have equal distribution pf positive and negative data and the training and the validation sets.</p><p>In order to explain the above: let us say one is solving a binary classification problem wherein they’re detecting presence of or absence of tuberculosis in patients by reading the chest X-ray images.</p><p>Let us say we have a training and a validation set comprising of 100 positive and 100 negative samples in each set. Then, if the machine learning model predicts 90% of the X-ray images correctly in the training set and 65% of the X-ray images correctly in the validation set, then, the accuracy in the training and the validation set is 90% (0.90)&nbsp;and 65% (0.65) respectively</p><p>o&nbsp;&nbsp;<strong>What if the positive and negative samples are not distributed equally (skewed dataset)?&nbsp;</strong></p><p>Let us say in the same problem, we have 80 images of non-tuberculosis X-rays and 20 images of tuberculosis X-rays in the training and the validation set. Now, if in the validation set, the model classifies all images as non-tuberculosis, then, as per the definition of accuracy, described above, the accuracy is 80%. But this metric of accuracy in this case is misleading as the model may be completely at fault yet the accuracy level will always be 80% if it classifies all images as non-tuberculosis.</p><p>Hence, in case skewed data sets as of this example, different metrics will have to be used to evaluate the model.</p><p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Precision:</strong></p><p><strong>Precision tries to answer the following question: What proportion of the positive identification is actually correct?</strong></p><p><strong>Thus,</strong></p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQG9pMBQNrL3jQ" src="https://media.licdn.com/dms/image/C4D12AQG9pMBQNrL3jQ/article-inline_image-shrink_400_744/0/1601837425245?e=1691625600&amp;v=beta&amp;t=Hfw6WrO3A_0CCo4BAtIJSYmoKpy5MUtaa4ErLbAwO5g"></div><p>Where;</p><p>TP = True Positive</p><p>FP = False Positive</p><p>It may be intuitively understood here, “True Positive” demotes the that if a model predicts an X-ray image as positive for tuberculosis and the actual medical result is also positive for tuberculosis then the image identifies is correct for a positive tuberculosis patient and hence this scenario is termed as: “True Positive”</p><p>Similarly, false positive in when the model predicts an X-ray image as positive for tuberculosis but the actual medical result is negative </p><p>iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Recall:</strong></p><p><strong>&nbsp;</strong>Recall tries to answer the question:<strong> What proportion of the actual positives was identified correctly </strong></p><p><strong>Thus,</strong></p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQELmdN2mETpVA" src="https://media.licdn.com/dms/image/C4D12AQELmdN2mETpVA/article-inline_image-shrink_400_744/0/1601837586371?e=1691625600&amp;v=beta&amp;t=TRKy4qPR5MPmOzIJcfqveG-1yKTS9AvZx3iy2_1IXXg"></div><p>To fully evaluate a model, one must examine both precision and recall and for an effective model both precision and recall must be high.</p><p><strong>Variation of Precision and Recall with the threshold values:</strong></p><p>It might be interesting to see the variation of Precision and Recall values with the values of “threshold” i.e. classification problems normally predict the probabilities wherein the threshold value for classifying a positive sample is taken as 0.5 many times.</p><p>The book by Abhishek shows that with high threshold values True positives reduce whereas False negatives increase. The book gives detailed discussion and source code on this effect</p><p>iv.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>F1- Score</strong></p><p>&nbsp;The F1 score can be interpreted as a weighted average of the precision and recall where F1 score reaches its best value at 1 and worst score at 0.</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFIlM7lyX2mKw" src="https://media.licdn.com/dms/image/C4D12AQFIlM7lyX2mKw/article-inline_image-shrink_400_744/0/1601837642410?e=1691625600&amp;v=beta&amp;t=a3T7mlaqtVY1_EDMi2t1DB0EMi2P4Mhi00O_e4vbXBs"></div><p>To fully evaluate a model, one must examine both precision and recall and for an effective model both precision and recall must be high.</p><p><strong>v.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Area under the ROC (Receiver Operating Characteristic) Curve or simply AOC</strong></p><p>&nbsp;An ROC (Receiver Operating Characteristic) Curve is a graph showing the performance of a classification model at all “thresholds”. The term “thresholds” has been briefly introduced above. The ROC curve plots the following 2 parameters;</p><p>o&nbsp;&nbsp;<strong>True Positive Rate:</strong> True Positive Rate is similar to the definition of “Recall” as described above; That is;</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFFSUc29uk3Zg" src="https://media.licdn.com/dms/image/C4D12AQFFSUc29uk3Zg/article-inline_image-shrink_400_744/0/1601837977006?e=1691625600&amp;v=beta&amp;t=0c5HusA6olD73kG83AE7tCJLpatr4_TMVsWzUGoUaGo"></div><p>o&nbsp;&nbsp;<strong>False Positive Rate: </strong>False Positive Rate is defined as</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEUDLJDajV7bA" src="https://media.licdn.com/dms/image/C4D12AQEUDLJDajV7bA/article-inline_image-shrink_400_744/0/1601838004378?e=1691625600&amp;v=beta&amp;t=go6V_dBYEmvoM70NtM6BOqPoXkPlTuhpsI0ukwhPaXE"></div><p>An ROC curve plots the TPR and FPR at different classification thresholds. Lowering the classification thresholds will classifies more items as “False Positives” thus increasing both FP and TP</p><p>A typical ROC curve is shown below;</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQE0jmOdU-9wCA" src="https://media.licdn.com/dms/image/C4D12AQE0jmOdU-9wCA/article-inline_image-shrink_400_744/0/1601838037477?e=1691625600&amp;v=beta&amp;t=Is-l4h0wHv9uk2vunSNJpYyZsjoFZMoIId3fb0kqRtY"></div><p><strong>Area under the ROC curve: AUC </strong>stands for the area under the ROC curve or simply area under the curve. That is; AUC measures the entire 2-dimensional area under the ROC Curve – area being normalized between 0 and 1. A model whose predictions are 100 % wrong has the AUC value of 0.0 and a model whose predictions are 100 % right has an AUC value of 1.0. </p><p>One way of interpreting AUC is that it measures the quality of the model predictions irrespective of what classification threshold is chosen.</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQGW1QC_wA_-DA" src="https://media.licdn.com/dms/image/C4D12AQGW1QC_wA_-DA/article-inline_image-shrink_400_744/0/1601838094324?e=1691625600&amp;v=beta&amp;t=_avQ1c0P1fELG4rwP0cFurN7hiLTMcJAemXMowf935k"></div><p><strong>                                Figure: AUC – Area under the ROC Curve</strong></p><p>AUC is a widely used metric in the industry for classification problems thus, is a metric that should we well known to all!</p><p>vi.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Logarithmic loss:</strong> We then have the logarithmic loss over all samples which is a mere average of all losses. The logarithmic loss penalizes quite heavily for an “incorrect” or a “far off” prediction – i.e. the loss penalizes quite heavily for being very sure or very wrong!</p><p><strong>&nbsp;</strong></p><p><strong>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluation Metrics for Multi- Class Classification Problems:</strong></p><p><strong>&nbsp;What are Multi- Class Classification Problems? &nbsp;</strong>A classification class with more than 2 classes such that the input sample can be classified into one and only one of the classes &nbsp;is called a Multi-class classification problem</p><p><strong>&nbsp;E.g. </strong>To classify a set of images of dogs into different breed of dogs e.g. German Shepherd, Bulldog, Golden Retriever, etc.</p><p>&nbsp;<strong>Evaluation metrics: </strong>Having discussed the evaluation metric for binary classification problems in the above paragraphs, the same metrics can be extended to check the robustness of a multi-class classification problems as highlighted below. The concepts of Precision, Recall, F1-Score can be extended to deal with multi-class classification problems. Following definitions may be highlighted in this regard;</p><p>o&nbsp;&nbsp;Macro Averaged Precision</p><p>o&nbsp;&nbsp;Micro Averaged Precision</p><p>o&nbsp;&nbsp;Weighted Averaged Precision</p><p><strong>Macro Averaged Precision: </strong>In this case one evaluates the precision for each class individually and then averages then averages them</p><p><strong>Micro Averaged Precision: </strong>In this case one evaluates TP, FP for each class and then uses these to calculate the overall Precision</p><p><strong>Weighted Average Precision: </strong>This is the same as weighted average but the weights depend upon the number of items in each class.</p><p>The source code for each of the above metric is provided in the book – Approaching (Almost) Any Machine Learning Problem – Abhishek Thakur</p><p>Similar to the definition of these metrics of Multi-class classification problems related to Precision, we can define the metrics relating to recall and F1-Score</p><p><strong>&nbsp;Confusion Matrix </strong></p><p><strong>Confusion Matrix for binary classification problems</strong></p><p>We now come to describe a very important metric for classification problems: Confusion Matrix. Confusion Matrix is a table that is often used to describe the performance of a classification model on a set of data for which the true values are known.</p><p>E.g. let us say we’re working on a binary classification problem for reading the chest X-ray images and thus predicting if the patient has tuberculosis (YES) or not (NO). Let us say we have n = 165 samples then we can have a simple table like the below</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEVmFubGPXhXw" src="https://media.licdn.com/dms/image/C4D12AQEVmFubGPXhXw/article-inline_image-shrink_1000_1488/0/1601838261108?e=1691625600&amp;v=beta&amp;t=VgR8YiuRt_D39mjbmyhpNdgkuISK-kU7nlEfyijYb1k"></div><p>Thus, from the above TP, TN, FP and FN can be got as below;</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQH433Gr-zNfDg" src="https://media.licdn.com/dms/image/C4D12AQH433Gr-zNfDg/article-inline_image-shrink_1000_1488/0/1601838333600?e=1691625600&amp;v=beta&amp;t=BsAT8spU0a0o9KF952LwDr60LcOl7PRomscsAXe53D4"></div><p>From the above table, one can derive the Precision, Recall and F1-Score </p><p><strong>Confusion Matrix for Multi-class classification problems: </strong>Similar to the above, one can develop the Confusion Matrix for a multi-class classification problem. This can eb best shown through an example.</p><p>E.g. Let us say we’re solving a multi-class classification problem to identify the breed of dogs froma&nbsp;data set comprising of dog images. Let us say we have 3 classes so that;</p><p><strong>Class 0:</strong> Dog breed German Shephard</p><p><strong>Class 1:</strong> Dog Breed Golden Retriever</p><p><strong>Class 2:</strong> Dog Breed Labrador Retriever</p><p>Now let us say we have the following actual and predicted data from a set of 10 samples;</p><p><strong>Actual data for 10 samples: [ 0, 1, 2, 0, 1, 2, 0, 2, 2, 0]</strong></p><p><strong>Predicted data for 10 samples: [ 0, 2, 1, 0, 2, 1, 0, 0, 2, 0]</strong></p><p>Confusion matrix for the above data may be constructed as below;</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFVIRQ74MMVKg" src="https://media.licdn.com/dms/image/C4D12AQFVIRQ74MMVKg/article-inline_image-shrink_1000_1488/0/1601838403351?e=1691625600&amp;v=beta&amp;t=Y9ss2z_rPmaSuZbw4IE2FReWBHCCESkypfLJy8jvgoU"></div><p><strong>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluation Metrics for Multi- Label Classification Problems:</strong></p><p><strong>&nbsp;</strong>What are Multi- Label Classification Problems? Typically, a classification problem involves predicting a single label. Alternatively, the problem might involve predicting a likelihood across two or more class labels. In such cases, the classification task assumes that the input belongs to one class only.</p><p>On the other hand, some classification problems involve predicting more than one label for a given sample. Such problems are referred to as multi-label classification problems. E.g. an image sample might comprise of several objects and the aim of the model might be to predict the list of objects in the given image sample - this is a multi-label classification problem.We have the following metrics available for multi-label classification problems:</p><p>o&nbsp;&nbsp;Precision @ k (P@k)</p><p>o&nbsp;&nbsp;Average Precision @ k (AP@k)</p><p>o&nbsp;&nbsp;Mean Average Precision at k (MAP@k)</p><p>Following are some details on these metrics;</p><p>&nbsp;<strong>Precision@k (P@k) :</strong> Here we have a list of original classes for a given sample (i.e. true classes/set) and a list of predicted classes for the same.&nbsp;Then the P@k is defined as the number of correctly predicted classes considering only the top k values divided by k</p><p>&nbsp;<strong>Average Precision@k (AP@k) :</strong> Avearge Precision @ k (AP@k) calculates P@k for every k e.g. if we need AP@3, we calculate P@1, P@2, P@3, and divide the sum by 3.</p><p>&nbsp;<strong>Mean Average Precision@k (AP@k): </strong>The above metrics P@k and AP@k are to do with calculating the accuracy=y per sample but in Machine learning problems, we’re concerned with evaluating the accuracy for all samples, hence we have the Mean Average Precision, which is;</p><div class="slate-resizable-image-embed slate-image-embed--active slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFHZE1lKmcQoA" src="https://media.licdn.com/dms/image/C4D12AQFHZE1lKmcQoA/article-inline_image-shrink_400_744/0/1601838503859?e=1691625600&amp;v=beta&amp;t=Ci9p4aD5pGAaCXA4NSu3q_Qx1TkytKn-NKVi7gnhCg4"></div><p><br></p><p>&nbsp;</p><p><br></p><p> </p><p> </p><p><br></p></div>
+</body>
+</html>

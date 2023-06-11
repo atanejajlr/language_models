@@ -1,0 +1,351 @@
+<html>
+<head>
+  <title>                             J – integral</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQHAh3u4DQWn3w" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/j-integral-ajay-taneja">                             J – integral</a></h1>
+    <p class="created">Created on 2017-06-28 21:39</p>
+  <p class="published">Published on 2017-06-29 19:50</p>
+  <div>
+  <h2><strong>1:&nbsp;&nbsp;&nbsp;Introduction:</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>This article is the continuation of my series of blogs on “Fracture Mechanics” and is perhaps the second last in the series.</p> 
+  <p>So far the discussion in my earlier blogs was resorted to linear elastic fracture mechanics (LEFM) wherein the focus was on limited plasticity at the crack tip. Using the concepts developed in linear elastic fracture mechanics, a variety of problems have been solved in the industry. In fatigue problems wherein the applied loads are generally about 30% of the yield stress of the material and high strength alloys are normally resorted to, the concepts involving linear elastic fracture mechanics proved an ideal choice because of limited plasticity at the crack tip.</p> 
+  <p>However, there could be situations wherein the analysis based on linear elastic fracture mechanics is inappropriate in cases where there is significant plastic zone developed at the crack tip. In such situations, one has to look at approaches other than linear elastic fracture mechanics. A direct approach involving rigorous plasticity theory wherein one has to keep a track of the loading history throughout the crack propagation analysis is often not very convenient because of the computational cost and numerical problems. And in such cases approaches based on linear elastic fracture mechanics (LEFM) are modified and quite frequently adapted to elasto-plastic fracture mechanics (EPFM).</p> 
+  <p>With regards to EPFM, there are 2 fundamental concepts that should be understood in some detail;</p> 
+  <p>o&nbsp;&nbsp;J – integral</p> 
+  <p>o&nbsp;&nbsp;Crack tip opening displacement (CTOD)</p> 
+  <p>This article focusses on the J – integral and subsequent version of this article will elaborate on CTOD. The section 2 of this article provides the mathematical as well as the physical interpretation of the J – integral</p> 
+  <p>Section 3 of this article elaborates on the most fundamental and important mathematic property of the J – integral i.e. the path independence of the J – integral.</p> 
+  <p>Section 4 provides a mathematical example leading to the computation of the J – integral through a hand calculation.</p> 
+  <p>Section 5 explains the graphical interpretation of the J – integral in order to get a better physical insight</p> 
+  <p>Section 6 is on the application of J – integral to non-linear elastic and elastoplastic solids.</p> 
+  <p>This article will mainly focus on the interpretation of the J – integral as the energy release rate (“G” in case of linear elastic fracture mechanics) whereas the next article will focus on its interpretation as stress intensity factor.</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>2:&nbsp;&nbsp;&nbsp;Understanding J integral</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>First, let us recall the concept of energy release rate "G" as applied to linear elastic fracture mechanics.</p> 
+  <p>In one of my earlier blogs titled – “Energy release rate in the context of fracture mechanics”,&nbsp;</p> 
+  <p><a href="https://www.linkedin.com/pulse/energy-release-rate-context-fracture-mechanics-ajay-taneja" target="_blank">https://www.linkedin.com/pulse/energy-release-rate-context-fracture-mechanics-ajay-taneja</a></p> 
+  <p>I had dealt with the formulation of Energy release rate – “G” in the context of LEFM. G – the energy release rate which is the energy available per unit volume was derived based on the principle of conservation of energy i.e.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF0qY8xHsJ3Mg" src="https://media.licdn.com/dms/image/C5112AQF0qY8xHsJ3Mg/article-inline_image-shrink_400_744/0/1520145982615?e=1691625600&amp;v=beta&amp;t=DjtdNfmFTMy7P5_33Wb8EfwhPd4Fs-N6n5Shfykqt3s"> 
+  </div> 
+  <p>The basis of the above expression was that; if there is an incremental external work done ΔW, done on the structure, then, part of it is stored in the system as strain energy ΔU and part of it is used in incrementing the crack surface area ΔA. Re-organizing the above expression, G could be obtained as:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE9eBDRERttOw" src="https://media.licdn.com/dms/image/C5112AQE9eBDRERttOw/article-inline_image-shrink_400_744/0/1520142302535?e=1691625600&amp;v=beta&amp;t=4FxZSRpB7h9MFmqv6O2BqVqWFtX2txkYzarvWoKHH14"> 
+  </div> 
+  <p>It was also made clear (in the above article) that if we apply a stress which is sufficiently small and if we plot the energy as a function of crack length, the curve of G (which varies linearly with ‘a’) will lie below ‘R’ (‘R’ being the crack resistance&nbsp;which is a material property). Thus, the energy released is not sufficient for the crack to grow: the crack will thus remain stationary.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGRP9D-ckwf8w" src="https://media.licdn.com/dms/image/C4E12AQGRP9D-ckwf8w/article-inline_image-shrink_400_744/0/1520509481259?e=1691625600&amp;v=beta&amp;t=KOsidpMZszdgyEb2BRory_s7EqfaVb8ftRGWl-5a6mA"> 
+  </div> 
+  <p><strong>Figure: Variation of ‘G’ with crack length (the plate being stressed to σ)</strong></p> 
+  <p>&nbsp;</p> 
+  <p>If the stress, is increased to a critical value σ(this stress is termed as the ‘critical stress’ because at this stress, the energy released is equal to the energy required to form 2 new surfaces), then, G=R and the point of instability occurs as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQELwzND6dxeWA" src="https://media.licdn.com/dms/image/C5112AQELwzND6dxeWA/article-inline_image-shrink_400_744/0/1520250789697?e=1691625600&amp;v=beta&amp;t=uAT9uHMZYp19_QC4aBMJQoxctctmGSOsN1qRqBiXYo8"> 
+  </div> 
+  <p><strong>Figure: Fracture initiation (point of instability) when ‘G’ = ‘R’</strong></p> 
+  <p><em><strong>Thus, the value of "G"&nbsp;helps to assess if the crack is still in the initiation phase or has begun to grow</strong></em></p> 
+  <p>Like G (and K), the J – integral is also a parameter to characterize a crack. In fact, it is a special case of G. Whereas; “G” is applied to linear elastic fracture mechanics, “J” is applicable to linear elastic as well as non-linear elastic materials. The J – integral was first applied to fracture mechanics by Rice (1968) and was published in his paper titled: “<em>A path independent integral and the approximate analysis of strain concentrations by notches and cracks, Journal of Applied Mechanics”, volume 35, 379 – 386</em>”.</p> 
+  <p>&nbsp;</p> 
+  <p>Rice explained that for planar problems if we consider a path <strong>Γ</strong> around a crack tip as shown in the figure below;&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGGZjVl-5ymrA" src="https://media.licdn.com/dms/image/C5112AQGGZjVl-5ymrA/article-inline_image-shrink_1000_1488/0/1520240618906?e=1691625600&amp;v=beta&amp;t=aF25-BRHlW-yj2nmK1HDMgzG2BrGWUQeHIhNXm55wts"> 
+  </div> 
+  <p><strong>Figure: Path Γ around the crack tip with the outward normal ni and traction Ti</strong></p> 
+  <p>which starts from any point of a crack face and ends on any point on the other crack face – the path can be chosen arbitrarily within the material of the component.</p> 
+  <p>Then, the J – integral is defined as;</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHyF_GYE2lJGA" src="https://media.licdn.com/dms/image/C5112AQHyF_GYE2lJGA/article-inline_image-shrink_400_744/0/1520040364273?e=1691625600&amp;v=beta&amp;t=PvlxJuhK-St3-R5bOaYWK7h7Vq4DtXBFFsFYZ0pnTDk"> 
+  </div> 
+  <p>In the above expression, the first term is the strain energy per unit volume and the second term is the work done.</p> 
+  <p>&nbsp;</p> 
+  <p>The second term which is written above in Einstein convention can be written in the expanded form as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFIAKOJk4iO-Q" src="https://media.licdn.com/dms/image/C5112AQFIAKOJk4iO-Q/article-inline_image-shrink_400_744/0/1520212248834?e=1691625600&amp;v=beta&amp;t=UnGMiV_vrjImTADrZYActEVZLIzVWY7oSeXdHN7UB48"> 
+  </div> 
+  <p>Each of the above expressions is elaborated in the next section.</p> 
+  <p>&nbsp;</p> 
+  <p><strong>Physical interpretation of J – integral</strong></p> 
+  <p>It should be underscored that the expression for the J – integral stated above is but the same as that presented for “G” based on the law of conservation of energy where:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFkDMVsUHX0RA" src="https://media.licdn.com/dms/image/C5112AQFkDMVsUHX0RA/article-inline_image-shrink_400_744/0/1520213257060?e=1691625600&amp;v=beta&amp;t=u-5gwmrGTIwhyUp3ZlABzV60Hn-JW4gBkyfakuogft0"> 
+  </div> 
+  <p>It is just written in a different form after several simplifications which results as a line integral. The details are available in the paper of Rice as stated above.</p> 
+  <p><strong>First expression: strain energy per unit volume</strong></p> 
+  <p>For a linearly elastic material, we have the strain energy per unit volume is expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHbAEEo3uDwtw" src="https://media.licdn.com/dms/image/C5112AQHbAEEo3uDwtw/article-inline_image-shrink_1000_1488/0/1520251521134?e=1691625600&amp;v=beta&amp;t=XC0-zlZdYikQSNxJCB56EbbyHSQ5Nir40lna8qGAc1U"> 
+  </div> 
+  <p>Employing the stress – strain relations, one could express the strain energy only in terms of stress components as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFEWqozgHIEVQ" src="https://media.licdn.com/dms/image/C5112AQFEWqozgHIEVQ/article-inline_image-shrink_1000_1488/0/1520191560525?e=1691625600&amp;v=beta&amp;t=nErMjC6HR06QZ4O3XPIJn9mY11912hFkhh4yiWAeNaU"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>As stated above: J – integral start from one end of the crack face and goes in the counter clockwise direction and stops at the other end of the crack face as shown below.&nbsp;Two important features of J – integral include;</p> 
+  <p>&nbsp;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;J integral is path independent i.e. Γ can be chosen arbitrarily within the body of the component</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;For linearly elastic bodies, the J – integral represents energy release rate and is same as G.</p> 
+  <p>The above features are best demonstrated through the example below.&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>3:&nbsp;&nbsp;&nbsp;J integral: an illustration to prove that it is path independent</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Consider a path as shown in the figure below. From ABC to D and clockwise from D to F and then close it at A.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE4UOFc_YG0lQ" src="https://media.licdn.com/dms/image/C5112AQE4UOFc_YG0lQ/article-inline_image-shrink_400_744/0/1520145717176?e=1691625600&amp;v=beta&amp;t=sTexia09M78YWYU09EGwugEO92kHeByp78mDw5epdIA"> 
+  </div> 
+  <p><strong> Figure: closed contour</strong></p> 
+  <p>&nbsp;</p> 
+  <p>Since we have a closed contour; the integral over the contour should be ‘0’.</p> 
+  <p>So, we have:</p> 
+  <p>integral on contour 1 (ABC) + integral on CD + integral on contour 2 (DEF) + integral on FA should be “0”</p> 
+  <p>So,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHF5LM7fG-BoQ" src="https://media.licdn.com/dms/image/C5112AQHF5LM7fG-BoQ/article-inline_image-shrink_400_744/0/1520212871071?e=1691625600&amp;v=beta&amp;t=3UfUa2UuXFRK5loIZqV5ANhNQK-JilVChmUvraiqE9Q"> 
+  </div> 
+  <p>Now; since CD and Fa are free surfaces – these are stress free, thus, there is no traction CD and FA. And, since the crack is fine, dy term is 0 and there is no strain energy associated.</p> 
+  <p>Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGRWgXP-c2-3A" src="https://media.licdn.com/dms/image/C5112AQGRWgXP-c2-3A/article-inline_image-shrink_400_744/0/1520142313715?e=1691625600&amp;v=beta&amp;t=5lccf6JPNk0wywLqqkC82hWR1omDNymkVK7ovLSQI5Y"> 
+  </div> 
+  <p> </p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGWRHlabN4Btg" src="https://media.licdn.com/dms/image/C5112AQGWRHlabN4Btg/article-inline_image-shrink_400_744/0/1520251353615?e=1691625600&amp;v=beta&amp;t=wFFQLjJuD0eI9fjrX3QSRxW1Q10--LIwsc8xnjOOYKE"> 
+  </div> 
+  <p>Thus; we get equal and opposite values – one if taken in the anti-clockwise direction and another if taken in the clockwise direction.</p> 
+  <p>This actually proves a very important result: if one takes the integral from one crack surface and ends with the other crack surface, the value of the integral is independent of the path that is taken. This means that the J – integral is path independent and this is a very important result. The negative sign indicates that the direction of the contour is different. This implies that in crack problems if a contour starts from one crack face and ends in another crack face, the magnitude of the line integral does not change. This property of the path independence of the J – integral is well utilized in linear elasticity.</p> 
+  <p>Through the above discussion and the expression involving J – integral one may appreciate the different quantities involved in the computation of the line integral (J – integral). In the current scenario, engineers using finite element calculations in a software identify the path and the software churns out a number indicating the&nbsp;computed value of the J – integral. The physics and the quantities that go in the computation of J – integral is often not fully understood.</p> 
+  <h2><strong>4:&nbsp;&nbsp;&nbsp;Example calculation of J – integral </strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Consider a double cantilever beam specimen as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH_u3Fzgjf9pw" src="https://media.licdn.com/dms/image/C5112AQH_u3Fzgjf9pw/article-inline_image-shrink_400_744/0/1520241352301?e=1691625600&amp;v=beta&amp;t=ompSld4NMmfZicfdKkK6jyCjiW10AbAMILLehfiXs8E"> 
+  </div> 
+  <p><strong> Figure: Double cantilever beam specimen – an example </strong></p> 
+  <p><strong>Evaluation of J – integral </strong></p> 
+  <p>There is a crack and the cantilever beam specimen is opened by the load P as shown (note – the load “P” is actually the applied shear).</p> 
+  <p>The beam is characterised by a height “h”, length “a” which is the crack length. The aim here is to evaluate the magnitude of the “J – integral” which is physically interpreted as the energy release rate “G”.</p> 
+  <p>One is now aware through the discussion in the aforementioned paragraphs that the J – integral is path independent – as long as the contour starts from one crack face and ends at the other crack face, the value of the J – integral is unchanged. Thus, obviously, one can chose a path for which the line integral can be evaluated most conveniently.</p> 
+  <p>Consider a path shown in the <strong>red</strong> dotted line as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFGS3oBiK_4kg" src="https://media.licdn.com/dms/image/C5112AQFGS3oBiK_4kg/article-inline_image-shrink_400_744/0/1520196878152?e=1691625600&amp;v=beta&amp;t=P56suTHDRygKxOefQl85BeK3YDoV1U0_gZfYHl0phVI"> 
+  </div> 
+  <p><strong>Figure: The most convenient path to evaluate J - integral for the given problem</strong></p> 
+  <p>The only requirement with regards to the computation of the line integral is that the path should be continuous. So, one can chose any convenient path which encloses the crack tip starts from one end of the crack face and goes up to the other end of the crack face.</p> 
+  <p>Considering the path as shown in the red colour dotted line as above: The path BC, CD, DE, EF and FH.</p> 
+  <p>It should be realized that CD, DE and EF are free surfaces and therefore traction is 0. Thus, the second term of the J – ingeral is 0. There is no contribution of strain energy and hence the J – integral along the CD, DE and EF is 0. Thus, one has to focus attention only on segments BC and FH. On the segments BC and FH, there is only shear. It may be recalled through the solid mechanics course that in a solid mechanics problem, there is bending as well as shear and one recognizes the energy due to bending than that of shear in case of slender beams and the shear effects are always neglected in slender beams. The same approximation is followed in this problem. Looking at the surfaces FH and BC, we have only shear. Thus, the strain energy due to shear will be neglected. Thus, one has to find out the contribution to the J – integral through the traction term which has the component only in the y – direction.</p> 
+  <p>&nbsp;</p> 
+  <p>Then, the traction term reduces to;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFF7vIm-0dm4g" src="https://media.licdn.com/dms/image/C5112AQFF7vIm-0dm4g/article-inline_image-shrink_400_744/0/1520213867685?e=1691625600&amp;v=beta&amp;t=YrfCx2x87JpccTs9Ie92pXPvLUf70OhlgvyqB9OKZBQ"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>Considering the formula for the slope of the beam at the free end of the cantilever, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH3w0bxGvfvYw" src="https://media.licdn.com/dms/image/C5112AQH3w0bxGvfvYw/article-inline_image-shrink_400_744/0/1520147650326?e=1691625600&amp;v=beta&amp;t=Ajou0QeO8d9pQNW1fY5HRza0Pf3rx5DTsDYUUQ7FVvc"> 
+  </div> 
+  <p> </p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEHxOrY468j7Q" src="https://media.licdn.com/dms/image/C5112AQEHxOrY468j7Q/article-inline_image-shrink_400_744/0/1520145539378?e=1691625600&amp;v=beta&amp;t=fEI-43Ax1yGX_fCoWO9-RlZXWl3FXawLR9kAA1dc-NU"> 
+  </div> 
+  <p>Thus,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEUiqJGQKheHA" src="https://media.licdn.com/dms/image/C5112AQEUiqJGQKheHA/article-inline_image-shrink_400_744/0/1520146247794?e=1691625600&amp;v=beta&amp;t=plQ-WSFK9VtRebU7VC-vyK4dHBmtefvFybFaXQ-vHuI"> 
+  </div> 
+  <p>Thus,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHmiGM019-TLA" src="https://media.licdn.com/dms/image/C5112AQHmiGM019-TLA/article-inline_image-shrink_400_744/0/1520211797839?e=1691625600&amp;v=beta&amp;t=BiVYfnpiLMhT9_Hc4FVP2uCPQ_3aAfUBuAZnhKZ5u_I"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>Thus, the expression for J is evaluated as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFrfBNYuHQ4Dg" src="https://media.licdn.com/dms/image/C5112AQFrfBNYuHQ4Dg/article-inline_image-shrink_400_744/0/1520141979601?e=1691625600&amp;v=beta&amp;t=o6OBkhgJvqMwfRUxQOLbe8SQoVtq5ocw6NHpdHP76h0"> 
+  </div> 
+  <p><strong>Conclusion: what is so special of J – integral?</strong></p> 
+  <p>This leads to a very important conclusion that in case of a linear elasticity problem, J and G are identical and since there is an inter-relationship between G and K, there exists an inter-relationship between J and K as well. During a finite element analysis, in many instances, one evaluates the line integral and from that computes the stress intensity factor.</p> 
+  <p>And since the integral can be taken at a distance, somewhat remote from the crack tip (being path independent), a precise computation of the stress field in the crack tip region is unnecessary. That is to say, in a practical problem involving crack propagation analysis, if one is able to avoid the requirement of a precise mesh closer to the crack tip, there can result in enormous amount of saving from the computational cost point of view. And it is here that the path independence property of J – integral proves very effective.</p> 
+  <h2><strong>5.&nbsp;&nbsp;&nbsp;Graphical interpretation of J – integral&nbsp;</strong></h2> 
+  <p>Let us now have a feel of the graphical interpretation of J in order to understand it better from the physical point of view.</p> 
+  <p>It was mentioned in the preceding section that in case of a linear elastic solid; G = J. Considering the load displacement for a specimen with crack length ‘a’ and for another specimen with crack length ‘a + δa’ , we have the plot as shown in the figures below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHseIJ66rOL-A" src="https://media.licdn.com/dms/image/C5112AQHseIJ66rOL-A/article-inline_image-shrink_1000_1488/0/1520147033579?e=1691625600&amp;v=beta&amp;t=xOfPp2lHE1QsqQB2MofnzU3pfa431UFbIflSuNLJkjI"> 
+  </div> 
+  <p><strong>Figure: A graphical representation of energy required to form to new surfaces </strong></p> 
+  <p>&nbsp;</p> 
+  <p>In the above figure, the shaded portion represents the energy availability for the crack to grow – which is “G” and in a linear elastic solid, G = J.</p> 
+  <p>The same could be extended for non-linear elastic solid too – one can evaluate the line integral which is physically interpreted as the energy availability for the formation of 2 new surfaces. Thus, the advantage of “J” is that it could be applied to non - linear elastic solids too without any (additional) approximation.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGLrWOYVSASnA" src="https://media.licdn.com/dms/image/C5112AQGLrWOYVSASnA/article-inline_image-shrink_1000_1488/0/1520239765600?e=1691625600&amp;v=beta&amp;t=oCMSkJZ9kXs_efS63OXPJByq-W9CmM_g138_b1LFOCg"> 
+  </div> 
+  <p><strong> Figure: J applied to non-linear elastic solids</strong></p> 
+  <p>&nbsp;</p> 
+  <h2><strong>6 :&nbsp;&nbsp;J – integral&nbsp;for elasto-plastic analysis</strong></h2> 
+  <p><strong>Difference between non-linear elastic and elasto-plastic analysis</strong></p> 
+  <p>It may be recalled through the undergraduate course on “Applied Mechanics” that a non-linear elastic behaviour signifies that the solid deforms reversibly; if the loads on the solid are removed, then, it returns to the original shape i.e. the unloading path will trace back the same way as the unloading path as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGM_TNGce0W3Q" src="https://media.licdn.com/dms/image/C5112AQGM_TNGce0W3Q/article-inline_image-shrink_400_744/0/1520201876966?e=1691625600&amp;v=beta&amp;t=iWnUdavHn7ZuenuJ-aWDV49KrrtxwkIOo8B3BaXJ1hA"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p><strong> Figure: Stress – strain curve for a non-linear elastic solid</strong></p> 
+  <p>&nbsp;</p> 
+  <p>Whereas, in an elasto-plastic material, once a critical stress is exceeded, the material deforms permanently and does not regain its original shape.&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGkn3rKX2S6CQ" src="https://media.licdn.com/dms/image/C4E12AQGkn3rKX2S6CQ/article-inline_image-shrink_400_744/0/1520509481586?e=1691625600&amp;v=beta&amp;t=91VYnElNQGYik6Fv4NTasJoqnnJ92Ek61_RrAs1UxaQ"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p><strong> Figure: Stress – strain curve for an elasto plastic solid</strong></p> 
+  <p>It should be underscored that in case of an elasto – plastic material; once the material goes from the elastic region to the plastic region and is then unloaded, the unloading path is not the same as the loading path and a track of the loading history is to be maintained to find the relationship between stress and strain.</p> 
+  <p><em>[More insight into the features of inelastic response of materials can be got from my following articles;</em></p> 
+  <p><a href="http://ajaytaneja-isotropickinematichard.blogspot.dk/" target="_blank">http://ajaytaneja-isotropickinematichard.blogspot.dk/</a></p> 
+  <p><a href="http://ajaytaneja-bauschinger-effect.blogspot.dk/" target="_blank">http://ajaytaneja-bauschinger-effect.blogspot.dk/</a></p> 
+  <p>)</p> 
+  <p><em>But, as far as the scope of the current article is concerned, the above fundamental difference between non-linear elastic and elasto-plastic behaviour is felt to be sufficient]</em></p> 
+  <p>&nbsp;</p> 
+  <p><strong>Extension of J – integral for elasto - plastic fracture mechanics</strong></p> 
+  <p>As stated above, in case of linear elastic fracture mechanics and non – linear elastic fracture mechanics, the value of J is the same as G. From the graphical interpretation of J, it was made clear that considering the load deformation curve of a specimen with crack length “a” and another with crack length “a + δa”, the difference between the two (the shaded portion) indicates the energy availability to form 2 new surfaces.</p> 
+  <p>In case of an elastoplastic material, the behaviour of the material during unloading is not the same as that during loading and some energy is lost during plastic deformation. An approximation is often used in elastoplastic analysis to allow for the use of J – integral wherein it is assumed that no unloading or redistribution of forces occurs.</p> 
+  <p>Thus, the mathematical equations involving J – integral are valid for a non-linear elastic material but not completely for an elasto-plastic material because: for an elasto-plastic material the unloading path is different and there exists residual strain following the unloading and also the equations involving J – integral do not account for the redistribution of forces – which is bound to occur once the crack starts growing. It should be underscored that the mathematical expressions involving J – integral are able to predict large plastic zone around the crack tip unlike linear elastic fracture mechanics which accounts only for limited plasticity at the crack tip.</p> 
+  <p>However, from the designer’s perspective, the designer is most often interested in knowing the condition for the “onset of crack growth” – this requirement is exploited when the J – integral is applied to elasto-plastic materials. Because, if the crack growth is not accounted for in the calculations i.e. one accounts for only the initiation of crack then elasto-plastic behaviour is no longer different from the linear elastic behaviour as far as the mathematical equations are concerned. Thus, from the designer’s point of view, it is enough to estimate the load at which crack is about to propagate which is done considerable accuracy through the equations involving the J – integral.</p>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<html>
+<head>
+  <title>Total Lagrangian vs. Updated Lagrangian formulation for geometric nonlinear finite element analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQFaWxgoApWl_w" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/total-lagrangian-vs-updated-formulation-geometric-nonlinear-taneja">Total Lagrangian vs. Updated Lagrangian formulation for geometric nonlinear finite element analysis</a></h1>
+    <p class="created">Created on 2016-02-10 21:38</p>
+  <p class="published">Published on 2016-02-10 22:43</p>
+  <div>
+  <h2><strong>1. Introduction</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Through this article, I have attempted to explain the concepts involving the ‘Total Lagrangian formulation’ and the ‘Updated Lagrangian’ formulation for geometric non-linear finite element analysis.</p> 
+  <p>Firstly, I have tried to explain of the problem background in a non-linear finite element analysis, the principle of virtual displacements – which should be conceptually viewed as a statement of: equilibrium, compatibility and constitutive relation –, the difficulty in the application of the principle of virtual displacements at time‘t+Δt’ and then the stress and strain measures 2nd Piola Kirchhoff stress and Green Lagrangian strain.</p> 
+  <p>It should be noted that these contents (which form the section 2 of this article) are a summary of my earlier articles:</p> 
+  <ul> 
+   <li><strong><strong>Stress measures in geometric non-linear finite element analysis </strong><strong>[</strong><a href="https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card" target="_blank"><strong>https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card</strong></a><strong>]</strong></strong><strong>&nbsp;</strong></li> 
+  </ul> 
+  <ul> 
+   <li><strong><strong>Continuum mechanics variable for a geometric non-linear finite element analysis</strong></strong><strong>[</strong><a href="https://www.linkedin.com/pulse/continuum-mechanics-variables-geometric-non-linear-finite-ajay-taneja?trk=mp-reader-card" target="_blank"><strong>https://www.linkedin.com/pulse/continuum-mechanics-variables-geometric-non-linear-finite-ajay-taneja?trk=mp-reader-card</strong></a><strong>]</strong></li> 
+  </ul> 
+  <p>This is followed by an elaborate discussion and explanation involving: the Total Lagrangian formulation, steps in the Total Lagrangian formulation to arrive at the continuum mechanics equations for a geometric non-linear problem and the Updated Lagrangian formulation.</p> 
+  <p>It is not the aim of the article to develop the finite element equations for a particular finite element type <em>[<strong>I plan to do this in my subsequent articles</strong></em>] but rather the aim is to explain the concepts involving the ‘Total Lagrangian’ and the ‘Updated Lagrangian’ formulation and then arrive at the continuum mechanics equations through these formulations. As one would read through the section 3 of this article, it will be appreciated that the steps in the formulation of the continuum mechanics equations involving Total and Updated Lagrangian formulation are analogous and hence the steps involving Total Lagrangian formulation are only elaborated in this article in the section 3.</p> 
+  <p>Through the section 4 of this article, I have attempted to explain the concepts involving “out of balance” force term in the equation of the principle of virtual displacements both from the physical and the math point of view and hence the need for the Newton Raphson iterations in a non-linear problem.</p> 
+  <p>The necessary changes the final continuum mechanics equation would undergo if the loading is a deformation dependent loading is explained in section 5. It is thus attempted to briefly explain the physical concept involving “follower loading” or “deformation dependent loading” in the start of the section 5 before getting into the math of the changes involving the continuum mechanics equations during this loading.</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>2. Non-linear finite element analysis: Problem background</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>A non-linear analysis generally involves carrying out the analysis procedure at various time steps from time t=0 to the final time step required in a series of intervals. In each time step (or, a load step), we consider the corresponding equilibrium position of the body and solve the finite element equations and hence the static or/and the kinematic variables.</p> 
+  <p>To arrive at the actual deformed configuration of the body, an iterative procedure is followed and the iterations repeated until the required tolerance concerning the residue (which defines the difference between the external and internal forces) is established.</p> 
+  <h3><strong>2.1 </strong>&nbsp;&nbsp; <strong>Principle of virtual displacements</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Thus, a nonlinear solution process involves an incremental procedure. The equilibrium of the body at a typical time step “t+Δt” is expressed using the principle of virtual displacements which may be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEggVIfiLKSFw" src="https://media.licdn.com/dms/image/C5112AQEggVIfiLKSFw/article-inline_image-shrink_400_744/0/1520201649477?e=1691625600&amp;v=beta&amp;t=o-3BkmbSaj6V1Ro-i6dC12hxECF1DODqRHnKktytIjM"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEHQUBXXh9apg" src="https://media.licdn.com/dms/image/C4E12AQEHQUBXXh9apg/article-inline_image-shrink_400_744/0/1520526550189?e=1691625600&amp;v=beta&amp;t=mXv-NQgqlsJGD3EgFCXKuSZJClhQmPIQlB0phORAIEU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFtm2k6XykmVg" src="https://media.licdn.com/dms/image/C5112AQFtm2k6XykmVg/article-inline_image-shrink_400_744/0/1520238632182?e=1691625600&amp;v=beta&amp;t=167H-t3n1hwLLkrdoKhWoYP-5tHdCaB1GK46PfqsFuY"> 
+  </div> 
+  <p>is the strain tensor corresponding to the virtual displacements.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGzE23ovb3LIg" src="https://media.licdn.com/dms/image/C5112AQGzE23ovb3LIg/article-inline_image-shrink_1000_1488/0/1520196589234?e=1691625600&amp;v=beta&amp;t=55Rtj-4jLFOnrXsDNJFLpoedIHPplL8np4pDzGpuiOc"> 
+  </div> 
+  <p>and;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG7xxOAfTHQ4Q" src="https://media.licdn.com/dms/image/C5112AQG7xxOAfTHQ4Q/article-inline_image-shrink_1000_1488/0/1520170034673?e=1691625600&amp;v=beta&amp;t=liKCbV--I5LIq_TC_jBh3iEQAnA8NG_srwWNQPes_Qo"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFMgx1_jCWajw" src="https://media.licdn.com/dms/image/C5112AQFMgx1_jCWajw/article-inline_image-shrink_1000_1488/0/1520062502284?e=1691625600&amp;v=beta&amp;t=H8z8RIDVfI1d6m8nmFSIl5dJjJ-BUy47mAmL0sTKMjM"> 
+  </div> 
+  <p>In the equation,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEmLn_pUIHbng" src="https://media.licdn.com/dms/image/C5112AQEmLn_pUIHbng/article-inline_image-shrink_400_744/0/1520066160108?e=1691625600&amp;v=beta&amp;t=oWZ51_Vn9AlgSziE8Bw7s4p9mEnRhwf9TuiDdECCnjQ"> 
+  </div> 
+  <p>the left hand side is the internal virtual work and the right hand side represents the external virtual work.</p> 
+  <p><strong>It should be “clearly noted” that the above relationship is exactly similar to a linear infinitesimal analysis except that the configuration at time “t+Δt” is used.</strong></p> 
+  <h3><strong>2.2&nbsp;</strong>&nbsp;&nbsp;<strong>Difficulty in the application of the principle of virtual displacements at </strong><strong>time ‘t+Δt’</strong></h3> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>An important point to be understood and noted at this stage is; that, it is not possible to apply the equation of the principle of virtual displacements directly at this stage. This is because:</p> 
+  <ol> 
+   <li>The equation of the principle of virtual displacements involves volume integrals. The integration is performed considering the configuration / volume of the body at time “t+Δt”. However, it should be noted that the volume of the body at time “t+Δt” is not known.</li> 
+   <li>Secondly, it <em>will be observed,</em> as we proceed to formulate the finite element equations, we decompose the stresses and strains at time t+Δt into;</li> 
+  </ol> 
+  <ul> 
+   <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stresses and strains at time ‘t’</li> 
+   <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stresses and strains at an incremental time step, that&nbsp; the decomposition gives the net stresses and strains at time ‘t+Δt’</li> 
+  </ul> 
+  <p>But, it should be understood that the Cauchy stresses at time ‘t+Δt’ cannot be simply obtained by adding to the Cauchy stresses at time ‘t’ a stress increment that is due to the straining of the material. This is because the Cauchy stresses at time t+Δt act on the configuration of the body at time t+Δt which includes the rigid body effects due to a rigid body translation and/or rotation.</p> 
+  <p><strong>2.3 2nd Piola Kirchhoff stress tensor and the Green Lagrangian strain tensor</strong></p> 
+  <p><strong>&nbsp;</strong>The fact that the configuration of the body changes continuously in a large deformation analyses dealt with in an elegant manner by using appropriate stress and strain measures which include;</p> 
+  <ol> 
+   <li>2nd Piola Kirchhoff stress tensor and the</li> 
+   <li>Green Lagrangian strain tensor.</li> 
+  </ol> 
+  <p>The 2nd Piola Kirchhoff stress tensor is denoted by (in matrix notation);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFRti0jX98Fog" src="https://media.licdn.com/dms/image/C5112AQFRti0jX98Fog/article-inline_image-shrink_400_744/0/1520196948241?e=1691625600&amp;v=beta&amp;t=ZuHLA-i4Hgh0HEpCHTrzAyjiq6ZuXJ_HUPXpnaO0S68"> 
+  </div> 
+  <p>The expressions include;</p> 
+  <ul> 
+   <li>mass densities at time ‘t’ and at time 0</li> 
+   <li>the deformation gradient tensor</li> 
+   <li>Cauchy stress at time t</li> 
+  </ul> 
+  <p>The Green Lagrangian strain tensor is denoted by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEP1Zrsxcssgw" src="https://media.licdn.com/dms/image/C5112AQEP1Zrsxcssgw/article-inline_image-shrink_400_744/0/1520239512483?e=1691625600&amp;v=beta&amp;t=mPw-xkfc643bQ0hyhFHJpOETKfM5Gs9Agne5gKgzdY4"> 
+  </div> 
+  <p>And now, the equation of the principle of virtual displacements can be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE5t62ZhzvyGA" src="https://media.licdn.com/dms/image/C5112AQE5t62ZhzvyGA/article-inline_image-shrink_400_744/0/1520169961871?e=1691625600&amp;v=beta&amp;t=rvZwfwWXvf7NBYaX5TbSd8hRaSjiUGHhw1bRX75EXpo"> 
+  </div> 
+  <p>Thus, we can now;</p> 
+  <ul> 
+   <li>Integrate over a known volume, 0V</li> 
+   <li>As well as, we can incrementally decompose 0 S and 0 ^ε</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <h2><strong>3.</strong>&nbsp;<strong>Total Lagrangian and Updated Lagrangian formulation for geometric non-linear finite element analysis</strong></h2> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>In the above sections, I had outlined the basic difficulties and the solution approach when a general non-linear problem is analysed. I had explained, therein, that for an effective incremental analysis (at times Δ t, 2 Δt, 3Δt…) appropriate stress and strain measures need to be employed. I had discussed about the: 2nd Piola Kirchhoff stress tensor and the Green Lagrangian strain tensor and expressed the principle of virtual displacements in terms of these stress and strain measures.</p> 
+  <p>It is now time to discuss two general continuum mechanics formulations for geometric non-linear problems: the Total Lagrangian formulation and the Updated Lagrangian formulation. In this article, only the continuum mechanics equations with regards to these formulations are discussed without reference to any type of finite element.</p> 
+  <p>It should be noted that, the basic equation that one needs to solve is the relation (as also pointed out in the above paragraphs);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHQsTZhXPu84g" src="https://media.licdn.com/dms/image/C4E12AQHQsTZhXPu84g/article-inline_image-shrink_400_744/0/1520526548305?e=1691625600&amp;v=beta&amp;t=OG-L1ENnYRzhhkpIZlZlSB4RJE3LOiz7T29EOpOooOY"> 
+  </div> 
+  <p>and it will be shown that the above equation is a highly non-linear equation in terms of the displacements and the approach will be to first linearize the above equation. To linearize the equation of the principle of virtual displacements we use either of the two formulations: the Total Lagrangian formulation or the Updated Lagrangian formulation.</p> 
+  <p>In the Total Lagrangian formulation we refer to all the static and kinematic variables corresponding to the initial configuration at time t=0. The Updated Lagrangian formulation is based on the same process as in the Total Lagrangian formulation but in this formulation we refer to all the static and kinematic variables corresponding to the last calculated configuration.</p> 
+  <p>Thus, in the Total Lagrangian formulation, the equation of the principle of virtual displacements is expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGATt_ZMzLF-w" src="https://media.licdn.com/dms/image/C5112AQGATt_ZMzLF-w/article-inline_image-shrink_400_744/0/1520062743559?e=1691625600&amp;v=beta&amp;t=yAqm6l4mAYGkrjdphtuhkMOAdNvVS4eATntKfRcDHfc"> 
+  </div> 
+  <p>And, in the Updated Lagrangian formulation, the equation of the principle of virtual displacements is expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHXwLbl20Zi2A" src="https://media.licdn.com/dms/image/C5112AQHXwLbl20Zi2A/article-inline_image-shrink_1000_1488/0/1520098440504?e=1691625600&amp;v=beta&amp;t=9HKvOXf0UNyxAPUTWs1tPBbNmfwYzkfAd0Ipw9-CN-s"> 
+  </div> 
+  <h3><strong>3.1</strong>&nbsp;&nbsp;<strong>Steps in the Total Lagrangian formulation</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>As stated in section 3, our aim in this article is to obtain the linearized form of the continuum mechanics equations of the principle of virtual displacement. The finite element equations are not considered in this article.</p> 
+  <p>To develop the governing linearized form of the equation of the principle of virtual displacements, it may be recalled firstly, that we are essentially carrying out an incremental procedure. Thus, let us assume that the solution at time 0, Δt, 2 Δt, 3Δt,..t has already been determined. We are interested in calculating the solution at a time‘t+Δt’:</p> 
+  <p>We proceed through the following steps;</p> 
+  <ol> 
+   <li><strong>Equation of the principle of virtual displacements</strong> at time ‘t+Δt’ is given by;</li> 
+  </ol> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHxIlZDPOlZHA" src="https://media.licdn.com/dms/image/C5112AQHxIlZDPOlZHA/article-inline_image-shrink_400_744/0/1520066054310?e=1691625600&amp;v=beta&amp;t=RjHO5Zc3qlzlW4kMoYBgRlotnI7CzzQQ6oKrokoVXQA"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG4iXWHiUY9Pw" src="https://media.licdn.com/dms/image/C5112AQG4iXWHiUY9Pw/article-inline_image-shrink_400_744/0/1520116946304?e=1691625600&amp;v=beta&amp;t=vXLrXvpF2hwgG_j1ubxjo7SlC5XyuBEE5IB6KC5oHPI"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGjFe9_Ys-eIA" src="https://media.licdn.com/dms/image/C5112AQGjFe9_Ys-eIA/article-inline_image-shrink_400_744/0/1520171704572?e=1691625600&amp;v=beta&amp;t=Dvs6n_uR0Obygb2NPLN-OajwDIP-bSZxVGrL72FAZR8"> 
+  </div> 
+  <p>I had elaborated on these expressions for the 2nd Piola Kirchhoff stress tensor components and the Green Lagrangian strain (virtual) tensor components in my article: https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=prof-post</p> 
+  <p><strong>2.</strong> Now, we already know the solutions at time‘t’. That is; the 2nd Piola Kirchhoff stresses, Green Lagrangians strains, displacements, etc. at time‘t’ are known. Therefore, in the next step, we <strong>decompose the unknown stresses and strains </strong>as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEZ2fqTbQUbfw" src="https://media.licdn.com/dms/image/C5112AQEZ2fqTbQUbfw/article-inline_image-shrink_400_744/0/1520239693880?e=1691625600&amp;v=beta&amp;t=MyNCADT-C0EU6rdZPlbTlAggp65darwqWH4XSqgCB-M"> 
+  </div> 
+  <p>The unknown / incremental Green Lagrangian strain component can we written (in terms of displacements as);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGVOVd58dKOqA" src="https://media.licdn.com/dms/image/C4E12AQGVOVd58dKOqA/article-inline_image-shrink_400_744/0/1520526550660?e=1691625600&amp;v=beta&amp;t=uFSUCWQRU5vRffhWteVOtifygnJfsMezH9CVtLnF1Oo"> 
+  </div> 
+  <p>The unknown/incremental Green Lagrangian strain component can be written as a combination of 2 terms: a linear strain increment term and a non-linear strain term as follows;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEmAhFoJpgu2A" src="https://media.licdn.com/dms/image/C5112AQEmAhFoJpgu2A/article-inline_image-shrink_400_744/0/1520239577711?e=1691625600&amp;v=beta&amp;t=V0vY47mAenM6VTIIgzKH6-3QnMkBzP5aq7uquaFzDDk"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFuP1aNbYCqag" src="https://media.licdn.com/dms/image/C4E12AQFuP1aNbYCqag/article-inline_image-shrink_1000_1488/0/1520526548432?e=1691625600&amp;v=beta&amp;t=aM4ZiwuMwkHdpSQy5G36XktybojhcO8WAmgOU4Nx3ho"> 
+  </div> 
+  <p><strong>3. Rewriting the principle of virtual displacements in terms of decomposed unknown and known stress and strain components:</strong></p> 
+  <p>&nbsp;</p> 
+  <p>In the next step, we re-write the equation of principle of virtual displacements in terms of decomposed strain and stress components;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHz3UG2pnv1aA" src="https://media.licdn.com/dms/image/C4E12AQHz3UG2pnv1aA/article-inline_image-shrink_1000_1488/0/1520526551096?e=1691625600&amp;v=beta&amp;t=4-ET9zBUwZ4Ac-10czZa-UlGg7hgGifqSEEZvCDoFX0"> 
+  </div> 
+  <p>It should be noted that whilst obtaining the above equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEP2I_V5FIVWA" src="https://media.licdn.com/dms/image/C4E12AQEP2I_V5FIVWA/article-inline_image-shrink_400_744/0/1520526548771?e=1691625600&amp;v=beta&amp;t=gpc2qC7fmxcxU1_zSXcIuNMoO1SSGZWAEu8z74w8HG4"> 
+  </div> 
+  <p><strong>4. Linearization of the equation of the principle of virtual displacements</strong></p> 
+  <p>In the next step; we make the following approximations;</p> 
+  <p>a) We write the unknown component of the 2nd Piola Kirchhoff in terms of the strains using the&nbsp;&nbsp;&nbsp;constitutive matrix but neglect the non-linear strain component η</p> 
+  <p>b) We write the variation in the Green Lagrangian strain as comprising of the variation of the linear component e only and again neglect the nonlinear component ηSo that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFCnmdnegRuNQ" src="https://media.licdn.com/dms/image/C4E12AQFCnmdnegRuNQ/article-inline_image-shrink_400_744/0/1520526550438?e=1691625600&amp;v=beta&amp;t=Ls4-b2EdK4TNmS5Jirn2uumMqr9U1b14hKWq2uQaLas"> 
+  </div> 
+  <p>Hence, the final discretised equation will be;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQE31QSxi4kJoA" src="https://media.licdn.com/dms/image/C4E12AQE31QSxi4kJoA/article-inline_image-shrink_400_744/0/1520526550374?e=1691625600&amp;v=beta&amp;t=ckE3NzzV-LySCuLo0-0nVZPo-O859w7nOeXqpKteYAk"> 
+  </div> 
+  <p>C denote the material moduli, which, for a material non-linear problem may be a function of stress, strain, fracture criteria, loading, unloading parameters, maximum strains reached and so on.</p> 
+  <p>For an elastic material behavior;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHJkUneakMT6Q" src="https://media.licdn.com/dms/image/C5112AQHJkUneakMT6Q/article-inline_image-shrink_400_744/0/1520194818396?e=1691625600&amp;v=beta&amp;t=Ftj-E2l8sKSTD_-HlXBzP3qFAdcoVnNO_ZwB6Q2H-SI"> 
+  </div> 
+  <p>where;</p> 
+  <p>λ and μ are the Lame’s constants and δ denotes the Kronecker delta</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHH3zZiV-szcA" src="https://media.licdn.com/dms/image/C5112AQHH3zZiV-szcA/article-inline_image-shrink_400_744/0/1520063843303?e=1691625600&amp;v=beta&amp;t=B0093w_J0P6Ud1ijqGoZbWODn2Co8DCUL8S9OYGObKM"> 
+  </div> 
+  <h3>&nbsp;</h3> 
+  <h3><strong>3.2</strong>&nbsp;&nbsp;<strong>Steps in the Updated Lagrangian formulation</strong></h3> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>As stated before, in the Total Lagrangian formulation the static and kinematic variables are referred to the initial configuration, t=0 whereas in the Updated Lagrangian formulation, the static and the kinematic variables are referred to the last calculated configuration.</p> 
+  <p>&nbsp;Thus, the two formulations differ in the aspect of the configuration in which the stresses and strains are expressed. IT is possible to get the same values of stress using appropriate transformations from one configuration to another.</p> 
+  <p>&nbsp;The Updated Lagrangian formulation is based on the same process as the Total Lagrangian formulation except that the stress and strain tensors: 2nd Piola Kirchhoff stress and the Green Lagrangian strain tensors will be based on the configuration at time ‘t’ when solving the equation of the principle of virtual displacement at time ‘t+Δt’.</p> 
+  <p>&nbsp;Thus, the main steps involving the linearization of the equation of the principle of virtual displacements remain same which include;</p> 
+  <p>&nbsp;</p> 
+  <ol> 
+   <li>Forming the equation of the principle of virtual displacement.</li> 
+   <li>&nbsp;Decomposing the stresses and strains into known and unknown increments.</li> 
+   <li>Re-writing the principle of virtual displacements in terms of decomposed strains and stresses.</li> 
+   <li>Linearizing the above equation by ignoring the nonlinear strain terms.</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <h3><strong>3.3 </strong><strong>Comparison of the Total Lagrangian and the Updated Lagrangian </strong><strong>formulation </strong></h3> 
+  <h2><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></h2> 
+  <p>Thus, from the above discussion, it could be concluded that;</p> 
+  <ul> 
+   <li>The 2 formulations are analogous except that the only theoretical difference between the two is the choice of different reference configurations.</li> 
+   <li>It could be stated in general that, the strain displacement matrix (i.e. the matrix containing the derivatives of the interpolation functions) is more complicated in the Total Lagrangian formulation than the Updated Lagrangian formulation because of the effect of the term involving the initial strain effect.</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <h2><strong>4.</strong>&nbsp;&nbsp;&nbsp;<strong>“Out of balance” force term | “Error” due to the linearization of the equation of the principle of virtual displacement</strong></h2> 
+  <p>&nbsp;</p> 
+  <h3><strong>4.1 </strong><strong>Computation of the displacements, strains and stresses </strong></h3> 
+  <h2><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></h2> 
+  <p>The final relation involving the linearized form of the principle of virtual displacements in Total Lagrangian formulation (or the Updated Lagrangian formulation):</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE4EYeckqCTmw" src="https://media.licdn.com/dms/image/C5112AQE4EYeckqCTmw/article-inline_image-shrink_1000_1488/0/1520063009897?e=1691625600&amp;v=beta&amp;t=pQ_RaB9Xq3e-g8HV_hj14pPasN-kESOJP6xRtzanFvg"> 
+  </div> 
+  <p>is employed to calculate an increment in displacement which is then used to evaluate an approximation to displacements, strains and the stresses corresponding to time‘t+Δt’.</p> 
+  <p>&nbsp;The displacement approximation corresponding to time ‘t+Δt’ is simply obtained by adding the calculated increments to time ‘t’ and the strain approximations are evaluated from the relation (in case of Total Lagrangian formulation) ;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGQK0peN7NrgQ" src="https://media.licdn.com/dms/image/C5112AQGQK0peN7NrgQ/article-inline_image-shrink_400_744/0/1520193998060?e=1691625600&amp;v=beta&amp;t=eQ3a8cogm_aC_cG1lQ2qHnLP0-almCNbgWZDVOz0GKI"> 
+  </div> 
+  <p>and the stress tensor is evaluated using the specific constitutive relation.</p> 
+  <h3><strong>4.2</strong> <strong>“Out of balance” force term | “Error” due to linearization </strong></h3> 
+  <h2><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></h2> 
+  <p>Assuming that the approximate displacement, strains and stresses have been obtained, we check how much difference is there in between internal virtual work (calculated using the stresses at time ‘t+Δt’ and the external virtual work.</p> 
+  <p>&nbsp;Denoting the approximate values with a superscript (1) denoting that another iteration will be required (in general), the error due to the linearization of the equation of the principle of virtual displacement is denoted by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHPL5-ozDrt0Q" src="https://media.licdn.com/dms/image/C4E12AQHPL5-ozDrt0Q/article-inline_image-shrink_400_744/0/1520526549420?e=1691625600&amp;v=beta&amp;t=kpenxjQsdT8hUhAeHLgdLFZvcz5j0QgfWi5RZD-vWAs"> 
+  </div> 
+  <p>&nbsp;The right hand side of the equation represents the error as a result of the “linearization” performed as explained in section 3.</p> 
+  <p>&nbsp;In order to reduce further the “out of balance” virtual work form, we need to perform iteration in the above step until the difference between the internal and the external virtual work is negligible within a certain convergence measure.</p> 
+  <p>&nbsp;Using the Total Lagrangian formulation, the equation that is solved repetitively for k=1, 2, 3,…is:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGTJNfHD9nr7A" src="https://media.licdn.com/dms/image/C5112AQGTJNfHD9nr7A/article-inline_image-shrink_1000_1488/0/1520194939680?e=1691625600&amp;v=beta&amp;t=gXjwyxpTaEbFdRgZmy5F6T6ZKopQhK8BLKipyFFSYWs"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>The relations in each iteration correspond to the Newton Raphson iterations.</p> 
+  <h2><strong>5</strong>. <strong>Deformation dependent loading (“follower” loading)</strong></h2> 
+  <p>&nbsp;</p> 
+  <h3><strong>5.1 Difference between a deformation dependent loading and deformation&nbsp;</strong><strong>independent loading </strong></h3> 
+  <p>&nbsp;</p> 
+  <p>In a finite element analysis, several types of loads can be introduced: concentrated loads, body forces, surface loads, etc. In case of surface loads acting normal to the surface during the deformation, these loads are called “pressures”.</p> 
+  <p>Thus, the pressure loads are examples of deformation dependent loading since they would <em>always</em> (i.e. whatever be the deformed state of the structure) act normal to the surface of the body under analysis.</p> 
+  <p>Whereas, the “gravity” loads can be stated as an example of deformation independent loading.</p> 
+  <h3><strong>&nbsp;5.2&nbsp; Changes in the evaluation of the continuum mechanics equation in case of deformation dependent loading&nbsp;&nbsp; </strong></h3> 
+  <h2><strong>&nbsp;&nbsp;&nbsp; </strong></h2> 
+  <p>So far, in the discussion involving the Total/Updated Lagrangian, it has been assumed that the loading is deformation-independent and can be specified <em>prior to the incremental analysis</em>. That is, we have assumed that the loading does not change as a function of the deformation. Thus, mathematically, it has been assumed that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEeNbV_WAKarg" src="https://media.licdn.com/dms/image/C4E12AQEeNbV_WAKarg/article-inline_image-shrink_1000_1488/0/1520526549208?e=1691625600&amp;v=beta&amp;t=pWPcQ7Ls89TPB-Xg9D3oSkg0PhzO3nF_A044P7bQQg8"> 
+  </div> 
+  <p>These integrals are evaluated <strong>only in start of the analysis and not at each increment</strong>. Thus, they do not cause any changes in the stiffness matrix for a deformation independent loading as we proceed through the incremental solution</p> 
+  <p>Assume now that the external virtual work is deformation dependent and thus would change during each increment an. In this case, the load step has to be small enough, so that the external virtual work can be approximated to sufficient accuracy at time t+Δt but integrating over the volume (in a ‘general’ case of body force being deformation dependent) and area (in case of surface force being ‘deformation dependent’) at the last calculated integration;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGn4yEYdgXAIg" src="https://media.licdn.com/dms/image/C5112AQGn4yEYdgXAIg/article-inline_image-shrink_1000_1488/0/1520197077423?e=1691625600&amp;v=beta&amp;t=SaVl0wL5Zw6BiQKcan6MEsvygvlMDDA558wAx7jiIUc"> 
+  </div> 
+  <p>And;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEACC1R0-_vXQ" src="https://media.licdn.com/dms/image/C5112AQEACC1R0-_vXQ/article-inline_image-shrink_1000_1488/0/1520228979327?e=1691625600&amp;v=beta&amp;t=tdwXqc8JFP9AXcn7PqC-5oCuAkEvGP3tl9q2U61nZOg"> 
+  </div> 
+  <p>In order to obtain an iterative scheme that usually converges in fewer iterations, the effect of the unknown incremental displacements in the load terms needs to be included in the stiffness matrix.</p>
+ 
+</div>
+</body>
+</html>

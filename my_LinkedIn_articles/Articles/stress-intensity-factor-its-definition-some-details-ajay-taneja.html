@@ -1,0 +1,246 @@
+<html>
+<head>
+  <title>Stress intensity factor: its definition and some details</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQHc3PSAwsrSSQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/stress-intensity-factor-its-definition-some-details-ajay-taneja">Stress intensity factor: its definition and some details</a></h1>
+    <p class="created">Created on 2016-09-11 11:35</p>
+  <p class="published">Published on 2016-09-11 11:59</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2><b><strong>1. Introduction</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>This is the continuation of my series of blogs on Fracture Mechanics.</p> 
+  <p>A crack front exists within a material like a line running from one region into another. The vicinity of the crack tip offers interesting information as the magnitudes of the stresses at the crack tip are very high [this can be physically felt by recalling that when one wants to break a wooden stick by bending it, we make a notch. The notch creates high stresses which in turn make the notch tip move easily].</p> 
+  <p>Knowing the stress or displacement field in the vicinity of the crack tip is useful in several ways:</p> 
+  <ul> 
+   <li>A material scientist may devise ways to develop new materials which can diffuse high stresses at the crack tip.</li> 
+   <li>A designer may modify some features such as notches to minimize stresses</li> 
+   <li>An experimentalist can think of methods of characterizing cracks by measuring stresses and strains near the crack tip. One of the biggest advantages of stress analysis near the crack tip is that it leads to define a very important parameter called <strong>‘stress intensity factor’</strong> to characterize a crack. In comparison to the energy release rate, stress intensity factor is more simpler for the designer and easier for laboratory experiments so as to determine the material properties</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <p>This is a brief write up, <em>without </em>going into the extensive mathematics that leads into the definition of stress intensity factor, its expressions considering an infinitely long plate for mode I, mode II and mode III loading.</p> 
+  <p>Section 2 of this article lays emphasizes on the formal definition of Linear elastic fracture mechanics (LEFM) and section 3 brings out the mathematical expressions for stress and displacement fields for a rectangular plate of infinite dimensions with a central crack.</p> 
+  <p>Section 4 goes into the definition, details of stress intensity factor considering the expressions illustrated in section 3. Whereas, section 3 and 4 consider a plane strain case for a mode I loading, section 5 lists the stress and displacement fields for an infinitely long plate for mode II and mode III loading written in terms of the stress intensity factor KII and KIII respectively.</p> 
+  <p>&nbsp;</p> 
+  <h2><b><strong>2. Analysis of cracked solids and linear elastic fracture mechanics (LEFM)</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>Brittle materials remain elastic even in the vicinity of the crack tip. The development of stress and displacement fields – is in many applications confined to only brittle materials. It should be underscored that, whilst most of the engineering materials are ductile, by confining the study to brittle material (thus, elastic analysis), one can obtain closed form solutions to many problems. Also: in many cases, the material may be ductile but the size of the plastic zone is small so that accounting for the plastic zone might be many times unwarranted.</p> 
+  <p><strong><em>Linear Elastic Fracture Mechanics (LEFM):</em></strong></p> 
+  <p>This leads to a very important sub-field in Structural Mechanics: <em>Linear Elastic Fracture Mechanics </em>wherein only and elastic analysis is carried out to determine the stress and displacement fields in cracked solids near the crack tip and to characterize a very important parameter called: <strong>stress intensity factor (SIF)</strong> which is used to describe a crack.</p> 
+  <p>&nbsp;</p> 
+  <h2><b><strong>3. Stress and displacement field in a rectangular plate with a central crack</strong></b></h2> 
+  <p><b><strong>Stress field:</strong></b><strong>&nbsp;</strong></p> 
+  <p>Without going into the mathematical derivation, I have presented (below) the stress and displacement field solution for a rectangular plate with a central crack subjected to a far field stress ‘σ’ as shown in the figure below at a general point “H” near the crack tip (this is for a linear isotropic material for mode I loading);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGR8E8bVrRqUw" src="https://media.licdn.com/dms/image/C5112AQGR8E8bVrRqUw/article-inline_image-shrink_400_744/0/1520240949392?e=1691625600&amp;v=beta&amp;t=yFrOYlryRpBd0CqbXjBZkNX2yojy9ErRSkh6d2xw3yA"> 
+  </div> 
+  <p class="center"><strong>Figure: Infinite plate with a crack length ‘2a’ subjected to a far field stress</strong></p> 
+  <p><em>[Note: the x1 axis is chosen to lie along the crack length and x2 axis in the plane of the plate]</em></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEJ0hLY0KlxrQ" src="https://media.licdn.com/dms/image/C5112AQEJ0hLY0KlxrQ/article-inline_image-shrink_400_744/0/1520241505114?e=1691625600&amp;v=beta&amp;t=_Lzf7Ft3Fz3IPvVSrq7Ecjsgsv5MQIX9HylrVqgNFBo"> 
+  </div> 
+  <p><strong>Variation of stress components with far field stress ‘σ’ and crack length ‘a’</strong></p> 
+  <p>It is clear from the above expressions that each stress component is proportional to the far field stress ‘σ’. The crack length appears in the square root and hence its influence on the stress tensor component is prominent.</p> 
+  <p><strong>Point to be noted here is that all the three stress components, the expression π√a appears.</strong></p> 
+  <p><strong>Variation of stress components with ‘r’</strong></p> 
+  <p>It should be noted that the solution is presented in polar co-ordinates and the radial distance ‘r’ and the corresponding point of interest plays an important role. As “r” becomes small, the stress components grow up significantly. Considering σ, its value tends to infinity as the radial distance “r” approaches 0. <strong>Such solutions are called “singular” solutions.</strong></p> 
+  <p>&nbsp;</p> 
+  <p><strong>Displacement field:</strong></p> 
+  <p>Displacement field for a plane strain case near the crack tip for a mode I loading (As shown in the figure above) is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFZgXhrz-uHwA" src="https://media.licdn.com/dms/image/C4E12AQFZgXhrz-uHwA/article-inline_image-shrink_400_744/0/1520604773981?e=1691625600&amp;v=beta&amp;t=uOts8Mfj--SXjlZjHPHP6QnjPjfPBIKpnXF1lwRK458"> 
+  </div> 
+  <p>where; μ is the shear modulus.</p> 
+  <p><strong>The above equations do not contain any singularity because displacement is finite near the crack tip.</strong></p> 
+  <p><strong>&nbsp;</strong></p> 
+  <h2><b><strong>4. Stress intensity factor</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>It may be observed through the expressions of the stress tensor components that, for a given geometry there are 2 main variables:</p> 
+  <ul> 
+   <li>far field stress ‘σ’</li> 
+   <li>crack length ‘a’</li> 
+  </ul> 
+  <p>Furthermore, all the expressions for the stress tensor components co-exist as σ√a. The two independent variables: σ and a can be combined to form a new independent variable which makes the solution and further interpretation of results much easier.</p> 
+  <p><strong>Irwin</strong> defined a new variable called <strong>stress intensity factor </strong>and used the symbol K to denote it (named after his collaborator Keis). He defined ‘K’ as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHEENq39XcpTQ" src="https://media.licdn.com/dms/image/C5112AQHEENq39XcpTQ/article-inline_image-shrink_400_744/0/1520250855434?e=1691625600&amp;v=beta&amp;t=z98kMoQhgBZ1KVxW3zN0rK2vS1WJqKm4TNKszmKXnEw"> 
+  </div> 
+  <p><strong>It can be observed, that, for the stress and displacement fields listed above, the magnitudes of ‘σ’ or ‘a’ is immaterial as long as σ (π a) ½ is the same. This means a small crack length in a plate with high far field stress is equivalent to large crack length with small far field stress provides that ‘K’ remains the same.</strong></p> 
+  <p>This combination of “σ” and “a” to form a new variable – termed as “stress intensity factor” is seen as a very big breakthrough in the field of Fracture Mechanics.</p> 
+  <p>The stress intensity factor is formally defined as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFBT83F_rw9LQ" src="https://media.licdn.com/dms/image/C5112AQFBT83F_rw9LQ/article-inline_image-shrink_400_744/0/1520249453236?e=1691625600&amp;v=beta&amp;t=butecW8OeK2xtnnjaKAC8Mu-NUaHmBmzCR0zEESBnao"> 
+  </div> 
+  <p>For modes I, II and III, the stress intensity factor is denoted as K, K and K respectively.</p> 
+  <p>The stress and displacement fields may now be writeen in terms of the stress intensity factor as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHsRv3JjXWmLA" src="https://media.licdn.com/dms/image/C4E12AQHsRv3JjXWmLA/article-inline_image-shrink_1000_1488/0/1520604774061?e=1691625600&amp;v=beta&amp;t=9ufBNHfqP-IG02wxAUU1IOSj_lSAWP6ihbaNGNGU8ic"> 
+  </div> 
+  <p>The stress intensity factor elegantly characterizes a crack, similar to the energy release rate as expressed in my earlier articles. The equations for stress and displacement fields for infinitely long bodies as illustrated in sections of this article need to be modified for bodies which are of finite dimensions.</p> 
+  <h2><b><strong>5. Mode II and mode III loading (infinitely long plate with a central crack)</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p><b><strong>Mode II loading (in plane shear): KII = τ√</strong><strong>𝛑</strong><strong>a</strong></b></p> 
+  <p>Stress and displacement fields for rectangular plate loaded in mode II with a central crack are given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFuM1sdUu34bQ" src="https://media.licdn.com/dms/image/C4E12AQFuM1sdUu34bQ/article-inline_image-shrink_1000_1488/0/1520604774446?e=1691625600&amp;v=beta&amp;t=pTPfFRM6klK9VJKtRb4U0PlGv1Lh8AEhMQyC5jYNrh0"> 
+  </div> 
+  <p class="center"><strong>Figure: Central crack in an infinite plate loaded in mode II</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFwVpF51a2BTA" src="https://media.licdn.com/dms/image/C5112AQFwVpF51a2BTA/article-inline_image-shrink_400_744/0/1520172797761?e=1691625600&amp;v=beta&amp;t=24-Iny_NBOz2VXgWIHubleZSBNH_u_FUTchiDJZQ_iY"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFdNX8VUHwwKw" src="https://media.licdn.com/dms/image/C4E12AQFdNX8VUHwwKw/article-inline_image-shrink_400_744/0/1520604774220?e=1691625600&amp;v=beta&amp;t=pq2KVKQwN2zDr67nQK99pRAZjf2XfcVxUZ8DA1h1qmE"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p><strong>Mode III loading (out of plane shear): </strong><strong>KIII = τ√</strong><strong>𝛑</strong><strong>a</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG65PKACHNBGw" src="https://media.licdn.com/dms/image/C5112AQG65PKACHNBGw/article-inline_image-shrink_1000_1488/0/1520142993790?e=1691625600&amp;v=beta&amp;t=L1wHT5baSfryyGd1wq9Ik12Pg_XWCAMsgnCls4d2Ko4"> 
+  </div> 
+  <p><strong>Figure: Central crack in an infinite plate with mode III</strong></p> 
+  <p><strong>σ = σ = σ = σ = 0</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFWoeE3no1svw" src="https://media.licdn.com/dms/image/C4E12AQFWoeE3no1svw/article-inline_image-shrink_400_744/0/1520604774173?e=1691625600&amp;v=beta&amp;t=UoIxnhIp4tcLvzVqRBbkrRbHe57bcLqs4_i4QNCy-VI"> 
+  </div>
+ 
+</div>
+</body>
+</html>

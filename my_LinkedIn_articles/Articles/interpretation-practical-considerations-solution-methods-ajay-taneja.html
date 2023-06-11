@@ -1,0 +1,232 @@
+<html>
+<head>
+  <title>Interpretation and practical considerations in the solution methods of dynamic equilibrium equations</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGEN55HLjZKNQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/interpretation-practical-considerations-solution-methods-ajay-taneja">Interpretation and practical considerations in the solution methods of dynamic equilibrium equations</a></h1>
+    <p class="created">Created on 2015-10-16 18:58</p>
+  <p class="published">Published on 2015-10-16 19:29</p>
+  <div>
+  <h2>1. INTRODUCTION</h2> 
+  <p>In my earlier articles, I had discussed the procedures generally followed for the solution of dynamic equilibrium equations:</p> 
+  <ul> 
+   <li>Direct integration methods: explicit and implicit methods :<a href="https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja?trk=mp-reader-card" target="_blank">https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja?trk=mp-reader-card</a></li> 
+   <li>Mode superposition method : <a href="https://www.linkedin.com/pulse/revisiting-mode-superposition-analysis-aka-modal-ajay-taneja?trk=mp-reader-card" target="_blank">https://www.linkedin.com/pulse/revisiting-mode-superposition-analysis-aka-modal-ajay-taneja?trk=mp-reader-card</a></li> 
+  </ul> 
+  <p>Whereas, the mode superposition method involved transforming the problem from the global coordinate system to another coordinate system wherein the structural matrices are diagonal (before carrying out numerical integration), “direct” integration means that prior to the numerical integration, no transformation of the equations into a different form is carried out (unlike the mode superposition method). The integration schemes in the direct integration method detailed were: the explicit central difference method and the implicit Newmark method.</p> 
+  <p>In the mode superposition, one needs to pre-estimate the number of modes to be included in the analysis i.e. (precisely) the number of equilibrium equations that one would solve (after transforming the problem to the modal space from the physical space. <strong>Analogous (and very much related)</strong> to mode superposition - in direct integration methods, one would need to have a pre-estimate of the time step to be used for the numerical integration scheme.</p> 
+  <p>Selection of an appropriate time step in direct integration is of much importance. On one hand, the time step should be small enough to obtain accuracy in the solution; but, on the other hand, time step must not be smaller than necessary because with such time step the solution will be more costly than actually required.</p> 
+  <p>The aim of this article is to describe practical considerations involving the selection of time step in direct integration schemes: implicit Newmark scheme and the explicit central difference scheme.</p> 
+  <p>In order to get clear theoretical understanding of the <em>practical</em> approach involving selection of an appropriate time step, a logical background of the necessary theory is described in this article through the following sections (listed in order that they occur in this article);</p> 
+  <ul> 
+   <li>Relationship between mode superposition and direct integration schemes</li> 
+   <li>The essence of mode superposition</li> 
+   <li>Estimation of time step for direct integration schemes</li> 
+   <li>Steps to be considered in order to arrive an appropriate time step for direct integration schemes.</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <h2><strong>2. Relationship between mode superposition and direct integration methods</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>In mode superposition, we obtain ‘n’ uncoupled equations by transforming the problem to a different coordinate system than the global coordinate system. Each equation is independent of the other (since the resultant structural matrices in the new co-ordinate system are diagonal) and each equation is solved using Duhamel integral or (most often) the explicit central difference method. Since, the periods of vibration T = 2pi/ ωare known, we can choose in the numerical integration of the equations (that are obtained following the transformation of the co-ordinate system) an appropriate time step that requires the desired degree of accuracy. That is; a different time step can be chosen for each uncoupled equation.</p> 
+  <p>On the other hand, if all n equations in mode superposition are integrated using the time step Δ t, then, the mode superposition is completely equivalent to a direct integration analysis in which the same integration scheme and the same time step Δ t are used. In other words, the solution of the finite element system equilibrium equations will be the same in either case.</p> 
+  <h3><strong>Essence of mode superposition</strong></h3> 
+  <p>Before going further into this discussion, let us first re-establish (or establish!) the essence of mode superposition method in our minds...</p> 
+  <p>The analysis of a structure using mode superposition is the sum of two contributions;</p> 
+  <p>1. A dynamic response obtained by multiplying the static response by a dynamic load factor (which in fact is the particular solution of the governing differential equation), and</p> 
+  <p>2. An additional response which we call transient response.</p> 
+  <p>The essence of a mode superposition solution of a dynamic response is that frequently only a small fraction of the total number of decoupled equations needs to be considered in order to obtain a good approximate solution to the exact solution of the differential equations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGrJsa_y2jk4Q" src="https://media.licdn.com/dms/image/C5112AQGrJsa_y2jk4Q/article-inline_image-shrink_400_744/0/1520063062180?e=1691625600&amp;v=beta&amp;t=tMCDVaAMFBgKh-LMmfAoRrcO77oEInXibcpEjnkUhGE"> 
+  </div> 
+  <p>Most frequently, only <strong>the first p equilibrium equations of the total ‘n’ equilibrium equations (where ‘n’ corresponds to the total degrees of freedom of the structure);</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQE1cZlnicr0BA" src="https://media.licdn.com/dms/image/C4E12AQE1cZlnicr0BA/article-inline_image-shrink_400_744/0/1520645278221?e=1691625600&amp;v=beta&amp;t=9mtAOUQivHGAHc2VccehJ3LwRfArOSdpOpegJcIqguY"> 
+  </div> 
+  <p>need to be used.</p> 
+  <p>That is; we need to include in the analysis the equations only for i=1,2,….,p &lt;&lt;n, in order to obtain a good approximate solution.</p> 
+  <p>That means, we need to solve only for the lowest p eigen values and corresponding eigen vectors of the problem in the equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFiu9gjDQwpew" src="https://media.licdn.com/dms/image/C4E12AQFiu9gjDQwpew/article-inline_image-shrink_400_744/0/1520645279958?e=1691625600&amp;v=beta&amp;t=XYdTGWifsybTq7xugR2_vA2i4k6SCcCWtJke4Axf6KA"> 
+  </div> 
+  <p>And we only superimpose (or sum in) the responses in the first ‘p’ modes.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFVydQM42EN7g" src="https://media.licdn.com/dms/image/C4E12AQFVydQM42EN7g/article-inline_image-shrink_400_744/0/1520645279578?e=1691625600&amp;v=beta&amp;t=OHRH0AuKoA-xPaDajnp4kD12BNvDbGqCIpM2ikY6m3o"> 
+  </div> 
+  <p>The physical reason for neglecting the higher modes can be understood from the graph below which shows a plot of the dynamic load factor as a function of omega_cap/omega i.e. the ratio of forcing frequencies and natural frequency.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEPEorxRl6rng" src="https://media.licdn.com/dms/image/C5112AQEPEorxRl6rng/article-inline_image-shrink_1000_1488/0/1520063082761?e=1691625600&amp;v=beta&amp;t=bAiQBQBWiL1bBL5SJzwg_WbuKeqSgUq2RmwvW47fLDA"> 
+  </div> 
+  <p>The graph is obtained for a single degree of freedom system subjected to harmonic force but is applicable to a structure with multiple degrees of freedom because;</p> 
+  <p>a) First, the complete response is obtained as a superposition of response measured in each modal degree of freedom.</p> 
+  <p>b) Second, the actual loading can be represented in Fourier decomposition as superposition of sine and cosine contributions.</p> 
+  <p>The above two observations apply to each modal response corresponding to each Fourier component of loading.</p> 
+  <p>Thus, now, having justified why the information contained in the figure can be applied to any structure, it can be said that (from the graph in the figure above);</p> 
+  <p>a) Response in modes with larger omeaga_cap/omega ratio is negligible. Physically, it can say that the loads vary so rapidly that the system does not move.</p> 
+  <p>b) The static response is measured when omega_cap/omega is close to zero. Therefore, in the analysis of multiple degree of freedom system, the response in the high frequencies of the system (that are much larger than the highest frequencies contained in the loads) is simply a static response.</p> 
+  <p><strong><em>It should be noted that, in general;</em></strong></p> 
+  <p><strong><em>“The structure considered, spatial distribution and the frequency content of the loading determine the number of modes to be included in the analysis “</em></strong></p> 
+  <p>That is; in general, we can state that if we have high frequency modes, it is unlikely that those frequencies would be contained in the loading and thus be able to drive / resonate these high frequency modes.</p> 
+  <p>But to ascertain the above, one would need to carry out a Fourier analysis and thus determine the frequency content of the loading.</p> 
+  <h2><strong>3. Estimation Δ t for “direct” integration schemes</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The aim of the numerical integration of the finite element system equilibrium equations is to evaluate a good dynamic response of the structure under consideration. In order to predict the dynamic response of the structure accurately, it would seem that all the system equilibrium equations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGZnYyGxLLKPQ" src="https://media.licdn.com/dms/image/C4E12AQGZnYyGxLLKPQ/article-inline_image-shrink_400_744/0/1520645279022?e=1691625600&amp;v=beta&amp;t=LPaDxuTM2f28FlT90FchQHHYMc_T0I0NkaWju3JqBLU"> 
+  </div> 
+  <p>Must be integrated to highest precision and this means that all the equations of the form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFOzQ2ZjimfEQ" src="https://media.licdn.com/dms/image/C5112AQFOzQ2ZjimfEQ/article-inline_image-shrink_400_744/0/1520171263320?e=1691625600&amp;v=beta&amp;t=q_WCVqV3SxF9IJReb9-KSh_sVsLAyZBYjRw1REjhTyI"> 
+  </div> 
+  <p>need to be integrated accurately.</p> 
+  <p>Since, in direct integration the same time step is used for each equation of the above form, delta_t will have to be selected based on the smallest period in the system. As an estimate, delta_t, thus required, will have to be about Tn/10- where Tn corresponds to the smallest time period contained in the system (‘n’ is the number of degrees of freedom and Tn corresponds to the time period of the nth mode)</p> 
+  <p>However, as discussed in the section on the essence of mode superposition and relationship between mode superposition and direct integration, the dynamic response lies in some modes of vibration and that for this reason only some mode shapes are considered in mode superposition analysis.</p> 
+  <p>Therefore, the finite element idealization has to be chosen in such a way, lowest p frequencies and mode shapes of the structure are predicted accurately where p is determined by distribution and frequency content of loading.</p> 
+  <p>It can therefore be concluded that in many analyses, we are interested integrating only the first p equations of the n equations accurately. This means that we would be able to revise delta_t to be about Tp/10 i.e. Tp/Tn smaller than the first estimate. In practical analysis the ratio Tp/Tn can be very large, to the order of 1000m meaning that the analysis would be much more effective using delta_t = Tp/10.</p> 
+  <h2><strong>4.</strong>&nbsp;<strong>Practical approach to the selection of time step for direct integration schemes</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>From the above, one could conclude, that in mode superposition we neglect the higher modes in the analysis mainly because these&nbsp;&nbsp; modes have such high frequencies that there are no driving forces available to resonate with them. This means that they will contribute very little to the motion, and, hence, they are unimportant in the dynamic analysis. It should be made sure that those higher frequencies are not contained in the loading.</p> 
+  <p>Similarly, in direct integration schemes the time step Δ t may be chosen based on the highest frequency of loading contained in the system (or) smallest time period in the system.</p> 
+  <p>The following approach most often proves useful to select the time step Δ t:</p> 
+  <p>a) Identify the frequencies significantly contained in the loading, using a Fourier analysis if necessary. These frequencies may change as a function of time. Let the highest frequency significantly contained in the loading be ωu</p> 
+  <p>b) Choose a finite element mesh that can accurately represent the static response and accurately represents all frequencies up to about:&nbsp;ωco = 4ωu</p> 
+  <p>c) Perform the direct integration analysis. The time step delta_t for this solution should be equal to about Tco/20, where Tco = 2*pi/ ωco. This time step may be smaller for stability considerations when explicit central difference method but in most cases seems appropriate for implicit Newmark’s method or Wilson’s method</p>
+ 
+</div>
+</body>
+</html>

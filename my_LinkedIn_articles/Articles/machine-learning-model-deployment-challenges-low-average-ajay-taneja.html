@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Machine Learning Model Deployment Challenges: Is a low average test set error enough? </title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD4D12AQHR_RcBu4eGFA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/machine-learning-model-deployment-challenges-low-average-ajay-taneja">Machine Learning Model Deployment Challenges: Is a low average test set error enough? </a></h1>
+    <p class="created">Created on 2023-05-11 18:12</p>
+  <p class="published">Published on 2023-05-11 18:57</p>
+  <div><p>Your Machine Learning model does well on the test set – the job of the Machine Learning Engineer might have been much simpler if it is just enough to get a low average test set error, but it isn’t! In my blog of some days ago , I have spoken about concepts of <a href="https://www.linkedin.com/pulse/random-notes-machine-learning-model-deployment-data-ajay-taneja/?trackingId=2vpYfLGcRY6vLP3AyeA5Kw%3D%3D" target="_blank">Data Drift and Concept Drift</a> but there are some additional challenges that must be addressed for a production ready Machine Learning project. </p><p>A machine learning system may have a low-test set error but if its performance on certain disproportionate important examples, key slices of data, each class of data, etc isn’t good enough then the machine learning system is not acceptable. Let us understand this statement through some examples: </p><p><br></p><p><strong><u>Disproportionately important examples:</u></strong></p><p>1)&nbsp;&nbsp;For example, you might have developed a machine learning model for document search and extracting specific text from a huge database / document management system (this can be compared to a web/google search). Let us say, you search a query of the form:</p><p>&nbsp;</p><p><em>“Best fatigue life estimation methods for the bore of an IP Compressor”</em></p><p>&nbsp;</p><p>In such case, the machine learning model might extract several good methods from several documents of the database/document management system that may be used to life the bore of an IP Compressor of an engine. Out of these methods some might be relevant, and some might not be relevant to your search. Such discrepancies might be acceptable to the stakeholder as the search query was quite generic.</p><p>&nbsp;</p><p>Now, suppose you type the search query of the form:</p><p><em>“Low Cycle Fatigue Life of IP Compressor bore of XYZ engine of flight profile ABC”</em></p><p>And if the Machine Learning model gives an irrelevant response, then, this might <u>not</u> be acceptable to the stakeholder as the query was direct/very specific and your stakeholder might resort to manual intervention with the search and your ML model might lose all the hype ! One could think of assigning higher weights to training examples of the form above, but that might make things bit complicated. </p><p>&nbsp;</p><p>Thus, evaluation of the model on disproportionate examples becomes important. This is closely related to the performance of the model on key slices the dataset discussed next.</p><p><br></p><p><strong><u>Model evaluation on key slices of the dataset</u></strong></p><p>2)&nbsp;Another example closely related is evaluation of model on key slices of dataset. For example, if one has built a machine learning model for classifying the loan approval from a financial organization or a bank approval (say: yes/no), then, your model might have a high average test set score. But going deeper, you might realize the model is biased towards gender or biased towards certain ethnicity of the customer. This might ultimately affect the business and is surely not acceptable. Thus, the evaluation of the model certain slices of dataset related to features involving ethnicity/gender (in such case) is important. </p><p>&nbsp;</p><p>3)&nbsp;&nbsp;Another example related to a stress / life estimation engineer (<em>from the world I was born and brought up in!</em>) might be, one would have developed a regression model to predict the life. The average test set accuracy might be large, but the model might not be predicting correctly on certain examples involving creep – i.e. where the feature under consideration has been subjected to considerable creep strain which might be detrimental or add to life (e.g. because of retardation due to creep) – thus, evaluation of the machine learning model on certain slices of data relating to features such as creep &nbsp;becomes important.]</p><p><br></p><p><strong><u>Skewed Datasets – Precision, Recall and F1-Score</u></strong></p><p>4)&nbsp;&nbsp;I have discussed about Skewed Datasets wherein different evaluation metrics than accuracy become important / absolutely necessary. You might refer to my blog post <a href="https://www.linkedin.com/pulse/skewed-datasets-error-metrics-ajay-taneja/?trackingId=qZEDbtwgRFW%2B%2BSJDRbOV%2Fw%3D%3D" target="_blank">here</a>. Thus, I'm not repeating the content.</p><p><br></p><p><strong>Evaluation metrics for each class:</strong></p><p>5) Another example wherein a different handling of the evaluation metrics become important is when you might be dealing with multi-class classification problems. Let’s again revisit the manufacturing problem that I had discussed in my blog related to Data Drift and Concept <a href="https://www.linkedin.com/pulse/random-notes-machine-learning-model-deployment-data-ajay-taneja/?trackingId=qZEDbtwgRFW%2B%2BSJDRbOV%2Fw%3D%3D" target="_blank">here</a>. Let’s say we are identifying defects in a part of an engine. Let’s say this is a multi-class classification problem. The defect may be scratches, dents, pits.</p><p>&nbsp;</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4D12AQGtBQCG8BEs6w" src="https://media.licdn.com/dms/image/D4D12AQGtBQCG8BEs6w/article-inline_image-shrink_400_744/0/1683829501150?e=1691625600&amp;v=beta&amp;t=ht_9ekZiOuray6A9dwPxO4nhsNhs8xDZ9PoIrGXz3AI"><figcaption>Surface of the defect: scratch, dents, traces of wear, micro-scratches</figcaption></figure><p>Even though the overall Precision, Recall and F1-score (for definitions of Precision, Recall and F1-Score, see my blog <a href="https://www.linkedin.com/pulse/skewed-datasets-error-metrics-ajay-taneja/?trackingId=qZEDbtwgRFW%2B%2BSJDRbOV%2Fw%3D%3D" target="_blank">here</a>) might be satisfactory, we might want to ascertain that the Precision, Recall and F1-Score for each defect is satisfactory. In that case, we will require to obtain the Precision, Recall and F1-Score for every class as below:</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4D12AQH86SavKnx4UA" src="https://media.licdn.com/dms/image/D4D12AQH86SavKnx4UA/article-inline_image-shrink_1000_1488/0/1683829604612?e=1691625600&amp;v=beta&amp;t=CCVlSS40AuwMygKmSIc03wAL2bZwJZzel_jyZKaPG7g"><figcaption>Example: Evaluation metrics required for each class</figcaption></figure></div>
+</body>
+</html>

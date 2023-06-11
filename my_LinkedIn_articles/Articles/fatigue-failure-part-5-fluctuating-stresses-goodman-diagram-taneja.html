@@ -1,0 +1,443 @@
+<html>
+<head>
+  <title>On Fatigue Failure –  Part 5: Fluctuating Stresses, Goodman Diagram, Modified Goodman Equation</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQFPjCRhqjqGyg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-5-fluctuating-stresses-goodman-diagram-taneja">On Fatigue Failure –  Part 5: Fluctuating Stresses, Goodman Diagram, Modified Goodman Equation</a></h1>
+    <p class="created">Created on 2018-04-14 15:09</p>
+  <p class="published">Published on 2018-04-14 16:53</p>
+  <div>
+  <h2>1.&nbsp;&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;This article is the continuation of my series of blogs on “Fatigue Failure”</p> 
+  <p>In my earlier blog on “Fatigue Failure” on LinkedIn: <a href="https://www.linkedin.com/pulse/fatigue-failure-part-4-r-ratio-fully-reversible-loading-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-4-r-ratio-fully-reversible-loading-ajay-taneja/</a>, I had been speaking about Fully Reversible Stresses. For fully reversible stresses, the ratio of the minimum stress experienced during a cycle to the maximum stress experienced during a cycle is equal to -1. That is; the R – ratio denoted by R = -1</p> 
+  <p>Thus, for fully reversible stresses one goes from +275 MPa to -275 MPA, from -275 MPa to +275 MPa and so on as shown in the figure below. Thus, for fully reversible stresses the amplitude of loading denoted by σa in the figure below always remains the same and the average / mean stress remain 0 throughout the cycle as indicated in the figure below</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEahS9yBnwHoA" src="https://media.licdn.com/dms/image/C5112AQEahS9yBnwHoA/article-inline_image-shrink_1000_1488/0/1523718677789?e=1691625600&amp;v=beta&amp;t=B8yc8od7yxaqlfBHBBAcLJndi1FMZXivS1i7iwsQUCQ"> 
+  </div> 
+  <p><strong> Figure 1: Fully reversible loading and its characteristics</strong></p> 
+  <p>It has been mentioned in my earlier blogs on LinkedIn that for parts experiencing fully reversible loading following relationship may be employed in the absence of the test data:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFOeEHxwj2N-A" src="https://media.licdn.com/dms/image/C5112AQFOeEHxwj2N-A/article-inline_image-shrink_400_744/0/1523718851806?e=1691625600&amp;v=beta&amp;t=V8bkBG8NI7EO7Aw128fMwqiIPIEvj78KfzKlF6fD4gg"> 
+  </div> 
+  <p>Where;</p> 
+  <p>Sf is the fatigue strength;</p> 
+  <p>Ni = Number of cycles for life</p> 
+  <p>a and b are based on the ultimate strength, endurance limit and “f” which is the fraction of the fatigue strength remaining at 10^3 cycles.</p> 
+  <p>And when Sf is known, the number of cycles to failure can be denoted through the expression;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE3wY-wWhAkdQ" src="https://media.licdn.com/dms/image/C5112AQE3wY-wWhAkdQ/article-inline_image-shrink_400_744/0/1523719045769?e=1691625600&amp;v=beta&amp;t=2aD-sE4P1qMXFamnvqD3KBGiBqE5YfdgAr48frU81mI"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFUjbKcEy-GOg" src="https://media.licdn.com/dms/image/C5112AQFUjbKcEy-GOg/article-inline_image-shrink_400_744/0/1523719064617?e=1691625600&amp;v=beta&amp;t=4UaRYG66dSccP-cu_Qd9itdibpBeNl3OJB-pW66pFbI"> 
+  </div> 
+  <p>f =&nbsp;fatigue strength fraction of the ultimate strength at 10^3 cycles.</p> 
+  <p>Typically ‘f’ has to be known or can be approximated through the following expression;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE-KhmXEM51Rw" src="https://media.licdn.com/dms/image/C5112AQE-KhmXEM51Rw/article-inline_image-shrink_400_744/0/1523719141778?e=1691625600&amp;v=beta&amp;t=fQ_2xNG4DPOT71IuGBohAXfos7o-fjs-SchumJ3F6DA"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGrXn4Of1vDxw" src="https://media.licdn.com/dms/image/C5112AQGrXn4Of1vDxw/article-inline_image-shrink_400_744/0/1523719186063?e=1691625600&amp;v=beta&amp;t=GQQVawokEJF0CT6wi89wCXiRJ_1v0HfLNM4KTICep4U"> 
+  </div> 
+  <p><br></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEiQiALS8OTKg" src="https://media.licdn.com/dms/image/C5112AQEiQiALS8OTKg/article-inline_image-shrink_400_744/0/1523719237002?e=1691625600&amp;v=beta&amp;t=ZghlNXgjd6xJWzcswDviuP6QmYmXke9vmv1airYmm_k"> 
+  </div> 
+  <p><br></p> 
+  <p>The above quantification is valid only for fully reversible stresses and when the test data pertaining to the S – N curve is not directly available. However, in practise things (and life!) are not always so simple and the stress pattern will most often be overly complex / varying than simple fully reversible stress pattern.</p> 
+  <p>In this blog we go to the next level of loading – the next level of complexity is “Fluctuating Stresses”.</p> 
+  <p>The subsequent sections in this blog exemplify the following;</p> 
+  <p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Definition of Fluctuating Stresses (Section 2)</p> 
+  <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantifying Fluctuating Stresses (Section 3 and Section 4)</p> 
+  <p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modified Goodman Line (Section 5)</p> 
+  <h2>2.&nbsp;&nbsp;&nbsp;What are Fluctuating Stresses?</h2> 
+  <p>&nbsp;It was mentioned above that in case of fully reversible stresses, the amplitude of stress always remains the same and the man / average stress is always 0. In case of fluctuating stress, one has the stress pattern as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEdxB5rscv07A" src="https://media.licdn.com/dms/image/C5112AQEdxB5rscv07A/article-inline_image-shrink_1000_1488/0/1523719505001?e=1691625600&amp;v=beta&amp;t=Pu_4S3-HHKK5mFe48-0Rni6yugvrXdINQi2WPnGBvP0"> 
+  </div> 
+  <p><strong> Figure 2: Fluctuating Stresses</strong></p> 
+  <p>As it may be noticed from the Figure 2, one cycles from 1 unit of stress to 0.5 units and then back from 0.5 unit to 1 and so on and so forth.</p> 
+  <p>The above pattern is going to repeat through all cycles, thus there are no varying stresses present – but the pattern is no longer fully reversible, thus, as there are no varying stresses present and the R-Ratio ≠ -1.</p> 
+  <p>The question now remains how to quantify fluctuating stresses – just like fully reversible stresses could be quantified in the absence of stress data (as re-iterated in section 1 above). This is discussed in the subsequent section.</p> 
+  <h2>3.&nbsp;&nbsp;&nbsp;Quantification of Fluctuating Stresses</h2> 
+  <p>&nbsp;<strong>Mid-Range and Alternating Stresses</strong></p> 
+  <p>The quantification of Fluctuating Stresses is through the maximum and minimum stresses (i.e. in example 2 through 1 unit and 0.5 unit of stress values).</p> 
+  <p>The Fluctuating Stresses can be characterized using;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Mid-Range Stresses</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Alternating Stresses</p> 
+  <p><strong>Mid-Range Stresses: </strong>The Mid-Range Stress is essentially the average stress. It is the average of the maximum and the minimum stress. In the above example considering σmax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1 unit and σmin = 0.5 unit,</p> 
+  <p>Then;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHQb2J0Kjo2nw" src="https://media.licdn.com/dms/image/C5112AQHQb2J0Kjo2nw/article-inline_image-shrink_400_744/0/1523719758812?e=1691625600&amp;v=beta&amp;t=zGl19GyjHtfnCamGgaUIb4AEuEUIS9vFw0f_v7YCX5c"> 
+  </div> 
+  <p>That is;</p> 
+  <p><br></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF2lXHFe6iSeA" src="https://media.licdn.com/dms/image/C5112AQF2lXHFe6iSeA/article-inline_image-shrink_400_744/0/1523719715774?e=1691625600&amp;v=beta&amp;t=G3UbAptZi-7PVbHqHdQuXfoIp6GVJ5A45XBKabQX11M"> 
+  </div> 
+  <p><strong>Alternating Stresses: </strong>Next, the other component that is used to quantify the fluctuating stress is the ‘Alternating Stress’.</p> 
+  <p>Alternating Stress is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHDaFLapsyc8Q" src="https://media.licdn.com/dms/image/C5112AQHDaFLapsyc8Q/article-inline_image-shrink_400_744/0/1523726680298?e=1691625600&amp;v=beta&amp;t=e-Zui0S2F1d5ldBQlKh56RTGeCtW7eJSCjeVbnYYdv8"> 
+  </div> 
+  <p><br></p> 
+  <p>which will give the amplitude of the curve as shown in the Figure 4 below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEij9MOduFwEw" src="https://media.licdn.com/dms/image/C5112AQEij9MOduFwEw/article-inline_image-shrink_1000_1488/0/1523719816230?e=1691625600&amp;v=beta&amp;t=_EiZhZos5iVCToHoANHpvpGTkaVOA4bhelbsv07gUY0"> 
+  </div> 
+  <p><strong> Figure 4: Alternating Stress</strong></p> 
+  <p>The section 5 talks about the Modified Goodman equation that employs these mid-range and alternating stresses to determine if the component lies in the finite life region or infinite life region and if the component is the finite life region to ascertain how much life is remaining.</p> 
+  <p><br></p> 
+  <h2>4.&nbsp;&nbsp;&nbsp;Stress concentration for Mid-Range and Alternating Stresses</h2> 
+  <p>&nbsp;The above stresses σa and σm – the alternating and the mid-range stresses which will be used in the quantification of the fluctuating stresses are equal to the nominal stresses induced by the loads Fa and Fm respectively in the absence of notch / stress concentrations.</p> 
+  <p>In the presence of notch and stress concentration, the alternating and the mid-range stresses will have to be multiplied by the fatigue stress concentration factor Kf in which case the mid-range and the alternating stresses will take the form: Kfσao and Kfσmo induced by loads Fa and Fm respectively as long as the material remains in the elastic limit without yielding.</p> 
+  <p>When plastic strain occurs around the notch due to localized yielding the material properties Sy and Sult are modified due to strain strengthening (strain hardening) and there are slightly different measures adopted to quantify the fluctuating stresses. These are not discussed in this blog.</p> 
+  <p>The next section focusses on how these parameters: alternating and mid-range stresses are employd in Goodman diagram and modified Goodman equation to determine the remaining part of the life if the part lies in the finite life region.</p> 
+  <h2>5.&nbsp;&nbsp;&nbsp;Goodman (Haig) Diagram</h2> 
+  <p>The Goodman (Haig) Diagram is drawn by plotting the alternating stress on the y-axis and the mid-range stress on the x axis. Let us first say that we have a component that is experiencing only mid-range stress and no alternating stress. That means: the component is only experiencing static loading and no time varying loading. Thus, if we plot stress vs time we get the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFbUzL5sO_AMA" src="https://media.licdn.com/dms/image/C5112AQFbUzL5sO_AMA/article-inline_image-shrink_1000_1488/0/1523719928137?e=1691625600&amp;v=beta&amp;t=RETIWIoNDg-ZaQ_rVPfMQooG6s9fAwvatYLFbhAoEYU"> 
+  </div> 
+  <p><strong> Figure 5: Component subjected to static loading (no alternating stress)</strong></p> 
+  <p>In the above scenario, the part will fail under static loading- thus at strength of ultimate tensile strength of the material, that is: Sut.</p> 
+  <p>Thus under&nbsp;0 alternating stress, drawing a graph between mid-range and alternating stress, Sult can be pointed on the graph as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHq4tqdio13FQ" src="https://media.licdn.com/dms/image/C5112AQHq4tqdio13FQ/article-inline_image-shrink_1000_1488/0/1523719973924?e=1691625600&amp;v=beta&amp;t=IgPP0Jw-to-mPXEscn5TQKLWdrYew3tmHhOWIxMi3pc"> 
+  </div> 
+  <p><strong> Figure 6: Component subjected to static loading (no alternating stress) will fail at Sult (the ultimate strength of the material)</strong></p> 
+  <p>Now consider the scenario, wherein the part is experiencing only alternating stress and no mid-range stress. That is: the part is experiencing a fully reversible loading as below,&nbsp;then, the part will have infinite life as long as the part is stresses below the endurance limit.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEcROoJiomwWg" src="https://media.licdn.com/dms/image/C5112AQEcROoJiomwWg/article-inline_image-shrink_1000_1488/0/1523720062284?e=1691625600&amp;v=beta&amp;t=7VTVXBA4zj5-YskYD3tPq68xZXy2zyTFB9ifhZZJIZk"> 
+  </div> 
+  <p><strong>Figure 7: Component subjected to alternating stress only ( will have infinite life as long it stays below the endurance limit)</strong></p> 
+  <p><br></p> 
+  <p>Thus, if we plot a straight line as below from the ultimate strength Sut to the endurance limit Se, we get the figure below. This forms a triangle with corner as the origin of the graph. Any combination of the mean and alternating stress within the triangle is considered safe i.e.&nbsp;the component will have infinite life whilst the combination outside the triangle will have finite life.</p> 
+  <p><strong>Modified Goodman Line:</strong></p> 
+  <p>The straight line from the Sut to Se (ultimate strength to the endurance limit) is termed as the “Modified Goodman Line”.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEoleIkWhnOUA" src="https://media.licdn.com/dms/image/C5112AQEoleIkWhnOUA/article-inline_image-shrink_1000_1488/0/1523720119850?e=1691625600&amp;v=beta&amp;t=w4GL3PZ73ih9OXc9xMS9i6YPvcz6iUFKvCEgs7LMM9s"> 
+  </div> 
+  <p><strong>Figure 8: Component subjected to alternating stress only ( will have infinite life as long it stays below the endurance limit)</strong></p> 
+  <p>The equation of the Modified Goodman Line can be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHkthWs35txGA" src="https://media.licdn.com/dms/image/C5112AQHkthWs35txGA/article-inline_image-shrink_400_744/0/1523721424306?e=1691625600&amp;v=beta&amp;t=OorE9CuzCVs63Afi4QMM9pmmnwiFXObzZvDq3E28q2E"> 
+  </div> 
+  <p>If n &lt; 1, then the component lies in the finite life region.</p> 
+  <p>If n &gt; 1, the component lies in the infinite life region.</p> 
+  <p><br></p> 
+  <p>It can be seen that the modified Goodman equation tells you whether the component is in the infinite life region or in the finite life region. The Goodman Diagram / modified Goodman equation does not calculate the number of cycles to failure if the component is in the finite life region. More analysis is required to ascertain the number of cycles to failure if the component is in the finite life region. This is illustrated through the example evaluation 2 as covered in section 7.</p> 
+  <h2>6.&nbsp;&nbsp;&nbsp;Example evaluation to determine the factor of safety using the Modified Goodman equation</h2> 
+  <p>A hot rolled steel rod undergoes axial cyclic loading from σmin = 14 MPa to σmax = 70 MPa. The rod has a hole at the centre of the rod with a Kt = 1.7 and notch sensitivity factor q = 0.9. The yield strength of the rod is Sy = 310 MPa and the ultimate strength of the rod is Sult = 565 MPa. The fully adjusted endurance limit is Se = 135 MPa and f = 0.85</p> 
+  <p>Using the modified Goodman criterion determine the factor safety</p> 
+  <p>If infinite life is not present, estimate the number of cycles to failure</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEJqXxukyLsCA" src="https://media.licdn.com/dms/image/C5112AQEJqXxukyLsCA/article-inline_image-shrink_400_744/0/1523721513099?e=1691625600&amp;v=beta&amp;t=1gnkCdHxtG_WdSnMFWemLFaXUjM1dVbymjQxyzFKvK8"> 
+  </div> 
+  <p><strong> Figure 9: Example evaluation problem</strong></p> 
+  <p>Solution: The solution will involve the following steps;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Computation of nominal alternating and mid-range stresses from the minimum and maximum stresses</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Computing the alternating and mid-range stresses applying the stress concentration factor Kt</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plotting the Goodman diagram</p> 
+  <p>d)&nbsp;&nbsp;&nbsp;&nbsp;Determining the factor of safety using the Modified Goodman equation / criterion</p> 
+  <p>Step a) <u>Computation of alternating and mid-range stresses from the minimum and maximum stresses</u></p> 
+  <p>As described in the sections above, the fluctuating stresses are quantified in terms of alternating and mid-range stresses. The alternating and mid-range stresses are determined as below;</p> 
+  <p><strong>Alternating Stresses:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGMyj8jKAvqKg" src="https://media.licdn.com/dms/image/C5112AQGMyj8jKAvqKg/article-inline_image-shrink_400_744/0/1523721623997?e=1691625600&amp;v=beta&amp;t=Dz824H4_qPBIusRk7Z49gOKicVa8Ebu7TxwZWexDty0"> 
+  </div> 
+  <p><br></p> 
+  <p><strong>Mid-Range Stresses</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGpvJqp1plQOA" src="https://media.licdn.com/dms/image/C5112AQGpvJqp1plQOA/article-inline_image-shrink_400_744/0/1523721713956?e=1691625600&amp;v=beta&amp;t=jMOW3L12ROHSTp9Iejx8yWVyd-y4N7ALrY7qTD0twPg"> 
+  </div> 
+  <p>Thus, the rod is cycling as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH60BZ10aneLg" src="https://media.licdn.com/dms/image/C5112AQH60BZ10aneLg/article-inline_image-shrink_400_744/0/1523721757250?e=1691625600&amp;v=beta&amp;t=3KddbhNOtVN2ZBrhOFFh6m6FkN5eK7IJW3WxnLj4y3I"> 
+  </div> 
+  <p><strong> Figure 10: Maximum, minimum, mid-range and alternating stresses</strong></p> 
+  <p><br></p> 
+  <p>Step b) <u>Computation of alternating and mid-range stresses applying the stress concentration factors</u></p> 
+  <p>Since there is, it is required to compute the fatigue stress concentration factor Kf. It will be assumed that there is no plastic yielding at the hole.</p> 
+  <p>Therefore applying Kf to both mid-range and alternating stress;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH2o5k3azKw_A" src="https://media.licdn.com/dms/image/C5112AQH2o5k3azKw_A/article-inline_image-shrink_400_744/0/1523721876332?e=1691625600&amp;v=beta&amp;t=reK6aVkle_cgTnNuMoQaSHlQ1_MpAbKlVhCt5lQtHOE"> 
+  </div> 
+  <p>Thus, applying the fatigue stress concentration factor to the alternating and mid-range stresses, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGju_0tvb7L1w" src="https://media.licdn.com/dms/image/C5112AQGju_0tvb7L1w/article-inline_image-shrink_400_744/0/1523721947674?e=1691625600&amp;v=beta&amp;t=pTP3CSxjoGvjfnYZET3bm2pj4aaEeJZqy3Gn_EuHXt4"> 
+  </div> 
+  <p><u>Step c) Plotting the Goodman diagram</u></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHzvtcesLzehA" src="https://media.licdn.com/dms/image/C5112AQHzvtcesLzehA/article-inline_image-shrink_1000_1488/0/1523722000207?e=1691625600&amp;v=beta&amp;t=TZLk5KpElAoItb-hJVKX_GtIj-cJIOwggbGJGiCl6GE"> 
+  </div> 
+  <p><strong> Figure 11: Goodman Diagram for the current problem</strong></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p>Thus, it can be seen that the points 68.46 MPa and 45.64 MPa lie well within the triangle indicating that the part has infinite life.</p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><strong><u>Step d) Determining the factor of safety using the Modified Goodman equation / criterion</u></strong></p> 
+  <p><br></p> 
+  <p>The Modified Goodman equation is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGSeU5A77yp2A" src="https://media.licdn.com/dms/image/C5112AQGSeU5A77yp2A/article-inline_image-shrink_400_744/0/1523722089004?e=1691625600&amp;v=beta&amp;t=J1NQW4IeGj2UTHIP6WX7-yD2Xeqi73stQoLyz5ibM-c"> 
+  </div> 
+  <p>Thus, the factor of safety ‘n’&nbsp;can be computed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGQKqWaTIZqZQ" src="https://media.licdn.com/dms/image/C5112AQGQKqWaTIZqZQ/article-inline_image-shrink_400_744/0/1523722178826?e=1691625600&amp;v=beta&amp;t=88s5ugFxfOwCyc90Peke6_PD7mn7fURMByy7xB5zYxc"> 
+  </div> 
+  <p>Thus, n &gt; 1</p> 
+  <p><br></p> 
+  <p>This indicates that infinite life is predicted computationally.</p> 
+  <p><br></p> 
+  <h2>7.&nbsp;&nbsp;&nbsp;Example evaluation to ascertain the number of cycles to failure if the component is in finite life region</h2> 
+  <p>&nbsp;</p> 
+  <p>A hot rolled steel rod undergoes axial cyclic loading from σmin = -70 MPa to σmax = 105 MPa. The rod has a hole at the centre of the rod with a Kt = 1.7 and notch sensitivity factor q = 0.9. The yield strength of the rod is Sy = 310 MPa and the ultimate strength of the rod is Sult = 565 MPa. The fully adjusted endurance limit is Se = 135 MPa and f = 0.85</p> 
+  <p>Using the modified Goodman criterion determine the factor safety</p> 
+  <p>If infinite life is not present, estimate the number of cycles to failure</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE8TETzV8ki-w" src="https://media.licdn.com/dms/image/C5112AQE8TETzV8ki-w/article-inline_image-shrink_400_744/0/1523722248215?e=1691625600&amp;v=beta&amp;t=9qKrLO7bNfCl8goTP_uGWz21zKvPQ1PPMt7DCju9doU"> 
+  </div> 
+  <p><strong> Figure 12: Example evaluation problem</strong></p> 
+  <p><strong>Solution:</strong> The solution will involve the following steps;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Computation of nominal alternating and mid-range stresses from the minimum and maximum stresses</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Computing the alternating and mid-range stresses applying the stress concentration factor Kt</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plotting the Goodman diagram</p> 
+  <p>d)&nbsp;&nbsp;&nbsp;&nbsp;Determining the factor of safety using the Modified Goodman equation / criterion</p> 
+  <p>e)&nbsp;&nbsp;&nbsp;&nbsp;Determining the number of cycles to failure if infinite life is predicted.</p> 
+  <p><br></p> 
+  <p>Step a) <u>Computation of alternating and mid-range stresses from the minimum and maximum stresses</u></p> 
+  <p><br></p> 
+  <p>As described in the sections above, the fluctuating stresses are quantified in terms of alternating and mid-range stresses. The alternating and mid-range stresses are determined as below;</p> 
+  <p><strong>Alternating Stresses:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGAH1MWdRWvJg" src="https://media.licdn.com/dms/image/C5112AQGAH1MWdRWvJg/article-inline_image-shrink_400_744/0/1523722374801?e=1691625600&amp;v=beta&amp;t=uJ6cefyU7TRo3cxiADDyl5Zsl-nXWLsEul5hUl8rg54"> 
+  </div> 
+  <p><strong>Mid-Range Stresses:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFAAz2-SLcVIQ" src="https://media.licdn.com/dms/image/C5112AQFAAz2-SLcVIQ/article-inline_image-shrink_400_744/0/1523722448958?e=1691625600&amp;v=beta&amp;t=sgfYS4sZvjDdrgdVC_TqubqTiNaAyy7hBYhicLiryyw"> 
+  </div> 
+  <p>Thus, the rod is cycling as shown below ;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFgWSBhI35_Nw" src="https://media.licdn.com/dms/image/C5112AQFgWSBhI35_Nw/article-inline_image-shrink_400_744/0/1523722495214?e=1691625600&amp;v=beta&amp;t=3QrRhplxFA6a1JoJOZ3j3lwy-Rl7Kdtsdvzj2s_VWXs"> 
+  </div> 
+  <p><strong> Figure 13: Maximum, minimum, mid-range and alternating stresses</strong></p> 
+  <p>Step b) <u>Computation of alternating and mid-range stresses applying the stress concentration factors</u></p> 
+  <p>Since there is, it is required to compute the fatigue stress concentration factor Kf. It will be assumed that there is no plastic yielding at the hole.</p> 
+  <p>Therefore applying Kf to both mid-range and alternating stress;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFhICA5B_TahQ" src="https://media.licdn.com/dms/image/C5112AQFhICA5B_TahQ/article-inline_image-shrink_400_744/0/1523722588744?e=1691625600&amp;v=beta&amp;t=uo3C7JgGC3RJ_uzo5vgMii32pWxrSWlAe7GI5JUgvQ4"> 
+  </div> 
+  <p>Thus, applying the fatigue stress concentration factor to the alternating and mid-range stresses, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGip4Kz6Ywe_Q" src="https://media.licdn.com/dms/image/C5112AQGip4Kz6Ywe_Q/article-inline_image-shrink_400_744/0/1523722668946?e=1691625600&amp;v=beta&amp;t=-ieMl5ztpsZ4GIIruhsDCtWg-qQvrpTQui9yGqg86aw"> 
+  </div> 
+  <p><u>Step c) Plotting the Goodman diagram</u></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF0VcglgFRFnw" src="https://media.licdn.com/dms/image/C5112AQF0VcglgFRFnw/article-inline_image-shrink_1000_1488/0/1523722721479?e=1691625600&amp;v=beta&amp;t=aS05UCsUUHjRz25eqt0xnnu6bOCCUMZf3TdoK2F2YTk"> 
+  </div> 
+  <p><strong> Figure 14: Goodman diagram for the example evaluation</strong></p> 
+  <p>Thus, it can be seen that the point (28.5,142.6) MPa lies outside the triangle indicating that the part has finite life.</p> 
+  <p><strong><u>Step d) Determining the factor of safety using the Modified Goodman equation / criterion</u></strong></p> 
+  <p>The Modified Goodman equation is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHQcf-Xk3eDCA" src="https://media.licdn.com/dms/image/C5112AQHQcf-Xk3eDCA/article-inline_image-shrink_400_744/0/1523722791502?e=1691625600&amp;v=beta&amp;t=ox9qMKYe_CkKWfA6pE6hFdGdUH15hgIMCikQ70OpWBM"> 
+  </div> 
+  <p>Thus, the factor of safety ‘n’ can be computed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFoYYZunKeP7A" src="https://media.licdn.com/dms/image/C5112AQFoYYZunKeP7A/article-inline_image-shrink_400_744/0/1523722862795?e=1691625600&amp;v=beta&amp;t=VdznjPLl1oaeUD9rlmJ3644Dh-NXDAtH_Ia0ZZaYaRI"> 
+  </div> 
+  <p>Thus, n &lt; 1</p> 
+  <p>This indicates that finite life is predicted computationally.</p> 
+  <p><u>Step e) Determining the number of cycles to failure if infinite life is predicted</u></p> 
+  <p>Next, the aim is to calculate the number of cycles to failure.</p> 
+  <p>As the SN diagram is for fully reversible stress, we will have to evaluate the equivalent stress that causes the same amount of damage as the fluctuating stress.</p> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGRr8Id5JMdyg" src="https://media.licdn.com/dms/image/C5112AQGRr8Id5JMdyg/article-inline_image-shrink_1000_1488/0/1523722942119?e=1691625600&amp;v=beta&amp;t=4k6bWPH2Jq1nPIALK0biJrX0BIp3ikZG2-k9d5cZ9w0"> 
+  </div> 
+  <p><strong>Figure 15: To calculate the equivalent fully reversible stress state that causes the same damage as fluctuating stress state</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE67pkl7azpgw" src="https://media.licdn.com/dms/image/C5112AQE67pkl7azpgw/article-inline_image-shrink_1000_1488/0/1523723030987?e=1691625600&amp;v=beta&amp;t=WYAjzQLt1cWCjEtDUGtyzLNUXu4iwk18ApG-d0aRHkw"> 
+  </div> 
+  <p>To calculate the equivalent reversible stress that causes the same amount of damage as the fluctuating stress state, we draw a straight line from the the ultimate stress point passing through the stress state (σmid, σalternating) and hitting the axis of alternating stress at σrev-eq as shown in the figure above.</p> 
+  <p><br></p> 
+  <p>Now, the equation of a straight line is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFBOHs_SP1UcQ" src="https://media.licdn.com/dms/image/C5112AQFBOHs_SP1UcQ/article-inline_image-shrink_400_744/0/1523723117460?e=1691625600&amp;v=beta&amp;t=wNcWaSkI6gb7bsFG0LnM4YRvLuisxssAxVIcFv8W_5Q"> 
+  </div> 
+  <p>The modified Goodman line equation for n = 1 is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEI0oogNPQiEg" src="https://media.licdn.com/dms/image/C5112AQEI0oogNPQiEg/article-inline_image-shrink_400_744/0/1523724122105?e=1691625600&amp;v=beta&amp;t=CLnmsy4VXLbDXBvTUPZ6dgjMVcy6rRk1sp5eNRbZEBU"> 
+  </div> 
+  <p>Mapping the Goodman line equation to y = mx + c we have;</p> 
+  <p>Substituting Se = σrev-eq, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGg3nSqOX-DOw" src="https://media.licdn.com/dms/image/C5112AQGg3nSqOX-DOw/article-inline_image-shrink_1000_1488/0/1523724200709?e=1691625600&amp;v=beta&amp;t=7jCFyeVIpYGVBNi12LtJWqaJ-PTnKYKYUynt0zxISsI"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHwuN83oKdgew" src="https://media.licdn.com/dms/image/C5112AQHwuN83oKdgew/article-inline_image-shrink_400_744/0/1523724264373?e=1691625600&amp;v=beta&amp;t=uGQ7VRB-NApPV4S9Wut6jiwQI0g87OZbQx1WE2RuEoc"> 
+  </div> 
+  <p>The number of cycles to failure can now be computed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGQQfdCUuVgxw" src="https://media.licdn.com/dms/image/C5112AQGQQfdCUuVgxw/article-inline_image-shrink_400_744/0/1523724331008?e=1691625600&amp;v=beta&amp;t=qYxM4rNSolGDj2thCllTF1UlhksJLB5bHVMccdpRles"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHVO1DLt0KRpA" src="https://media.licdn.com/dms/image/C5112AQHVO1DLt0KRpA/article-inline_image-shrink_400_744/0/1523724390675?e=1691625600&amp;v=beta&amp;t=7yqZLr80H0NrkIxeRvCNxWLGOAk7srusoPdE_3IOgXc"> 
+  </div> 
+  <p>It can be shown that the number of cycles to failure for the equivalent fully reversible stress state that causes the same amount of damage as the fluctuating stress state is: <strong>648 cycles</strong></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<html>
+<head>
+  <title>On Fatigue Failure –  Part 4: R – Ratio, Fully Reversible Loading, Fatigue Stress Concentration Factors, Notch Sensitivity</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQE8Xu7Fg5DzGQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-4-r-ratio-fully-reversible-loading-ajay-taneja">On Fatigue Failure –  Part 4: R – Ratio, Fully Reversible Loading, Fatigue Stress Concentration Factors, Notch Sensitivity</a></h1>
+    <p class="created">Created on 2018-02-25 05:49</p>
+  <p class="published">Published on 2018-02-27 18:03</p>
+  <div>
+  <h2>1.&nbsp;&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;This article is the continuation of series of blogs on fatigue failure. It emphasizes on the following aspects;</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R – Ratio</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stress Concentration Factors</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fatigue Stress Concentration Factors</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notch sensitivity</p> 
+  <h2>2.&nbsp;&nbsp;&nbsp;R – Ratio</h2> 
+  <p>&nbsp;<strong>State of stress for generating a stress-life diagram: </strong></p> 
+  <p><strong>&nbsp;</strong>In one of my earlier blogs on Fatigue Failure (<a href="https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja/</a>), I had pointed out that a material’s fatigue performance can be characterized by an S-N diagram; where ‘S’ refers to the applied stress and ‘N’ refers to the number of cycles at each particular stress level. Thus, for proper fatigue characterization, it is necessary to obtain the data in a test such that the loading during the test mimics the cyclic loading that the part will be experiencing in application.</p> 
+  <p>&nbsp;Thus, if the part will be experiencing uniaxial tension, the test data will be generated in uniaxial tension. If the part is experiencing shear/torsional stress or bending stress, the test will involve torsional loading or will involve a bending test (discussed here: <a href="https://www.linkedin.com/pulse/fatigue-failure-part-3-factors-affecting-strength-ajay-taneja/?trackingId=RH3EEQwtLWL%2F3vNLCsRb5g%3D%3D" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-3-factors-affecting-strength-ajay-taneja/?trackingId=RH3EEQwtLWL%2F3vNLCsRb5g%3D%3D</a>).</p> 
+  <p>&nbsp;<strong>R – Ratio during the test</strong></p> 
+  <p>&nbsp;R – Ratio is simply the ration of minimum stress experienced during a cycle to the maximum stress experienced during the cycle. Stress values may be positive (tensile) or negative (compressive).</p> 
+  <p>&nbsp;R – Ratio (denoted by ‘R’) may be 0,-1 or between -1 and = +1 depending upon whether the loading is unidirectional tension or involves tension – compression cycles or involves fluctuating stresses. That is;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;<strong>Unidirectional, R = 0 testing</strong>: If the test specimen starts out unloaded (zero stress) and then is loaded to maximum positive required stress level and unloaded to the next cycle, then, R – ratio is exactly 0. This is called R = 0 testing.</p> 
+  <p>&nbsp;b)&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fully reversible stress, R = -1, testing</strong>: The most extreme case would be if each cycle consisted of loading the test specimen to a given stress level and then loading it to an equal and opposite stress level in the other direction. In the case where the minimum stress is negative of the maximum stress, then R – ratio will be exactly -1. This is known as fully reversible ( R = -1) loading / testing.</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fluctuating stresses ( R – ratio lies between +1 and 0 or between -1 and 0)</strong>: In other cases,&nbsp;the part may be pre-loaded to a certain stress level that might never be removed during the life of the part. The part may be loaded to the maximum stress level and then released back to the pre-load. In this case, the minimum value will be some small positive value associated with the pre-load and maximum value will be a larger positive value. If the pre-load is a positive value R – ratio will be greater than 0 and less than 1.</p> 
+  <p>&nbsp;IT is also possible to have a minimum compressive stress of lower magnitude as a preload and then load the specimen to a maximum positive value. In this case, the R – ratio will be between -1 and 0.</p> 
+  <p>&nbsp;The R – ratio’s discussed in a), b) and c) are illustrated in the figures below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH2gcE6oF3Lvw" src="https://media.licdn.com/dms/image/C5112AQH2gcE6oF3Lvw/article-inline_image-shrink_400_744/0/1520201866347?e=1691625600&amp;v=beta&amp;t=OExZy6xsjxXpvspfVoaJ-GI73Lz9LjrBS9l5TVY0ILo"> 
+  </div> 
+  <p><strong> Figure 1: Case a) ‘R = 0’&nbsp;(Unidirectional testing / Zero- based load)</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGk1txzscNnLg" src="https://media.licdn.com/dms/image/C5112AQGk1txzscNnLg/article-inline_image-shrink_400_744/0/1520242305188?e=1691625600&amp;v=beta&amp;t=ohMrUzi8nHQts7BxHHU7Y3IdZjxFMfAtMlJnQcBcjqw"> 
+  </div> 
+  <p><strong> Figure 2: Case b) ‘R = -1’ (Fully reversible stresses)&nbsp;</strong></p> 
+  <div class="slate-resizable-image-embed"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHMx2pM4qZ1jw" src="https://media.licdn.com/dms/image/C5112AQHMx2pM4qZ1jw/article-inline_image-shrink_1000_1488/0/1520191669150?e=1691625600&amp;v=beta&amp;t=DZpOgRfSvQY4dwFzl1Whm2UimoNLPj_K4IoPen-kXIc"> 
+  </div> 
+  <p><strong>Figure 3: Case c) ‘R’ between 0 and 1 (Fluctuating stresses) – positive pre-load</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFcxoKAORdGpQ" src="https://media.licdn.com/dms/image/C5112AQFcxoKAORdGpQ/article-inline_image-shrink_400_744/0/1520144391201?e=1691625600&amp;v=beta&amp;t=AZ79GFUwrIWiA4HqAXCH4V3emrTM9XOOVbsBfmEd5IE"> 
+  </div> 
+  <p><strong>Figure 4: Case c) ‘R’ between -1 and 0 (Fluctuating stresses) – negative pre-load</strong></p> 
+  <h2>3.&nbsp;&nbsp;&nbsp;Revisiting – Stress Concentrations</h2> 
+  <p>The developments of the basic stress (or, equilibrium / compatibility) equations for a state of stress like tension, torsion, compression or bending, it is always assumed that no geometric irregularities occurred in the member under consideration. But, it is quite difficult (or, rather impossible!) to design a component without permitting some changes in cross section of the members.</p> 
+  <p>Any discontinuity in a part alters the stress distribution in the neighbourhood of the discontinuity so that the elementary stress equations no longer apply to the state of stress in the part at such locations. Such discontinuities are called “stress raisers” and the regions in which they occur are called “stress concentrations”.</p> 
+  <p>Stress concentrations can also arise from some irregularity not inherent in the member, such as, tool marks, scratches, holes, notches, grooves, etc.</p> 
+  <p><strong>Stress concentration factor (Kt or Kts)</strong></p> 
+  <p>A theoretical or geometric stress concentration factor is used to relate the actual maximum stress at the discontinuity to the nominal stress.</p> 
+  <p>The factor Kt and Kts are defined in the equations below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFGKDaNUFkwnw" src="https://media.licdn.com/dms/image/C5112AQFGKDaNUFkwnw/article-inline_image-shrink_400_744/0/1520192462882?e=1691625600&amp;v=beta&amp;t=i2JfRzUdpf9QMnJgj2t-XXtCIu8zCrUEADkusVj5nEc"> 
+  </div> 
+  <p>Kt is used to denote normal stress</p> 
+  <p>Kts is used to denote shear stress</p> 
+  <p>Where;</p> 
+  <p>The nominal stress σ0 and τ0 is the stress calculated through the elementary stress equations.</p> 
+  <p>It should be noted that the stress concentration factors depend only on the geometry of the part. That is – the particular material used has no effect on the value of Kt.</p> 
+  <p>&nbsp;<strong>Stress concentration factors in static loading</strong></p> 
+  <p>In static loading in ductile materials, the stress concentration factor is not usually applied&nbsp;because the plastic deformation at the notch root results in notch blunting due to yielding at the notch root thus reducing notch root radius.</p> 
+  <p>For other materials where plastic flow is not likely to be accounted for, stress concentration factors have to be applied. Charts of stress concentration factors are available in the literature. Some examples of such charts are;</p> 
+  <p>1.&nbsp;&nbsp;&nbsp;Stepped shafts in;</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tension</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bending, and</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;torsion</p> 
+  <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A plate with opposite U shaped notches in</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tension and</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bending</p> 
+  <p>As stated above, elastic stress concentration factors depend only on the geometry (independent of material) and the mode of loading and they only apply when the notch is under elastic deformation condition.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHXka5BTOMCzQ" src="https://media.licdn.com/dms/image/C5112AQHXka5BTOMCzQ/article-inline_image-shrink_1000_1488/0/1520144528328?e=1691625600&amp;v=beta&amp;t=iphsGWNm_ohXyBUnDfKRuVEEPVDrwq_Q0Y9pjzKTMz8"> 
+  </div> 
+  <p><strong>Figure 5: Stress concentration factors in stepped shafts as function of the ratio of radius of fillet to internal diameter ‘d’</strong></p> 
+  <p><strong> a)&nbsp;&nbsp;&nbsp;&nbsp;Tension&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b) Bending&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c) Torsion</strong></p> 
+  <p><strong>Qualitatively understanding stress concentration factors:</strong></p> 
+  <p>For qualitatively understanding stress concentrations, one can use an analogy between stresses or strain and liquid flow. That is – restrictions or enlargements in a pipe produce local increases in flow velocity similar to the local increases in stresses produced by changes in cross section.</p> 
+  <p>In the figure below – the crowding and bending of flow lines near obstructions helps one to visualize the concentration of stresses or strains near notches.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEKVwVnOMVUBg" src="https://media.licdn.com/dms/image/C5112AQEKVwVnOMVUBg/article-inline_image-shrink_1000_1488/0/1520240663673?e=1691625600&amp;v=beta&amp;t=1WlnhTRqagmntSe5aCYcnhu9UwYUFEjO0DylQ9eivBY"> 
+  </div> 
+  <p><strong>Figure 6: The crowding and bending of flow lines near obstructions helps to visualize the concentration of stresses and strains near notches. </strong></p> 
+  <h2>4.&nbsp;&nbsp;&nbsp;Fatigue stress concentration factors and notch sensitivity</h2> 
+  <p>&nbsp;It was pointed out above that the existence of irregularities or discontinuities such as groves, holes, notches in a part increases the theoretical stresses significantly in the immediate vicinity of the discontinuity.</p> 
+  <p>Stress concentration factor (kt/kts) was defined as the ratio of the maximum stress to the normal stress. It was also stated that the stress concentration factor depend upon the geometry – the particular material used has no effect on the value of kt.</p> 
+  <p><strong>Fatigue stress concentration factor (Kf):</strong></p> 
+  <p>It turns out that some materials are not fully sensitive to the presence of notches and hence a reduced value of kt can be used.</p> 
+  <p>For these materials, the effective maximum stress in fatigue is;</p> 
+  <p>Or ;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFrVH5gXPI_SQ" src="https://media.licdn.com/dms/image/C5112AQFrVH5gXPI_SQ/article-inline_image-shrink_400_744/0/1520193120919?e=1691625600&amp;v=beta&amp;t=rvystgln5QTf6XWn7dd7VMMDUbzSp8YuYh4dZbaqIZI"> 
+  </div> 
+  <p>Where;</p> 
+  <p>Kf is the reduced value of Kt and σ0 is the nominal stress. The factor Kf is commonly called “Fatigue stress concentration factor”. It is convenient to think of Kf as a stress concentration factor reduced from Kt because of the lessened sensitivity to notches.</p> 
+  <p>The factor Kf is defined as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHY-R3bzhqJ-A" src="https://media.licdn.com/dms/image/C5112AQHY-R3bzhqJ-A/article-inline_image-shrink_400_744/0/1520240432992?e=1691625600&amp;v=beta&amp;t=ru9Bs_sSuwa93nvHs7um7-gNq-OAvdFtIvhdS9a7vS4"> 
+  </div> 
+  <p><strong>Notch sensitivity (q):</strong></p> 
+  <p>Notch sensitivity “q” is defined by the following equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH_-zmKDU5fUw" src="https://media.licdn.com/dms/image/C5112AQH_-zmKDU5fUw/article-inline_image-shrink_400_744/0/1520143756087?e=1691625600&amp;v=beta&amp;t=xIpiB9Qo-qzJX3dgOglBkDO1ERkNOCQJP0TYe8tWK-0"> 
+  </div> 
+  <p>Or,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGMbp19RhJnNg" src="https://media.licdn.com/dms/image/C5112AQGMbp19RhJnNg/article-inline_image-shrink_400_744/0/1520192311544?e=1691625600&amp;v=beta&amp;t=wrQQ9tHlOPnD5fnSqOsGHNmPx3yzQXsMhla5hQQGh6s"> 
+  </div> 
+  <p>Where;</p> 
+  <p>q is the notch sensitivity usually between 0 and 1.</p> 
+  <p>If q = 0; Kf = 1, it means that the material has no sensitivity to notches at all.</p> 
+  <p>If 1 = 1; Kf = Kt, it means that the material has full notch sensitivity.</p> 
+  <p>In an analysis or design, Kt is first determined from the geometry of the part. Then, from the material data, ‘q’ is calculated and then Kf is obtained through the equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHxbCk_GTK61w" src="https://media.licdn.com/dms/image/C5112AQHxbCk_GTK61w/article-inline_image-shrink_400_744/0/1520245195788?e=1691625600&amp;v=beta&amp;t=ygVgOlL6vaKJnw-IsZowkT9159Gf7p-UirDn_nQkREk"> 
+  </div> 
+  <p><strong>Notch sensitivity for specific materials:</strong></p> 
+  <p><br></p> 
+  <p>Notch sensitivities for specific materials are obtained experimentally. Trends for notch sensitivity as a function of notch radius and ultimate strength are shown in figures below. The figure 7 below shows the notch sensitivity as a function of notch radius and the ultimate strength of the material for reversed bending or axial loading.</p> 
+  <div class="slate-resizable-image-embed"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHu22_RMC4q-w" src="https://media.licdn.com/dms/image/C5112AQHu22_RMC4q-w/article-inline_image-shrink_400_744/0/1520144943052?e=1691625600&amp;v=beta&amp;t=IJr2r7Rf2jhGV7tclPlJ8zsy1PJ9_BAPz8RjSGp2NV0"> 
+  </div> 
+  <p><strong>Figure 7: Notch sensitivity as a function of notch radius and ultimate strength for reversed bending or axial loading</strong></p> 
+  <p><br></p> 
+  <p>The figure 8 below shows the notch sensitivity as a function of notch radius and ultimate strength for reversed torsion;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGsMcZJ7YyIJg" src="https://media.licdn.com/dms/image/C5112AQGsMcZJ7YyIJg/article-inline_image-shrink_400_744/0/1520240026996?e=1691625600&amp;v=beta&amp;t=CLaWfg5e-moIv97gw81B2vQfz1q7Arr2fAzNWFjSzXY"> 
+  </div> 
+  <p><strong>Figure 8: Notch sensitivity as a function of notch radius and ultimate strength for reversed torsion</strong></p> 
+  <p>The above figures depicting the notch sensitivity as a function of notch radius and ultimate strength for reversed bending/axial and reversed torsional loading have their basis from Neuber equation which is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFro8YMxg31aA" src="https://media.licdn.com/dms/image/C5112AQFro8YMxg31aA/article-inline_image-shrink_400_744/0/1520238943803?e=1691625600&amp;v=beta&amp;t=lPTGIatGbXNMSBte-1sWKJQjPdYqUecThzYmRIVynL4"> 
+  </div> 
+  <p>Where;</p> 
+  <p>√a is defined as a Neuber constant and is a material constant.</p> 
+  <p>It was stated that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGGCr4g6FwUxQ" src="https://media.licdn.com/dms/image/C5112AQGGCr4g6FwUxQ/article-inline_image-shrink_400_744/0/1520218316055?e=1691625600&amp;v=beta&amp;t=SUx2Ab0IyU9WL63IkE58s90RcrpgJbxczlqKEgwHqHs"> 
+  </div> 
+  <p>Thus equating,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFX_mfIx--fCQ" src="https://media.licdn.com/dms/image/C5112AQFX_mfIx--fCQ/article-inline_image-shrink_400_744/0/1520147947048?e=1691625600&amp;v=beta&amp;t=lsdxB1GNioqqq-HLl1wn8z_G3s7KRf910cXNjoW4KpI"> 
+  </div> 
+  <p>Thus,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEnZWCWxXanoA" src="https://media.licdn.com/dms/image/C5112AQEnZWCWxXanoA/article-inline_image-shrink_400_744/0/1520222413494?e=1691625600&amp;v=beta&amp;t=HcWNdwzRgI3YoXzpXimbungomvlF2wFX5a-s4P1CHUg"> 
+  </div> 
+  <p>For bending or axial;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFM-MOwudM-zQ" src="https://media.licdn.com/dms/image/C5112AQFM-MOwudM-zQ/article-inline_image-shrink_400_744/0/1520212083315?e=1691625600&amp;v=beta&amp;t=apDun7niD-6lgPKcJXBa55LMNRmdixpMrMqmYlMf09U"> 
+  </div> 
+  <p>For torsion,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHvD7-4JBx14Q" src="https://media.licdn.com/dms/image/C5112AQHvD7-4JBx14Q/article-inline_image-shrink_400_744/0/1520174151314?e=1691625600&amp;v=beta&amp;t=oOs_mx191ZuzLfN3TlwISVV1duR9d-bQw6Pysf8QRg8"> 
+  </div> 
+  <p>Note: It should be noted that the above equations apply to steel and Sut is in kpsi (kilo pound per square inch).</p> 
+  <h2>5.&nbsp;&nbsp;&nbsp;Example evaluations</h2> 
+  <p>&nbsp;There are 2 evaluation illustrated below. The first example evaluation illustrates the computation of the fatigue stress concentration factor for a particular problem. In the solution to the problem, firstly the static stress concentration factor is calculated followed by the computation of the fatigue stress concentration factor using the relations discussed in the section 4 of this blog.</p> 
+  <p>The second example evaluation illustrates solution to the complete fatigue problem involving calculation of stress at critical points (not using FEA but simple stress equation !), adding in the stress concentrations, determining the endurance strength, comparing the endurance strength to stress in order to check if the component has finite or infinite life.</p> 
+  <p><strong>Problem 1:</strong></p> 
+  <p>The rotating shaft shown in the figure below is in fully reversed bending. It is supported by bearings at R1 and R2. The fillet radii at all points is 2.5 mm. The shaft is machines with surface conditions a = 1.58 MPa and b = -0.085. A reliability of 99.99 % is required for the design. The shaft is made up of 5 Cr – Mo – V Aircraft steel, with Sut = 1655 MPa and will&nbsp;be operating at 315 degrees C. What is the fatigue stress concentration at A?</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGyVzlEdZ-V6w" src="https://media.licdn.com/dms/image/C5112AQGyVzlEdZ-V6w/article-inline_image-shrink_400_744/0/1520211066680?e=1691625600&amp;v=beta&amp;t=gTY4268jDIFCpCaOKUTpTciGrFUKq2tprIqjuGmKsTM"> 
+  </div> 
+  <p><strong> Figure 9: Example evaluation 1</strong></p> 
+  <p>&nbsp;<strong>Solution:</strong></p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aim – To calculate the fatigue stress concentration factor at point A.</p> 
+  <p>In order to calculate the fatigue stress concentration factor Kf, firstly the static stress concentration factor will be calculated. The fatigue stress concentration will then be obtained following the computation of the notch sensitivity q.</p> 
+  <p>Step 1: Computation of the static stress concentration factor Kt using the charts from Peterson’s (also shown in Figure 5 – chart b for fully reversible bending.</p> 
+  <p>Fillet radii = 2.5 mm, d = 25.4 mm&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF5V9x-RsnZAA" src="https://media.licdn.com/dms/image/C5112AQF5V9x-RsnZAA/article-inline_image-shrink_400_744/0/1520202918513?e=1691625600&amp;v=beta&amp;t=zJztwhLDXUAaiuQk2j4axglDitvjVIRlDYqdkVAlnN0"> 
+  </div> 
+  <p>From the chart in Figure 5, for fully reversed bending;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHIz7W2_uKvow" src="https://media.licdn.com/dms/image/C5112AQHIz7W2_uKvow/article-inline_image-shrink_400_744/0/1520247505518?e=1691625600&amp;v=beta&amp;t=gf3UZGRTXCQzeB9VM3-BkJURD1WrzY2h5L2yOwy0vpw"> 
+  </div> 
+  <p>To calculate the fatigue stress concentration factor</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHh_fmBvM0qgA" src="https://media.licdn.com/dms/image/C5112AQHh_fmBvM0qgA/article-inline_image-shrink_400_744/0/1520239653900?e=1691625600&amp;v=beta&amp;t=djX1fGkjx6R1B3vyL8OLqyQNEeJeMQ2wuv-nWiR2CAc"> 
+  </div> 
+  <p>For bending or axial;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHMKrFzCE7NLg" src="https://media.licdn.com/dms/image/C5112AQHMKrFzCE7NLg/article-inline_image-shrink_400_744/0/1520143300590?e=1691625600&amp;v=beta&amp;t=A24cQ1xi2xc_PbrMzf6wE3vm87cl4AEUxOBx3HBrUoI"> 
+  </div> 
+  <p>It should be noted that the above equation is in kpsi</p> 
+  <p>Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE4SAJWXhURag" src="https://media.licdn.com/dms/image/C5112AQE4SAJWXhURag/article-inline_image-shrink_400_744/0/1520161197449?e=1691625600&amp;v=beta&amp;t=v9e1Ralnoia5CSD5y_S-LPtBZ479mGFuGAMkkK03tmo"> 
+  </div> 
+  <p>Using the relation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEE9YAuckq10g" src="https://media.licdn.com/dms/image/C5112AQEE9YAuckq10g/article-inline_image-shrink_400_744/0/1520211640366?e=1691625600&amp;v=beta&amp;t=jTJyRsLYtTfN88bXXh9F_7wIrBVdaERJIdWUQDb79Iw"> 
+  </div> 
+  <p>Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG-rYKDcotwxw" src="https://media.licdn.com/dms/image/C5112AQG-rYKDcotwxw/article-inline_image-shrink_400_744/0/1520193091269?e=1691625600&amp;v=beta&amp;t=YbdTqyyK9-uXnT1YZpgamRfVGffgSnkWwyE-NVggDnY"> 
+  </div> 
+  <p>(‘r’ being in inches since √a was in kpsi)</p> 
+  <p>Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFXnOjQOJSXLw" src="https://media.licdn.com/dms/image/C5112AQFXnOjQOJSXLw/article-inline_image-shrink_400_744/0/1520145015697?e=1691625600&amp;v=beta&amp;t=OyUWD3PuiY-NPbcj5-97lOnEzYn-nhdmjtIQQmwTjfI"> 
+  </div> 
+  <p>Thus, it is seen that Kf is slightly lower than static stress concentration than Kt.</p> 
+  <p><strong>Problem 2:</strong></p> 
+  <p>The rotating shaft shown in the figure below is in fully reversed bending. It is supported by bearings at R1 and R2. The fillet radii at all points is 2.5 mm. The shaft is machines with surface conditions a = 1.58 MPa and b = -0.085. A reliability of 99.99 % is required for the design. The shaft is made up of 5 Cr – Mo – V Aircraft steel, with Sut = 1655 MPa and will be operating at 315 degrees C.</p> 
+  <p>Based on the stresses at A, deduce</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Will the component have infinite life</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;If not, how many cycles can it survive at this loading? Assume f = 0.76</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFN9v9jz0Y7zQ" src="https://media.licdn.com/dms/image/C5112AQFN9v9jz0Y7zQ/article-inline_image-shrink_400_744/0/1520245856494?e=1691625600&amp;v=beta&amp;t=Z_FMCFfS4vexavpaZ4wbkxm6UMoqNtBoDmwBBQljZPY"> 
+  </div> 
+  <p><strong> Figure 10: Example evaluation 2</strong></p> 
+  <p><br></p> 
+  <p>Solution:</p> 
+  <p>For the above problem, the endurance limit had been calculated in my earlier blog <a href="https://www.linkedin.com/pulse/fatigue-failure-part-3-factors-affecting-strength-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-3-factors-affecting-strength-ajay-taneja/</a></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHWMYBTEX-jFw" src="https://media.licdn.com/dms/image/C5112AQHWMYBTEX-jFw/article-inline_image-shrink_400_744/0/1520242587297?e=1691625600&amp;v=beta&amp;t=WAOnc8qzk3HFMLvjIfSRHtoyBUnLQRcusT3LTPfjNno"> 
+  </div> 
+  <p>The fatigue stress concentration factor has been computed as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGvKV6K9BW9Vw" src="https://media.licdn.com/dms/image/C5112AQGvKV6K9BW9Vw/article-inline_image-shrink_400_744/0/1520240362134?e=1691625600&amp;v=beta&amp;t=D_pAnGnHbuJ-6nYejaCDw4e2fX4VjAnPgIaThocjTfY"> 
+  </div> 
+  <p>Using the theory of pure bending, stress at A,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFED9-qMFRynw" src="https://media.licdn.com/dms/image/C5112AQFED9-qMFRynw/article-inline_image-shrink_400_744/0/1520205934664?e=1691625600&amp;v=beta&amp;t=Gx78EhXHodAewqL-5k_v8L7k9n9dFnNWEn-0g_Tg7Eg"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHuswfBAkoh_w" src="https://media.licdn.com/dms/image/C5112AQHuswfBAkoh_w/article-inline_image-shrink_400_744/0/1520250924183?e=1691625600&amp;v=beta&amp;t=y-8qcmLxtBaUkER1P9jqWyld5rrK0K4yK-cT6GbY6RY"> 
+  </div> 
+  <p>Thus, the component will have infinite life since endurance limit is greater than σmax.</p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p>&nbsp;</p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><strong>&nbsp;</strong></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p>
+ 
+</div>
+</body>
+</html>

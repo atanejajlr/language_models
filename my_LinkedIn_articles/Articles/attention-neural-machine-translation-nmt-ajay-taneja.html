@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Attention for Neural Machine Translation (NMT)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQHAcnVkK6aBqQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/attention-neural-machine-translation-nmt-ajay-taneja">Attention for Neural Machine Translation (NMT)</a></h1>
+    <p class="created">Created on 2021-02-27 20:24</p>
+  <p class="published">Published on 2021-03-03 20:58</p>
+  <div><h2>1.&nbsp;&nbsp;Introduction</h2><p>From the past few weeks, I had been doing late night / weekend reading on topics related to Attention Models. In my earlier blog: <a href="https://www.linkedin.com/pulse/seqtoseq-models-vs-attention-point-view-ajay-taneja/?trackingId=UuwX2ksPWzPJvciyTK6gtg%3D%3D" target="_blank">https://www.linkedin.com/pulse/seqtoseq-models-vs-attention-point-view-ajay-taneja/?trackingId=UuwX2ksPWzPJvciyTK6gtg%3D%3D</a> I had attempted to describe how Attention Models score over SqToSeq (Sequence-To-Sequence) models. The idea therein was to fundamentally as well as intuitively describe the working of the Attention models (without going into the math) and the drawback of the SeqToSeq models. That said, there are several great resources relating to Attention Models available on the web – the idea of my blogs is to have a set of notes for myself as I’m exploring this beautiful subject of Natural Language Processing (NLP) deeper. In the process, I’m happy if these notes prove useful to the NLP community!</p><p>&nbsp;In this blog I’m attempting to explain to explain the overall process for building a Neural Machine Translation (NMT) model with Attention. Firstly, in section 2, I talk about the data preparation for building an NMT model. I have not gone into the math of the NMT model with Attention – in section 2, I refer to my earlier blog to get an overview of the steps in preparing the NMT model with Attention. Section 3 talk of the evaluation metrics for the model: BLEU score and ROUGE Score and finally section 4 is on sampling and Decoding – which essentially goes into the details of how to select the best prediction for a NMT related task. This talk of infamous greedy decoding, Beam search algorithm and the Minimum Bayes Risk (MBR).</p><p><br></p><h2>2.&nbsp;&nbsp;Data preparation for a Neural Machine Translation Model</h2><p><strong>Data for the model:</strong></p><p>First and foremost, the data should be available for training of the model. Most of the NLP courses explaining of NMT / NMT with Attention use the data from: <a href="https://opus.nlpl.eu/" target="_blank">https://opus.nlpl.eu/</a>&nbsp;(Opus) a growing collection of translated texts from the web. The data sets at Opus are available via TensorFlow DataSets (<a href="https://www.tensorflow.org/datasets" target="_blank">https://www.tensorflow.org/datasets</a>). If you have a practical / real NMT problem to solve, appropriate data should be available.</p><p><strong>Tokenization, using sub-word representations:</strong></p><p>As a first step towards data preparation, we represent each sentence as an array of integers instead of strings. IT is not common to use&nbsp;<em>subword</em>&nbsp;representations to tokenize the sentences. This is a common technique to avoid out-of-vocabulary words by allowing parts of words to be represented separately. For example, instead of having separate entries in your vocabulary for --"fear", "fearless", "fearsome", "some", and "less"--, you can simply store --"fear", "some", and "less"-- then allow your tokenizer to combine these sub-words when needed.&nbsp;</p><p>Your code will contain sub-routines that call the corresponding library functions to tokenize (converting string of sentences to integers) and detokenize (converting integers back to their corresponding words).</p><p><strong>Bucketing:</strong></p><p>Bucketing the tokenized sentences is an important technique used to speed up training in NLP. To give a gist: the inputs have variable lengths and you want to make these the same when batching groups of sentences together. </p><p>One way to do that is to pad each sentence to the length of the longest sentence in the dataset. This might lead to some wasted computation. For example, if there are multiple short sentences with just two tokens, do we want to pad these when the longest sentence is composed of 100 tokens? </p><p>Instead of padding with 0s to the maximum length of a sentence each time, we can group our tokenized sentences by length and bucket as shown below;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQGO2G_V62odpw" src="https://media.licdn.com/dms/image/C4D12AQGO2G_V62odpw/article-inline_image-shrink_1000_1488/0/1614804101741?e=1691625600&amp;v=beta&amp;t=skozS_lLTYVfTbzPOay8uBRMAydQmb1usN72d_ua9PM"></div><p><strong>                                  Figure 1: Batching Sequence Data (Bucketing)</strong></p><h2>2.&nbsp;&nbsp;Attention Overview</h2><p>I have explained fundamentally about the Attention overview in my blog earlier: <a href="https://www.linkedin.com/pulse/seqtoseq-models-vs-attention-point-view-ajay-taneja/?trackingId=UuwX2ksPWzPJvciyTK6gtg%3D%253" target="_blank">https://www.linkedin.com/pulse/seqtoseq-models-vs-attention-point-view-ajay-taneja/?trackingId=UuwX2ksPWzPJvciyTK6gtg%3D%3</a></p><p><br></p><h2>3.&nbsp;&nbsp;Evaluation of NMT Models with Attention</h2><p><strong>BLEU Score :</strong></p><p>The BLEU score, which stands for a Bilingual Evaluation Understudy. It's an algorithm that was developed to solve some of the most difficult problems in NLP, including Machine Translation. It's evaluates the quality of machine-translated text by comparing a candidate texts translation to one or more reference translations. Usually, the closer the BLEU score is to one, the better your model is. The closer to zero, the worse it is. </p><p>To get a BLEU score, the candidates and the references are usually based on an average of uni, bi, try or even four-gram precision. To demonstrate, let’s use uni-grams as an example comprising of a candidate and 2 reference translations as shown below;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQGW8cm164FVkQ" src="https://media.licdn.com/dms/image/C4D12AQGW8cm164FVkQ/article-inline_image-shrink_1000_1488/0/1614804242411?e=1691625600&amp;v=beta&amp;t=Cu_jpM6JoQ-ZdwaejPLbzL-izwS0K7OML0Iq56etPjc"></div><p>We see <em>‘I and am’</em> appears in the candidate and reference;</p><p>BLEU Score =&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEF-u0eyL5SHQ" src="https://media.licdn.com/dms/image/C4D12AQEF-u0eyL5SHQ/article-inline_image-shrink_1000_1488/0/1614804334550?e=1691625600&amp;v=beta&amp;t=Byxpz7lmrz8rRCqel8wqDamYk4UCo3T_5NqUN7JHCxg"></div><p>So, in this example ‘I’ and ‘am’ appears in candidate, reference 1 and reference 2;</p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHNDFEvY4dQog" src="https://media.licdn.com/dms/image/C4D12AQHNDFEvY4dQog/article-inline_image-shrink_400_744/0/1614804398168?e=1691625600&amp;v=beta&amp;t=9g-Guwf-mV_MqEM9qf9LYRtge3PKUGexGcgviZetd3k"></div><p>BLEU score is the most widely adapted evaluation metric for machine translation. But you should be aware of these drawbacks before you begin using it.</p><p><strong>ROUGE:</strong></p><p>It stands for Recall Oriented Understudy for Gisting Evaluation. It's more recall-oriented by default. This means that it's placing more importance on how much of the human created reference appears in the machine translation. </p><p>ROUGE was originally developed to evaluate the quality of machine summarized texts, but is useful for evaluating machine translation as well. It works by comparing the machine texts or system texts against the reference texts, which is often created by a human. The ROUGE score calculates precision, and recall for a machine texts by counting the n-gram overlap between the machine texts and a reference texts. Recall that's an n-gram, is a list of words that appear next to each other in a sentence where the order matters.</p><p>The ROUGE family of metrics focuses on the n-gram overlap between system translated texts and the reference. By system translated text, it means the model that's being trained to do the prediction. By reference, I'm referring to the ideal correct sentence that you want the model to predict.</p><p><br></p><p><strong>ROUGE: Example – Recall in ROUGE and Precision in ROUGE</strong></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQF2ahLLO9UslQ" src="https://media.licdn.com/dms/image/C4D12AQF2ahLLO9UslQ/article-inline_image-shrink_1000_1488/0/1614804681898?e=1691625600&amp;v=beta&amp;t=h6Qyxo-qplgikjl-WJEycbv5q5yeI-OX7SKfT1bH9DE"></div><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHZqr83Wr3hCQ" src="https://media.licdn.com/dms/image/C4D12AQHZqr83Wr3hCQ/article-inline_image-shrink_1000_1488/0/1614804690217?e=1691625600&amp;v=beta&amp;t=EyPqOme8erqofSEuZG3t1TFxtOA_oUfOa70GLsfEo7Y"></div><p><strong>ROUGE – Limitations</strong></p><p>A low ROUGE score may not reflect that a model translated text actually captured all the same relevant content as the reference texts just because it's had a large difference in n-gram overlap. But ROUGE scores are still very useful for evaluation of machine translations and summaries. </p><h2>4.&nbsp;&nbsp;Sampling and Decoding</h2><p>It may be underscored that an NMT model at a stage – after having gone through the steps of encoding, attention and decoding outputs the probabilities to predict the next word in the sentence – some being described below.</p><p><strong>Greedy decoding: </strong></p><p>Greedy decoding is the simplest way to decode the model's predictions as it selects the most probable word at every step. However, this approach has limitations. When you consider the highest probability for each prediction, and concatenate all predicted tokens for the output sequence as the greedy decoder does, you can end up with a situation where the output instead of (say) <em>I am hungry</em>, gives you (<em>I am, am, am, am</em>) !</p><p>This could be a potential problem but not in all cases. For shorter sequences it can be fine but if you have many other words to consider, then knowing what's coming up next might help you better predict the next sequence. </p><p><strong>Random sampling:</strong></p><p>Another option is known as random sampling. What random sampling does is provide probabilities for each word, and sample accordingly for the next outputs. One of the problems with this is that it could be a little bit too random. A solution for this is to assign more weight to the words with higher probability, and less weight to the others. In sampling, temperature is a parameter you can adjust to allow for randomness in your predictions. It's measured on a scale of 0-1, indicating low to high randomness. </p><p><br></p><p><strong>Beam search decoding:</strong></p><p>Beam search decoding is a more exploratory alternative for decoding that uses a type of restricted breadth-first search to build a search stream. Instead of offering a single best output like in greedy decoding, beam search selects multiple options based on conditional probability. </p><p>The hyperparameter here beam width parameter B, which limits the number of branching paths based on a number that you choose, such as three. Then at each time step, the beam search selects B number of best alternatives with the highest probability as the most likely choice for the time step. Once you have these B possibilities, you can choose the one with the highest probability. </p><p>This is a beam search decoding, which doesn't look only at the next output but instead applies a beam width parameter to select several possible options as illustrated in the example/picture below;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFfpDkbIxM7NQ" src="https://media.licdn.com/dms/image/C4D12AQFfpDkbIxM7NQ/article-inline_image-shrink_1000_1488/0/1614804774491?e=1691625600&amp;v=beta&amp;t=wJrvF2GdWcZlMA8z-RJIdaO0VGsg1h6hnjlN-1Yo-Hk"></div><p><strong>Minimum Baye’s Risk:</strong></p><p>Implementing MBR is pretty straightforward. Begin by generating several random samples then compare each sample in that group, and assign similarity score for each comparison and finally, choose the sample with the highest similarity. </p><p>Here are the steps for implementing MBR on a small set of four samples. First, calculate the similarity between the first, second sample. Then for the first, and the third sample, then calculate again for the first fourth sample. Then take the average of those three similarity scores. </p><p><strong>Example steps for MBR are shown below;</strong></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFENVLO3VdStw" src="https://media.licdn.com/dms/image/C4D12AQFENVLO3VdStw/article-inline_image-shrink_1000_1488/0/1614804838116?e=1691625600&amp;v=beta&amp;t=5Mf8BKTI1AZBHgHD6D7Tn6Q2J0akmoE-elmwxTaB_xE"></div><p><strong>Logic behind the ‘similarity score’ in MBR :</strong></p><p>The MBR decoder can be thought of as selecting a consensus translation, i.e. for each sentence, the decoder selects the translation that is closest on an average to all the likely translations and alignments. The closeness is measured under the loss function of interest.</p><p>First, how could you measure such closeness? One could use a similarity score as ROUGE. Because a similarity score is the complementary to a distance function. Hence, when you have high similarity, you get small distance. </p><p>Further, consider "all likely translations". Since, we cannot take all possible translations, so we sample them and by sampling your possible translations, you will be picking the "likely translations" with high probability.</p><p>Now, you have likely translations and want to choose the best one. How do you do it? Choose the one of them that is the <em>closest to every one of the others.</em></p><p>One can intuitively, imagine that the centre of the disk is the point exactly with this property. It minimizes the distance to all other points on the disk. If the translations would be dispersed on this disk, the best one would be somewhere around the center. This is because it has "on average" the highest similarity to all the other translations. This is a good approximation.</p><p>Mathematically/formally things get more complicated and MBR is a research area for itself!</p><p><br></p><p><br></p></div>
+</body>
+</html>

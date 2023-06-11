@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>The importance of mesh refinements and error estimators in a finite element analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQEhDvUcExgKhg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/importance-mesh-refinements-error-estimators-finite-element-taneja">The importance of mesh refinements and error estimators in a finite element analysis</a></h1>
+    <p class="created">Created on 2016-08-19 07:05</p>
+  <p class="published">Published on 2016-08-19 07:13</p>
+  <div><p>A classical example to highlight the importance of mesh refinements in a finite element analysis&nbsp;is the Sleipper offshore platform disaster in Norway.</p><p>&nbsp;</p><p><a href="https://www.ima.umn.edu/~arnold/disasters/sleipner.html" target="_blank">https://www.ima.umn.edu/~arnold/disasters/sleipner.html</a></p><p>&nbsp;</p><p>It was <strong> the coarseness of the mesh</strong> that led to the underestimation of shear stresses and hence the disaster.</p><p>&nbsp;</p><p>This could have been avoided had someone done the error estimates (such as error estimate based on strain energy, the Zienkiewicz and Zhu error estimator) and consequent adaptive mesh refinement process.</p><p>&nbsp;</p><p>The above (importance of mesh refinements) is irrespective of the analysis type: linear or nonlinear.</p><p>&nbsp;</p><p>Software’s now&nbsp;-like the below;</p><p><a href="https://www.youtube.com/watch?v=jI8jDrrT3Ns" target="_blank">https://www.youtube.com/watch?v=jI8jDrrT3Ns</a></p><p>have the adaptive re-meshing process being carried out after every nonlinear iteration process.</p><p>&nbsp;</p><p>This is because in structures exhibiting significant geometrical non linear effects, the deformation can be so large that the mesh used to model the materials may become highly distorted, and the analysis cannot go any further without using some special techniques.</p><p>&nbsp;</p><p>The adaptive re-meshing&nbsp;(pointed out in the video above) is a useful feature to overcome these difficulties.</p><p>&nbsp;</p><p>An extra step in such types of adaptive re-meshing (after non-linear iterations) is that one would need to interpolate the necessary data from the old mesh to the new mesh before the analysis for the subsequent non-linear iteration begins.</p></div>
+</body>
+</html>

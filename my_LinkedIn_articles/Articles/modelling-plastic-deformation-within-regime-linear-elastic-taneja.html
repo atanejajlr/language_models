@@ -1,0 +1,310 @@
+<html>
+<head>
+  <title>Modelling of plastic deformation within the regime of linear elastic fracture mechanics</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQH0dw-qxSE84g" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/modelling-plastic-deformation-within-regime-linear-elastic-taneja">Modelling of plastic deformation within the regime of linear elastic fracture mechanics</a></h1>
+    <p class="created">Created on 2017-01-22 15:17</p>
+  <p class="published">Published on 2017-01-22 15:50</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2><b><strong>1. Introduction</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>This article is the continuation of my series of blogs on “Fracture Mechanics”.</p> 
+  <p><strong>The crack-tip plastic zone:</strong></p> 
+  <p>In my earlier article titled: Analytical approach to the computation of stress and displacement fields in the vicinity of the crack tip (<a href="https://www.linkedin.com/pulse/analytical-approach-computation-stress-displacement-fields-taneja?trk=mp-author-card" target="_blank">https://www.linkedin.com/pulse/analytical-approach-computation-stress-displacement-fields-taneja?trk=mp-author-card</a>), I had discussed in sufficient detail the stress field solution in an infinite plate with a central crack under biaxial loading. Through the solution, it was observed that a stress singularity existed at the tip of the crack (termed as the “root r” singularity in the fracture mechanics literature). In practice, the materials tend to exhibit a yield stress above which they deform plastically. That is: there is always a region around the tip of the crack in a metal, where plastic deformation occurs and hence in reality, a singularity cannot exist. The plastic region in the fracture mechanics literature is termed as the: crack tip plastic zone.</p> 
+  <p><strong>The blunting of the crack tip:</strong></p> 
+  <p>In metals, as the material deforms plastically, quite often the flow of the material makes the crack tip blunt as seen in the picture below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGaApWInV3-RQ" src="https://media.licdn.com/dms/image/C5112AQGaApWInV3-RQ/article-inline_image-shrink_400_744/0/1520191669545?e=1691625600&amp;v=beta&amp;t=BKpe3Q3W4a8K9fffMLB-M1ntEJ51oO0GOgj6FrexG6Y"> 
+  </div> 
+  <p class="center"><strong>Figure: Blunting of the crack tip as a result of plastic deformation</strong>&nbsp;</p> 
+  <p>This blunting of the crack tip in turn reduces the magnitude of the stress components. Thus, many potential catastrophic failures are avoided just by local plastic deformation of the crack tip. Thus, a structural designer in order to avoid fracture failure in the components prefers to have a large plastic zone developed at the crack tip. This is contrary to the likings of the conventional designer who tries hard to avoid yielding at any portion of the component. In a&nbsp;way the size of the plastic zone may be regarded as a parameter in representing the fracture toughness of the material.</p> 
+  <p>In this article, an attempt is made to explain the simplified procedures, to model the plastic zone in the vicinity of the crack tip within the regime of linear elastic fracture mechanics. That is: to find suitable modifications to the analytical expressions involving the computation of stress intensity factor that have been developed using the theory of linear elastic fracture mechanics so that an extensive elastoplastic / non-linear finite element analysis can be avoided.</p> 
+  <p>It should be noted that the approach outlined in this article will be applicable if the plastic zone size is small compared to the plate dimensions and the crack length i.e. material is assumed to exhibit <em>small scale yielding</em>. In such cases, it may be possible to modify the analytical expressions involving the stress intensity factors (evaluated using the theory of LEFM) to account for small scale yielding / limited plastic zone.</p> 
+  <p>Section 2 of this article starts with the approach used estimate the size of the plastic zone along the direction of the crack. The sections starts with the explanation to arrive at the first estimate of plastic zone without accounting for any redistribution forces followed by applying a correction (as explained by Irwin in 1957) to this first estimate, thus, accounting for redistribution of forces as a result of yielding of the material around the crack tip.</p> 
+  <p>Section 3 of this article, explains about the shape of the plastic zone considering Von Mises yield criterion – both in plane stress case and plane strain case by obtaining a polar plot between plastic zone length “r” and angle θ (recall that expressions for stress field around the crack tip are expressed in polar coordinates).</p> 
+  <p>Finally, section 4 defines the expression for the effective crack length aeff . The expression (as explained in section 2) is obtained considering the redistribution of forces and thus the Irwin’s correction to the size of the plastic zone.</p> 
+  <h2><b><strong>2. Size of the plastic zone</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p><strong>First estimate:</strong></p> 
+  <p>To start with, let us assume that the consideration be limited to plane stress.</p> 
+  <p>I have discussed in my earlier article the stress variation around the crack tip in an infinite plate with a central crack. The stress variation in the plane θ = 0 can be plotted as shown in the figure below,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHdVgkypAheTg" src="https://media.licdn.com/dms/image/C5112AQHdVgkypAheTg/article-inline_image-shrink_400_744/0/1520173862496?e=1691625600&amp;v=beta&amp;t=jQKa-j8u8B6iWUbsjs8L5m_ofBtTK5OtF1tnFMbhsB8"> 
+  </div> 
+  <p class="center"><strong>Figure: Stress variation in the plane of θ = 0</strong></p> 
+  <p>The figure above shows the magnitude of stress in the plane of θ = 0.</p> 
+  <p>Until a distance, rp* from the crack tip, the stress is higher than the yield stress σys. As a first approximation, this distance rp* can be taken as the size of the plastic zone. By substituting σys in the equation of the stress field σ, the distance rp* can be computed. That is: considering the mode 1 case of fracture for the plate with a central crack, we have – at θ = 0,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHyka6Z5D27Wg" src="https://media.licdn.com/dms/image/C5112AQHyka6Z5D27Wg/article-inline_image-shrink_400_744/0/1520141274201?e=1691625600&amp;v=beta&amp;t=5OghDvYi7u7OqCrtoZRPyclD5lqGu-D_KcByO4Hoi3o"> 
+  </div> 
+  <p>At r = rp*,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG4qbFDIaMrNQ" src="https://media.licdn.com/dms/image/C4E12AQG4qbFDIaMrNQ/article-inline_image-shrink_400_744/0/1520600184261?e=1691625600&amp;v=beta&amp;t=bHYt6u_JNkFgcq2QPsDzX4fZMFmiBvJ8-cYSLTFVmBk"> 
+  </div> 
+  <p>That is,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEyqCQjgPLUqQ" src="https://media.licdn.com/dms/image/C5112AQEyqCQjgPLUqQ/article-inline_image-shrink_400_744/0/1520141375658?e=1691625600&amp;v=beta&amp;t=aFPLwONRbrM1kX1pYRCrI6UAsdS6fjQzuIbkN9fbFUU"> 
+  </div> 
+  <p>It might have been clear(as this article is being read) that the actual plastic zone must be larger than rp*. This is because, as the material in the region of rp* is yielding, the load in that region is being carried over by the portion ahead of the plastic zone.</p> 
+  <p><strong>Irwin’s plastic zone correction: Second estimate of the length of the plastic zone</strong></p> 
+  <p>Irwin (1958) argued that as a result of crack tip plasticity, the stiffness around the zone reduces and displacement increases compared to the elastic case. In other words, the plate would behave as if it contained a crack of somewhat larger size. That is: the effective crack size ais equal to the physical crack length ‘a’ plus the correction ‘δ’. The expression for δ can be easily derived as below:</p> 
+  <p>Thus, in the figure below, the ‘physical crack’ of size ‘a’ is replaced by a longer crack of size a+δ and the elastic stress distribution (σy) at the tip if the effective crack is given.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQF1d3bzZ8d9PQ" src="https://media.licdn.com/dms/image/C4E12AQF1d3bzZ8d9PQ/article-inline_image-shrink_1000_1488/0/1520600184683?e=1691625600&amp;v=beta&amp;t=b57AswUBDo6f45UxF6-pJ6ZbBvTwXc3iqyybFVcoFcs"> 
+  </div> 
+  <p class="center"><strong>Figure: Second estimate of the plastic zone size</strong></p> 
+  <p><strong>&nbsp;</strong>The stress at the tip of the effective crack is again limited to the yield stress σys. Similarly, the stress acting on the part δ in front of the physical crack is equal to the yield stress.</p> 
+  <p>Consequently, δ must be large enough to carry the load that is lost by cutting the area A (in the above figure) from the elastic stress distribution. Hence,</p> 
+  <p class="center"><strong>Area ‘A’ must be equal to Area ‘B’</strong></p> 
+  <p><strong>&nbsp;</strong>The distance ‘λ’ in the above figure follows from:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFtUmI1-TqWdQ" src="https://media.licdn.com/dms/image/C4E12AQFtUmI1-TqWdQ/article-inline_image-shrink_1000_1488/0/1520600184608?e=1691625600&amp;v=beta&amp;t=DQWB1A4F7b8BgTgEKtJpF_Y4ku-oXO_tV806GN04WTo"> 
+  </div> 
+  <p class="center">It was already obtained through the first estimate of the plastic zone that:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGl9ojrhIkwsw" src="https://media.licdn.com/dms/image/C5112AQGl9ojrhIkwsw/article-inline_image-shrink_400_744/0/1520171438525?e=1691625600&amp;v=beta&amp;t=EZqeSEMnD8O1YcgUwrk4SXcafYm4IiyoRcg84h_WXgE"> 
+  </div> 
+  <p>Since, δ is small with respect to the crack size, it can be neglected. Hence,</p> 
+  <p class="center"><strong>λ = rp*</strong></p> 
+  <p>&nbsp;Now, if we are able to compute δ, we will get the next / final estimate of the length of the plastic zone (λ + δ).</p> 
+  <p>In the above figure,</p> 
+  <p class="center"><strong>Area ‘B’ = σys * δ</strong></p> 
+  <p>The requirement,</p> 
+  <p class="center"><strong>Area ‘A’ = Area ‘B’</strong></p> 
+  <p>Implies that,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEYBg0yz2oqVA" src="https://media.licdn.com/dms/image/C5112AQEYBg0yz2oqVA/article-inline_image-shrink_400_744/0/1520191069215?e=1691625600&amp;v=beta&amp;t=dO0MhPeaMkLutjRL6v-29IJc8XLj6coMLzX4v9z6GnE"> 
+  </div> 
+  <p>Since,</p> 
+  <p>λ = rp* and neglecting δ compared to the crack length ‘a’, we have,</p> 
+  <p>We can write,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG40Wtxu54gAA" src="https://media.licdn.com/dms/image/C5112AQG40Wtxu54gAA/article-inline_image-shrink_400_744/0/1520249714181?e=1691625600&amp;v=beta&amp;t=tArAFJIfL-dXjUV9rfeT4PzKPNo8uldmNB7QdG3rWU4"> 
+  </div> 
+  <p>Solving the above integral turns out,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHHiKIZUf2AAw" src="https://media.licdn.com/dms/image/C5112AQHHiKIZUf2AAw/article-inline_image-shrink_400_744/0/1520189951710?e=1691625600&amp;v=beta&amp;t=aWwvRU4ZaMxoaUrHAz2uxED7qmGzg_CcB7IPOuBnBcI"> 
+  </div> 
+  <p>Hence,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFyZ41mrqBqlA" src="https://media.licdn.com/dms/image/C5112AQFyZ41mrqBqlA/article-inline_image-shrink_400_744/0/1520250689274?e=1691625600&amp;v=beta&amp;t=IeDmCgxx--BmulcGAciPkZwNWjRu3jEneSfCTWMX4No"> 
+  </div> 
+  <p>Thus,</p> 
+  <p>The size of the plastic zone is found to be twice as large as the first estimate rp*. This means that the crack will behave as if it were of length (a+rp*)</p> 
+  <p>The quantity rp* is known as <strong><em>“Irwin’s plastic zone correction”.</em></strong></p> 
+  <p>&nbsp;</p> 
+  <h2><b><strong>3. Shape of the plastic zone</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;So far, the extent of the plastic zone along the x axis has only been considered – i.e. the emphasis was on the length of the plastic zone. An impresion of the <strong>“shape”</strong> of the plastic zone may be obtained by examining the yield condition for different angles <strong>“θ”</strong> starting from 0. That is: we will be plotting <strong>rp vs. θ</strong> as a polar plot by varying θ and marking the values of “r”. In doing so, a proper yield criterion should be imposed like the Von Mises or the Tresca yield criterion.</p> 
+  <p>Before revisting the Von-Mises and the Tresca’s yield criterion, a discussion (as below) to get the crack tip filed equations in terms of the principal stresses is thought to be worthwhile.&nbsp;</p> 
+  <p><strong><em>Stress field equations in the vicinity of the crack tip – in terms of principal stresses:</em></strong></p> 
+  <p>In my earler article: <em>Analytical approach to the computation of stress and displacement fields in the vicinity of the crack tip</em> (<a href="https://www.linkedin.com/pulse/analytical-approach-computation-stress-displacement-fields-taneja?trk=mp-author-card" target="_blank">https://www.linkedin.com/pulse/analytical-approach-computation-stress-displacement-fields-taneja?trk=mp-author-card</a>), I had discussed the in details the Westergaard’s solution for an infinite plate subjected to biaxial stresses. It can be shown that analysis of a crack problem can be reduced to finding a solution for the stress intensity factor “K”. Mode I problem is the most common for practical applications although the other modes and combinations of mode I and mode II do occur. A compilation of stress intensity factor for various geometries can be found in several texts.</p> 
+  <p>With the knowledge of the stress intensity factor, the stresses always follow from:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHF36YP7x0kkw" src="https://media.licdn.com/dms/image/C5112AQHF36YP7x0kkw/article-inline_image-shrink_400_744/0/1520191962964?e=1691625600&amp;v=beta&amp;t=QUu_g8Gi7lYr8flDd3teUOTZbXE_tPBhshG33N8gAkI"> 
+  </div> 
+  <p>And,</p> 
+  <p>σz = 0 for plane stress,</p> 
+  <p>σz =&nbsp; 𝞾(σx + σy) for plane strain situations.</p> 
+  <p>&nbsp;The shear stress is zero in the plane θ = 0. This means that at θ = 0, the stresses σx and σy are the principal stresses σ1 and σ2. The third principal stress is always perpendicular to the plate: σz&nbsp; = σ3. The principal stresses at any point can be determined through the Mohr’s circle,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFrXadbSJ73yQ" src="https://media.licdn.com/dms/image/C5112AQFrXadbSJ73yQ/article-inline_image-shrink_1000_1488/0/1520251046056?e=1691625600&amp;v=beta&amp;t=ud3Q8ETBiXiIrj2HKjTRC0jT5wk0lDHjjOzgNrrkBIo"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFlw3O15JSMUQ" src="https://media.licdn.com/dms/image/C5112AQFlw3O15JSMUQ/article-inline_image-shrink_400_744/0/1520189978106?e=1691625600&amp;v=beta&amp;t=wMzfFqzPBSy4uvffEPju2GaysAPHt5G3LGlRsa29ieU"> 
+  </div> 
+  <p>Substituting the values of σx and σy into the above equation, the stress field in the vicinity of the crack tip in terms of principal stresses can be expressed as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGQUPhAXTmsGw" src="https://media.licdn.com/dms/image/C4E12AQGQUPhAXTmsGw/article-inline_image-shrink_400_744/0/1520600184875?e=1691625600&amp;v=beta&amp;t=T3_oN-SCstbiceIrWjZW5fBLAtNZa59etqJ5oF_OU88"> 
+  </div> 
+  <p><strong>Von Mises and Tresca’s yield criterion:</strong></p> 
+  <p>The extent / length of the plastic zone along the X axis has been discussed in section---. An accurate impression of the shape of the plastic zone can be obtained by examining the yield criterion at various values of θ. Von Mises or Treca’s yield criterion may be imposed.</p> 
+  <p>&nbsp;</p> 
+  <p><strong>Von Mises yield criterion:</strong></p> 
+  <p>The Von Mises yield criterion in terms of principal stresses follows from;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQH5hRkSqbqvlw" src="https://media.licdn.com/dms/image/C4E12AQH5hRkSqbqvlw/article-inline_image-shrink_400_744/0/1520600184630?e=1691625600&amp;v=beta&amp;t=mMJi8PNW75DRgYrp4U4igIrCVIf_j-JAFpYprni-Z4k"> 
+  </div> 
+  <p><strong>Tresca’s yield criterion:</strong></p> 
+  <p>Tresca predicts yielding to occur if the maximum yield stress τmax exceeds σys / 2.</p> 
+  <p>A detailed discussion on the above yiled criteria is out of scope considering this topic. I find these links very insightful,</p> 
+  <p><a href="https://www.doitpoms.ac.uk/tlplib/metal-forming-1/yield_criteria.php" target="_blank">https://www.doitpoms.ac.uk/tlplib/metal-forming-1/yield_criteria.php</a></p> 
+  <p><a href="http://www.failurecriteria.com/misescriteriontr.html" target="_blank">http://www.failurecriteria.com/misescriteriontr.html</a></p> 
+  <p><a href="http://web.mit.edu/16.unified/www/SPRING/materials/Lectures/M5.3-Unified09.pdf" target="_blank">http://web.mit.edu/16.unified/www/SPRING/materials/Lectures/M5.3-Unified09.pdf</a></p> 
+  <p><strong>Shape of the plastic zone</strong></p> 
+  <p>Considering Von Mises yield criterion first</p> 
+  <p>Substituting the stress field expressed interms of principal stresses in the equation expressing the Von Mises yield criterion, we get;</p> 
+  <p>For plane strain case, where σ3 ≠ 0</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHXo_JfPJBDgg" src="https://media.licdn.com/dms/image/C5112AQHXo_JfPJBDgg/article-inline_image-shrink_400_744/0/1520251003905?e=1691625600&amp;v=beta&amp;t=duJDllYett9sHmv6GLDjaJpCZvgnDev9w-vCABEgPGc"> 
+  </div> 
+  <p>For plane stress case, where σ3 = 0</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQETRVd97DITEg" src="https://media.licdn.com/dms/image/C5112AQETRVd97DITEg/article-inline_image-shrink_400_744/0/1520189148983?e=1691625600&amp;v=beta&amp;t=8k4YsEQo-6k_2iSm1lvfbBsfh36rx_nYAxLAkz1rJsE"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>Expressing “r””, the extent of the plastic zone as a function of θ, one can obtain;</p> 
+  <p><strong>Plane strain case;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHH4CKMVmshqQ" src="https://media.licdn.com/dms/image/C4E12AQHH4CKMVmshqQ/article-inline_image-shrink_400_744/0/1520600184444?e=1691625600&amp;v=beta&amp;t=WEcERN1rRao7R4hfctuF_D5KDRazyno-41pd0PKs7YI"> 
+  </div> 
+  <p><strong>Plane stress case;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEVi8mzI0PfmQ" src="https://media.licdn.com/dms/image/C4E12AQEVi8mzI0PfmQ/article-inline_image-shrink_400_744/0/1520600184941?e=1691625600&amp;v=beta&amp;t=i9vww9UEJE0bE7hb6CKtWEQVSJmRqNPn3mZvGlfyqWY"> 
+  </div> 
+  <p>To plot the shape of the plastic zone, considering the above case, i.e. a polar plot is prepared by varying “θ” and marking the value of “r” as below,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEhxbiLO-5U6A" src="https://media.licdn.com/dms/image/C4E12AQEhxbiLO-5U6A/article-inline_image-shrink_1000_1488/0/1520600185189?e=1691625600&amp;v=beta&amp;t=EjwvcniHxwXPb4vTQgAkOrFklgMnNNyT5VVeihwYTqg"> 
+  </div> 
+  <p class="center">&nbsp;<strong>Figure: Shape of the plastic zone in mode I – Von Mises yield criterion</strong></p> 
+  <p><strong>&nbsp;</strong>It may be noted that in deriving the plastic zone boundary as depicted in the figure above, the redistribution of forces – hence Irwin’s correction as discussed in section 2 is not considered above.</p> 
+  <p><strong>&nbsp;</strong></p> 
+  <h2><b><strong>4. Effective crack length</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>The modelling of plastic considering Irwin’s correction accounting for redistribution of forces has been discussed. Thus the modelling of plastic zone in cases considering small scale yielding can be achieved by defining an effective crack length: a + δ, where ‘a’ is the physical crack length and “δ” is Irwin’s correction acounting for small scale yielding,</p> 
+  <p>&nbsp;That is,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFydVtg6E9AoQ" src="https://media.licdn.com/dms/image/C5112AQFydVtg6E9AoQ/article-inline_image-shrink_400_744/0/1520147584924?e=1691625600&amp;v=beta&amp;t=Q_NVL9OJ_jx6re1yP2NFkzBmS3oyQtEdxaCcoVlIjgA"> 
+  </div>
+ 
+</div>
+</body>
+</html>

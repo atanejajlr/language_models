@@ -1,0 +1,281 @@
+<html>
+<head>
+  <title>Explicit method for dynamic and static non-linear finite element analysis: its effectiveness and its burden</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGZPnuo2o0fag" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/explicit-method-dynamic-static-non-linear-finite-element-ajay-taneja">Explicit method for dynamic and static non-linear finite element analysis: its effectiveness and its burden</a></h1>
+    <p class="created">Created on 2016-02-17 14:27</p>
+  <p class="published">Published on 2016-02-17 23:05</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2><strong>1.</strong>&nbsp;&nbsp;&nbsp; <strong>Introduction</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>In my earlier article titled: <strong><em>‘Numerical methods for dynamic response computation (</em></strong><a href="https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja?trk=mp-reader-card" target="_blank"><strong><em>https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja?trk=mp-reader-card</em></strong></a><strong><em>)’</em></strong>, I had discussed about the explicit and the implicit methods and the corresponding integration schemes to compute the dynamic response of structures. In the discussion, I had not gone into the details of the numerical efficiencies (or, inefficiencies) of each method since by and large the focus of that article was to discuss various approaches to solve a problem involving the computation of dynamic response as well as to explain about the algorithms concerning the central difference explicit integration scheme and the Newmark’s implicit integration scheme.</p> 
+  <p>In general, one can state that explicit methods are used in case of impact or shock simulations such as automobile crash, drop tests of electronic devises, bird strikes on turbine blades or analysis of structures subjected to blast loading. The explicit method uses a very small time step to simulate stress wave propagation and to achieve numerical stability during the analysis process.</p> 
+  <p>&nbsp;The aim of this write-up is to discuss and point out the effectiveness and the possible <em>burden (</em>which involves a longer analysis runtime) during an explicit analysis and some strategies that may be adopted to reduce the resulting analysis runtime. I have attempted to logically divide the contents as follows:</p> 
+  <ul> 
+   <li>Section 2 of this article summarizes about the background of a dynamic analysis problem and revisits the finite element equation that needs to be solved when approaching the analysis problem through an explicit central difference integration scheme.</li> 
+   <li>Section 3 describes the resulting numerical efficiencies of an explicit integration scheme.</li> 
+   <li>Section 4 describes the important considerations in the use of explicit methods. These include: the minimum time step required when solving a dynamic problem using an explicit integration scheme and describes in some detail of how the time step to be used in an explicit integration scheme is arrived at.</li> 
+   <li>The resulting (very) small time step size that is adopted in an explicit analysis results in a long analysis runtime (generally) and sections 4.3 and 4.4 discuss about the mass scaling technique which might reduce the analysis runtime to an extent.</li> 
+   <li>The numerical efficiencies of the explicit method make it well suited to solve static problems involving certain non-linearities. This is discussed in section 5.</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <h2><strong>2.</strong>&nbsp;<strong>Background of a dynamic analysis problem</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The equations of equilibrium governing the linear dynamic response of the finite elements are given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGkWs5C3qo4Tw" src="https://media.licdn.com/dms/image/C4E12AQGkWs5C3qo4Tw/article-inline_image-shrink_400_744/0/1520615214651?e=1691625600&amp;v=beta&amp;t=Ur8I6tgpTYVwtzPZmOsMK9olw1G28TMDlGzSukwHDFo"> 
+  </div> 
+  <p>Where;</p> 
+  <ul> 
+   <li>‘M’, ‘C’ and ‘K’ denote the mass, damping and the stiffness matrices.</li> 
+   <li>‘R’ is the vector of externally applied loads. 
+    <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+     <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHxGKEVnk-ttA" src="https://media.licdn.com/dms/image/C4E12AQHxGKEVnk-ttA/article-inline_image-shrink_400_744/0/1520615215028?e=1691625600&amp;v=beta&amp;t=d07Dx-EHYuQ5toWtBvhFtq38sLqwT-_PfUt8qN4DlME"> 
+    </div></li> 
+  </ul> 
+  <p>&nbsp;Mathematically, the above set of equations represent a system of linear differential equations of second order and, in principle, the solution of these equations can be obtained by standard procedures for the solution of differential equations with constant coefficients. However, such procedures can become very expensive if the order of matrices is large.</p> 
+  <p>In practical finite element analysis, we are therefore interested in a few effective methods for the solution of the above set of differential equations. These effective methods are divided into two categories: the direct integration methods and the mode superposition method.</p> 
+  <p>Whereas, the mode superposition method involves transforming the problem from the global coordinate system into another coordinate system wherein the structural matrices are diagonal (before carrying out numerical integration), “direct” integration means that prior to the numerical integration, no transformation of the equations into a different form is carried out (unlike the mode superposition method).</p> 
+  <p>The integration schemes which are the most well known in the direct integration method include: the explicit central difference method and the implicit Newmark’s method / integration scheme.</p> 
+  <p>Though the details concerning the background and algorithms of the central difference and Newmark integration schemes have been discussed in my article on: <em>Numerical methods for dynamic response computation</em> (<a href="https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja?trk=mp-reader-card" target="_blank"><em>https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja?trk=mp-reader-card</em></a>), this article is aimed at discussing the effectiveness of the explicit method and the problems that one could encounter during an explicit analysis.</p> 
+  <p>The next section summarizes a detailed summary of the explicit method, without going into the algorithmic contents of the method since I have dealt with this before.</p> 
+  <h2><strong>2.1</strong>&nbsp;&nbsp;<strong>Solution of the differential equations using the explicit method</strong></h2> 
+  <p><strong>&nbsp;</strong></p> 
+  <p><strong>Explicit methods: Central difference integration scheme</strong></p> 
+  <p>&nbsp;In this method, the accelerations and velocities are approximated in terms of the displacements using the finite difference expressions and substituted in the equation of motion in order to solve for the displacements.</p> 
+  <p>&nbsp;The derivation of the central difference expressions for accelerations and velocity and the evaluation of the final expression of the equations of motion have been dealt with in my earlier article: <a href="https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja?trk=mp-reader-card" target="_blank"><em>https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja?trk=mp-reader-card</em></a> thus, this is not repeated.</p> 
+  <p><em>&nbsp;</em>The final expression for the equation of motion in terms of displacement alone was obtained as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGUClR6L72ldg" src="https://media.licdn.com/dms/image/C4E12AQGUClR6L72ldg/article-inline_image-shrink_1000_1488/0/1520615215138?e=1691625600&amp;v=beta&amp;t=Ws2R-GW02_p4i6gYUdQnHMzbEXloZKVnO3d59aOQvbc"> 
+  </div> 
+  <p>from which one can solve for t+Δt^U.</p> 
+  <p>It should be noted that the solution of t+ΔtU is based on using the equilibrium equation at time‘t’. For this reason, the integration procedure is called “explicit integration method”.</p> 
+  <h2><strong>3.</strong>&nbsp;<strong>Effectiveness of the explicit method</strong></h2> 
+  <h3>&nbsp;</h3> 
+  <h3><strong>3.1</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Avoiding the stiffness matrix assemblage</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Considering the above FE equation that is to be solved in a central difference integration scheme;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGFzD7aRaMbzg" src="https://media.licdn.com/dms/image/C4E12AQGFzD7aRaMbzg/article-inline_image-shrink_400_744/0/1520615214547?e=1691625600&amp;v=beta&amp;t=nwBOXUgckPz_4WwXXaMASlCYyTOAe8nzGSjQiJ6yvH4"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFA4vgdq7JCxA" src="https://media.licdn.com/dms/image/C5112AQFA4vgdq7JCxA/article-inline_image-shrink_1000_1488/0/1520169804052?e=1691625600&amp;v=beta&amp;t=CzUp01FQQlb4T3-7vnFa0AK_jd3DOEyr4OWmRsY8HbU"> 
+  </div> 
+  <p><strong>Figure: Nodal point and element equilibrium in a finite element analysis</strong></p> 
+  <p>Thus, the effective load vector can be evaluated can be evaluated efficiently using;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEXTtH92aY28Q" src="https://media.licdn.com/dms/image/C5112AQEXTtH92aY28Q/article-inline_image-shrink_400_744/0/1520066000104?e=1691625600&amp;v=beta&amp;t=VfHATVb-MzDeZwZ_cW_gRK4BZAhpNmtr4rrvl4s6FVY"> 
+  </div> 
+  <p>Thus, it is apparent that no assemblage of the finite element stiffness matrix requires to be carried out and hence no factorization of the stiffness matrix is required.</p> 
+  <h3><strong>3.1</strong>&nbsp;&nbsp;<strong>Using a lumped mass matrix and neglecting the damping</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>The explicit method requires a very small time step size and hence remains effective when the time step solution can be performed very efficiently. For this reason; the method is largely employed only when a lumped mass matrix can be assumed and the velocity dependent damping can be neglected.</p> 
+  <p>Thus; the governing equation (as described in the preceding section) becomes;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHCx4HFehGyWg" src="https://media.licdn.com/dms/image/C4E12AQHCx4HFehGyWg/article-inline_image-shrink_400_744/0/1520615215555?e=1691625600&amp;v=beta&amp;t=RmYsxOAbQFfryjquiuNqZ9tHzrHef95GO9DZM1RX5HY"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHxaW-clJbcAA" src="https://media.licdn.com/dms/image/C5112AQHxaW-clJbcAA/article-inline_image-shrink_400_744/0/1520066130067?e=1691625600&amp;v=beta&amp;t=mQKjQmmbc1GNa78Ei2xx9vBWDKZUmiIM8jfbfVNH9J8"> 
+  </div> 
+  <p>Therefore, if the mass matrix is diagonal, the system matrix is diagonal, the system of equations can be solved without factorizing a matrix i.e. only matrix multiplications are required to obtain the right hand side effective load vector after which the displacement components are obtained using;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEl-OmltwTCtQ" src="https://media.licdn.com/dms/image/C4E12AQEl-OmltwTCtQ/article-inline_image-shrink_400_744/0/1520615214962?e=1691625600&amp;v=beta&amp;t=4J3uhElu2sv7_oEbvRNFe_Cq42D48IqRqnm6yDwyOHU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGELyRWv7NIyQ" src="https://media.licdn.com/dms/image/C5112AQGELyRWv7NIyQ/article-inline_image-shrink_400_744/0/1520062652705?e=1691625600&amp;v=beta&amp;t=Qt4XyVIjZiUY8LeMyIyRkBQXz4WtuIsn8zIqX3MjlSQ"> 
+  </div> 
+  <h3><strong>3.3</strong>&nbsp;&nbsp;<strong>Summary of the numerical efficiencies of the explicit method</strong></h3> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>Thus, based on the discussion so far with regard to the efficiency of the explicit method; following points should be noted:</p> 
+  <ol> 
+   <li>The method is normally employed when a lumped mass matrix (i.e. a diagonal mass matrix) is assumed and the velocity dependent damping is neglected</li> 
+   <li>This results in only matrix multiplication being needed to obtain the right hand side, effective load vector.</li> 
+   <li>The method does not require assemblage of the stiffness matrix and thus avoids the need for the factorization of the stiffness matrix which is a very huge benefit from the computational point of view.</li> 
+   <li>The term: <strong>tU K </strong>can be evaluated by summing up the element level contributions from each element to the effective load vector.</li> 
+   <li>Thus; the system of equations finally obtained in the explicit method are independent of each other (i.e. the equations are uncoupled) and each other since the mass matrix is diagonal and hence each equation is solved like that single degree of freedom system.</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <h2><strong>4.</strong>&nbsp;&nbsp; <strong>Explicit method of analysis: Longer runtime and possible strategies for speeding it up</strong></h2> 
+  <p><strong>&nbsp;</strong></p> 
+  <h3><strong>4.1</strong>&nbsp;&nbsp;<strong>Important considerations in the use of explicit methods</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>An important consideration in the use of an explicit scheme is that the integration method requires that the time step Δt be smaller than the critical time step value Δtcr which can be calculated from the mass and stiffness properties of the complete assemblage.</p> 
+  <p>It may generally be stated that in obtain a valid solution, the time step;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEpMJ_sj4nbFg" src="https://media.licdn.com/dms/image/C4E12AQEpMJ_sj4nbFg/article-inline_image-shrink_400_744/0/1520615214768?e=1691625600&amp;v=beta&amp;t=L7zbINjbuv9BYy9lH4eg5wxSh2oN1TEymyHpER-Fz-Y"> 
+  </div> 
+  <p>Where,</p> 
+  <p>Δt is the smallest period of the finite element assemblage.The period could be calculated using of the techniques to solve the eigen value problem.</p> 
+  <p>Integration schemes that require the use of a time step Δt smaller than a critical time step Δtcr (like the central difference method discussed above) are said to eb conditionally stable. If a time step larger than Δtcr is used, then, the integration scheme is unstable meaning that, for example, any errors resulting from round off in the computer grow and make the response calculations worthless.</p> 
+  <h3><strong>4.2</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Calculation of the time step in an explicit analysis:</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>In an explicit analysis involving a wave propagation problem, the time step is internally calculated based on the following relation [known as ‘Courant’s relation’]:</p> 
+  <p>If it assumed that the critical wave length to be represented is L; the total time required for the wave to travel past the point is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQExhMDKALZFCQ" src="https://media.licdn.com/dms/image/C5112AQExhMDKALZFCQ/article-inline_image-shrink_400_744/0/1520241415957?e=1691625600&amp;v=beta&amp;t=BVkCvc2nqY_QdAEr0JfLSk0u0kDky3i55CUp_wif_KA"> 
+  </div> 
+  <p>(where, ‘c’ denotes the wave speed).</p> 
+  <p>Assuming that “n” time steps are necessary to represent the travel of the wave;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGp-9sl-ur7FA" src="https://media.licdn.com/dms/image/C5112AQGp-9sl-ur7FA/article-inline_image-shrink_400_744/0/1520062824031?e=1691625600&amp;v=beta&amp;t=2_vAjlrG-WBDH0JnRw717yFHzlMD0ZEHtrn3DGq1cRU"> 
+  </div> 
+  <p>and the effective length of the finite element should be;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF-eo1DrBPA6w" src="https://media.licdn.com/dms/image/C5112AQF-eo1DrBPA6w/article-inline_image-shrink_400_744/0/1520197964602?e=1691625600&amp;v=beta&amp;t=qmih2tIzytLlQ8a5j0Mn0kE0hmo91E5N86ooJ3fDqyQ"> 
+  </div> 
+  <p>This effective length and the corresponding time step must be able to represent the complete wave travel accurately and are chosen differently depending upon the kind of finite element idealization and the integration scheme used.</p> 
+  <h3><strong>4.3</strong>&nbsp;&nbsp;&nbsp;<strong>Speeding up an explicit analysis: Mass scaling</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>One way to speed up an explicit analysis is to resort to “mass scaling”. Mass scaling refers to a technique whereby a non-physical mass is added to the structure in order to achieve a larger explicit time step. However, one should realize that anytime you add a non-physical mass to increase the time step in a dynamic analysis, you affect the results (F=ma!). However, sometimes the effect is insignificant and in such cases adding a non-physical mass is justifiable.</p> 
+  <p>Examples of such cases may include addition of mass to just a few small elements in a non-critical area. At the end of the day, it is the engineering judgment of the FE analyst to gage the effects of mass scaling. In many cases, it would be justifiable to rerun the analysis with reduced mass scaling and compare the analysis results of the reduced and higher mass scaling, thus checking the difference in results in the two cases.</p> 
+  <h3><strong>4.4</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Selective mass scaling in software’s</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Solvers like LS DYNA have an automated approach of invoking mass scaling, wherein, the end user can define a certain time step value as input and the software will then add mass to only those elements whose time-step would otherwise be less than the input defined value.</p> 
+  <p>If the analyst does not want to go through the automated approach; a manual approach would be to increase the material density of those finite elements that he (the analyst) would like to mass scale.</p> 
+  <h2><strong>5.</strong>&nbsp;&nbsp; <strong>Explicit methods for non-linear static problems</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Explicit methods are based on the assumption that the model properties are linear within each time step and that the finite element matrices are updated at the end of each time step. Thus, with this assumption, it is justifiable to use explicit solvers for highly non-linear problems involving: problems involving contact, visco-plasticity (i.e. rate dependent plasticity), and hyper-elasticity (i.e. materials for which stress strain behaviour is non-linearly elastic, generally isotropic, incompressible and independent of strain rate), etc.</p> 
+  <p>Though an explicit solver requires very small time step size- to the order of 1e-6 to 1e-8 seconds (hence longer runtime); in a static non-linear analysis, the run time can significantly reduced by invoking mass scaling. It should be noted that in a static analysis problem an accurate distribution of mass is not critical to the solution.</p>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<html>
+<head>
+  <title>On Fatigue Failure –  Part 8: Strain Life Method</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQHHZX_WmifDTg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-8-strain-life-method-ajay-taneja">On Fatigue Failure –  Part 8: Strain Life Method</a></h1>
+    <p class="created">Created on 2018-07-07 18:48</p>
+  <p class="published">Published on 2018-07-07 18:59</p>
+  <div>
+  <h2>1.&nbsp;&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;In my ongoing series of blogs on Fatigue Failure, the emphasis has predominantly been on Stress Life Diagram – the famously termed S – N Diagram, where “S” refers to the applied stress and “N” refers to the number of cycles at each particular stress level. To obtain the diagram; a test specimen will be cyclically loaded to a particular stress level and the number of cycles to fracture recorded.</p> 
+  <p>Besides the stress level method – very briefly defined above and in sufficient detail in the part 2 of my series of blogs [On Fatigue Failure – Part 2: Stress – Life Diagram, Endurance Limit, Approximation of the S – N Curve] : <a href="https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja/</a>; the method that significantly went into researched during the 1960’s was the Strain – Life Method.</p> 
+  <p>It might be recalled that a fatigue failure most often begins at a notch, crack or other areas of stress concentrations. When the stress at the discontinuity exceeds the elastic limit, plastic strain occurs. If the fatigue fracture has to occur, cyclic plastic strains must exist. Thus, one will need to investigate the behaviour of the material under cyclic plastic strains. The strain resistance of the material is a better measure of the fatigue performance than stress resistance.</p> 
+  <p><br></p> 
+  <p>This article goes into some detail of the Strain – Life Method and is organized as follows;</p> 
+  <p><br></p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Section 2 of the article gives an insight into the material behaviour under cyclic plastic strains.</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Section 3 talks of the strain-life testing and the material constants that go into the strain – life relationship. These being: Fatigue Ductility Coefficient, Fatigue Ductility Exponent, Fatigue Strength Coefficient, Fatigue Strength Exponent.</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Section 4 goes into the mathematics of the Manson – Coffin Relationship between fatigue life and strain.</p> 
+  <p><br></p> 
+  <h2>2.&nbsp;&nbsp;&nbsp;Material behaviour under cyclic plastic strains</h2> 
+  <p>&nbsp;Johann Bauschinger first discovered that the elastic limit in compression is lower than that in tension when a specimen of iron, subjected to tension over the first elastic limit is loaded in reverse on the compression side. The phenomenon known as “Bauschinger” effect played an important role in the investigation of metal fatigue. More insight into the “Bauschinger effect” can be found in my articles below;</p> 
+  <p><a href="http://ajaytaneja-isotropickinematichard.blogspot.com/" target="_blank">http://ajaytaneja-isotropickinematichard.blogspot.com/</a></p> 
+  <p><a href="http://ajaytaneja-bauschinger-effect.blogspot.com/" target="_blank">http://ajaytaneja-bauschinger-effect.blogspot.com/</a></p> 
+  <p>Several investigations were subsequently carried out to investigate the low cycle fatigue behaviour of a large number of high strength steels. The figure below shows the stress – strain plot for the first few cycles of cyclic strains.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGJjJ8TzEHEOw" src="https://media.licdn.com/dms/image/C5112AQGJjJ8TzEHEOw/article-inline_image-shrink_1000_1488/0/1530989437344?e=1691625600&amp;v=beta&amp;t=dU9INKBtwzDDNJChyQf4qJ4uSGQQnNjx-yD9-68b8S8"> 
+  </div> 
+  <p><strong>Figure 1: True stress – true strain hysteresis loops showing first five stress reversals of a cyclic-softening material</strong></p> 
+  <p>&nbsp;</p> 
+  <p>It may be noted that the elastic limit / strength decreases with stress repetitions. That is: The material loses strength as it is repeatedly plastically deformed cyclically. After initial transient behaviour, the material has steady stress behaviour as described by the hysteresis loop.</p> 
+  <h2>3.&nbsp;&nbsp;&nbsp;Strain – Life testing</h2> 
+  <p><br></p> 
+  <p>In order to plot strain vs. life, the total strain controlled during the test is divided into an elastic part and a plastic part. The elastic strain is computed as the stress range divided by the elastic modulus. Plastic strain is obtained by subtracting the elastic strain from the total strain.</p> 
+  <p>The figure below shows the plot of the reversals to failure and the strain amplitude;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEx_AqNCQfUiQ" src="https://media.licdn.com/dms/image/C5112AQEx_AqNCQfUiQ/article-inline_image-shrink_400_744/0/1530989552318?e=1691625600&amp;v=beta&amp;t=Un0QwRezUmQbFFce00vF79FO_pRM8aDE4WNW3rS7uU4"> 
+  </div> 
+  <p><strong>Figure 2: Reversals to Failure vs. Strain Amplitude</strong></p> 
+  <p><br></p> 
+  <p>Test data is fit to a simple power function (known as the Mason-Coffin Relationship, as discussed in section 4) in order to determine the material constants. These material constants being;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQECiGWFRsV9kQ" src="https://media.licdn.com/dms/image/C5112AQECiGWFRsV9kQ/article-inline_image-shrink_400_744/0/1530989575899?e=1691625600&amp;v=beta&amp;t=4jjUdaqRwC-0krM3aBvGUaN8bhDbPxB9ql2Ojnn7nNU"> 
+  </div> 
+  <p>Following are the definitions of the above material constants;</p> 
+  <p><br></p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fatigue Ductility Coefficient:</strong> It is the true strain corresponding to the point in the first reversal in the stress – strain curve. This is shown by the point A in Figure 1. IT should be underscored that the plastic strain line begins at this point (figure 2)</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fatigue Strength Coefficient:</strong> It is the true stress corresponding to the fracture in the first reversal in the stress – strain curve. This is show by the point A in Figure 1. The elastic strain line begins at this point (figure 2)</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fatigue Ductility Exponent:</strong> It is the slope of the plastic strain line and is the power to which the life 2N must be raised to be proportional to the true plastic strain amplitude. If the number of stress reversals is “2N”, then “N” is the number of cycles.</p> 
+  <p>d)&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fatigue Strength Exponent</strong>: It is the slope of the elastic strain line and is the power to which the life 2N must be raised to be proportional to the true stress amplitude</p> 
+  <p><br></p> 
+  <h2>4.&nbsp;&nbsp;&nbsp;Manson – Coffin Relationship</h2> 
+  <p>&nbsp;The total strain is the sum of the elastic and the plastic strains and the total strain amplitude is the average of the total strain range;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEYxyA4D6xlYA" src="https://media.licdn.com/dms/image/C5112AQEYxyA4D6xlYA/article-inline_image-shrink_400_744/0/1530989668001?e=1691625600&amp;v=beta&amp;t=WwRRebeeX45EO9IS5pn5kVLeYytVxTNDwkQ5ETMGrzw"> 
+  </div> 
+  <p>The equation of the plastic strain line (shown in Figure 2) is given by (see the definition of the <strong>Fatigue Ductility exponent</strong>);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGd_dEOvL3q2Q" src="https://media.licdn.com/dms/image/C5112AQGd_dEOvL3q2Q/article-inline_image-shrink_400_744/0/1530989738535?e=1691625600&amp;v=beta&amp;t=bvsOTzB-YjN99l6SWLUdYavqw3s5sJFTezPEGEZ5w8M"> 
+  </div> 
+  <p>The equation of the elastic strain line (shown in Figure 2) is given by (see the definition of the Fatigue Strength exponent);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGh_YDTB3V8JA" src="https://media.licdn.com/dms/image/C5112AQGh_YDTB3V8JA/article-inline_image-shrink_400_744/0/1530989807598?e=1691625600&amp;v=beta&amp;t=dO_Z1Hn_YTfLyvaCMOsbo9OrlUq3fifPoB97BIVOPgo"> 
+  </div> 
+  <p>Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFeMOyjQPN-Nw" src="https://media.licdn.com/dms/image/C5112AQFeMOyjQPN-Nw/article-inline_image-shrink_400_744/0/1530989864442?e=1691625600&amp;v=beta&amp;t=iTKd7JENiECihPXzP7FhyXWr8G7gHV8WQlI974Q0hVU"> 
+  </div> 
+  <p>The above relationship is known as the Manson – Coffin relationship between fatigue life and total strain.</p> 
+  <p>It may be re-iterated that fatigue ductility coefficient, fatigue strength coefficient, fatigue ductility exponent and fatigue strength exponent are material constants obtained through the stress strain curve and curve fitting to the experimental stress strain curve of Figure 1.</p>
+ 
+</div>
+</body>
+</html>

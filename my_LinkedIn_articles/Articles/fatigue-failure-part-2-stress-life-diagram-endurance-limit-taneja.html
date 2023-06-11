@@ -1,0 +1,237 @@
+<html>
+<head>
+  <title>On Fatigue Failure – Part 2: Stress – Life diagram, Endurance Limit, Approximation of the S – N curve</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQH2t-X_sWo9Mw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja">On Fatigue Failure – Part 2: Stress – Life diagram, Endurance Limit, Approximation of the S – N curve</a></h1>
+    <p class="created">Created on 2018-02-06 16:35</p>
+  <p class="published">Published on 2018-02-06 17:04</p>
+  <div>
+  <h2>1.&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;My earlier blog on fatigue failure emphasized on – firstly the definition of fatigue, then, examples of catastrophic failures in history as a result of fatigue phenomenon were cited, fundamental difference between static and fatigue loading was explained and the article concluded with the a brief explanation on the stages in a fatigue process.</p> 
+  <p>&nbsp;This article is the continuation of my preceding article and during this article one of the most important fundamentals with regards to the characterization of a material’s fatigue performance – S – N diagram will be covered in some detail. The process of obtaining the S – N curve from specimen testing will be briefly explained (section 2) and empirical relations to obtain the fatigue strength in the absence of test data will be detailed in section 3. The article ends (section 4) with a numerical example involving evaluation of fatigue strength of a specimen and expected life – based on the relationships detailed in section 3.</p> 
+  <p>&nbsp;</p> 
+  <h2>2.&nbsp;&nbsp;Characterization of material’s fatigue performance</h2> 
+  <p><strong>Stress – life diagram (S – N diagram):</strong></p> 
+  <p>A material’s fatigue performance can be characterized by an S-N diagram; where ‘S’ refers to the applied stress and ‘N’ refers to the number of cycles at each particular stress level. To obtain the diagram; a test specimen would be cyclically loaded to a particular stress level and the number of cycles to failure will be recorded.</p> 
+  <p>&nbsp;</p> 
+  <p>Thus, the S – N diagram plots the stress amplitude ‘S’ versus the cycles to failure N as shown below for two materials:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEmtKeNKUCp1w" src="https://media.licdn.com/dms/image/C5112AQEmtKeNKUCp1w/article-inline_image-shrink_1000_1488/0/1520191365011?e=1691625600&amp;v=beta&amp;t=REtTGwqbk9x4s49SXvw28HOcZ5_8cXP8UXH7rtPPXvQ"> 
+  </div> 
+  <p><strong> Figure 1: Typical S – N curves</strong></p> 
+  <p><strong>Endurance limit | Infinite life</strong></p> 
+  <p>Certain materials have a fatigue limit or endurance limit which represents a stress level below which a material does not fail and can be cycled infinitely. If the applied stress is below the endurance limit of the material, the structure is said to have an <em>infinite life</em>. This is the characteristic of steel and aluminium in benign environment conditions (i.e. not harmful / regular environment conditions). A typical S – N curve corresponding to this type of material is shown in figure 1 – Curve A.</p> 
+  <p><strong>Materials not exhibiting endurance limit</strong></p> 
+  <p>Many non-ferrous metals and alloys, such as aluminium, magnesium and copper alloys, do not exhibit well defined endurance limits. The materials instead display a continuously decreasing S – N response similar to curve B as shown in Figure 1. In such cases the fatigue strength Sf for a given number of cycles must be specified. An effective endurance limit for these materials is sometimes defined as stress that causes failure at 1x10^8 or 5x10^8 loading cycles.</p> 
+  <h2>3.&nbsp;&nbsp;Approximation of the S – N curve</h2> 
+  <p>If the S – N curve is available from testing / in-house it is obviously that the available data will be utilized for any life calculations. Sometimes, all one would have is the tensile strength of the material that is being used and the endurance limit and in that case there’s a logarithmic relation that can roughly be used between the number of cycles and the fatigue strength.</p> 
+  <p>This logarithmic relationship between the number of cycles and the fatigue strength can be approximated as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFmxk1uoBtLkA" src="https://media.licdn.com/dms/image/C5112AQFmxk1uoBtLkA/article-inline_image-shrink_400_744/0/1520242053990?e=1691625600&amp;v=beta&amp;t=DZwrJ6V4Jttn9mNuVzgkLGkPkMP1_VCpznI_Wk-ZEJc"> 
+  </div> 
+  <p>Where;</p> 
+  <p>Sf is the fatigue strength;</p> 
+  <p>Ni = Number of cycles for life</p> 
+  <p>a and b are based on the ultimate strength, endurance limit and “f” which is the fraction of the fatigue strength remaining at 10^3 cycles.</p> 
+  <p>And when Sf is known, the number of cycles to failure can be denoted through the expression;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFToAcY4fVCGg" src="https://media.licdn.com/dms/image/C5112AQFToAcY4fVCGg/article-inline_image-shrink_400_744/0/1520173877329?e=1691625600&amp;v=beta&amp;t=D7UEDaI2pEf22qUJRWplFmVtOtLtzuEOLAF6bwDA26U"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEq9O9yl9yRag" src="https://media.licdn.com/dms/image/C5112AQEq9O9yl9yRag/article-inline_image-shrink_400_744/0/1520190146256?e=1691625600&amp;v=beta&amp;t=dXYNKitmcJlC6LL7Q9PUKk-eFvbUwCDukhSIQLp0hyk"> 
+  </div> 
+  <p>f =&nbsp;fatigue strength fraction of the ultimate strength at 10^3 cycles.</p> 
+  <p>Typically ‘f’ has to be known or can be approximated through the following expression;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHp9wqLzbHkLw" src="https://media.licdn.com/dms/image/C5112AQHp9wqLzbHkLw/article-inline_image-shrink_400_744/0/1520201375354?e=1691625600&amp;v=beta&amp;t=VoVVqNTEAWvWT9wpmweOc5pgd93qfejQOJD3SUptjZA"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFkoxtuOV42MQ" src="https://media.licdn.com/dms/image/C5112AQFkoxtuOV42MQ/article-inline_image-shrink_400_744/0/1520213171877?e=1691625600&amp;v=beta&amp;t=fTx5H0q07Dd6Uw0TnSobBN467AkCHUUpAu9HEDYuFLc"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH0vuTykZUY8Q" src="https://media.licdn.com/dms/image/C5112AQH0vuTykZUY8Q/article-inline_image-shrink_400_744/0/1520156297715?e=1691625600&amp;v=beta&amp;t=HaOKoUak5c7mXnEYLK_-CTCL_HJ6fVqCKQpQGPbfy4U"> 
+  </div> 
+  <h2>4.&nbsp;&nbsp;Example evaluation of fatigue strength of a specimen and expected life</h2> 
+  <p>&nbsp;For a polished rotating&nbsp;beam specimen in pure bending made of alloy steel with an endurance limit of Se = 290 MPa fatigue strength fraction of the ultimate strength at 10^3 cycles, f = 0.77 and Sut – the ultimate strength of the material = 655 MPa</p> 
+  <p>Determine;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;The fatigue strength of the specimen at N = 10^5 cycles</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;The expected life of the specimen at a completed reversed load of 410 MPa</p> 
+  <p><strong>Solution:</strong></p> 
+  <p>First, to calculate the fatigue strength of the specimen at N = 10^5 cycles</p> 
+  <p>Using the above relations,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEeT5mMRzkkAA" src="https://media.licdn.com/dms/image/C5112AQEeT5mMRzkkAA/article-inline_image-shrink_400_744/0/1520212650554?e=1691625600&amp;v=beta&amp;t=UCPFq8zD4XpcxibNG9Nyj19HWgtXum5aHXnhgF6Y3Tg"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH_bw_3L9A7wQ" src="https://media.licdn.com/dms/image/C5112AQH_bw_3L9A7wQ/article-inline_image-shrink_400_744/0/1520240798200?e=1691625600&amp;v=beta&amp;t=iAzgkIwHxWR8xrkC_-en3fUBGfDEUwiiDM3FNTfaNJg"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF4BnB66If9MQ" src="https://media.licdn.com/dms/image/C5112AQF4BnB66If9MQ/article-inline_image-shrink_400_744/0/1520211096823?e=1691625600&amp;v=beta&amp;t=hD89rBu-PXOongY2xZrDFZCYUEs0zvbAOBXHzxgIi5I"> 
+  </div> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHmyfhshYTnLQ" src="https://media.licdn.com/dms/image/C5112AQHmyfhshYTnLQ/article-inline_image-shrink_400_744/0/1520144260227?e=1691625600&amp;v=beta&amp;t=4FXl_9u4KUK9Vk8LTK1VU-s87tWKEyC6uwn6xh_Bzmc"> 
+  </div> 
+  <p>Thus,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG9ERjm8TaYyw" src="https://media.licdn.com/dms/image/C5112AQG9ERjm8TaYyw/article-inline_image-shrink_400_744/0/1520194174765?e=1691625600&amp;v=beta&amp;t=YqY9xeqiO9gF5i-MlISTjVDsXaR8TwRq1iM2vVYS7YA"> 
+  </div> 
+  <p>That is;</p> 
+  <p> b = -0.08</p> 
+  <p>So,&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGBED0ck8lHMg" src="https://media.licdn.com/dms/image/C5112AQGBED0ck8lHMg/article-inline_image-shrink_400_744/0/1520145709046?e=1691625600&amp;v=beta&amp;t=RgasdqwaUpfiVCiqgX6z89uZ5Q_3we2d1MIIAeVOjPc"> 
+  </div> 
+  <p>Next to determine the life of the specimen under a completely reversed load of 410 MPa,</p> 
+  <p>Thus,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE2E5TgJjtoWg" src="https://media.licdn.com/dms/image/C5112AQE2E5TgJjtoWg/article-inline_image-shrink_400_744/0/1520154816623?e=1691625600&amp;v=beta&amp;t=BgX1q3_2zosBxkLYsF7pc2gZ9U_YVkvzHS3RddHKSLc"> 
+  </div> 
+  <p><br></p> 
+  <p>Thus,</p> 
+  <p><strong> N = 13,418 cycles</strong></p> 
+  <p><br></p> 
+  <p><br></p>
+ 
+</div>
+</body>
+</html>

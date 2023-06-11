@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Quantization and Pruning</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQFz-A_BhvJ-HA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/quantization-pruning-ajay-taneja">Quantization and Pruning</a></h1>
+    <p class="created">Created on 2021-11-13 18:25</p>
+  <p class="published">Published on 2021-11-13 18:52</p>
+  <div><h2>1. Introduction</h2><p>During the month of October 2021, I had shared several posts on LinkedIn around the topic of "Quantization and Pruning". This article is the consolidation of all those posts so that it forms a quick reference for me if I have to re-visit the topic of Quantization and Pruning during my work life/work projects. However, I'm more than happy if the content proves useful to the LinkedIn community and several other Data Science | Machine Learning enthusiasts around the globe!</p><h2>2. Why Quantization?</h2><p>On Devise Machine Learning:</p><p>&nbsp;Machine learning is becoming part of more and more devices and products. This includes the rapid growth of mobile and IoT applications, including devices which are situated everywhere in the world from farmers’ fields to train tracks to hospitals and more. For example,</p><p> ·&nbsp;Virtual hospital or virtual wards are being trialled and operated around the world:&nbsp;<a href="https://lnkd.in/d8g-CE_K" target="_blank">https://lnkd.in/d8g-CE_K</a></p><p> ·&nbsp;Internet of Things and Machine Learning are also automating agriculture:&nbsp;<a href="https://lnkd.in/dK8MUa_A" target="_blank">https://lnkd.in/dK8MUa_A</a>&nbsp;</p><p> . We now have "smart" farms wherein it is possible to detect the health of the crops through a machine learning model:&nbsp;<a href="https://www.abyfarm.com/" target="_blank">https://www.abyfarm.com</a></p><p>&nbsp;What decisions does a Machine Learning Engineer will have to take considering the above use cases?</p><p> In the use cases as above, the questions that need addressing from the perspective of a Machine Learning Engineer are,</p><p> 1.&nbsp;How should you deploy your machine learning model so that they generate value? If you host the ML model on a server, then, the mobile or the IoT device needs to be connected to a network which might not in all cases be possible to be relied upon.</p><p> 2. The next option is to embed the Machine Learning Model on the device – the question that needs to be answered in such cases is: is the model small enough to&nbsp;perform inference on the&nbsp;device? Does the device have enough processing capabilities? Is the model fast enough on a device as on a server?</p><p> Deploying the ML model on a device enables more opportunities for including Machine Learning as part of the device’s functionality. As the hardware costs of the devices continue to fall, this results in significant cost benefits than deploying the model on cloud.</p><p> As these devices become more powerful, many of the machine learning tasks, which you think of as requiring months of high-powered compute time, will become part of more and more fairly common devices.&nbsp;</p><p> Frameworks for On-Devise Machine Learning:</p><p> ·&nbsp;&nbsp;TensorFlow Lit: TensorFlow Lite is a set of tools that enables on-device machine learning by helping developers run their models on mobile, embedded, and IoT devices&nbsp;<a href="https://lnkd.in/dynR6Rzk" target="_blank">https://lnkd.in/dynR6Rzk</a></p><p> ·&nbsp;&nbsp;Core ML:&nbsp;<a href="https://lnkd.in/dfH5haWm" target="_blank">https://lnkd.in/dfH5haWm</a></p><p> ·&nbsp;&nbsp;&nbsp;ML Kit:&nbsp;<a href="https://lnkd.in/dr-wBaDT" target="_blank">https://lnkd.in/dr-wBaDT</a></p><p> What is Quantization? Read the sections below See this picture!</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEy2_K_CBOXTg" src="https://media.licdn.com/dms/image/C4D12AQEy2_K_CBOXTg/article-inline_image-shrink_1000_1488/0/1636828438849?e=1691625600&amp;v=beta&amp;t=fzDKOm1qhK4H0w41J0rNOW5EEO6NCd4j6zoyQwUqlsk"></div><p>                               <strong> Figure: Quantization vs Pruning – a visualization</strong></p><p><br></p><h2>2. More insight into Quantization</h2><p>It&nbsp;may be concluded that especially for deployment scenarios, such as on mobile and IoT devices, where the capabilities of the device are extremely limited compared to running the model on a server or in the Cloud, it is important to discuss some techniques for optimizing the Machine Learning models.</p><p> </p><p> However, it should be noted that the techniques can benefit any model regardless of where it is deployed since they reduce the compute resources required to serve the model.</p><p> </p><p> Quantization involves transforming a model into an equivalent representation that uses parameters and computations at a lower precision. This improves the model's execution performance and efficiency, but it can often result in lower model accuracy. An analogy for quantization can be described through the following example considering the representation of&nbsp;images,</p><p> </p><p> . For example, a black and white image could be represented with one bit per pixel, while a typical image with colour has twenty-four bits per pixel (see GIF image below). Quantization, in essence, lessens the number of bits needed to represent information.</p><p> </p><p>Coming back to deep learning:</p><p> Artificial neural networks consist of activation nodes, the connections between the nodes, and a weight parameter associated with each connection. It is these weight parameters and activation node computations that can be quantized.</p><p> From the perspective, running a neural network on hardware can easily result in many millions of multiplication and addition operations. Lower-bit mathematical operations with quantized parameters combined with quantizing intermediate calculations of a neural network results in large computational gains and higher performance.</p><p> Lower precision will help the model runs faster and use less power. Also, lower precision will help reducing the model file size that is stored on the mobile / IoT devise.</p><p> Optimizations can often result in changes in model accuracy, which must be considered during the application development process.</p><p> Examples of quantization – MobileNets</p><p> MobileNet is a class of CNN that was open sourced by Google, and therefore, this gives us an excellent starting point for training our classifiers that are insanely small and insanely fast. MobileNet uses depth-wise separable convolutions. It significantly reduces the number of parameters when compared to the network with regular convolutions with the same depth in the nets. This results in lightweight deep neural networks.</p><p> </p><p> More details on MobileNets can be found here:</p><p> <a href="https://lnkd.in/drGP_66U" target="_blank">https://lnkd.in/drGP_66U</a></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFMXJKhYXxzUQ" src="https://media.licdn.com/dms/image/C4D12AQFMXJKhYXxzUQ/article-inline_image-shrink_1000_1488/0/1636828630805?e=1691625600&amp;v=beta&amp;t=x3V76Nc6qG2hb3Lpva3WTBHAaf_MEQau2VP-Y55xVaw"></div><p><strong>                                        Figure: Effects of Quantization</strong></p><p> </p><h2> 3. Post-Training Quantization</h2><p>Having discussed the benefits of quantization and frameworks for quantization, this post and the my subsequent post will emphasize on “Post-Training quantization” and “Quantization Aware Training" respectively. Whereas, in Post Training Quantization, one applies quantization to a model after the training is completed, in Quantization Aware Training, quantization is applied to a model while it is being trained.&nbsp;</p><p> </p><p> Post-training quantization is a conversion technique that can reduce model size while also improving CPU and hardware accelerator latency with little degradation in model accuracy. Post-training quantization converts the weights of the ML model from floating point numbers to integers in an efficient way. This results in lowering the latency by 3 times with little loss in accuracy of the model. In post-training quantization, the Machine Learning model is first trained in full precision and then the weights are quantized to integers.</p><p> </p><p> Using TensorFlow Lite, you can quantize an already trained TensorFlow model when you convert it to TensorFlow Lite format using the TensorFlow Lite converter. There is several post training quantization to choose from in TensorFlow Lite as shown in the Figure 1. Post training quantization takes just 2 lines of code as shown in the Figure 2 - using TensorFlow</p><p> </p><p> Using dynamic range quantization, you can reduce the model size and/or latency, but this comes with a limitation as it requires inference to be done with floating point numbers. To tackle this, TensorFlow Lite optimization toolkit also supports post-training integer quantization. This enables users to take an already trained floating point model and fully quantize it to use only eight bits signed integer.</p><p> </p><p> Post-training integer quantization works by gathering calibration data, which it does by running inferences on a small set of inputs so as to determine the right scaling parameters needed to convert the model to an integer quantized model. The ‘scaling’ is needed to estimate the range (min, max) of all floating-point tensors in the model.</p><p> </p><p> Post-training quantization can result in a loss of accuracy, particularly for smaller networks, but it is often fairly negligible. If the loss of accuracy is more, one may consider using Quantization Aware Training which is discussed next.</p><p> </p><p> More details on Post training quantization using TensorFlow Lite can be found here:&nbsp;<a href="https://lnkd.in/d8bhXUFp" target="_blank">https://lnkd.in/d8bhXUFp</a></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEun2Hh-Mo8sg" src="https://media.licdn.com/dms/image/C4D12AQEun2Hh-Mo8sg/article-inline_image-shrink_400_744/0/1636828766581?e=1691625600&amp;v=beta&amp;t=rsDkrRQiyEudvjXUXnatIAFpegdrTNlT1jB5i90LYic"></div><p>                                         <strong> Figure: Coding the Post-Training Quantization</strong></p><p><br></p><h2> 4. Quantization Aware Training </h2><p>We’ve discussed so far of post-training integer quantization which worked by gathering calibration data by running inferences on a small set of inputs so as to determine the right scaling parameters needed to convert the model to an integer quantized model. All of this process is done after are the Machine Learning model is fully trained as a floating-point model.</p><p> </p><p> As opposed to the concept of the concept of: Post Quantization training, in the Quantization Aware Training, the quantization error is considered during the training of the model – this mitigates the effects of quantization on the accuracy of the model. Generally better results (in terms of model accuracy) are obtained using the approach of: Quantization Aware Training.</p><p> </p><p> In Quantization Aware training, the training graph is modified to make quantization part of the training process. This results in integrating the “quantization loss” along with the “training loss” as part of the overall training process. Therefore, now – in such a scenario the optimization algorithm will minimize both the training loss and the quantization loss in every epoch.</p><p>&nbsp;</p><p> This page [<a href="https://lnkd.in/dnw-9QV6" target="_blank">https://lnkd.in/dnw-9QV6</a>] shows how the Quantization Aware Training is executed using Tensor Flow Lite and the Figure 1 shows how the quantization emulation operations are placed within the training graph.</p><p> </p><p> It is possible to execute Quantization Aware Training through Tensor Flow Lite framework with a few lines of code. The Figure 2 shows code snippets wherein it is possible to execute Quantization aware training for the whole Keras model</p><p>&nbsp;</p><p> You might also quantize part of the model which using TensorFlow – this is important as one would not want to quantize important layers of the model such as Attention Mechanism</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFmB8RP7SMVPw" src="https://media.licdn.com/dms/image/C4D12AQFmB8RP7SMVPw/article-inline_image-shrink_1000_1488/0/1636828902799?e=1691625600&amp;v=beta&amp;t=pwVaoW6k-H_IjHwqIx5VaUL9Gg0W6nUHlejUkBNiwOE"></div><p><strong>                           Figure: Quantization – Diagrammatic view and coding</strong></p><p><br></p><h2>5. Pruning</h2><p>The concept of “Pruning” has been a motivation from the paper:&nbsp;<a href="https://lnkd.in/dJamfc_P" target="_blank">https://lnkd.in/dJamfc_P</a>. The paper dates back to 1990’s!</p><p> </p><p> The technique introduced in the above paper was termed as: “Optimal Brain Damage” – a biologically inspired concept – meant for reducing the size of a learning network by selectively deleting weights. The basic idea of the Pruning is that it is possible to take a perfectly reasonable network, delete half (or more) of the weight and result with a network that works just as well.&nbsp;As machine learning models were pushed into embedded devices like mobile phones, compressing NN in this fashion grew in importance.</p><p> </p><p> Reducing the number of parameters would have several benefits. A sparse network is not only smaller, but it is also faster to train and use. Also, more complex models are more prone to overfitting. In some sense, restricting the search space can also act as a regularizer. However, this is not a simple task as reducing the model capacity/weights can lead to loss of accuracy and thus has to be taken care of.&nbsp;</p><p> </p><p> The challenges in Pruning: NN pruning techniques can reduce the parameter counts of trained networks by over 90% decreasing storage requirements and improving computation performance without compromising accuracy. However, experience has shown that sparse architectures produced by Pruning are difficult to train from the start and often do not result in the same level of accuracy as that of the dense NN.</p><p> </p><p> Lottery Ticket Hypothesis:&nbsp;<a href="https://lnkd.in/dQM9KUmb" target="_blank">https://lnkd.in/dQM9KUmb</a></p><p> The challenges faced in Pruning led to the discovery of: Lottery Ticket Hypothesis. In this concept, the goal was to find “that” network from several sub-networks whose initialization made them capable of training effectively.</p><p> </p><p> The authors in the above paper presented an algorithm to identify the winning lottery ticket i.e. a set of sub-networks from a series of downsized neural networks. The authors mention that they consistently find winning lottery tickets i.e. the winning sub-networks that are less than 10-20% of the size of several fully-connected and convolutional feed-forward architectures for MNIST and CIFAR10.</p><p> </p><p> In the original paper, the authors stated that for more complex datasets like ImageNet and deeper architectures like ResNet, the method fails to identify the winners of the initialization lottery. In general, achieving a good sparsity accuracy trade-off is a difficult problem. Pruning is a very active research field and the state of the art keeps improving. TensorFlow includes a Keras-based weight pruning API, which uses an algorithm designed to iteratively remove connections based on their magnitude during training.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEZr7xGJGpAtA" src="https://media.licdn.com/dms/image/C4D12AQEZr7xGJGpAtA/article-inline_image-shrink_1000_1488/0/1636828977556?e=1691625600&amp;v=beta&amp;t=MWTqGN_6ti_OT6988YDeu-3RdK-7lwpjnwbNok_93d8"></div><p><strong>                                   Figure: Pruning - explanation</strong></p><p><br></p><p> </p></div>
+</body>
+</html>

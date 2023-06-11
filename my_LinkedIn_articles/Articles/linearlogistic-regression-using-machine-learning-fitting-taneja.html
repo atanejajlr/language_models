@@ -1,0 +1,153 @@
+<html>
+<head>
+  <title>Linear/Logistic Regression using Machine Learning - Bias/Weights/Over fitting: A point of view</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQEGYPkJYAg-vg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/linearlogistic-regression-using-machine-learning-fitting-taneja">Linear/Logistic Regression using Machine Learning - Bias/Weights/Over fitting: A point of view</a></h1>
+    <p class="created">Created on 2019-03-31 05:56</p>
+  <p class="published">Published on 2019-03-31 06:08</p>
+  <div>
+  <p>(With due thanks to the course on courseera by Prof. Andrew Ng)</p> 
+  <p>The equation for a straight line is usually written y=mx+b;&nbsp;where m is the slope and b is the y-intercept. This can be generalized to multiple feature dimensions as y=θ^Tx + b&nbsp;where θ and x are vectors. Here the θ elements are referred to as weights and&nbsp;b as bias.</p> 
+  <p>You can think of bias as the “intrinsic” way that the system behaves even when all the features are zero. Large weight values are associated with overfitting and large values of bias with underfitting. In weeks 1 and 2 Prof Ng (course on courseera) did a mathematical “trick” to aid vectorization.</p> 
+  <p>A dummy x0 element, always equal to 1, was added to&nbsp;x vector&nbsp;and a corresponding θ0. This removed the b term from the formulas. The new weights are often called bias terms or bias weights and the dummy elements bias units. This allows the hypothesis for any number of features to be computed with a single matrix multiplication.</p>
+ 
+</div>
+</body>
+</html>

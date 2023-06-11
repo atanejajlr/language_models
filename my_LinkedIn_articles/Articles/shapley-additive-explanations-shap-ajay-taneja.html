@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>SHapley Additive exPlanations (SHAP)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQHrizFvjY0P0Q" alt="MLOps Specialization at deeplearning.ai" title="MLOps Specialization at deeplearning.ai" />
+      <h1><a href="https://www.linkedin.com/pulse/shapley-additive-explanations-shap-ajay-taneja">SHapley Additive exPlanations (SHAP)</a></h1>
+    <p class="created">Created on 2021-12-09 09:48</p>
+  <p class="published">Published on 2021-12-09 11:59</p>
+  <div><p><br></p><p>I have discussed about Shapley Values in a post here: <a href="https://www.linkedin.com/posts/ajay-taneja-47727817_datascience-machinelearning-deeplearning-activity-6870210844957921280-ISyK" target="_blank">https://www.linkedin.com/posts/ajay-taneja-47727817_datascience-machinelearning-deeplearning-activity-6870210844957921280-ISyK</a></p><p>Whereas the other Model-Agnostic methods for Machine Learning Model Interpretability make much intuitive sense, they do not have the rigorous mathematical foundation as that of the Shapley Values. Some people believe that Shapley might be the only method that delivers a complete scientific explanation in terms of feature importance’s. The open source SHAP library is a powerful tool for working with Shapley Values. It assigns each feature an importance for a particular prediction and includes many useful extensions many of which are based om recent theoretical works extending the Shapley Theory (which dates back to 1951!). The extensions include:</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TreeExplainer: High Speed algorithm for tree ensembles</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeepExplainer: High Speed approximate algorithm for SHAP values in Deep Learning Models</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KernelExplainer: uses a specifically weighted local linear regression to estimate SHAP values for any model</p><p>You can visualize the Shapley Values as Forces. <strong>Each feature value</strong> is a force that either increases or decreases the prediction. The prediction starts from the baseline – the baseline for Shapley values is the average of all the prediction. In a force plot, each Shapley value is a force which is displayed as an arrow that “pushes” the prediction to increase or decrease (when we say increase or decrease – we mean increase or decrease in terms of probability). </p><p>We can consider an example of cervical cancer dataset where from the figure one can observe 2 instances – one instance is a woman of age 42 and another instance woman of age 51 years. You can see the features (red or blue arrows) that contribute to increasing the risk (red arrows) or decreasing the risk (blue arrows)</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHQj_WYoyP_Rw" src="https://media.licdn.com/dms/image/C4D12AQHQj_WYoyP_Rw/article-inline_image-shrink_1000_1488/0/1639043415985?e=1691625600&amp;v=beta&amp;t=2s1UGHQEDdiBlEcE_UYl5KsK-GRkgBzTlSBctVUpNME"></div><p>The idea behind SHAP feature importance is simple: Features with large absolute Shapley values are important. Since we want the global importance, we average the absolute Shapley values per feature across the data (i.e., for each instance in the training/test set). Next, we sort the features by decreasing importance and plot them. The following figure shows the SHAP feature importance for the random forest trained before for predicting cervical cancer.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHr9ncVhTKOpA" src="https://media.licdn.com/dms/image/C4D12AQHr9ncVhTKOpA/article-inline_image-shrink_1000_1488/0/1639043488296?e=1691625600&amp;v=beta&amp;t=ldeFaq0whuxb-swsDbAKgDGWkTU-guHT3LoEBkOaHMA"></div><p><strong>SHAP vs Permutation Feature Importance:</strong></p><p>SHAP feature importance is an alternative to permutation feature importance. There is a big difference between both importance measures: Permutation feature importance is based on the decrease in model performance. SHAP is based on magnitude of feature attributions.</p><h3><strong>SHAP Summary Plot</strong></h3><p>So, in the Figure 2 – we have seen the SHAP feature importance which are averaged for Each feature across all the data set. In the SHAP Summary plot – as shown in the Figure 3, we see the SHAP values corresponding to each feature for every instance.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHANqX6gl7NWQ" src="https://media.licdn.com/dms/image/C4D12AQHANqX6gl7NWQ/article-inline_image-shrink_1000_1488/0/1639043551910?e=1691625600&amp;v=beta&amp;t=Rgoz8DjZVnxtZ2WKT-H8dW72AGacVNoItE1z_QIolZk"></div><p><br></p></div>
+</body>
+</html>

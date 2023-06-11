@@ -1,0 +1,637 @@
+<html>
+<head>
+  <title>Free vibration analysis: without and with pre-stress using the finite element method</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQE3B_EhZVE4qA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/free-vibration-analysis-without-pre-stress-using-finite-ajay-taneja">Free vibration analysis: without and with pre-stress using the finite element method</a></h1>
+    <p class="created">Created on 2015-09-15 19:10</p>
+  <p class="published">Published on 2015-09-20 14:28</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2><strong>1. INTRODUCTION</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>A free vibration analysis involves (ultimately) the computation of the natural frequencies and mode shapes of the structure through the solution of the equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH_iGp0_aGlzA" src="https://media.licdn.com/dms/image/C5112AQH_iGp0_aGlzA/article-inline_image-shrink_400_744/0/1520065952035?e=1691625600&amp;v=beta&amp;t=UT-drFWZBE0-F94GIRC_0eNxREcojxybfGoYp1hMNbE"> 
+  </div> 
+  <p>The computation of the natural frequencies and their comparison to the forcing frequencies aids the engineer to establish whether the natural frequencies are far away from the forcing frequencies, thus eliminating the chance of resonance. If the natural frequencies computed through the free vibration analysis procedure are closer to the forcing frequencies, a redesign of the system is normally carried out and the free vibration analysis repeated following the redesign.</p> 
+  <p>The above equation is based on the following assumptions related to the structural analysis;</p> 
+  <ul> 
+   <li>[K] and [m] – the stiffness and the mass matrices (system) are constant.</li> 
+   <li>linear elastic material is assumed;</li> 
+   <li>small deflection theory is assumed and no non-linearities are included;</li> 
+   <li>No damping is included;</li> 
+   <li>{F} is not present, so no excitation of the structure is assumed.</li> 
+   <li>The structure can be unconstrained (rigid body modes present) or partially or fully constrained.</li> 
+  </ul> 
+  <p>The aim of this write up is illustrate a free vibration analysis through the finite element method, both<strong>: without and with pre-stress</strong>. The following topics are covered in this article;</p> 
+  <p>Section 2 of this article explains finite element equations for a bar, beam and a plane stress element starting from the corresponding governing differential equation. The finite element equation is arrived at using Gallerkin's weighted residual method. The finite element equations for computation of element stiffness and the element mass matrices are derived. Through the section 2 , it is attempted, firstly, to explain the approach to generate finite element equations and then to get a detailed understanding of the development of the consistent mass matrix (for some of the finite elements) which forms one of the major steps in a dynamic finite element method analysis.</p> 
+  <p>Firstly, the mass matrix formulation for the 1d bar and beam elements is explained based on the Galerkin’s weighted residual approach.</p> 
+  <p>Energy based method for the formulation of the mass matrix is then discussed which is followed by the mass matrix evaluation for a general three dimensional finite element and a 2d bar element using the energy based approach.</p> 
+  <p>Section 3 describes the numerical approach involving the mapping procedure from a parent element to a mapped/general finite element which aids in solving the integrals involving the evaluation of the stiffness, force, and the consistent mass matrix during the FE analysis solution process.</p> 
+  <p>Section 4 lists the steps carried out in a free vibration analysis procedure using finite element analysis.</p> 
+  <p>A description of the various methods/solvers available for carrying out the solution of the Eigen value problem will be presented in a separate article which is under preparation. This part is not covered in this article.</p> 
+  <p>A note has been included in section 5 to point out the physical significance of rigid body modes following a free vibration analysis</p> 
+  <p>A Matlab code has been developed for free vibration analysis through the steps described in section 3 / 4 and the results of Matlab output are presented in section 6 for a few benchmark problems. No commercial software has been used and the results presented in this section are the direct output of the Matlab program for free vibration analysis of structures using bar, beam 2d (plane strain, plane stress), 3d (8 noded hexahedron) finite elements. The element mass matrices, element stiffness matrices and consequently the system mass and stiffness matrices are generated through the Matlab code developed. For the solution of the Eigen value problem the Matlab solver has been used.</p> 
+  <p>Finally in section 7, free vibration with pre-stress analysis is explained. This is significant, because, generally, the stress state of a structure under constant loads (static) may affect its natural frequencies. This can be important especially for structures thin in one or two dimensions. For example, consider a guitar string being tuned: as the axial load is increased (from tightening) the lateral frequencies increase. This is an example of the stress stiffening effect.</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>2. FINITE ELEMENT EQUATIONS, MASS MATRIX FORMULATION: BAR ELEMENT, BEAM ELEMENT, GENERAL 3D FINITE ELEMENT</strong></h2> 
+  <p>&nbsp;</p> 
+  <h3><strong>2.1 BAR ELEMENT</strong></h3> 
+  <p>Consider a one dimensional bar element as shown in the figure (a) below and a free body of a differential element of length dx and cross sectional area 'A' in figure (b).</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGD2qbr_nNfmw" src="https://media.licdn.com/dms/image/C5112AQGD2qbr_nNfmw/article-inline_image-shrink_1000_1488/0/1520239218895?e=1691625600&amp;v=beta&amp;t=P31qAT1GSzOnBn_IRm0ZF427J3-98DN2qGaApHhocmU"> 
+  </div> 
+  <p><strong>Figure: a) Bar element exhibiting time dependent displacement b) Free body diagram of a differential element.</strong></p> 
+  <p>Applying Newton’s second law to the differential element will result in;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQH9UKEhUZFUdw" src="https://media.licdn.com/dms/image/C4E12AQH9UKEhUZFUdw/article-inline_image-shrink_400_744/0/1520518485421?e=1691625600&amp;v=beta&amp;t=bSYgccWMEGkIYuABJ62hhLWZl3igqsOUuw_QYQk1qbE"> 
+  </div> 
+  <p>Where;</p> 
+  <p>Ρ is the density of the bar material. Partial derivative operators have been used since the displacement is now considered dependent on both position and time</p> 
+  <p>Substituting the stress strain relation,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH-ZJfHParRnw" src="https://media.licdn.com/dms/image/C5112AQH-ZJfHParRnw/article-inline_image-shrink_400_744/0/1520101164817?e=1691625600&amp;v=beta&amp;t=q8jZgdElX6yahtjmaDfxaOmGnOukpwlnaNfMiaDuo64"> 
+  </div> 
+  <p>the above equation becomes;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFvw5fzpI1F_A" src="https://media.licdn.com/dms/image/C5112AQFvw5fzpI1F_A/article-inline_image-shrink_400_744/0/1520066228548?e=1691625600&amp;v=beta&amp;t=HFC0KJx7-1z9qHuSLkhBmN72-P470e9shaIhVzQm8rQ"> 
+  </div> 
+  <p>In the dynamic case, the axial displacement is discretized as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHbj7mj3msb_g" src="https://media.licdn.com/dms/image/C5112AQHbj7mj3msb_g/article-inline_image-shrink_400_744/0/1520062872021?e=1691625600&amp;v=beta&amp;t=D7xClNHI-Na9U4mVHxuzXKyNdog7j3gErjK4-kqelbI"> 
+  </div> 
+  <p>where the nodal displacements are now expressed explicitly as time dependent, but the interpolation functions remain dependent only on the spatial variable. Consequently, the interpolation functions are identical to those used for static analysis using bar element.</p> 
+  <p>Application of Gallerkin’s residual statement to the differential equation gives;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEc-lbfyDvqrw" src="https://media.licdn.com/dms/image/C5112AQEc-lbfyDvqrw/article-inline_image-shrink_400_744/0/1520172000207?e=1691625600&amp;v=beta&amp;t=Rg3vLMgOxcCCMlrGxMGxctJiJFAf1_dqf-DotZRggZA"> 
+  </div> 
+  <p>Assuming constant material properties, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEHx5Q3GkfJFg" src="https://media.licdn.com/dms/image/C5112AQEHx5Q3GkfJFg/article-inline_image-shrink_400_744/0/1520240603579?e=1691625600&amp;v=beta&amp;t=zxNTivlpfsCMtvwk8epx-6ANA73NZNwp0bLL5qp0Abw"> 
+  </div> 
+  <p>Mathematical treatment of the right hand side of the equation will yield the stiffness matrix whereas that of the left hand side of the equation will result in the mass matrix of the element</p> 
+  <p>That is;</p> 
+  <p>Integrating the right hand side of the above equation by parts will result in equation of the form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFpW-knAz1OJA" src="https://media.licdn.com/dms/image/C4E12AQFpW-knAz1OJA/article-inline_image-shrink_400_744/0/1520518486456?e=1691625600&amp;v=beta&amp;t=u9csjgdwM0u8PTEPZ77CgKFkR6ubXzDU9MtU_c0wrqc"> 
+  </div> 
+  <p>i.e.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEiAI8njEwFag" src="https://media.licdn.com/dms/image/C4E12AQEiAI8njEwFag/article-inline_image-shrink_400_744/0/1520518486143?e=1691625600&amp;v=beta&amp;t=okZ-Px7D_sMAUKeahL7LQSUpthdDMEqlgaEqZ-Q6x1Y"> 
+  </div> 
+  <p>Where, the stiffness coefficient kij is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHvIgELYRqHDQ" src="https://media.licdn.com/dms/image/C5112AQHvIgELYRqHDQ/article-inline_image-shrink_400_744/0/1520062831038?e=1691625600&amp;v=beta&amp;t=V4J1CaraITN385UwT1dXPevdB7RXkuiArJol87bSU3M"> 
+  </div> 
+  <p>Now, considering the right hand side of the integral;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHlAgKrG8CwvQ" src="https://media.licdn.com/dms/image/C5112AQHlAgKrG8CwvQ/article-inline_image-shrink_1000_1488/0/1520173310086?e=1691625600&amp;v=beta&amp;t=TGDy61Hm2D2MJtjWtXGZSB-ekx874USklkUKnsFB5Yg"> 
+  </div> 
+  <p>Where the double-dot notation indicates differentiation with respect to time.</p> 
+  <p>The two equations represented above may be written in the matrix form as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHFN5UdZY-kCQ" src="https://media.licdn.com/dms/image/C5112AQHFN5UdZY-kCQ/article-inline_image-shrink_1000_1488/0/1520062845994?e=1691625600&amp;v=beta&amp;t=jgUeBSw8YZR_4sQZ41Rgc5c6K8U5zfJc7_f13q5uZns"> 
+  </div> 
+  <p>The mass matrix generated as above is called the “consistent mass matrix”. This is so because interpolation functions are used in the generation of the mass matrix than using the lumped mass matrix.</p> 
+  <h3><strong>2.2 BEAM ELEMENT</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Similar, to the procedure presented above, the stiffness and mass matrices for a beam element can be derived. The steps that are to be followed include;</p> 
+  <p>Firstly, the differential equation of a beam may be derived considering a differential beam element through the equilibrium of forces; then the Gallerkin's weighted residual statement is written. This is followed by carrying out integration by parts which results in the finite element equations.</p> 
+  <p>Applying Newton’s second law to the differential segment of the beam, we get;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHOYSVNmEMoZg" src="https://media.licdn.com/dms/image/C5112AQHOYSVNmEMoZg/article-inline_image-shrink_400_744/0/1520145159476?e=1691625600&amp;v=beta&amp;t=-vXGGIU5v71-V9Z5WLONaGu0M6Nx-07iXzRPIFiN2cM"> 
+  </div> 
+  <p class="center"><strong>Figure: Differential segment of the beam subjected to time dependent loading</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGYb8gIKAMt_Q" src="https://media.licdn.com/dms/image/C5112AQGYb8gIKAMt_Q/article-inline_image-shrink_1000_1488/0/1520065285802?e=1691625600&amp;v=beta&amp;t=mgJFNhihaQ_RJiX8sHoQY4tnx_wWoNqbyYlwi__SDno"> 
+  </div> 
+  <p>Where, ρA represents the mass per unit length in the x direction. The above equation simplifies to;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEL7hsiU0DGrw" src="https://media.licdn.com/dms/image/C5112AQEL7hsiU0DGrw/article-inline_image-shrink_400_744/0/1520110561666?e=1691625600&amp;v=beta&amp;t=mPPwEoaX8JznYWfIuIL19xtvmK72dvOUS5PdC8zEGbE"> 
+  </div> 
+  <p>As we are dealing with small dealing with small deflection theory of beam flexure, beam slopes, therefore rotations are small. Therefore, we neglect the rotational inertia of the differential beam element. Substituting the moment shear relation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE4cE8EJiFbvQ" src="https://media.licdn.com/dms/image/C5112AQE4cE8EJiFbvQ/article-inline_image-shrink_400_744/0/1520062857531?e=1691625600&amp;v=beta&amp;t=9zoP_GmP_LDNCPTbRSmdwsn5JMlNJVbInjz-kfRT_I4"> 
+  </div> 
+  <p>In the above equation, we get;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHrC9Tz6TafAQ" src="https://media.licdn.com/dms/image/C4E12AQHrC9Tz6TafAQ/article-inline_image-shrink_400_744/0/1520518484927?e=1691625600&amp;v=beta&amp;t=FuLnOvHHASE6wa0u8U5ihxhi9XP-f-nz8hv1-zsd83w"> 
+  </div> 
+  <p>Finally, the flexure formula;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFcxpcbKwFSzw" src="https://media.licdn.com/dms/image/C4E12AQFcxpcbKwFSzw/article-inline_image-shrink_400_744/0/1520518484855?e=1691625600&amp;v=beta&amp;t=cIGF5UthYiRAU3mk7bQYudSNeSRUv5NYYfAhANq0F6o"> 
+  </div> 
+  <p>Is substituted in to obtain the governing differential equation for the dynamic beam deflection as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFV4JfQ4051rg" src="https://media.licdn.com/dms/image/C5112AQFV4JfQ4051rg/article-inline_image-shrink_400_744/0/1520200149510?e=1691625600&amp;v=beta&amp;t=j7eAFUBvNqHu_i5FfRs2fIPzf2Yzizug69FBLYgmXkA"> 
+  </div> 
+  <p>Under the assumption of constant elastic modulus and moment of inertia, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHmdprsO1V1fQ" src="https://media.licdn.com/dms/image/C4E12AQHmdprsO1V1fQ/article-inline_image-shrink_400_744/0/1520518486785?e=1691625600&amp;v=beta&amp;t=4v8-qD9UBTvR4RdLohtPktmYdJD9-WOSHH-WSU3cQlg"> 
+  </div> 
+  <p>Now, in order to generate the mass matrix, the transverse beam deflection is discretised using the same interpolation functions as derived for static analysis. Now, the nodal displacements are time dependent.</p> 
+  <p>Hence;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHem3QhwIHejg" src="https://media.licdn.com/dms/image/C4E12AQHem3QhwIHejg/article-inline_image-shrink_1000_1488/0/1520518486611?e=1691625600&amp;v=beta&amp;t=wVRDVbxz_-aZ1-rdjntX2kjNYKI_UP9-Hzq8b0wzYdw"> 
+  </div> 
+  <p>and the interpolation functions are same as for the beam element used in case for static analysis.</p> 
+  <p>Now, applying Gallerkin’s weighted residual statement;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFzbElq6CTcqg" src="https://media.licdn.com/dms/image/C5112AQFzbElq6CTcqg/article-inline_image-shrink_400_744/0/1520063322450?e=1691625600&amp;v=beta&amp;t=x2yahXnKXO8i6BohOJ473Abaw2g2cQ37uRWd1d7_fWk"> 
+  </div> 
+  <p>The stiffness matrix for the beam element can be derived using last two terms of the above integrand which would yield (following integration by parts);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQE4anjTD6-5Jg" src="https://media.licdn.com/dms/image/C4E12AQE4anjTD6-5Jg/article-inline_image-shrink_400_744/0/1520518486096?e=1691625600&amp;v=beta&amp;t=heHewA6lRSoByq_VcrObHXx4I4bF6sWdruYl3gMsyQc"> 
+  </div> 
+  <p>Now, considering the first term of the integrand (of the Gallerkin’s weighted residual statement) in order to develop the mass matrix;</p> 
+  <p>For each of the four equations represented by the first integral term becomes;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF-9bTVXH5r_A" src="https://media.licdn.com/dms/image/C5112AQF-9bTVXH5r_A/article-inline_image-shrink_1000_1488/0/1520197863833?e=1691625600&amp;v=beta&amp;t=WO2SGpDjHx4IZYRTT0DFze1ZZcwCqMASWaak7ubPNgA"> 
+  </div> 
+  <p>And when all the four equations are expressed in matrix form, the inertia terms become;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEvYPKqLLbF4g" src="https://media.licdn.com/dms/image/C4E12AQEvYPKqLLbF4g/article-inline_image-shrink_400_744/0/1520518486414?e=1691625600&amp;v=beta&amp;t=cn7vU1u7l_h8JDsRUPaknE2UPO8h2EWR2VVQgdUNlmo"> 
+  </div> 
+  <p>The consistent mass matrix for a 1-dimensional beam element is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQF99Q79NGFCpg" src="https://media.licdn.com/dms/image/C4E12AQF99Q79NGFCpg/article-inline_image-shrink_400_744/0/1520518486186?e=1691625600&amp;v=beta&amp;t=aLZ55Q_cOU21aZH7KX664OhJcgUrmMGHE1d8tj8-Fsk"> 
+  </div> 
+  <h3><strong>2.3 ENERGY BASED METHOD FOR COMPUTATION OF MASS MATRIX</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Examples in sections 2.1 and 2.2 dealt with simple elements (one dimensional bar and beam element) in which case the direct application of Newton’s second law and Galerkin’s weighted residual statement led to the formulation of finite element equations and hence the mass matrix.</p> 
+  <p>For more general cases (considering 2 dimensional or 3 dimensional finite elements), a more general approach based on the energy method is preferred.</p> 
+  <p>Firstly, to demonstrate that the final equation obtained through the principal of conservation of energy is the same as that obtained through Newton’s second law.</p> 
+  <p>Consider the simple harmonic oscillator as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGmR_cQk8jopQ" src="https://media.licdn.com/dms/image/C5112AQGmR_cQk8jopQ/article-inline_image-shrink_400_744/0/1520065667629?e=1691625600&amp;v=beta&amp;t=MfEhSqmbOvsCl9HorSnw9HfuG_CzBGjkQBoPkVtuPIA"> 
+  </div> 
+  <p><strong>(a) Simple harmonic oscillator (b) Static equilibrium position (c) Free body diagram for arbitrary position x</strong></p> 
+  <p>At any arbitrary position x (which is measured from the equilibrium position δst), the system is in motion and the total kinetic energy is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEn7N6Si7GOCA" src="https://media.licdn.com/dms/image/C5112AQEn7N6Si7GOCA/article-inline_image-shrink_400_744/0/1520066037334?e=1691625600&amp;v=beta&amp;t=ZaxxxWbVv083c7x4QH875pai6JneSh9wtoRJoGGg18M"> 
+  </div> 
+  <p>And the total potential energy is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHiOhBOLhnlXw" src="https://media.licdn.com/dms/image/C5112AQHiOhBOLhnlXw/article-inline_image-shrink_400_744/0/1520199721058?e=1691625600&amp;v=beta&amp;t=aIR0DXKJpP8kXQAtsXX3afEIZJodiQ7AFf_E4Z4Zt9w"> 
+  </div> 
+  <p>Therefore, the total mechanical energy is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFwJ2muZJm_vA" src="https://media.licdn.com/dms/image/C5112AQFwJ2muZJm_vA/article-inline_image-shrink_400_744/0/1520196653279?e=1691625600&amp;v=beta&amp;t=r_apAB4G06BJ2qz_xzxbBSjMyS62B2Oy1uDNXgywRxA"> 
+  </div> 
+  <p>Applying the principle of conservation of energy;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFxjArjIE4QYw" src="https://media.licdn.com/dms/image/C5112AQFxjArjIE4QYw/article-inline_image-shrink_400_744/0/1520066200544?e=1691625600&amp;v=beta&amp;t=MpaTJ4gwsalxsrl4mTGbBUkdfgptYpmGeAmfRAXBu0w"> 
+  </div> 
+  <p>or</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHEUgt-Qxu2IQ" src="https://media.licdn.com/dms/image/C5112AQHEUgt-Qxu2IQ/article-inline_image-shrink_400_744/0/1520170096321?e=1691625600&amp;v=beta&amp;t=qt56T1SHNwHCurswezAoF-XQYe2b_5EwqLy59Vy0aPo"> 
+  </div> 
+  <p>this is the same as Newton’s second law (section 2.1 and 2.2).</p> 
+  <h3><strong>2.4 &nbsp;MASS MATRIX FOR A GENERAL 3D FINITE ELEMENT</strong></h3> 
+  <p>Consider a three dimensional body as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE2LeJhaqoagw" src="https://media.licdn.com/dms/image/C5112AQE2LeJhaqoagw/article-inline_image-shrink_400_744/0/1520197953238?e=1691625600&amp;v=beta&amp;t=U55zvavpCauE-Bb8Xl3Fu7XmlEpQIjJN1-SrWomVVT0"> 
+  </div> 
+  <p class="center"><strong>Figure: Differential element of a general three-dimensional body</strong></p> 
+  <p>We have a differential mass dm = ρ dx dy dz located at arbitrary position (x,y,z).</p> 
+  <p>Displacements of the differential mass in the coordinate directions are (u, v, w)</p> 
+  <p>Velocities of the differential mass in the coordinate directions are).</p> 
+  <p>Considering the kinetic energy of the differential mass</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGyW57QJo7FHA" src="https://media.licdn.com/dms/image/C4E12AQGyW57QJo7FHA/article-inline_image-shrink_400_744/0/1520518485279?e=1691625600&amp;v=beta&amp;t=dmr0W3AdC7ncyW1FAibJL0GtP9ar2QWDUPiVX6-SYu4"> 
+  </div> 
+  <p>Total kinetic energy of the body;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHk6Oj9MQ5FTw" src="https://media.licdn.com/dms/image/C5112AQHk6Oj9MQ5FTw/article-inline_image-shrink_1000_1488/0/1520196397653?e=1691625600&amp;v=beta&amp;t=szmEdXME3BDJ6Lb_IqqJSSREoeTTmbUjwI04qo_HRZI"> 
+  </div> 
+  <p>Consider the body to be a finite element with the displacement field discretised as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHDqGnBX4eBvw" src="https://media.licdn.com/dms/image/C5112AQHDqGnBX4eBvw/article-inline_image-shrink_400_744/0/1520041940848?e=1691625600&amp;v=beta&amp;t=yrd-lyXQToCQokq3B69kHJRzOPqrQ3fNYZblvy8IovI"> 
+  </div> 
+  <p>(where M is the number of element nodes), the velocity components can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEi6mThkAh-Lg" src="https://media.licdn.com/dms/image/C5112AQEi6mThkAh-Lg/article-inline_image-shrink_400_744/0/1520241273752?e=1691625600&amp;v=beta&amp;t=RQVf2TKE5l3iVIy4VqUrfIP0Bv7z-SbP_nmxTTFXgz8"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>The element kinetic energy in terms of nodal velocities and interpolation functions is then written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGMiqSbD4JsjA" src="https://media.licdn.com/dms/image/C5112AQGMiqSbD4JsjA/article-inline_image-shrink_400_744/0/1520141339543?e=1691625600&amp;v=beta&amp;t=SwEwsJG2gCILOqhhf2nKZGCYQL_qtnIKk-zWV8X6y3k"> 
+  </div> 
+  <p>Denoting the nodal velocities as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEWSbofY1xgbA" src="https://media.licdn.com/dms/image/C5112AQEWSbofY1xgbA/article-inline_image-shrink_400_744/0/1520066203569?e=1691625600&amp;v=beta&amp;t=hPpYND7YpwfR7DdGljcDDQKpxe2Z2W62yuG3UUuTDuI"> 
+  </div> 
+  <p>A 3M x 1 column matrix, the kinetic energy is expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEB0oSfnPY4Ww" src="https://media.licdn.com/dms/image/C5112AQEB0oSfnPY4Ww/article-inline_image-shrink_1000_1488/0/1520062750188?e=1691625600&amp;v=beta&amp;t=gCp8s_yOy2qg8a2x_Jzp0Gc2qX-EQ7Leb6QBVNcrg6g"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHb7TZMx6-lsw" src="https://media.licdn.com/dms/image/C4E12AQHb7TZMx6-lsw/article-inline_image-shrink_400_744/0/1520518485181?e=1691625600&amp;v=beta&amp;t=4LOlQPZ0pzMoluDLxmNC2wXqM7WmgGMUfpFFyKyLGyg"> 
+  </div> 
+  <p>And; the element mass matrix id identified as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEP8LTtnmMbKw" src="https://media.licdn.com/dms/image/C5112AQEP8LTtnmMbKw/article-inline_image-shrink_400_744/0/1520065500763?e=1691625600&amp;v=beta&amp;t=_o6bFAFLnCHvJ77AWKy4m5ZTGGQoI1qARHd1cBhlL6M"> 
+  </div> 
+  <p>In the above equation for the mass matrix, the zero terms actually represent M x M null matrices. Therefore, the mass matrix as derived is a 3M x 3M matrix, which is symmetric.</p> 
+  <p>It should be noted that the above expression is generic and can thus result in a generic sub-routine if coded in a finite element analysis program. For a 2 d finite element with 2 degrees of freedom per node, the expression for the mass matrix will be;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG7rtFMVk_kJg" src="https://media.licdn.com/dms/image/C5112AQG7rtFMVk_kJg/article-inline_image-shrink_400_744/0/1520243240791?e=1691625600&amp;v=beta&amp;t=qD8igf0G6qFa5u29KQ8fJ2v1FMJHt6VvjFt5zO3GQg0"> 
+  </div> 
+  <h3><strong>2.4 TWO DIMENSIONAL BAR ELEMENT&nbsp;&nbsp;&nbsp;</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>The bar element mass matrix defined in section 2.1 is valid only for axial vibrations. When bar elements are used in modelling two and three dimensional truss structures (i.e. structures comprising of bar elements with 2d or 3d geometry), additional considerations are required and the mass matrix must be modified accordingly. When a truss (i.e. structure comprising of bar elements) undergoes deflection, either statically or dynamically, individual elements experience both axial and transverse displacements resulting from overall structural displacement and element interconnections at the nodes&nbsp;</p> 
+  <p>In case of a static problem, the transverse displacements of elements were ignored in development of element stiffness matrix and there is no transverse stiffness owing to assumption of pin connections, hence free rotation</p> 
+  <p>In a dynamic problem, transverse motion introduces additional kinetic energy, which must be taken into account.</p> 
+  <p>The mass matrix of a bar element considering transverse inertia could be derived as follows;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGdsMuaUznOjw" src="https://media.licdn.com/dms/image/C5112AQGdsMuaUznOjw/article-inline_image-shrink_1000_1488/0/1520169089196?e=1691625600&amp;v=beta&amp;t=K42bSVv5adcjOWh5oChvdwCrO8rKLg68Z1zP6df81Qo"> 
+  </div> 
+  <p class="center"><strong>Figure: Bar element (two dimensional geometry)</strong></p> 
+  <p>&nbsp;</p> 
+  <p>It should be noted, that, the transverse displacements can be expressed in terms of the transverse displacements of the element nodes using the same interpolation functions as that for axial displacements. This justifies the above form of the mass matrix in case of a two dimensional bar element.</p> 
+  <h2><strong>3. PROGRAMMING A FREE VIBRATION FINITE ELEMENT ANALYSIS</strong></h2> 
+  <h3><strong>3.1 Parent element and mapped element</strong></h3> 
+  <p>It might be observed through the section 2 above, that the computation of stiffness matrix; mass matrix requires the solution of integrals. These integrals (as can be observed in section 2) are generally complex and cannot be computed through a closed form solution. Thus, these integrals will have to be evaluated numerically using one of the many methods available for numerical integration.</p> 
+  <p>Gaussian quadrature is normally resorted to in most of the commercial software’s. Integrations are carried out on a ‘<em>parent’</em> which is a much simpler version of the original element. E.g. for a quadrilateral element, the parent element is a rectangle of 2 units; for a triangle the parent element is a right angled triangle, for a hexahedron, the parent element is a cuboid.</p> 
+  <p>The example below describes in detail how a rectangular parent element can be mapped onto a general quadrilateral element, thus facilitating the numerical integration process and hence the evaluation of structural (or thermal) matrices;</p> 
+  <p>The figure below shows a parent element in its natural (r, s) coordinate system and the quadrilateral element in its global cartesian coordinate system.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQES76l8ZH60GA" src="https://media.licdn.com/dms/image/C4E12AQES76l8ZH60GA/article-inline_image-shrink_400_744/0/1520518486765?e=1691625600&amp;v=beta&amp;t=Ia3oqxUtneG5Y7Q3VwRF-YqTE-iY0n6ptGfxpnvC3Zo"> 
+  </div> 
+  <p><strong>Figure: Mapping of a parent element into an isoparametric quadrilateral element. </strong></p> 
+  <p>&nbsp;</p> 
+  <p>The geometry of the quadrilateral element is described by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHCaZZkxT_gQw" src="https://media.licdn.com/dms/image/C4E12AQHCaZZkxT_gQw/article-inline_image-shrink_400_744/0/1520518487482?e=1691625600&amp;v=beta&amp;t=2n7qrYF1pMBAR530kPCYnF6g7oz88HpqiFccknwSooo"> 
+  </div> 
+  <p>where; the G(x,y) can be considered as <em>geometric </em>interpolation functions, and each function is associated with a particular node of the quadrilateral element. Given the geometry and the form of the above equations, each function must evaluate to unity at its associated node and zero at each of the other three nodes.</p> 
+  <p>These conditions are exactly the same as those imposed on the interpolation functions of the parent element. Consequently, the interpolation functions for the parent element can be used for the geometric functions if we map the coordinates so that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEexDn2IDh5bQ" src="https://media.licdn.com/dms/image/C5112AQEexDn2IDh5bQ/article-inline_image-shrink_400_744/0/1520196569952?e=1691625600&amp;v=beta&amp;t=ct_rf4S5FkI18u37ecW042n7WZDSs5Z4M9g6s7zuQLM"> 
+  </div> 
+  <p>where the symbol =&gt; is read as “maps to” or “corresponds to”.</p> 
+  <p>Consequently, the geometric expressions become (<strong>**</strong>);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHewpC0T9olgg" src="https://media.licdn.com/dms/image/C4E12AQHewpC0T9olgg/article-inline_image-shrink_400_744/0/1520518486778?e=1691625600&amp;v=beta&amp;t=Bai8aIjb1nd94JoBfOrPoGb6ywynLU5adQtqRuNzbNw"> 
+  </div> 
+  <p>If the same interpolation functions are used for both the field variable and desciption of element geometry, the procedure is known as “isoparametric (constant parameter) mapping” and the element defined by such a procedure is known as an “isoparametric element”. For the quadrilateral isoparametric element considered above, the field variable at any point (x,y) inside the element can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFoyMg-4hB7UQ" src="https://media.licdn.com/dms/image/C5112AQFoyMg-4hB7UQ/article-inline_image-shrink_400_744/0/1520200014465?e=1691625600&amp;v=beta&amp;t=Eqo9t12ZKVyXHmECIXkUvioLk1zuVxESYS994wRJSu0"> 
+  </div> 
+  <h3><strong>3.2 Computing the derivatives of interpolation functions</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>In formulating element characteristic matrices, various derivatives of the interpolation functions with respect to the global coordinates are required as demonstrated in section 2. In isoparametric elements, both element and geometry and field variable are expressed in terms of natural coordinates of the parent element, so additional mathematical complication arises. Specifically, we must compute and (and possibly higher order derivatives). Since, the interpolation functions are expressed in (r,s) coordinates, we can write the derivatives as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF5z9JQCK2OZw" src="https://media.licdn.com/dms/image/C5112AQF5z9JQCK2OZw/article-inline_image-shrink_400_744/0/1520146855713?e=1691625600&amp;v=beta&amp;t=3s_eXm_jF990ZGkufnvpB1SPZV8_X0WoixE7MAwFL9o"> 
+  </div> 
+  <p>However, unless we invert the geometric relation expressed in section 3.1 <strong>(*,*), </strong>the partial derivatives of the natural coordinate with respect to the global coordinate are not known. Since, it is virtually impossible to invert the relation <strong>(*,*)</strong> to explicit algebraic expressions, a different approach is taken.</p> 
+  <p>In this approach, the partial derivatives of the field variable with respect to natural coordinate are examined first as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHZ7RTlkvuQYw" src="https://media.licdn.com/dms/image/C4E12AQHZ7RTlkvuQYw/article-inline_image-shrink_400_744/0/1520518487371?e=1691625600&amp;v=beta&amp;t=Za8s_jKT8OMklHNWmbhO8U8d2oK3iurx-cHSx2RalN8"> 
+  </div> 
+  <p>Since, the field variable fi is expressed in terms of the interpolation functions, the above equation requires computing the derivatives of the interpolation functions which can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHHulDMSQcS9g" src="https://media.licdn.com/dms/image/C4E12AQHHulDMSQcS9g/article-inline_image-shrink_400_744/0/1520518486694?e=1691625600&amp;v=beta&amp;t=CkMRClBdVhjfkc3rqsZcUZyZBDHjsc66zZ5uGO86NSs"> 
+  </div> 
+  <p>Writing the above equation in matrix form, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHKSj1zh21pjw" src="https://media.licdn.com/dms/image/C5112AQHKSj1zh21pjw/article-inline_image-shrink_400_744/0/1520238863447?e=1691625600&amp;v=beta&amp;t=8dMhahaO7y9ceISs28EnX2XxjMdLHQ8883o8hpzbaqc"> 
+  </div> 
+  <p>It may be observed that the 2x1 vector on the left hand side is known, since the interpolation functions are expressed explicitly in natural coordinates. Similarly, the terms in the 2 x 2 coefficient matrix on the right hand side are known. This 2 x 2 matrix on the right hand side is known as the Jacobian matrix and is expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH0aOj3OdUceA" src="https://media.licdn.com/dms/image/C5112AQH0aOj3OdUceA/article-inline_image-shrink_400_744/0/1520196334594?e=1691625600&amp;v=beta&amp;t=qd9deDJ7Sf-KySPPX9T9HLrP43Ywe0bSfW4hWsIUW8M"> 
+  </div> 
+  <p>If the inverse of the Jacobian matrix is obtained, the partial derivative of the interpolation functions with respect to the global coordinates will be;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHduBh15WDZcQ" src="https://media.licdn.com/dms/image/C5112AQHduBh15WDZcQ/article-inline_image-shrink_400_744/0/1520066345819?e=1691625600&amp;v=beta&amp;t=NKTBtV5Ab5a5Eu6_-v4SiKZTpKmrzgzstns7e9jCEwM"> 
+  </div> 
+  <p>As the integrals in the finite element equations are of the form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFjl89pxbXF1A" src="https://media.licdn.com/dms/image/C5112AQFjl89pxbXF1A/article-inline_image-shrink_400_744/0/1520066024211?e=1691625600&amp;v=beta&amp;t=ni1mYauG0xeEM7cFVLxF5dh08qena75eksCBmBHOIuM"> 
+  </div> 
+  <p>the integration is to be performed over the area (or volume, or length) of the element in global coordinates. But, in an isoparameteric formulation, as discussed above, he interpolation functions are in terms of the parent element coordinates. Hence, it is necessary to transform these integrals to natural coordinates using the above relation, such that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHj7SduJCRrMg" src="https://media.licdn.com/dms/image/C4E12AQHj7SduJCRrMg/article-inline_image-shrink_400_744/0/1520518487779?e=1691625600&amp;v=beta&amp;t=8ew8rdVCLf55jYis5r_5ZhkC2_UjReaGaFoICk6rhhM"> 
+  </div> 
+  <p>and;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHxrTQnsxLgYA" src="https://media.licdn.com/dms/image/C5112AQHxrTQnsxLgYA/article-inline_image-shrink_400_744/0/1520196093947?e=1691625600&amp;v=beta&amp;t=g2e34wm5h8-xrKZvSoAU_H-ClMpf9JdB4eFWMSWmfhE"> 
+  </div> 
+  <p>Instead of working on individual relations, one can easily work in the matrix form for the purpose of computer programming.</p> 
+  <h2><strong>4.FINITE ELEMENT ANALYSIS PROCEDURE FOR A FREE VIBRATION ANALYSIS</strong></h2> 
+  <p>A Matlab code has been developed for the finite element free vibration analysis. Following element types have been developed;</p> 
+  <ul> 
+   <li>2 noded bar element;</li> 
+   <li>2 noded beam element;</li> 
+   <li>plane stress element (4 noded quad and 3 noded triangle);</li> 
+   <li>plane strain element (the only difference between a plane strain and plane stress element is the constitutive matrix D].</li> 
+   <li>8 noded hexahedron element with 3 in-plane degrees of freedom at each node</li> 
+   <li>10 noded tetrahedron element with 3 in-plane degrees of freedom at each node</li> 
+  </ul> 
+  <p>Following are the list of typical steps that have used been in the code;</p> 
+  <p>1) Define the mesh parameters. These include: nodal coordinates, element connectivity</p> 
+  <p>2) Define the material properties. These include: mass density, elastic modulus, shear modulus, Poisson’s ratio, per finite element.</p> 
+  <p>3) Define the Dirichlet boundary conditions. These are the displacement constraints. It should be noted that if one does not apply the displacement constraints the finite element solver will calculate4) Compute the element stiffness matrices. Computation of the element stiffness matrices will require solution of integrals. This has been done using Gaussian integration procedure for numerical integration.</p> 
+  <p>5) Compute the element mass matrices. Again, this step requires solution of the integrals which is carried out using.</p> 
+  <p>6) Assemble the element stiffness matrices to compute the system stiffness matrix.</p> 
+  <p>7) Assemble the element mass matrices to compute the system mass matrix.</p> 
+  <p>8) Solve the Eigen value problem as listed in section 1 to compute the eigen frequencies and eigen modes.</p> 
+  <h2><strong><strong>5. Significance of rigid body modes following a free vibration analysis</strong></strong></h2> 
+  <p>&nbsp;</p> 
+  <p>It might be worthwhile to include a note at this point on the interpretation of getting rigid body modes following a free vibration analysis.</p> 
+  <p>A rigid body mode can be mathematically identified with zero natural frequency. Rigid body modes are the result of infinite deflection along a particular degree of freedom and are related to the constraints in the finite element model. For instance, if one has a 6 degree of freedom beam element oriented perpendicular to a 5 degree of freedom plate element, then, the beam will want to rotate about its longitudinal axis and the plate won’t be able to stop it (no constraint from the plate element). If you tie a couple of beam elements to the end of your original beam, but orient it in the plane of your plate element, the new beams will constrain the rotation of your original beam and eliminate the rigid body mode.</p> 
+  <p>The significance of a rigid body mode depends entirely on your modelling intent. If you have a static object with no moving parts, a rigid body mode will tell you that you haven't properly constrained your model. If you have a rotating shaft on a piece of machinery and your finite element model calculates 1 rigid body mode, you may have some confidence that the model is performing as expected.</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>6. Free vibration analysis : some benchmark problems</strong></h2> 
+  <p>A Matlab program has been developed for a free vibration analysis. Following element types have been implemented in the program</p> 
+  <ul> 
+   <li>A 2 noded bar element (may be 1d or 2d or 3d geometry)</li> 
+   <li>A 2 noded Euler Bernoulli beam element (may be 1d or 2d or 3d geometry)</li> 
+   <li>A 4 noded quadrilateral element with 2 in-plane degrees of freedom per node. The element behaviour may be plane stress or plane strain ty</li> 
+   <li>An 8 noded quadrilateral element with 2 in-plane degrees of freedom per node. The element behaviour may be of plane strain or plane stress ty</li> 
+   <li>An 8 noded hexahedral element with 3 in-plane degrees of freedom per node.</li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGfl9PLzq_0LA" src="https://media.licdn.com/dms/image/C5112AQGfl9PLzq_0LA/article-inline_image-shrink_1000_1488/0/1520066261105?e=1691625600&amp;v=beta&amp;t=4Ks125rXv8uKYMvx8xqjq2qMjA6_4As-40W3Q5YJg0s"> 
+  </div> 
+  <p class="center"><strong>Figure: Element types implemented in this work</strong></p> 
+  <p>This section shows the validation of the matlab program with some standard benchmarks, thus, comparing the analytical solution with the finite element solution.</p> 
+  <p>Following examples are demonstrated for comparison;</p> 
+  <p>&nbsp;1) Free-Free Rod, FE Model, Two Elements</p> 
+  <p>2) Fixed-Free Rod, FE Model, Four Element.</p> 
+  <p>3) Cantilever beam, FE Model, Four Elements</p> 
+  <p>4) Plane Truss, FE Model, N Element.</p> 
+  <p>5) 2D Plane strain problem, FE Model, 6 elements of 4 noded quads</p> 
+  <p>6) 3D Plane strain problem, FE Model, 6 elements of 8 noded hex elements</p> 
+  <h3><strong>6.1 Free-Free Rod, FE Model, Two Elements</strong></h3> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEoDJoIlR1uhQ" src="https://media.licdn.com/dms/image/C5112AQEoDJoIlR1uhQ/article-inline_image-shrink_400_744/0/1520062715342?e=1691625600&amp;v=beta&amp;t=MccGSed6iLumTgCtIZjSIWuvCIg85NUnCwRYU3JRcls"> 
+  </div> 
+  <p>The finite element model of the rod is shown in&nbsp;the above figure.&nbsp;It consists of two elements and three nodes. The length of each element is unity and the elastic modulus, area of each finite element and mass density being unity.</p> 
+  <p>Results from Matlab program:</p> 
+  <p>eigen_values =</p> 
+  <p>&nbsp;&nbsp; -0.0000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 3.0000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp; 12.0000</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGnO6Bhg-5oFg" src="https://media.licdn.com/dms/image/C4E12AQGnO6Bhg-5oFg/article-inline_image-shrink_400_744/0/1520518487041?e=1691625600&amp;v=beta&amp;t=c9AS48pLRdvihtz3YBpWnuK2D-AfELHfBDergnDg96s"> 
+  </div> 
+  <p>eigen_vector =</p> 
+  <p>&nbsp;&nbsp; 0.7071&nbsp;&nbsp; -1.2247&nbsp;&nbsp; 1.2247</p> 
+  <p>&nbsp;&nbsp; 0.7071&nbsp;&nbsp; 0.0000&nbsp;&nbsp; -1.2247</p> 
+  <p>&nbsp;&nbsp; 0.7071&nbsp;&nbsp; 1.2247&nbsp;&nbsp; 1.2247</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG0AmmxSs5ykw" src="https://media.licdn.com/dms/image/C4E12AQG0AmmxSs5ykw/article-inline_image-shrink_400_744/0/1520518488272?e=1691625600&amp;v=beta&amp;t=927VtkpUd8_gNy9-stGxHoHXoH2J64yG8jfVGvmzNAo"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHeRgsLS9HwcA" src="https://media.licdn.com/dms/image/C5112AQHeRgsLS9HwcA/article-inline_image-shrink_1000_1488/0/1520062780109?e=1691625600&amp;v=beta&amp;t=-QNzGc5-INqpO5bJsGjKadJ72C9Ec4xqbvvtQXHTXBU"> 
+  </div> 
+  <p>Figure: Free-Free Rod second mode</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEmoR4NoW-VFw" src="https://media.licdn.com/dms/image/C4E12AQEmoR4NoW-VFw/article-inline_image-shrink_1000_1488/0/1520518485423?e=1691625600&amp;v=beta&amp;t=G9u7R-DLd7nDfeqMsXubL7cLpJp-xNLscmW9V8IpC9E"> 
+  </div> 
+  <p>Figure: Free-Free Rod third mode</p> 
+  <p class="center">&nbsp;</p> 
+  <h3><strong>6.2 Fixed-Free Rod, FE Model, Four Elements</strong></h3> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHiEsyxvV4tCg" src="https://media.licdn.com/dms/image/C4E12AQHiEsyxvV4tCg/article-inline_image-shrink_1000_1488/0/1520518486382?e=1691625600&amp;v=beta&amp;t=ZEf1rG_a7OmUpTZqZEDCL5shqHZRYFBihPe7zsNMTtE"> 
+  </div> 
+  <p>The finite element model of the rod is&nbsp;shown in the&nbsp;consists of four element and five nodes. Each element is of unit length.</p> 
+  <p>Results from Matlab program:</p> 
+  <p>eigen_values =</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.1562&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5545&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1295&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.727</p> 
+  <p>The resulting natural frequencies are given in table below. The first and second mode shapes are plotted in the figures below. Each mode shape has an arbitrary scale factor.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGMSCNXQrGl2A" src="https://media.licdn.com/dms/image/C4E12AQGMSCNXQrGl2A/article-inline_image-shrink_400_744/0/1520518485747?e=1691625600&amp;v=beta&amp;t=txi02wrX_L0SFs_K-wgIX76vq5Gvbi43FMO25iiJl-Q"> 
+  </div> 
+  <p class="left">eigen_vector =</p> 
+  <p class="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -0.2741&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.73304&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.88974&nbsp;&nbsp;&nbsp;&nbsp; -0.45181<br>&nbsp;&nbsp;&nbsp;&nbsp; -0.50647&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.56104&nbsp;&nbsp;&nbsp;&nbsp; -0.68098&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.83483<br>&nbsp;&nbsp;&nbsp;&nbsp; -0.66173&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; -0.30364&nbsp;&nbsp;&nbsp;&nbsp; -0.36854&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.0908<br>&nbsp;&nbsp;&nbsp;&nbsp; -0.71625&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; -0.79344&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.96305&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1806</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEHPRzu5zLjxQ" src="https://media.licdn.com/dms/image/C4E12AQEHPRzu5zLjxQ/article-inline_image-shrink_400_744/0/1520518487705?e=1691625600&amp;v=beta&amp;t=sp92A8zeuspT5ofX5aOt3VK_MrxrY_yfyHPa1Tmf_qI"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHhJuasFN_0jg" src="https://media.licdn.com/dms/image/C5112AQHhJuasFN_0jg/article-inline_image-shrink_1000_1488/0/1520195941665?e=1691625600&amp;v=beta&amp;t=kEXSHFmc1kO-Qz5qZW7ZRMSWtkRyJi0PgOipDdJl4K8"> 
+  </div> 
+  <p class="center"><strong>Figure: Fixed-Free Rod&nbsp;first mode</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHeDskX1giQjw" src="https://media.licdn.com/dms/image/C4E12AQHeDskX1giQjw/article-inline_image-shrink_1000_1488/0/1520518486610?e=1691625600&amp;v=beta&amp;t=a4IeCkPDHkKqNi7OS9GN7DarWt82uVKKzNZ_IG7GVrk"> 
+  </div> 
+  <h3>Figure: Fixed-Free Rod&nbsp;second mode</h3> 
+  <p>&nbsp;</p> 
+  <h3>&nbsp;<strong>6.3 Cantilever beam, FE Model, single element</strong></h3> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFJ1EOFkhl6Yg" src="https://media.licdn.com/dms/image/C4E12AQFJ1EOFkhl6Yg/article-inline_image-shrink_400_744/0/1520518487233?e=1691625600&amp;v=beta&amp;t=QsoN3TH7ieo3jKgCVWhf14otQiSTGpxhfo7nOh6JUec"> 
+  </div> 
+  <p>The finite element model of the beam is&nbsp;shown above and&nbsp;&nbsp;consists of one element and two nodes.</p> 
+  <p>The element is of 2m length and has a cross sectional area 0.3m2. The modulus of elasticity of the material being 2.07e11 N/m2 and density 7.83e3 kg/m3.</p> 
+  <p>The moment of inertia of the section being 0.675e-3 m4</p> 
+  <p>Results from Matlab program:</p> 
+  <p>eigen_values =</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp; 1.5466e+05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp; 1.5013e+07</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEzDjPU8kflFw" src="https://media.licdn.com/dms/image/C5112AQEzDjPU8kflFw/article-inline_image-shrink_400_744/0/1520242432608?e=1691625600&amp;v=beta&amp;t=gZpXrB4ndbBTsL9De3MRtnN0VApYYtiNdZDrNN15uIA"> 
+  </div> 
+  <p>An exact result&nbsp;can be obtained with finer discretization.&nbsp;</p> 
+  <h3>&nbsp;<strong>6.4 Cantilever beam, FE Model,&nbsp;5 finite&nbsp;element</strong></h3> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEk4NrPCnmxZA" src="https://media.licdn.com/dms/image/C4E12AQEk4NrPCnmxZA/article-inline_image-shrink_1000_1488/0/1520518484762?e=1691625600&amp;v=beta&amp;t=4au25oUdmEI4EJmyNVGs01KzL9ZYvpfsOaGlKRYu3SM"> 
+  </div> 
+  <p>&nbsp;The finite element model of the beam is&nbsp;shown above and&nbsp;&nbsp;consists of five elements</p> 
+  <p>All elements are of equal length with EI =&nbsp; 0.08333 and rho*A = 1.0.</p> 
+  <p>The moment of inertia of the section being 0.675e-3 m4</p> 
+  <p>Results from Matlab program, Eigen values:</p> 
+  <p>0.0040227&nbsp;; 0.15814; 1.2475; 4.8685&nbsp;; 13.412; 37.014; 79.17; 166.51; 336.02; 727.14</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE4uNsy_-qkSw" src="https://media.licdn.com/dms/image/C5112AQE4uNsy_-qkSw/article-inline_image-shrink_1000_1488/0/1520065685107?e=1691625600&amp;v=beta&amp;t=8h7AZzP9apfTnymyy5XDl9kgtkmuxa2Lud8oNKNomeM"> 
+  </div> 
+  <p>Figure: Cantilever beam, Five element model, first mode</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEoPrxZz6VfAw" src="https://media.licdn.com/dms/image/C5112AQEoPrxZz6VfAw/article-inline_image-shrink_1000_1488/0/1520240025334?e=1691625600&amp;v=beta&amp;t=11e871lMcbBowC9QTbupw0zRHCUHLGVM5mqdMgscwYk"> 
+  </div> 
+  <p>Figure: Cantilever beam, Five element model,&nbsp;second mode</p> 
+  <p class="center">&nbsp;</p> 
+  <p class="left"><strong>6.5 Plane truss, FE Model,&nbsp;8 finite&nbsp;elements</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF52F7TmTu_wg" src="https://media.licdn.com/dms/image/C5112AQF52F7TmTu_wg/article-inline_image-shrink_400_744/0/1520066015873?e=1691625600&amp;v=beta&amp;t=SvTm3fiafKzrQ9rJSX5VF2NJULbf9rHdmZbQQ88IMf4"> 
+  </div> 
+  <p>Material properties:</p> 
+  <p class="left">E = 10 x 10^6 psi; A = 1,5 inch^2; mass density = 2.6 x 10^-4 lb-s^2/inch^4</p> 
+  <p class="left">Results from the matlab program;</p> 
+  <p class="left">Eigen value</p> 
+  <p>5.8839e+05; 4.336e+06&nbsp;; 8.754e+06&nbsp;; 2.0293e+07&nbsp;; 4.6113e+07; 6.3617e+07&nbsp;; &nbsp;7.5078e+07&nbsp;&nbsp;&nbsp;; 8.0593e+07</p> 
+  <p>Eigen vectors;</p> 
+  <p>Columns 1 through 9</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; -0.26045&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1942&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.2131&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3.5942&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4451<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.207&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3.2824&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3.1254&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.1412&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -5.8256<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.77543&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.71694&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.8883&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.3697&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.14241<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.1275&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.6864&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.957&nbsp;&nbsp;&nbsp;&nbsp; -0.43223&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2736<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; -0.51559&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.8552&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.7056&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3.9341&nbsp;&nbsp;&nbsp;&nbsp; 0.054941<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -4.1183&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.5559&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4594&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1332&nbsp;&nbsp;&nbsp;&nbsp; -0.90777<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.78937&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.97118&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -4.1825&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.9168&nbsp;&nbsp;&nbsp;&nbsp; -0.73689<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -4.2125&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.9008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.8875&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.8175&nbsp;&nbsp;&nbsp;&nbsp; -0.60368</p> 
+  <p>&nbsp; Columns 10 through 12</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.8021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.7721&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -4.3675<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.93447&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.0582&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.72687<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.8294&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.1737&nbsp;&nbsp;&nbsp;&nbsp; -0.46372<br>&nbsp;&nbsp;&nbsp;&nbsp; -0.56904&nbsp;&nbsp;&nbsp;&nbsp; -0.34133&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.48283<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.9805&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.781&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.9563<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.6291&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3.3191&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -4.4073<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -6.0772&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.3919&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.2046<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3999&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.8278&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3438</p> 
+  <p>&gt;&gt;</p> 
+  <h2><strong>7. Free vibration analysis with pre-stress</strong></h2> 
+  <p>In some cases, one may want to consider <em>pre-stress</em> effects when performing a free vibration analysis. This is because; the state of stress of a structure under constant (static) loads may affect its natural frequencies. For example, consider a guitar string being tuned- as axial load is increased (from tightening), the lateral frequencies increase. This is an example <em>of stress stiffening effect.</em>That is; the effect of pre-stress on the system will be to increase the stiffness of the system. Since, w = sqrt(k/m) , pre-stressing will cause an increase in the natural frequencies i.e. the system will oscillate faster, hence the time period will be less.</p> 
+  <h3><strong>7.1 Finite element equations in free vibrations with pre-stressIn free vibrations with pre-stress analyses, internally (in the software), two iterations ae automatically performed:</strong></h3> 
+  <p>1) Firstly,&nbsp;a&nbsp;linear static analysis is linearly performed:&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHHya-ZQw7MVA" src="https://media.licdn.com/dms/image/C5112AQHHya-ZQw7MVA/article-inline_image-shrink_400_744/0/1520113301372?e=1691625600&amp;v=beta&amp;t=2JaEZK76TbIUOfYOBUAV2VplAQe8Dzwey5bJsOC51TY"> 
+  </div> 
+  <p>2) Based on the stress state from static analysis, a stress stiffness matrix [σ] is calculated:</p> 
+  <p>3) The free vibration with pre-stress is then solved, including the [σ] term;Hence, the equation that is to be solved to compute the Eigen frequencies and Eigen modes becomes;&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHf5abguiy0zQ" src="https://media.licdn.com/dms/image/C5112AQHf5abguiy0zQ/article-inline_image-shrink_400_744/0/1520062924670?e=1691625600&amp;v=beta&amp;t=QD--w0NGNUKT2T0C6ky3w1dRs_KsDhTAlimWNsz0ASM"> 
+  </div> 
+  <h3><strong><strong>7.1 Example of free vibration with pre-stress</strong></strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Consider the following problem of a thin plate subjected to a load F as shown in the second figure.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEpluydoXd0YQ" src="https://media.licdn.com/dms/image/C5112AQEpluydoXd0YQ/article-inline_image-shrink_1000_1488/0/1520198681407?e=1691625600&amp;v=beta&amp;t=h4M8Pv6lHBHhWmPFeUeQQ5of0mIRaXsvuaq99cbjVSg"> 
+  </div> 
+  <p>Carrying out the free vibration analysis without the stress matrix (which results following a static analysis of the thin plate with force F = 5000 lbf, the 1st mode natural frequency is obtained as 141 Hz, whereas considering the effect of pre-stress, hence, the stress matrix due to the force, the first mode natural frequency is obtained as 184 Hz.</p> 
+  <p>As expected, the effect of pre-stress here is to stiffen the system hence increase the natural frequencies which demonstrates the ‘stress-stiffening effect’ clearly.</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong></p>
+ 
+</div>
+</body>
+</html>

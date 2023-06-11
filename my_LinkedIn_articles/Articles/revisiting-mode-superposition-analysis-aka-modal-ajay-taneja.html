@@ -1,0 +1,476 @@
+<html>
+<head>
+  <title>Revisiting: Mode Superposition Analysis (a.k.a. Modal Analysis)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGhDk-QLi7f9w" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/revisiting-mode-superposition-analysis-aka-modal-ajay-taneja">Revisiting: Mode Superposition Analysis (a.k.a. Modal Analysis)</a></h1>
+    <p class="created">Created on 2015-04-03 10:14</p>
+  <p class="published">Published on 2015-04-03 18:17</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2>1. INTRODUCTION</h2> 
+  <p>There are fundamentally two approaches that may be followed to compute the dynamic response of structures:</p> 
+  <ul> 
+   <li>Time domain approach</li> 
+   <li>Frequency domain approach</li> 
+  </ul> 
+  <p>The “time-domain involves solving the governing differential equation(s) wherein the loading function is a function of time “t” : p(t) and the in frequency domain approach the loading is discretised into a series of harmonic components (sines and cosines) by Fourier series / Fourier transformation and the dynamic response is expressed by superimposing the responses due to each harmonic component.</p> 
+  <p>Most common dynamic analysis procedures that may be classified under the time domain approach include: Duhamel / convolution integral based procedure wherein the loading p(t) is considered to be a succession of short-duration impulses, and the free vibration response to each impulse becomes a separate contribution to the response history at any subsequent time.</p> 
+  <p>Another very common (or “most” familiar) dynamic analysis procedure based on the time domain approach is the mode superposition (or modal) analysis procedure. The aim of this article to present in details the various steps involved in the mode superposition analysis and explain the main concept of the mode superposition analysis.</p> 
+  <p>Section 2 of this article presents the equation of motion of a simple 2 storey frame and reveals how these equations are coupled i.e. the stiffness matrix is non-diagonal. The essence of the mode superposition method is to uncouple these equations of motion which can be done by transforming the problem from the physical coordinate system to another coordinate system.</p> 
+  <p>Section 3.1 and section 3.2 clearly explain that the transformation matrix could be well chosen as the mode shapes obtained by solving the eigen value free vibration problem wherein the all the degrees of freedom of the structure oscillate simple harmonically with the same frequency.</p> 
+  <p>Section 3.3 explains the how the orthogonality properties of these mode shapes (each mode shape being an eigen vector) helps in uncoupling the equations of motion.</p> 
+  <p>Section 4 explains how the equations of motion could be solved once the transformation to the normal coordinate system is carried out and finally the section 5 summarizes the mode superposition analysis fundamentally.</p> 
+  <p>&nbsp;</p> 
+  <h1>2. PRINCIPLE OF THE MODE SUPERPSITION METHOD OF DYNAMIC ANALYSIS</h1> 
+  <p>Consider the 2 DOF system shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFw7Qn-OPcVWw" src="https://media.licdn.com/dms/image/C5112AQFw7Qn-OPcVWw/article-inline_image-shrink_1000_1488/0/1520171766147?e=1691625600&amp;v=beta&amp;t=cNweRMk3GsmcEK74hsQLw2L0Ss8r61dLK5CxeGawq04"> 
+  </div> 
+  <p><strong>Figure: 2 storey frame excited by a harmonic force (also idealised as a mass-spring system)</strong></p> 
+  <p>The 2 storey frame with degrees of freedom u1 and u2 (neglecting rotational inertia) could be idealised in to the mass-spring system. The system is excited by a harmonic force: p1(t) = p0 sin ωt. Thus the equation of motion of the system may be written as:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEjV_d7a200aw" src="https://media.licdn.com/dms/image/C5112AQEjV_d7a200aw/article-inline_image-shrink_1000_1488/0/1520173045569?e=1691625600&amp;v=beta&amp;t=2aq1gup368DBJc2BvfF5yhAgnhnaOlG6bGONPRnaX90"> 
+  </div> 
+  <p>It may be noted that the equations are coupled through the stiffness matrix i.e. the stiffness matrix is non-diagonal and hence one equation cannot be solved independent of the other and the equations must be solved simultaneously.</p> 
+  <p>One would normally resort to the numerical approximation procedures like the explicit central difference method or the implicit Newmark’s integration scheme in order to solve the coupled equations.</p> 
+  <p>A simpler method to obtain the dynamic response of the frame is the mode superposition method which principally transforms the equations of motion from the physical coordinate system into another co-ordinate system known as the normal or the modal coordinate system and in this coordinate system the structural matrices i.e. the mass and the stiffness matrix are diagonal.</p> 
+  <p>Therefore, the solution of the simultaneous coupled equations is completely avoided in this coordinate system and would solve one equation independent of the other. The solution of each equation now (after the problem is transformed into the normal coordinate system) becomes equivalent to solving an equation of a SDOF system. That is: instead of solving a coupled system with ‘N’ degrees of freedom in the physical coordinate system, one, instead solves ‘N’ uncoupled equations wherein each of the ‘N’ equations is independent of the other and thus solved as an equation of a SDOF system.</p> 
+  <p>The next section explains how it is possible to obtain a set of ‘N’ uncoupled equations from ‘N’ coupled equations by transforming the problem from the physical coordinate system to another coordinate system where all the structural matrices are diagonal. This coordinate system where the structural matrices are diagonal is called the “normal” coordinate system or the “modal” coordinate system.</p> 
+  <p>&nbsp;</p> 
+  <h1>3. UNCOUPLING THE EQUATIONS OF MOTION FOR MODE SUPERPOSITION ANALYSIS</h1> 
+  <p>Let us consider the same 2 DOF system shown in section or any other undamped system with ‘N’ DOF’s wherein the mass and / or stiffness matrices are non-diagonal i.e. the equations are coupled. The equation of motion for such a system can be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEQJR58c5JCOA" src="https://media.licdn.com/dms/image/C5112AQEQJR58c5JCOA/article-inline_image-shrink_400_744/0/1520199041323?e=1691625600&amp;v=beta&amp;t=96Ul8PdsTTiqxL5qc25UBz_1zVC9bV5_ya3tk6DRl7o"> 
+  </div> 
+  <p>It should be noted that;</p> 
+  <ul> 
+   <li>M, C and K, in general, are non-diagonal</li> 
+   <li>Thus, the equations are coupled.</li> 
+  </ul> 
+  <p>Suppose, we introduce a new set of dependent variables Z (t) using the transformation;</p> 
+  <p>X (t) = T Z (t)</p> 
+  <p>Where; T is an n x n transformation matrix to be selected.</p> 
+  <p>Then;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHRg7SJwyT3fw" src="https://media.licdn.com/dms/image/C5112AQHRg7SJwyT3fw/article-inline_image-shrink_400_744/0/1520171350842?e=1691625600&amp;v=beta&amp;t=mBvsHnxNCCYa_9i3Eoxw-tukHK7Y-15p6KsimRKwat4"> 
+  </div> 
+  <p class="left">&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>These represent the displacement and velocity at t = 0; the initial conditions.</p> 
+  <p>Now, carrying out the transformation, that is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGlYauCG-gnRQ" src="https://media.licdn.com/dms/image/C5112AQGlYauCG-gnRQ/article-inline_image-shrink_400_744/0/1520198615110?e=1691625600&amp;v=beta&amp;t=IY90OHoHczS6kyfAsED1s1YrX1zypwfq0f0sqjSC4yQ"> 
+  </div> 
+  <p>Here;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFCcKPeqduIyg" src="https://media.licdn.com/dms/image/C5112AQFCcKPeqduIyg/article-inline_image-shrink_1000_1488/0/1520170159096?e=1691625600&amp;v=beta&amp;t=WKvlKOWWPB8W8CfVR6xiHthgPhk937zvEy3C0HDNQsY"> 
+  </div> 
+  <p>Now, the question arises, whether we can select T such that are all DIAGONAL?</p> 
+  <p>If yes, the equation for Z (t) would then represent a set of uncoupled equations and hence can be solved easily.</p> 
+  <h3>3.1 The Eigen value problem</h3> 
+  <p>Considering the seemingly unrelated problem of undamped free vibration analysis;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQELc8OXtYBvAA" src="https://media.licdn.com/dms/image/C5112AQELc8OXtYBvAA/article-inline_image-shrink_400_744/0/1520170901027?e=1691625600&amp;v=beta&amp;t=E7THzu9_ztnWs7PkDG23ii7OpMrR2vLsP0_G5notRsw"> 
+  </div> 
+  <p>Let us assume that all the points of the structure oscillate harmonically at the same frequency;</p> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH5G-ImvaD-oA" src="https://media.licdn.com/dms/image/C5112AQH5G-ImvaD-oA/article-inline_image-shrink_400_744/0/1520114714319?e=1691625600&amp;v=beta&amp;t=lafFbFB7-oEQmP_iMKr6ioq5bP0tQlZiFdVj08KbUgY"> 
+  </div> 
+  <p>OR;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFQu_muA91a0A" src="https://media.licdn.com/dms/image/C5112AQFQu_muA91a0A/article-inline_image-shrink_400_744/0/1520200566598?e=1691625600&amp;v=beta&amp;t=Wf8TT0fF9w8JQur2GCvg_iULdEzIjheCMMCms1kfKoc"> 
+  </div> 
+  <p>Where; R is an nx1 vector</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHNXir1W4FS7w" src="https://media.licdn.com/dms/image/C5112AQHNXir1W4FS7w/article-inline_image-shrink_400_744/0/1520241376913?e=1691625600&amp;v=beta&amp;t=vcGslGV3h8HhBgRE7nNhzbV9qOyJqNHIEiOz2wajuMc"> 
+  </div> 
+  <p>Substituting this in the equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGVPzCfKRhE6A" src="https://media.licdn.com/dms/image/C5112AQGVPzCfKRhE6A/article-inline_image-shrink_400_744/0/1520239797846?e=1691625600&amp;v=beta&amp;t=QmFxjtqXHdw4vimxsqiqSXMdN_qu7HeHwMn8t3O4n-E"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEguNbYAOW7VQ" src="https://media.licdn.com/dms/image/C5112AQEguNbYAOW7VQ/article-inline_image-shrink_400_744/0/1520240430322?e=1691625600&amp;v=beta&amp;t=9hLOTyYhSb9gl1DXmYqqmzqsdGUIPEZRuFhIHAtIvsM"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHhHkeuRWflrw" src="https://media.licdn.com/dms/image/C5112AQHhHkeuRWflrw/article-inline_image-shrink_400_744/0/1520041847416?e=1691625600&amp;v=beta&amp;t=dkDfbVjrkehruAEeFmMiKiVU3cGngsZTq3l305ld-1c"> 
+  </div> 
+  <p>&nbsp;&nbsp;Therefore;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHJvn1gWh6_IA" src="https://media.licdn.com/dms/image/C5112AQHJvn1gWh6_IA/article-inline_image-shrink_400_744/0/1520170977821?e=1691625600&amp;v=beta&amp;t=TTrsEtuuGHZYsIC6O7rNb894yDNsBFVPzKPLOJWqfj0"> 
+  </div> 
+  <p>&nbsp;This is an algebraic Eigen value problem because:</p> 
+  <p>Mathematically, we’re looking for vectors R that solve this equation, as every positive definite matrix is invertible, any vector that solves that equation will also solve:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFLiFWEbsXD5g" src="https://media.licdn.com/dms/image/C5112AQFLiFWEbsXD5g/article-inline_image-shrink_400_744/0/1520172362788?e=1691625600&amp;v=beta&amp;t=pONz5uV0c7rp-JuRL6lYjNDeiWF9VOg_r9B9MyVZ4mQ"> 
+  </div> 
+  <p>So then solving it is merely a task of finding the eigenvectors and respective eigenvalues. On the other hand, assuming you only have M and K, you can find multiple R and w that will satisfy this equation, assuming the matrix has a complete set of eigenvectors.</p> 
+  <p>Hence R must an eigenvector of [M-1 K] with eigenvalue ω.</p> 
+  <h3>3.2 Solving the eigenvalue problem</h3> 
+  <p>Consider;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHWO1kVcknKyQ" src="https://media.licdn.com/dms/image/C5112AQHWO1kVcknKyQ/article-inline_image-shrink_400_744/0/1520241101845?e=1691625600&amp;v=beta&amp;t=XHPxfE3PWD2oU-b1waPzPzl1GaYxJfQ3VDuVs2jFnsQ"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHGdyXtEvGz-g" src="https://media.licdn.com/dms/image/C5112AQHGdyXtEvGz-g/article-inline_image-shrink_400_744/0/1520065897273?e=1691625600&amp;v=beta&amp;t=uM0fTX4pmZtzwFqY-OposOkNgmgmT9ms_97ms18wMFY"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHTDSdtX8QT3A" src="https://media.licdn.com/dms/image/C5112AQHTDSdtX8QT3A/article-inline_image-shrink_400_744/0/1520066811736?e=1691625600&amp;v=beta&amp;t=d3uoX-10ODF4kI62Gk06Hy38IedDwfwljhMfXZ-v9vs"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH-JKEW8RS2mA" src="https://media.licdn.com/dms/image/C5112AQH-JKEW8RS2mA/article-inline_image-shrink_400_744/0/1520239998312?e=1691625600&amp;v=beta&amp;t=erSehBr3SeRv5Rx7YnZAne1UkBMoYhrIzcEQvrQdocs"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF7oHwHks7YtQ" src="https://media.licdn.com/dms/image/C5112AQF7oHwHks7YtQ/article-inline_image-shrink_400_744/0/1520040206716?e=1691625600&amp;v=beta&amp;t=kvKWoTCMx5qxG_g1e-tGTKb3VLxK3Hc0aGYTPbYl5Qk"> 
+  </div> 
+  <p>&nbsp;That is;</p> 
+  <p>If [K – ω2 M] -1 exists, R = 0 is the solution.</p> 
+  <p>Condition for existence of the non-trivial solution is that;</p> 
+  <p>[K – ω2 M] -1 should not exist.</p> 
+  <p>That is; if [K – ω2 M] -1 does not exist;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGMsasanAMJ1Q" src="https://media.licdn.com/dms/image/C5112AQGMsasanAMJ1Q/article-inline_image-shrink_400_744/0/1520170861426?e=1691625600&amp;v=beta&amp;t=e_y66iaPq3Efu0JmyxsNsMOaPEcuXW9ur27rKFOTmsk"> 
+  </div> 
+  <p>This is called the characteristic equation and this leads to the characteristic values;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGojbPO1wURnA" src="https://media.licdn.com/dms/image/C5112AQGojbPO1wURnA/article-inline_image-shrink_1000_1488/0/1520173057988?e=1691625600&amp;v=beta&amp;t=SKr2bXwREwrF0uGGR11OsDhL4Fp7RgPyguznr3_tqpA"> 
+  </div> 
+  <h3>3.3 Orthogonality property of eigenvectors</h3> 
+  <p>Consider the rth and the sth Eigen pairs;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGhNijksR3hww" src="https://media.licdn.com/dms/image/C5112AQGhNijksR3hww/article-inline_image-shrink_400_744/0/1520240968797?e=1691625600&amp;v=beta&amp;t=3ulf4Q1LLT0O1ReJB0xmGUoAxTx-qLfT3I59X26n_3k"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFsc1PbN2NSeg" src="https://media.licdn.com/dms/image/C5112AQFsc1PbN2NSeg/article-inline_image-shrink_400_744/0/1520041178745?e=1691625600&amp;v=beta&amp;t=OcV_38TQD_nc16jS7qUki10qsLsmHJwbjO5y-cKiHTI"> 
+  </div> 
+  <p>Multiplying (1) by Rst and multiplying 2 by Rrt, we get;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHyW9tcbeF3ow" src="https://media.licdn.com/dms/image/C5112AQHyW9tcbeF3ow/article-inline_image-shrink_400_744/0/1520198848256?e=1691625600&amp;v=beta&amp;t=ukfgtP8S68SziAr-06dfkFPfSm40c1TacjJhOvEr1m8"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEZ-U5DTQEQ2A" src="https://media.licdn.com/dms/image/C5112AQEZ-U5DTQEQ2A/article-inline_image-shrink_400_744/0/1520062356422?e=1691625600&amp;v=beta&amp;t=ZwX5STvON078YfiHA4unOT9YKguUFDhau5MMO9s3Wro"> 
+  </div> 
+  <p>Transposing both sides of equation 4 we get;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF2icbEmyfl3A" src="https://media.licdn.com/dms/image/C5112AQF2icbEmyfl3A/article-inline_image-shrink_400_744/0/1520200599925?e=1691625600&amp;v=beta&amp;t=d3TSLAonyf5RVZZIUBr3Pndhz1gPhxz2vaoTnENUoXQ"> 
+  </div> 
+  <p>&nbsp;Since, Kt = K and Mt = M; we get;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEBBW6_JqlDaQ" src="https://media.licdn.com/dms/image/C5112AQEBBW6_JqlDaQ/article-inline_image-shrink_400_744/0/1520242358993?e=1691625600&amp;v=beta&amp;t=GvbzGalmy01-Bpq30Qc46hKo4ggDMzWylW8hbQvgIFA"> 
+  </div> 
+  <p>Subtracting (3) from (5);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFXT80M52A6ZQ" src="https://media.licdn.com/dms/image/C5112AQFXT80M52A6ZQ/article-inline_image-shrink_400_744/0/1520170758138?e=1691625600&amp;v=beta&amp;t=H8ov2epOaVTeGy5xGxWn8ZOWB7oG4k0pvnsicywZE50"> 
+  </div> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFEx7CymZpcGg" src="https://media.licdn.com/dms/image/C5112AQFEx7CymZpcGg/article-inline_image-shrink_400_744/0/1520041538181?e=1691625600&amp;v=beta&amp;t=wVgOzTE_DV8t-ObLqoIdlVl2hGjFUh_qEBFZz6lUE1c"> 
+  </div> 
+  <p>Substituting;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGuYTEMBmk0eQ" src="https://media.licdn.com/dms/image/C5112AQGuYTEMBmk0eQ/article-inline_image-shrink_400_744/0/1520171201788?e=1691625600&amp;v=beta&amp;t=5lHR9PYQlmybS_4fLBpKhg96gG_q4x6PRJKitTsGqsQ"> 
+  </div> 
+  <p>&nbsp;in equation 3;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEyc-88unhMEA" src="https://media.licdn.com/dms/image/C5112AQEyc-88unhMEA/article-inline_image-shrink_400_744/0/1520042530041?e=1691625600&amp;v=beta&amp;t=d_Dupe5ZyfzD2hCaOZ7aSy338KzjSu4EDSehH5xuuhY"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH4UH2b-8Mw3Q" src="https://media.licdn.com/dms/image/C5112AQH4UH2b-8Mw3Q/article-inline_image-shrink_400_744/0/1520040973660?e=1691625600&amp;v=beta&amp;t=ZsJHy-0jYLrj9wq1TjTYWT5_-VD62qLJ_vpQPZSsjrI"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <h3>3.4 Conclusions because of the orthogonality property of eigenvectors</h3> 
+  <p>The properties of Eigen vectors derived in section 3.3, lead to very important conclusions. That is;</p> 
+  <p>If we introduce;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFxRikpsbNgeQ" src="https://media.licdn.com/dms/image/C5112AQFxRikpsbNgeQ/article-inline_image-shrink_400_744/0/1520062365869?e=1691625600&amp;v=beta&amp;t=tAQxpV7quo3ERrAn054OnIRkvIUkOusm66__bGwR4_M"> 
+  </div> 
+  <p>Then we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFQLGH8vm3P4A" src="https://media.licdn.com/dms/image/C5112AQFQLGH8vm3P4A/article-inline_image-shrink_400_744/0/1520241982826?e=1691625600&amp;v=beta&amp;t=9E8FXf_0Yt9hH-UpOJtmq_lZoqt2SCGtgae0RSGK1FA"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGGi9W5krhZRg" src="https://media.licdn.com/dms/image/C5112AQGGi9W5krhZRg/article-inline_image-shrink_400_744/0/1520168583561?e=1691625600&amp;v=beta&amp;t=Fgw_3Y4aunNtV-kOETGEvVzFSD1E_6q4H7-gUh77MM4"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>Then;</p> 
+  <p>In section 3, we fill find that the equations of motion are <strong>no more coupled</strong>. That is, the new mass matrix M_bar and the new stiffness matrix K_bar are diagonal. <strong>Thus, the set of equation of motions corresponding to the MDOF system need not be solved </strong><strong>simultaneously. Each equation is independent of the other and thus equation can be solved as a SDOF degree system.</strong></p> 
+  <p>This makes the solution very easy to solve numerically; that is: it is much simpler and easier to solve ‘N’ independent equations of motion than solving a set of dependent / coupled equations of motion. Each of the ‘N’ independent equations of motion can be solved independent of each other as a SDOF system.</p> 
+  <p>The new coordinate system, after carrying out the transformation u = T* Z(t) is called the ‘modal’ or the ‘normal’ coordinate system.</p> 
+  <p>Nevertheless, modal analysis provides insight into the behaviour of the system, since in typical applications, only a few (usually lower frequency) normal modes are active, and modal analysis gives the shapes of these modes. Therefore, it is well worth the computational cost&nbsp; !!!</p> 
+  <h1>4. SOLVING THE UNDAMPED FORCED VIBRATION ANALYSIS IN THE MODAL (NORMAL) CO-ORDINATE SYSTEM</h1> 
+  <p>Consider the undamped forced vibration analysis of a MDOF System, the equation of motion of which is denoted by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGvA5QAGbuprg" src="https://media.licdn.com/dms/image/C5112AQGvA5QAGbuprg/article-inline_image-shrink_400_744/0/1520240996177?e=1691625600&amp;v=beta&amp;t=nbTx6FVEjwGaC_vxbj7rEOWqnU-VPQqbpdWPvh-QFxQ"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>We have the initial conditions given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEiTysVZO48dw" src="https://media.licdn.com/dms/image/C5112AQEiTysVZO48dw/article-inline_image-shrink_400_744/0/1520196927895?e=1691625600&amp;v=beta&amp;t=Ey7W9bARplvH0fYnuuZn7ALY1H568D8uYTesDjgicAY"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>Carrying out the transformation, using the transformation matrix as φ which corresponds to the mode shapes obtained by considering the free vibration problem wherein all DOF oscillate simple harmonically with the same frequency;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGi1GWIItgHNw" src="https://media.licdn.com/dms/image/C5112AQGi1GWIItgHNw/article-inline_image-shrink_400_744/0/1520100605639?e=1691625600&amp;v=beta&amp;t=RAOc8bVWFm9WfSduxMQ_S4j6LvilbmCyeKZb9afgMRE"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>Substituting this transformation in the equation of motion;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEnfWVyRFDUcw" src="https://media.licdn.com/dms/image/C5112AQEnfWVyRFDUcw/article-inline_image-shrink_400_744/0/1520170912847?e=1691625600&amp;v=beta&amp;t=-3IV4DGVD8y1PlmDpblLIoyRc9lzpu13jdO1LhxQzPs"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>Pre-multiplying by φ^T and then normalizing;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGJya_viMZZeQ" src="https://media.licdn.com/dms/image/C5112AQGJya_viMZZeQ/article-inline_image-shrink_400_744/0/1520242831506?e=1691625600&amp;v=beta&amp;t=bB9KI3EbztXhXyh0TpGoo8ezbd8kzNbGv-vz1vK1ZVE"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFqF5FK1h2S0w" src="https://media.licdn.com/dms/image/C5112AQFqF5FK1h2S0w/article-inline_image-shrink_400_744/0/1520171284857?e=1691625600&amp;v=beta&amp;t=vEzmQoIExTfDv_mCO6Aq-PaTab70n2-c6q2LJV-sidc"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>In the above equation, I corresponds to the identity matrix, Λ is the matrix whose diagonal terms correspond to the square of frequencies ω12, ω22, ω32,….</p> 
+  <p>In the above, the equations of motion are uncoupled and each equation can be solved as a SDOF system;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEDRtA9eyDsLg" src="https://media.licdn.com/dms/image/C5112AQEDRtA9eyDsLg/article-inline_image-shrink_400_744/0/1520042412039?e=1691625600&amp;v=beta&amp;t=nHuY_3VWFsWJdYmjgYpRnETT0l2dYKTsLE8GIveiL_I"> 
+  </div> 
+  <p>The initial conditions: Z (0) and in the new coordinate system can be evaluated as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQELD7wK2qOZEA" src="https://media.licdn.com/dms/image/C5112AQELD7wK2qOZEA/article-inline_image-shrink_400_744/0/1520240500117?e=1691625600&amp;v=beta&amp;t=8Z5LcmOR2iAK_L0E5vGQ7V2GRh_vUENl-nyaBjbdeFg"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF65HeeWezUzA" src="https://media.licdn.com/dms/image/C5112AQF65HeeWezUzA/article-inline_image-shrink_400_744/0/1520169197850?e=1691625600&amp;v=beta&amp;t=KfrootwCKunxtvXdvSrKrlxqa1Rdat5xh7Jyor7vXTM"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGhcKwuJsY6ug" src="https://media.licdn.com/dms/image/C5112AQGhcKwuJsY6ug/article-inline_image-shrink_400_744/0/1520174977844?e=1691625600&amp;v=beta&amp;t=_yWuSpAlev3CHOY-ogCKcHE8PfFzFovesl0R_ANZrWE"> 
+  </div> 
+  <p>Thus, initial conditions in the new coordinate system are obtained.</p> 
+  <h3>4.1 Solving the equation of motions in the new coordinate system</h3> 
+  <p>Thus, now the equation of motion of the MDOF system have been transformed to a new coordinate system wherein each equation could be solved independently as a SDOF system. The SDOF system equation may be solved through any of the techniques like;</p> 
+  <ul> 
+   <li>Duhamel / convolution integral approach</li> 
+   <li>Explicit central difference method</li> 
+   <li>Implicit Newmark’s integration scheme.</li> 
+  </ul> 
+  <p>If one were to solve the SDOF equation in the new coordinate system, using the Duhamel integral approach, then;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF1vXHPUXarrw" src="https://media.licdn.com/dms/image/C5112AQF1vXHPUXarrw/article-inline_image-shrink_1000_1488/0/1520040595443?e=1691625600&amp;v=beta&amp;t=VNC5oop8bsEXRRNtibbTpSPa4XW8QA_vAF0BETcVWnM"> 
+  </div> 
+  <p>In order to obtain the solution in the original / physical coordinate system,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGEf4IX8CVupg" src="https://media.licdn.com/dms/image/C5112AQGEf4IX8CVupg/article-inline_image-shrink_400_744/0/1520042405025?e=1691625600&amp;v=beta&amp;t=i5StKASFrs1LVT7njeBnwWvVJusc9NqVbIsKHamGgA0"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEG50Hk2VGs6w" src="https://media.licdn.com/dms/image/C5112AQEG50Hk2VGs6w/article-inline_image-shrink_400_744/0/1520042535457?e=1691625600&amp;v=beta&amp;t=vdOtXAsyz6S5-drUMwwaKFi5oXjmPUCns0vh9yR_WOY"> 
+  </div> 
+  <p>As seen from the above equation, the response corresponding to each DOF is obtained superimposing the contribution from each mode. Hence, the name mode superposition.</p> 
+  <p>Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFS7gshBgaCGg" src="https://media.licdn.com/dms/image/C5112AQFS7gshBgaCGg/article-inline_image-shrink_1000_1488/0/1520041061167?e=1691625600&amp;v=beta&amp;t=Bc3LXTZ8T8Ds6UAY28OExd-r2zvds5ouQ7K7BgxJxAM"> 
+  </div> 
+  <h1>5. SUMMARY: MODE SUPERPOSITION ANALYSIS</h1> 
+  <p>From the above write-up it can be summarized that;</p> 
+  <p>i. Equations of motion for MDOF systems are generally coupled.</p> 
+  <p>ii. Coupling between co-ordinates is manifest in the form of structural matrices being non-diagonal</p> 
+  <p>iii. Coupling is not an intrinsic property of a vibrating system. It is dependent upon the co-ordinate system. This choice itself arbitrary.</p> 
+  <p>iv. Equation of motions are not unique. They depend upon the choice of the co-ordinate system.</p> 
+  <p>v. Normal modes of vibration (mode shapes) are special undamped free vibration solutions such that the degrees of freedom of the structure oscillate simple harmonically at the same frequency with the ratio of the displacements between any two degrees of freedom being independent of time.</p> 
+  <p>vi. The frequencies at which normal mode oscillations are possible are called the natural frequencies.</p> 
+  <p>vii. The modal matrix (each column of the modal matrix corresponds to a mode shape) is orthogonal to the mass and the stiffness matrix.</p> 
+  <p>viii. The undamped normal modes in conjunction with proportional damping models (damping is not discussed in this write-up) simplify vibration analysis considerably.</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p>
+ 
+</div>
+</body>
+</html>

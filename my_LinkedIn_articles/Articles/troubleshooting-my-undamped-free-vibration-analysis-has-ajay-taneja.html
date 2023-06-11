@@ -1,0 +1,195 @@
+<html>
+<head>
+  <title>Troubleshooting: My undamped free vibration analysis has complex eigen values !!!</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQEj2TUMI14HoQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/troubleshooting-my-undamped-free-vibration-analysis-has-ajay-taneja">Troubleshooting: My undamped free vibration analysis has complex eigen values !!!</a></h1>
+    <p class="created">Created on 2016-11-02 16:35</p>
+  <p class="published">Published on 2016-11-26 13:43</p>
+  <div>
+  <p>An undamped free vibration analysis of a structural system should ALWAYS result in <em><strong>real</strong></em> Eigen values. There could be situations, however, wherein an undamped&nbsp;free vibration analysis has complex eigen values. This surely&nbsp;is incorrect and requires some amount of investigation / troubleshooting and insight of the problem.</p> 
+  <p>This article enumerates some common reasons for complex Eigen values in an undamped free vibration analysis and the consequent troubleshotting that could be carried out to correct the anomalies.</p> 
+  <p><strong>Firstly, is it right that an undamped free vibration analysis has complex Eigen values?</strong></p> 
+  <p>This is not right.</p> 
+  <p><strong>Mathematical and the consequent physical reasoning:</strong></p> 
+  <p>Considering a single degree of freedom undamped system, we have the solution given by,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG4lSyEM5wNzw" src="https://media.licdn.com/dms/image/C4E12AQG4lSyEM5wNzw/article-inline_image-shrink_400_744/0/1520624481881?e=1691625600&amp;v=beta&amp;t=OGxa-DkGTcI1XLmNgXShcQLO18mTKhETGBlkwRN0VrQ"> 
+  </div> 
+  <p>Let us say the eigen values are complex,</p> 
+  <p>So,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGuJKzYWGc1ag" src="https://media.licdn.com/dms/image/C4E12AQGuJKzYWGc1ag/article-inline_image-shrink_400_744/0/1520624482658?e=1691625600&amp;v=beta&amp;t=Nuyz278eLOhg37m6U3CaxcHDmNldZSOhkgb3SkdVxZs"> 
+  </div> 
+  <p>Thus, the solution becomes,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFAQzt8iilrtQ" src="https://media.licdn.com/dms/image/C5112AQFAQzt8iilrtQ/article-inline_image-shrink_400_744/0/1520147436338?e=1691625600&amp;v=beta&amp;t=sPm10WTbVTtzdpm_K-lygDbGmKG_ce6_h9O9mZ9omtQ"> 
+  </div> 
+  <p>Assume, C = 1, then,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHuBOexsO2Y5A" src="https://media.licdn.com/dms/image/C5112AQHuBOexsO2Y5A/article-inline_image-shrink_400_744/0/1520250927364?e=1691625600&amp;v=beta&amp;t=62pouBjZJZmvTHngDjvhb_GNFcHB2W9elCMVugR6vyM"> 
+  </div> 
+  <p>Thus,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQELsmDBFeAELw" src="https://media.licdn.com/dms/image/C5112AQELsmDBFeAELw/article-inline_image-shrink_400_744/0/1520240883489?e=1691625600&amp;v=beta&amp;t=gJtaVhwHQWZhHuSAMxrB9wAVRagDbxdRJmWFo45_w3w"> 
+  </div> 
+  <p>where,</p> 
+  <p>(cos at + i sinat) is a complex sinusoid and exp (-bt) is the amplitude of the complex sinusoid.</p> 
+  <p>It can be seen, that the amplitude is a functon of time. Thus, there are 2 possibilities</p> 
+  <p>a) if b &gt; 0, it would mean that the amplitude is decreasing with time. This physically will mean that the energy from the system is getting decreased with time (i.e. DAMPING).</p> 
+  <p>b) if b &lt; 0, then you are inputting energy into the system.</p> 
+  <p>Either of the two cases is not valid for an undamped system. Thus, it is NOT possible to have complex eigen values in an undamped free vibration problem.</p> 
+  <p><strong>What could be wrong if an undamped free vibration problem gives complex eigen values in a software and how to get on troubleshooting the problem?</strong></p> 
+  <p><strong>Evaluate the determinant of the stiffness matrix</strong></p> 
+  <p>The situation normally indicates a problem with the stiffness matrix which could be due to various reasons.One thing that might be done is to check the determinant of the stiffness matrix. I have come across cases where the stiffness matrix had an <em>infinite</em> determinant. This physically means that the inverse stiffness matrix (i.e. the compliance or the flexibility matix) has some zero eigen values.</p> 
+  <p><strong>Examine the flexibility / compliance matrix of the system</strong></p> 
+  <p>An infinite determinant means that the inverse&nbsp;stiffness matrix has some zero eigen values as stated above.</p> 
+  <p>If the software has capabilities to get the flexibility (compliance) matrix one can get the flexibility matrix and if the flexibility matrix has some zero eigen values then one can look at the corresponding eigen vectors. These eigen vectors physically describe the loads that are producing zero displacements. Thus, one can physically judge why the system is not displacing due to these loads (i.e. the eigen vectors corresponding to zero eigen frequency of the flexibility matrix) and correct any finite element modelling related errors in the system.</p> 
+  <p>Note that there is a chance that the problem is with the mass matrix as well (since the eigen value computation depends upon both the coefficient matrices: mass and stiffness) but the siutaion is less likely as computation of amss matrix is straight forward and most often one assumes a lumped mass matrix than distributed (consistent)&nbsp;mass matrix.</p> 
+  <p><strong>Does your FE model have rigid elements connected?</strong></p> 
+  <p>It is also possible that if one has rigid elements in the system and the software has computed the stiffness matrix by assigning a very large value of the Young's modulus or geometric properties of the finite element has led to an infinite determinant.</p> 
+  <p>This is because if some part of the calculation involves values that are very large or very small, the round-off errors in the calculation can be expanded by a huge amount and become significant.&nbsp;It is possible that the result of the calculation is actually mostly composed of hugely expanded round-off errors, and in that case, imaginary parts which were supposed to cancel perfectly to zero did not cancel exactly due to round-off errors in the calculation could be expanded to a large size.&nbsp;This would give apparent complex eigenvalues, which are really nothing but expanded round-off errors.</p> 
+  <p>It is always better that rigid elements be handled as motion constraints in a FE software than movable elements. By motion constraints instead of rigid elements, the calculation model imposes constraints on the translations / rotations of the nodes than connecting an infiniteley stiff rigid element. This would have the same effect as the "physical rigid element" in the FE model but this would probably avoid problems like an "infinite determinant". Different software's have different approaches to treat the&nbsp;modelling of rigid elements / constraining motion.</p> 
+  <p>Thus, if possible one can get on reducing the stiffness of the rigid element and see if you can get rid of the complex Eigen values because the complex Eigen values contraindicate the physics of the problem.</p> 
+  <p><strong>Is one your coefficient matrix unsymmetrical?</strong></p> 
+  <p>One should also check that both the coefficient matrices are symmetric as an unsymmetric mass or stiffness coefficient matrix will most often result in complex Eigen values.</p>
+ 
+</div>
+</body>
+</html>

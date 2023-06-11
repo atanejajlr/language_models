@@ -1,0 +1,295 @@
+<html>
+<head>
+  <title>Energy release rate in the context of fracture mechanics</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQHupwmYr8Plcw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/energy-release-rate-context-fracture-mechanics-ajay-taneja">Energy release rate in the context of fracture mechanics</a></h1>
+    <p class="created">Created on 2016-07-28 06:51</p>
+  <p class="published">Published on 2016-07-28 21:41</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2><strong>1. Introduction and background to Griffith’s theory</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>In my earlier article on: “Historical development of Fracture Mechanics: <a href="https://www.linkedin.com/pulse/history-development-fracture-mechanics-ajay-taneja?trk=prof-post" target="_blank">https://www.linkedin.com/pulse/history-development-fracture-mechanics-ajay-taneja?trk=prof-post</a> “, I had in some detail discussed about Griffith’s analysis of cracked solids. I had attempted to make clear the following in the last section of the article;</p> 
+  <ol> 
+   <li>Similar to surface tension in liquids, all solids are associated with surface energies which develop because all atoms close to the surface behave differently from the atoms in the interior of the solid.</li> 
+   <li>Griffith realized that a crack in a body will not grow until energy is “released” to suffice for the energy that is required to create 2 new surfaces: one above and one below the crack plane.</li> 
+  </ol> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGgMcR81nCW4g" src="https://media.licdn.com/dms/image/C5112AQGgMcR81nCW4g/article-inline_image-shrink_1000_1488/0/1520192015244?e=1691625600&amp;v=beta&amp;t=y1DtvwjOJB8gp251v_gHJM7a3yR7xgZmmYcYgf2BD0s"> 
+  </div> 
+  <p class="center"><strong>Figure: Plate with a central crack</strong></p> 
+  <p>&nbsp;In the last section of the above article, a plate with fixed ends with a central crack was considered and an expression for “Energy release rate” was formulated for the specific example.</p> 
+  <p>The aim of this article is to;</p> 
+  <ul> 
+   <li>Firstly, arrive at the mathematical formulation of the energy release rate. It should be noted that the expression for the energy release rate in the preceding article stated above, was developed for the specific case of a plate with a central crack with fixed ends. Thus, in section 2 a generic formulation for energy release rate is obtained.</li> 
+   <li>Section 3 aims at providing a physical insight to the reader considering the progress of crack growth in brittle materials.&nbsp;&nbsp;</li> 
+   <li>Then, in section 4 and section 5 of the article, expressions for the energy release rate are derived for 2 respective extreme cases;</li> 
+  </ul> 
+  <ol> 
+   <li>Constant load case</li> 
+   <li>Constant displacement case&nbsp;</li> 
+  </ol> 
+  <p>The main reason to discuss the extreme cases is to make aware that energy required to propagate the crack can be from different sources. In the case of constant load case (as discussed in section 3), the energy requirements for crack propagation are met through the external work done on the system which results in an overall increase in the strain energy stored in the structure. It should be realized through the section on “constant load case” that part of the external work done on the system goes on to increase the strain energy stored and a part of it is used for crack propagation.</p> 
+  <p>In case of “constant displacement” case, the strain energy of the system is reduced owing to its contribution to crack propagation. In a “real” practical scenario, the energy contribution to crack propagation is a mix of “constant load” and “constant displacement”.</p> 
+  <h2><strong>2</strong>&nbsp; <strong>Mathematical formulation of energy release rate </strong></h2> 
+  <p>&nbsp;</p> 
+  <p>With an advancing crack, the following happens in a general case;</p> 
+  <ol> 
+   <li>The stiffness of the component decreases.</li> 
+   <li>The strain energy of the system might increases or decrease. This has been discussed in length in section 4 of this document.</li> 
+   <li>Energy is consumed in creating two new surfaces.</li> 
+  </ol> 
+  <p>Mathematical formulation of energy release rate is carried out by invoking the law of conservation of energy. Consider the case of increment in crack area ∆A. This causes an increase in crack growth, an incremental external work ∆W is done by the external forces and the strain energy in the body of the component increases by ∆U.</p> 
+  <p>That is;</p> 
+  <p>If there is an incremental external work done = ∆W</p> 
+  <p>Then;</p> 
+  <p>Part of is stored in the system as strain energy = ∆ U</p> 
+  <p>Part of it is used in incrementing the crack surface area by ∆A</p> 
+  <p>Now,</p> 
+  <p>‘G’ is the energy release rate which is defined as energy available per unit area</p> 
+  <p>Then; from the principle of conservation of energy;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEZDsNccAhROQ" src="https://media.licdn.com/dms/image/C4E12AQEZDsNccAhROQ/article-inline_image-shrink_400_744/0/1520611152437?e=1691625600&amp;v=beta&amp;t=FxIWXNgWF6-zlrI3wbe0QLRq_qxCzzu5FM5oVTjMJMc"> 
+  </div> 
+  <p>Re-organizing;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFOaQB3mDVGxg" src="https://media.licdn.com/dms/image/C5112AQFOaQB3mDVGxg/article-inline_image-shrink_400_744/0/1520250799643?e=1691625600&amp;v=beta&amp;t=V4XGliPfM6bPShbErCVqSPyhoTKk47FhHZEI3FtF450"> 
+  </div> 
+  <h2><strong>3</strong>&nbsp; <strong>Progress of crack growth in brittle materials</strong></h2> 
+  <p><strong>&nbsp;</strong></p> 
+  <p><strong>Crack resistance:</strong></p> 
+  <p>For a crack to grow, the crack resistance “R”, is the energy required by the crack per unit increase in area. It characterizes the material behaviour. A minimum value of “Ri” is needed to make the crack to grow. The crack resistance “R” is the inherent property of the material.</p> 
+  <p><strong>Crack resistance: brittle materials</strong></p> 
+  <p>For a brittle material, wherein no plastic deformation occurs, ‘R’ remains constant as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHESq_wwYby6Q" src="https://media.licdn.com/dms/image/C5112AQHESq_wwYby6Q/article-inline_image-shrink_400_744/0/1520251382092?e=1691625600&amp;v=beta&amp;t=HkZLeu4z9VZLT0-c9220ZFQVqi_fQWhNSny8hbpwuWA"> 
+  </div> 
+  <p class="center"><strong>Figure: Crack resistance in brittle materials</strong></p> 
+  <p>It should be noteworthy at this stage, that in case of brittle materials, as described through Griffith’s theory, once the crack resistance is reached i.e. once the energy required to form 2 new surfaces is <em>available,</em> the crack growth is spontaneous and failure catastrophic. This is now justified, as the crack resistance in a brittle material remains constant and once this is reached, crack starts growing on its “own”.</p> 
+  <p>In the sub-sections that follow, we graphically represent the progress of crack growth with increasing stress level.</p> 
+  <p><strong>Graphical representation of conditions of fracture of a brittle material</strong></p> 
+  <p>In the above section, it was mentioned that the crack resistance ‘R’ in case of a brittle material remains constant. Let us look at the graphical representation of the conditions of fracture of a brittle material.</p> 
+  <p>On the positive side of the x axis, is marked the incremental crack growth. On the negative side, is shown the initial crack. ‘R’ is the resistance which as discussed in the section is constant for brittle material because there is no contribution to the increase in resistance from the plastic deformation (as the material, it does not plasticize). Let us examine the variation of ‘G’ with stress σ and increasing crack length ‘a’.</p> 
+  <p>If we apply a stress which is sufficiently small and if we plot the energy as a function of crack length, the curve of G (which varies linearly with ‘a’) will lie below ‘R’. Thus, the energy released is not sufficient for the crack to grow: the crack will thus remain stationary.</p> 
+  <p>See figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFoN17Tv6S9TQ" src="https://media.licdn.com/dms/image/C4E12AQFoN17Tv6S9TQ/article-inline_image-shrink_400_744/0/1520611152274?e=1691625600&amp;v=beta&amp;t=pHYipEa35yueHbBSXJypJQCfb6Df3VMPzfwP0fKlLlo"> 
+  </div> 
+  <p class="center"><strong>Figure: Variation of ‘G’ with stress σ and the crack length ‘a’</strong>&nbsp;</p> 
+  <p>Next, if we increase the stress to σ, which is still not “critical” since the energy released is less than the resistance: “R”.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQElqxUXE8tQ3g" src="https://media.licdn.com/dms/image/C5112AQElqxUXE8tQ3g/article-inline_image-shrink_400_744/0/1520249472952?e=1691625600&amp;v=beta&amp;t=QX17L_Z7l0Lv3SK4tH11ken3egRiEHEXY7pbYjedwrw"> 
+  </div> 
+  <p class="center"><strong>Figure: Variation of ‘G’ with crack length (the plate being stressed to σ)</strong></p> 
+  <p>&nbsp;If the stress, is increases to σ(this stress is termed as the ‘critical stress’ because as this stress, the energy released is equal to the energy required to form 2 new surfaces), then, G=R and the point of instability occurs as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFzC3RI3kWO8A" src="https://media.licdn.com/dms/image/C5112AQFzC3RI3kWO8A/article-inline_image-shrink_400_744/0/1520190557645?e=1691625600&amp;v=beta&amp;t=Hin81u1E7DyEMZrORNDAoP2_zWyf5dRU11jrFZT4fDE"> 
+  </div> 
+  <p class="center"><strong>Figure: Fracture initiation (point of instability) when ‘G’ = ‘R’</strong></p> 
+  <p>It should be noted that the behaviour of the structure upto the point of fracture initiation as mentioned above remains the same in all brittle materials. Beyond the point of fracture initiation the crack propagation starts and fracture is catastrophic in brittle materials.</p> 
+  <p>&nbsp;We shall now see the sources of energy for formation two new surfaces: one above and one below the crack plane. Two extreme cases of constant load and constant displacement will be discussed in considerable detail.</p> 
+  <h2><strong>3.</strong>&nbsp; <strong>Energy release at constant load</strong></h2> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>Consider the load on the component is such that the material begins to tear, extending the crack by δa, where δa is small relative to ‘a’. During the crack extension, the load “P” is kept constant. With the extended crack, the component is less stiff, so, for the same force “P”, the displacement of the component is larger by δΔ. The internal strain energy is then,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHIrAcPxLjeBA" src="https://media.licdn.com/dms/image/C4E12AQHIrAcPxLjeBA/article-inline_image-shrink_400_744/0/1520611152143?e=1691625600&amp;v=beta&amp;t=e7QC3ZO6t1-pnbfoxVN2t4YxeVnn7nz7JI0Q_bFTbcU"> 
+  </div> 
+  <p>as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFO64rtksUhEA" src="https://media.licdn.com/dms/image/C5112AQFO64rtksUhEA/article-inline_image-shrink_1000_1488/0/1520169392315?e=1691625600&amp;v=beta&amp;t=7KvHy9gsnRJKWM3pyqUvFrE9ZrRIw2J4kUAIzP9tDCs"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFVKLsr4g0l8g" src="https://media.licdn.com/dms/image/C5112AQFVKLsr4g0l8g/article-inline_image-shrink_1000_1488/0/1520144056663?e=1691625600&amp;v=beta&amp;t=0oDHEl8ItaPWr8yKro9kVDLmyISM8S3ftyK6_FTIYWs"> 
+  </div> 
+  <p><strong>Figure: (a) A component with crack growth δa subjected to load P (b) Load displacement curves for components with crack lengths a and a+δa, subjected to the same load P.</strong></p> 
+  <p>The increment of work done by the constant load P as the crack extends is:</p> 
+  <p class="center">δW = PδΔ</p> 
+  <p>The change in the internal strain energy of the component is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEse6TcFa75EA" src="https://media.licdn.com/dms/image/C5112AQEse6TcFa75EA/article-inline_image-shrink_400_744/0/1520191791825?e=1691625600&amp;v=beta&amp;t=4CIBG3LSaJJW_2i8TXzQSB9wdLUb8_hd3dQsMyne8LE"> 
+  </div> 
+  <p>Hence, half of the work done by the load P is used to increase the internal strain energy of the component, which leaves an excess energy δE of:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEkwoW4lsbNdw" src="https://media.licdn.com/dms/image/C5112AQEkwoW4lsbNdw/article-inline_image-shrink_400_744/0/1520191212430?e=1691625600&amp;v=beta&amp;t=tHJGTCSWH57pmhj9mGoEbCKaAQ312C3y-A7ztu-JNn4"> 
+  </div> 
+  <p>This energy is used to extend the crack: i.e. to break the atomic bonds to create two new surfaces- one above and one below the crack plane.</p> 
+  <p><em>Thus, the energy release rate per unit area of the new crack surface is;</em></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGZaHMiJo80pQ" src="https://media.licdn.com/dms/image/C4E12AQGZaHMiJo80pQ/article-inline_image-shrink_400_744/0/1520611152184?e=1691625600&amp;v=beta&amp;t=Qsa3RxybnRmx4ac7hGYQv_Af4k1dFfrFgWkxn8uhzyw"> 
+  </div> 
+  <p>G’ is the energy release rate which is defined as the energy available per unit area (kJ/m2) to grow a crack of width ‘B’ by distance δa. If the calculated value of ‘G’ exceeds the material toughness Gc the crack will grow.</p> 
+  <p><strong>&nbsp;</strong></p> 
+  <h2><strong>4.</strong>&nbsp; <strong>Energy release at constant displacement</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Consider now a scenario when the load on the component is such that the material begins to tear, extending the crack by δa, where δa is small relative to a. During crack extension, the displacement Δ is constant. With the extended crack, the component is less stiff, so for the same displacement Δ, the required force is changed by δP. The internal energy is then;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGYYYMJ-vB1SQ" src="https://media.licdn.com/dms/image/C4E12AQGYYYMJ-vB1SQ/article-inline_image-shrink_400_744/0/1520611152597?e=1691625600&amp;v=beta&amp;t=f1yTHfYK-gKM-gz9YwpR0wUdYdnKN0R-CoNZq3Ft3Cg"> 
+  </div> 
+  <p>as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHktcT4pLlOKw" src="https://media.licdn.com/dms/image/C4E12AQHktcT4pLlOKw/article-inline_image-shrink_400_744/0/1520611152386?e=1691625600&amp;v=beta&amp;t=aZ2wVLl7yj2cd80YOcQ5Q-OI1YwQLEUtgm_pbVmgiko"> 
+  </div> 
+  <p class="center"><strong>Figure: (a) A component with crack growth δa subjected to constant displacement (b) Load displacements curves for components with crack lengths ‘a’ and ‘a+δa’ subjected to the same displacement Δ</strong></p> 
+  <p>The system with a larger crack is less stiff, so δP is negative.</p> 
+  <p>Since Δ is constant, the increment of work done by the applied load is δW = 0. The change in the internal energy of the component is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFF01-Dl-N2JQ" src="https://media.licdn.com/dms/image/C4E12AQFF01-Dl-N2JQ/article-inline_image-shrink_400_744/0/1520611152605?e=1691625600&amp;v=beta&amp;t=g-9dCaRfriQaB_Cw1KwZR1kzTn09EXDcHmgKtPbySXc"> 
+  </div> 
+  <p>Hence, the energy available to be released from the component to extend the crack is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGmaa7F7y2fyg" src="https://media.licdn.com/dms/image/C5112AQGmaa7F7y2fyg/article-inline_image-shrink_400_744/0/1520191571278?e=1691625600&amp;v=beta&amp;t=B3v46oZnNjXoKWU9Cgr2s1vh2hD46gktyNbeV3uN8kc"> 
+  </div> 
+  <p>Note that δP and thus δU is negative. So, δE is positive</p> 
+  <p>The energy release rate per unit area of the new crack surface is:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEokPZYXstMaA" src="https://media.licdn.com/dms/image/C4E12AQEokPZYXstMaA/article-inline_image-shrink_400_744/0/1520611152160?e=1691625600&amp;v=beta&amp;t=3gwEMFbLLLF3Q_VDAk30mTnCsUNsfjclq6QMC2xz648"> 
+  </div> 
+  <p>G’ is the energy release rate.</p> 
+  <p><strong>Interpretation of constant load and constant displacement cases:</strong></p> 
+  <p>It might be noted that the above mathematical discussion considering the cases involving: constant load and constant displacement might look a little abstract and too theoretical. The main emphasis of the discussion is to realise that a source of energy is needed for crack propagation and that source can be either from:</p> 
+  <ol> 
+   <li>an external work done on the system. And, whenever there is work done on the system strain energy is stored in the system. In order for the crack to propagate, a part of the energy due to the work done is used up in increasing the overall strain energy stored in the system and a part of the energy is released to aid in crack propagation.</li> 
+   <li>when there is no external work done on the system (i.e. constant displacement case), then the source of energy for crack propagation comes from a decrease in the overall strain energy of the system</li> 
+  </ol> 
+  <p>The cases involving constant load and constant displacement are cases for pure theoretical interest and according to me; the engineer <strong><em>need not </em></strong>attempt to physically imagine the scenarios. This is my personal point of view. From a practical point of view, the energy needed from the crack to propagate comes from a mix of reduction in strain energy of the system and through the work done on the system.</p>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Understanding Regularization</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD4E12AQGF8hnu6qRl2g" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/understanding-regularization-ajay-taneja">Understanding Regularization</a></h1>
+    <p class="created">Created on 2019-10-20 11:21</p>
+  <p class="published">Published on 2023-01-25 21:09</p>
+  <div><h2>1.&nbsp;&nbsp;&nbsp;Regularization: Intuition</h2><p><br></p><p> In order to address overfitting of a Machine Learning model, one might think of the following options:</p><p> a) Getting more training data,</p><p> b) Reducing the number of features,</p><p> c) Regularization</p><p>Reducing the number of features in absence of sufficient training data might be a good option but at same time will result in loss of information that could have been important to the model. Of course there are means to measure feature importance's which I have discussed some months in a blog [<a href="https://lnkd.in/epXSkVhZ" target="_blank">https://lnkd.in/epXSkVhZ</a>] but that is not the purpose of this post.</p><p>When we are taking off or eliminating a feature, numerically it is equivalent to making the corresponding parameter / weight being equal to "zero". That could be too stringent thing to do because we are just throwing away that bit of information from the feature. If instead of totally eliminating a feature, we go about reducing the corresponding weight / parameter value will serve better. This is what regularization does</p><p> Regularization lets you keep all the features but prevents the features from having an overly large effect which is what sometimes causes overfitting</p><p>The above discussion on introducing a "penalty" on the parameters is valid for regression problems. In Lasso regression and Ridge regression we carry out the regularization by putting "constraints" on the parameters by introducing a penalty factor during the minimization of the Mean Square Error cost function. The constraint region is a diamond in Lasso and a circle in Ridge regression (see picture below)</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGXiKdnmZR5Gw" src="https://media.licdn.com/dms/image/D4E12AQGXiKdnmZR5Gw/article-inline_image-shrink_1000_1488/0/1674680023475?e=1691625600&amp;v=beta&amp;t=yXKWscicIv_C30yfmf1P8R_wpqvCyfj7TDiiJt2trQE"></figure><p>The above is for regression models</p><p>In case of Decision Trees regularization is through pruning of the trees (reducing the tree depth) because higher the depth of the trees more susceptible will be the model to overfitting and overly learn the training data and perform poorly on unseen data</p><p>In case of neural networks regularization is fine using dropouts that is deactivating of neurons</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQE_JmKmZ03SVg" src="https://media.licdn.com/dms/image/D4E12AQE_JmKmZ03SVg/article-inline_image-shrink_1000_1488/0/1674680079068?e=1691625600&amp;v=beta&amp;t=qSLTeCWbs37jRcDTmBi3KThj46xCZw6eNc4UmkRSZBE"></figure><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQH3Aoe0t99geQ" src="https://media.licdn.com/dms/image/D4E12AQH3Aoe0t99geQ/article-inline_image-shrink_1000_1488/0/1674680105308?e=1691625600&amp;v=beta&amp;t=5OWUF7FDLyXAziRWl6IETBpTv5RG1id6CBX1L26XYKA"></figure><h2>2.&nbsp;Regularization: Cost function for Regression problems</h2><p>&nbsp;Let us now go into the cost function aspect and see how the regularization term is brought into the cost function.</p><p> Considering the mean square error cost function and recalling that cost function being squared difference between actual value and predicted variable and it is this difference we try minimizing.</p><p> Now supposing, we add the regularization term here - intuitively we can sense that the regularization term will involve weight/parameter and we want to bring down(minimize) the value of the weight to reduce the effect of overfitting. So, we introduce λ*w^2 as the second minimization term.</p><p>λ here is a hyperparameter just like the learning rate which we will have to select. This λ can be thought of as introducing a penalty on the weights attempting to lower their effect to reduce variance</p><p> I will talk about the selection of λ in a later post. One can at this point imagine that if λ is 0 then obviously there is no regularization and hence we overfit. On another extreme if λ is extremely large say 10^7, we will get a negligible w after minimization thus finally we will have only the bias term remaining and hence highly underfit model</p><p> Thus there has to be a trade-off between the 2 extremes of λ. In a nutshell, there are 2 terms involved in the minimization problem:</p><p> a) The first term which minimizes the squared difference between the actual and the predicted&nbsp;variable thus learning the training data</p><p> b) The second term which shrinks the parameters (weights) so as to bring down their effect instead of completely eliminating the feature. This is the regularization term</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQHrsJGWyLf9zQ" src="https://media.licdn.com/dms/image/D4E12AQHrsJGWyLf9zQ/article-inline_image-shrink_1000_1488/0/1674680188825?e=1691625600&amp;v=beta&amp;t=w4dTFnxldlGLO-hL8tQGP4LcXf22aQahUjHaMb_ntRE"></figure><h2>3.&nbsp;Value of the hyperparameter λ for regularization</h2><p>&nbsp;First thing one should understand about what is called high bias and high variance problem and this can be explained from the training and the cross validation error</p><p> In case of underfitting of the data - high bias problem</p><p> J train &gt;&gt;0 and</p><p> J cross validation &gt;&gt;0</p><p> In case of overfit of the data - high variance problem</p><p> J train &lt;&lt;0 and</p><p> J cross validation &gt;&gt;0</p><p> Here J train and J cross are the training and cross validation errors respectively</p><p> As I mentioned in the above posts, λ would be very large for an underfit and will approach 0 for an overfitting</p><p> So we need some intermediate value of lambda. The procedure to select lambda is similar to evaluating (say) the degree of the polynomial while fitting to a regression problem.</p><p> We try different values of λ from;</p><p> lambda = 0,</p><p> lambda = 0.01,</p><p> lambda = 0.02,</p><p> lambda = 0.04 (doubling it)</p><p> lambda = 0.08 (double it again)</p><p> lambda = 0.16</p><p> lambda = 10</p><p> and each time minimize the cost function and get w and b and compute the cross validation error. And finally we use the c the values of the parameters with the minimum cross validation error and&nbsp;evaluate the performance with these parameters on the test set</p><p> </p><p> The plot between λ and training error J train and cross validation error J cross should approximately look like as shown in the figure below if things are going in correct direction.</p><p> The right value of λ will be the one for which the cross validation error is minimum and this can be observed from the figure shown below:</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQEMgEyxfB4xrA" src="https://media.licdn.com/dms/image/D4E12AQEMgEyxfB4xrA/article-inline_image-shrink_1000_1488/0/1674680282862?e=1691625600&amp;v=beta&amp;t=xqL9QzeqLRatQUwIF54UI7bBnnUmEw8V5g-7eySyfNo"></figure><h2>4. Regularization using Dropouts and Early Stopping</h2><p><strong>Droputs:</strong></p><p>In case of Neural Networks, regularization is typically done using "Dropouts". In Dropouts, during training, we essentially select randomly some subset of neurons in the neural network and prune these neurons with some probability . We randomly turn these neurons on and off at different iterations during training. </p><p>This essentially forces the neural network to learn an "ensemble" of different models. It can be interpreted so because at every iteration the network will be exposed to different models internally than the one it had on the previous iterations because a different set of neurons are turned on and off. This results in being a very powerful technique and helps in generalizing better.</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQHWxBZROesrRQ" src="https://media.licdn.com/dms/image/D4E12AQHWxBZROesrRQ/article-inline_image-shrink_1000_1488/0/1682945002401?e=1691625600&amp;v=beta&amp;t=Q5SWZrAYRND-Fgu0cIYbumKtwKKE3iGmGLZXMLVbvrw"></figure><p><strong>Figure: Pruning of neurons during an iteration of neural network training</strong></p><p><strong>Early Stopping:</strong></p><p>The next regularization technique often practised for Neural Networks in "Early Stopping". Here the Data Scientist will normally plot the  performance of the network on the training and the test data. As the network is trained, one would notice both the training and the test set loss decrease but a stage is reached where the training error continues to decrease but the test set error begins to increase. IT is at this point essentially that the model is beginning to overfit. And it is this point one would want to stop the training process as otherwise the model will learn the training data very precisely but not perform well on unseen data (overfitting).</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQEDd77yYwKdXQ" src="https://media.licdn.com/dms/image/D4E12AQEDd77yYwKdXQ/article-inline_image-shrink_1000_1488/0/1683057883262?e=1691625600&amp;v=beta&amp;t=feDhrOsC8Vw7bRQsuOY-nUGVwFX40ZkzYWIF2d2lB1g"></figure><p><strong>                    Figure: Early Stopping of Neural Network Training </strong></p></div>
+</body>
+</html>

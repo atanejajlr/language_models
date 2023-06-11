@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Skewed Datasets and Error Metrics</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD5612AQEz-ymQg4SeRA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/skewed-datasets-error-metrics-ajay-taneja">Skewed Datasets and Error Metrics</a></h1>
+    <p class="created">Created on 2020-03-11 18:12</p>
+  <p class="published">Published on 2023-01-23 21:42</p>
+  <div><h2>1.&nbsp;&nbsp;&nbsp;What are Skewed Datasets?</h2><p>When you're working on a Machine Learning&nbsp;project, you may many times encounter data sets where distribution between the number of examples of different classes do not match.</p><p> E.g. 1) You may be building an ML model to classify if a series of images of parts of an engine have anomalies/cracks or not, or a more common one 2) You may be building an ML model to read medical scans and want to ascertain if the patient has a rare disease or not</p><p> In such cases, it might not always be possible to have a 50-50 distribution of both the classes of examples in the datasets as sufficient examples with disease or with the defects/anomalies may just not be available.</p><p> The datasets in such cases are: Skewed</p><p><br></p><h2>2. Confusion matrix, Precision and Recall</h2><p>For skewed data sets the error metrics such as "accuracy" will not work.&nbsp;Let's say you have 100 medical images and out of those 100, 10 patients have a rare disease. Now, whatever be the case, that is even if you classify all 100 as not having the disease, your accuracy of the model is still 90%, obviously that does not mean you've built a good model</p><p>Thus in cases of skewed datasets, you need different error metrics. First thing to do will be to draw a confusion matrix. For constructing the confusion matrix, you take the Actual class on the X axis and the Predicted class on the Y axis. This is shown in Figure 1. Let y = 1 denote positive and y = 0 denote negative.</p><figure><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D5612AQGkaC4yC8NX4A" src="https://media.licdn.com/dms/image/D5612AQGkaC4yC8NX4A/article-inline_image-shrink_1000_1488/0/1674508861121?e=1691625600&amp;v=beta&amp;t=3IVSesGkc5T6q9L_KCKxma4PrAWaaROWRhPR1SOSreg"></figure><p><br></p><p>Thus, based on the Actual and predicted the 4 quadrants in the confusion matrix can be named as in Figure 2 which is self-explanatory. The Error metrics are normally defined as a pair: Precision | Recall</p><p>Precision denotes "out of the total number of examples predicted as positive, how many are actually positive" - i.e., out of all the examples that the model predicts as positive, what fraction did you actually get right. That is:</p><p><br></p><p>Precision =&nbsp;True Positive / (True Positive&nbsp;+ False Positive)</p><p> In our example, precision is: out of all the specimens that were predicted as having cracks (or, out of all the patients&nbsp;that we predicted&nbsp;as having the disease), how many actually had the cracks (or, disease).</p><p> The second (in the pair) metric is Recall- Recall is out of the specimens that actually have the cracks (or, the patients actually had the disease), what fraction did you correctly predict. Thus&nbsp;recall is given by;</p><p> Recall = True positives / number of actual positives = True positives / True positives&nbsp;+ False negatives</p><figure><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D5612AQFMJ-krlwsDIQ" src="https://media.licdn.com/dms/image/D5612AQFMJ-krlwsDIQ/article-inline_image-shrink_1000_1488/0/1674509089009?e=1691625600&amp;v=beta&amp;t=Xit8ri8rtKO_vOzaImRzlJqibpbpFBGlZbMsN5Q7hJM"></figure><p><br></p><p>The above equations are the mathematical definition&nbsp;of Precision and Recall</p><p> Now, with the paired metrics of Precision and Recall, you will get a more realistic estimate of model accuracy. Thus, with skewed datasets Precision and Recall serve much better error metrics to see how the learning algorithm is performing</p><p> In general, in a&nbsp;learning algorithm, we'd like to have high precision and high recall.</p><figure><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D5612AQHMdc0hD-H-wQ" src="https://media.licdn.com/dms/image/D5612AQHMdc0hD-H-wQ/article-inline_image-shrink_400_744/0/1674509190722?e=1691625600&amp;v=beta&amp;t=T2dUJ-8fm13QFbSQLn6K39_LYXnMTLjVG45gXWRmnRs"></figure><p><br></p><h2>3. Understanding Precision and Recall</h2><p> Thus, the physical interpretation of the above mathematical formulae of Precision and Recall could be described as follows;</p><p>a)&nbsp;&nbsp;&nbsp;“Precision” considers false positives as costly. That is: high precision will indicate that you have low false high positives. This can be important in certain cases: for example, in facial recognition system – that is, if the face recognition algorithm falsely classifies someone to be a member on the system (when she/he is actually not but might be an intruder entering the space), then, surely one would want to reduce the probability of this happening. In such systems, you want a very high precision to minimize the likelihood of false positives [note: here positive indicates member of the system]</p><p>&nbsp;</p><p>b)&nbsp;&nbsp;&nbsp;In Recall false negatives are considered costly. For example, if you’re detecting presence of a serious disease by reading a radiograph or detecting the presence or absence of crack in an engine part (where presence of disease or the crack is considered positive) – in such cases predicting the disease (even if it is not) or the crack as present, might be better to avoid a trauma/hazard – thus, we will want to limit the false negatives and will want the recall to be high</p><p> </p><h2>4. Trade-off between Precision and Recall:</h2><p>&nbsp;</p><p>In the above cases, one might want to change the prediction threshold. E.g. if you’re doing a logistic regression to predict a crack or no crack on an engine component, then, as said above one will want to limit the false negatives very strictly, thus, you might:</p><p>Predict 1 if y &gt; = 0.25 – i.e., predict the crack is present even if the likelihood is 0.25 </p><p>Predict 0 if y &lt; 0.25 </p><p>&nbsp;</p><p>For the face detection algorithm, where you would want to limit false positives, you may provide threshold as:</p><p>&nbsp;</p><p>Predict 1 if y &gt; = 0.7</p><p>Predict 0 if y &lt; 0.7</p><p>Thus, depending upon the application, one might want to set different thresholds for the dependent variable than 0.5 / likewise</p><p>&nbsp;</p><h2>5. F1- Score:</h2><p>There is another metric which is also very often used to automatically combine precision and recall than individually governing their values. This is quite useful because one challenge with precision and recall is that you’re evaluating your algorithm using 2 different metrics. So, if you’ve trained 3 different algorithms for a single problem, then, it might not be very obvious which algorithm to use through the value of both these metrics. In order to help decide which algorithm to pick, it is useful to find a way to combine precision and recall into a single score called as <strong>F1-Score</strong></p><p><strong>&nbsp;</strong></p><p><strong>F1-Score gives more emphasis to whichever is value is lower as one might observe from the formula.</strong></p><p><strong>&nbsp;</strong></p><p>F1-Score is given by:</p><figure><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D5612AQF7BGgtF9fN4w" src="https://media.licdn.com/dms/image/D5612AQF7BGgtF9fN4w/article-inline_image-shrink_400_744/0/1674509553035?e=1691625600&amp;v=beta&amp;t=FDEHeUTzVM87sE-TOYK2K9I7U11YE9HDqVsHzHIfIGo"></figure><p>As you may see from the above formula, we average 1/P and 1/R, we are averaging 1 / P and 1 / R gives more emphasis to which ever value is small out of P and R we then take the inverse</p><p>In mathematics, the above formula is known as the <strong>“Harmonic mean”</strong> which emphasizes on smaller values of the variables – here precision and recall.</p></div>
+</body>
+</html>

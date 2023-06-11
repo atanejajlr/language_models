@@ -1,0 +1,540 @@
+<html>
+<head>
+  <title>On Fatigue Failure –  Part 7: “Rainflow” Cycle Counting and it’s Relationship to Uniaxial Plasticity</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGlTb3p1Ukm8w" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-7-rainflow-cycle-counting-its-uniaxial-taneja-1d">On Fatigue Failure –  Part 7: “Rainflow” Cycle Counting and it’s Relationship to Uniaxial Plasticity</a></h1>
+    <p class="created">Created on 2018-06-16 17:18</p>
+  <p class="published">Published on 2018-06-17 12:58</p>
+  <div><h2>1.&nbsp;&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;</p> 
+  <p>In my last blog on Fatigue Failure [<a href="https://www.linkedin.com/pulse/fatigue-failure-part-6-randomly-varying-stresses-miners-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-6-randomly-varying-stresses-miners-ajay-taneja/</a>], I had been speaking about “Randomly Varying Stresses”, the Miner’s Rule. It may be recalled that Miner’s rule is a Linear Cumulative Damage Rule for a component / part (precisely, feature of a part) being subjected to repeated variable amplitude cycles of loading as illustrated in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFb_dzC1Ap9FQ" src="https://media.licdn.com/dms/image/C5112AQFb_dzC1Ap9FQ/article-inline_image-shrink_1000_1488/0/1529169566878?e=1691625600&amp;v=beta&amp;t=XTBNaVKDJ5WrvYJ2JIWlh6neutmFFHTQDTctL7wpvCs"> 
+  </div> 
+  <p><strong>Figure 1: Application of Miner’s Rule for a feature of a part being subjected to variable amplitude cycles of loading</strong></p> 
+  <p>Using the Miner’s Rule, it was possible to calculate the “damage” induced during each cycle of loading. Having calculated the damage, it was possible to calculate the total life considering that the cycles are repeated over and over again.</p> 
+  <p>That is; considering the stress cycles shown in the Figure 1, it was quite simple to calculate the number of cycles subjected to a particular stress range – the distinct cycles being shown in red, green and purple colour in the Figure 1 above. However, this might most often not be the case. That is; the loading history might at many times be complicated as shown in the Figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE-LSCyWkiX4Q" src="https://media.licdn.com/dms/image/C5112AQE-LSCyWkiX4Q/article-inline_image-shrink_1000_1488/0/1529169598262?e=1691625600&amp;v=beta&amp;t=jnrKSIZpm8yJG8_ljyeZSYMyUchI1MWwaTBthlhLBrI"> 
+  </div> 
+  <p><strong>Figure 2: Loading History</strong></p> 
+  <p>In such cases (Figure 2), it might generally not be possible to detect the number of cycles corresponding to a particular stress range as distinctly as in Figure 1.</p> 
+  <p>Several methods have been proposed for general cycle counting such as: Rainflow cycle counting technique, Level Crossing, Reservoir Counting Method, etc. Out of many methods available for cycle counting, Rainflow Cycle Counting technique is often applied and it gives the most precise physical representation of the fatigue process.</p> 
+  <p>This article attempts to gives an insight into the “Rainflow” cycle counting technique and the following aspects of this cycle counting method are elaborated in the subsequent sections;</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Section 2 explains in detail of the relationship of the “Rainflow” cycle counting technique to uniaxial plasticity</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Section 3 talks of the From-To Rainflow Cycle Matrix in terms of Stress Range</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Section 4 details about the formulating a Rainflow Cycle Counting Algorithm</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Section 5 is about the step by step algorithmic ingredients of the Rainflow Cycle Counting Method</p> 
+  <p><br></p> 
+  <p><br></p> 
+  <h2>2.&nbsp;&nbsp;&nbsp;Relationship of the “Rainflow” Cycle Counting Technique to Uniaxial Plasticity</h2> 
+  <p>&nbsp;Through the content of the introductory section and my earlier blogs on Fatigue Failure (especially Part 6 of the series: <a href="https://www.linkedin.com/pulse/fatigue-failure-part-6-randomly-varying-stresses-miners-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-6-randomly-varying-stresses-miners-ajay-taneja/</a>, that each “cycle” is a “damaging” event. Fatigue arises on account of the stress reversals that occur during a time history. The “Rainflow” Cycle Counting method is designed to count the stress reversals in accordance with the stress-strain relationship of the material including the hysteresis loop. Rainflow cycle counting is in-fact the only technique that identifies and accounts for all the cycles in a variable amplitude loading history.</p> 
+  <p>The basic principle of the “Rainflow” Cycle Counting technique can be illustrated through the following examples;</p> 
+  <p><strong><u>Relationship of the “Rainflow” Cycle Counting technique to uniaxial plasticity: Example 1</u></strong></p> 
+  <p><br></p> 
+  <p><em>[the plots below purely are from a qualitative point of view and not necessarily drawn to scale]</em></p> 
+  <p><br></p> 
+  <p>Firstly, let us consider a simple example of a part being subjected to a sinusoidal loading history i.e. in effect a fully reversible loading history with R = -1 as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEca0Dt_L16ZA" src="https://media.licdn.com/dms/image/C5112AQEca0Dt_L16ZA/article-inline_image-shrink_400_744/0/1529169658135?e=1691625600&amp;v=beta&amp;t=vCbfZLsgyiwqHPwgoVuoPMaDnUgMoL8xKPyiikmdfWM"> 
+  </div> 
+  <p><strong>Figure 3: Sinusoidal – Fully Reversible Loading History (R = -1)</strong></p> 
+  <p>If we were to plot the stress-strain curve corresponding to the above loading history, assuming that the material goes into the plastic regime, then, we have the stress strain curve as shown in the figures below (assuming that the material has plasticized at A).</p> 
+  <p>We have from 0 to A, the stress strain curve as shown (assuming that the material has plasticized at A);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFYZPS5zPBPWQ" src="https://media.licdn.com/dms/image/C5112AQFYZPS5zPBPWQ/article-inline_image-shrink_1000_1488/0/1529169693299?e=1691625600&amp;v=beta&amp;t=rUjWzUvl57Ib8xqg_V79IppfV6wHsw5Va85IHeMIHsI"> 
+  </div> 
+  <p><strong>Figure 4: Stress Strain Curve upto the point A (assuming that there is some plasticity at A)</strong></p> 
+  <p>Then, there is the unloading range and the material goes into compression as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHbbFY8qf7ExA" src="https://media.licdn.com/dms/image/C5112AQHbbFY8qf7ExA/article-inline_image-shrink_1000_1488/0/1529169745722?e=1691625600&amp;v=beta&amp;t=uIZ6ACut1YDIANkBx6Pch-2dpLicJCSYy7bk1me5TOo"> 
+  </div> 
+  <p><strong>Figure 5: Stress Strain Curve upto the point B </strong></p> 
+  <p>From B, the material goes into tension and joins with A as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFk1lUkbbQsJw" src="https://media.licdn.com/dms/image/C5112AQFk1lUkbbQsJw/article-inline_image-shrink_400_744/0/1529169790619?e=1691625600&amp;v=beta&amp;t=izUsc4qVNy6Ui28rNe5RSf_lXo8SMPzn_fA99U3njrk"> 
+  </div> 
+  <p><strong>Figure 6 Stress Strain curve representing closed hysteresis loops lying on top of each other</strong></p> 
+  <p>If we have a cyclically stable material, we will have a series of loops lying on top of one another – hence points A,C,E and points B,D are shown at the same position in Figure 5 above. The takeaway from this exercise is that each closed hysteresis loop represents a “cycle”.</p> 
+  <p>Thus, considering the stress strain curve of the material basing it on the loading history, each time there is a closed cycle / closed hysteresis loop, it represents a “Damaging” event and the “Damage” can be calculated based on stress-range through the hysteresis loop.</p> 
+  <p><br></p> 
+  <p><strong><u>Relationship of the “Rainflow” Cycle Counting technique to uniaxial plasticity: Example 2</u></strong></p> 
+  <p>Next, consider simple variable amplitude loading as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHhmo4V0vp4pw" src="https://media.licdn.com/dms/image/C5112AQHhmo4V0vp4pw/article-inline_image-shrink_1000_1488/0/1529169847391?e=1691625600&amp;v=beta&amp;t=Z9eaZ_q7sC6NJ18azmmfj0TJXygKGuY23MEiUnWOexs"> 
+  </div> 
+  <p><strong>Figure 7: Variable amplitude loading history – Example 2</strong></p> 
+  <p>The stress strain curve corresponding to this loading history can be plotted as shown.</p> 
+  <p>Firstly, on loading from O to B, the stress strain curve will appear as shown below (Assuming that there is some plasticity at B);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEdcUfL2x2fBw" src="https://media.licdn.com/dms/image/C5112AQEdcUfL2x2fBw/article-inline_image-shrink_400_744/0/1529169885890?e=1691625600&amp;v=beta&amp;t=Ls3H1JytE408h1uCJ7notjI30H-AY0di6a-7ngMS1pA"> 
+  </div> 
+  <p><strong>Figure 8: Stress-Strain plot up-to point B of the Variable Amplitude Loading of Figure 6</strong></p> 
+  <p>Next, on unloading from B to C, the stress strain curve is as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGui35DhJOBIQ" src="https://media.licdn.com/dms/image/C5112AQGui35DhJOBIQ/article-inline_image-shrink_1000_1488/0/1529169949084?e=1691625600&amp;v=beta&amp;t=Oem60tPRBTIWbFh0w3CBjEn_RFwZGSQQd5jvqKbTRAw"> 
+  </div> 
+  <p><strong>Figure 9: Stress-Strain plot up-to point C of the Variable Amplitude Loading of Figure 6</strong></p> 
+  <p>Again, now when the loaded from C, it joins the curve at D and the loading proceeds upto E as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGQkPqarV93zA" src="https://media.licdn.com/dms/image/C5112AQGQkPqarV93zA/article-inline_image-shrink_1000_1488/0/1529169978418?e=1691625600&amp;v=beta&amp;t=ZsaWhkkj7y_t0Alf9ovw-znUg5b-VrXiBr_3ESBv_RA"> 
+  </div> 
+  <p><strong>Figure 10: Complete Stress-Strain Plot For the Variable Amplitude Loading of Figure 6</strong></p> 
+  <p><br></p> 
+  <p>Thus, the strain history in Figure 6 comprises of a large stress-range from O to E and a small closed cycle (full cycle) from BCD embedded. As stated above, the basic principle in Rainflow Cycle Counting is that is to count a cycle each time a hysteresis loop is closed.</p> 
+  <p>Thus, the total count of in Figure 6 is a half cycle with stress range O-E plus a full cycle with a stress range BC</p> 
+  <p>Having calculated the number of cycles and the Stress-Range for each of the cycles, Damage calculated using Miner’s Rule [<a href="https://www.linkedin.com/pulse/fatigue-failure-part-6-randomly-varying-stresses-miners-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-6-randomly-varying-stresses-miners-ajay-taneja/</a>]</p> 
+  <p><br></p> 
+  <p><strong><u>Relationship of the “Rainflow” Cycle Counting technique to uniaxial plasticity: Example 3</u></strong></p> 
+  <p>Next, consider variable amplitude loading as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEctCDVLi983A" src="https://media.licdn.com/dms/image/C5112AQEctCDVLi983A/article-inline_image-shrink_1000_1488/0/1529170045736?e=1691625600&amp;v=beta&amp;t=lrKtcxPuztVIqraKUGWaXwoK8J4zAIWfrzC7pw0TDn0"> 
+  </div> 
+  <p><strong>Figure 11: Variable amplitude loading history – Example 3</strong></p> 
+  <p><br></p> 
+  <p>Again; plotting the hysteresis response of the material; this is going to be done qualitatively in order to identify the hysteresis loops for the “rainflow” cycle counting;</p> 
+  <p>Considering the stress-strain curve of the material up to – assuming that there is some plasticity at A;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHweQfxX2-JdA" src="https://media.licdn.com/dms/image/C5112AQHweQfxX2-JdA/article-inline_image-shrink_1000_1488/0/1529170090722?e=1691625600&amp;v=beta&amp;t=-4e4fx4im-cqfieKrt6IOycxgeHgxjNsLTItR7UQacQ"> 
+  </div> 
+  <p><strong>Figure 12: Stress-Strain plot up-to point A of the Variable Amplitude Loading of Figure 10</strong></p> 
+  <p>Next, we’re going to go down the point B as shown below in the stress-strain plot for the loading history in Figure 10.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE_wiqqJ6544Q" src="https://media.licdn.com/dms/image/C5112AQE_wiqqJ6544Q/article-inline_image-shrink_1000_1488/0/1529170139781?e=1691625600&amp;v=beta&amp;t=668HCk5VFIxpUUxQbs9HBmTI5hY3l1rJWGl5Gcw7ciM"> 
+  </div> 
+  <p><strong>Figure 13: Stress-Strain plot up-to point B of the Variable Amplitude Loading of Figure 10</strong></p> 
+  <p>Next we go to the point D. Please note that C back to B is one loop and then we continue on to D as shown in the Figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHvWc-VfjjOKA" src="https://media.licdn.com/dms/image/C5112AQHvWc-VfjjOKA/article-inline_image-shrink_1000_1488/0/1529170198851?e=1691625600&amp;v=beta&amp;t=DixZHhfeTirmXmokkodVb59Vofq20Xko1BCoJnDlr1Q"> 
+  </div> 
+  <p><strong>Figure 14: Stress-Strain plot up-to point D of the Variable Amplitude Loading of Figure 10</strong></p> 
+  <p>Next we go to the point E;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEtozZU1vaucA" src="https://media.licdn.com/dms/image/C5112AQEtozZU1vaucA/article-inline_image-shrink_1000_1488/0/1529170253512?e=1691625600&amp;v=beta&amp;t=zvHfrkG7xFynKij7s8jwugbZ_TH8XtVhYyram4I3gNQ"> 
+  </div> 
+  <p><strong>Figure 15: Stress-Strain plot up-to point E of the Variable Amplitude Loading of Figure 10</strong></p> 
+  <p>Next coming to the point F and coming back down to F, we close back the loop from E to D as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEJQIct08hjtw" src="https://media.licdn.com/dms/image/C5112AQEJQIct08hjtw/article-inline_image-shrink_1000_1488/0/1529170307002?e=1691625600&amp;v=beta&amp;t=0An0cL_seU9uqrq4NRWawFGw87ucuS6BV-rAGCBFxFw"> 
+  </div> 
+  <p><strong>Figure 16: Stress-Strain plot up-to point E of the Variable Amplitude Loading of Figure 10</strong></p> 
+  <p>Next, we go to G and then to H as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGk5qtnbWka5g" src="https://media.licdn.com/dms/image/C5112AQGk5qtnbWka5g/article-inline_image-shrink_1000_1488/0/1529170367694?e=1691625600&amp;v=beta&amp;t=6Zyt-PPC_UDrkPvTKGwojLsE_1NxaFg4lony1uXxxVc"> 
+  </div> 
+  <p><strong>Figure 17: Stress-Strain plot up-to point H of the Variable Amplitude Loading of Figure 10</strong></p> 
+  <p>Next, we go from H to the point A and on the way close the loop at G as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEkTSGvpKWYAA" src="https://media.licdn.com/dms/image/C5112AQEkTSGvpKWYAA/article-inline_image-shrink_1500_2232/0/1529170428236?e=1691625600&amp;v=beta&amp;t=Oga7NnggMuHKD1nnOm_i6mmJ3XdzkOaBA1RT73EB_NE"> 
+  </div> 
+  <p><strong>Figure 18: Complete Stress-Strain plot of the Variable Amplitude Loading of Figure 10</strong></p> 
+  <h2>3.&nbsp;&nbsp;&nbsp;From – To Rainflow Cycle Matrix</h2> 
+  <p>&nbsp;In order to understand the “From – To” Rainflow Cycle matrix, let us first consider the stress-time history as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEEJoPGvW164A" src="https://media.licdn.com/dms/image/C5112AQEEJoPGvW164A/article-inline_image-shrink_1000_1488/0/1529170480934?e=1691625600&amp;v=beta&amp;t=Em7vwYDIc2dLvGO9MgKyCpxu1oRaX9IyNsJWoAL_bKI"> 
+  </div> 
+  <p><strong>Figure 19:&nbsp;Stress – time history</strong></p> 
+  <p>The stress-strain plot for the above stress-time history can be plotted as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHsITcn8fW3Ng" src="https://media.licdn.com/dms/image/C5112AQHsITcn8fW3Ng/article-inline_image-shrink_1000_1488/0/1529170548366?e=1691625600&amp;v=beta&amp;t=1iuXZDUa1pS8vTEqYdnLFqQSXVDCTQQ72IVPzjzl9GA"> 
+  </div> 
+  <p><strong>Figure 20: Stress – Strain plot for the Loading history as shown in Figure 18</strong></p> 
+  <p>The identifies hysteresis closed loops are as shown in the Figure above</p> 
+  <p>Observing the closed hysteresis loops, the From – To Rainflow Cycle Matrix can be formulated as shown in the Table below;</p> 
+  <p>Through the horizontal rows, we have “From”, through the vertical rows we have “To”;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHcmlnbDcNYcA" src="https://media.licdn.com/dms/image/C5112AQHcmlnbDcNYcA/article-inline_image-shrink_400_744/0/1529170620792?e=1691625600&amp;v=beta&amp;t=g19IfhMqFUEAsF4-K3yDy5V3iekzsRBhum9dwQrSYhQ"> 
+  </div> 
+  <p>Thus, this is the way to reduce Variable amplitude time histories with very lengthy time history that has lot of variable amplitude cycles in it into a concise description of time histories as shown in the Table above.</p> 
+  <h2>4.&nbsp;&nbsp;&nbsp;Developing Algorithm for “Rainflow” Cycle Counting Technique</h2> 
+  <h2>4.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Peak Picking:</h2> 
+  <p>In order to develop an algorithm for the rainflow cycle counting technique let us consider a variable amplitude loading as shown in the Figure below;</p> 
+  <p>In order to develop an algorithm for the rainflow cycle counting technique let us consider a variable amplitude loading as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQENQk_gQenmlg" src="https://media.licdn.com/dms/image/C5112AQENQk_gQenmlg/article-inline_image-shrink_1000_1488/0/1529170705021?e=1691625600&amp;v=beta&amp;t=H--Zqy5WN7RHQnWY2V5xudQyhPfWltcNVgFPUlCE164"> 
+  </div> 
+  <p><strong>Figure 21: Example Variable Amplitude Loading considered For Algorithm Development</strong></p> 
+  <p>Let us consider a block loading as shown so that we have a series of blocks that repeat one after another. The red colour points shown below represent the data points through which plot is generated.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFuC-inNqo68Q" src="https://media.licdn.com/dms/image/C5112AQFuC-inNqo68Q/article-inline_image-shrink_1500_2232/0/1529170798915?e=1691625600&amp;v=beta&amp;t=JCpVGFcrrtuI7iFShxZDD7u88WwWitKaK9F976IqlZI"> 
+  </div> 
+  <p><strong>Figure 22: Example Variable Amplitude Loading considered For Algorithm Development – loading being repeated in blocks</strong></p> 
+  <p><br></p> 
+  <p>To make things simpler, what we do is that: we wrap the time history so that we start and end with th extreme value i.e. the highest peak.</p> 
+  <p>Since, in the above example, we are considering a block that is repeated the extreme values are the same which means all the hysteresis loops will close. If we do not start and end with the extreme values, there will be a bunch of hysteresis loops that will be uncloses and will thus require special techniques to be dealt with in the algorithm. In the current example let us wrap the time history around the location starting and ending with the extreme value.</p> 
+  <p>Next, it should be understood that, the analyst really wants only the peaks and valleys associated with the loading history. Thus, next, the data is reduced so that one gets only peaks and valleys in the time history as marked below. This process is called <strong><u>“Peak-Picking”</u></strong></p> 
+  <p>Thus, the points which we want to keep in the time history are marked below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHYqeGCmFeVUw" src="https://media.licdn.com/dms/image/C5112AQHYqeGCmFeVUw/article-inline_image-shrink_1500_2232/0/1529170855464?e=1691625600&amp;v=beta&amp;t=QzsA3yCZO5ZdM5hjmrT0vKm7sZkGDW0_D_gP1usJsBQ"> 
+  </div> 
+  <p><strong>Figure 23: Example Variable Amplitude Loading considered For Algorithm Development – Peaks and Valleys marked in Circles</strong></p> 
+  <p>Given a data-set and In order to identify, whether we have a peak or a valley, the easiest thing to do is to take 3 consecutive points and check whether the slope between 2 consecutive points is the same sign or opposite sign. For example, let us assume that we stress – time history comprising of a set of discreet data points got from the digitalized history as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHzduvWk6_pBw" src="https://media.licdn.com/dms/image/C5112AQHzduvWk6_pBw/article-inline_image-shrink_400_744/0/1529171039729?e=1691625600&amp;v=beta&amp;t=FRltQkD01p-wTRF6J1eo1lAQuwOek4zQWKH9zRosaN4"> 
+  </div> 
+  <p><br></p> 
+  <p>Thus, comparing slopes 1-2 and 2-3, then, if the slopes have the same sign, then the peak/valley has not been identified. If the slopes have “different” signs then a “peak” or a “valley” has been identified. It is possible to process the entire time history in this way and it is possible to get a series of “peaks” and “valleys”.</p> 
+  <p><br></p> 
+  <p>Thus, as the first steps in developing a cycle counting algorithm we have;</p> 
+  <p><br></p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Consider the cycle between two consecutive peaks in a block</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;“Peak Picking” as explained below by considering 3 consecutive points in each step and find the slopes as explained above.</p> 
+  <h2>4.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hysteresis Loops:</h2> 
+  <p><br></p> 
+  <p>In the above paragraphs, the relationship of rainflow cycle counting to uniaxial plasticity, hysteresis loops has been discussed in some detail.</p> 
+  <p>In the context of hysteresis loops, there are only 3 things that can happen to 3 consecutive points in the time history.</p> 
+  <p><strong>Possibility 1:</strong></p> 
+  <p>Let us consider the three points: A,B and C in stress – time history as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF82bqq1ExjOg" src="https://media.licdn.com/dms/image/C5112AQF82bqq1ExjOg/article-inline_image-shrink_400_744/0/1529238171229?e=1691625600&amp;v=beta&amp;t=LmV2gYJUm0fwK8s2gPdCg6xXjuIGhu0MzGljz_KR4T4"> 
+  </div> 
+  <p><strong>Figure 25: Possibility 1 in the Rainflow Cycle counting Algorithm – given a set of 3 consecutive points</strong></p> 
+  <p>In this case (possibility 1), Range AB = Range BC</p> 
+  <p>If this is the case, we have a closed hysteresis loop as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFEbyCD-zdXvQ" src="https://media.licdn.com/dms/image/C5112AQFEbyCD-zdXvQ/article-inline_image-shrink_1000_1488/0/1529238242276?e=1691625600&amp;v=beta&amp;t=xjJXaS8nCB2ar9p9AtMYNKwTRnmorkV5AfK43SItDDg"> 
+  </div> 
+  <p><strong>Figure 26: Stress – Strain Curve for Figure 24 (Possibility 1)</strong></p> 
+  <p><strong>Possibility 2:</strong></p> 
+  <p>The next possibility has the points A, B and C as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHUx7ZtIVNWNg" src="https://media.licdn.com/dms/image/C5112AQHUx7ZtIVNWNg/article-inline_image-shrink_400_744/0/1529238281903?e=1691625600&amp;v=beta&amp;t=I77Wf9l9Nj4JCKvfa3SWMl539oP970alHIdlyVOjI4k"> 
+  </div> 
+  <p><strong>Figure 27: Possibility 2 in the Rainflow Cycle counting Algorithm – given a set of 3 consecutive points</strong></p> 
+  <p><br></p> 
+  <p>In this case (possibility 2),</p> 
+  <p>Range BC &gt; Range AB.</p> 
+  <p>The stress- strain plot (assuming plasticity has initiated) is shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHAtgLtWuR_ew" src="https://media.licdn.com/dms/image/C5112AQHAtgLtWuR_ew/article-inline_image-shrink_400_744/0/1529238334383?e=1691625600&amp;v=beta&amp;t=hnUAKmv8p7gAkhi97ZIutY8Qyh2e2z9lcErovjB6I-I"> 
+  </div> 
+  <p><strong>Figure 28: Stress – Strain Curve for Figure 26 (Possibility 2)</strong></p> 
+  <p><br></p> 
+  <p><strong>Possibility 3:</strong></p> 
+  <p>The next possibility has the points A, B and C as shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGwWoEWdW_DYw" src="https://media.licdn.com/dms/image/C5112AQGwWoEWdW_DYw/article-inline_image-shrink_400_744/0/1529238399386?e=1691625600&amp;v=beta&amp;t=-eKGBepHLG-JYD-uLXFR1P35iCihCT0BcdQgjw1Mzco"> 
+  </div> 
+  <p><strong>Figure 29: Possibility 3 in the Rainflow Cycle counting Algorithm – given a set of 3 consecutive points</strong></p> 
+  <p><br></p> 
+  <p>In this case (possibility3),</p> 
+  <p>Range BC &lt; Range AB.</p> 
+  <p>The stress- strain plot (assuming plasticity has initiated) is shown in the Figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGcYmXFSqHL5g" src="https://media.licdn.com/dms/image/C5112AQGcYmXFSqHL5g/article-inline_image-shrink_1000_1488/0/1529238529025?e=1691625600&amp;v=beta&amp;t=W6HEf_fmwJjj0_kse9_Q43sitfhd-PX55z4GEjyY8lc"> 
+  </div> 
+  <p><strong>Figure 30: Stress – Strain Curve for Figure 28 (Possibility 3)</strong></p> 
+  <p>Having identified one of the above cases, using the 3 points in stress – time history, the next process forms the basis of the Rainflow Cycle Counting Algorithm. This is illustrated through the following example.</p> 
+  <p><br></p> 
+  <h2>4.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example – Development of Rainflow Cycle Counting Algorithm</h2> 
+  <p>&nbsp;</p> 
+  <p>Thus, to summarize the discussion concerning the development of algorithm of the Rainflow Cycle Counting technique;</p> 
+  <p><br></p> 
+  <p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firstly, we need to pick successive peaks and eliminate the history prior to the peaks as explained in section 4.1</p> 
+  <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Secondly, we need to retain only the peaks and valleys of all the points in the stress-time history.</p> 
+  <p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then, considering the points that are retained we consider 3 consecutive points at a time and there can be 3 possibilities as discussed in the section 4.2 above</p> 
+  <p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to complete the algorithm, let us consider the following example;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGSobfu6y-NQQ" src="https://media.licdn.com/dms/image/C5112AQGSobfu6y-NQQ/article-inline_image-shrink_1000_1488/0/1529238586110?e=1691625600&amp;v=beta&amp;t=M-9WZw-U-4TWOLqz6UWn3SwT-ohYKonaQtZLqzdRJcE"> 
+  </div> 
+  <p><strong>Figure 31: Example Time – Stress History for development of algorithm for Rainflow Cycle Counting</strong></p> 
+  <p><strong>5.</strong> Sketching the hysteresis response of the above stress-time history, we have the following figure;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF2Q1Xcam7C3w" src="https://media.licdn.com/dms/image/C5112AQF2Q1Xcam7C3w/article-inline_image-shrink_1000_1488/0/1529238649624?e=1691625600&amp;v=beta&amp;t=mnWzm6Zt1chTmgYLHH0zy36zhqjGUsuo6ZkLJ0Pa1G4"> 
+  </div> 
+  <p><strong>Figure 32: Hysteresis Response of the Time-History Plot shown in Figure 30</strong></p> 
+  <p>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We store all the points (peaks and valleys) i.e.(500, -200, -100,-200, 200,-50,&nbsp;500)</p> 
+  <p>7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As stated, we take the 3 consecutive points: (A,B, C) as (500,-200,-100) and compare Range AB and Range BC</p> 
+  <p>8.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The stress-strain response corresponding to A,B,C as with the values 500,-200,-100 can be plotted as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGg6fRyETkysg" src="https://media.licdn.com/dms/image/C5112AQGg6fRyETkysg/article-inline_image-shrink_1000_1488/0/1529238709788?e=1691625600&amp;v=beta&amp;t=YHr--_emuniffnLDWcwEG_lMvgf8fR0tjsBtqxha5A8"> 
+  </div> 
+  <p><strong>Figure 33:&nbsp;Stress-strain Response for three consecutive points A,B,C as (500,-200,-100)</strong></p> 
+  <p>9.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thus, as seen;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGJ8gK4LQKbOQ" src="https://media.licdn.com/dms/image/C5112AQGJ8gK4LQKbOQ/article-inline_image-shrink_400_744/0/1529238781457?e=1691625600&amp;v=beta&amp;t=xsZj0Fn34G4xSGJ5LcusbTIevqZ5XIkY3KlJqT90jSg"> 
+  </div> 
+  <p>That is; Possibility / Case 3 of section 4.2 wherein we do not have a closed loop</p> 
+  <p><br></p> 
+  <p>10.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If we do not have a closed loop (i.e we have the Case / Possibility 3), we’re going to read in the next&nbsp;point</p> 
+  <p>11.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instead of calling it D, we first store the point A in the memory (i.e. in a separate array)</p> 
+  <p>12.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calling the total number of points in the array as memoryStoredPoints, first initializing;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFR3kOZTlHMcA" src="https://media.licdn.com/dms/image/C5112AQFR3kOZTlHMcA/article-inline_image-shrink_400_744/0/1529238857011?e=1691625600&amp;v=beta&amp;t=rKJAvqgIDGmC6tENvxV8mMECeBjZri_wX-KD0xCHEi4"> 
+  </div> 
+  <p>Since, we’re storing the point A in the memory;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFWrO-PUAsi-g" src="https://media.licdn.com/dms/image/C5112AQFWrO-PUAsi-g/article-inline_image-shrink_400_744/0/1529238893664?e=1691625600&amp;v=beta&amp;t=13erPA9bryi15qDJyECziGfjben09MxwHuLj1q4NGXU"> 
+  </div> 
+  <p>13.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now, remapping the points A,B and C</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFu1Pna-l9sYA" src="https://media.licdn.com/dms/image/C5112AQFu1Pna-l9sYA/article-inline_image-shrink_400_744/0/1529238937062?e=1691625600&amp;v=beta&amp;t=kMNEEfdXd3yDU0DgC6spLU5f911JKfM8Q5yhZspW98Y"> 
+  </div> 
+  <p>14.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thus, the newly mapped points are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHZKoksbcprWQ" src="https://media.licdn.com/dms/image/C5112AQHZKoksbcprWQ/article-inline_image-shrink_400_744/0/1529238992119?e=1691625600&amp;v=beta&amp;t=k83l01ie5qqfvoWeX1REPTaZn_3o5tqbLNWC9hVlYa8"> 
+  </div> 
+  <p>15.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHQ0Fm6uE_Jtg" src="https://media.licdn.com/dms/image/C5112AQHQ0Fm6uE_Jtg/article-inline_image-shrink_1000_1488/0/1529239366104?e=1691625600&amp;v=beta&amp;t=Nhvt2viMu8u-JSlNzvWrQreLEn4CX2sde41Qqr0KU7M"> 
+  </div> 
+  <p><br></p> 
+  <p><strong>Figure 34:&nbsp;Re-mapped points – Set 2 A,B,C as (-200,-100,-200)</strong></p> 
+  <p>16.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thus, as seen;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF2nNFikZ6hTg" src="https://media.licdn.com/dms/image/C5112AQF2nNFikZ6hTg/article-inline_image-shrink_400_744/0/1529239402495?e=1691625600&amp;v=beta&amp;t=tkgVG5XnO5Vhpjh48abIg5w7oZEzGs9VPuKn_sMUuLo"> 
+  </div> 
+  <p><br></p> 
+  <p>This is the Possibility 1 or Case 1 of section 4.2, thus, we have a closed loop (as shown in figure 25)</p> 
+  <p>17.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now, remapping the points A,B and C as follows;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGKu_fQ3JBGxA" src="https://media.licdn.com/dms/image/C5112AQGKu_fQ3JBGxA/article-inline_image-shrink_400_744/0/1529239425546?e=1691625600&amp;v=beta&amp;t=BymnohbKylKF6jxjmN2263JTjYfVF_RAJwOx2lyMjoU"> 
+  </div> 
+  <p>Thus, we do the mapping as follows;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGz6YkB2s8G3g" src="https://media.licdn.com/dms/image/C5112AQGz6YkB2s8G3g/article-inline_image-shrink_400_744/0/1529239456207?e=1691625600&amp;v=beta&amp;t=WZL9zfm7VjwpH5CkCP-qBewMIYxdeX2gplkKfhtfYNw"> 
+  </div> 
+  <p>C = 200</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHp1oGd4n5IaA" src="https://media.licdn.com/dms/image/C5112AQHp1oGd4n5IaA/article-inline_image-shrink_400_744/0/1529239514391?e=1691625600&amp;v=beta&amp;t=l99UkQVxOXqKjNaodpBt39z94QxwDwjCApeaIpYv6p8"> 
+  </div> 
+  <p>18.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFjZWkfhjqO7Q" src="https://media.licdn.com/dms/image/C5112AQFjZWkfhjqO7Q/article-inline_image-shrink_1000_1488/0/1529239559858?e=1691625600&amp;v=beta&amp;t=xJtlAYoMakeP-MHus-xeV0tTmE77g7ZG6vfgyzlxrVM"> 
+  </div> 
+  <p><strong>Figure 35:&nbsp;Re-mapped points – Set 2 A,B,C as (500,-200,200)</strong></p> 
+  <p><br></p> 
+  <p>19.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thus, as seen;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHBLzKS39mHLw" src="https://media.licdn.com/dms/image/C5112AQHBLzKS39mHLw/article-inline_image-shrink_400_744/0/1529239600232?e=1691625600&amp;v=beta&amp;t=Irq-Y32rG-dPVGYdnoqzx9RkQsg_lq8CvvquYEVLNDo"> 
+  </div> 
+  <p>That is; Possibility / Case 3 of section 4.2 wherein we do not have a closed loop</p> 
+  <p><br></p> 
+  <p>20.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If we do not have a closed loop (i.e we have the Case / Possibility 3), we’re going to read in the next&nbsp;point</p> 
+  <p>21.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instead of calling it D, we first store the point A in the memory (i.e. in a separate array) as before</p> 
+  <p>22.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFkXDg9GTq19g" src="https://media.licdn.com/dms/image/C5112AQFkXDg9GTq19g/article-inline_image-shrink_400_744/0/1529239664788?e=1691625600&amp;v=beta&amp;t=ak76x71oY9LC3u7XJEQC3BO0K5cw9F8-EyYDOD7WGM4"> 
+  </div> 
+  <p>23.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now, remapping the points A,B and C</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFCk2aEspCDcA" src="https://media.licdn.com/dms/image/C5112AQFCk2aEspCDcA/article-inline_image-shrink_400_744/0/1529239714499?e=1691625600&amp;v=beta&amp;t=hrm27n1Cd94XtpVHT4VczMudFd2Nu-CJo6uQ9R8998g"> 
+  </div> 
+  <p>24. Thus, the newly mapped points are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQESEXIOgjEZSg" src="https://media.licdn.com/dms/image/C5112AQESEXIOgjEZSg/article-inline_image-shrink_400_744/0/1529239767758?e=1691625600&amp;v=beta&amp;t=01zyAfJGwEz6lZLsIaschyVWplYGFbDri9pDkWBpEGw"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQELCRhc-UYYMg" src="https://media.licdn.com/dms/image/C5112AQELCRhc-UYYMg/article-inline_image-shrink_1000_1488/0/1529239788883?e=1691625600&amp;v=beta&amp;t=LI0qhcprWa5vapTQj8vtPJfTvOWu4jqH1C_ZYh9l_d4"> 
+  </div> 
+  <p><strong>Figure 33:&nbsp;Re-mapped points – Set 3 A,B,C as (-200,200,-</strong>50<strong>)</strong></p> 
+  <p><br></p> 
+  <p>25.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thus, as seen;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEqM6w2eafL7w" src="https://media.licdn.com/dms/image/C5112AQEqM6w2eafL7w/article-inline_image-shrink_400_744/0/1529239828243?e=1691625600&amp;v=beta&amp;t=g1lmXHjNX_E-8TrlRVmgdlEERxrUY5PNyLVUgH4jMi8"> 
+  </div> 
+  <p><br></p> 
+  <p>That is; Possibility / Case 3 of section 4.2 wherein we do not have a closed loop</p> 
+  <p><br></p> 
+  <p>26.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If we do not have a closed loop (i.e we have the Case / Possibility 3), we’re going to read in the next&nbsp;point</p> 
+  <p>27.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instead of calling it D, we first store the point A in the memory (i.e. in a separate array) as before</p> 
+  <p>28.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFmN45W-VhrIw" src="https://media.licdn.com/dms/image/C5112AQFmN45W-VhrIw/article-inline_image-shrink_400_744/0/1529239894254?e=1691625600&amp;v=beta&amp;t=dQyJt6eNrKLzHUJGYUOKPOUPDa07ZvPhF_rW0qMNZlE"> 
+  </div> 
+  <p>29.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Again, repeating the same procedure,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH99iRedb9_uA" src="https://media.licdn.com/dms/image/C5112AQH99iRedb9_uA/article-inline_image-shrink_400_744/0/1529239940918?e=1691625600&amp;v=beta&amp;t=dfKKl3km6KrKM3KBiWEJFLPW0lcUINNykTtEDV4pfeI"> 
+  </div> 
+  <p><br></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEcOyrINLdlfQ" src="https://media.licdn.com/dms/image/C5112AQEcOyrINLdlfQ/article-inline_image-shrink_1000_1488/0/1529239971966?e=1691625600&amp;v=beta&amp;t=8j-OrCI97hqSo2qK6n1X0p2btBOsXlvkct2TimjhXIE"> 
+  </div> 
+  <p><strong>Figure 33:&nbsp;Re-mapped points – Set 3 A,B,C as (200,-50,500)</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFrGMA6dvyHqw" src="https://media.licdn.com/dms/image/C5112AQFrGMA6dvyHqw/article-inline_image-shrink_400_744/0/1529239995945?e=1691625600&amp;v=beta&amp;t=BK5Fr47cjCoVUEA5E3gDrS4HWckHDsFn75YSVEvIOKg"> 
+  </div> 
+  <p>That is; Possibility / Case 3 of section 4.2 wherein we do not have a closed loop</p> 
+  <p>As;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFkVgZA_HRhgw" src="https://media.licdn.com/dms/image/C5112AQFkVgZA_HRhgw/article-inline_image-shrink_400_744/0/1529240037725?e=1691625600&amp;v=beta&amp;t=KfYYku6OriF5veLIoqW2_D8P_-mGkLX3DvlSOAJPaok"> 
+  </div> 
+  <p>Keep C as it is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGxqRSX136zyw" src="https://media.licdn.com/dms/image/C5112AQGxqRSX136zyw/article-inline_image-shrink_400_744/0/1529240067769?e=1691625600&amp;v=beta&amp;t=4tGKV1-Znt0VUlgLmIbYKfoMcovrMfhtzLSEsRmulko"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG3pd1wsbS-Fg" src="https://media.licdn.com/dms/image/C5112AQG3pd1wsbS-Fg/article-inline_image-shrink_400_744/0/1529240083631?e=1691625600&amp;v=beta&amp;t=FFT-QCpY53D-jEOIU7Uri9xn2mXwffn0XbGh-hYG-n0"> 
+  </div> 
+  <p>There are no more points left</p> 
+  <p><br></p> 
+  <p>The From – To Matrix can now be formed as explained in section 3.</p> 
+  <p><br></p> 
+  <h2>5.&nbsp;&nbsp;&nbsp;Summary of the Algorithmic Ingredients of “Rainflow” Cycle Counting Technique</h2> 
+  <p>&nbsp;</p> 
+  <p>The basis of formulation of the “Rainflow Cycle Counting” algorithm has been discussed in the preceding sections. An outline of the step-by-step algorithm is provided below;</p> 
+  <p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firstly we need to pick successive peaks and eliminate the history prior to the peaks.</p> 
+  <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, rearrange the time-history comprising of peaks and valleys only.</p> 
+  <p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Store all the points of the modified cycle in an array (or, as appropriate)</p> 
+  <p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pick the first three consecutive points from the stored points</p> 
+  <p>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let’s say and call the points as A,B and C</p> 
+  <p>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are three possibilities involving the Range AB and Range BC as explained in section 4.2. The three possibilities being;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Range BC = Range AB</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Range BC &gt; Range AB</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Range BC &lt; Range AB</p> 
+  <p>7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Depending upon wheteher one encounters a) or b) or c) proceed as explained in the example in section 4.3</p> 
+  <p>8.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Continue the process until all the stored points have been considered,</p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p>&nbsp;</p>
+ 
+</div>
+</body>
+</html>

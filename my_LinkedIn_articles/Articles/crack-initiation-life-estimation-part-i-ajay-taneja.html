@@ -1,0 +1,333 @@
+<html>
+<head>
+  <title>Crack initiation and life estimation: Part I</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGsaOIA3hUAsA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/crack-initiation-life-estimation-part-i-ajay-taneja">Crack initiation and life estimation: Part I</a></h1>
+    <p class="created">Created on 2017-02-19 11:33</p>
+  <p class="published">Published on 2017-02-19 12:15</p>
+  <div>
+  <h2><strong>1.</strong>&nbsp;&nbsp;&nbsp; <strong>INTRODUCTION</strong></h2> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>This article is the continuation of my series of blogs on "Fracture Mechanics".</p> 
+  <p><strong>Fatigue crack growth:</strong></p> 
+  <p>Many structures are subjected to varying / cyclic loading with amplitude so low that failure due to yielding or crack growth was never to be expected. However, experience tells a different story! After a large number of load reversals, structural parts fail unexpectedly often leading to overall collapse of the structure. The phenomenon is a result of “fatigue crack growth”.</p> 
+  <p>In structures which have developed cracks as a result of fatigue loading, the designer is often posed with the following questions:</p> 
+  <ol> 
+   <li>Is it safe to operate the component or the machine? This is a very important question from the safety point of view</li> 
+   <li>Then, if it is safe to operate the component / machine – for how long?</li> 
+   <li>Thus, is it possible to monitor crack growth, so that, one can disregard the component or stop the machine before catastrophic failure can occur?</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <p>In order to answer the above questions, one needs to go beyond the conventional fatigue test which gives adequate information relating to the S-N curves and the endurance limit. This forms the section 2 of the article which gives the details pertaining to: <em>the lacuna of the conventional fatigue test. </em></p> 
+  <p>Section 3 speaks of experimentally obtaining the crack growth curves for a test specimen in order to answer the questions stated above and then section 4 leads to the ever popular <strong>Paris Law</strong> which can be used to predict the residual life of the structure following crack growth.</p> 
+  <p>The complete life cycle of the crack can be explained through sigmoidal curve and this is discussed in considerable detail in section 5 emphasizing on crack initiation, propagation and catastrophic failure. Whereas, Paris law can be used to model crack propagation phase of crack growth, there are other models which can be used to model the complete sigmoidal curve and this forms the topic of discussion of section 6.</p> 
+  <p>I have planned to discuss the topics on crack initiation and life estimation in 2 parts. The next part of this blog will focus on concepts related to crack closure, effect of overload on crack growth and software tools available with different crack propagation models.</p> 
+  <h2><strong>2.</strong>&nbsp;&nbsp;&nbsp; <strong>FATIGUE TEST AND ITS LACUNA</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Considering the simple tension test for a test specimen under uniaxial loading, it may be recalled that the results of a simple tension test could be well used for multi-axial loading in formulating the yield criteria.</p> 
+  <p>In a simple fatigue test, the material performance is characterized by an S-N curve which is a graph of magnitude of a cyclic stress (S) against the logarithmic scale of cycles to failure (N) as shown below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGvyt9vtHjbLg" src="https://media.licdn.com/dms/image/C5112AQGvyt9vtHjbLg/article-inline_image-shrink_1000_1488/0/1520250287267?e=1691625600&amp;v=beta&amp;t=TfePMMVWncxoQKFh0JFt8opieZYfNpSS6LcUk7OjTzY"> 
+  </div> 
+  <p class="center"><strong>Figure: S-N curve for brittle Aluminium with an UTS of 320 MPa.</strong></p> 
+  <p>Now, considering the S-N curve as above (from a fatigue test) we were able to derive the concept of endurance limit which gives us the essential information of the cyclic stress permitted to a life of 107 cycles or more. Through the fatigue test one knows that for a given stress level, what is the expected life and that was the only information one can extract from the fatigue test.</p> 
+  <p>Supposing, there is a crack during the application of the cyclic load and one wants to estimate the remaining life then this information cannot be extrapolated through the fatigue test (thus, the fatigue test is not <em>'as clever'</em> as our simple tension test !) . Thus, the conventional fatigue test is not able to answer the questions as described in the introduction section of this article. In such cases, a more exhaustive test needs to be done to answer these questions.</p> 
+  <h2><strong>3.</strong>&nbsp;&nbsp;&nbsp; <strong>CRACK GROWTH CURVES</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>In order to answer the above questions, one of the standard specimens for fracture testing is fatigue loaded and the crack growth is monitored at intervals by NDT methods. The fatigue loading is not fully reversed as in the conventional fatigue test but the lower load is kept at zero during the test.</p> 
+  <p>The experiment is repeated at various loads and a plot of crack length vs. number of cycles is obtained for a single material as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEkUEFl4t0s4g" src="https://media.licdn.com/dms/image/C5112AQEkUEFl4t0s4g/article-inline_image-shrink_1000_1488/0/1520169975136?e=1691625600&amp;v=beta&amp;t=0VTmHIFs8ZzcFye5xrTyiXgV5edncCoAKBBMl9sc0DI"> 
+  </div> 
+  <p class="center"><strong>Figure: Crack growth curves for a specimen at various load levels</strong></p> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>It can be seen from the graph of the crack growth curves that for the highest load level of 44.4 kN, the crack has grown to a large extent within a few cycles. For smaller loads, the crack takes a longer time to grow. Thus, different crack growth curves are obtained for different load levels</p> 
+  <p>Essentially, one will be collecting voluminous data for a single material wherein you keep changing the load amplitude and for each load amplitude you have a different crack growth curve.</p> 
+  <h2>&nbsp;</h2> 
+  <h2><strong>4.</strong>&nbsp;&nbsp;&nbsp; <strong>PARIS LAW</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>It can be understood through the crack growth curves that crack growth is a function of cyclical load as well as the crack length. And the next challenge now is to be able to use such a data in the design calculations. Hence, the data needs to be normalized (like the stress vs. strain data from a load deflection data) in some form from the crack growth curves of a single material.</p> 
+  <p>The credit for this goes to Paris who was able to <strong><em>fit</em></strong> all the data from the crack growth curves of a single material. The data can be fitted onto a log-log plot choosing x-axis as ΔK which is the stress intensity factor range and y axis as the crack growth rate denoted by da / dN</p> 
+  <p><strong><em>note: ΔK is the stress intensity factor range which is the difference between the stress intensity factor at maximum and minimum loading</em></strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG2I0IyBKN5Aw" src="https://media.licdn.com/dms/image/C5112AQG2I0IyBKN5Aw/article-inline_image-shrink_1000_1488/0/1520146542549?e=1691625600&amp;v=beta&amp;t=cAnKyP4wPgRE5pcFXgP-mBklKZaLR4M9BtD5vg-cYcg"> 
+  </div> 
+  <p class="center"><strong>Figure: Experimental data fitted using equation of the Paris Law</strong></p> 
+  <p><strong><em>It can be seen that all the data from the crack growth curves in the preceding plot is easily fitted through the Paris law.</em></strong></p> 
+  <p>Thus, the Paris law relates the stress intensity factor range to sub-critical crack growth under a fatigue stress regime. It is one of the most popular fatigue crack growth model used in materials science and fracture mechanics. In the expression,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFQHu6bSM45pw" src="https://media.licdn.com/dms/image/C5112AQFQHu6bSM45pw/article-inline_image-shrink_400_744/0/1520192713349?e=1691625600&amp;v=beta&amp;t=jZF8a-7LfhiBSZMSZ3NQKdX1mtlZ78oZyVOdqhICdDc"> 
+  </div> 
+  <p>‘a’ is the crack length and ‘N’ is the number of load cycles. The term: da / dN is known as the crack growth rate which denotes the infinitesimal crack length growth per increasing number of cycles.‘C’ and ‘m’ are material constants which are to be determined from material testing.</p> 
+  <p>It should be noted that the crack growth model provided by Paris is purely empirical and does not have a theoretical basis to the above equation. It is actually a curve fitting exercise using voluminous amount of data that has been collected. The Paris law intelligently brings together the effect of applied stress and the crack length on the crack growth rate through a single parameter ΔK. The role of environment was not considered in the Paris law and correction to the Paris law to incorporate the role of environment was carried out by several researchers later and is considered later in this article.</p> 
+  <p><strong>Using the Paris law:</strong></p> 
+  <p>Paris law can be used to quantify the residual life of the specimen (in terms of load cycles) given a particular crack size. This simply required finding the limits of integration in terms of crack size. The critical crack size can be obtained by substituting the appropriate data in the K calibration equation:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHYAKW1OGi6kA" src="https://media.licdn.com/dms/image/C5112AQHYAKW1OGi6kA/article-inline_image-shrink_400_744/0/1520213365454?e=1691625600&amp;v=beta&amp;t=IRHxwhm8cawnIge6e_vEi9N7gsV-UciQjdCIwOS7fIQ"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGL5U43myBtwQ" src="https://media.licdn.com/dms/image/C5112AQGL5U43myBtwQ/article-inline_image-shrink_400_744/0/1520145150320?e=1691625600&amp;v=beta&amp;t=6hdAezouLW3bMcpItP_iTDHFs5fNB5M_dVqj-F3HEuI"> 
+  </div> 
+  <p>Now, in order to find the remaining life,</p> 
+  <p>Defining the stress intensity factor as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEef4QIpIGnsg" src="https://media.licdn.com/dms/image/C5112AQEef4QIpIGnsg/article-inline_image-shrink_400_744/0/1520214673889?e=1691625600&amp;v=beta&amp;t=pevd_iPLMqr25rrCrZyf5F053qBV8LjV9sT3yBQ-bRw"> 
+  </div> 
+  <p>Where,</p> 
+  <p>σ is the uniform tensile stress perpendicular to the crack plane and Y is the dimensionless parameter that depends upon the geometry.</p> 
+  <p>The range of stress intensity factor follows as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHpfTF1iwvTQg" src="https://media.licdn.com/dms/image/C5112AQHpfTF1iwvTQg/article-inline_image-shrink_400_744/0/1520250675237?e=1691625600&amp;v=beta&amp;t=gHN3NVL3FTrm5g71Ps4jWKfA55QOUeswfCu0tLNPGlk"> 
+  </div> 
+  <p>Where,</p> 
+  <p>Δσ is the range of the cyclic stress amplitude. “Y” take the value of 1 for a central crack in an infinite plate.</p> 
+  <p>The remaining cycles can be found by substituting the above equation in the Paris law,</p> 
+  <p>That is,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFvjgx0Ot-nlA" src="https://media.licdn.com/dms/image/C5112AQFvjgx0Ot-nlA/article-inline_image-shrink_400_744/0/1520214563541?e=1691625600&amp;v=beta&amp;t=1ICrdeo-FGIFuhctoZE5q2T6VKYHvT3mhMuvUF1gMdo"> 
+  </div> 
+  <p>For relatively, short cracks, “Y” can be chosen as independent of “a”.</p> 
+  <p>The differential equation can be solved by separation of variables,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFQ5xEFU6lLQA" src="https://media.licdn.com/dms/image/C5112AQFQ5xEFU6lLQA/article-inline_image-shrink_400_744/0/1520213486441?e=1691625600&amp;v=beta&amp;t=xOzd7nnYQXLM-R4kU7KWFUCaxgXRckTrs_N_h9HGYbE"> 
+  </div> 
+  <p>And, subsequently integrating,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFUsKtsi7w2qA" src="https://media.licdn.com/dms/image/C5112AQFUsKtsi7w2qA/article-inline_image-shrink_400_744/0/1520213419802?e=1691625600&amp;v=beta&amp;t=JPoCZwHwm14qrW7tWtO8W4mWbR99U2wd2HVjKVZCu4c"> 
+  </div> 
+  <p>Where,</p> 
+  <p>N is the remaining number of cycles to fracture, ac is the critical crack length which can be determined as above (knowing the fracture of the material), ai is the initial crack length.</p> 
+  <p>If “Y” strongly depends upon “a”, numerical methods might be required to find reasonable solutions.</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>5.</strong>&nbsp;&nbsp;&nbsp; <strong>LIFE CYCLE OF A CRACK</strong></h2> 
+  <p><strong>&nbsp;</strong></p> 
+  <p><strong>Crack initiation and catastrophic failure</strong></p> 
+  <p>Thus, from the above discussion, it can be concluded that, once the crack growth has begun (or, more precisely the crack has started propagating), it is analytically possible to calculate the remaining life using the Paris’ crack growth model.</p> 
+  <p>Before the crack growth phase, there is also the crack initiation phase. It is well known that many ferrous materials exhibit unlimited fatigue life provided that the stress remains within a certain limit. This indicates that very short cracks do not propagate for small values of ΔK. The smallest value of ΔK below which crack propagation does not begin is known as the “threshold stress intensity factor ΔK</p> 
+  <p>The basic idea is, very short cracks may not propagate at all for small values of ΔK. This is one end of the spectrum. At the other end of the spectrum, if ΔK becomes comparable to the fracture toughness of the material; the crack growth rate becomes very large and catastrophic failure becomes imminent. In between, crack initiation and crack propagation is the crack growth phase.</p> 
+  <p>Thus, the complete life history of crack can be described in 3 phases:</p> 
+  <ul> 
+   <li>crack initiation phase</li> 
+  </ul> 
+  <ul> 
+   <li>crack growth phase</li> 
+   <li>catastrophic failure</li> 
+  </ul> 
+  <p>The table below shows the values of ΔK_threshold for some alloys. It can be noticed that the value of ΔK_threshold (the value of ΔK below which crack will not propagate)&nbsp; decreases as the stress range increases which is logical.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEAe_l7ySpeSQ" src="https://media.licdn.com/dms/image/C5112AQEAe_l7ySpeSQ/article-inline_image-shrink_400_744/0/1520239929102?e=1691625600&amp;v=beta&amp;t=ET6haXwIZBIg3cRLGLOTs5O8_sGiiwcxUi2uLjK7G-A"> 
+  </div> 
+  <p>‘R’ above denotes the stress ratio in the fatigue literature (unlike the ‘R’ curve in the fracture mechanics literature). It refers to the ratio between the minimum and the maximum levels of stress applied for a cyclically varying load as indicated in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGZcSiygfqy7w" src="https://media.licdn.com/dms/image/C5112AQGZcSiygfqy7w/article-inline_image-shrink_400_744/0/1520040869497?e=1691625600&amp;v=beta&amp;t=qMCEEjcgzhw537_5HFTcyRdE0IPYcCRbc_K0d1Xm7R0"> 
+  </div> 
+  <p class="center"><strong>Figure: The stress ratio ‘R’</strong></p> 
+  <p>&nbsp;</p> 
+  <p><strong>Crack initiation vs. crack propagation</strong></p> 
+  <p>It is also important to understand the relative proportion of crack initiation versus crack propagation. Depending upon the alternating stress range, crack initiation and crack propagation could be equally proportioned (50 – 50) or crack initiation may be longer or smaller (see figure below):</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEQzodo7qxY2w" src="https://media.licdn.com/dms/image/C5112AQEQzodo7qxY2w/article-inline_image-shrink_400_744/0/1520144098793?e=1691625600&amp;v=beta&amp;t=EIHYwjqLSXttuQe0Sy5rPeV0G_8y35HqGrk-13o1z2c"> 
+  </div> 
+  <p><strong>Figure: Schematic representation of fatigue life showing relative proportion of life for crack initiation and propagation</strong></p> 
+  <p>&nbsp;</p> 
+  <p>Whereas, the Paris’ model represents the crack growth phase, models by Forman and Erdogan and Ratwani covered in the section 6&nbsp;are able represent crack initiation, crack growth and catastrophic failure phase.</p> 
+  <p><strong>Sigmoidal curve</strong></p> 
+  <p>As stated above, the entire life cycle of a crack can be divided into 3 regions:</p> 
+  <ul> 
+   <li><b>crack initiation phase <strong>(Region I)</strong></b></li> 
+  </ul> 
+  <ul> 
+   <li>crack growth phase&nbsp;&nbsp; <strong>(Region II)</strong></li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <ul> 
+   <li>catastrophic failure&nbsp;&nbsp; <strong>(Region III)</strong></li> 
+  </ul> 
+  <p>The 3 regions could be represented on a curve termed as: sigmoidal curve (termed so because of the shape of the curve) as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHyqVq7TP_FkA" src="https://media.licdn.com/dms/image/C5112AQHyqVq7TP_FkA/article-inline_image-shrink_1000_1488/0/1520193225691?e=1691625600&amp;v=beta&amp;t=nv6J0EVQwzM1l6NmCHSZI1B8HqpUkh0880HYBxd9zSI"> 
+  </div> 
+  <p class="center"><strong>Figure: Characteristic growth curve of a fatigue crack</strong></p> 
+  <p><strong>Region I:</strong></p> 
+  <p>In Region I, the crack growth rate da /dN is very small and it may be said that there is no initiation of the crack growth if ΔK is smaller than a threshold ΔK_threshold. The threshold value of ΔK depends upon the material properties and the stress ratio R and the table below shows the representative value of commonly used materials.</p> 
+  <p><strong>Table: Representative value of ΔK_threshold and its dependency on stress ratio ‘R’</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG5nYFHcYxPRQ" src="https://media.licdn.com/dms/image/C5112AQG5nYFHcYxPRQ/article-inline_image-shrink_400_744/0/1520145631346?e=1691625600&amp;v=beta&amp;t=0DYM7rn8OfGDVjJwnBLws_Kmj0l-1cEndyhuZXLuwUE"> 
+  </div> 
+  <p><strong>Region II:</strong></p> 
+  <p>In region II, the crack growth rate is to the order of 10-4 mm /cycle to 10-2 mm/cycle and the Paris law (as discussed in the preceding sections of this article) is applicable in this region. The crack growth rate is still small but as the crack length increases, the crack growth rate also increases.</p> 
+  <p>The Paris law which is stated as:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHv3G89nOIKOg" src="https://media.licdn.com/dms/image/C5112AQHv3G89nOIKOg/article-inline_image-shrink_400_744/0/1520173149558?e=1691625600&amp;v=beta&amp;t=KajV8DZEB5PdbAKOm43x6_4fmIzTfyXjjVSZ97Jj63c"> 
+  </div> 
+  <p>is applicable in this region. To get a feel of the material constants c and m, representative relations for some materials is shown below,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHsO-Hirqu5_g" src="https://media.licdn.com/dms/image/C5112AQHsO-Hirqu5_g/article-inline_image-shrink_1000_1488/0/1520210971298?e=1691625600&amp;v=beta&amp;t=7vg0eS_yb8WckO4Guk6GKr4BdAwEbeLKTggFoRZEdk8"> 
+  </div> 
+  <p><strong>Region 3:</strong></p> 
+  <p>In the region 3, the crack growth rate is very high to the order of 10-2 mm / cycle to 10-1 mm / cycle (i.e. 0.1 mm / cycle). Thus, when the component reaches this stage, it has to be disregarded. Although, environment has a significant role in region 1 and region 2 of crack growth, environment does play a role in the region 3.</p> 
+  <p>&nbsp;</p> 
+  <p><strong>Mean stress influence on fatigue crack growth</strong></p> 
+  <p>The graph below shows the plot of ΔK vs. crack growth rate da / dN for different values of R.</p> 
+  <p>As it may be noted, that, with increasing values of ‘R’ the curve shifts towards to the left indicating that ΔK_threshold decreases with increase in the stress ratio ‘R’ which is obvious. The influence of R on the crack growth is not dominant in region 2 or region 3.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE8br-k5wQQiA" src="https://media.licdn.com/dms/image/C5112AQE8br-k5wQQiA/article-inline_image-shrink_1000_1488/0/1520144295244?e=1691625600&amp;v=beta&amp;t=wuIyVNdu2fPqPGP5zp1Bovem_pgsqrx6kLGEI0VN-C0"> 
+  </div> 
+  <p><strong>Figure: Effect of stress ratio on the sigmoidal curve</strong></p> 
+  <p><strong>&nbsp;</strong></p> 
+  <h2><strong>6.</strong>&nbsp;&nbsp;&nbsp; <strong>MODELLING THE COMPLETE LIFE CYCLE OF A CRACK</strong></h2> 
+  <p>&nbsp;</p> 
+  <p><strong>Ergowan and Ratwani’s model:</strong></p> 
+  <p>The complete sigmoidal curve of crack propagation can be expressed through a single equation. Erdogan and Ratwani have suggested the following expression:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEDLoCrqJG4iw" src="https://media.licdn.com/dms/image/C5112AQEDLoCrqJG4iw/article-inline_image-shrink_400_744/0/1520170433209?e=1691625600&amp;v=beta&amp;t=AzpKBAHd1SdI_AgxN8hdR068TgxnO9n9-cGwrWXxgGw"> 
+  </div> 
+  <p>Where,</p> 
+  <p>c,m,n,ΔK_threshold and Kc are material constants and</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHN3Sml-7BzcQ" src="https://media.licdn.com/dms/image/C5112AQHN3Sml-7BzcQ/article-inline_image-shrink_400_744/0/1520211863915?e=1691625600&amp;v=beta&amp;t=GJTmTTGbJcDXqfRHf5si7_0gleKisq-sYY72R0w8znw"> 
+  </div> 
+  <p>In the above expression for da / dN</p> 
+  <p>&nbsp;C(1+β)m accounts for the mean stress;</p> 
+  <p>Kc – (1+β) ΔK accounts for the experimental data at low stress levels.</p>
+ 
+</div>
+</body>
+</html>

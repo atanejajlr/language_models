@@ -1,0 +1,401 @@
+<html>
+<head>
+  <title>Interpretation of the J – integral as stress intensity factor</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQF3wWpTefZ4aQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/interpretation-j-integral-stress-intensity-factor-ajay-taneja">Interpretation of the J – integral as stress intensity factor</a></h1>
+    <p class="created">Created on 2017-09-03 11:23</p>
+  <p class="published">Published on 2017-10-02 19:01</p>
+  <div>
+  <h2><strong>1.</strong>&nbsp;<strong>Introduction </strong></h2> 
+  <p>&nbsp;</p> 
+  <p>This article is the continuation of my series of blogs on “Fracture Mechanics” and is the last in the series.</p> 
+  <p>&nbsp;</p> 
+  <p>My preceding article titled: “J – integral [<a href="https://www.linkedin.com/pulse/j-integral-ajay-taneja" target="_blank"><u>https://www.linkedin.com/pulse/j-integral-ajay-taneja</u></a>] focussed on the concept of the J – integral and its interpretation as the energy release rate. Just like “G” in case of linear elastic fracture mechanics, “J” too aids the analyst to assess if the crack is in the initiation phase or has begun to grow.</p> 
+  <p>&nbsp;</p> 
+  <p>Unlike “G” in case of linear elastic fracture mechanics which was valid only for linear elastic material behaviour; “J” is valid for linear elastic as well as non-linear elastic material behaviour. The limitation of J - when viewed as the energy release rate is that it is not precisely valid for an elasto-plastic material behaviour.</p> 
+  <p>&nbsp;</p> 
+  <p>This is because in case of an elasto-plastic material behaviour; the loading and the unloading path is not the same (see figure below); thus there is a residual strain that remains on unloading. That is to say; in case of elasto-plastic materials some energy is lost through plastic deformation which cannot be accounted through the expression of “J” (the mathematics behind the expression evaluation for J was discussed in the preceding article).</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEgSNN-1e6c0g" src="https://media.licdn.com/dms/image/C5112AQEgSNN-1e6c0g/article-inline_image-shrink_400_744/0/1520211711034?e=1691625600&amp;v=beta&amp;t=2dyysgZNBHSwxT_daZJIyzOLLGsB5U4xByUp3y__tu8"> 
+  </div> 
+  <p><strong>Figure: Stress – strain behaviour during loading and unloading for a non-linear elastic material&nbsp;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHoQgthUqJkWg" src="https://media.licdn.com/dms/image/C5112AQHoQgthUqJkWg/article-inline_image-shrink_400_744/0/1520189672335?e=1691625600&amp;v=beta&amp;t=06jKRPtHVIxIXw-Xl2gOKsdxUMlpPQP5i-9I59mSufg"> 
+  </div> 
+  <p><strong>Figure: Stress – strain behaviour during loading and unloading for an elasto plastic material.</strong></p> 
+  <p><br></p> 
+  <p>The above content was discussed in detail in my preceding article focussing on the interpretation of J as the energy release rate.</p> 
+  <p><br></p> 
+  <p>The aim of this article is to elucidate the interpretation of J as stress intensity factor. However, in the course of writing this article, I have felt it necessary to relate the content condensed in this article to the background information (which has in detail covered in my series of blogs on Fracture Mechanics) connected to:</p> 
+  <p><br></p> 
+  <p>o&nbsp;&nbsp;Background of the stress intensity factor “K” with regards to linear elastic fracture mechanics</p> 
+  <p><br></p> 
+  <p>o&nbsp;&nbsp;Need for graduating to elasto-plastic fracture mechanics from linear elastic fracture mechanics</p> 
+  <p>The above are covered in sections 2 and 3 of this article.</p> 
+  <p><br></p> 
+  <p>In section 4, I’ve attempted to bring out the mathematical analogy between LEFM and EPFM. Whereas; in case of LEFM, the stress field is characterized by a stress intensity factor “K”; in case of EPFM the stress field is characterized by the J integral J.</p> 
+  <p>Section 5 deals with the HRR (Hutchinson – Rice – Rosengreen field. A rough pictorial representation of stress zones around the crack tip: the fracture process zone, the J dominated zone, the K dominated zone and a general stress field zone is brought out through this section.</p> 
+  <p><br></p> 
+  <p>Section 6 speaks of the crack tip opening displacement in little details and and the definition of the above zones around the crack tip are graphically illustrated with respect to the crack tip opening displacement in a blunted crack tip.</p> 
+  <p><br></p> 
+  <p>Based on the discussions in section 4,5 and 6 above, section 7 talks of some significant differences between LEFM and EPFM</p> 
+  <p><br></p> 
+  <p>Section 8 presents some more details on the crack tip opening displacement (CTOD) based on Irwin’s model.</p> 
+  <h2>2.&nbsp;&nbsp;Background of stress intensity factor K: linear elastic fracture mechanics</h2> 
+  <p><br></p> 
+  <p>I had discussed about the concept of stress intensity factor; in my bog titled: “Stress intensity factor it’s definition and some details [<a href="https://www.linkedin.com/pulse/stress-intensity-factor-its-definition-some-details-ajay-taneja" target="_blank">https://www.linkedin.com/pulse/stress-intensity-factor-its-definition-some-details-ajay-taneja</a>].</p> 
+  <p><br></p> 
+  <p>It turns out that the stress analysis of a crack problem can be reduced to finding a solution to the stress intensity factor K; whereas; mode I problems are the most important for practical applications, other modes and combinations of mode and mode II do occur in practice.&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHww-GlFAev2Q" src="https://media.licdn.com/dms/image/C5112AQHww-GlFAev2Q/article-inline_image-shrink_1000_1488/0/1520191706186?e=1691625600&amp;v=beta&amp;t=ODTqidcX-ZpxFnA-1kIxJ_uHcIV8yxvMGJMyTk9jj18"> 
+  </div> 
+  <p><strong>Figure: Linearly independent crack modes used in fracture mechanics</strong></p> 
+  <p>A compilation of stress intensity factors for various geometries is shown in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHaPM4rVg086A" src="https://media.licdn.com/dms/image/C5112AQHaPM4rVg086A/article-inline_image-shrink_1500_2232/0/1520189432966?e=1691625600&amp;v=beta&amp;t=jaKGaIIdEPdoHoqWEBK7iBEQJDuIkW4yZ0dA6nlP1xU"> 
+  </div> 
+  <p><strong> Figure: K for practical geometries</strong></p> 
+  <p><br></p> 
+  <p>With the knowledge of the stress intensity factor; stresses (in LEFM) always follow from;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGHeIeipFMjxg" src="https://media.licdn.com/dms/image/C5112AQGHeIeipFMjxg/article-inline_image-shrink_400_744/0/1520240391098?e=1691625600&amp;v=beta&amp;t=8sfGd8nvoJiqw3_iqJlUYy-RA9-tXJ_B5le72zwqusQ"> 
+  </div> 
+  <p>The shear stress is zero in the plane θ = 0. This means at θ = 0, the stresses σx and σy are the principal stresses σ1 and σ2. The third principal stress is always perpendicular to the plate: σz = σ3. The principal stresses at any point follow from the Mohr’s circle:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHArkCtItJm-g" src="https://media.licdn.com/dms/image/C5112AQHArkCtItJm-g/article-inline_image-shrink_400_744/0/1520242366332?e=1691625600&amp;v=beta&amp;t=FvOXSH-9X0onwOGxbZ5kpgnyc2b8o3v10wxoWTPvTMc"> 
+  </div> 
+  <p><br></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHxs2oFhYqUMw" src="https://media.licdn.com/dms/image/C5112AQHxs2oFhYqUMw/article-inline_image-shrink_1000_1488/0/1520238972631?e=1691625600&amp;v=beta&amp;t=TBqaoDFpGiEERk1V4YPP3cKKej7iyIFgXU9kn7jXAzw"> 
+  </div> 
+  <p><strong> Figure: Mohr’s circle</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFKILkUtfAIOA" src="https://media.licdn.com/dms/image/C5112AQFKILkUtfAIOA/article-inline_image-shrink_400_744/0/1520148013557?e=1691625600&amp;v=beta&amp;t=-i1yIpTc7jA-yN-wFlU8E4Om0whBAQ7a2oRMXJ5kFGs"> 
+  </div> 
+  <p><strong> Figure:Principal stresses</strong></p> 
+  <h2>3.&nbsp;&nbsp;&nbsp;Need for elasto-plastic fracture mechanics</h2> 
+  <p><br></p> 
+  <p>Linear elastic fracture mechanics (LEFM) can be usefully applied as long as the plastic zone is small compared to the crack size. This is usually the case in materials where fracture&nbsp;occurs at stress appreciably below the yield stress and under conditions of plane strain. In such conditions fracture can be characterized by K1C or G1C.</p> 
+  <p><br></p> 
+  <p>When plane stress conditions prevail, the crack tip plastic zone is larger than in the case of plane strain. If, however, the plastic zone is larger compared to the crack size (high fracture stress and / or high crack resistance) linear elastic fracture mechanics does<u> not</u> apply.</p> 
+  <p>The problem (of the non – applicability of LEFM) occurs in two common scenarios;</p> 
+  <p><br></p> 
+  <p>o&nbsp;&nbsp;Occurs in low fracture toughness materials with very short cracks</p> 
+  <p>o&nbsp;&nbsp;Occurs in materials with high toughness</p> 
+  <h2>3.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Low fracture toughness materials</h2> 
+  <p><br></p> 
+  <p>In low fracture toughness materials with very short cracks, the fracture stress is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEPjcw25b92kA" src="https://media.licdn.com/dms/image/C5112AQEPjcw25b92kA/article-inline_image-shrink_400_744/0/1520190853200?e=1691625600&amp;v=beta&amp;t=QdI1ZaagSwZPRkOlHDyw3dOKsaqwbM9I8RxaKYQqUFg"> 
+  </div> 
+  <p>Thus, σc tends to infinity as the crack size approaches zero – see graph below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGrFuKbvumI0A" src="https://media.licdn.com/dms/image/C5112AQGrFuKbvumI0A/article-inline_image-shrink_1000_1488/0/1520146243958?e=1691625600&amp;v=beta&amp;t=42Nnkzf4O-HAOopixvnqM0T2zueNGfvgRtO07DLD-0U"> 
+  </div> 
+  <p><strong> Figure: Fracture beyond yield</strong></p> 
+  <p>Since, this is impossible, the fracture stress at the cracked surface (a/W)1 is at B which is lower than A as predicted by K1C. In reality, in such a case, the fracture stress cannot be determined by means of linear elastic fracture mechanics. In general, the plastic zone will become large and spread through the whole cracked region if the net section stress is equal to the yield stress:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE4XOU7LgD0qw" src="https://media.licdn.com/dms/image/C5112AQE4XOU7LgD0qw/article-inline_image-shrink_400_744/0/1520144234263?e=1691625600&amp;v=beta&amp;t=fMLp-DBb51XXHjQuROwhLJFw9m1crSENdDKukDSNKDo"> 
+  </div> 
+  <p><br></p> 
+  <p>Where: σnet in the cracked section is the ratio of the width ‘W’ of the plate divided by subtracting the cracked portion from ‘W’</p> 
+  <p>Hence, it may be expected that K1C can still be used until σC reaches the yield stress. In practice, it turns out that σc should be lower than 66% of the yield (criterion of Federsen for valid K1c) for LEFM to apply.</p> 
+  <p><br></p> 
+  <h2>3.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High fracture toughness materials</h2> 
+  <p><br></p> 
+  <p>The second case in which LEFM does not apply occurs in materials of very high toughness (see figure below). The conditions of net section yield can be re-written as:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHufoMeafO3SQ" src="https://media.licdn.com/dms/image/C5112AQHufoMeafO3SQ/article-inline_image-shrink_400_744/0/1520239066074?e=1691625600&amp;v=beta&amp;t=E-bmOv1hxnyyT9LJUzWVwPU2lMX4T_kwqPKTA1k6GPY"> 
+  </div> 
+  <p>which is a straight line from σys to a/W = 1.</p> 
+  <p>IF a material has very high toughness the net section yielding begins at low crack lengths and the fracture stress predicted by LEFM is always higher than the stress for net section yield. This means K1C cannot be measured: general yield occurs at C and point D cannot be reached.&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFVWNKz09EpSg" src="https://media.licdn.com/dms/image/C5112AQFVWNKz09EpSg/article-inline_image-shrink_1000_1488/0/1520212425786?e=1691625600&amp;v=beta&amp;t=hd-OKuIV4bl-ZqxD7GzluSNnRHgunn3SshpWU_MfuV0"> 
+  </div> 
+  <p><strong>Figure: Fracture beyond yield</strong></p> 
+  <p><br></p> 
+  <p>Thus, in this section, the general scenarios when LEFM is not valid have been very briefly discussed which include: materials with very low fracture toughness and materials with high fracture toughness property.</p> 
+  <p><br></p> 
+  <h2>4.&nbsp;&nbsp;&nbsp;J – as stress intensity factor</h2> 
+  <p>As mentioned in my preceding article [<a href="https://www.linkedin.com/pulse/j-integral-ajay-taneja" target="_blank">https://www.linkedin.com/pulse/j-integral-ajay-taneja</a> ], the specialty of J is that it is comparable to “G” the energy release rate in case of linear elastic fracture mechanics (LEFM) as well as the stress intensity factor K. The preceding article dealt with the interpretation of “J” as the energy release rate “G” whereas the current article will deal with is interpretation as “J”.</p> 
+  <p><strong>Hutchinson, Rice and Rosengreen:</strong></p> 
+  <p>Hutchinson, Rice and Rosengreen independently showed that J characterizes crack tip condition in case of a non-linear / elasto-plastic material just as “K” characterizes crack tip condition in a linear elastic material. They showed that in order to remain path independent, the product of stress and strain must vary as 1/r near the crack tip. Thus, this type of singularity in case of elasto-plastic fracture mechanics was different from that in case of linear elastic fracture mechanics. It may be recalled that in case of linear elastic fracture mechanics (see expressions for σx, σy, τxy in section 2 again shown below), we had the √r singularity:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE7V8saj47qhA" src="https://media.licdn.com/dms/image/C5112AQE7V8saj47qhA/article-inline_image-shrink_400_744/0/1520146720029?e=1691625600&amp;v=beta&amp;t=s5CHZRPS0EQxDg7PMddywfUeUicJHhla8Qfv5ZKiazg"> 
+  </div> 
+  <p><strong>Expressions denoting the √r singularity in case of linear elastic fracture mechanics</strong></p> 
+  <p><br></p> 
+  <p>In case of elasto-plastic fracture mechanics, the strain hardening index will come into play.</p> 
+  <p><br></p> 
+  <p>They (Hutchinson, Rice and Rosengreen) showed that in order for “J” to remain path independent the product of stress and strain must vary as 1/r near the crack tip. Based on this premise, they arrived at an expression for the stress component σij:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFwrn6L9JolAg" src="https://media.licdn.com/dms/image/C5112AQFwrn6L9JolAg/article-inline_image-shrink_400_744/0/1520248868843?e=1691625600&amp;v=beta&amp;t=VpsKFjgOh4tNLRDu9kY2V57H1_6rE6SOjleDUcY7Hac"> 
+  </div> 
+  <p>Where:</p> 
+  <p>kj is the proportionality constant; n is the strain hardening exponent.</p> 
+  <p>That is: in case of a non-linear elastic / elasto-plastic material one needs to account for the strain is hardening aspect and then – “n” the strain hardening exponent comes into play. In&nbsp;case of a linear elastic material n = 1 and then in the above expression, one gets 1 / √r singularity. This in-fact the concept put forth by Hutchinson, Rice and Rosengreem since we get the same result as in linear elastic fracture mechanics when the material is elastic (n = 1).</p> 
+  <h2>5.&nbsp;&nbsp;&nbsp;Hutchinson – Rice – Rosengreen (HRR) field</h2> 
+  <p>The J dominated zone near the crack tip is convenient for engineering analysis. The zone is termed as the HRR field or the Cherepanov – HRR field. A structure in small scaled yielding has two singularity dominated zones: one in the elastic region wherein the singularity is 1/√r and the other in the non-linear elastic / elasto-plastic (“J” dominated zone) where the singularity varies as:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHssutKVc5UWg" src="https://media.licdn.com/dms/image/C5112AQHssutKVc5UWg/article-inline_image-shrink_400_744/0/1520193164799?e=1691625600&amp;v=beta&amp;t=Z5XjfiGIEj6WnS8aa-nFA7hplhwZ_YUHIWLkoxsN5qk"> 
+  </div> 
+  <p>The point to note here is that even though we are talking of elasto-plastic fracture mechanics (EPFM), it’s only slightly away from the crack tip that one is able to account for little more plasticity. HRR field and the expression for stress component σij listed above is based on Ramberg-Osgood law and small strain theory and does not consider the blunting of the crack tip.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHKeLUQWL5oBw" src="https://media.licdn.com/dms/image/C5112AQHKeLUQWL5oBw/article-inline_image-shrink_400_744/0/1520144688196?e=1691625600&amp;v=beta&amp;t=8Mx-cdWotQ8QT718hQJ1U1Ryv9XV6peXFSMC_0zS6OI"> 
+  </div> 
+  <p><strong>Figure: Blunting of the crack tip as a result of plastic deformation</strong></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><strong>Pictorial representation of the HRR zone</strong></p> 
+  <p>A pictorial representation of the HRR zone is shown below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGXazgu-PawYw" src="https://media.licdn.com/dms/image/C5112AQGXazgu-PawYw/article-inline_image-shrink_1000_1488/0/1520143322376?e=1691625600&amp;v=beta&amp;t=d58XrKCdh0hAf909CPGxwNEn5deOwgv5SUpl0tWXnOk"> 
+  </div> 
+  <p><strong>Figure: The J – dominated zone in case of an elasto – plastic analysis</strong></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p>The above figure is in fact represented by 4 zones:</p> 
+  <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Immediately next to the crack tip where one has very little information about – this is known as the fracture process zone.</p> 
+  <p><br></p> 
+  <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After this zone, there is the annular zone where the J – field is valid where the stresses are determined by the stresses are determined as explained in the section 4.</p> 
+  <p><br></p> 
+  <p>iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Following the J – field is the K – field where the stresses are determined through linear elastic fracture mechanics.</p> 
+  <p><br></p> 
+  <p>iv.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And then, there is the general stress field where the effect of cracking stress enhancements due to cracking vanishes.</p> 
+  <p><br></p> 
+  <p>It should be noted that the pictorial representation is shown highly enlarged and the shape of the zone may generally not be circular in shape. One will have to carry out a sophisticated elasto-plastic analysis to get the actual shape and size of the zones.</p> 
+  <p><br></p> 
+  <p>Note: The zones corresponding to the K – dominated zone and the general stress field are not shown in the above diagram.</p> 
+  <h2>6.&nbsp;&nbsp;&nbsp;Crack tip opening displacement (CTOD)</h2> 
+  <p>It might be worthwhile at this point to introduce the ‘crack tip opening displacement’ shortly abbreviated as CTOD.</p> 
+  <p>In the above figure in section 5, a blunted crack tip is shown in a very high magnification. Within the crack tip (again shown below), we have lines drawn at 45 degrees mutually perpendicular to one another which hit the crack as shown. The height “δt” is known as the “crack tip opening displacement”.&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFXdkE3Q447Kw" src="https://media.licdn.com/dms/image/C5112AQFXdkE3Q447Kw/article-inline_image-shrink_1000_1488/0/1520146210106?e=1691625600&amp;v=beta&amp;t=ANuOUTBA73l2mmU0NckLS-6S6mgwa7o2nKOJoGf04mw"> 
+  </div> 
+  <p><strong> Figure: Crack tip opening displacement δt</strong></p> 
+  <p>The figure below shows a typical schematic variation of σy with the crack tip opening displacement δt.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEsXBBDZRw_vA" src="https://media.licdn.com/dms/image/C5112AQEsXBBDZRw_vA/article-inline_image-shrink_1000_1488/0/1520214527763?e=1691625600&amp;v=beta&amp;t=VKjVDIvr8K6o3bA_Me6CP3NA7qLGRxwZ53G3hKW8E7c"> 
+  </div> 
+  <p><br></p> 
+  <p><strong>Figure: Schematic variation of σy with the crack tip opening displacement δt</strong></p> 
+  <p><br></p> 
+  <p>Following points are to be noted with regards to the variation of σy with the crack tip opening displacement δt:</p> 
+  <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fracture process zone, from 0 - 2δt; there is very little information available and stresses are not obtainable from either elasto - plastic fracture mechanics (J – field) or linear elastic fracture mechanics (K – field).</p> 
+  <p><br></p> 
+  <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, coming to the HRR field – whereas in LEFM, the stress field is completely dictated by the value of K (see section 2); similarly in elasto plastic fracture mechanics, we have the stress component given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFl9aicSotYMw" src="https://media.licdn.com/dms/image/C5112AQFl9aicSotYMw/article-inline_image-shrink_400_744/0/1520192890385?e=1691625600&amp;v=beta&amp;t=dw_uxZ3ihmKt0OqVyi0zdoqKPCGWBibJRtZ8WGQoIRs"> 
+  </div> 
+  <p>Where;</p> 
+  <p>α = material constant</p> 
+  <p>σ0 = material / reference yield strength</p> 
+  <p>ϵ0 = material / reference yield strain</p> 
+  <p>n = strain hardening exponent</p> 
+  <p>In = constant and is a function of strain hardening exponent “n”</p> 
+  <p><br></p> 
+  <p>For plane stress condition;</p> 
+  <p>In ≈ 5&nbsp;&nbsp;when n = 1 (linear elastic case)</p> 
+  <p>In ≈ 3&nbsp;&nbsp;when n = ∞ (fully plastic case)</p> 
+  <p>For a plane strain condition;</p> 
+  <p>In ≈ 6&nbsp;&nbsp;when n = 1 (linear elastic case)</p> 
+  <p>In ≈ 4&nbsp;&nbsp;when n = ∞ (fully plastic case)</p> 
+  <p><br></p> 
+  <p>In decreases monotonically</p> 
+  <p>Looking at the above expression; one may notice that just like in case of linear elastic fracture mechanics; wherein the strength of the stress field is dictated by “K”, in case of elasto plastic fracture mehanics, the strength of the stress field is dictated by “J”.</p> 
+  <h2>7.&nbsp;&nbsp;&nbsp;Observations: LEFM vs. EPFM</h2> 
+  <p>Following points should be recognized;</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the crack tip blunts as a result of plastic flow; there exists: a fracture process zone which is engulfed by the HRR field which is the “J” dominated zone and the stresses in this zone are dictated by the expression in section 6 (ii). The HRR field is surrounded by the K field wherein the stresses are determined using LEFM approach which is then followed by the general stress field.</p> 
+  <p><br></p> 
+  <ul> 
+   <li>Both LEFM and EPFM (HRR field) approached infinite stresses at the crack tip as “r” approaches 0 which is not true in reality. In reality, the crack tip will blunt as a result of plastic flow and this blunting of the crack tip is not accounted for either in LEFM or EPFM (HRR field).</li> 
+  </ul> 
+  <p><br></p> 
+  <ul> 
+   <li>When n = 1 (expression in section 6 ii); ‘n’ being the strain hardening index; square root singularity is seen for the stress field – n = 1 being the acse of LEFM. So, this is an indirect verification that the value of stress as predicted by Hutchinson – Rice and Rosengreen is indeed correct.</li> 
+   <li>For n = ∞, the material model represents a perfectly plastic case as shown in the figure below;</li> 
+  </ul> 
+  <p><br></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHCTvoLSGsG9A" src="https://media.licdn.com/dms/image/C5112AQHCTvoLSGsG9A/article-inline_image-shrink_400_744/0/1520239175717?e=1691625600&amp;v=beta&amp;t=Loi8KMssXaUUmNnBBQBSxgOxAjH20latYne9zCQ39gA"> 
+  </div> 
+  <p><strong> Figure: Perfectly plastic material behaviour</strong></p> 
+  <p><br></p> 
+  <ul> 
+   <li>At distances upto the order of twice the crack tip opening displacement from the crack tip, HRR field is not valid.</li> 
+  </ul> 
+  <p><br></p> 
+  <ul> 
+   <li>In highly plastic materials; “J” can replace “K” in the fracture criterion – J based fracture mechanics is analogous to K based fracture mechanics; both J and K represent the strength of the stress field.</li> 
+   <li>Practical application of J based fracture mechanics is much more involved than K based fracture mechanics. This is because the result of J also depends upon the stress strain curve of the material; hence tabulating expressions of J as for K (see section 2) is difficult. A sophisticated nonlinear analysis with the Ramberg – Osgood material model (or, equivalent) has to be carried out to get the value of J.</li> 
+  </ul> 
+  <p><br></p> 
+  <ul> 
+   <li>Similar to KC, the fracture toughness of the material obtained based on LEFM, one needs to evaluate JC the fracture toughness of the material based on elasto plastic fracture mechanics.</li> 
+  </ul> 
+  <p><br></p> 
+  <ul> 
+   <li>It is often noticed that although people work in the domain of linear elastic fracture mechanics; they compute “J” as illustrated in the preceding blog and use the identity to find out K (remember:&nbsp;J = G in case of brittle materials).</li> 
+  </ul> 
+  <p><br></p> 
+  <ul> 
+   <li>Since EPFM is computationally costly, many people do not get involved in it. Instead; as said above “J” is often used to evaluate K in case of linear elastic fracture mechanics</li> 
+  </ul> 
+  <h2>8.&nbsp;&nbsp;&nbsp;More details on crack tip opening displacement</h2> 
+  <p>There have been different approaches provided by Irwin (and Keiss and smith) and Wills / Cotrell with regards to crack tip opening displacement (CTOD).&nbsp;</p> 
+  <p>Firstly; Irwin, Keiss and Smith in 1958, in order to broaden to the applicability of linear elastic fracture mechanics proposed a plasticity enhanced stress intensity factor in which crack lengths were enhanced suitably.</p> 
+  <p>Then; Will and Cotrell in 1969 advanced an alternative concept that would even apply beyond general yielding conditions. Wells evaluated CTOD /COD using Irwin’s plastic zone to estimate for the problem of a central crack in an infinite strip.</p> 
+  <p><strong>Irwin’s definition of crack tip opening displacement:</strong></p> 
+  <p>I had discussed in one of my earlier blogs on Fracture mechanics: “Modelling of plastic deformation within the regime of linear elastic fracture mechanics”&nbsp;[<a href="https://www.linkedin.com/pulse/modelling-plastic-deformation-within-regime-linear-elastic-taneja?trk=mp-reader-card" target="_blank">https://www.linkedin.com/pulse/modelling-plastic-deformation-within-regime-linear-elastic-taneja?trk=mp-reader-card</a>] about Irwin’s&nbsp;model for accounting plastic deformation – the model is based on the approach of introducing an enhanced fictitious crack length in order to account the plastic deformation. This is based on the premise that when the materials begin to flow plastically; there is loss of stiffness and hence the crack length will be larger than that of in LEFM.</p> 
+  <p>The term crack tip opening displacement appears to be a misnomer in reality because if there is a crack tip; then physically there cannot be a displacement of the tip ! The terminology “<strong>crack tip opening displacement</strong>” comes from the plasticity corrected fictitious crack tip as illustrated in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGVSFV2-TusCw" src="https://media.licdn.com/dms/image/C5112AQGVSFV2-TusCw/article-inline_image-shrink_400_744/0/1520143915601?e=1691625600&amp;v=beta&amp;t=y3yG0hBn2WIDlIAS6ule4MjGXhIY9Mi8auurFoVfbTo"> 
+  </div> 
+  <p><strong>Figure: CTOD as per Irwin’s model incorporating effect of plasticity</strong></p> 
+  <p>&nbsp;</p> 
+  <p>The crack opens up as shown in the figure above and the opening of the crack as a result of plasticity as marked above is known as: “crack tip opening displacement”.</p> 
+  <p><strong>Tracy’s definition of crack tip opening displacement</strong></p> 
+  <p>As discussed in section 5 – the HRR field and more in section 6 wherein the zones around the crack tip are expressed relative to CTOD, crack tip opening displacement was obtained by drawing mutually perpendicular lines at angles 45 degrees- cutting the blunted crack tip; the height being taken as CTOD.</p> 
+  <p>In practice, CTOD is measured experimentally and ASTM E 1820 has standard procedures for reporting CTOD.</p> 
+  <p>&nbsp;</p>
+ 
+</div>
+</body>
+</html>

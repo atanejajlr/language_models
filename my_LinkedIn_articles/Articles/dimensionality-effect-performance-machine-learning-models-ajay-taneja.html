@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Dimensionality Effect on Performance of Machine Learning Models</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQE9XrUpD0c5iA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/dimensionality-effect-performance-machine-learning-models-ajay-taneja">Dimensionality Effect on Performance of Machine Learning Models</a></h1>
+    <p class="created">Created on 2021-10-03 16:39</p>
+  <p class="published">Published on 2021-10-03 16:44</p>
+  <div><p>It is correct that when one trains the neural network models, then, as part of the training process, the model will learn to ignore the features that do not provide predictive information by reducing their weights to zero or close to zero. This is true – but the result is not an efficient model. These “unwanted” features take up space and bring down the model performance.</p><p>And outside of the model itself, these “unwanted” features require system and infrastructure to collect the data, mange updates etc, which adds cost and complexity to the overall pipeline of the machine learning system. This includes monitoring the problems with the data and the effort to fix the problems when they happen. Thus, it is an unnecessary burden to have these “unwanted features”.</p><p>*Examples of problems in higher dimensions – one-hot encoding vs embedding layer*</p><p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some feature representations such as one-hot encoding are problematic for text in higher dimensions with the text in higher dimensions they tend to produce very sparse presentations that result in overfitting (see figure below). One way to overcome this is to use an embedding layer that tokenizes the sentences and assigns a float value to each word. This leads to a more powerful vector representation that respects the timing&nbsp;and sequence of the words in a given sentence.&nbsp;</p><p><br></p><p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Many common Machine Learning rely on computing distances between observations. For example, a supervised classification problem uses the distances between observations to assign a class for training example – k- nearest neighbours is an example of this (see figure 2 below). Distance plays an important role in understanding the classification problem. One of the most common distance metrics is Euclidean distance which is a linear distance between 2 points in a multidimension space. The Euclidean distance between two dimensional vectors with Cartesian coordinates is calculated as (see equation in figure 2).</p><p>&nbsp;</p><p>Elaborating on some of the common problems with “distance” in higher dimensional problems, we have – a) When we have too many features, observations become harder to cluster b) Too many dimensions can cause every observation to be more or less equidistant from all others thus making clustering difficult. And because, clustering uses a distance measure such as Euclidean distance to quantify the similarity between observations this becomes a problem! As dimensionality grows no meaningful clusters can be formed. This can cause unexpected behaviour in high dimension problems and is called as “Curse of Dimensionality” (Richard Bellman first coined the term “Curse of Dimensionality” in 1961)</p><p><br></p><p>When you have problems getting your model to perform, you are often tempted to try adding more and more features. But as you add more features, you reach a point where your model performance degrades. This is depicted in Figure 3. The key point here is if you’re increasing the dimensions without increasing the training examples, this results in a decrease in classifier examples.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHw9eAkryWGqw" src="https://media.licdn.com/dms/image/C4D12AQHw9eAkryWGqw/article-inline_image-shrink_1000_1488/0/1633279314325?e=1691625600&amp;v=beta&amp;t=WZHDV2_s3SZ518gMKTwqgRLF8z5ZhlBC_qza00jFOW0"></div><p><strong>               Figure 1: Model performance with all dimensions and reduced dimensions.</strong></p><p><br></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQE-6yyXS42sIg" src="https://media.licdn.com/dms/image/C4D12AQE-6yyXS42sIg/article-inline_image-shrink_1000_1488/0/1633279375336?e=1691625600&amp;v=beta&amp;t=tnWdif04Hq76_dP6D_qdnv65WaosfmqGSkM7Kqb22lI"></div><p><strong>                            Figure: 2 – Problems with distance in higher dimension</strong></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFj99l793ra_A" src="https://media.licdn.com/dms/image/C4D12AQFj99l793ra_A/article-inline_image-shrink_1000_1488/0/1633279417398?e=1691625600&amp;v=beta&amp;t=bNKHM8W3V-mCd555fJUWRPpZseLxxIO_SINeHtOyD_c"></div><p><strong>                             Figure: Dimensionality vs Classifier Performance</strong></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p></div>
+</body>
+</html>

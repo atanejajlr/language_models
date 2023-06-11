@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Step 1 of ChatGPT Training Demystified: Part 4 of ChatGPT series of my notes</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD4E12AQHoNND0zW9GjA" alt="Image prepared by Ajay Taneja - not borrowed" title="Image prepared by Ajay Taneja - not borrowed" />
+      <h1><a href="https://www.linkedin.com/pulse/step-1-chatgpt-training-demystified-part-4-series-my-notes-taneja">Step 1 of ChatGPT Training Demystified: Part 4 of ChatGPT series of my notes</a></h1>
+    <p class="created">Created on 2017-04-15 15:09</p>
+  <p class="published">Published on 2023-03-25 22:02</p>
+  <div><h2>1.&nbsp;Introduction</h2><p>This is the continuation of my series of posts on ChatGPT training process and is the 4th blog in the series. I have talked about the following in the already published blogs:</p><p>a)&nbsp;The <a href="https://www.linkedin.com/pulse/chatgpt-how-works-my-notes-part-1-ajay-taneja/" target="_blank">blog 1</a> provided an overview of the steps/fundamentals of ChatGPT training process.</p><p>b)&nbsp;The <a href="https://www.linkedin.com/pulse/step-2-chatgpt-training-demystified-part-series-my-blogs-ajay-taneja/%5d%20" target="_blank">blog 2</a> went into the details about the Rewards model and the loss function that was used during the training of the Rewards model, the write up also went into the details of the reasoning of why ChatGPT might respond differently to the same prompt at different times. </p><p>c)&nbsp;&nbsp;&nbsp;The <a href="https://www.linkedin.com/pulse/step-3-chatgpt-training-demystified-part-series-my-notes-ajay-taneja/" target="_blank">blog 3</a>, then, went into the details of Proximal Policy Optimisation (PPO) and how he Rewards model was used to fine tune the Supervised Fine Tuned Transformer (SFT) model&nbsp;of step 1. </p><p>&nbsp;This blog will go into the specifics of step 1 of ChatGPT training process and will attempt to answer the following questions:</p><p>i)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What is Generative Pre-training i.e., what is GPT in ChatGPT?!</p><p>ii)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What is Discriminative Fine Tuning?</p><p>&nbsp;The blog will go into the finer details of what exactly is a language model and how a language model is trained. </p><p>Now, firstly, as with my other blogs in ChatGPT series, before elaborating on the step 1 ChatGPT training, let us have an overview of the complete ChatGPT training process.</p><p>&nbsp;</p><h2>2.&nbsp;Overview of the ChatGPT training process</h2><p>&nbsp;Let us revisit the overall training process of ChatGPT in brief before going into he intricacies of the Step 1 of the ChatGPT training:</p><p>1.&nbsp;In the first step of ChatGPT training, we have a Generative pre-trained transformer model, thus, it already has an understanding of language. This pre-trained transformer model is fine-tuned so that it understands the user prompt and provides a response. In order to do that, human labellers provide the prompt as well as the response. Using this labelled data, the GPT model is fine tuned to geta supervised fine-tuned transformer model (SFT).</p><p>&nbsp;</p><p>2. In the step 2 of ChatGPT training, we pass an unseen prompt to the supervised fine-tuned transformer model (SFT) and generate multiple responses from the supervised fine-tuned model I have explained in my second blog <a href="https://www.linkedin.com/pulse/step-2-chatgpt-training-demystified-part-series-my-blogs-ajay-taneja/%5d%20" target="_blank">here</a> on why one might get different responses for the same&nbsp;prompt. Then, we have human labellers rank these responses based on “Likert Scale” – the ranking being based on the quality of the responses – it is the rank along with the user prompt and the response that is sued to train the Rewards model. The Rewards model tells us how high quality the response is to a specific input prompt.</p><p>&nbsp;</p><p>3.&nbsp;&nbsp;In the step 3, we take an unseen user prompt and pass it through the supervised fine-tuned transformer model to generate a response. </p><p>&nbsp;</p><p>We then pass the prompt and the response to the Rewards model which was trained during the Step 2 above. The Rewards model is going to output a number (rank) which indicates how high quality was the response. We use this Rank to further fine tune the Supervised Fine-Tuned Transformer model of Step 1. We fine tune the parameters of the SFT model – doing the update of the parameters over a number of iterations results in a model that is factual, non-toxic – this model becomes the ChatGPT. The steps 1 through 3 are illustrated in the picture below:</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D5612AQHlXXxiFjfPSw" src="https://media.licdn.com/dms/image/D5612AQHlXXxiFjfPSw/article-inline_image-shrink_400_744/0/1679606853005?e=1691625600&amp;v=beta&amp;t=HibbBHIoKHYZSxhlhNUY5B8H7kk77Zr-A-5tGuaUl58"><figcaption>Figure: The ChatGPT training process</figcaption></figure><p>Let us now go into the intricacies of how we construct the GPT model to begin with, what is GPT and what is Discriminative Fine Tuning&nbsp;</p><p><br></p><h2>3.&nbsp;Generative Pre-trained model: What is GPT in ChatGPT?</h2><p>&nbsp;I have mentioned in the above sections, that in the step 1 of ChatGPT training that the Pre-trained (GPT) model is fine tuned to – to that we had the labellers who provide the prompt and a response and the parameters of the GPT model are fine tuned. Let us now start see how this GPT model is trained – let us start from an “untrained” model and see how we get GPT.</p><p>In the training phase of the GPT, the model is trained with a lot of data which includes several billions of tokens. We can think of a token as a word – the model was trained on a specific task – the task being to predict the “next word”. That is, we give a sequence of words to the model, and we ask it to predict the next word. The model in this manner after several billions of steps captures something.</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFblOFOG4Kl8A" src="https://media.licdn.com/dms/image/D4E12AQFblOFOG4Kl8A/article-inline_image-shrink_1000_1488/0/1679648898408?e=1691625600&amp;v=beta&amp;t=vTt1j165PviptCka_Wg9gBQMKKCo5Ok56uRlLo8OuYE"><figcaption>Figure: Pre-training of the GPT model</figcaption></figure><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGQ9oskQQXOkA" src="https://media.licdn.com/dms/image/D4E12AQGQ9oskQQXOkA/article-inline_image-shrink_400_744/0/1679648932774?e=1691625600&amp;v=beta&amp;t=EdLLoDOAjvkkBA2XEcErvcPl_TXcktQA8Av9itty4IA"><figcaption>Figure: Pre-training of the GPT model</figcaption></figure><p>One can provide training examples to predict the next word. If you crawl the internet and get texts from newspapers, websites, test books – we end up with lots of text and we can generate billions of examples. So, we present such examples and make the model learn. So, we go through the same process as in normal training.&nbsp;</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGa5anNlFRd-w" src="https://media.licdn.com/dms/image/D4E12AQGa5anNlFRd-w/article-inline_image-shrink_400_744/0/1679648979801?e=1691625600&amp;v=beta&amp;t=dSd_kC0m31PFG1OP8jYpIDgieTrj_r7DngRfZ9Wc9j8"></figure><ul><li>The model generates the next word.</li><li>We calculate the error.</li><li>We calculate the loss function.</li><li>We update the weight or the parameter.</li></ul><p>&nbsp;</p><p>This is the training process which is not new. If one has come across Machine Learning training before, this loop is not new.</p><p>At the end, we get a vector of vocab size (number of specific tokens that we can possibly generate) x 1 and this will be applied to a softmax so that we geta&nbsp;probability distribution</p><p>We do not choose the word with the highest probability, but we do by sampling which may be Temperature Sampling, Nucleus Sampling – which I have discussed <a href="https://www.linkedin.com/pulse/step-2-chatgpt-training-demystified-part-series-my-blogs-ajay-taneja/" target="_blank">here</a>:&nbsp;</p><p><br></p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFB44NL-EtjPA" src="https://media.licdn.com/dms/image/D4E12AQFB44NL-EtjPA/article-inline_image-shrink_400_744/0/1679780964915?e=1691625600&amp;v=beta&amp;t=JI0IHqNPj4wVAAAOXMEmLbI_kfyeX_UZsUzXTGfkCr0"><figcaption>Figure: Softmax layer gives the probabilit distribution of each word in the vocab which is then sampled based on the sampling strategy</figcaption></figure><p><br></p><p>&nbsp;</p><p><strong>Understanding the process, a bit more:</strong></p><p>Understanding how the process works a bit more – you have the words, and you have the vector embedding for the word and you have the vector go through the layers of the transformer decoder. We have 96 of these – each word embedding passes through the decoder, and it gets processed. Finally, when all the tokens have processed in the fashion, we get the output. </p><p>By doing the process – we get the model understand language – it has now been “pre-trained”.&nbsp;</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGDDPZDud77Ow" src="https://media.licdn.com/dms/image/D4E12AQGDDPZDud77Ow/article-inline_image-shrink_1000_1488/0/1679649057841?e=1691625600&amp;v=beta&amp;t=BmV5I_KY7zqyXR82w0m54ooRA7Sr8JZA6s39CL6B4ZE"><figcaption>Figure: Transformer Decoders</figcaption></figure><p><br></p><h2>&nbsp;4.&nbsp;&nbsp;&nbsp;Why did we do the Pre-training and what is objective function for generative pre-training?</h2><p>&nbsp;</p><p><strong>Objective Function for Generative Pre-training </strong></p><p>As pointed out, with Generative Pre-training, we’ve trained a language model. Language models have an understanding of word sequences, and the main objective of a language model is to predict what word is going to come next given the context of all the previous words that have come before it. Mathematically, the objective function can be represented as:</p><p>Objective function:</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGl_NWkINtVLA" src="https://media.licdn.com/dms/image/D4E12AQGl_NWkINtVLA/article-inline_image-shrink_400_744/0/1679649134516?e=1691625600&amp;v=beta&amp;t=M9R2SMuUkUgqjHey9vrDeDL012zTgv5B8AgQU3Fd5_Q"><figcaption>Objective function: GPT Pre-training</figcaption></figure><p>Thus, mathematically we want the Generative Pre-trained Transformer (GPT) to optimize some objective which is typical of Machine Learning and Deep Learning models. The objective we’re optimizing is the language model objective where want to predict the next word using all the words that come before it</p><p>Once we’ve trained the language model as above, the model will have understanding of language – given a word sequence it will be able to figure out the next word. </p><p><strong>Why did we do the Pre-training?</strong></p><p>We did the pre-training because we wanted the model to have the notion of language which is important. Once the model has the notion of language, we can fine tune the model for specific tasks such as: Question-Answering, Document Classification and Sentiment Analysis. This will be the Discriminative Fine-Tuning phase where model is fine tuned for specific tasks. </p><p>&nbsp;</p><h2>5.&nbsp;Discriminative Fine-Tuning Phase</h2><p>&nbsp;</p><p>Now, we have a model which has an understanding of language – in the discriminative fine-tuning phase, we want to solve a very specific problem. IT could be question-answering, sentiment analysis or document classification or any other problem associated with language. For example, in document classification, giving the next word is not enough, we want to understand the overall sentiment of the document of what it represents, or we want to understand a categorization of the document – of whether it is a fatigue analysis report, stress analysis report / likewise. Typically we have a pre-trained model, we will add a linear layer, add a small amount of training data for document classification basically learn a small set of parameters and further fine tune the model.</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFHrXCtzHiFDw" src="https://media.licdn.com/dms/image/D4E12AQFHrXCtzHiFDw/article-inline_image-shrink_400_744/0/1679649239572?e=1691625600&amp;v=beta&amp;t=bPGk9njjooTUjO_F9rMAIQ7C2Krt-jAs5vK7-CwuLP4"><figcaption>Figure: Discriminative Fine Tuning</figcaption></figure><p><br></p><p>&nbsp;Because there is a small set of parameters, it makes it much easier for fine tuning. </p><p>For chatbot and ChatGPT, the input is a prompt and output are a response and the pre-trained model is fine tuned. We do not need to add any more parameters but provide more data in form of user prompt and response and fine tune the parameters. The language model objective is used in supervised fine tuning.</p><p>And it is this, in the first step we see wherein the labeller demonstrates the desired output behaviour and the data is used to fine tune with supervised learning.</p><p>This is going to be applied not a softmax because we want to convert the prediction of next word to a probability distribution – we do not choose the word with the highest probability, but we do by sampling</p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>

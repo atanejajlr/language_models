@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Model Performance Analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQFv48TivTs1dQ" alt="Image from the Convolutional Neural Networks course at deeplearning.ai" title="Image from the Convolutional Neural Networks course at deeplearning.ai" />
+      <h1><a href="https://www.linkedin.com/pulse/model-performance-analysis-ajay-taneja">Model Performance Analysis</a></h1>
+    <p class="created">Created on 2021-11-15 20:21</p>
+  <p class="published">Published on 2021-11-15 20:27</p>
+  <div><h2>1. Introduction</h2><p>Successfully training a Machine Learning Model through the lifecycle of a data science project is a great feeling – but you’re actually not done here – except in the case of a research project or an academic exercise. In production ML systems, one needs to enter a new phase of development where you have to a deeper analysis of your ML model performance from different directions. It should be underscored that in order to do a deeper analysis of your model performance you not only have to evaluate your model performance based on the entire dataset but also various slices of data. I had given an example in <a href="https://www.linkedin.com/posts/ajay-taneja-47727817_machinelearning-modelevaluation-accuracy-activity-6863881432553558017-gWVX/" target="_blank">this</a> post from the CAE world which I have personally encountered whilst working on a regression problem.&nbsp;</p><p>Another example could be wherein if you’re to build a ML model to predict the demand for different models of automobiles – then looking at your model performance based on different types of models, accessories, features offered, colours, etc will become important – i.e., you might want to evaluate how the model performs based on these individually. At a higher level, there are 2 main ways to analyse the model performance: Black Box evaluation and Model Introspection.&nbsp;</p><h2>2.  Black Box Evaluation vs Model Introspection</h2><p>In <strong>Black Box</strong> <strong>Evaluation</strong> [i.e., Input – Output evaluation] - you quantify the model performance through metrics and losses without going into the details of internal model working and then we have <strong>Model Introspection</strong> techniques which prove useful when you’re interested in understanding how a model is working internally – e.g., you might want to experiment with different architectures to understand how the data is flowing internally within each layer of your model.</p><p>Contrary to Black Box evaluation, in model introspection, you’re “not just” interested in the model’s final results but also in the details of each layer.&nbsp;</p><h3><strong>Tools for evaluating Model Performance:</strong></h3><p>There are different tools available for evaluating Model as described above such as:</p><p>•<a href="https://blog.tensorflow.org/2019/12/introducing-tensorboarddev-new-way-to.html" target="_blank">Tensor Board</a> </p><p>•Tensor Flow Model Analysis [<a href="https://blog.tensorflow.org/2018/03/introducing-tensorflow-model-analysis.html" target="_blank">TFMA</a>] </p><p>Using TensorBoard, you can monitor the loss and accuracy at every iteration of the model, you can closely monitor the training process itself. I have found the What-if-Tool part of TensorBoard very powerful which can be run with various platforms including: Jupyter Notebooks, Collab and Cloud AI Platform Notebooks. The What-if-tool can be helpful during data collection, model creation and post-training evaluation as discussed above. The <a href="https://pair-code.github.io/what-if-tool/learn/tutorials/walkthrough/" target="_blank">What-if tool</a> supports Tensor Flow models out of the box and can also support models built with any other framework. I will talk more about What-if-tool in subsequent posts of this series.&nbsp;</p><h3>Example of Model Introspection:</h3><p>As one may recall, in summary, the operations within a CNN can be bundled in to 2 main blocks: a) Feature Learning Block and b) Task Learning Block. In the feature learning block, the inputs to a CNN (say, a series of images) are processed through a series of convolutional layers during which the neural network learns the features corresponding to these images. <a href="https://keras.io/examples/vision/visualizing_what_convnets_learn/" target="_blank">This</a> post shows how one can visualize the features corresponding to an image that the convnet learns through each layer using Keras APIs </p><h2>3. Model Performance Analysis: Performance Metrics vs Optimization Objectives:</h2><p>I have discussed about the Performance Metrics in <a href="https://www.linkedin.com/pulse/machine-learning-deep-online-courses-text-books-point-ajay-taneja-1f/" target="_blank">this</a> article highlighting about the evaluation metrics for regression and classification problems</p><p>Optimization algorithms: I have very briefly <a href="https://www.linkedin.com/posts/ajay-taneja-47727817_deeplearning-optimisation-algorithms-activity-6865094561992065024-ZxY9/" target="_blank">highlighted</a> about the optimization landscape </p><p>Frameworks such as TensorFlow and all others have options for tracking performance metrics like accuracy and optimization objectives such a s loss after each epoch of training and validation.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHzK5G1e2uxGA" src="https://media.licdn.com/dms/image/C4D12AQHzK5G1e2uxGA/article-inline_image-shrink_1500_2232/0/1637007902191?e=1691625600&amp;v=beta&amp;t=nea-3yw_pahb4FaI48XpZpI8m8EMUkw68srAkPI35-w"></div><p><br></p></div>
+</body>
+</html>

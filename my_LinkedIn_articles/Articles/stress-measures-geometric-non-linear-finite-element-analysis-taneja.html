@@ -1,0 +1,287 @@
+<html>
+<head>
+  <title>Stress measures in geometric non-linear finite element analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQF621bnQe973Q" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja">Stress measures in geometric non-linear finite element analysis</a></h1>
+    <p class="created">Created on 2016-01-19 18:50</p>
+  <p class="published">Published on 2016-01-19 19:28</p>
+  <div>
+  <h2><strong>1. Introduction</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>In a small deformation analysis, the analysis procedure is carried out only once based on the original undeformed configuration of the structure whereas in a non-linear analysis, the analysis process is repeated at discreet time points taking into account the deformed state of the structure at each discreet time point. The stress measure ‘engineering stress’ that is used in small deformation analysis is based on the original configuration of the structure.</p> 
+  <p>Since, a geometric non-linear analysis involves taking into account the deformed state of the structure at each discreet time point, the engineering stress measure which is used in a small deformation analysis is not applicable in a geometric nonlinear analysis.</p> 
+  <p>Thus, the Cauchy stress which is based on the current configuration of the structure comes into play. However, it is not directly possible to use this stress in the finite element equations as explained in the section 4 of this article. Hence, other stress and strain measures such as the 2nd Piola Kirchhoff stress and the Green Lagrangian strain tensor come into existence.</p> 
+  <p>This forms the main aim of this article: to discuss the different stress measures used in geometric nonlinear finite element and the reasons for these different stress measures. Emphasis is laid only on the 2nd Piola Kirchhoff stress tensor and the Green Lagrangian strain tensor, though there are other stress and strain measures that are in use in commercial software’s.</p> 
+  <p>I have attempted to logically divide the contents of this article, with:</p> 
+  <ul> 
+   <li>Section 2 explaining the basic problem in a geometric non-linear finite element analysis</li> 
+   <li>Section 3 explaining the principle of virtual displacements with a reasonable background</li> 
+   <li>Section 4 describes in detail the difficulty in applying the principle of virtual displacements using the Cauchy stress</li> 
+   <li>Section 5 defines other stress and strain measures: 2nd Piola Kirchhoff stress and the Green Lagrangian strain</li> 
+   <li>I have attempted to bring about the physical interpretation of the 2nd Piola Kirchhoff stress and the Cauchy stress in section 6.</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <h2><strong>2. Basic problem in a non-linear finite element analysis</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>In my article: <a href="https://www.linkedin.com/pulse/solution-strategies-static-non-linear-finite-element-equations-ajay?trk=prof-post" target="_blank">https://www.linkedin.com/pulse/solution-strategies-static-non-linear-finite-element-equations-ajay?trk=prof-post</a> , I had tried to emphasize the fact that in a non-linear analysis, the equilibrium of the body considered must be established in the current configuration. That is, we try to equate the external forces and the internal forces corresponding to the deformed state of the structure.</p> 
+  <p>Thus, the aim in a non-linear analysis is to evaluate the equilibrium positions of the complete body at discrete time points 0, Δt, 2Δt, 3Δt… where Δt is an increment of time. To develop the solution strategy, it is assumed that the solution for static variables (i.e. displacements) and kinematic variables (velocities, accelerations) for all the time steps from time 0 to time t, inclusive have been obtained.</p> 
+  <p>Then, the solution process for a typical time step t+ Δt is carried out.</p> 
+  <p>&nbsp;</p> 
+  <h2><strong><strong>3. Principle of virtual displacements</strong></strong></h2> 
+  <p>&nbsp;</p> 
+  <h3><strong>3.1</strong>&nbsp;&nbsp; <strong>Body undergoing large displacements, large rotations, large strains</strong></h3> 
+  <p>For a geometric non-linear analysis, we begin first with the continuous mechanics formulation considering the body being subjected to;</p> 
+  <ul> 
+   <li>Large displacements</li> 
+   <li>Large rotations</li> 
+   <li>Large strains</li> 
+  </ul> 
+  <p>The configurations of the body at time t=0, time ‘t’ and at time t+Δt are shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQH9YzwQMD7gyw" src="https://media.licdn.com/dms/image/C4E12AQH9YzwQMD7gyw/article-inline_image-shrink_1000_1488/0/1520516890178?e=1691625600&amp;v=beta&amp;t=wwx7RBL7cUZoy5DfWphwkv0J3S-L56bhTm34Gx4tvb8"> 
+  </div> 
+  <p><strong>Figure: Configuration of the body at time t=0, time‘t’ and at time t+Δt</strong></p> 
+  <p><strong>&nbsp;</strong>As stated earlier, the body during its deformation from time 0 to time ‘t’ and from time ‘t’ to time ‘t+Δt’ has undergone large displacements, large rotations and large strains.</p> 
+  <h3><strong>3.2</strong>&nbsp;&nbsp; <strong>Notations in large deformation analysis (used in the above figure)</strong></h3> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>It might be worthwhile at this point to include a note to describe the notations that have been used in the above figure.</p> 
+  <p>A difficult point in the presentation of continuum mechanics relation for general large deformation analysis is the use of effective notation because there are many different quantities that need to be dealt with.</p> 
+  <p>&nbsp;In the above figure, the motion of the body is considered in a fixed (stationary) Cartesian coordinate system. All the static and kinematic variables are measured in this coordinate system.</p> 
+  <p>The coordinates of a generic point P in the body at time 0 are 0^x, 0^x0^x; at time t, they are t^x, t^xt^x; and at time t+Δt they are t+Δt^x, t+Δt^xt+Δt^x, where the left superscripts refer to the configuration of the body and the subscripts are the coordinate axis (x, y, z correspond to 1,2,3).</p> 
+  <p>&nbsp;The notation for the displacements of the body is similar to the notation for the coordinates: at time t the displacements are tu, i=1,2,3 and at time t+Δt the displacements are t+Δt^u, i=1,2,3.</p> 
+  <p>&nbsp;Therefore, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHU7XpSaY-v2w" src="https://media.licdn.com/dms/image/C4E12AQHU7XpSaY-v2w/article-inline_image-shrink_400_744/0/1520516890188?e=1691625600&amp;v=beta&amp;t=swzBRgQK2ODKcQ-7U9tQjSFhovhBzjjf6YeZsq5qf44"> 
+  </div> 
+  <p>The increments in the displacements from time t to t+Δt are denoted by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEC_1iVdcVdfQ" src="https://media.licdn.com/dms/image/C5112AQEC_1iVdcVdfQ/article-inline_image-shrink_400_744/0/1520240425559?e=1691625600&amp;v=beta&amp;t=Il9QQFiS5v0CNGdasi_a4NoQijf0G3X7iVyGOXvU6Xc"> 
+  </div> 
+  <p>During the motion of the body, its volume, surface area and mass density, stresses and strains are changing continuously. The specific mass, area and volume of the body at times 0, t and t+Δt are denoted as: 0^ρ, t^ρ, t+Δt^ρ; 0^A, t+Δt^A; and 0^V, t^V, t+Δt^V, respectively.</p> 
+  <h3><strong>3.3 Statement of the principle of virtual displacements</strong></h3> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong>In the Lagrangian incremental analysis approach, we express the equilibrium of the body at time t+Δt using the principle of virtual displacements. The principle requires;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEm_rnkm-Ifjw" src="https://media.licdn.com/dms/image/C5112AQEm_rnkm-Ifjw/article-inline_image-shrink_400_744/0/1520196373744?e=1691625600&amp;v=beta&amp;t=ho1J7Q8XwHaTv-wLsd_wFVtG-JgVSGw_vX-eu7ffOWU"> 
+  </div> 
+  <p>Where;</p> 
+  <p>&nbsp;t+Δt^τ = Cartesian component of the <em>Cauchy stress tensor</em> (force per unit area in the deformed geometry)</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHK-yyhDpIqjQ" src="https://media.licdn.com/dms/image/C4E12AQHK-yyhDpIqjQ/article-inline_image-shrink_400_744/0/1520516890081?e=1691625600&amp;v=beta&amp;t=36k-CpjgD_TEff_95-XZu4O191h6PMuuMX0lLISPOIc"> 
+  </div> 
+  <p>is the strain tensor corresponding to the virtual displacements</p> 
+  <p class="left">&nbsp;</p> 
+  <p>δu = components of the virtual displacement vector imposed on configuration at time t+Δt</p> 
+  <p>t+Δt^x = Cartesian coordinates of material point at time t+Δt</p> 
+  <p>t+Δt^V = volume at time t+Δt</p> 
+  <p>&nbsp;and;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE_nW9s09_qwA" src="https://media.licdn.com/dms/image/C5112AQE_nW9s09_qwA/article-inline_image-shrink_1000_1488/0/1520169933508?e=1691625600&amp;v=beta&amp;t=jbP0josNblH1lArS3ILZqGx6v6_-PyyELiek_jiIDJ0"> 
+  </div> 
+  <p>Where;</p> 
+  <p>&nbsp;</p> 
+  <p>t+Δt^fB = components of the externally applied forces per unit volume at time t+Δt</p> 
+  <p>t+Δt^fS = components of the externally applied surface tractions per unit surface area at time t+Δt</p> 
+  <p>t+Δt^S = surface at time t+Δt on which external tractions are applied.</p> 
+  <p>δus = δu evaluated on the surface t+Δt^S (the δu components are zero at and corresponding to the prescribed displacements on the surface t+ΔtS</p> 
+  <h2><strong>4. Difficulty in the application of the principle of virtual displacements</strong></h2> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong>A fundamental difficulty in the application of the principle of virtual displacement is that the configuration of the body at time t+Δt is not known. This is an important difference compared with the linear analysis in which it is assumed that the displacements are infinitesimally small so that the original configuration is used (when we say original, it means: same area, volume).The continuous change in the configuration of the body entails some important consequences for the development of the incremental analysis procedure.</p> 
+  <p>&nbsp;For example;</p> 
+  <ol> 
+   <li>The statement of principle of virtual displacements involves the volume integral at time t+Δt. However, the volume at time t+Δt is not known.</li> 
+   <li>Also, the Cauchy stresses at time t+Δt cannot be obtained by simply adding to the Cauchy stress at time “t” a stress increment that is due to the straining of the material. This is because the Cauchy stress at time “t” and the Cauchy stress at time “t+Δt” are in different configurations as a result of the body undergoing rigid body motion (translation and/or rotation).</li> 
+  </ol> 
+  <h2><strong>5. 2nd Piola Kirchhoff stress and the Green Lagrangian strain tensor</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;The fact that the configuration of the body changes continuously in the large deformation analysis is dealt with in an elegant manner by using more appropriate stress and strain measures: the 2nd Piola Kirchhoff stress and the Green Lagrangian strain tensor.</p> 
+  <h3><strong>5.1 Expressions for the 2nd Piola Kirchhoff stress tensor and the Green Lagrangian strain tensor</strong></h3> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong>The 2nd Piola Kirchhoff stress tensor and the Green Lagrangian strain tensor are denoted by the following expressions;</p> 
+  <p>&nbsp;<em>2nd Piola Kirchhoff stress tensor:</em></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFxbpPRLu1VYA" src="https://media.licdn.com/dms/image/C5112AQFxbpPRLu1VYA/article-inline_image-shrink_400_744/0/1520198110956?e=1691625600&amp;v=beta&amp;t=GoiF8m5-P_sHlKB9ILbb3PhC3veXS1EHpCNDwyF_i4Q"> 
+  </div> 
+  <p>Expanding the above indicial notation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHz8X3CfOAzMg" src="https://media.licdn.com/dms/image/C5112AQHz8X3CfOAzMg/article-inline_image-shrink_1000_1488/0/1520196078586?e=1691625600&amp;v=beta&amp;t=nxydLOAKzPBd7Z5BViBF-rAmHMr-RNwhMImE_9YTpnU"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFCgUfhjU2ucQ" src="https://media.licdn.com/dms/image/C4E12AQFCgUfhjU2ucQ/article-inline_image-shrink_400_744/0/1520516890467?e=1691625600&amp;v=beta&amp;t=EzE2uYXlRedAnF8VZp4O35sIiOIqmU5BYiVOapy_93M"> 
+  </div> 
+  <p>is the component of the deformation gradient tensor (the explanation and the physical interpretation for this will be discussed in a separate post).</p> 
+  <p>&nbsp;Similarly, expressions can be written for the other components of the 2nd Piola Kirchhoff stress tensor: S12,S13, S22, S23, S33.</p> 
+  <p><em>Green Lagrangian strain tensor:</em></p> 
+  <p>&nbsp;The Green Lagrangian strain tensor is denoted by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGuC6UcNn-39w" src="https://media.licdn.com/dms/image/C5112AQGuC6UcNn-39w/article-inline_image-shrink_400_744/0/1520065916814?e=1691625600&amp;v=beta&amp;t=IUCvwEyuvWA3NG5sDefkdT-eSdYsZqDARv-tIh_OAyk"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH1YAy0q0F3CA" src="https://media.licdn.com/dms/image/C5112AQH1YAy0q0F3CA/article-inline_image-shrink_400_744/0/1520196433308?e=1691625600&amp;v=beta&amp;t=kfVYpX4ihuLDdr4dRDe73ZjCaIGn-NF8veleZl95kt8"> 
+  </div> 
+  <p>Again, the Green Lagrangian strain tensor is written in the indicial notation, expanding the above indicial notation, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFsyTTkaOvRRA" src="https://media.licdn.com/dms/image/C5112AQFsyTTkaOvRRA/article-inline_image-shrink_400_744/0/1520065726782?e=1691625600&amp;v=beta&amp;t=f3Av65Nj_ruHf5yakW7mmhk7mpsLVYp5N_F93uzxIEk"> 
+  </div> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGZqMi5OS7Xfw" src="https://media.licdn.com/dms/image/C4E12AQGZqMi5OS7Xfw/article-inline_image-shrink_1000_1488/0/1520516890324?e=1691625600&amp;v=beta&amp;t=3PLlu1p3hZcVXxITJv68L7P0i4o4O-8dt87AAugFScU"> 
+  </div> 
+  <p>It should be noted that using the 2nd Piola Kirchhoff stress and Green Lagrangian strain tensors, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHJ4wxjTchy8Q" src="https://media.licdn.com/dms/image/C5112AQHJ4wxjTchy8Q/article-inline_image-shrink_400_744/0/1520195158494?e=1691625600&amp;v=beta&amp;t=06hX1WO7sPEQRHCQPbXIqX5eMLAkDHkcxfaMJw_rPS4"> 
+  </div> 
+  <p>This relation holds good for all times: Δt, 2 Δt,…t, t+ Δt.</p> 
+  <h2><strong>6. Physical interpretation of Cauchy stress and the 2nd Piola Kirchhoff stress</strong></h2> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong>Following points may be noted with regards to the Cauchy stress and the 2nd Piola Kirchhoff stress:</p> 
+  <p>&nbsp;1. Cauchy stress is measures with reference to the actual configuration of the deformed state of the structure. That is, as the structure traverses from time‘t’ to a time‘t+Δt’, it translates/ rotates (as a rigid body) and deforms. Cauchy stress is measured relative to the actual configuration of the structure at that time step whereas the 2nd Piola Kirchhoff stress is measured with reference to the original configuration of the structure at time t=0.</p> 
+  <p>&nbsp;It should be noted that both the 2nd Piola Kirchhoff stress tensor and the Cauchy stress tensor have the same eigen values i.e. the same principal stresses. It is just that the Cauchy tensor is measures with reference to a different configuration (i.e. the actual deformed configuration of the structure at that state) than the original configuration at time t=0.</p> 
+  <p>&nbsp;2. The 2nd Piola Kirchhoff stress may be interpreted as a force in the reference configuration acting on the area in the reference configuration. However, it is not directly interpretable in an experiment.</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p></p>
+ 
+</div>
+</body>
+</html>

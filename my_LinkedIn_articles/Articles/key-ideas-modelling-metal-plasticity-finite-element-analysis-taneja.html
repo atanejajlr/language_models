@@ -1,0 +1,448 @@
+<html>
+<head>
+  <title>Key ideas in modelling metal plasticity for finite element analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGPaV7fXEBnyg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/key-ideas-modelling-metal-plasticity-finite-element-analysis-taneja">Key ideas in modelling metal plasticity for finite element analysis</a></h1>
+    <p class="created">Created on 2015-11-23 21:29</p>
+  <p class="published">Published on 2015-11-24 21:33</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2><strong>1. Introduction</strong></h2> 
+  <p>For many engineering applications, elastic constitutive equations are sufficient to model the material behaviour since large plastic strains are by and large undesirable and will lead to failure.</p> 
+  <p>There are situations, however, where it of much interest to predict the structural behaviour subjected to loads that will cause the material to cross its elastic limit. Examples of such situations include;</p> 
+  <ol> 
+   <li>Fan blade off simulation</li> 
+   <li>Design of crash resistant vehicles</li> 
+   <li>Plastic design of structures</li> 
+   <li>Prediction of time dependent effects due to creep and shrinkage in structures</li> 
+   <li>And more…</li> 
+  </ol> 
+  <p>In my articles in the link below;</p> 
+  <p><a href="http://ajaytaneja-isotropickinematichard.blogspot.co.uk/" target="_blank">http://ajaytaneja-isotropickinematichard.blogspot.co.uk/</a></p> 
+  <p><a href="http://ajaytaneja-bauschinger-effect.blogspot.co.uk/" target="_blank">http://ajaytaneja-bauschinger-effect.blogspot.co.uk/</a></p> 
+  <p>I had discussed, firstly, talked about the features of inelastic behaviour of metals (considering a test specimen subjected to loads), which included: initial linear elastic behaviour followed by a nonlinear response, creep (if the specimen held at constant stress), stress relaxation (if the specimen is held at a constant strain), the Bauschinger effect which comes into play if the test specimen was subjected to cyclic loading.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFqVFPOxNSBJg" src="https://media.licdn.com/dms/image/C5112AQFqVFPOxNSBJg/article-inline_image-shrink_400_744/0/1520066572350?e=1691625600&amp;v=beta&amp;t=aWlsOhQ8cJNa5QEKVJ4lkwY_Gq8nS7QTLtSFxQ1lcSQ"> 
+  </div> 
+  <p class="center"><strong>Figure: Features of inelastic behaviour of metals</strong></p> 
+  <p>I had then discussed concepts involving isotropic and kinematic hardening in considerable detail and my emphasis in both the above articles was to get a good physical understanding of inelastic behaviour and the phenomena of isotropic hardening and kinematic hardening.</p> 
+  <p>The aim of this article is to outline simple plastic constitutive equations that capture the most important features of metal plasticity. It may be said that this article goes beyond my earlier articles, because, here, my emphasis is on the computational modelling of features of inelastic behaviour of metals and to discuss the key concepts in the numerical modelling of plasticity for a finite element analysis.&nbsp;&nbsp;</p> 
+  <p>There are different plastic constitute laws, which are intended to be used in different applications. They all fall under 2 broad classifications;</p> 
+  <ul> 
+   <li><strong>Rate independent plasticity</strong>: This is used to model metals deformed at low temperatures deformed at modest strain rates</li> 
+   <li><strong>Rate dependent plasticity (or, viscoplasticity): </strong>This is used to model high temperature creep and to model metals deformed at high temperatures at high strain rates where the material strength is sensitive to deformation rate (i.e. the material yield stress increases with increase in strain rate).</li> 
+  </ul> 
+  <p>This article focuses on <strong>rate independent plasticity</strong>. Following concepts related to the modelling of rate independent plasticity are discussed in this write-up;</p> 
+  <p>&nbsp;1) The <strong>decomposition of strain into elastic and plastic parts</strong>,</p> 
+  <p>2) <strong>Yield criteria</strong>, which predict whether the solid responds elastically or plastically,</p> 
+  <p><strong>3) Strain hardening law</strong>, which controls the how the material yield stress increases (or how the material hardens ) with plastic straining,</p> 
+  <p>4) The <strong>plastic flow rule</strong>, which determines the relationship between stress and the plastic strain under multi-axial loading,</p> 
+  <p>5) The <strong>elastic unloading criterion </strong>which models the irreversible behaviour of the solid.</p> 
+  <p>Having discussed the above key points concerning the modelling of plasticity for computational analysis in sections 2 through section 6, the essential ingredients of a plasticity algorithm for a finite element analysis are discussed in section 7.</p> 
+  <p>The ideas discussed in sections 2 through section 6 form the basis of developing finite element methods that model rate independent metal plasticity. This will be appreciated as one would read the concluding section on the ingredients of a plasticity algorithm in this article.</p> 
+  <h2><strong>2. Decomposition of strain into elastic and plastic parts</strong></h2> 
+  <p>One of the first steps in a plasticity algorithm is to find out whether the material during a particular load increment is responding elastically or elasto-plastically.</p> 
+  <p>If the material is not in the elastic range, it is required to compute the plastic strains, the correct stress level during the load step and other parameters. In the paragraphs that follow (in this section) an attempt is made to explain the definitions of elastic and plastic strain and the corresponding math expressions.</p> 
+  <p><strong>Elastic strain:</strong></p> 
+  <p>Some people define (<strong>incorrectly!</strong>) the elastic strain as: “any strain that takes place before the stress exceeds the yield stress”. However, it is important to note that, for hardening materials, elastic strain is also increasing during post-yield. This is because, with hardening, the material is becoming stronger i.e. its yield stress (<strong><em>I prefer to use the term “elastic limit” than “yield stress”, however, I’ll stick to using “yield stress” as most literature and people do</em></strong>) is increasing, so the elastic strain ought to increase as the material hardens (i.e. even post-yield). Hence, a better definition of elastic strain would be: “the strain that is removed during unloading”.</p> 
+  <p><strong>Plastic strain:</strong></p> 
+  <p>Plastic strain is the permanent strain that remains after unloading. Total strain is the sum of elastic and plastic strains.</p> 
+  <p><strong>Total strain:</strong></p> 
+  <p>For uniaxial tension, we would denote the total strain as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHO4KnxAr6mLg" src="https://media.licdn.com/dms/image/C5112AQHO4KnxAr6mLg/article-inline_image-shrink_400_744/0/1520242117783?e=1691625600&amp;v=beta&amp;t=C9MZefpdI37sU6j2ZpTD_wBUzS_IzKieIDaTWEYjnCQ"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQH4G7qpRx0IkQ" src="https://media.licdn.com/dms/image/C4E12AQH4G7qpRx0IkQ/article-inline_image-shrink_400_744/0/1520432684935?e=1691625600&amp;v=beta&amp;t=MMHSxKdjysEO6jA6LuIN0_z2C6Tv2YSzxC7SJ5ADKTk"> 
+  </div> 
+  <p class="center"><strong>Figure: Elastic and plastic strain </strong></p> 
+  <p>Where;</p> 
+  <p>εe denotes the reversible part / elastic strain (the strain that is removed during unloading) and εp denotes the irreversible part / permanent strain (plastic strain).</p> 
+  <p>For multi-axial loading, we generalize this by decomposing a general strain increment dε into elastic and plastic parts, as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHa99iWmtmD5g" src="https://media.licdn.com/dms/image/C5112AQHa99iWmtmD5g/article-inline_image-shrink_400_744/0/1520194257647?e=1691625600&amp;v=beta&amp;t=_WRP4_h-f1slqz8A7XBgnLDXRCIk9mS7IZ4Z0HqFvZU"> 
+  </div> 
+  <h2><strong>3. Yield criterion</strong></h2> 
+  <p>A yield criterion is used to mathematically identify when yielding happens. For uniaxial loading, the yield criterion typically includes the current level of stress minus the initial yield stress added to the function which describes the type of hardening.</p> 
+  <p>For multi-axial state of stress, a scalar measure is used to denote an equivalent stress(rather, an index) which can then be compared to the yield stress of the material.</p> 
+  <p>There are many different yield criteria. But, the most common yield criteria generally used in nonlinear material models in finite element analysis software’s is;</p> 
+  <p>i) Von Mises yield criterion</p> 
+  <p>ii) Tresca’s yield criterion</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>3.1 Von Mises yield criterion</strong></h2> 
+  <p>&nbsp;</p> 
+  <p><strong>Physical interpretation of Von Mises yield criterion</strong></p> 
+  <p>Von Mises yield criterion proves extremely useful in cases of multi-axial loading because it provides a means of obtaining a <strong>single equivalent scalar measure</strong> which can then be compared with the yield stress of the material to predict numerically whether the material is yielding or not (i.e. whether the material is in the elastic or the plastic range).</p> 
+  <p>For a multi-axial loading, a complex 3 dimensional state of stress is developed. The state of stress at any point may be denoted by a stress matrix;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGGVWHSkijY3w" src="https://media.licdn.com/dms/image/C5112AQGGVWHSkijY3w/article-inline_image-shrink_400_744/0/1520198431521?e=1691625600&amp;v=beta&amp;t=vkMR4lljz_2rUj_u1DGz6mcoIOC_AZKTasb_U2OfdeU"> 
+  </div> 
+  <p class="center"><strong>Figure: State of stress at a point for multi-axial loading</strong></p> 
+  <p>The state of stress at the point Q may be denoted by the stress matrix:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEjA4t4ALjkAw" src="https://media.licdn.com/dms/image/C5112AQEjA4t4ALjkAw/article-inline_image-shrink_400_744/0/1520169425057?e=1691625600&amp;v=beta&amp;t=bvPPW4oD06Q4l_mFvIPfbeL34qfjtGNbBWhYChbNsqc"> 
+  </div> 
+  <p>The Von Mises criterion is a formula for calculation whether a state of stress at a point will cause the material to yield or not.</p> 
+  <p>There are three “principal stresses” that can be calculated at any point acting in the x, y, z directions. Von Mises found that, even though none of the principal stresses exceed the yield stress of the material, it is possible that the material starts yielding depending upon the combination of stresses. Von Mises criterion is a formula for combining these 3 stresses into an equivalent stress which can then be compared to the yield stress of the material.</p> 
+  <p>The equivalent stress is often called the “Von Mises stress” – which is not really a stress but a number used as an index.</p> 
+  <p>Physically, the Von Mises yield criterion (as described mathematically in the next sub-section) is arrived based on the assumption / experimental observations that for a multi-axial state of stress, yielding starts when the maximum distortional / shear energy in uni-axial / simple tension.</p> 
+  <p><strong>Mathematical definition of Von Mises yield criterion</strong></p> 
+  <p>If σij is taken as the stress acting on a solid and σ1 , σ2 and σ3 the principal stresses, Y the yield stress of a material in uniaxial tension, then;</p> 
+  <p>Von-Mises yield criterion is defined as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEnZzlPvgAIrQ" src="https://media.licdn.com/dms/image/C5112AQEnZzlPvgAIrQ/article-inline_image-shrink_400_744/0/1520194272267?e=1691625600&amp;v=beta&amp;t=enPM9TvnMme5pICXfFnoH5KnlMVJK1Dqa-_Xe6GzNaU"> 
+  </div> 
+  <p>The above criterion is defined so that the material deforms elastically for f (σij) &lt; 0, and plastically for f(σij) = 0. The yield stress may increase during plastic straining, so we have ‘Y’ is a function of the&nbsp;equivalent plastic strain ε_dash^p;</p> 
+  <p>Where,</p> 
+  <p>ε_dash^p= equivalent plastic strain,</p> 
+  <p>Alternatively, the Von-Mises yield criterion can be defined in terms of the stress tensor components directly (rather than expressing it in terms of the principal stresses σ1, σ2 and σ3). This proves very useful, as otherwise, the finite element software will have to compute the principal stresses repeatedly for its internal calculations.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEu2cJlU2MZ4Q" src="https://media.licdn.com/dms/image/C4E12AQEu2cJlU2MZ4Q/article-inline_image-shrink_400_744/0/1520432685020?e=1691625600&amp;v=beta&amp;t=p84UcSCIME6iSTVrjKxBWeH17b-UP5XFjd40UolADpk"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHNaPivaeaC5Q" src="https://media.licdn.com/dms/image/C5112AQHNaPivaeaC5Q/article-inline_image-shrink_400_744/0/1520172520041?e=1691625600&amp;v=beta&amp;t=rWi3Zix8CVgba0PMEnig82U0dYBg5XnlXjLQ2y_n6NU"> 
+  </div> 
+  <p>are the components of the ‘von Mises effective stress’ and the ‘deviatoric stress’ respectively.</p> 
+  <p><strong>&nbsp;</strong></p> 
+  <h3><strong>3.2 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Tresca’s yield criterion</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Tresca’s yield criterion is defined as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFoUVZv8-BWAQ" src="https://media.licdn.com/dms/image/C5112AQFoUVZv8-BWAQ/article-inline_image-shrink_400_744/0/1520066373890?e=1691625600&amp;v=beta&amp;t=OPPrmvu028dvzqxwPCeRAdctr-jlHPUhRwdJIbgWnyw"> 
+  </div> 
+  <p>As in the Von Mises yield criterion, the Tresca’s yield criterion is defined so that the material deforms elastically for f (σij) &lt; 0, and plastically for f(σij) = 0.</p> 
+  <p>Tresca’s yield criterion is based on the assumption / experimental observation that yielding starts when the maximum shear stress in the material equals the maximum shear stress at yielding in simple tension.</p> 
+  <p><strong>It should be clearly understood (from the above expression):</strong></p> 
+  <ol> 
+   <li>‘Y’ is the yield stress of the material and because ‘Y’ may increase during plastic straining, it is mentioned above that ‘Y’ is a measure of the total plastic strain</li> 
+   <li>For plastic strain equal to ‘0’, the yield stress will correspond to the material yield stress (or, material elastic limit).</li> 
+  </ol> 
+  <h3>&nbsp;</h3> 
+  <h3><strong>3.3 Basis of the Von Mises and Tresca’s yield criterion</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>The yield criteria are based on the following experimental observations;</p> 
+  <ul> 
+   <li>A hydrostatic state of stress (all principal stresses equal) will never cause yield, no matter how large the stress</li> 
+   <li>The yield criterion is based on the assumption of isotropic behaviour because they depend on the magnitudes of principal stresses and not their directions.</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <h3><strong>3.4 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Graphical representation of the yield surface</strong></h3> 
+  <p>Any arbitrary state of stress can be plotted in the ‘principal stress space’ with the three principal stresses as axes [<em>one may recall the Mohr’s circle of stress in two or 3 dimensions at this point wherein the state of stress on any plane (inclined a an angle theta) within an element can be represented as the intercepts of a point on the circumference of the circle. The point on the circumference of the circle makes an angle of 2 theta with the x (principal stress axis) </em>].</p> 
+  <p>The Von Mises yield criteria is a cylinder of radius Y /√3 with its axis parallel to the line σ1 = σ2= σ3</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE5fJkRuIn4PQ" src="https://media.licdn.com/dms/image/C5112AQE5fJkRuIn4PQ/article-inline_image-shrink_400_744/0/1520063053171?e=1691625600&amp;v=beta&amp;t=WHlePhGc_8Aukp3JTDONgPYQB2Onbv2JmHAZ9N_z7LU"> 
+  </div> 
+  <p>Figure: Von Mises yield surface</p> 
+  <p class="left">If the state of stress lies within the cylinder, the material is below the yield and responds elastically.</p> 
+  <p class="left">If the state of stress lies on the surface on the surface of the cylinder, the material yields and deforms plastically.</p> 
+  <p class="left">If the plastic deformation, causes the material to strain harden, the radius of the cylinder would increase.</p> 
+  <h2><strong>4. Strain hardening laws</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Experiments show that if you plastically deform a solid, and then unload it, and to reload it again, the material will start yielding at a stress at which it was unloaded i.e. the resistance to plastic flow will have increased. This is called ‘strain hardening’.</p> 
+  <p><strong>Modelling strain hardening</strong></p> 
+  <p>One may model strain hardening by relating the size and shape of the yield surface to plastic strain in an appropriate way. Described below are two fundamental approaches;</p> 
+  <h3><strong>4.1 </strong>&nbsp;&nbsp;&nbsp;&nbsp; <strong>Isotropic hardening laws</strong></h3> 
+  <p>The easiest way to model strain hardening is to make the yield surface increase in size, but remain the same shape as a result of plastic straining.</p> 
+  <p>This means that one must devise an appropriate relationship between the yield stress and plastic strain. To get a scalar measure of plastic strain (in situations of multiaxial loading), we define the accumulated plastic strain of magnitude,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEGhPbeA0WgeQ" src="https://media.licdn.com/dms/image/C5112AQEGhPbeA0WgeQ/article-inline_image-shrink_400_744/0/1520063688592?e=1691625600&amp;v=beta&amp;t=5_sc6cw6WcLqlXF-kngmA83XzBwdskWQHlY3of7NoqI"> 
+  </div> 
+  <p>(the factor 2/3 is introduced so that accumulated plastic strain in a multiaxial loading is equal to the plastic strain in uniaxial tension)</p> 
+  <p>Then, we make Y a function of the accumulated plastic strain of accumulated plastic strain. A few of the common material models (or hardening functions) relating plastic strain to the yield stress of the material include;</p> 
+  <ul> 
+   <li><strong>Perfectly plastic solid</strong></li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE7lhzwijMBaQ" src="https://media.licdn.com/dms/image/C5112AQE7lhzwijMBaQ/article-inline_image-shrink_400_744/0/1520065546888?e=1691625600&amp;v=beta&amp;t=GzhnGlgb-G7e-FtPdJ482CitmxGHTztt3MeBrBfUKoo"> 
+  </div> 
+  <p class="center"><strong>Y = constant</strong></p> 
+  <ul> 
+   <li><strong>Linear strain hardening solid</strong></li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG9V2QndrD77g" src="https://media.licdn.com/dms/image/C4E12AQG9V2QndrD77g/article-inline_image-shrink_400_744/0/1520432684660?e=1691625600&amp;v=beta&amp;t=qK-BmzcR7HVQyMwFbxyr8JguoiUi3A6Iw28-d140uAU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFN8-j1sIXuAw" src="https://media.licdn.com/dms/image/C5112AQFN8-j1sIXuAw/article-inline_image-shrink_400_744/0/1520066381838?e=1691625600&amp;v=beta&amp;t=LMG5ojNC4o5BE9QsEyO6QmqeJoyAxaVsvgOCI-ItP24"> 
+  </div> 
+  <ul> 
+   <li><strong><strong>Power law hardening solid</strong></strong></li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG9dfK4eWmcuA" src="https://media.licdn.com/dms/image/C5112AQG9dfK4eWmcuA/article-inline_image-shrink_400_744/0/1520195975970?e=1691625600&amp;v=beta&amp;t=gO_kCewK2NhBJ5elyQk-ZBESd-jg84M4KnaYdjc4Iqc"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG6Ra9EoW1j4A" src="https://media.licdn.com/dms/image/C5112AQG6Ra9EoW1j4A/article-inline_image-shrink_400_744/0/1520065729784?e=1691625600&amp;v=beta&amp;t=FOtstWufObcruVziBFWkvC_JKkDaJn1cNPMjnnLY2kQ"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <h2>4.2 <strong>Kinematic hardening laws</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>So far, in the discussion above, we have discussed about isotropic hardening and the numerical modelling of it (isotropic hardening) involved uniform expansion of the Von Mises yield surface i.e. the radius of Von Mises yield surface increases.</p> 
+  <p>An isotropic hardening law is not useful in situations where components are subjected to cyclic loading. It does not account for Bauschinger effect and so predicts that after a few cycles the solid will just harden until it responds elastically.</p> 
+  <p>Isotropic hardening describes the increase in the material strength due to plastic strain. The stress strain response for isotropic hardening is shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFOld22OCeQSQ" src="https://media.licdn.com/dms/image/C4E12AQFOld22OCeQSQ/article-inline_image-shrink_400_744/0/1520432684744?e=1691625600&amp;v=beta&amp;t=9vUz2xq4rgZrAknNO6ouUS1J_quQEYbU7lniOxdmUAA"> 
+  </div> 
+  <p class="center"><strong>Figure: Schematic illustration of isotropic hardening</strong></p> 
+  <p>The figure assumes a Von Mises yield surface wherein the yield surface (Von Mises cylinder) increases in size as a result of plastic straining but remains of the same shape.</p> 
+  <p>The onset of plastic flow begins at the point ‘A’. If the material is unloaded from the point B to zero stress and then reloaded, then, the material will at yield at a new stress and plastic deformation will continue along its original stress strain path. This is termed as <strong>“material memory” </strong>because upon reaching the point B during reloading the material <strong>“remembers”</strong> its prior loading.</p> 
+  <p>As loading continues to the point C, isotropic hardening considers as the new yield strength of the material. If the material is loaded in compression, yielding will not occur until D at a stress of . The yield surface has expanded equally in all directions during plastic deformation with no change in shape and no translation of the yield surface centre.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGqAA3dybGOzg" src="https://media.licdn.com/dms/image/C5112AQGqAA3dybGOzg/article-inline_image-shrink_400_744/0/1520238934453?e=1691625600&amp;v=beta&amp;t=FDfywf11jRMk0J8_YLkImyAC8aH0_8D8yd7lacxKZfc"> 
+  </div> 
+  <p><strong>Figure: Schematic illustration of isotropic hardening – equal expansion of the cylinder in all directions</strong></p> 
+  <p>In kinematic hardening, the yield surface is allowed to translate in stress space with no change in size or shape.</p> 
+  <p>This is illustrated in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEQ_2BJhcNhpg" src="https://media.licdn.com/dms/image/C4E12AQEQ_2BJhcNhpg/article-inline_image-shrink_400_744/0/1520432684665?e=1691625600&amp;v=beta&amp;t=lk6jqBWESu0YN3pFgpEJ1FrMKVZU_f4Z5UhJBgaXwGU"> 
+  </div> 
+  <p><strong>Figure: Schematic illustration of kinematic hardening</strong></p> 
+  <p>As in the previous example, the material begins yielding at the point A and is loaded into the plastic region to a stress of. Plastic deformation results in translation of the yield surface. Unloading to zero stress and reloading will not cause any additional translation of the yield surface since translation will only occur during plastic straining.</p> 
+  <p>Upon reloading in the same direction, the material will yield at just as in the case of isotropic hardening model.</p> 
+  <p>Loading in compression into compression, however, produces a very different response in kinematic hardening since reverse yielding will occur at a stress of which is significantly less than or the first yield stress σ.</p> 
+  <h2>&nbsp;4.3 <strong><strong>Numerical modelling of kinematic hardening</strong></strong></h2> 
+  <p>&nbsp;</p> 
+  <p>A kinematic hardening law allows the yield surface to translate without changing its shape as explained and illustrated in the preceding section. To account for the fact that the centre of the yield locus is at a position α in the stress space, the Von Mises yield criterion needs to be modified as follows; α is related to the plastic strain history.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGk6WSLAdbnlQ" src="https://media.licdn.com/dms/image/C5112AQGk6WSLAdbnlQ/article-inline_image-shrink_400_744/0/1520062855501?e=1691625600&amp;v=beta&amp;t=cSaG2-0LQhlipNrjxvPDN373GzfVshcXUWixWja_QMA"> 
+  </div> 
+  <p>Here, Y is now a constant, and hardening is modelled by the motion of the yield surface. There are many ways to do this which model the subtle features of the plastic response of solids under cyclic and non-proportional loading. The simplest approach is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGqQwEb13RrqA" src="https://media.licdn.com/dms/image/C4E12AQGqQwEb13RrqA/article-inline_image-shrink_400_744/0/1520432684533?e=1691625600&amp;v=beta&amp;t=pvm9-51_EO__pL8e7TKpbYZfQ7LvYXcH_u10Dj9YDfM"> 
+  </div> 
+  <p>The hardening law predicts that the stress-plastic strain curve is a straight line with slope c. This is known as <em>linear kinematic hardening</em> as illustrated below.</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQH8ZBxWnDnIog" src="https://media.licdn.com/dms/image/C4E12AQH8ZBxWnDnIog/article-inline_image-shrink_400_744/0/1520432684700?e=1691625600&amp;v=beta&amp;t=YHHJQ7f0-7vY-wNlSkwNoECgQMj8Oq03Z1nhMFbjtzE"> 
+  </div> 
+  <p class="center"><strong>Figure: Linear kinematic hardening</strong></p> 
+  <p><strong>Armstrong-Frederick hardening law</strong></p> 
+  <p>A more sophisticated approach is to set;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG0dI61j1O7Mg" src="https://media.licdn.com/dms/image/C4E12AQG0dI61j1O7Mg/article-inline_image-shrink_400_744/0/1520432684734?e=1691625600&amp;v=beta&amp;t=w1QWcz8ztFUTPgWkR22RJWIK0_kxnpRbjHlbuPlHDsU"> 
+  </div> 
+  <p>The relation can model <em>cyclic creep</em>, the tendency of the material to accumulate strain in the direction of the mean stress under cyclic loading. It is known as the</p> 
+  <p><strong>Armstrong-Frederick</strong> hardening law.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHscHhnohAYdw" src="https://media.licdn.com/dms/image/C4E12AQHscHhnohAYdw/article-inline_image-shrink_400_744/0/1520432685501?e=1691625600&amp;v=beta&amp;t=EosVrnDbiQo-5rP5GUX0pyUNEXqfZQyOnEt6e3gCj10"> 
+  </div> 
+  <p class="center"><strong>Figure: Armstrong-Frederick hardening law</strong></p> 
+  <h2><strong>5. Plastic flow</strong></h2> 
+  <h2>&nbsp;</h2> 
+  <p>To complete the plastic stress strain relations, we need a way to predict the plastic strains induced by stressing the material beyond its yield point. Specifically, given;</p> 
+  <ol> 
+   <li>The current stress σ applied to the material;</li> 
+   <li>The current yield stress characterised by Y (orα for kinematic hardening)</li> 
+   <li>A small increase in stress dσ applied to the solid.</li> 
+  </ol> 
+  <p>We wish to determine the small increase in plastic strain dεp. The formulae for isotropic and kinematic hardening are given below;</p> 
+  <p><strong>Isotropic hardening (Von Mises yield criterion):</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHVmho50Ft2CA" src="https://media.licdn.com/dms/image/C4E12AQHVmho50Ft2CA/article-inline_image-shrink_400_744/0/1520432684599?e=1691625600&amp;v=beta&amp;t=h3QhZEc0ffcPljmX81trZoWEjXDzNCwOc_OO-l8ep1I"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHHf0CHcFVvhg" src="https://media.licdn.com/dms/image/C5112AQHHf0CHcFVvhg/article-inline_image-shrink_400_744/0/1520241213919?e=1691625600&amp;v=beta&amp;t=7ZPQJ35AaEWC2f-ZkaxEr0Sqb2d7QxkIJRx8-vTZbdY"> 
+  </div> 
+  <p>denotes the Von Mises yield criterion, and is determined from the condition that the yield criterion must be satisfied at all times during plastic straining. This shows that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF7i2G4pU71Nw" src="https://media.licdn.com/dms/image/C5112AQF7i2G4pU71Nw/article-inline_image-shrink_400_744/0/1520197423841?e=1691625600&amp;v=beta&amp;t=L0JwNOjOwDaCu7jp9JXhw6GklOtBjQmVXz2eKI5E-Xk"> 
+  </div> 
+  <p class="left">&nbsp;</p> 
+  <p>Here, h = do_y/do_epsilon_dash^p&nbsp;is the slope of the plastic stress-strain curve. The math involved in differentiating f with respect to the stress is not shown.</p> 
+  <p><strong>Linear kinematic hardening (Von-Mises yield criterion):</strong></p> 
+  <p>Where,</p> 
+  <p>The yield criterion now is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF-7Y3iNIr5fw" src="https://media.licdn.com/dms/image/C5112AQF-7Y3iNIr5fw/article-inline_image-shrink_400_744/0/1520066305441?e=1691625600&amp;v=beta&amp;t=BXrHcVVva46PimQq8-ihw47Y6M54IFPPr8ntW12G1S0"> 
+  </div> 
+  <p>and as in the case of isotropic hardening is determined from the condition that the yield criterion must be satisfied at all time during plastic straining. So that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHjFd1vW_4I-g" src="https://media.licdn.com/dms/image/C4E12AQHjFd1vW_4I-g/article-inline_image-shrink_400_744/0/1520432684851?e=1691625600&amp;v=beta&amp;t=JmE9QwwEHcvgYxRA2gMD81RJu7HDWM5n_tPlqfNu6tk"> 
+  </div> 
+  <p>For linear kinematic hardening;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG70IeS-OI8hQ" src="https://media.licdn.com/dms/image/C5112AQG70IeS-OI8hQ/article-inline_image-shrink_400_744/0/1520062531844?e=1691625600&amp;v=beta&amp;t=fhIwKEdM-IWp9_1mN9Fa3S9DFELFUCP2arogdOn1oHQ"> 
+  </div> 
+  <p>Simplifying, it can be shown;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEydkDh6DqTDw" src="https://media.licdn.com/dms/image/C4E12AQEydkDh6DqTDw/article-inline_image-shrink_400_744/0/1520432685476?e=1691625600&amp;v=beta&amp;t=XDSCsjmYsyfmf8GKuNlbmE7KfDbtV43wwMBi7Cl_pUE"> 
+  </div> 
+  <h2><strong>6. Elastic unloading criterion</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>As stated in section 2, if the yield criterion f &lt;0, it means the material is in the elastic range</p> 
+  <p>For an isotropic hardening solid, the unloading condition may be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGv2GkrZXSPPQ" src="https://media.licdn.com/dms/image/C5112AQGv2GkrZXSPPQ/article-inline_image-shrink_400_744/0/1520194967319?e=1691625600&amp;v=beta&amp;t=jTDnswKL3wriOqJLzmpIEg1jxFqqJhkNO4PyRz4ZuSw"> 
+  </div> 
+  <p>For kinematic hardening;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQE9X2klAiSHoQ" src="https://media.licdn.com/dms/image/C4E12AQE9X2klAiSHoQ/article-inline_image-shrink_400_744/0/1520432685517?e=1691625600&amp;v=beta&amp;t=RZ-lnDCBEcmUqWIOYbs_aCnT7VZ4YHqVEhuyZJSvp7E"> 
+  </div> 
+  <h2><strong>&nbsp;</strong></h2> 
+  <h2><strong>7. Essential ingredients of a plasticity algorithm</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Plasticity algorithms are often used in finite element analysis programs to model non-linear material behaviour. In such cases, the finite element analysis program is incremental in nature. Each new load increment increases stress levels, strain levels and displacements. During each of these increments the plasticity algorithm is used at the element level in the finite element analysis program.</p> 
+  <p>The following steps are carried out during each increment and in each finite element;</p> 
+  <ol> 
+   <li>We start with the known stored variables: ε, εp,epsilon_dash^p</li> 
+   <li>An increment of strain at a load step gives, ε = ε + Δ ε</li> 
+   <li>At the beginning of each increment (or load step), it is not known whether the new level of stress will cause yielding (in a particular finite element) or not. For this reason, it is initially assumed that the incremental stress is elastic. In plasticity algorithms, the resulting new level of stress is often termed as the ‘trial stress’.</li> 
+   <li>The trial stress is plugged into the yield condition “f” (section 3) and a trial yield condition ftrial is evaluated. The ftrial equals (σtrial – yield stress).</li> 
+   <li>This yield stress is a function of the equivalent plastic strain ( . See section 4.1 where the yield stress is expressed as a function of the equivalent plastic strain for isotropic hardening laws; see section 4.3 for the yield stress for kinematic hardening laws.</li> 
+   <li>It is then checked whether: ftrial &lt;= 0</li> 
+   <li>If ftrial &lt;= 0, it means that the stress is elastic and thus, σ =σtrial</li> 
+   <li>If ftrial &gt; it means that a plastic step has occurred.</li> 
+   <li>If a plastic step has occurred, them, the problem is to find σ, (the equivalent plastic strain) such that f(σ, α) = 0 . See section 5.</li> 
+   <li>Having this information, the plastic strain at this load step εpis calculated. See section 5.</li> 
+   <li>This completes the computations for a plastic step. Exit the algorithm for the plastic step</li> 
+   <li>Repeat the steps ii through ix for all elements</li> 
+   <li>Repeat the steps i to x for all load increments</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong></p>
+ 
+</div>
+</body>
+</html>

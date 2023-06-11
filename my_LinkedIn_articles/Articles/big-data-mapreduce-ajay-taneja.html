@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Big Data and MapReduce</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5612AQENRRh9mYKuBA" alt="https://knitdata.org/post/word-cloud/" title="https://knitdata.org/post/word-cloud/" />
+      <h1><a href="https://www.linkedin.com/pulse/big-data-mapreduce-ajay-taneja">Big Data and MapReduce</a></h1>
+    <p class="created">Created on 2022-02-14 21:29</p>
+  <p class="published">Published on 2022-02-14 21:57</p>
+  <div><h2><strong>What is "Big Data" and what is “Manageable Data”?</strong></h2><p>When you’re dealing with data that can fit it into a single machine easily, can be loaded it into memory and you can run all your analysis in a serial fashion – then that data is “manageable” – now imagine you’re dealing with some very large data sets i.e., not talking of hundreds of gigabytes here but terabytes, or maybe even petabytes.&nbsp;At this point, one might think of the “MapReduce” programming model which allows us to take the data, distribute it across many different machines, and run the computations in parallel.</p><h2><strong>When is MapReduce Programming model appropriate and when it isn’t?</strong></h2><p>It's generally safe to say that your data is “big” if it's too large to fit onto one disc. For example, if you have a huge database comprising of several technical reports / research papers of several journals and you want to find out all reports corresponding to a particular topic or which words in the books have appeared most often, the, it might be impossible to load the text from all the journals in the world into a single disc – the MapReduce programming model can be handy here. MapReduce splits a large job up into several smaller chunks that each fit onto one machine and calculations on each machine can occur simultaneously. The machines do not communicate with each other whilst performing calculations</p><h2><strong>Examples where MapReduce has been used:</strong></h2><ul><li>Tonnes of online commerce sites – like eBay - use MapReduce to manage their huge amounts of data on sellers, buyers, and transactions.</li><li>Some companies use MapReduce to process data to identify malware and cyber-attack patterns</li><li>Apixio uses MapReduce to bring advanced data insights to healthcare by extracting and analyzing medical data previously trapped in&nbsp;electronic health records <a href="https://www.youtube.com/watch?v=I1vY9HHvW9c&amp;t=8s" target="_blank">[</a><a href="https://www.healthcareitnews.com/news/apixio-launches-cognitive-computing-platform" target="_blank">https://www.healthcareitnews.com/news/apixio-launches-cognitive-computing-platform</a>]</li></ul><h2><strong>How does MapReduce work?</strong></h2><p>MapReduce consists of two distinct tasks – Map and Reduce. As the name MapReduce suggests, the reducer phase takes place after the mapper phase has been completed.</p><ul><li>So, the first is the map job, where a block of data is read and processed to produce key-value pairs as intermediate outputs.</li><li>The output of a Mapper or map job (key-value pairs) is input to the Reducer.</li><li>The reducer receives the key-value pair from multiple map jobs.</li><li>Then, the reducer aggregates those intermediate data tuples (intermediate key-value pair) into a smaller set of tuples or key-value pairs which is the final output.</li></ul><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQFmF1m9BZRu_w" src="https://media.licdn.com/dms/image/C5612AQFmF1m9BZRu_w/article-inline_image-shrink_400_744/0/1644874543902?e=1691625600&amp;v=beta&amp;t=7WYfTle76fQnrTYxz-4MedxIVs17R1H2j6_rUZ7C6C4"></div><p><strong>                             Figure: How does Map Reduce work?</strong></p><p><strong>[source : </strong><a href="https://www.edureka.co/blog/mapreduce-tutorial/#what_is_mapreduce" target="_blank"><strong>https://www.edureka.co/blog/mapreduce-tutorial/#what_is_mapreduce</strong></a><strong>]</strong></p><h2><strong>Open-source implementation of MapReduce Programming model:</strong></h2><p>A very common open-source implementation of the map reduce programming model is HADOOP. HADOOP couples the map reduce programming model with a distributed file system.&nbsp;In order to more easily allow programmers to complete complicated tasks using the processing power of HADOOP, there are many infrastructures out there that built on top of HADOOP. </p><p>Two of the most common are Hive and Pig. Hive was initially developed by FaceBook, and one of its biggest selling points is that it allows you to run map-produced jobs through a SQL-like querying language, called the Hive Query Language.&nbsp;</p><p>Pig was originally developed at Yahoo! and excels in some areas Hive does not. Pig jobs are written in a procedural language called pig Latin. Hive and Pig are two of the most common Hadoop-based products, but there are a bunch of them out there. For example, Mahout for machine learning, Giraph for graph analysis, and Cassandra, a hybrid of a key value and a column-oriented database.&nbsp;</p><p>Hive vs Pig:</p><p><a href="https://www.projectpro.io/article/difference-between-pig-and-hive-the-two-key-components-of-hadoop-ecosystem/79" target="_blank">https://www.projectpro.io/article/difference-between-pig-and-hive-the-two-key-components-of-hadoop-ecosystem/79</a></p><p><br></p><h2><strong>Companies using HADOOP</strong></h2><iframe frameborder="0" allowfullscreen="true" src="https://www.linkedin.com/embeds/publishingEmbed.html?articleId=9208142492882136912" width="744" height="419" title="MapReduce Tools - Intro to Data Science"></iframe><iframe frameborder="0" allowfullscreen="true" src="https://www.linkedin.com/embeds/publishingEmbed.html?articleId=7647336469015242250" width="744" height="419" title="Pig - Intro to Data Science"></iframe><p><br></p><p><br></p><p><br></p><h2><br></h2></div>
+</body>
+</html>

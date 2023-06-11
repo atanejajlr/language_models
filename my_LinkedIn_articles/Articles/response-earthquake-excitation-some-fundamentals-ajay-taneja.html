@@ -1,0 +1,483 @@
+<html>
+<head>
+  <title>Response to earthquake excitation: Some fundamentals</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGJ8LN_6TBBBw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/response-earthquake-excitation-some-fundamentals-ajay-taneja">Response to earthquake excitation: Some fundamentals</a></h1>
+    <p class="created">Created on 2015-05-01 00:44</p>
+  <p class="published">Published on 2015-05-03 20:26</p>
+  <div>
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <h1>1.&nbsp; INTRODUCTION</h1> 
+  <p>One of the important applications of the theory of structural dynamics is in analysing the response of structures to ground shaking caused by an earthquake. The aim of this article is to present the essential fundamentals concerning the response of a structure to an earthquake excitation as well as to introduce the approaches that might be used to determine the response.</p> 
+  <p>Discussion in this article is confined to SDOF systems in order to avoid any rigorous mathematics thus emphasizing more on the physics involved in analysing the response of the structure during a seismic event.</p> 
+  <p>This write-up is organized as follows;</p> 
+  <p>Section 2 of this write up explains the governing differential equation of SDOF system subjected to ground shaking. Sections&nbsp;4 and&nbsp;5 concern with the earthquake response: deformation, internal forces, stresses and so on- of SDOF system as a function of time and how this response depends on the system parameters. Response history analysis concerning SDOF systems is discussed in section 5.</p> 
+  <p>Section 3 provides a physical insight to the behaviour of systems to earthquake excitation. Differentiation based on extreme cases of very stiff and flexible systems are illustrated.</p> 
+  <p>Section 5 deals with the theory of response spectrum (which is a central concept in earthquake engineering) and the deformation response spectrum, velocity response spectrum and the acceleration response spectrum are discussed through the example of the El Centro ground motion.</p> 
+  <p>Section 6 describes the various steps involved in the construction of the response spectrum and finally in section 7, two examples are discussed involving the analysis of a single storey frame using the El Centro response spectrum.</p> 
+  <h1>2.&nbsp; EQUATION OF MOTION OF A SDOF SYSTEM: EARTHQUAKE EXCITATION</h1> 
+  <p>Before arriving at the governing equation of motion of an idealised structure (one storey frame) subjected to an earthquake excitation, let us consider first the equation of motion the frame subjected to a deformation u at an instant of time‘t’.</p> 
+  <p>According to Newton’s second law, if the resultant force acting on a body is non-zero; the body is non-zero, the body moves with an acceleration which is inversely proportional to the mass of the body and directly proportional to the force;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFbO_V6kk743g" src="https://media.licdn.com/dms/image/C5112AQFbO_V6kk743g/article-inline_image-shrink_400_744/0/1520041972331?e=1691625600&amp;v=beta&amp;t=Gdgssz5ggAHJC1JQFE_roGZ5xlTU-IWk_kWRpIRzFeY"> 
+  </div> 
+  <p class="left">&nbsp;Let the forces acting on the body at some instant of time ‘t’ be denoted as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGkV7sUwJhkig" src="https://media.licdn.com/dms/image/C5112AQGkV7sUwJhkig/article-inline_image-shrink_1000_1488/0/1520239431875?e=1691625600&amp;v=beta&amp;t=D1AslWV9NLGkx-vACTNSk6r5FG0iVRpbmV66I8I2zMw"> 
+  </div> 
+  <p class="center"><strong>Figure: Forces acting on a body at an instant of time t</strong></p> 
+  <p>The above forces include: the external force p(t), the elastic (or inelastic) resisting force fs, the damping force f. The external force is taken to be positive in the direction of the x axis, the displacement u(t), velocity&nbsp;&nbsp; &nbsp;and the acceleration &nbsp;are also positive in the direction of the x axis. The elastic and the damping forces are shown in the opposite direction because they are internal forces and resist the deformation and velocity, respectively.</p> 
+  <p>Thus, the resultant force acting on the body is: p-fs-fd &nbsp;and according to Newton’s second law, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQENIg5jCgGF6w" src="https://media.licdn.com/dms/image/C5112AQENIg5jCgGF6w/article-inline_image-shrink_400_744/0/1520242213483?e=1691625600&amp;v=beta&amp;t=goMIa25CG8SnE5u1zNG70XZT7VLIOC_DcevWPV2d5ug"> 
+  </div> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF3xShwVyclXg" src="https://media.licdn.com/dms/image/C5112AQF3xShwVyclXg/article-inline_image-shrink_400_744/0/1520170535749?e=1691625600&amp;v=beta&amp;t=S7JFZeAUNdYEbOnyurEqDgwITUChum9bb0Wfiy76AjY"> 
+  </div> 
+  <p>This is the equation of motion governing the deformation or displacement u(t) of the idealised structure shown in the above figure as assumed to be linearly elastic subjected to a dynamic force p(t).</p> 
+  <p>Now, let us say the above one storey frame (i.e. the idealised structure) is subjected to an earthquake induced motion at the base so that the displacement of the ground u , the total (or absolute) displacement of the mass ut and the relative displacement between the mass and the ground u as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGxkef4LIlWVA" src="https://media.licdn.com/dms/image/C5112AQGxkef4LIlWVA/article-inline_image-shrink_400_744/0/1520041781384?e=1691625600&amp;v=beta&amp;t=N1J8rium9ZsfLwrRZgC0qGGglTiABdnk8XYwjMak3Eo"> 
+  </div> 
+  <p class="center"><strong>Figure: Single degree of freedom system under earthquake excitation</strong></p> 
+  <p class="left">&nbsp;</p> 
+  <p>At each instant, the displacements are related by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFLiCyOOqIWgg" src="https://media.licdn.com/dms/image/C5112AQFLiCyOOqIWgg/article-inline_image-shrink_400_744/0/1520199296344?e=1691625600&amp;v=beta&amp;t=LWpRUXe9mf2QrP6a0gCk4TFneZSPIRKZp1FYuE-VpoE"> 
+  </div> 
+  <p>According to Newton’s second law;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH8usDhAdcLmA" src="https://media.licdn.com/dms/image/C5112AQH8usDhAdcLmA/article-inline_image-shrink_400_744/0/1520109256860?e=1691625600&amp;v=beta&amp;t=LfP_corxXnRl-WaSVWe3kLBIChsdcmmNRE538c3AWFY"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>That is, the ground motion can be replaced by an effective earthquake force;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEDIWeJkixcxg" src="https://media.licdn.com/dms/image/C5112AQEDIWeJkixcxg/article-inline_image-shrink_400_744/0/1520173628063?e=1691625600&amp;v=beta&amp;t=FxEiPDd1ekUGtDNtkWWBJ6RMrQ-lH55Lc6PLYUbiUtQ"> 
+  </div> 
+  <h2>3.&nbsp; HOW STRUCTURES DEFORM DURING EARTHQUAKES? &nbsp;A PHYSICAL INTERPRETATION</h2> 
+  <h3><strong>3.1&nbsp;&nbsp;&nbsp; </strong><strong>Systems with a long period (flexible systems)</strong></h3> 
+  <p>It should be noted that for a fixed mass, a very long period system is extremely flexible. The mass would remain stationary while the ground below moves as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGukYsALdHtdA" src="https://media.licdn.com/dms/image/C5112AQGukYsALdHtdA/article-inline_image-shrink_400_744/0/1520115183476?e=1691625600&amp;v=beta&amp;t=jN7EGfYFgSwhLEvF5JdnuiVnpIrVq_2b6SZHq-DhvYM"> 
+  </div> 
+  <p class="center"><strong>Figure: Behaviour of a flexible system (systems with very long period) during ground motion</strong></p> 
+  <p>The above behaviour is similar to that of an open ground story during an earthquake. A clearer physical interpretation of this behaviour can be seen through the picture below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQErhfXkaBuFWA" src="https://media.licdn.com/dms/image/C5112AQErhfXkaBuFWA/article-inline_image-shrink_400_744/0/1520171764367?e=1691625600&amp;v=beta&amp;t=HPMDaLi5gXKMLaYoSWLdNp_xOx6TXQVuBMlj3bGZkx0"> 
+  </div> 
+  <p class="center"><strong>Figure: Behaviour of an open ground story building during an earthquake</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFjV-EFmj8Vrw" src="https://media.licdn.com/dms/image/C5112AQFjV-EFmj8Vrw/article-inline_image-shrink_1000_1488/0/1520172825614?e=1691625600&amp;v=beta&amp;t=Q_dJuMtLtSHVYf1rb0f9XT2Z88GLW6p_Y0B72i6tcEo"> 
+  </div> 
+  <p class="center"><strong>Figure: Damage due to open ground storey buildings during an earthquake (1999 Chi Chi, Taiwan earthquake)</strong></p> 
+  <p>An open ground storey building, having only columns in the ground storey and <em>both partition walls and columns</em> in the upper storey, has two distinct features;</p> 
+  <p>a). It is relatively <em>flexible </em>in the ground storey, i.e. the relative horizontal displacement it undergoes in the ground storey is much larger then what each of the storeys above it does. This flexible ground storey is called a <em>soft storey</em>.</p> 
+  <p>b) It is relatively weak in the ground storey, i.e. , the total earthquake force it can carry in the ground storey is significantly smaller than what each of the soreys above it can carry. Thus, the open ground storey may also be called as a <em>‘weak storey’</em>.&nbsp;</p> 
+  <p>It would be worthwhile to mention that several reinforced concrete buildings with open front suffered damage in the 1999 Chi Chi Taiwan earthquake. These buildings had masonry infill walls in the upper storeys. The rigid upper storeys caused significant displacements at the lower level as shown on the drawing.</p> 
+  <p>The above discussion concerning open ground storey buildings is presented to illustrate how a flexible system (i.e. system with a longer period) would behave during earthquakes.</p> 
+  <h3><strong>3.2&nbsp;&nbsp;&nbsp; </strong><strong>Systems with a short period (stiff systems)</strong></h3> 
+  <p>For a fixed mass, a very short period system is extremely stiff or essentially rigid. Such a system would be expected to undergo very little deformation and its mass would move rigidly with the ground.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEDF1YjsEXLJg" src="https://media.licdn.com/dms/image/C5112AQEDF1YjsEXLJg/article-inline_image-shrink_400_744/0/1520168168987?e=1691625600&amp;v=beta&amp;t=xK2DhqoWaej7dyXZ0-PDa82C4ubxhcrOX08KzonjQdo"> 
+  </div> 
+  <p class="center"><strong>Figure: Behaviour of a very stiff (systems with short periods) system during ground motion</strong></p> 
+  <p class="left">Physical systems are anywhere near to these two extreme positions. The deformation pattern will depend on the natural frequency (or, more precisely, the ratio of the excitation frequency and the natural frequency).</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH91yLgRDdYUA" src="https://media.licdn.com/dms/image/C5112AQH91yLgRDdYUA/article-inline_image-shrink_400_744/0/1520195880290?e=1691625600&amp;v=beta&amp;t=kh4ziRMXdZ3RhI6SLzdSQIz5lKikoU-R-vNBd8puHt8"> 
+  </div> 
+  <p class="center"><strong>Figure: Bheaviour of physical systems during an earthquake</strong></p> 
+  <h1>4.&nbsp; RESPONSE QUANTITIES&nbsp;</h1> 
+  <p>Of greatest interest in structural engineering is the deformation of the system, or the displacement u(t) of the mass relative to the moving ground, to which the internal forces are linearly related. These are the bending moments and shears in the beams and the columns of the one storey frame of the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGKSdCyiFGoMg" src="https://media.licdn.com/dms/image/C5112AQGKSdCyiFGoMg/article-inline_image-shrink_400_744/0/1520240519423?e=1691625600&amp;v=beta&amp;t=yIGcf1JEaXFrdZAys0tWJKG8lS7AKt9Ge7QJy_g-nps"> 
+  </div> 
+  <p class="center"><strong>Figure: Displacement u (t) of the mass relative to the ground</strong></p> 
+  <p>Knowing the total displacement ut(t) of the mass would be useful in providing enough separation between the adjacent buildings to prevent pounding against each other during an earthquake. Pounding is the cause of damage to several buildings during almost every earthquake.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGfEyJlgAIZow" src="https://media.licdn.com/dms/image/C5112AQGfEyJlgAIZow/article-inline_image-shrink_400_744/0/1520169583689?e=1691625600&amp;v=beta&amp;t=UIWa5OYtdUGDO-OFfyYMB56gmTs6_mgw_ZMAJhyZlNA"> 
+  </div> 
+  <p class="center"><strong>Figure: Collapse due to pounding between adjacent buildings during the Kocaeli earthquake, Turkey, August 17, 1999. </strong></p> 
+  <h1>5.&nbsp; RESPONSE HISTORY</h1> 
+  <p>For a given ground motion , the deformation response u(t) of a SDOF system depends only on the natural period of vibration of the system and its damping ratio. Thus, any two systems having the same values of time period and damping ratio ζ will have the same deformation response u(t) even though one system may be more massive or one may be stiffer than the other.</p> 
+  <p>The figure shows the deformation response of three different systems due to El Centro ground acceleration. The damping ratio, ζ = 2% is the same for the three systems so only the differences in their natural periods is responsible for the large differences in the deformation response.</p> 
+  <p>It is seen that the time required for the SDOF system to complete a cycle of vibration when subjected to this earthquake ground motion is very close to the natural period of the system. The peak deformation is also noted in each case.</p> 
+  <p><em>It may be noted that the reason it is very close to the natural period of the system is simply because the damping ratio is quite small.&nbsp; This means that the system has a very narrow resonance response (narrow range of frequencies of input which can drive a large response).&nbsp; So, it will pick up energy at this frequency much more strongly than at other frequencies.</em></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGEaSsr8f9Ijg" src="https://media.licdn.com/dms/image/C5112AQGEaSsr8f9Ijg/article-inline_image-shrink_1000_1488/0/1520200804468?e=1691625600&amp;v=beta&amp;t=wQJx1ZbknAkYzXvL60_FwrCJKAtPwhBUGkJNxh79fvg"> 
+  </div> 
+  <p><strong>Figure: Deformation response of SDOF system to El Centro ground motion </strong></p> 
+  <p>Observe that, among the three systems, the longer the vibration period, greater the peak deformation.</p> 
+  <p>The figure below shows the deformation response of the three systems to the same ground motion. The vibration period, Tn, is the same for the three systems so that the differences in their deformation responses is associated with their damping. It is observed that systems with more damping respond less than lightly damped systems.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEh1pPVZQe5Bg" src="https://media.licdn.com/dms/image/C5112AQEh1pPVZQe5Bg/article-inline_image-shrink_1000_1488/0/1520169997030?e=1691625600&amp;v=beta&amp;t=3oQ7oIv2DfbTLYzT9p4m_BlXgcCww6OAO237CM2fcE4"> 
+  </div> 
+  <p class="center"><strong>Figure: Deformation response of SDOF system to El Centro ground motion (same time period bur different damping ratios)</strong></p> 
+  <p><strong>Computation of internal forces:</strong></p> 
+  <p>Once the deformation history u(t) has been evaluated by dynamic analysis of structure, the internal forces can be determined by static analysis of the at each instant.</p> 
+  <p>This can be done using the equivalent static force approach. At any instant of tiem this force fs is the external force that will produce the deformation u at the same time t in the stiffness component of the structure.</p> 
+  <p>f(t) = ku(t)</p> 
+  <p>where, k is the lateral stiffness of the frame.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGv8V-x5zb95Q" src="https://media.licdn.com/dms/image/C5112AQGv8V-x5zb95Q/article-inline_image-shrink_400_744/0/1520241689552?e=1691625600&amp;v=beta&amp;t=ze-9U0aorhziS3oa5QyvlBq_Pcik7y6noF81hbsI8MA"> 
+  </div> 
+  <p class="center"><strong>Figure: Equivalent static force</strong></p> 
+  <p>For the one storey frame, the internal forces (e.g., the shears and moments in the column and beam, or stress at any location) can be determined at a selected instant of time by static analysis of the structure subjected to equivalent static lateral force fs(t) at the same time instant.</p> 
+  <p>Thus, a static analysis of the structure would be necessary at each time instant when the responses are desired. In particular the base shear and the base overturning moment Mb(t) are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGBqZjNKFM_jg" src="https://media.licdn.com/dms/image/C5112AQGBqZjNKFM_jg/article-inline_image-shrink_400_744/0/1520172427102?e=1691625600&amp;v=beta&amp;t=lFjlYZX-kr61edh2v1utjJrNZTL7H3VjOKgMzuXy4wM"> 
+  </div> 
+  <h1>6.&nbsp; RESPONSE SPECTRUM CONCEPT</h1> 
+  <p>Response spectrum provides a convenient means to summarize the peak responses of all possible linear SDOF systems to a particular component of ground motion.</p> 
+  <p>A plot of the peak value of a response quantity as a function of the natural vibration period Tn of the system is called the response spectrum of that quantity. Each such plot is for SDOF systems having a fixed damping ratio ζ and several such plots for different values of ζ are included to cover the range of damping values encountered in actual structures. Whether the peak response is plotted against natural time period Tn or natural frequency fn is a matter of choice. However, it is felt that a plot against the natural period of vibration is intuitively more appealing.</p> 
+  <h3><strong>6.1 </strong>Deformation Response Spectrum</h3> 
+  <p>The figure below shows the procedure to determine the deformation response spectrum. The spectrum is developed from the El Centro ground motion shown in (a) in the figure below.</p> 
+  <p>The time variation of the deformation induced by this ground motion in three SDOF systems is shown in the figure (b).</p> 
+  <p>For each system, the peak value of the deformation is determined from the deformation history.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH9jNz7DYj4ZQ" src="https://media.licdn.com/dms/image/C5112AQH9jNz7DYj4ZQ/article-inline_image-shrink_1000_1488/0/1520167990743?e=1691625600&amp;v=beta&amp;t=pOOzEwNizgeiIdeSbD3luoHZbJCG1DLHm9IYSwnx_yU"> 
+  </div> 
+  <p class="center"><strong>Figure: (a) Ground acceleration- recorded using accelerometer (b) deformation response of three SDOF systems with ζ = 2% and Tn = 0.4, 1 and 2 secs (c) deformation response spectrum for ζ = 2%</strong></p> 
+  <h3><strong>6.2&nbsp;</strong>Pseudo-Velocity Response Spectrum&nbsp;</h3> 
+  <p>Fundamentally, the pseudo-velocity design spectrum as described below gives the idea of peak value of strain energy stored in the structure during an earthquake.</p> 
+  <p>Consider a quantity ‘V’ for a SDOF system with natural frequency ω related to its peak deformation D≡ u due to earthquake ground motion;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEfo4XkhpLe8g" src="https://media.licdn.com/dms/image/C5112AQEfo4XkhpLe8g/article-inline_image-shrink_400_744/0/1520171374029?e=1691625600&amp;v=beta&amp;t=ZQnQJvxF7um4R4g5Q2uDbfI3eJQWePHEKkcaltR4tNE"> 
+  </div> 
+  <p>The quantity V has units of velocity. It is related to the peak value of strain energy E stored in the system during the earthquake by the equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHilzhtfW27cw" src="https://media.licdn.com/dms/image/C5112AQHilzhtfW27cw/article-inline_image-shrink_400_744/0/1520242142065?e=1691625600&amp;v=beta&amp;t=mKSP1nBBhRanaqXTQ-2XlLgbD0AJY7QmGGchmqtbwAk"> 
+  </div> 
+  <p>This relationship can be derived from the definition of strain energy and using the expression for V as follows;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF99kOtrNdkTQ" src="https://media.licdn.com/dms/image/C5112AQF99kOtrNdkTQ/article-inline_image-shrink_400_744/0/1520065737997?e=1691625600&amp;v=beta&amp;t=bwWQkO7zMaPVJxCh74uatFGZv0UGpHdAqOxpH55ux44"> 
+  </div> 
+  <p>The right hand side of the equation is the kinetic energy of the structural mass m with velocity V, called the <em>peak relative pseudo velocity or simply peak pseudo-velocity</em>. The prefix <em>pseudo</em> is because V is not equal to the peak velocity uo_dot</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGKM2iyDkIUqg" src="https://media.licdn.com/dms/image/C5112AQGKM2iyDkIUqg/article-inline_image-shrink_400_744/0/1520173118780?e=1691625600&amp;v=beta&amp;t=nFPVTU1qfx0eGUkPXXVSSScjH_xWSUpldW5jfQXu0iw"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEtTfSIKAmoBw" src="https://media.licdn.com/dms/image/C5112AQEtTfSIKAmoBw/article-inline_image-shrink_400_744/0/1520193590739?e=1691625600&amp;v=beta&amp;t=165-a7163AytEJXx8cj__PZ6_FBb7BshmsGim36Jvz0"> 
+  </div> 
+  <p class="center"><strong>Figure: Pseudo-velocity response spectrum for the El-Centro ground motion</strong></p> 
+  <p class="left">&nbsp;</p> 
+  <h3><strong>6.3&nbsp;</strong>Pseudo-Acceleration Response Spectrum</h3> 
+  <p>&nbsp;</p> 
+  <p>Consider a quantity A for a SDOF system with the natural frequency ω, related to its peak deformation D ≡ u due to earthquake ground motion;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE5ACXUYRybWw" src="https://media.licdn.com/dms/image/C5112AQE5ACXUYRybWw/article-inline_image-shrink_400_744/0/1520168656805?e=1691625600&amp;v=beta&amp;t=xYJV1VByOiFIIu4XMzpzgTmsREqxB0sryI1OPsLS2ZQ"> 
+  </div> 
+  <p>The quantity ‘A’ has the units of acceleration and is related to the peak value of base shear V [or the peak value of equivalent static force] fso;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEL0obii0XGjA" src="https://media.licdn.com/dms/image/C5112AQEL0obii0XGjA/article-inline_image-shrink_400_744/0/1520168226701?e=1691625600&amp;v=beta&amp;t=HEBHD70m_-Bo2PA_4zShDPjV0uDnm_ZhSSNDCi_bRDc"> 
+  </div> 
+  <p>The above relation can be obtained as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFmaG3pRQdWww" src="https://media.licdn.com/dms/image/C5112AQFmaG3pRQdWww/article-inline_image-shrink_400_744/0/1520042314090?e=1691625600&amp;v=beta&amp;t=M4IViR_z0FzUZ7nXb37OB7rpwBLw46lJdylkO7RDiXA"> 
+  </div> 
+  <p>Expressing k in terms of the mass gives;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEYjtRzAxu-xQ" src="https://media.licdn.com/dms/image/C5112AQEYjtRzAxu-xQ/article-inline_image-shrink_400_744/0/1520063007494?e=1691625600&amp;v=beta&amp;t=lJlJrUi5_dcKNQD5wbsy5OV1BFplCfDQ53tQ22KLBOA"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHho6bf2MlfxA" src="https://media.licdn.com/dms/image/C5112AQHho6bf2MlfxA/article-inline_image-shrink_400_744/0/1520239798266?e=1691625600&amp;v=beta&amp;t=VnwQwmLBzewFmcNkqSng-OA3vXCQFtukqFd6bCgxaJE"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>The peak base shear can be written in the form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFrZnT4D_nznw" src="https://media.licdn.com/dms/image/C5112AQFrZnT4D_nznw/article-inline_image-shrink_400_744/0/1520042624926?e=1691625600&amp;v=beta&amp;t=wn-S87HUO24LfhX9izKYw7KoOdrJl7OPFAOqAIhGbNI"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p class="left">where; w is the weight of the structure and ‘g’ is the gravitational acceleration. When, written in this form, A / g, may be base shear coefficient or the lateral force coefficient. When, written in this form, it is used by the building codes to represent the coefficient by which the structural weight is multiplied.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFzRvAdjn-tgw" src="https://media.licdn.com/dms/image/C5112AQFzRvAdjn-tgw/article-inline_image-shrink_400_744/0/1520241630833?e=1691625600&amp;v=beta&amp;t=6mVbkuf36rOePAKaqxdfeJkIansuoHcPhQCJkpwwwDw"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p class="center"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure: Pseudo-acceleration response spectrum</strong></p> 
+  <h3><strong>6.4 &nbsp;</strong>Physical interpretation of the response spectra</h3> 
+  <p>&nbsp;</p> 
+  <p>Each of the deformation, pseudo velocity, and the pseudo acceleration response spectra for a given ground motion contain the same information, no more and no less. The three spectra are simply different ways of presenting the same information on structural response.</p> 
+  <p>&nbsp;</p> 
+  <p class="left">As pointed out in the above paragraphs, each of the three spectra provides a physically meaningful quantity. The deformation spectrum provides the peak deformation of a system. The pseudo velocity spectrum directly relates to the peak strain energy stored in the system during an earthquake. The pseudo-acceleration spectrum is related directly to the peak value of the equivalent static force.</p> 
+  <p class="left">&nbsp;</p> 
+  <h1>7. &nbsp; CONSTRUCTION OF THE RESPONSE SPECTRA</h1> 
+  <p>The response spectrum for a given ground motion component ; can be developed through the following steps;</p> 
+  <p>1. Numerically define the ground acceleration ; typically, the ground motion ordinates are defined every 0.02 seconds.</p> 
+  <p>2. Select the natural vibration period Tn and damping ratio ζ of a SDOF system.</p> 
+  <p>3. Compute the deformation response u(t) of this SDOF system due to the ground motion by any of the numerical methods.</p> 
+  <p>4. Determine u0, the peak value of u (t).</p> 
+  <p>5. The spectral ordinates are D = u0, V = (2Π / Tn) D and A = (2Π / Tn)2 D</p> 
+  <p>6. Repeat steps 2 to 5 for a range of Tn and ζ values covering all possible systems of engineering interest.</p> 
+  <h1>8.&nbsp; PEAK STRUCTURAL RESPONSE FROM THE RESPONSE SPECTRUM</h1> 
+  <p>If the response spectrum for a given ground motion component is available, then, corresponding to the natural vibration period Tn and the damping ratio of the system, the values of D,V or A can be read from the spectrum.</p> 
+  <p>In particular, the peak deformation of the system is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEYKXmVEAiBQQ" src="https://media.licdn.com/dms/image/C5112AQEYKXmVEAiBQQ/article-inline_image-shrink_400_744/0/1520197767787?e=1691625600&amp;v=beta&amp;t=zjzSFWFo6CSq5mnO-N-LTuTnHjCtIG2tjv8CWGU0mvE"> 
+  </div> 
+  <p>and the peak value of the equivalent static force f is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE9epy6fC75TQ" src="https://media.licdn.com/dms/image/C5112AQE9epy6fC75TQ/article-inline_image-shrink_400_744/0/1520168728212?e=1691625600&amp;v=beta&amp;t=tpQ_QubUtyamggN_dYCghQne0q1irZc0caj98ccZ6_k"> 
+  </div> 
+  <p>Static analysis of the one storey frame subjected to lateral force fso (as shown in the figure below) provides the internal forces (e.g., shears and moments in columns and beams). This involves the application of the regular static analysis procedures as illustrated in the examples in section 7.</p> 
+  <p>It may be noted that no further dynamic analysis is required beyond that necessary to determine u(t). In particular, the peak values of shear and overturning moment at the base of the one storey structure are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHk7MTJUYY4uQ" src="https://media.licdn.com/dms/image/C5112AQHk7MTJUYY4uQ/article-inline_image-shrink_400_744/0/1520040086495?e=1691625600&amp;v=beta&amp;t=0smS4oIfYShygmJlen2Zb_ghQ6Lgo23ho9dMRu8m_Sc"> 
+  </div> 
+  <p>It may be noted that only one of the response spectra- deformation, pseudo velocity or pseudo acceleration- is sufficient for computing the peak deformation and forces required in structural design. Velocity and acceleration response spectra are not required but do convey a physical meaning as discussed above.</p> 
+  <p>&nbsp;</p> 
+  <h1>9.&nbsp; ANALYSIS OF SDOF FREEDOM SYSTEMS USING THE RESPOSNE SPECTRUM: EXAMPLES</h1> 
+  <p>&nbsp;Example i</p> 
+  <p>A 12 ft long vertical cantilever, a 4-in nominal diameter standard steel pipe, supports a 5200 lb weight attached at the tip as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHoeonQug3IXw" src="https://media.licdn.com/dms/image/C5112AQHoeonQug3IXw/article-inline_image-shrink_400_744/0/1520201523694?e=1691625600&amp;v=beta&amp;t=B12mhGL8pLoDZYLCkX31ESXYF_mmQPuU7LQdmEnhpVQ"> 
+  </div> 
+  <p>Figure: Example I</p> 
+  <p>The properties of the pipe are: outside diameter, d0 = 4.5 inch, inside diameter di = 4.026 in, thickness t = 0.237 in, and second moment of cross sectional area, I = 7.23 in4, elastic modulus = 29,000 ksi and weight = 10.79 lb/foot length. Determine the peak deformation and the bending stress in the cantilever due to El Centro ground motion.</p> 
+  <p><strong>Solution:</strong></p> 
+  <p>The lateral stiffness of this SDOF System is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFIc2lai1Mw0Q" src="https://media.licdn.com/dms/image/C5112AQFIc2lai1Mw0Q/article-inline_image-shrink_400_744/0/1520239596386?e=1691625600&amp;v=beta&amp;t=IBrTq3bcw0pVwYBGbUrh59go5SiR7vDQVrzf8MpYEu4"> 
+  </div> 
+  <p>The total weight of the pipe is 10.79 x 12 = 129.5 lb, which may be neglected relative to the lumped weight of 5200 lb. Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH-IQFW69XWEg" src="https://media.licdn.com/dms/image/C5112AQH-IQFW69XWEg/article-inline_image-shrink_400_744/0/1520241275534?e=1691625600&amp;v=beta&amp;t=0qBE-_rDjJ_kzdPhJLnawAcImqrhdzx--ahlWx1l_Zo"> 
+  </div> 
+  <p>The natural vibrating frequency and the period of the system are;</p> 
+  <p>From the response spectrum curve of ζ = 2%</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGXk99lelH82Q" src="https://media.licdn.com/dms/image/C5112AQGXk99lelH82Q/article-inline_image-shrink_400_744/0/1520240371254?e=1691625600&amp;v=beta&amp;t=YK9zsZUFDDGhRiPEh9un6jTGZvWnJIqKRwADe8ArmiM"> 
+  </div> 
+  <p class="center"><strong>Figure: Response spectrum curve (ζ = 2% El Centro ground motion)</strong></p> 
+  <p class="left">&nbsp;</p> 
+  <p>For Tn= 1.59 seconds; D 5.0 inches;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFiII4KWyFjrg" src="https://media.licdn.com/dms/image/C5112AQFiII4KWyFjrg/article-inline_image-shrink_400_744/0/1520199285033?e=1691625600&amp;v=beta&amp;t=P3d2-Nj2sSCfIftKMtkMvBnYhqhAnCyLsADHyjiSwt0"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>A(t) = 3.9582 (5) = 78.32</p> 
+  <p>&nbsp;</p> 
+  <p>The peak value of the equivalent static force is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGOQxXC6HKCtw" src="https://media.licdn.com/dms/image/C5112AQGOQxXC6HKCtw/article-inline_image-shrink_400_744/0/1520171375645?e=1691625600&amp;v=beta&amp;t=3dmpCQUkZ14FDx9jEsxypnSoUyHfi7OHhMGYN2wKKoM"> 
+  </div> 
+  <p>The bending moment diagram is shown in the figure below with the maximum moment at the base = 12.48 kip-ft. Points A and B shown in the figure are the locations of maximum bending stress;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEuiSD4gJDVkA" src="https://media.licdn.com/dms/image/C5112AQEuiSD4gJDVkA/article-inline_image-shrink_400_744/0/1520240758999?e=1691625600&amp;v=beta&amp;t=yFjOv5WtWHoqn3IvBAorgVY0AuphDOE44kTsa718MaU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGATaItR3TaTw" src="https://media.licdn.com/dms/image/C5112AQGATaItR3TaTw/article-inline_image-shrink_1000_1488/0/1520062282568?e=1691625600&amp;v=beta&amp;t=P59EhjG4pcf3oFCzrK0VW_duJPv0sYvSJSgHpu78Ho8"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p class="center"><strong>Figure: Example (I)</strong></p> 
+  <p class="left"><strong>Example ii</strong></p> 
+  <p>Let us say that the stress computed in the Example I exceeded the allowable stress and the designer decided to increase the size of the pipe to an 8-in nominal standard pipe (size of the pipe in the example i was 4 in.).</p> 
+  <p>&nbsp;</p> 
+  <p>Its properties being d = 8.625 in; d = 7.981 inches and I = 72.5 in4</p> 
+  <p>&nbsp;</p> 
+  <p>Therefore, now;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH4N5i4vOUfug" src="https://media.licdn.com/dms/image/C5112AQH4N5i4vOUfug/article-inline_image-shrink_400_744/0/1520240798610?e=1691625600&amp;v=beta&amp;t=hjcvfJOpd3BvYeTtgPTVAsAfwhxGQRgZ2_Fv4aDIrM8"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHNcjx8pP33dg" src="https://media.licdn.com/dms/image/C5112AQHNcjx8pP33dg/article-inline_image-shrink_400_744/0/1520103046669?e=1691625600&amp;v=beta&amp;t=_ov8wHnkJ7tHEnKl1V0AciEVuX11Gbo0opHbRfjVff0"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHj4J5VySi9Ng" src="https://media.licdn.com/dms/image/C5112AQHj4J5VySi9Ng/article-inline_image-shrink_400_744/0/1520062634442?e=1691625600&amp;v=beta&amp;t=BCy6O5POQBNvLuMVdF9LKNN3lIpJrH_b863zOJmEEbo"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>A(t) = 12.52 2 (2.7) = 323.33</p> 
+  <p>The peak value of the equivalent static force is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEkcdvng1uBiw" src="https://media.licdn.com/dms/image/C5112AQEkcdvng1uBiw/article-inline_image-shrink_400_744/0/1520065472480?e=1691625600&amp;v=beta&amp;t=NfDpFSAGf4qO7SlgCjdeF16gVl9KI1exWbY17lyPPOw"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>= 5.72 kips</p> 
+  <p>From the response spectrum of the El Centro ground motion;</p> 
+  <p>u= D = 2.7 in.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH-LXFQQCTCEA" src="https://media.licdn.com/dms/image/C5112AQH-LXFQQCTCEA/article-inline_image-shrink_400_744/0/1520097736305?e=1691625600&amp;v=beta&amp;t=07KMuzVv-vautOGX9dIdFv2YahK4OxKkWQiGR4CO4YA"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFJ9SQT06GsTQ" src="https://media.licdn.com/dms/image/C5112AQFJ9SQT06GsTQ/article-inline_image-shrink_400_744/0/1520170025783?e=1691625600&amp;v=beta&amp;t=w5-ZS5UOV7Q9S1WNRtlNkuF-js2h9NPIhLcLYwJYNK0"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGL2nYEtHyTvw" src="https://media.licdn.com/dms/image/C5112AQGL2nYEtHyTvw/article-inline_image-shrink_400_744/0/1520173346027?e=1691625600&amp;v=beta&amp;t=fIOOb_JZiLEp8f5Rmt52gWT3SBiIFZeuu3rJggO0n2M"> 
+  </div> 
+  <p>This example points out an important difference between the response of structures to earthquake excitation and to a fixed value of static force. In case of a fixed value of static force, the stress would decrease obviously, by increasing the member size. In the case of earthquake excitation, the increase in pipes diameter shortens the natural period of vibration for which the response spectrum has the effect of increasing the equivalent static force.</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p class="center">&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p class="left">&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p>
+ 
+</div>
+</body>
+</html>

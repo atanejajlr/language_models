@@ -1,0 +1,288 @@
+<html>
+<head>
+  <title>Crack initiation and life estimation: Part II</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQHWpkcuTBanhw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/crack-initiation-life-estimation-part-ii-ajay-taneja">Crack initiation and life estimation: Part II</a></h1>
+    <p class="created">Created on 2017-03-19 15:52</p>
+  <p class="published">Published on 2017-03-19 17:01</p>
+  <div>
+  <h2><strong>1. Introduction:</strong></h2> 
+  <p>This article is the continuation of my series of blogs on "Fracture Mechanics".</p> 
+  <p>In my earlier article:<a href="https://www.linkedin.com/pulse/crack-initiation-life-estimation-part-i-ajay-taneja" target="_blank">https://www.linkedin.com/pulse/crack-initiation-life-estimation-part-i-ajay-taneja</a> , I had discussed about the concepts related to crack initiation and life estimation. I had presented in sufficient detail about Paris law which is an elegant relationship between crack growth rate da / dN and ΔK – which is Kmax – Kmin the difference between the maximum and the minimum stress intensity factor at the maximum and minimum loading during a load cycle.</p> 
+  <p>Paris law has proved to be the most vital contribution to the world of fracture mechanics – until today – and engineers started to utilize the concepts of linear elastic fracture mechanics (LEFM) following this very important contribution from Paris. Using the Paris law, one was analytically able to estimate the residual life of the component once the crack growth phase had begun.</p> 
+  <p>Although, environment plays a very significant role in crack growth – this was not considered in Paris law. In fact, the ingenuity of the Paris law was that Paris got the kernel of how the crack grows. Had he looked into all the factors that contribute to crack growth, like: environment, effect of overload, retardation of crack growth, effect of plastic zone- that is all the phenomenon that are observed during experimentation, then, perhaps, he might have not been able to arrive at the empirical relation:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEISP0vB7MMDQ" src="https://media.licdn.com/dms/image/C5112AQEISP0vB7MMDQ/article-inline_image-shrink_400_744/0/1520252169998?e=1691625600&amp;v=beta&amp;t=iGNaB1WdavX_4FJOI0fH39Qs1wBORd8q6i40BE6m2Cc"> 
+  </div> 
+  <p>And, this forms the content of this article – to discuss some of the phenomena that are observed during the experimentation, which include;</p> 
+  <p>o&nbsp;&nbsp;Crack closure</p> 
+  <p>o&nbsp;&nbsp;Modification of Paris law to incorporate some of the effects</p> 
+  <p>o&nbsp;&nbsp;Effect of overload on crack growth and hence,</p> 
+  <p>o&nbsp;&nbsp;Retardation of crack growth</p> 
+  <p>&nbsp;Obviously, a minute detailed discussion on the above topics is way too much for a LinkedIn post – however, I feel it is discussed below to an extent that reader with a background of LEFM gets a good feel as well as understanding of these phenomena.</p> 
+  <h2><strong>2.&nbsp;&nbsp;Crack closure</strong></h2> 
+  <p>Elber (1970) came out with the concept of “crack closure”. Elber observed experimentally that a fatigue crack growing under cyclic tension can close on itself at about half the maximum load as shown in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHqQxCesZ-YfA" src="https://media.licdn.com/dms/image/C5112AQHqQxCesZ-YfA/article-inline_image-shrink_1000_1488/0/1520210683007?e=1691625600&amp;v=beta&amp;t=6bb3pDd5VrDJLxsSELfitG1AR3ogzHqBoEaecj4nDuI"> 
+  </div> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure: Early crack closure and reduction in ΔK to ΔKeff</strong></p> 
+  <p><strong>&nbsp;</strong></p> 
+  <h3><strong>2.1&nbsp;&nbsp;Experimental observation of opening and closing of crack</strong></h3> 
+  <p>In order to experimentally ascertain whether a crack is closed or open, Elber explained that the load – deflection curve of a cracked body experiencing crack closure is bi-linear.</p> 
+  <p>For a crack to open, the slope of the load deflection curve changes – initially the material is more stiff i.e. the initial slope is dictated by the closed crack (more stiff) and then the slope changes indicating an open crack. So, a fatigue crack on account of its opening and closing will experience a load deflection which is bilinear and this was&nbsp;first brought about by Elber.</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE3dIN5dAct4g" src="https://media.licdn.com/dms/image/C5112AQE3dIN5dAct4g/article-inline_image-shrink_1000_1488/0/1520142123360?e=1691625600&amp;v=beta&amp;t=Rs66_xVvk9X3oBGVuUjIHXTzRpr2EhQQQ-HA2F-1KYw"> 
+  </div> 
+  <p><strong>Figure: Load deflection curve of a cracked body experiencing opening and&nbsp; closing of crack</strong></p> 
+  <p>&nbsp;</p> 
+  <h3><strong>2.2 Categories of crack closure</strong></h3> 
+  <p>There are various categories of crack closure:</p> 
+  <p>o&nbsp;&nbsp;<strong>Plasticity induced crack closure</strong>: Consider a sinusoidal loading as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG7VdVtW_oSyA" src="https://media.licdn.com/dms/image/C5112AQG7VdVtW_oSyA/article-inline_image-shrink_400_744/0/1520146682707?e=1691625600&amp;v=beta&amp;t=RMvEgpnece-6PITEBGPDx64OREHL_ZVMbm2wdGK-c04"> 
+  </div> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure: Sinusoidal loading</strong></p> 
+  <p>As the load is increased from 0 to the peak load, there will exist some plastic deformation at the crack tip. Thus, there will be a plastic zone surrounded by a much larger elastic zone as shown in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFO_eRQXk3HzA" src="https://media.licdn.com/dms/image/C5112AQFO_eRQXk3HzA/article-inline_image-shrink_1000_1488/0/1520211189449?e=1691625600&amp;v=beta&amp;t=814AwEwA7FaLX5oR9e4j6Cr1ODIFAJS4EPd5Ir6H1gk"> 
+  </div> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure: Plastic and elastic region at point B</strong></p> 
+  <p>Once the load is reduced from the point B to the point C, the elastic region will spring back and will tend to compress the plastic zone thus introducing a compressive load on the plastically deformed portion. This will result in compressive strains and compressive stresses around the crack tip.</p> 
+  <p>After several cycles, the crack grows in length and if the crack grows in length the plastic zone also grows in length as shown in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG8A9IyJW-sag" src="https://media.licdn.com/dms/image/C5112AQG8A9IyJW-sag/article-inline_image-shrink_400_744/0/1520200937505?e=1691625600&amp;v=beta&amp;t=QF-GsYo6rOPjYsNmVyNuCv7UsJlrIm0R_sX_0AjtPsM"> 
+  </div> 
+  <p><strong> Figure: Increase in size of plastic zone with increase in number of cycles of load</strong></p> 
+  <p>As the size of the plastic zone increases, so will the compressive strains around the crack tip. Elber postulated that it is these residual compressive strains and compressive stresses that cause the closure of the crack tip much before the zero load in the cycle.</p> 
+  <p>In view of these residual compressive strains, again, the crack faces do not open until K reaches Kop as shown in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQESG4RR6mXSyg" src="https://media.licdn.com/dms/image/C5112AQESG4RR6mXSyg/article-inline_image-shrink_400_744/0/1520192330086?e=1691625600&amp;v=beta&amp;t=YNqmsLuJ_WcnUN27rjrF70NbnZGtVqaLZzADEvtltdw"> 
+  </div> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure: Effective stress intensity factor </strong></p> 
+  <p>Where,</p> 
+  <p>ΔKeff = Kmax – Kcl</p> 
+  <p>And Kcl is the stress intensity factor at which the crack closes.</p> 
+  <p>o&nbsp;&nbsp;<strong>Wedge induced crack closure</strong></p> 
+  <p><em>Oxide induced closure:</em></p> 
+  <p>Once people understood the concept of crack closure postulated by Elber, several other mechanisms have been identified. One was the plasticity induced crack closure as discussed above and then there was wedge induced crack closure.</p> 
+  <p>This is usually associated with aggressive environment – the corrosion products become wedged between crack faces as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE4KxmVfNeZaA" src="https://media.licdn.com/dms/image/C5112AQE4KxmVfNeZaA/article-inline_image-shrink_400_744/0/1520147326873?e=1691625600&amp;v=beta&amp;t=EVrnTCskzlK2RyT8_Z5eK5BCV1tFkPtf4fIivME0xwk"> 
+  </div> 
+  <p><strong>Figure: Oxide induced crack closure (corrosion products wedged between crack faces)</strong></p> 
+  <p>As thee load is reduced, it appears, because of the corrosion products that the crack is closed. It has the similar effect of crack closure as discussed above causing the effective stress intensity factor to be: ΔKeff = Kmax – Kcl</p> 
+  <h3><strong>2.3 Modelling crack closure in the computation of crack growth rate and hence the residual life</strong></h3> 
+  <p>One could conduct experiments and find the stress intensity factor at which the crack closes. However, Kcl is generally not determined experimentally. An alternative procedure is adopted by modifying the Paris law by associating a factor U with ΔK.</p> 
+  <p>The modified Paris law is written as:</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEITALYBwPK_Q" src="https://media.licdn.com/dms/image/C5112AQEITALYBwPK_Q/article-inline_image-shrink_400_744/0/1520147078699?e=1691625600&amp;v=beta&amp;t=nEuPn5R6vlqDOZoMVK6xZwe8N7SgTFSLJtjP7KnOR5c"> 
+  </div> 
+  <p>where,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHf79We7pytuQ" src="https://media.licdn.com/dms/image/C5112AQHf79We7pytuQ/article-inline_image-shrink_400_744/0/1520146375612?e=1691625600&amp;v=beta&amp;t=eg2pyPFR7dCRz3g4i8Okq_z6IQsl2CHgyVBmh4A4uRA"> 
+  </div> 
+  <p>Several empirical models have been suggested for finding U. Elber has suggested the following formula for 2024-T3 aluminium:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHNxGTjqHIBQA" src="https://media.licdn.com/dms/image/C5112AQHNxGTjqHIBQA/article-inline_image-shrink_400_744/0/1520214428197?e=1691625600&amp;v=beta&amp;t=0E3yP8K3xHFAgHGBiF5cmxCNx2CMTxMoO6RjYCwbq4o"> 
+  </div> 
+  <p><strong>It should be underscored that crack closure has already been accepted by the industry and some computer packages do make the necessary correction on the crack propagation rate.</strong></p> 
+  <p>The concepts pertaining to the existence of residual strains and stresses ahead of the crack tip will become clearer as the following sections are read.</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>3.&nbsp;&nbsp;&nbsp;Effect of overload on crack growth and retardation of crack growth rate</strong></h2> 
+  <p>An overload is a pulse (or a set of pulses) of higher amplitude on a constant amplitude fatigue load as shown in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGy7fWes33XBg" src="https://media.licdn.com/dms/image/C5112AQGy7fWes33XBg/article-inline_image-shrink_1000_1488/0/1520214532440?e=1691625600&amp;v=beta&amp;t=4sSTtTnDRm0PO0P3Ec7MnpBPAsrrnoJlkzzRkXoGh_Y"> 
+  </div> 
+  <p><strong> Figure: An overload pulse on a the constant amplitude fatigue load</strong></p> 
+  <p>The crack propagation rate retards considerably after the overload pulse. The retardation of the crack propagation rate is a result of the influence of the plastic zone. During the unloading portion of the overload pulse, the surrounding elastic material tries to regain its original state. But, the plastic zone cannot regain its original shape, therefore, compressive residual stresses are developed at the vicinity of the crack tip.</p> 
+  <p>In the follow up pulses of the constant amplitude loading, the tensile loading at the crack tip is suppressed by the residual compressive stress. Consequently, da/dN is lowered appreciably. The crack tip may remain within the enclave of residual compressive stress for many subsequent pulses of constant amplitude load as shown below. This concept is elaborated in more detail below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFpWBGfDMwK5Q" src="https://media.licdn.com/dms/image/C5112AQFpWBGfDMwK5Q/article-inline_image-shrink_1000_1488/0/1520116498139?e=1691625600&amp;v=beta&amp;t=fTEHdTW1CEQ3ie4eqgsJk7LqT8LwjVtIiLEFR0CpvZw"> 
+  </div> 
+  <p><strong>Figure: Enclave of residual compressive stresses developed by the overload and plastic zones of subsequent pulses</strong></p> 
+  <p>It therefore takes some load cycles for the crack tip to come out of the enclave of the compressive stresses and it is then only then that da / dN regains its original value based on the length of the crack and ΔK of that location.</p> 
+  <p><strong>Phenomenon of retardation of crack growth: Illustratively and intuitively explained</strong></p> 
+  <p>The above can be more evident through the figure below which shows how three single overloads increase the crack growth life by almost a factor 5 (comparing figures A and B below):</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEqHJNKGAKZPQ" src="https://media.licdn.com/dms/image/C5112AQEqHJNKGAKZPQ/article-inline_image-shrink_1000_1488/0/1520142544639?e=1691625600&amp;v=beta&amp;t=7WzI8vLNVtGeWM7m6AeHFvEbfAmgY4LUcrH89RnzYnI"> 
+  </div> 
+  <p><strong> Figure: Retardation after overload</strong></p> 
+  <p>It is evident from the figure above that after a period of very slow growth (immediately following the overload); gradually the original growth rates are resumed. One may appreciate through the graph ‘B’ in the above figure that that following the overload in each instance the crack growth rate retards considerably increasing the life.</p> 
+  <p>A negative overload reduces retardation but does not eliminate it completely (compare figures B and C).</p> 
+  <p><strong>Intuitive explanation of why residual compressive stresses develop following overloads or on load reversal:</strong></p> 
+  <p>I had stated above that as a result of overload there will exist some residual compressive stresses which suppress the consequent tensile stress. In the subsequent paragraphs, I’ve attempted to provide a physical insight of this behavior.</p> 
+  <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consider the figure below – a crack is subjected to a constant amplitude loading at R = 0.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEwH30nwsqAyQ" src="https://media.licdn.com/dms/image/C5112AQEwH30nwsqAyQ/article-inline_image-shrink_400_744/0/1520256680670?e=1691625600&amp;v=beta&amp;t=tz4hDrllV650CxIsE-FCXmUpgESKE452qQbzOT8zBDs"> 
+  </div> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure: Constant amplitude loading</strong></p> 
+  <p>ii. As seen in the figure above, during the first cycle, the load varies from A to C through B. Before the loading starts, imagine the little (dashed) circle – in the figure below indicating that the material will undergo plastic deformation i.e. the little dashed circle denotes the <em>future</em> plastic zone.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEaLlg0tEf0-A" src="https://media.licdn.com/dms/image/C5112AQEaLlg0tEf0-A/article-inline_image-shrink_400_744/0/1520145433757?e=1691625600&amp;v=beta&amp;t=MkcbPnyDw5DlylAgzE5d2NgYj88-d2MbG-mS9x_0swE"> 
+  </div> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure: Future plastic zone&nbsp;</strong></p> 
+  <p>iii. Now, the plate is loaded to the point B.</p> 
+  <p>iv. As a result, the plastic zone (i.e. the strains which are reversible) develop as shown in the second figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG-Mh8BlHFukQ" src="https://media.licdn.com/dms/image/C5112AQG-Mh8BlHFukQ/article-inline_image-shrink_400_744/0/1520212927657?e=1691625600&amp;v=beta&amp;t=PxxcCC4kphjh3R1svRs0kbEuR6leMK0RBiL_PLtLYMs"> 
+  </div> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure: Development of the plastic zone</strong></p> 
+  <p>v.&nbsp;Now, unload the plate from the point B to the point C.</p> 
+  <p>vi. During the unloading process, the elastic region – during the springback will exert a pressure on the plastic zone as a result of which there will be residual stresses: compressive and tensile developed around the crack tip as shown in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHNahAWzMjbxw" src="https://media.licdn.com/dms/image/C5112AQHNahAWzMjbxw/article-inline_image-shrink_400_744/0/1520214397927?e=1691625600&amp;v=beta&amp;t=uydJQRAzA_jn28-ib5V9-MW88O3O3UZAXPYqj9l60e0"> 
+  </div> 
+  <p><strong>Figure: Residual compressive and tensile stresses around the crack tip as a result of elastic springback</strong></p> 
+  <p>vii. It should be understood that after unloading, there is a compressive stress at least equal to the yield strength at the crack tip. This is a residual stress (NOT external load) which will be internally equilibrated by the tension further away. The residual stress distribution is shown above.</p> 
+  <p>viii. Thus, as a result of the residual compressive stress, the crack growth retards during the subsequent cycles of loading and the normal growth is resumed once the “residual” stresses have been overcome.</p> 
+  <p><strong>Residual compressive stresses during overloading</strong></p> 
+  <p>If an overload occurs, a much larger plastic zone is formed resulting in still larger compressive stresses as shown in the figure below;</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG05WEF8LKjOQ" src="https://media.licdn.com/dms/image/C5112AQG05WEF8LKjOQ/article-inline_image-shrink_1000_1488/0/1520238902172?e=1691625600&amp;v=beta&amp;t=7cpW3f-5i1-XrCcdBwHjGf3HcDL9gPX5FxRyZGh5R-Y"> 
+  </div> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Figure: Residual stresses during an overload</strong></p> 
+  <p><strong>&nbsp;</strong>Thus, after an overload, a much extensive residual stress system is present than one before the overload. This – more extensive system – acting against the applied stress causes subsequent crack growth to be retarded. Once the crack has grown through the over load stress field, normal crack growth is resumed. Thus, the residual compressive stresses in case of overload is obviously larger and the beneficial effect of retardation of crack growth is more pronounced.</p>
+ 
+</div>
+</body>
+</html>

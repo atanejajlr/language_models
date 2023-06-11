@@ -1,0 +1,161 @@
+<html>
+<head>
+  <title>How a structure will behave when subjected to stress concentrations ?</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQG2Tk4s-anBUQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/how-structure-behave-when-subjected-stress-ajay-taneja">How a structure will behave when subjected to stress concentrations ?</a></h1>
+    <p class="created">Created on 2015-07-12 10:34</p>
+  <p class="published">Published on 2015-07-12 10:40</p>
+  <div>
+  <p>Structural elements often contain features that cause sudden changes in geometry. Examples of such features being: holes, notches, grooves, sharp re-entrant corners. &nbsp;Under loads, these changes in geometry increase the local stress fields of the parts quite significantly, and they usually represent locations from which parts start to fail. This localization of high stresses is called <strong>stress concentration. </strong>During a finite element static analysis of structures, stress concentrations are a very common phenomenon in such locations (as well as where 1d finite elements intersect with 2d finite elements).</p> 
+  <p>It is very often noticed that the Engineer has completed a static stress analysis using a linear material model.&nbsp; The structure contains lots of sharp corners .&nbsp; At many of these sharp corners, the stress reported by finite element analysis is most often higher than the yield or ultimate stress of the material.&nbsp; The Engineer, then, in such circumstances wonders: is this ok or my structure will fail as soon as the material reaches such high stresses?</p> 
+  <p>The question requires some insight. When loaded statically, ductile materials (as most metals are if the ambient temperature is not too low), yield prior to failure. As the regions of high stresses yield, there is load redistribution to the adjacent structure. As the regions continue yielding, the stiffness of the material changes and the load is picked up by the structure around it (which is operating at a stress lower than the yield stress and thus has a higher stiffness than regions that have yielded).</p> 
+  <p>The redistribution of forces cannot be captured in a conventional static linear analysis and a non linear analysis with an adequate material model is needed to capture this effect.</p> 
+  <p>And now, when / if the load is removed, the regions that have yielded get dragged down to negative (compressive) stress by action of the surrounding structure, which was subjected to a higher stress following the yield of the portions of the structure.</p> 
+  <p>So, in short provided, <strong>certain conditions are met</strong>, the stresses greater than the yield will typically be redistributed to the adjacent structure, provided that there is sufficient structure availability with stresses sufficiently less than the yield stress of the material.</p> 
+  <p>It is important to bear in mind the following with regards to ductile / brittle materials</p> 
+  <ul> 
+   <li>Whether a material qualifies as ductile or not depends upon the operating temperature. At about freezing temperature of water or little below, steel transitions from ductile to brittle behavior. In such cases, one would not get the redistribution prior to failure.</li> 
+   <li>Similarly, not all failures in materials like reinforced concrete are ductile. Shear failure in reinforced concrete is brittle and bending failure in over-reinforced section is also not going to be ductile. Hence, redistribution is not likely in such situations.</li> 
+  </ul> 
+  <p>So – it is possible to neglect stress concentrations under certain circumstances, but exercise good judgment when you do this, and understand the limitations of this technique.</p>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Machine Learning Model Deployment Challenges: Data Drift and Concept Drift Examples</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD4E12AQHxijZngBlv4g" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/random-notes-machine-learning-model-deployment-data-ajay-taneja">Machine Learning Model Deployment Challenges: Data Drift and Concept Drift Examples</a></h1>
+    <p class="created">Created on 2015-03-18 19:19</p>
+  <p class="published">Published on 2023-05-07 12:20</p>
+  <div><p>Your Machine Learning model does well on the training set, then, it also does well on the test set. It's time to celebrate. But it's not all over yet. Machine Learning model deployment has its many challenges.</p><p>Talking about the statistical challenges include Data Drift and Concept Drift.Lets understand through examples.</p><p>1) Let's say you're building a computer vision system to detect cracks in parts being manufactured in a workshop or factory unit. The model detects cracks in the part and based on that the Mechanical Engineers accept or reject the part or accept it with an overhaul based on the size of the crack (defect)</p><p><br></p><p>Typically in the manufacturing unit one may have a device with software and cameras which will take the pictures of the part manufactured and send it to the server (following some API call) where the ML model is deployed. The Machine Learning model makes the prediction and sends back the result to the software through some API interface. You have trained the model based on n such data and your model performed well you deployed it</p><p><br></p><p>Now, there are some lighting changes in the manufacturing unit due to which the pictures come out differently. Such changes mean there is a change in distribution of data. The lighting effect might not have been included in your training or test data. Due to this change the model might fail to perform well. This is Data Drift. The data distribution has changed</p><p><br></p><p>2) Concept Drift occurs when there is change in the relationship between dependent and independent variables.</p><p>Let's say you have some material like steel or aluminum and the material is going to make up a part.</p><p>Material Specialists test the material specimen in the laboratory, get results of tests in tension , compression and torsion.</p><p>ML Engineer fits a regression model based on the data supplied by Material Specialists to represent the test data correctly. Simulation Mechanical Engineers carry out simulations of a component (which is made of the material) using the Machine Learning model supplied by ML Engineers. It turns out that component starts cracking under loads (in service).</p><p>The reason for cracking (after investigation) turned out that material behaviour under multi axial state of stress (i e. combined tension and torsion or combination of states of stress) was different than pure uni-axial states. This is concept drift because the mapping of variables is different since there is conceptual shift from uni-axial state to a combined state of stress</p><p><br></p><p>3) Simpler example of Concept Drift could be change in prices of property in cases you have made a ML model for predicting housing prices based in several features like size, number of bedrooms, vicinity utilities and so on. But over time the prices have increased due to various developments. Hence making model retraining important</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGMke_kCrNnkA" src="https://media.licdn.com/dms/image/D4E12AQGMke_kCrNnkA/article-inline_image-shrink_400_744/0/1683461980666?e=1691625600&amp;v=beta&amp;t=5l-9cmHkPZhEUt88i6fNnReCslIErUrSyG0uwFfKCZU"></figure></div>
+</body>
+</html>

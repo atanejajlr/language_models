@@ -1,0 +1,675 @@
+<html>
+<head>
+  <title>Response to earthquake excitation: Response history analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGbOXatS6tVJg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/response-earthquake-excitation-history-analysis-ajay-taneja">Response to earthquake excitation: Response history analysis</a></h1>
+    <p class="created">Created on 2015-05-24 08:37</p>
+  <p class="published">Published on 2015-05-25 16:42</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h1><strong>1.&nbsp; </strong><strong>INTRODUCTION</strong></h1> 
+  <p>This write-up concerns with the Response history analysis procedure to calculate the structural response as a function of time when the system is subjected to a given ground acceleration&nbsp;u_g(t).&nbsp;</p> 
+  <p>The discussion in this article involves the response of MDOF system to a ground acceleration caused due to an earthquake. The concept of Response history analysis which is in fact is the modal analysis procedure carried out when the structure is subjected to a ground acceleration during an earthquake is discussed in some detail.</p> 
+  <p>It will be explained during the course of this article that in case of structures subjected to ground acceleration u_g(t)&nbsp;&nbsp;, the equation of motion is the same as if the structure was subjected to external forces = -mj* u_g(t), &nbsp;where ‘j’ corresponds to a DOF of the structure and . Therefore, determining the response of a system subjected to an earthquake excitation by the response history analysis is the same as carrying out a modal analysis of the structure, when the structure is subjected to effective earthquake forces &nbsp;&nbsp;-mj* u_g(t) and u_g(t) represents the ground acceleration.</p> 
+  <p>This article is organized as follows;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
+  <p>Section 2 of this article revisits the equation of motion of a SDOF system subjected to a ground acceleration. Section 3 concerns the equation of motion of a MDOF system subjected to ground acceleration, the concepts described in section 2 are extended further to MDOF systems, fundamentally, it may noticed that the scalar quantities represented in section 2 are replaced by matrices.</p> 
+  <p>Section 4 involves the response history analysis which essentially is the modal analysis procedure to determine the response of a structure to earthquake induced ground motion &nbsp;identical at all support points of the structure.</p> 
+  <p>It may be appreciated that the explanation concerning the determination of response of a system subjected to ground acceleration cannot be possible without the math involving important linear algebra concepts. This will be evident from the discussions in section 4. Therefore, section&nbsp;6 which lists ALL the interpretations based on the math presented is section 4 has been included.</p> 
+  <p>Finally section&nbsp;7 summarized the various steps involved in the response / time history analysis.</p> 
+  <h1><strong>2.&nbsp;</strong><strong>EQUATION OF MOTION OF A SDOF SYSTEM: EARTHQUAKE EXCITATION</strong></h1> 
+  <p>Before arriving at the governing equation of motion of an idealised structure (one storey frame) subjected to an earthquake excitation, let us consider first the equation of motion the frame subjected to a deformation u at an instant of time‘t’.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
+  <p>According to Newton’s second law, if the resultant force acting on a body is non-zero; the body moves with an acceleration which is inversely proportional to the mass of the body and directly proportional to the force'</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE3Aje1mwummg" src="https://media.licdn.com/dms/image/C5112AQE3Aje1mwummg/article-inline_image-shrink_400_744/0/1520066229095?e=1691625600&amp;v=beta&amp;t=wKgbnADqEkuaUTLRHIVBR-WwD8OB0S7J6E1ecIKOsdI"> 
+  </div> 
+  <p>Let the forces acting on the body at some instant of time "t" be denoted as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFo4B0ZDpmeZQ" src="https://media.licdn.com/dms/image/C5112AQFo4B0ZDpmeZQ/article-inline_image-shrink_1000_1488/0/1520170352869?e=1691625600&amp;v=beta&amp;t=NiszRpFYHCYlIY4-Xual1rFp0PvnJTzvxykEps1j4gM"> 
+  </div> 
+  <p>Figure: Forces acting on the body at an instant of time 't'</p> 
+  <p>The above forces include: the external force p(t), the elastic (or inelastic) resisting force fs, the damping force f. The external force is taken to be positive in the direction of the x axis, the displacement u(t), velocity&nbsp;u_dot(t)&nbsp; &nbsp;and the acceleration &nbsp;u_dot_dot(t) are also positive in the direction of the x axis. The elastic and the damping forces are shown in the opposite direction because they are internal forces and resist the deformation and velocity, respectively.</p> 
+  <p>Thus, the resultant force acting on the body is: p - fs- fD and according to Newton’s second law, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH0BsP9_hQgBA" src="https://media.licdn.com/dms/image/C5112AQH0BsP9_hQgBA/article-inline_image-shrink_400_744/0/1520042617615?e=1691625600&amp;v=beta&amp;t=4YaZSbg9zNIbSycwsHViyjuxuu53n6OxoHxgvt4BkEw"> 
+  </div> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGs5xeTfdWVww" src="https://media.licdn.com/dms/image/C5112AQGs5xeTfdWVww/article-inline_image-shrink_400_744/0/1520040481085?e=1691625600&amp;v=beta&amp;t=t8pIWzhcQ5zjP4tO46l07lC8hliuz7Xkxc93d7zz2AA"> 
+  </div> 
+  <p>This is the equation of motion governing the deformation or displacement u(t) of the idealised structure shown in the above figure assumed to be linearly elastic subjected to a dynamic force p(t).</p> 
+  <p>Now, let us say the above one storey frame (i.e. the idealised structure) is subjected to an earthquake induced motion at the base so that the displacement of the ground u , the total (or&nbsp; absolute) displacement of the mass ut and the relative displacement between the mass and the ground u as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHrHM_roIyheg" src="https://media.licdn.com/dms/image/C5112AQHrHM_roIyheg/article-inline_image-shrink_400_744/0/1520242192062?e=1691625600&amp;v=beta&amp;t=eUZzjg_j3wd62c2OeRbpIrYsWIcb__o9Imh4RHDAarg"> 
+  </div> 
+  <p>Figure: SDOF structure subjected to a ground motion</p> 
+  <p>At each instant, the displacements are related by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEPkLedP26sDw" src="https://media.licdn.com/dms/image/C5112AQEPkLedP26sDw/article-inline_image-shrink_400_744/0/1520042798809?e=1691625600&amp;v=beta&amp;t=HrMpRxc8kID8QyiQjAHp9vwSE2QHa_3XAcRGwJPsIok"> 
+  </div> 
+  <p>According to Newton’s second law;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEbuY3YrAV9kw" src="https://media.licdn.com/dms/image/C5112AQEbuY3YrAV9kw/article-inline_image-shrink_400_744/0/1520194686818?e=1691625600&amp;v=beta&amp;t=_gCV5qMeJZJNOXPgEoldJNyZ6eIqc_UDn89TuFpu9jM"> 
+  </div> 
+  <p>That is, the ground motion can be replaced by an effective earthquake force;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFkW67tuVWgpQ" src="https://media.licdn.com/dms/image/C5112AQFkW67tuVWgpQ/article-inline_image-shrink_400_744/0/1520241656416?e=1691625600&amp;v=beta&amp;t=ssjFvZ4pYBRHCw51jnh3kSLZAq3TMky90AFD67jv4fc"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFY83CUVlbM0g" src="https://media.licdn.com/dms/image/C5112AQFY83CUVlbM0g/article-inline_image-shrink_400_744/0/1520240160567?e=1691625600&amp;v=beta&amp;t=Tyf2Ons-GNZu9yoDhLB007whqLTeR84VP_ToWYNo2eQ"> 
+  </div> 
+  <h1><strong>3.&nbsp;</strong><strong>EQUATION OF MOTION OF A MDOF SYSTEM: EARTHQUAKE EXCITATION</strong></h1> 
+  <p>In this section, we develop the equation of motion of MDOF planar system subjected to translator ground motion.</p> 
+  <p>Planar systems subjected to translational ground motion are considered. Firstly, the simplest case wherein all the dynamic degrees of freedom are considered to be in the same direction as the ground motion and the corresponding equations of motion developed. This is followed by a general case wherein the degrees of freedom of the structure may not necessarily be in the same direction of the ground motion.</p> 
+  <h3><strong>3.1&nbsp;&nbsp;&nbsp; </strong><strong>DYNAMIC DEGREES OF FREEDOM IN THE SAME DIRECTION&nbsp;&nbsp; </strong><strong>AS THE GROUND MOTION</strong></h3> 
+  <p>Two structures are considered: a tower and building frame as shown in the figure below. The displacement of the ground is denoted by u, the total or the absolute displacement of the mass m by ut and the relative displacement between the mass and the ground by u. At each instant of time, these displacements are related by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGOPKGdWLdCKA" src="https://media.licdn.com/dms/image/C5112AQGOPKGdWLdCKA/article-inline_image-shrink_400_744/0/1520042713580?e=1691625600&amp;v=beta&amp;t=jq7gwYT-FQHeKPJV8kSl2z5P_h9HFhiUxOvdA2CSiHM"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEJYfEZAD3UCQ" src="https://media.licdn.com/dms/image/C5112AQEJYfEZAD3UCQ/article-inline_image-shrink_1000_1488/0/1520196240570?e=1691625600&amp;v=beta&amp;t=cTWr2MK9syZ-hzELK9OthFbV6NB1AAebDW7g58pm8no"> 
+  </div> 
+  <p>Figure: Building frame and a tower subjected to earthquake ground motion</p> 
+  <p class="left">&nbsp;</p> 
+  <p>Such equations for all the N masses (i.e. the N degrees of freedom) can be combined in the vector form as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGFgvvsfeyVew" src="https://media.licdn.com/dms/image/C5112AQGFgvvsfeyVew/article-inline_image-shrink_400_744/0/1520196760474?e=1691625600&amp;v=beta&amp;t=FQXm5dO3iZLBk-LVOb37-xaufXPwIGAlGPb0VbttIQA"> 
+  </div> 
+  <p>Where <strong>1</strong> is a vector of order N with each element equal to unity.</p> 
+  <p>Just as in the case of a SDOF freedom system (section 2), it is only the relative motion ‘u’ between the masses and the base due to structural deformation that produces the elastic and damping forces (i.e. the rigid body component of the structure produces no internal forces). Therefore, for a linear system the equation of motion for MDOF system could be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHKv9VoGIQP5g" src="https://media.licdn.com/dms/image/C5112AQHKv9VoGIQP5g/article-inline_image-shrink_400_744/0/1520117136508?e=1691625600&amp;v=beta&amp;t=dORgvBPDD-zZt58YuEDOZqMssWjc24OxE57lockjp-s"> 
+  </div> 
+  <p>It should, thus, be noted that the equation of motion of the structure subjected to ground acceleration u_dot_dot_g(t) &nbsp;is the same as, if, the structure was subjected to an external forces = -mj * u_dot_dot_g (t) . Therefore, the ground motion can be replaces by the effective earthquake force;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEHekGevYGnpQ" src="https://media.licdn.com/dms/image/C5112AQEHekGevYGnpQ/article-inline_image-shrink_400_744/0/1520062722601?e=1691625600&amp;v=beta&amp;t=5Ba7TW9qgBz_02CGaRgnDra9D9OqGsV-3i5Obz7jj5M"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHdRbj0stNDKA" src="https://media.licdn.com/dms/image/C5112AQHdRbj0stNDKA/article-inline_image-shrink_1000_1488/0/1520062633639?e=1691625600&amp;v=beta&amp;t=mGCmJnFrvNcat05MWXRGXT-mfoBUm2FeoRNT2X1gXQc"> 
+  </div> 
+  <p>Figure: Effective earthquake force</p> 
+  <p>In contrast to the SDOF system, here, in case of MDOF system: <strong>m, c</strong> and<strong> k</strong> are not a single coefficient but matrices of order N x N (where ‘N’ is the number of degrees of freedom).</p> 
+  <h3><strong>3.2&nbsp; </strong><strong>DEGREES OF FREEDOM IN THE SAME DIRECTION&nbsp;&nbsp;</strong><strong>AS THE GROUND MOTION</strong></h3> 
+  <p>A generalization of the derivation in section 3.1 is useful if all the DOF’s of the system are not in the direction of the ground motion. In this general approach, the total displacement of each mass is expressed as its displacement &nbsp;due to static application of the ground motion plus the dynamic displacement relative to the quasi static displacement:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFo0h6NHz72Gw" src="https://media.licdn.com/dms/image/C5112AQFo0h6NHz72Gw/article-inline_image-shrink_400_744/0/1520066379028?e=1691625600&amp;v=beta&amp;t=HMjXuQo8ll1uRiVwOCm4rNAI35EaX6JqYbOiuK4p3tk"> 
+  </div> 
+  <p>OR;</p> 
+  <p>writing the above vectorially;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFL1JM5im5iVQ" src="https://media.licdn.com/dms/image/C5112AQFL1JM5im5iVQ/article-inline_image-shrink_400_744/0/1520062292632?e=1691625600&amp;v=beta&amp;t=dHoVgHi0DN_bJ0tDQUw4_l43AGEYtR-MyMSvmznBhHs"> 
+  </div> 
+  <p>The quasi-static displacements can be expressed as , where the influence coefficient &nbsp;represents the displacements of the masses resulting from the static application of a unit ground displacement; thus the above equation becomes;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFMVMuihvnPjw" src="https://media.licdn.com/dms/image/C5112AQFMVMuihvnPjw/article-inline_image-shrink_400_744/0/1520239869117?e=1691625600&amp;v=beta&amp;t=su6PDAtb8lVynEkrKHQXdR93_zMwLhPAHUWvn4XHpus"> 
+  </div> 
+  <p>The equation of motion is the same as before except that the effective earthquake force may be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFEUNmRIt0EHw" src="https://media.licdn.com/dms/image/C5112AQFEUNmRIt0EHw/article-inline_image-shrink_400_744/0/1520062265721?e=1691625600&amp;v=beta&amp;t=fsuzGOe14yv3VYAMzNSSU0ZGYbNZNerkr7sEWi-XGSA"> 
+  </div> 
+  <p>So;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFzynCD0FDDjA" src="https://media.licdn.com/dms/image/C5112AQFzynCD0FDDjA/article-inline_image-shrink_400_744/0/1520170253919?e=1691625600&amp;v=beta&amp;t=-vji8wmcyBDVgYetSDQsUcCjjoQfeyTDuH4dQE62_Fs"> 
+  </div> 
+  <p>The generalisation of expressing the total displacement as the sum of the static displacement plus the dynamic displacement relative to the static displacement has no special benefit in deriving the governing equations for the systems of the figure shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFVbRSPC_5jdA" src="https://media.licdn.com/dms/image/C5112AQFVbRSPC_5jdA/article-inline_image-shrink_1000_1488/0/1520041410963?e=1691625600&amp;v=beta&amp;t=nY21kQ6H2KdcmBkjhC0UXFbmb_fj5pDyyfZOyz7UEn8"> 
+  </div> 
+  <p class="center"><strong>Figure: Building frame and a tower with the degrees of freedom in the direction of the ground motion</strong></p> 
+  <p>Static application of u= 1 to the above systems gives uj=1 for all j (i.e. for all the degrees of freedom) as shown on the figure below where the masses are blank to show that the displacements are static.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFaxHYp_1F4EQ" src="https://media.licdn.com/dms/image/C5112AQFaxHYp_1F4EQ/article-inline_image-shrink_1000_1488/0/1520240731769?e=1691625600&amp;v=beta&amp;t=JV0xdZWjR9siBbOhJ388ucabkyb6Yxj6FGn5Xo4MgrQ"> 
+  </div> 
+  <p class="center"><strong>Figure: Influence factor ℓ: static displacements due to ug = 1</strong></p> 
+  <h3><strong>3.3&nbsp;&nbsp;</strong><strong>DEGREES OF FREEDOM NOT IN THE SAME DIRECTION&nbsp;&nbsp;</strong><strong>AS THE GROUND MOTION</strong></h3> 
+  <p>Next, considering a system with all the DOF’s not in the direction of the ground motion. An example is shown in the figure below; where an inverted L-shaped frame with lumped masses sis subjected to horizontal ground motion. Assuming that the axial elements are rigid, three DOF’s are shown.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFVfcnKJQZxLQ" src="https://media.licdn.com/dms/image/C5112AQFVfcnKJQZxLQ/article-inline_image-shrink_1000_1488/0/1520239637913?e=1691625600&amp;v=beta&amp;t=uXNMM1kGyOSnswQoUjRk-qjvGe-5RIbqlgQksNyG10k"> 
+  </div> 
+  <p>Figure: (a) L- shaped frame; (b) influence factor ι: static displacements due to ug =1; (c) effective earthquake force</p> 
+  <p>Static application of ug=1 results in the displacements above. Thus; ι = &lt;1 1 0&gt;T and the equations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH3xIsq_STqyg" src="https://media.licdn.com/dms/image/C5112AQH3xIsq_STqyg/article-inline_image-shrink_400_744/0/1520040182359?e=1691625600&amp;v=beta&amp;t=ndGhPpGf6_BnVGXCIKWyAvPrgl0IV-HIyi1wXy_ItFo"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFlCWwRE4YYNg" src="https://media.licdn.com/dms/image/C5112AQFlCWwRE4YYNg/article-inline_image-shrink_400_744/0/1520170415671?e=1691625600&amp;v=beta&amp;t=0gSFBC-D065lQIgbVl9E3y-RnaItZ6ygA36vHYchM3U"> 
+  </div> 
+  <p>become;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFpSKngex_OIg" src="https://media.licdn.com/dms/image/C5112AQFpSKngex_OIg/article-inline_image-shrink_400_744/0/1520200714097?e=1691625600&amp;v=beta&amp;t=IVCP9X_PmKjbzLa8CLYBPX85_5G4yol6t90GrmTyFko"> 
+  </div> 
+  <p>It should be noted that the mass corresponding to u_2_dot_dot &nbsp;is m2+m3 because both masses will undergo the same acceleration since the connecting beam is axially rigid. The effective earthquake forces in the above equation are shown in the figure below. It should be observed that the effective earthquake force is zero in the vertical DOF since the ground motion is horizontal.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEr8YZF9GdsDA" src="https://media.licdn.com/dms/image/C5112AQEr8YZF9GdsDA/article-inline_image-shrink_1000_1488/0/1520242311111?e=1691625600&amp;v=beta&amp;t=UGeJbLBH9ezOVHErJj-hSpsNjGxHGdrMw6BBUCrpUYs"> 
+  </div> 
+  <p class="center"><strong>Figure: Effective earthquake force</strong></p> 
+  <p>&nbsp;</p> 
+  <h1><strong>4.&nbsp; </strong><strong>TIME HISTORY ANALYSIS</strong></h1> 
+  <p>Time history analysis involves applying the modal analysis procedure to determine the response of a structure to earthquake-induced ground motion.</p> 
+  <h3><strong>4.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>MODAL EXPANSION OF DISPALCEMENT AND FORCES</strong></h3> 
+  <p>The modal analysis (also called mode superposition analysis) has been discussed</p> 
+  <p>Modal analysis procedure principally involves transforming the problem into a new coordinate system wherein the structural matrices (mass, stiffness and damping) are diagonal.</p> 
+  <p>The displacement u of a N-DOF system can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQED1C8Xit4C_w" src="https://media.licdn.com/dms/image/C5112AQED1C8Xit4C_w/article-inline_image-shrink_400_744/0/1520041857348?e=1691625600&amp;v=beta&amp;t=RYo3FjEEI6kImR5Ovtq49eDOhI5zBtwCeNWBreD72jU"> 
+  </div> 
+  <p>In case of structures subjected to ground motion, the spatial distribution of the effective earthquake force <strong>p(t) </strong>is defined by<strong> s = mℓ. </strong>This force distribution can be expanded as a summation of modal inertial forces distribution sn</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHjagsjjtmAKQ" src="https://media.licdn.com/dms/image/C5112AQHjagsjjtmAKQ/article-inline_image-shrink_400_744/0/1520197011262?e=1691625600&amp;v=beta&amp;t=8_4jukIqNd9mH9QR2Zwa8NuKfIf2YoaGWpUJyhdwwos"> 
+  </div> 
+  <p>The above equation may be viewed as an expansion of effective earthquake force distribution s in terms of inertia force distribution sn associated with the natural modes.</p> 
+  <p>This interpretation becomes apparent by considering the structure vibrating in its nth mode with accelerations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFhtdQ1NrLbTg" src="https://media.licdn.com/dms/image/C5112AQFhtdQ1NrLbTg/article-inline_image-shrink_400_744/0/1520200048845?e=1691625600&amp;v=beta&amp;t=kcFPa5c3ET6YH_K9hOMfqgrnLssgWQAhaAXV1DyaCtk"> 
+  </div> 
+  <p>The associated inertial forces are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFutsFDWvUcrg" src="https://media.licdn.com/dms/image/C5112AQFutsFDWvUcrg/article-inline_image-shrink_400_744/0/1520062982012?e=1691625600&amp;v=beta&amp;t=s7PuDaf7ULxuqVFWS6oYz3p1m0qhiIq8bCiBs7JGq2w"> 
+  </div> 
+  <p>Multiplying both sides of the equation ϕnT and in order to normalize divide by Mn</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHkmKB70_rxGQ" src="https://media.licdn.com/dms/image/C5112AQHkmKB70_rxGQ/article-inline_image-shrink_400_744/0/1520238674667?e=1691625600&amp;v=beta&amp;t=CwL8So3PNlq9-2TI4fQRBwkJL0CFPWEmae6z-yCwvZU"> 
+  </div> 
+  <p>we can get the modal expansion of the effective earthquake forces.</p> 
+  <p>The contribution of the nth mode to the excitation vector <strong>m</strong>ℓ is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH0HZdGIBWfHg" src="https://media.licdn.com/dms/image/C5112AQH0HZdGIBWfHg/article-inline_image-shrink_400_744/0/1520170908257?e=1691625600&amp;v=beta&amp;t=ygqOnRUYeAKR5mIya0tkuP5VzYqUaKfzRi60QA3_Bqw"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGItE9TrvAnIg" src="https://media.licdn.com/dms/image/C5112AQGItE9TrvAnIg/article-inline_image-shrink_1000_1488/0/1520239757080?e=1691625600&amp;v=beta&amp;t=cLjvL-OpGCmWS7jYLa68iQsaQHigaXUN4nSRX8v-G7M"> 
+  </div> 
+  <p><strong>4.2&nbsp;</strong><strong>MODAL EQUATIONS FOR EARTHQUAKE EXCITATION</strong></p> 
+  <p>It has been obtained during the mode superposition analysis, that the modal equations have form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHZiFsY3k8Hkg" src="https://media.licdn.com/dms/image/C5112AQHZiFsY3k8Hkg/article-inline_image-shrink_400_744/0/1520198719943?e=1691625600&amp;v=beta&amp;t=vlw6LFY5kRxa5MQW_wJzFpBNtRKKaoqQ53y9jPhXLiQ"> 
+  </div> 
+  <p>Dividing the above equation with ϕn^ T M&nbsp;ϕ</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFG0ldjXfjxkA" src="https://media.licdn.com/dms/image/C5112AQFG0ldjXfjxkA/article-inline_image-shrink_400_744/0/1520241177463?e=1691625600&amp;v=beta&amp;t=7JN6fRRQCdROIH7HskVtBKSVaZH0yLzsaXp1KXqxXgk"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEnQ0W-t7FSJw" src="https://media.licdn.com/dms/image/C5112AQEnQ0W-t7FSJw/article-inline_image-shrink_400_744/0/1520242470926?e=1691625600&amp;v=beta&amp;t=yIKhaKFyIuRY6TfJ49xnpDOiNqImeJAhrZ4S-qw6bWw"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHOFmDOwswF_A" src="https://media.licdn.com/dms/image/C5112AQHOFmDOwswF_A/article-inline_image-shrink_400_744/0/1520199086750?e=1691625600&amp;v=beta&amp;t=mVoZA6RSsRKcbtnYJRlU-AsMTkh4U2pXQxhxUhKiq30"> 
+  </div> 
+  <p>In order to specialize the above equations for earthquake excitation, F(t) is replaced by peff(t) ;</p> 
+  <p>&nbsp;&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHFYa4d_pZwQw" src="https://media.licdn.com/dms/image/C5112AQHFYa4d_pZwQw/article-inline_image-shrink_400_744/0/1520240948998?e=1691625600&amp;v=beta&amp;t=SjiN5RDkNH_CKTlrOlPIG_t2qAxwiZ6RlduQ9TqWW00"> 
+  </div> 
+  <p>which would result in (including damping);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFeT--Ly5PXxw" src="https://media.licdn.com/dms/image/C5112AQFeT--Ly5PXxw/article-inline_image-shrink_400_744/0/1520242381835?e=1691625600&amp;v=beta&amp;t=gK8TVmxebOOuZbTSsbjikvApLhcr8TKznOnzyflUex8"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGD1fkOJw0Nng" src="https://media.licdn.com/dms/image/C5112AQGD1fkOJw0Nng/article-inline_image-shrink_400_744/0/1520169992910?e=1691625600&amp;v=beta&amp;t=61VuMZBBDwrrANsTsAtS_zg3mdoQR45_6RuShqY5VBE"> 
+  </div> 
+  <p>&nbsp;The solution to the above (SDOF system) equation can be obtained by comparing the above equation to the equation of motion of the rth SDOF, the SDOF system with vibrating properties- natural frequency ωr and damping ratio ζr- of the rth mode of the MDOF system.</p> 
+  <p>The SDOF system subjected ground acceleration &nbsp;u_g_dot_dot(t) may be solved i.e.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF6CYyaueOriw" src="https://media.licdn.com/dms/image/C5112AQF6CYyaueOriw/article-inline_image-shrink_400_744/0/1520170941305?e=1691625600&amp;v=beta&amp;t=Lqu6pva2j5MY49qWvvvmqRNVqVlPWp1LbDhsw8lVP68"> 
+  </div> 
+  <p>Comparing the above two equations gives;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHZTg0X0vLMrQ" src="https://media.licdn.com/dms/image/C5112AQHZTg0X0vLMrQ/article-inline_image-shrink_400_744/0/1520169317028?e=1691625600&amp;v=beta&amp;t=lr2tBboRW1gkXSGPRuFRAdSnNSPwyDLM3YJqctaCHWU"> 
+  </div> 
+  <h2><strong>4.3&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>MODAL RESPONSES</strong></h2> 
+  <p>The contribution of the nth mode to the displacement <strong>u(t)</strong> is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHrER1Qo-WnHQ" src="https://media.licdn.com/dms/image/C5112AQHrER1Qo-WnHQ/article-inline_image-shrink_400_744/0/1520241008692?e=1691625600&amp;v=beta&amp;t=eal5pw2gy4sLLD06NGVHn_5GoHheWg8Kw1wJ8nI4MfI"> 
+  </div> 
+  <p>The equivalent static force method as described in the preceding sections can be used to determine the forces in various structural elements: beams, columns, walls, etc. from the displacement</p> 
+  <p>The equivalent static forces associated with the nth mode response are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG9BdTUB9lOrQ" src="https://media.licdn.com/dms/image/C5112AQG9BdTUB9lOrQ/article-inline_image-shrink_400_744/0/1520066392880?e=1691625600&amp;v=beta&amp;t=wEGrNBBbri0GSTCD0lUuGAt97S_ARHM_sfDziUbMJN4"> 
+  </div> 
+  <p>Substituting in the above equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHd2I3gc2yjuw" src="https://media.licdn.com/dms/image/C5112AQHd2I3gc2yjuw/article-inline_image-shrink_400_744/0/1520242425791?e=1691625600&amp;v=beta&amp;t=f39v77ByHI7pyJTxcR3laeJuW7XEDgnfnG98n_s19bI"> 
+  </div> 
+  <p>we get;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFksT8CzpBOiQ" src="https://media.licdn.com/dms/image/C5112AQFksT8CzpBOiQ/article-inline_image-shrink_400_744/0/1520097760160?e=1691625600&amp;v=beta&amp;t=1KYFg05LPfe4tgas04hiQzvnVcB1cfKpiqaVhDqGGaM"> 
+  </div> 
+  <p>Substituting;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHLNXkzA9trng" src="https://media.licdn.com/dms/image/C5112AQHLNXkzA9trng/article-inline_image-shrink_400_744/0/1520109201296?e=1691625600&amp;v=beta&amp;t=gXC7kkadjR_CWCzpb31nTnyD5xWpU2XzPDUaAF3Yy0g"> 
+  </div> 
+  <p>we get;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHM1X2XQtMaNA" src="https://media.licdn.com/dms/image/C5112AQHM1X2XQtMaNA/article-inline_image-shrink_400_744/0/1520065777081?e=1691625600&amp;v=beta&amp;t=PZrbgto-jc58Ebtjr489WfkvRNVUq36fGPc-3akHm-E"> 
+  </div> 
+  <p>Now,</p> 
+  <p>substituting;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHZGsD9ccCASw" src="https://media.licdn.com/dms/image/C5112AQHZGsD9ccCASw/article-inline_image-shrink_400_744/0/1520201503335?e=1691625600&amp;v=beta&amp;t=feFgkRN_qpopOggdvljCtCmcaH0J3HOIb7258suASRs"> 
+  </div> 
+  <p>Using;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGtStSiTXXeuA" src="https://media.licdn.com/dms/image/C5112AQGtStSiTXXeuA/article-inline_image-shrink_400_744/0/1520240325337?e=1691625600&amp;v=beta&amp;t=8szmh87Htgto6Gi30lmn4RwVtJTctKiLKxsqhozUtpU"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFLhyrNfTTWug" src="https://media.licdn.com/dms/image/C5112AQFLhyrNfTTWug/article-inline_image-shrink_400_744/0/1520066226658?e=1691625600&amp;v=beta&amp;t=YvCK-FXQnrQCNzueTeQpqGc1BYxAf8c723Z4lOryErE"> 
+  </div> 
+  <p>The equivalent static forces<strong> f(t) </strong>are the product of two quantities: (a) the nth mode contribution <strong>s</strong> to the spatial distribution <strong>m</strong>ℓ of p(t) and (b) the pseudo-acceleration response of the nth mode SDOF to u_g_dot_dot(t).</p> 
+  <p>It may be noted that the pseudo-acceleration response of the nth SDOF to u_g_dot_dot(t).&nbsp;is obtained by multiplying the deformation response of nth SDOF system to &nbsp;u_g_dot_dot(t) with natural frequency corresponding to the nth mode.</p> 
+  <p>The nth mode contribution r(t) to any response quantity r(t) is determined by static analysis of the structure to forces f(t). If rst denotes the <em>modal static response, </em>the static value (indicated by superscript “st”) of r due to external forces <strong>s, </strong>then</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFGUZgrtI4JOA" src="https://media.licdn.com/dms/image/C5112AQFGUZgrtI4JOA/article-inline_image-shrink_400_744/0/1520041801109?e=1691625600&amp;v=beta&amp;t=Ztv-1bcI1MlR2t-qYEhgnNbVdzEHrYMXYg6AjIf9psQ"> 
+  </div> 
+  <p>The static displacements due to the forces <strong>s</strong> satisfy <strong>kust = s</strong>. Substituting,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFMvNUIaLrUMw" src="https://media.licdn.com/dms/image/C5112AQFMvNUIaLrUMw/article-inline_image-shrink_400_744/0/1520201139315?e=1691625600&amp;v=beta&amp;t=610ieK9oILFoR_ptfexJhFnHSAM9cE1UJzotjdn1qQQ"> 
+  </div> 
+  <p>we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHF7F_8uwoJ0g" src="https://media.licdn.com/dms/image/C5112AQHF7F_8uwoJ0g/article-inline_image-shrink_400_744/0/1520242430725?e=1691625600&amp;v=beta&amp;t=99doPujjBsrrywqkRKZBNgsWsBmy9JqrRrOFqXnGoc0"> 
+  </div> 
+  <h3><strong>4.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>TOTAL RESPONSE</strong></h3> 
+  <p>&nbsp;Combining the response contributions of all the modes gives the total response of the structure to the ground motion. Thus, the nodal displacements are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEhnTZGl4zn2g" src="https://media.licdn.com/dms/image/C5112AQEhnTZGl4zn2g/article-inline_image-shrink_400_744/0/1520040563647?e=1691625600&amp;v=beta&amp;t=H1ppVE0Z3a7agWuwYDIdOFIhj42Ym56-h0TDlOudDXI"> 
+  </div> 
+  <h3><strong>4.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>INTERPRETATION OF MODAL ANALYSIS</strong></h3> 
+  <p>&nbsp;In the first phase of this dynamic analysis procedure, the vibration properties- natural frequencies and modes of the structure are computed and the force distribution vector <strong>m</strong>ℓ is expanded into its modal components <strong>s</strong>.</p> 
+  <p>The rest of the analysis procedure is shown schematically in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE5sdEGkMarOw" src="https://media.licdn.com/dms/image/C5112AQE5sdEGkMarOw/article-inline_image-shrink_1000_1488/0/1520240573443?e=1691625600&amp;v=beta&amp;t=4h9UM6xhshc0u33hr7wbP8xCVJDBMqt8wTuwdP0XgRs"> 
+  </div> 
+  <p class="center"><strong>Figure: Conceptual explanation of modal analysis</strong></p> 
+  <h1><strong>5.&nbsp; </strong><strong>NUMERICAL EXAMPLES: STRUCTURES SUBJECTED TO HORIZONTAL GROUND MOTION</strong></h1> 
+  <p>&nbsp;To determines the dynamic response of the inverted L-shaped frame of the figure below subjected to horizontal ground motion.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEZVBTKUIj3UQ" src="https://media.licdn.com/dms/image/C5112AQEZVBTKUIj3UQ/article-inline_image-shrink_1000_1488/0/1520171092213?e=1691625600&amp;v=beta&amp;t=YiJKOHKeqQW1Rmwo6oqGE6-7NCGUeAaC4mwrVVtmMYY"> 
+  </div> 
+  <p class="center"><strong>Figure: L shaped frame subjected to ground acceleration</strong></p> 
+  <p>&nbsp;</p> 
+  <p>Assuming the two elements to be axially rigid, the DOF’s are u1 and u2.</p> 
+  <p>The equations of motion are given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEeeBTyxRiceg" src="https://media.licdn.com/dms/image/C5112AQEeeBTyxRiceg/article-inline_image-shrink_400_744/0/1520241254859?e=1691625600&amp;v=beta&amp;t=EWvZysRDYpFdlHnlsd0dA_92grwnLK1t1zx7s8N-m0k"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEOGqEsCcqeLg" src="https://media.licdn.com/dms/image/C5112AQEOGqEsCcqeLg/article-inline_image-shrink_400_744/0/1520173079580?e=1691625600&amp;v=beta&amp;t=8vBoE43C_SsjlelAPeHuOHLFJgJlQaau8Wd2-icLzYI"> 
+  </div> 
+  <p><strong>where;</strong></p> 
+  <p><strong>m , k</strong> being the mass and the stiffness matrices.</p> 
+  <p>the influence coefficient represents the displacements of the masses resulting from the static application of a unit ground displacement.</p> 
+  <p>&nbsp;</p> 
+  <p><strong><strong>Mass matrix and stiffness matrices:</strong></strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE7ZC3QZdW3Mg" src="https://media.licdn.com/dms/image/C5112AQE7ZC3QZdW3Mg/article-inline_image-shrink_400_744/0/1520042163549?e=1691625600&amp;v=beta&amp;t=y34r0qc3Niu2E2asM1O-UGyXGFgDkV7aWpbsGGVt824"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQElWys185TNTA" src="https://media.licdn.com/dms/image/C5112AQElWys185TNTA/article-inline_image-shrink_400_744/0/1520042708557?e=1691625600&amp;v=beta&amp;t=1vydMJE2qt4rC56WW8qGJeSWuOU2iA8Q1kycFE2-nqI"> 
+  </div> 
+  <p><strong>Natural frequencies:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHnaPY3n61KPw" src="https://media.licdn.com/dms/image/C5112AQHnaPY3n61KPw/article-inline_image-shrink_400_744/0/1520169057066?e=1691625600&amp;v=beta&amp;t=Z_yQZ4RleYjF7jb3XPEbifQcPBhrCld3cuigRX14F5w"> 
+  </div> 
+  <p><strong>Natural modes:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEV3pfCAGojvw" src="https://media.licdn.com/dms/image/C5112AQEV3pfCAGojvw/article-inline_image-shrink_400_744/0/1520171831436?e=1691625600&amp;v=beta&amp;t=QcATGkkeFxLxLWq5x97MRR03uAG5uVn61k6WBMCz-0w"> 
+  </div> 
+  <p><strong>To determine the spatial distribution of the effective earthquake force:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQECNoIS38B2VA" src="https://media.licdn.com/dms/image/C5112AQECNoIS38B2VA/article-inline_image-shrink_400_744/0/1520241204591?e=1691625600&amp;v=beta&amp;t=rbCXQqrW-76e88H7SnldFGzutwDQxpnd8_kXKUXdlXA"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH5esnz87uXIg" src="https://media.licdn.com/dms/image/C5112AQH5esnz87uXIg/article-inline_image-shrink_400_744/0/1520242238715?e=1691625600&amp;v=beta&amp;t=Xb2z_maFyPRRM9nrpRkxas_7Jcfsez9Prp0dMekhJe8"> 
+  </div> 
+  <p><strong>Calculations for the first mode:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEUOwJzg8JLVA" src="https://media.licdn.com/dms/image/C5112AQEUOwJzg8JLVA/article-inline_image-shrink_400_744/0/1520169107568?e=1691625600&amp;v=beta&amp;t=WSL81IUbsyLf2lnED1mKbpsfKIVsdURkqJzMTXVvfBc"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGvD9gIOH8uwQ" src="https://media.licdn.com/dms/image/C5112AQGvD9gIOH8uwQ/article-inline_image-shrink_1000_1488/0/1520168019816?e=1691625600&amp;v=beta&amp;t=wegM-BJkTGZhrE1iTHl06A7s_1TC7BZ3ub4lRTPFbW0"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGd6rGbyY1u-w" src="https://media.licdn.com/dms/image/C5112AQGd6rGbyY1u-w/article-inline_image-shrink_400_744/0/1520198700357?e=1691625600&amp;v=beta&amp;t=_BKw6ny8jAyQ-vydnwPjADBGpVvWqXSHkA36xe-LAMw"> 
+  </div> 
+  <p><strong>Calculations for the second mode:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGp1GLqVluPiA" src="https://media.licdn.com/dms/image/C5112AQGp1GLqVluPiA/article-inline_image-shrink_400_744/0/1520103434230?e=1691625600&amp;v=beta&amp;t=eaJTYdxq8jsx9dNdYKiDBYnqw1ohqQ-IDNT0_AuTh4c"> 
+  </div> 
+  <p><strong>Effective earthquake forces </strong></p> 
+  <p>(please note that the equation of motion of the structure subjected to ground acceleration is the same as, if, the structure was subjected to an external forces = where ‘j’ is the DOF number)</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHtc0NQNHyotw" src="https://media.licdn.com/dms/image/C5112AQHtc0NQNHyotw/article-inline_image-shrink_1000_1488/0/1520097345604?e=1691625600&amp;v=beta&amp;t=v3lcbbEW4UYp27AgXyTuBwtwRxXigVPOyVUSGMBkDKU"> 
+  </div> 
+  <p>The force in the vertical degree of freedom is 0 because the ground motion is horizontal.</p> 
+  <p>Substituting&nbsp; Γn&nbsp; m and Φn in the below equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHYlIO0SgSIyw" src="https://media.licdn.com/dms/image/C5112AQHYlIO0SgSIyw/article-inline_image-shrink_400_744/0/1520042808460?e=1691625600&amp;v=beta&amp;t=zdzClnSvrhsL0_zTdr0epTRrrmvruBnAibUyOpvVTqY"> 
+  </div> 
+  <p>we get;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGY3PWTHTkx4w" src="https://media.licdn.com/dms/image/C5112AQGY3PWTHTkx4w/article-inline_image-shrink_1000_1488/0/1520169764136?e=1691625600&amp;v=beta&amp;t=4Yd97x7gOrOO_fwr-gFjt9gWTSqkICkdWswqVtX3POs"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>Therefore, the equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG5_Y-XTjW0VA" src="https://media.licdn.com/dms/image/C5112AQG5_Y-XTjW0VA/article-inline_image-shrink_400_744/0/1520241047543?e=1691625600&amp;v=beta&amp;t=Gy2cknwnddOrGogXwm8Du6-P1b8RFM_BetuEDfbwORY"> 
+  </div> 
+  <p>specializes to;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGFyIgfGPXoKw" src="https://media.licdn.com/dms/image/C5112AQGFyIgfGPXoKw/article-inline_image-shrink_400_744/0/1520200316411?e=1691625600&amp;v=beta&amp;t=o6iiOtELCYEhHD39zfkCnnpTr2A0fvhblyvO2vf63CQ"> 
+  </div> 
+  <p><strong>Modal expansion of the effective earthquake forces:</strong></p> 
+  <p>The above modal expansion of the effective earthquake forces is shown in the figure below. It should be noted that the forces along the vertical DOF in the two modes cancel each other because the effective earthquake in this DOF is zero.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH8BL3JLEQdXg" src="https://media.licdn.com/dms/image/C5112AQH8BL3JLEQdXg/article-inline_image-shrink_1000_1488/0/1520042729480?e=1691625600&amp;v=beta&amp;t=cVJ8eRVkRpprJRDQgNxZmC3VUkhLRPj1TFy1WCFn4_8"> 
+  </div> 
+  <p class="center"><strong>Figure: Modal expansion of the effective earthquake forces</strong></p> 
+  <p><strong>Computation of the first and the second mode displacements:</strong></p> 
+  <p><strong>First mode displacements:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEgiQLsYeE2nA" src="https://media.licdn.com/dms/image/C5112AQEgiQLsYeE2nA/article-inline_image-shrink_1000_1488/0/1520062289943?e=1691625600&amp;v=beta&amp;t=rlQAIdzgpk5RP4BFDFrwnocjEfXvpMguazd6GSxwMgw"> 
+  </div> 
+  <p><strong>Second mode displacements:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGxLEGnmsWGWg" src="https://media.licdn.com/dms/image/C5112AQGxLEGnmsWGWg/article-inline_image-shrink_1000_1488/0/1520240862332?e=1691625600&amp;v=beta&amp;t=umG_FU6CxHHkzVKqEdZN6lsmzl58DB8o4nb9p7fABVY"> 
+  </div> 
+  <p><strong>Total displacements (combining displacements of the first and second mode):</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG-GHF1plwuwg" src="https://media.licdn.com/dms/image/C5112AQG-GHF1plwuwg/article-inline_image-shrink_1000_1488/0/1520062463717?e=1691625600&amp;v=beta&amp;t=t5Yy9Jv3XBzgcaHilTgvvWu22Aqt-XUE8s8uAYQUitk"> 
+  </div> 
+  <p><strong>Earthquake induced base bending moment</strong></p> 
+  <p>As seen in one of the preceding section;</p> 
+  <p>The equivalent static forces<strong> f(t) </strong>are the product of two quantities: (a) the nth mode contribution <strong>s</strong> to the spatial distribution <strong>m</strong>ℓ of p(t) and (b) the pseudo-acceleration response of the nth mode SDOF to u_g_dot_dot(t)&nbsp;.</p> 
+  <p>Therefore,</p> 
+  <p>The earthquake induced bending moment M at the base of the column due to the nth mode is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEOyWlBFC16YQ" src="https://media.licdn.com/dms/image/C5112AQEOyWlBFC16YQ/article-inline_image-shrink_400_744/0/1520040169803?e=1691625600&amp;v=beta&amp;t=tpf-p4Z578DxyAuLyNzWFZ20pkYYPAlUCYKopJVWEZo"> 
+  </div> 
+  <p>Static analyses of the frame for the forces<strong> s1</strong> and <strong>s2 gives </strong> &nbsp;M_b1^st and M_b2^st</p> 
+  <p><strong>Total bending moment;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEcf1ex0rSMbw" src="https://media.licdn.com/dms/image/C5112AQEcf1ex0rSMbw/article-inline_image-shrink_1000_1488/0/1520100796424?e=1691625600&amp;v=beta&amp;t=dClNs1W5vp0bxr_zHlrJ2P4LB0gwT_C0jCMrlCGgQpI"> 
+  </div> 
+  <p class="center"><strong>Figure: Static analyses of the frame for the equivalent static forces due to the 1st and the 2nd mode</strong></p> 
+  <p><strong>Total bending moment;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEgXma0rmJpEg" src="https://media.licdn.com/dms/image/C5112AQEgXma0rmJpEg/article-inline_image-shrink_1000_1488/0/1520240500470?e=1691625600&amp;v=beta&amp;t=utpU3U3NRbwg1K_yt_1OppNfgaUeetDl4J1JSfhOH8M"> 
+  </div> 
+  <p>The pseudo acceleration response of the SDOF system to &nbsp;can be obtained by numerical time stepping procedures (explicit central difference or the implicit Newmark’s scheme).</p> 
+  <h1><strong>6.&nbsp; </strong><strong>INTERPRETATIONS OF THE ABOVE MATH</strong></h1> 
+  <p>&nbsp;Following interpretations may be drawn from the math presented in the preceding sections;</p> 
+  <p>1. The equations of motion of a MDOF system are generally coupling.</p> 
+  <p>2. Coupling is manifest in form of the structural matrices being non-diagonal.</p> 
+  <p>3. Mode superposition is a method which transforms the equations of motion from the physical coordinate system into another coordinate system. In this new coordinate system, the equations of motion are uncoupled.</p> 
+  <p>4. This new coordinate system is called the ‘modal’ or ‘normal’ coordinate system.</p> 
+  <p>5. The transformation matrix is the “modal” and each column of the modal matrix represents a vector called as the “modal” vector.</p> 
+  <p>6. Mode shapes are solutions of the free vibration response of the structure wherein all the DOF’s of the structure oscillate simple harmonically.</p> 
+  <p>7. In the transformed coordinate system each equation is solved as a SDOF system</p> 
+  <p>8. Once the solution is obtained, the total response in the physical coordinate system is obtained by considering the contribution from each mode.</p> 
+  <p>9. If the equations of motion in the MDOF system in the physical coordinate system are represented by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGd2p-D7eyHjw" src="https://media.licdn.com/dms/image/C5112AQGd2p-D7eyHjw/article-inline_image-shrink_400_744/0/1520201171488?e=1691625600&amp;v=beta&amp;t=5dqB9SJMGwS2THGdbMDwNG3U5WNx0uz2KfZ9h35hJ4Y"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>where;</p> 
+  <p><strong>m</strong> and <strong>k</strong> represent the mass and the stiffness matrices respectively.</p> 
+  <p>&nbsp;Then;</p> 
+  <p>&nbsp;the equations of motion in the transformed coordinate system are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEeccElOS7Hjw" src="https://media.licdn.com/dms/image/C5112AQEeccElOS7Hjw/article-inline_image-shrink_400_744/0/1520066611386?e=1691625600&amp;v=beta&amp;t=xoP2V8Paup1xaRmyaBJCaGLB_bwqeFPIn6lmpP93sY8"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGjwp-fzd6RKw" src="https://media.licdn.com/dms/image/C5112AQGjwp-fzd6RKw/article-inline_image-shrink_1000_1488/0/1520066153248?e=1691625600&amp;v=beta&amp;t=LZzgOEWpwk0XCo3UMMY3ECuqdS4qC0pHqKHEESD67kw"> 
+  </div> 
+  <p>10. In the transformed co-ordinate system, each equation is solved as a SDOF system equation. The equation that is solved in the transformed co-ordinate system is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFDTpCDNVQcWQ" src="https://media.licdn.com/dms/image/C5112AQFDTpCDNVQcWQ/article-inline_image-shrink_400_744/0/1520170654067?e=1691625600&amp;v=beta&amp;t=-KTDsbMhrUC86DTl6cgBADf-_nNa_SDTeH-Yt1eZYuI"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGXn76b9a213g" src="https://media.licdn.com/dms/image/C5112AQGXn76b9a213g/article-inline_image-shrink_400_744/0/1520169583551?e=1691625600&amp;v=beta&amp;t=X9v-fUH79VkwjYf0-XHuXt510TSSqJmpY_c5H1lFWzw"> 
+  </div> 
+  <p>All the DOF of the structure in this mode oscillate with the frequency ω</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGab1CEq5u9VA" src="https://media.licdn.com/dms/image/C5112AQGab1CEq5u9VA/article-inline_image-shrink_1000_1488/0/1520243206254?e=1691625600&amp;v=beta&amp;t=IznZ8aYzVg7_lMCGJAjwqgrkVO7Hi3Mw9SEX8zguP7U"> 
+  </div> 
+  <p>11. The response in the physical coordinate system can be obtained by summing up the contribution from each mode;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFl2jKy5taZJA" src="https://media.licdn.com/dms/image/C5112AQFl2jKy5taZJA/article-inline_image-shrink_400_744/0/1520169013784?e=1691625600&amp;v=beta&amp;t=0zMh1z9PFWii_4KijpRurN8omZGO30jKrk_1FMKeyx0"> 
+  </div> 
+  <p>12. In case of structures subjected to ground acceleration &nbsp;, the equation of motion is the same as if the structure was subjected to external forces = - m_j * u_g_dot_dot (t).</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFaZjTUpdDiHA" src="https://media.licdn.com/dms/image/C5112AQFaZjTUpdDiHA/article-inline_image-shrink_400_744/0/1520172040553?e=1691625600&amp;v=beta&amp;t=fDr7SXi3oALKt_1SsF5X_6Vjg6I6j6gaARasS5sjvYM"> 
+  </div> 
+  <p>Here;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHyfq10tG6mSg" src="https://media.licdn.com/dms/image/C5112AQHyfq10tG6mSg/article-inline_image-shrink_1000_1488/0/1520170224193?e=1691625600&amp;v=beta&amp;t=6JE72hffF7NYocF1AyP5TdcuFSfvA4cOTqsu4q46dQU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFxmOSgyLGwRg" src="https://media.licdn.com/dms/image/C5112AQFxmOSgyLGwRg/article-inline_image-shrink_1000_1488/0/1520196196509?e=1691625600&amp;v=beta&amp;t=ued0zOM2wfwi_OYfHew6NVTM_9_CqUPPvgpbCxXabbo"> 
+  </div> 
+  <p>13. The equation of the motions of the structure to ground acceleration as above can be solved using mode superposition i.e. by transforming the equation from the physical coordinate system into the modal coordinate system.</p> 
+  <p>14. Once transformed into the modal coordinate system is solved as a SDOF system as follows;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEZwhvGFMjoJA" src="https://media.licdn.com/dms/image/C5112AQEZwhvGFMjoJA/article-inline_image-shrink_400_744/0/1520065799338?e=1691625600&amp;v=beta&amp;t=JXm7NejOEXqY6sarXqwnMX-9n6QoDSuyNaZirqvlsx4"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHYBX451r9mYg" src="https://media.licdn.com/dms/image/C5112AQHYBX451r9mYg/article-inline_image-shrink_400_744/0/1520170027843?e=1691625600&amp;v=beta&amp;t=WvfnOyLd0MLx2QhbAnIRtqRAlB14T3NEDMivjFs94LI"> 
+  </div> 
+  <p>15. The solution to the above (SDOF system) equation can be obtained by comparing the above equation to the equation of motion of the rth SDOF, the SDOF system with vibrating properties- natural frequency ω and damping ratio ζ- of the rth mode of the MDOF system.</p> 
+  <p>16. The SDOF system subjected ground acceleration u_g_dot_dot (t) &nbsp;may be solved i.e.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHXTAFEApYswA" src="https://media.licdn.com/dms/image/C5112AQHXTAFEApYswA/article-inline_image-shrink_400_744/0/1520066317427?e=1691625600&amp;v=beta&amp;t=zOv25bFvUq8QK-LuVln8HUFaHniH3EOb-rsX8bqJA-k"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>Comparing the above two equations gives;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG9og-j4Suw3A" src="https://media.licdn.com/dms/image/C5112AQG9og-j4Suw3A/article-inline_image-shrink_400_744/0/1520169384828?e=1691625600&amp;v=beta&amp;t=qTYPw8jOeUd3_auz2scO08NuDROedadlEWurJ-Z4DHo"> 
+  </div> 
+  <p>17. The total response [in the physical coordinate system] may be obtained as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFSX4_pukoNnA" src="https://media.licdn.com/dms/image/C5112AQFSX4_pukoNnA/article-inline_image-shrink_400_744/0/1520201379067?e=1691625600&amp;v=beta&amp;t=lQ0IVBZdn-Wu8eDSJMMO6sas718ihyuc4QN9doxUP1I"> 
+  </div> 
+  <p>18. The contribution of the nth mode to the excitation vector <strong>m</strong>ℓ is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEwuPIWkP0qkA" src="https://media.licdn.com/dms/image/C5112AQEwuPIWkP0qkA/article-inline_image-shrink_400_744/0/1520115190470?e=1691625600&amp;v=beta&amp;t=sP9M8QdNfZpH-5c1ZqNalTkIOVT4YMCN8QWnonpYclw"> 
+  </div> 
+  <p>where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFqKYSV1SzboQ" src="https://media.licdn.com/dms/image/C5112AQFqKYSV1SzboQ/article-inline_image-shrink_400_744/0/1520114531407?e=1691625600&amp;v=beta&amp;t=zSTjtzKPXdZhpSiYJjKcjmC6AeHr16nzNV6DBkqkSGI"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <h1><strong>7.&nbsp; </strong><strong>SUMMARY OF STEPS</strong></h1> 
+  <p>The response of a structure subjected to earthquake ground motion can be computed as a function of time by the procedure detailed in the preceding steps which is summarized in a step by step form as below;</p> 
+  <p>1. Define the ground acceleration numerically at every time step</p> 
+  <p>2. Define the structural properties;</p> 
+  <p>&nbsp; a. Determine the mass matrix m and the stiffness matrix k</p> 
+  <p>&nbsp; b.Estimate the modal damping ratios.</p> 
+  <p>3. Determine the natural frequencies (natural periods ) and the natural modes of vibration</p> 
+  <p>4. Determine the modal components of the effective earthquake force distribution.</p> 
+  <p>5. Compute the response contribution for the nth mode using the following steps which are repeated for all the modes, n = 1 ,2,….., N</p> 
+  <p>a. Perform static analysis of the building subjected to lateral forces to determine the modal static response for each desired response quantity r</p> 
+  <p>b. Determine the pseudo acceleration response of the nth mode SDOF system to using the numerical time stepping procedures</p> 
+  <p>c. Determine rn (t)</p> 
+  <p>6. Combine the modal contributions to determine the total response.</p> 
+  <p>Since, only a few modes contribute to the response, steps 3,&nbsp;4 and&nbsp;5 may be done for the first few modes. This has not been discussed in this article</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p>
+ 
+</div>
+</body>
+</html>

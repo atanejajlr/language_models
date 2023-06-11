@@ -1,0 +1,378 @@
+<html>
+<head>
+  <title>On Fatigue Failure –  Part 3: Factors affecting fatigue strength</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGvDgnxFYQwyg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-3-factors-affecting-strength-ajay-taneja">On Fatigue Failure –  Part 3: Factors affecting fatigue strength</a></h1>
+    <p class="created">Created on 2018-02-12 19:36</p>
+  <p class="published">Published on 2018-02-12 21:20</p>
+  <div>
+  <h2>1.&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;In my earlier blog titled<em>: “On fatigue failure – Part 2: Stress – Life diagram, Endurance Limit, Approximation of the S – N curve” (</em><a href="https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja/?trackingId=z2GXL0N7S9U5WiyjxpCorA%3D%3D" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja/?trackingId=z2GXL0N7S9U5WiyjxpCorA%3D%3D</a>) , I had described how the fatigue data is obtained during testing. The data would be required for the material one is using, for the state of stress being applied (simple tension, bending, torsion, etc.) and applied stress ratio. It was discussed that in the absence of compete S – N test data, the curve could be approximated through the relation,&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFoMiO5ngZSxw" src="https://media.licdn.com/dms/image/C5112AQFoMiO5ngZSxw/article-inline_image-shrink_400_744/0/1520208909334?e=1691625600&amp;v=beta&amp;t=zXG9Wm7M-9SnmjjDVKwgSc3wITI9Q6GcFR2bjqrDjig"> 
+  </div> 
+  <p>Where; Sf is the fatigue strength, N the number of cycles to failure and a ,b being the constants depending upon the endurance limit, ultimate tensile strength of the material.</p> 
+  <p>It should be underscored that the test data is obtained from the experiment under laboratory controlled environment. In reality, differences in material, manufacturing environment and design exist. These differences can be incorporated in the computation of fatigue strength using a series of factors which account for;</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surface condition (factor denoted as, ‘ka)</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Part / specimen size or shape (‘kb’)</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Load factor (‘kc’)</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thermal fatigue / Temperature factor (kd)</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reliability factor (ke)</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Miscellaneous factors (‘kf’)</p> 
+  <p>The above listed factors are in respective orders in sections 2 through 6 below. Section covers the Marin factors that were provided for RR Moore experiment (rotating beam specimen) to account for reduction in endurance limit due to these factors. Section 8 is an example evaluation of the computation of Marin factors.</p> 
+  <p><br></p> 
+  <h2>2.&nbsp;&nbsp;Surface conditions</h2> 
+  <p>For many common types of loading, such as bending and torsion, the maximum stress effects occur at the surface. Furthermore, the surface is exposed to harsh treatment such as corrosion or unexpected loads such as scratch or impact. In addition, experiments show that even the failure of axial loading usually begins at the surface.</p> 
+  <p>With all the evidence pointing to the surface, it is necessary to understand the effect of surface and the treatments that improve the surface properties.</p> 
+  <p>Experiments done on steel specimen provided evidence that under a completely reversed stress of 65 MPa, a uniform and smooth surface does have a positive influence on fatigue life as shown in the table below;</p> 
+  <p><strong>Table 1: Effect of surface roughness on fatigue life:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE19DI97y6C0Q" src="https://media.licdn.com/dms/image/C5112AQE19DI97y6C0Q/article-inline_image-shrink_1000_1488/0/1520209691799?e=1691625600&amp;v=beta&amp;t=g0BS5E3gvbQjCYP9wcqc8scn2zS_PYsZCPU-khD-bd4"> 
+  </div> 
+  <p>A more systematic approach to understand the “surface factor” is to plot against the fatigue limit of the material. Each line represents a different surface treatment;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHwtOQ4t_4MOQ" src="https://media.licdn.com/dms/image/C5112AQHwtOQ4t_4MOQ/article-inline_image-shrink_1000_1488/0/1520189946071?e=1691625600&amp;v=beta&amp;t=TUivkqs4F6_3OgGgDGDVA_HAmp7A8PACU978-liYabI"> 
+  </div> 
+  <p><strong>Figure 1: Variation of ultimate tensile strength under different surface treatments</strong></p> 
+  <p><strong>Surface treatments:</strong></p> 
+  <p>Since the fatigue life is clearly related to the condition of the surface, many researchers devote their efforts to surface treatments. Generally, treatments that produce compressive residual stresses at the surface positive impact on fatigue life. Some of the surface treatments are discussed below;</p> 
+  <p><strong>1)&nbsp;&nbsp;&nbsp;&nbsp;Carburizing and Nitriding</strong>: Carburizing and Nitriding produce higher strength and hardness at the surface and this improve fatigue life.</p> 
+  <p>It may be noted that nitriding and carburizing are the two most common heat treatment practises for surface hardening functional components. The main difference between the two is that in nitriding, the nitrogen atoms are made to diffuse into the surface of the parts being processed, whereas in carburizing, carbon is used.</p> 
+  <p><strong>2)&nbsp;&nbsp;&nbsp;&nbsp;Shot peening:</strong> Shot peening is a cold working process used to produce compressive stress residual stress layer and modify mechanical properties of metals and composites. It entails impacting a surface with shot (round metallic, glass or ceramic particles) with force sufficient to cause plastic deformation. Thus, shot peening is used to strengthen and relieve stresses in structural components.</p> 
+  <p>It may be noted that shot peening may have negative impact on the corrosion resistance. This is because the surface after shot peening is packed with dimples and does not remain smooth anymore. And, any non-smooth surface is easier to trap moisture, has more surface area exposed, and thus is more vulnerable to corrosion.</p> 
+  <p><strong>3)&nbsp;&nbsp;&nbsp;&nbsp;Cold working: </strong>Cold working is the process that compresses and squeezes the sheet metal between rollers. It improves the accuracy of thickness and surface finish. Cold working produces complex residual stress layer on the surface such that it postpones the crack propagation from the surface and extends the fatigue life.</p> 
+  <p><br></p> 
+  <h2>3.&nbsp;&nbsp;Thermal fatigue, low temperature and high temperature effects</h2> 
+  <p>&nbsp;<strong>Thermal fatigue:</strong></p> 
+  <p>Thermal fatigue can be categorized into thermal loading, high temperature and low temperature fatigue. The mismatch of coefficients of thermal coefficients between 2 mating parts introduces thermal stresses when temperature changes (see for fundamentals on thermal stresses and strains:<a href="https://www.mathalino.com/reviewer/mechanics-and-strength-of-materials/thermal-stress" target="_blank">https://www.mathalino.com/reviewer/mechanics-and-strength-of-materials/thermal-stress</a>.</p> 
+  <p>Another thermal loading case is the component being exposed to heat and cold or back and forth repeatedly. When changes in temperature are severe and / or frequent thermal loading / thermal fatigue; thermal failure sets in.</p> 
+  <p><strong>Low \ temperature effects:</strong></p> 
+  <p>Low temperature often makes the usually ductile material more brittle. The cracks in brittle material propagate more rapidly more than in ductile material which worsens the fatigue life.</p> 
+  <p><strong>High temperature effects</strong></p> 
+  <p>High temperature often reduces the material stiffness. As the temperature increases, the tensile strength drops to a fraction of its room temperature. This is illustrated as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEQEGvf1zC4HQ" src="https://media.licdn.com/dms/image/C5112AQEQEGvf1zC4HQ/article-inline_image-shrink_1000_1488/0/1520239785018?e=1691625600&amp;v=beta&amp;t=k6ek7Yxw8vJVZizCQgU2zT6xz_qd7hZ1vOjc1kSMw8Q"> 
+  </div> 
+  <p><strong> Figure 2: Stress – Life curves at three temperatures</strong></p> 
+  <p>&nbsp;</p> 
+  <h2>4.&nbsp;&nbsp;Size effect</h2> 
+  <p>&nbsp;Generally speaking; larger the component, the more will be the initial imperfections within the component. Experiments done on carbon steel alloy found that the diameter of the steel rod does affect the fatigue life when the rod is under axial (tension – compression) loading.</p> 
+  <p>Empirical relations for axial loading are given below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEUg2TaCVlExQ" src="https://media.licdn.com/dms/image/C5112AQEUg2TaCVlExQ/article-inline_image-shrink_400_744/0/1520249390600?e=1691625600&amp;v=beta&amp;t=Rm8BRcTIKZCDCW-yZ0HewgM3oSD8F3WsYdrUJC-oic0"> 
+  </div> 
+  <p>Where;</p> 
+  <p>Cs is called the ‘fatigue reduction factor’</p> 
+  <p>For common steel alloys, the size effect can be approximated as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEebSE3FhbPAA" src="https://media.licdn.com/dms/image/C5112AQEebSE3FhbPAA/article-inline_image-shrink_400_744/0/1520211538164?e=1691625600&amp;v=beta&amp;t=e2K8FKg0IfThQDoHagV3XQ9tBn9R75aspgGywCRDRQk"> 
+  </div> 
+  <p>Where;</p> 
+  <p>σf1 is the unknown fatigue limit for a critically stressed V1 and σf0 is the known fatigue limit for a critically stressed V0. Critically stressed volume is the volume near the surface of the specimen to at least 95% of σmax.</p> 
+  <p><br></p> 
+  <h2>5.&nbsp;&nbsp;Loading condition</h2> 
+  <p>&nbsp;</p> 
+  <p>Loading condition plays a role in affecting the fatigue strength. The loading can be applied in: tension, flexure, torsion/shear or some combination. For a material being tested at some peak stress level, the fatigue life would be the greatest in bending, slightly lower in axial loading (tension) and lowest in shear or torsion.</p> 
+  <p>For data generated in flexure, the loading factors to get the axial and torsional / shear strength may be approximated as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEZDQVI-rAkfw" src="https://media.licdn.com/dms/image/C5112AQEZDQVI-rAkfw/article-inline_image-shrink_400_744/0/1520191908583?e=1691625600&amp;v=beta&amp;t=gZEaftJnPeAfmY-tx1dVcXlFQoxnDF2K6KzPTU5jRGQ"> 
+  </div> 
+  <h2>6.&nbsp;&nbsp;Reliability (scatter of test data)</h2> 
+  <p>&nbsp;</p> 
+  <p>Reliability accounts for the scatter of test data. E.g. an 8% standard deviation in test data requires a fatigue strength reduction factor value of 0.868 with 95% reliability and 0.753 for 99.99% reliability.</p> 
+  <p>It should be underscored that the SN(Wohler) plotted values are mean values based on a number of tests resulting in loads at failure. The strength values are mean values implying a 50% survival rate. To enable determination of design strength values with a higher survival rate i.e. 90% upwards then the indicated strength values must be reduced. This involves using the Reliability factor by statistical adjustment of the 50 % value Sn’. Using the standard normal cumulative distribution and assuming an 8% standard deviation for both stress and strength, an analytical expression for fatigue strength reduction based on the scatter of test data may be deduced. The expression results in values given in the table below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEwTXzz4udk7g" src="https://media.licdn.com/dms/image/C5112AQEwTXzz4udk7g/article-inline_image-shrink_400_744/0/1520212067581?e=1691625600&amp;v=beta&amp;t=iV8U-SWtAQiOdNafdHUSudTir6fWbV4766MEMa_Usnk"> 
+  </div> 
+  <h2>7.&nbsp;&nbsp;Marin factors for computation of the endurance limit</h2> 
+  <p>&nbsp;In my earlier articles; I had discussed in some detail about the experimental process of obtaining the S –N data from a series of specimen tests. The scope of this article is to describe some aspects of the R.R. Moore Fatigue Testing System and then enlist the modification factors for the endurance limit which is assumed to have been deduced from the R.R. Moore Fatigue Testing System</p> 
+  <p><strong>R.R. Moore Fatigue Testing System</strong></p> 
+  <p>The R.R. Moore Rotating Beam Fatigue Testing System is recognized as the standard for rotating beam fatigue testing for more than 70 years!</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGsvkz-fiTy4A" src="https://media.licdn.com/dms/image/C5112AQGsvkz-fiTy4A/article-inline_image-shrink_1000_1488/0/1520192820857?e=1691625600&amp;v=beta&amp;t=0BA1PHaBEjNBYJJIaB6tSOAXOHC5N6I3ygyf-5kQrNQ"> 
+  </div> 
+  <p><strong> Figure 3: The R-R Moore rotating beam fatigue testing machine</strong></p> 
+  <p>The testing system is designed based on the rotating beam principle. The specimen functions as a simple beam symmetrically loaded at two points. When loaded, one half the resolution, the stresses in the fibres originally below the neutral axis are reversed from tension to compression or vice-versa. Upon completing the revolution, the stresses are again reversed so that during one revolution, the test specimen passes through a complete cycle of flexural stresses.</p> 
+  <p><strong>Marin equation:</strong></p> 
+  <p>Thus, if&nbsp;&nbsp;&nbsp;Se’ is the endurance limit obtained through R.R. Moore rotating beam specimen, then the Marin equation (note: the equation is termed as Marin equation because it is named after Joseph Marin who first discovered it) which takes into account the factors affecting fatigue strength as discussed in the course of this article is written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEKhyVAvkUjEQ" src="https://media.licdn.com/dms/image/C5112AQEKhyVAvkUjEQ/article-inline_image-shrink_400_744/0/1520191904236?e=1691625600&amp;v=beta&amp;t=SomXRBlpTvMl3axB8DTZ_uNKsLqbtmMAW5a3L0R60Cs"> 
+  </div> 
+  <p>Where;</p> 
+  <p>Se’ = endurance limit based on R.R. Moore experiment</p> 
+  <p>ka: surface factor</p> 
+  <p>kb: size factor</p> 
+  <p>kc: loading factor</p> 
+  <p>kd: temperature factor</p> 
+  <p>ke: reliability factor</p> 
+  <p>kf: miscellaneous factor</p> 
+  <p><strong>Approximate values for ka,kb,kc,kd,ke,kf for the estimation of endurance limit Se’ assuming Se is from R.R. Moore rotating beam experiment:</strong></p> 
+  <p><strong>Surface factor ka:</strong></p> 
+  <p>Rotating beam is highly polished specimen without any circumferential scratches. The surface factor for other finishes</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEHnoWrY5RiYQ" src="https://media.licdn.com/dms/image/C5112AQEHnoWrY5RiYQ/article-inline_image-shrink_400_744/0/1520147021162?e=1691625600&amp;v=beta&amp;t=MICAicC0Hzk4v1H284SrfevUtApJUASBRIwowzEnkpw"> 
+  </div> 
+  <p>Where;</p> 
+  <p>A and b are as discussed in my blog:</p> 
+  <p>Sut = ultimate tensile strength of the material</p> 
+  <p><br></p> 
+  <p><strong>Size factor kb:</strong></p> 
+  <p><strong>For rotating circular cross section subjected to bending or torsion;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFqfiZIt7cNYA" src="https://media.licdn.com/dms/image/C5112AQFqfiZIt7cNYA/article-inline_image-shrink_400_744/0/1520209195201?e=1691625600&amp;v=beta&amp;t=U-TW1AhAqUoUHp6HYr-gK5byLvaZsDXW0kAjpr-5qQc"> 
+  </div> 
+  <p>kb = 1 for axial load</p> 
+  <p>For other condition such as non-rotating shaft or non-circular section, effective dimension de is used.</p> 
+  <p><strong>Effective dimension de for non-rotating solid and hollow circular shafts;</strong></p> 
+  <p>The equivalent diameter is obtained by equating the volume of the material stressed at and above 95 % of the maximum stress to the same volume of the rotating beam specimen. It turns out that when the two volumes are equated, the lengths cancel, so only the areas are considered</p> 
+  <p>For rotating solid or hollow circular shafts: 95 % stressed area is; the area in the ring having an outside diameter ‘d’ and an inside diameter ‘0.95d’. So designating 95% stressed area as A0.95σ</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHP_w-OBTyu6Q" src="https://media.licdn.com/dms/image/C5112AQHP_w-OBTyu6Q/article-inline_image-shrink_400_744/0/1520216431831?e=1691625600&amp;v=beta&amp;t=EV9hb30KSs_2QjZ_B-GT7WYvdedgWLPrl0si649buBk"> 
+  </div> 
+  <p>The equation is also valid for a hollow circular / round area.</p> 
+  <p>For a non-rotating solid or hollow circular section, 95% stress area is area outside of two parallel chords having a spacing 0.95d where‘d’ is the diameter. Using an exact computation, this is&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGzbxIO3T2rTQ" src="https://media.licdn.com/dms/image/C5112AQGzbxIO3T2rTQ/article-inline_image-shrink_400_744/0/1520192240532?e=1691625600&amp;v=beta&amp;t=S4yQXZ_cyNDx-s1wvk3PeDb8DyFsZt_5rf14d_g5Yc4"> 
+  </div> 
+  <p>Thus, the equivalent diameter of the non-rotating solid / hollow section is obtained by equating;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHQD5JTxyZPeA" src="https://media.licdn.com/dms/image/C5112AQHQD5JTxyZPeA/article-inline_image-shrink_400_744/0/1520223435697?e=1691625600&amp;v=beta&amp;t=3Q9Y094namOhXViVsDgV7YKn5p8g3ySxs7kd-zAOvpg"> 
+  </div> 
+  <p>This works out as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQENTHMaXG-nIg" src="https://media.licdn.com/dms/image/C5112AQENTHMaXG-nIg/article-inline_image-shrink_400_744/0/1520251446484?e=1691625600&amp;v=beta&amp;t=f_ILQaxMHoZEse0L-clGykKaSf1zfAnN-cKV2sOS51o"> 
+  </div> 
+  <p><strong>Loading factor kc:</strong></p> 
+  <p>When fatigue tests are carried out with rotating bending, axial (push-pull) and torsional loading, the endurance limits differ with Sut. The average values of the load factor kc are given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHG8kuuM0W2Mw" src="https://media.licdn.com/dms/image/C5112AQHG8kuuM0W2Mw/article-inline_image-shrink_400_744/0/1520146069595?e=1691625600&amp;v=beta&amp;t=U3aLS6oUBhlwwk-5jc3DEJFcIoEz0jNSTcXktMmZiio"> 
+  </div> 
+  <p><strong>Temperature factor kd:</strong></p> 
+  <p>When operating temperatures are below the room temperature, brittle fracture is a strong possibility and should be investigated first. When operating temperatures and higher than the room temperatures, yielding should be investigated first because the yield strength drops of rapidly with temperature – see figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEXYwsbAH32eA" src="https://media.licdn.com/dms/image/C5112AQEXYwsbAH32eA/article-inline_image-shrink_1000_1488/0/1520192764929?e=1691625600&amp;v=beta&amp;t=k9qV-A1_Y_mPKOeZehrJ6pfWAojqIaqw6cb5VlO1X2Q"> 
+  </div> 
+  <p><strong>Figure: 4 – Graph of temperature vs. ratio of strength at operating temperatures to the strength at room temperature</strong></p> 
+  <p><br></p> 
+  <p><strong>Effect of temperature on inelastic effects (plasticity and creep)</strong></p> 
+  <p>The effect of high temperature on mechanical properties can be associated with transformation of the material structure due to diffusion process, aging, dislocation restructuring (softening) and recrystallization.</p> 
+  <p>In general, such processes imply that plastic deformation can occur more easily at elevated temperature. This can lead to creep which can be defined as continued plastic deformation under sustained load. With respect to fatigue, it can imply that more plastic deformation and creep can occur in the plastic zone of a fatigue crack which may imply to both micro-cracks and macro-cracks. As a result fatigue damage accumulation might be enhanced. During creep under sustained load, creep failures occur by grain boundary sliding, void formation, void growth and coalescence.</p> 
+  <p><strong>Effect of temperature on endurance limit</strong></p> 
+  <p>The limited amount of data available show that endurance limit of steels increases slightly as temperature increases and then begins to fall in the range of 200 – 600 degrees C. This is not unlike tensile strength behaviour as illustrated in figure 4. Thus, it may be said that with high probability that endurance limit is related to tensile strength at hogh temperature in the same relation as at room temperature. – unless more comprehensive data is available.</p> 
+  <p>Using a result of 145 tests of 21 different carbon and alloy steels, the following table has been obtained in the past;</p> 
+  <p><strong>Table: Tensile strength vs. temperature</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGopi2YVIW2KQ" src="https://media.licdn.com/dms/image/C5112AQGopi2YVIW2KQ/article-inline_image-shrink_1000_1488/0/1520212509439?e=1691625600&amp;v=beta&amp;t=ChLqEf5YiaCMrQA9ulQPApQtTIuvnK380xuueS5ZPe4"> 
+  </div> 
+  <p>Fitting a fourth order polynomial to the above data, following equation for the factor kd accounting for reduction in the endurance limit due to temperature effects may be arrived at using the following relation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEuwf1aGo3UXw" src="https://media.licdn.com/dms/image/C5112AQEuwf1aGo3UXw/article-inline_image-shrink_400_744/0/1520214163550?e=1691625600&amp;v=beta&amp;t=_Rr7dWchJ2PLDjzAsMcf0dbBxnQ76va95b2BiC3tml0"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGgJX0jUZhs5Q" src="https://media.licdn.com/dms/image/C5112AQGgJX0jUZhs5Q/article-inline_image-shrink_400_744/0/1520190519691?e=1691625600&amp;v=beta&amp;t=iXeu48kEcSa6FRkSkscFyp0GcklVQOYsYRcKSk0JsCM"> 
+  </div> 
+  <p><strong>Reliability factor ke:</strong></p> 
+  <p>Reliability as discussed in section 6 account for effects of scatter of test data. Data presented by Haugen and Wirching <em>(E.B. Haugen and P.H. Wirsching, “Probabilistic Design, Vol. 47, No.12, 1975,pp.10-14)</em> show that standard deviations of endurance strengths of less than 8 %. Thus, the reliability modification factor to account for this can be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEY5QMCzpp5GA" src="https://media.licdn.com/dms/image/C5112AQEY5QMCzpp5GA/article-inline_image-shrink_400_744/0/1520239422142?e=1691625600&amp;v=beta&amp;t=g2VKlqnQLuYoYTKowmuVrF2jduX5BpnbwZdrtjYSh3w"> 
+  </div> 
+  <p>Where;</p> 
+  <p>The above has not been elaborated in the blog here and will be dealt with at a later stage.</p> 
+  <p><strong>Miscellaneous factors kf</strong></p> 
+  <p>Other factors that affect endurance limit may be: residual stresses, corrosion, cyclic frequency, etc. </p> 
+  <p>Residual stresses may either improve the endurance limit or affect it adversely. Generally, if the residual stress on the surface of the part is compressive, the endurance limit is improved. Fatigue failures appear to be tensile failures, or at least caused by tensile stress and so any factors that reduce the tensile stress also reduce the possibility of fatigue failure. Corrosion has adverse effects on endurance limit so if there is a corrosive environment, the endurance limit has to be appropriately reduced. Sometime in-house data is available within companies for such factors.</p> 
+  <p><br></p> 
+  <h2>8.&nbsp;&nbsp;Example evaluation of endurance limit</h2> 
+  <p>&nbsp;A rotating shaft is in fully reversed bending. It is supported by bearing at the ends at R1 and R2. The fillet radii at all points is r = 2.54 mm. The shaft is machined with surface conditions and a = 1.58 MPa and b = -0.085. A reliability of 99.99% is required for design. The shaft is made of 5Cr – Mo – V Aircraft steel with Sut = 1655 MPa and will be operating at 315 degrees C. What is the fully adjusted endurance limit? Assume that endurance limit obtained through test for a polished specimen made of 5Cr – Mo – V is 700 MPa. Test data gives the reduction in tensile strength at 315 degrees C is 86% of the ultimate tensile strength at room temperature.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFGs8-pYFLI1A" src="https://media.licdn.com/dms/image/C5112AQFGs8-pYFLI1A/article-inline_image-shrink_400_744/0/1520240786536?e=1691625600&amp;v=beta&amp;t=DugzxXNcal8nAXfo79Pomy0c4cuHcgcWDN1gUtVmy9w"> 
+  </div> 
+  <p>Solution:</p> 
+  <p>Using the relation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGU8aMaH9pWxA" src="https://media.licdn.com/dms/image/C5112AQGU8aMaH9pWxA/article-inline_image-shrink_400_744/0/1520207501370?e=1691625600&amp;v=beta&amp;t=7taZOGbTv5E4ulquH5HttnrB2CkgEgWOGH8s8Z5SXJU"> 
+  </div> 
+  <p>To calculate;</p> 
+  <p><strong>Surface factor ka;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHjT-lDGq2eow" src="https://media.licdn.com/dms/image/C5112AQHjT-lDGq2eow/article-inline_image-shrink_400_744/0/1520204131736?e=1691625600&amp;v=beta&amp;t=_Hf5NXJPtmf5yzRE4J6_2klnIVC2tXWKl9b6tSmKhb4"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF7CIS_U0bBMg" src="https://media.licdn.com/dms/image/C5112AQF7CIS_U0bBMg/article-inline_image-shrink_400_744/0/1520190511903?e=1691625600&amp;v=beta&amp;t=GpxjxeBLyUH1pcM98sHnw-05e9e-dm63XpwdyIYpces"> 
+  </div> 
+  <p><strong>Size factor kb;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGSbdHeuIl2HA" src="https://media.licdn.com/dms/image/C5112AQGSbdHeuIl2HA/article-inline_image-shrink_400_744/0/1520210946001?e=1691625600&amp;v=beta&amp;t=Nk1KVO7xbmnZXfkk9sUrSr5WnBI_hHWicXMCLLfKmhg"> 
+  </div> 
+  <p>Using the smaller shaft diameter as the stress in stress concentration area corresponding to the fillet is going to the worst case scenario;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGqCM-PJEQRxw" src="https://media.licdn.com/dms/image/C5112AQGqCM-PJEQRxw/article-inline_image-shrink_400_744/0/1520239933328?e=1691625600&amp;v=beta&amp;t=nO0L4EUa8S6DPKxsozru7gxa27_bKV9UxUHeLZKIY3w"> 
+  </div> 
+  <p><strong>Loading factor kc:</strong></p> 
+  <p>Since, rotating beam bending specimen is used;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG0pbDc_etYAw" src="https://media.licdn.com/dms/image/C5112AQG0pbDc_etYAw/article-inline_image-shrink_400_744/0/1520242752327?e=1691625600&amp;v=beta&amp;t=FPVH_RIoXggTL7FSuJAhExuaY378EH7Lw2AYghwA9aY"> 
+  </div> 
+  <p><strong>Loading factor kd:</strong></p> 
+  <p>Given – kd = 0.86</p> 
+  <p>Reliability factor ke:</p> 
+  <p>For 99.99% reliability,</p> 
+  <p>ke = 0.702 (see section 6)</p> 
+  <p><strong>kf = 1</strong></p> 
+  <p>Thus,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG5CJGe2YTYdA" src="https://media.licdn.com/dms/image/C5112AQG5CJGe2YTYdA/article-inline_image-shrink_400_744/0/1520218539587?e=1691625600&amp;v=beta&amp;t=iF772u6G9RqCxHgs1lRhlCJZpvHg-1OckcaMxBzorSc"> 
+  </div> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p>
+ 
+</div>
+</body>
+</html>

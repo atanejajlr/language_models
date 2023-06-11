@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Time Series Forecasting: ARIMA Models</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD4E12AQG1MPUkCFueXw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/time-series-forecasting-arima-models-ajay-taneja">Time Series Forecasting: ARIMA Models</a></h1>
+    <p class="created">Created on 2020-09-22 16:35</p>
+  <p class="published">Published on 2022-08-22 17:52</p>
+  <div><h2>1. Introducton</h2><p>Having talked about about the Time Series Decomposition into: Error, Trend and Seasonality (ETS) and the forecasting methods based on the approaches as elborated in suficient detail in my aricle [<a href="https://www.linkedin.com/pulse/time-series-forecasting-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/time-series-forecasting-ajay-taneja/]</a>, it is now time we see the ARIMA models for time series forecasting – ARIMA Stands for “Auto-Regressive Integrated Moving Average”.</p><p>The first step towards the usage of ARIMA models is to transform the time series into a more workable format – once this is done, the sections below will discuss each component of the model in details and then we build a model to make a forecast</p><h2><br></h2><h2>2. Types of ARIMA Models</h2><p>There are 2 types of ARIMA models: a) Non-Seasonal ARIMA models b) Seasonal ARIMA models. Non-Seasonal ARIMA models forecast the future points based on the construction of 3 components: an autoregressive (AR) component, a differencing (I) component and the Moving Average (MA) component.</p><p><strong>Non-Seasonal ARIMA models:</strong></p><p><strong>&nbsp;<u>The “p” term – number of periods to lag for:</u></strong></p><p>Non-Seasonal ARIMA models are denoted as ARIMA (p, d, q). The “p” represents the amounts of periods to lag for in the ARIMA calculation. That is, if we set p = 2, we will be using the pervious 2 periods of the time series in the auto-regressive portion of the calculation – this helps the line / curve fitted to forecast the time series. Pure Autoregressive models will look like “Linear Regression” where the predictive variables are a certain number of previous periods which is represented by “p”.</p><p><strong><u>The “d” term – “differencing” term:</u></strong></p><p>The differencing term refers to the process we use to transform the time series into a stationary one – a stationary time series is a series without any trend or seasonality. The process is called “differencing” and is denoted as “d” where – “d” refers to the number of transformations used in the process.</p><p><strong><u>The “q” term – Moving Average term:</u></strong></p><p>The Moving Average term refers to the lag of the error component. The error component refers to the part of the time series not explained by the trend or seasonality. Moving Average models look like linear regression where the predictive variables are previous “q” periods of errors.</p><p><br></p><h2>3.  Stationary vs Non-Stationary – Why is that we need a Stationary dataset?</h2><p>As stated above, a time series may need to be transformed to make it stationary. A stationary time series is the one where the mean and variance is constant over time. ARIMA models make the adjustment in its calculation to make the series stationary. And this makes sense – because if the series is consistently increasing over time as shown in the figure below, the sample mean and variance will grow with the size of the sample and hence the forecasting methods will always underestimate the mean and variance in the future periods – this is the reason we always need a stationary dataset.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQElK2v8q_Zb0g" src="https://media.licdn.com/dms/image/D4E12AQElK2v8q_Zb0g/article-inline_image-shrink_1000_1488/0/1660420623286?e=1691625600&amp;v=beta&amp;t=6cEKi0lrqUD8Uoz1rC8ebzwQSrM0VJcn2ofbFf2pA28"></div><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQEnbh4MWR5OKw" src="https://media.licdn.com/dms/image/D4E12AQEnbh4MWR5OKw/article-inline_image-shrink_1000_1488/0/1660420679261?e=1691625600&amp;v=beta&amp;t=_sAcTDe_uuT68e4Ff8Pz7fZP_C68p5shVWRPvjYIfkI"></div><p><br></p><h2>3.  Example plots of stationary and non-stationary time series</h2><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFLtAnCvgsOsg" src="https://media.licdn.com/dms/image/D4E12AQFLtAnCvgsOsg/article-inline_image-shrink_400_744/0/1660420749377?e=1691625600&amp;v=beta&amp;t=09vvQfVIGRfsb-IEIyewlMcoaHxKIYYxWkwh-BDHlm4"></div><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGEh_S34UZxCg" src="https://media.licdn.com/dms/image/D4E12AQGEh_S34UZxCg/article-inline_image-shrink_1000_1488/0/1660420777618?e=1691625600&amp;v=beta&amp;t=ycSFjYScgsySFG_ycVnbmu6kAmpPyXgDn_zg9CG2Ifg"></div><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGD37__aD-rQA" src="https://media.licdn.com/dms/image/D4E12AQGD37__aD-rQA/article-inline_image-shrink_400_744/0/1660420809059?e=1691625600&amp;v=beta&amp;t=eYhmuT_RwJnBOw7OTdGQOWECm3LKpghfyZLRdZ3ICkI"></div><p><br></p><h2>4. Transforming a non-stationary time series into a stationary one</h2><p>This is an important step in the data to be prepared for the ARIMA model. The spreadsheet shows how manual differencing is carried out in a time series. The number of times the differencing is needed to render the time series stationary will be the differenced I(d) term in the ARIMA model. One way to determine if the time series is sufficiently differenced is to plot the differenced time series and check if there is a constant mean and variance.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGKRUpBL_RFUA" src="https://media.licdn.com/dms/image/D4E12AQGKRUpBL_RFUA/article-inline_image-shrink_1000_1488/0/1660480129777?e=1691625600&amp;v=beta&amp;t=IwmK-3phm8QjqaBWJUf9NcYbKhYpXNRiM-JJm60Wm8w"></div><p>The above spreadsheet can be found in the folloing location on my Gitlab: <a href="https://github.com/ajaytanejajlr/time_series.git" target="_blank">https://github.com/ajaytanejajlr/time_series.git</a></p><p><br></p><h2>5.&nbsp;&nbsp;Autocorrelation in Time Series</h2><p>An important concept in understanding whether the time series is stationary or not is the Autocorrelation. In order to construct an ARIMA model, it is important to understand whether/to what degree an autocorrelation exists in the time series. Autocorrelation refers to how corelated is a time series with its past values.</p><p>There are several autocorrelations’ functions corresponding to each panel in the lag plot. For example, r1 measures the linear relationship between yt and yt-1, r2 measures the relationship between yt and yt-2, and so on.</p><p>The value of rk can be determined by:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGnzvqZ_i7osQ" src="https://media.licdn.com/dms/image/D4E12AQGnzvqZ_i7osQ/article-inline_image-shrink_400_744/0/1660480922988?e=1691625600&amp;v=beta&amp;t=yhGzDjQgYPuPqHxhgSUZVw5GaQUBWKfnUZjs0pR2r3c"></div><p><strong>Autocorrelation Function Plot:</strong></p><p>An autocorrelation function plot will show how far out a time series is correlated to itself. From the toothbrush sales data set it can be seen that the undifferenced time series has a slow decay towards zero correlation which means current values are much more correlated to the recent values which means that the series is not stationary and will have to be differenced to make it stationary. First differenced to reach a stationary time series.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQECmYhzp7M_mA" src="https://media.licdn.com/dms/image/D4E12AQECmYhzp7M_mA/article-inline_image-shrink_1000_1488/0/1660481011945?e=1691625600&amp;v=beta&amp;t=2eCVtO7Uk4IVMDLfom1tl6b5k51bOc4dDGRH9K6zXS0"></div><p>From the first differenced Autocorrelation Function (ACF) plot, it can be seen that lag-1 is significant but significance after lag-1 is much less signifying that it is a stationary time series.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQE8UkzpovBHug" src="https://media.licdn.com/dms/image/D4E12AQE8UkzpovBHug/article-inline_image-shrink_1000_1488/0/1660481067466?e=1691625600&amp;v=beta&amp;t=jJG8zg3TA9iJxwV0k9NaW0TEYMWAFRTuv8sZIhSUum0"></div><p>Having got this will help us determine whether: we should use Auto-Regression (AR) or Moving Average (MA) or both he components and how many lags should be used. </p><p><strong>AR or MA model:</strong></p><p>If the standardized time seis has a positive autocorrelation at lag-1, AR terms are best. If it has a negative autocorrelation at lag-1 MA terms are best. The decay or cut off of the Autocorrelation function will give us hints of what terms to use. Analysing the plot for the toothbrush sales data set, I give us a suggestion of an AR-1 model Auto-Regressive model with 1 lag) because after we stationarize the data set after first differencing we have a positive autocorrelation and spikes decay towards zero.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFIHUsyzksvcQ" src="https://media.licdn.com/dms/image/D4E12AQFIHUsyzksvcQ/article-inline_image-shrink_1000_1488/0/1660481135830?e=1691625600&amp;v=beta&amp;t=BDr837Mqbn2M0vP0gGHmLwePTXbZg55MYruoFLtdXWY"></div><p><br></p><p>A real practical problem may involve several rounds of differencing and compaing models, statistical tools and libraries do the process automatically</p><p><strong>&nbsp;Trend and Seasonality in ACF plots: </strong></p><p>When data have a trend, the autocorelations for small lags tend to be large and positive. The Autocoelation funcion of a trended tim series tend to be large and positive that slowly decrease as he lags increase. When he data are seasonal, autocorrelatio will b larger for seasonal lags.</p><p><br></p><h2>6.&nbsp;&nbsp;Augmented Dickey Fuller Test</h2><p>If the Auto-corelation are positive for many numbers of lags (10 or more), then, the time series needs further differencing. If we can’t decide between the order of differencing, then we go with the order of the least standard deviation in the differenced series.</p><p>In order to check if the series is stationary or not we could start with the Augmented Dickey Fuller test from the statsmodel package. The reason being is that we will need differencing only if the series is nonstationary. Otherwise, no differencing is needed.</p><p>The null hypothesis (H0) of the ADF test is that the series is on-stationary. So, if the p value of the test is less than the significance level (0.05), we reject the null hypothesis and infer that the series is indeed stationary</p><p>For the tooth brush sale dataset we see that the series reaches stationary with two orders differencing.</p><h2>6.1&nbsp;&nbsp;Detailed Discussion of the Augmented Dickey Fuller Test</h2><p><br></p><p>Thus, from the discussions in the above sections, it is clear that in ARIMA time series forecasting, it is imperative to check if the time series is stationary or not. Augmented Dickey Fuller test is often used for the purpose. The Augmented Dickey Fuller test is a statistical significance test – thus, it involves a null hypothesis and an alternate hypothesis and as a result a test statistic compared with the p values. </p><p>It is from the statistic and the p value that one infers if the series is stationary or non-stationary. Let us now understand the following in some detail:</p><ul><li>Unit Root test</li><li>Dickey Fuller test</li><li>Augmented Dickey Fuller test</li><li><br></li></ul><p><strong>Unit Root Test</strong></p><p>The Augmented Dickey Fuller Test belongs to a category of tests called “Unit Root Test” which is the proper method for checking the stationarity of time series.</p><p><strong>Unit Root</strong> is the characteristic of time series that makes it non-stationary. Technically speaking, unit root is said to exist in a time series when α = 1 in the equation below:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFiZDk1ijyPVQ" src="https://media.licdn.com/dms/image/D4E12AQFiZDk1ijyPVQ/article-inline_image-shrink_400_744/0/1660488428909?e=1691625600&amp;v=beta&amp;t=GXk-7tNtBjlNWoWR_tkKO1FNvZk_5n0PTg3-XwXRS74"></div><p><strong>Dickey Fuller Test:</strong></p><p>Dickey Fuller test is a unit root test which tests the null hypothesis with the following model equation:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQEEc_5u64QCaw" src="https://media.licdn.com/dms/image/D4E12AQEEc_5u64QCaw/article-inline_image-shrink_400_744/0/1660488468244?e=1691625600&amp;v=beta&amp;t=otYB0x9VbssCho5q3_NdezELKOnwxz4Bm_XC-JmoEQQ"></div><p>Where:</p><ul><li>yt-1 is the lag -1 of the time series </li><li>Δyt-1 is the first differencing of the time series</li></ul><p>Fundamentally, it is the same as the unit root test i.e., if he coefficient of y(t-1) is 1 then here is a relationship between variables and hence <strong>null hypothesis is accepted. That is: if p &lt; 0.05 (or whatever is the test statistic), null hypothesis is accepted.</strong> It should be underscored that unlike in the Unit root test here we include the first differencing term Δyt-1</p><p><br></p><p><strong>Augmented Dickey Fuller Test:</strong></p><p>A higher version of the Dickey Fuller test is the Augmented Dickey Fuller test which has more differencing terms – the null hypothesis remains the same H0, α = 1:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGKPEdqOgf1zw" src="https://media.licdn.com/dms/image/D4E12AQGKPEdqOgf1zw/article-inline_image-shrink_400_744/0/1660488539692?e=1691625600&amp;v=beta&amp;t=WLA6sAg6GydmKVqdYNvE_rltZDFUJy6uyrzu1xm8yZU"></div><p><strong>Key point to remember:</strong></p><p>He null hypothesis here is,</p><p>H0, α = 1</p><p>As, the null hypothesis assumes presence of a unit root i.e., there is a relationship between the variables, if p &lt; 0.05 we reject the null hypothesis and if p &lt; 0.05 we accept the null hypothesis.</p><h2>7. Partial Autocorrelation Function (PACF)</h2><p>Partial Autocorrelation can be a tricky concept to understand for some. It is the correlation between two variables controlling the values of another set of variables.</p><p>Partial Autocorrelation is a conditional correlation. It is the correlation between two variables under the assumption that we know and take into account the values of another set of variables. For instance, in the regression context, if “y” is the response variable and “x1”, “x2” and “x3” are predictor variables, then, the patrial autocorrelation between “y” and “x3”is he correlation between the variables determined by taking no account how much y and x3 are related to&nbsp;x1 and x2.</p><p>In regression, the partial autocorrelation can be found out by correlating the residuals from two different regressions:</p><p><br></p><ul><li>Regression from which we predict y from x1 and x2</li><li>Regression in which we predict x3 from x1 and x2</li></ul><p><br></p><p>Basically, we corelate parts of and x3 hat are predicted by x1 and x2.</p><p>More formally, we can define, partial autocorrelation mathematically as:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQHDuuIJQzQEUg" src="https://media.licdn.com/dms/image/D4E12AQHDuuIJQzQEUg/article-inline_image-shrink_400_744/0/1660489150823?e=1691625600&amp;v=beta&amp;t=xcJqXVkbS49pDABU245rhOCFCi7KHFDFBZE4EjWAljQ"></div><p>[Reference: <a href="https://online.stat.psu.edu/stat510/lesson/2/2.2" target="_blank">https://online.stat.psu.edu/stat510/lesson/2/2.2</a>]</p><p><br></p><p><strong>Some insights into Partial Autocorrelation:</strong></p><ul><li><strong>&nbsp;</strong>Inspecting the PACF plot will suggest how many Autoregressive (AR) terms we need to explain the auto-corelation pattern in the time series.</li><li>If the partial autocorrelation drops off at lag number “k”, then, it generally indicates an AR-k model</li><li>For the toothbrush sales data set discussed in Post-4 of the series[<a href="https://www.linkedin.com/posts/ajay-taneja-47727817_transforming-a-non-stationary-time-into-a-activity-6962043188471590912-Wkpw?utm_source=linkedin_share&amp;utm_medium=member_desktop_web" target="_blank">https://www.linkedin.com/posts/ajay-taneja-47727817_transforming-a-non-stationary-time-into-a-activity-6962043188471590912-Wkpw?utm_source=linkedin_share&amp;utm_medium=member_desktop_web</a>], the PACF plot has a significant spike at lag-1 which means that all autocorrelation is effectively explained by lag-1 autocorrelation which suggests an AR-1 model</li></ul><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQE9JhMiVD4q0w" src="https://media.licdn.com/dms/image/D4E12AQE9JhMiVD4q0w/article-inline_image-shrink_1000_1488/0/1660489252946?e=1691625600&amp;v=beta&amp;t=QfdJm3oRabfmk8k-PTQDKcA5HioakE0qEAX75OqCxKU"></div><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQHAHkoa9my-PQ" src="https://media.licdn.com/dms/image/D4E12AQHAHkoa9my-PQ/article-inline_image-shrink_1000_1488/0/1660489292064?e=1691625600&amp;v=beta&amp;t=0QZhUNYvtBo_fxurGnduyx0AYTV73Lyqz_b8V1L8Yh8"></div><p><br></p><h2>8.&nbsp;&nbsp;Summarizing Autoregressive component | Moving Average component and Integrated component of an ARIMA model</h2><p><strong>&nbsp;</strong></p><h2>8.1&nbsp;Autoregressive component of ARIMA model</h2><p><br></p><p>A pure AR model forecasts the data using a combination of the past values of the variable at earlier time instances. AR models act like linear regression models and more the AR terms more will be the previous periods used in the forecast. </p><p>Once the time series is stationarized (see figure below), the next step is to determine how many AR terms are needed to account for any autocorrelation in the time series.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGgWs0seoMuvg" src="https://media.licdn.com/dms/image/D4E12AQGgWs0seoMuvg/article-inline_image-shrink_1000_1488/0/1660489487690?e=1691625600&amp;v=beta&amp;t=ienHJ8oACq8h1-93P8-8jBdVpESbwNdEFpL-9BOZb7A"></div><p>The ACF and PACF plots are helpful in determining the number of AR terms to include. The plots of ACF and PACF help us to choose few models and test against each other. Tools like Altrix and statistical libraries help us to automate the process.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQH9OXtvsoXWCg" src="https://media.licdn.com/dms/image/D4E12AQH9OXtvsoXWCg/article-inline_image-shrink_1000_1488/0/1660489525614?e=1691625600&amp;v=beta&amp;t=dh-JQIPhKfU1Sa5PpZ5gbY0ms5euZ2M-Ed8iFWLIjFY"></div><p>The ACF and PACF plots may suggest the following. For AR terms in a model,</p><ul><li>the ACF plots may suggest autocorrelation decaying towards zero,</li></ul><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQEhl1wujJsebA" src="https://media.licdn.com/dms/image/D4E12AQEhl1wujJsebA/article-inline_image-shrink_1000_1488/0/1660489616476?e=1691625600&amp;v=beta&amp;t=P9LM_D8ndBO6FTJijnG-BIVq-1izctw05aGuKLGMgPI"></div><ul><li>the PACF plot will cut off quickly towards zero</li></ul><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGcqbSnc77B1A" src="https://media.licdn.com/dms/image/D4E12AQGcqbSnc77B1A/article-inline_image-shrink_1000_1488/0/1660489655346?e=1691625600&amp;v=beta&amp;t=_IF0VLwsKnbO5Ralr7h5sLcnBchh4kvUqRkxQdTFN3w"></div><ul><li>if the ACF of a stationarized series, shows positive at lag-1, AR terms are best</li></ul><h2>8.2 &nbsp;Moving Average Component</h2><p><br></p><p>A series exhibits moving average behaviour if it undergoes random jumps which are felt in two or more consecutive periods. These jumps are represented in the error that is calculated in the ARIMA model and is what the MA Component will lag for. </p><p><br></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGhd7kZZ3NbKw" src="https://media.licdn.com/dms/image/D4E12AQGhd7kZZ3NbKw/article-inline_image-shrink_1000_1488/0/1660489761957?e=1691625600&amp;v=beta&amp;t=6G4LwUqzDtL6Wx1R8H8MDA22LcFbNq-ZP6g3cX3EXZg"></div><p><br></p><p>A purely MA model will smooth out the impact of sudden movements in the data similar to simple exponential smoothing methods (SES). SES method are discussed here[https://www.linkedin.com/pulse/time-series-forecasting-ajay-taneja]. Indicators to use MA terms in a time series forecasting though ARIMA are:</p><ul><li>An MA() series is usually negatively autocorrelated at lag-1</li><li>An ACF that cuts off sharply after a few lags (denoting a jump in the series between periods)</li><li>PACF that decreases more gradually</li></ul><p>All of the above are discussed in more details in sections 5 and 7</p><p><br></p><h2>8.3 &nbsp;Integrated Component</h2><p>The integrated component refers to the number of times we have to difference the data set to make it stationary. If a series must be differences to make it stationary, it is considered as “integrated”. If we only ned the first difference to stationarize the series, ten he “I” terms will be 1. </p><p>Referring to the toothbrush sales data set discussed in section 4, in order to make it stationary we had to difference I once so the I term will be 1. A single AR terms was used there. Tus we have: AR =1 , I = 1, MA = 0. We denote the model as ARIMA (1,1,0). That is (p,d,q)-&gt;(1,1,0)</p><p><br></p><h2>9.&nbsp;&nbsp;Seasonal ARIMA models</h2><p>Seasonal ARIMA models are used when he time series exhibits signs of seasonality. These are very similar to non-seasonal ARIMA models, but we need to add a few more terms to adjust for the seasonality component.</p><p>Whereas the non-seasonal ARIMA models are denoted as ARIMA(p,d,q) where: “p” is the order of autoregression, “d” is the order of differencing and “q” being the number of moving average terms; the on-seasonal ARIMA models are denoted as ARIMA(p,d,q)(P,D,Q)m, where: m refers to he number of periods in each season and (P,D,Q) refer to the auto-regressive, differencing and&nbsp;the moving average terms in the non-seasonal part of the ARIMA model.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFuyDnEsU2FTQ" src="https://media.licdn.com/dms/image/D4E12AQFuyDnEsU2FTQ/article-inline_image-shrink_1000_1488/0/1660491443212?e=1691625600&amp;v=beta&amp;t=iN51IsctQ-mPdtikZ2OCsRSiIMYOToZV-r9AlAzbDx4"></div><p><strong>Seasonal Differencing</strong></p><p>Seasonal Differencing of a time series is the series of changes from one season to the next. For monthly data, “m” term will be equal to 12 and the seasonal difference for any period is the difference between itself and 12 periods prior such as the difference between January 2022 and January 2021. The seasonal difference component allows us to account for the value that was observed in the same season one year earlier. Seasonal models can use non-seasonal differencing o seasonal differencing or both. Non seasonal differencing and seasonal differencing are combined to stationarize a time series.</p><p><br></p><p><strong>Seasonal AR and MA terms</strong></p><p>Seasonal part of an ARIMA model has the same structure as the non-seasonal part. It may have:</p><ul><li>AR term</li><li>MA term </li><li>a differencing component</li></ul><p>Pure seasonal AR or MA behaviour is similar to the signature of pure non-seasonal behaviour except that the pattern that appears in ACF and PACF plot uses a seasonal lag.</p><p>In the model that should use just AR terms, the ACF Slowly decays to zero while the PACF cuts off to 0. Conversely, for the model that just uses MA terms has spikes in the PACF that decays towards 0 while the ACF Cuts off to zero. A seasonal AR model is most appropriate when seasonal autocreation is positive whilst the seasonal MA modal is most appropriate when seasonal autocorrelation is negative</p><p><br></p></div>
+</body>
+</html>

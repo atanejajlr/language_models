@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>The Strength of Weak Learnability</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5612AQHd2zRMwcCDgg" alt="https://livebook.manning.com/book/grokking-machine-learning/chapter-10/v-9/14" title="https://livebook.manning.com/book/grokking-machine-learning/chapter-10/v-9/14" />
+      <h1><a href="https://www.linkedin.com/pulse/adaboostadaptive-boosting-gradient-xgboost-extreme-ajay-taneja">The Strength of Weak Learnability</a></h1>
+    <p class="created">Created on 2022-04-26 20:48</p>
+  <p class="published">Published on 2022-04-26 21:13</p>
+  <div><p><br></p><h2>1. Introduction</h2><p>I have decided to have my next set of posts on the Boosting algorithms - AdaBoost(Adaptive Boosting) | Gradient Boosting |&nbsp;XGBoost (eXtreme Gradient Boosting). Needless to mention, there are several excellent blogs, YouTube videos and text books on the topic. However, these notes are meant to reinforce my understanding on the family of boosting algorithms - I'm more than happy if the conent is useful to other data science enthusiasts around the globe.</p><p>Let us start from the roots!</p><h2><strong>2. Boosting – Background and Philosophy</strong></h2><p><strong>Strong Learners vs Weak Learners</strong></p><p>Complex problems in areas of Artificial Intelligence (AI) may be solved using “strong learners” as neural network models. However, models such DNNs require (a) more learning parameters – depending upon the size of the network (b) more data to make the modern learn well in order to predict more generically (c) high hardware requirement. No doubt that solving such problems is the direction in which we’re moving especially in area of Deep Learning Research – however, there are several instances that we will come across situations wherein we have some limitations – limitations in terms of the data available for training a model, limitations in terms of hardware available, etc. It is in such instances that “weak learners” come to our rescue!</p><p>Let us now revisit the abstract and the takeaway of the paper by Robert E. Schapire titles “The Strength of <strong>Weak Learnability</strong>” – the paper dates back to 1990(!) but the takeaway from the paper is very relevant even today – I have also attached the paper. Schapire states in the paper: <em>“A concept class is learnable (or, strongly learnable) if given access to a source of examples of the unknown concept, the learner with high probability is able to output a hypothesis that is correct but on all but on an arbitrary small fraction of the instances. A concept/class is weakly learnable if the learner can produce a hypothesis that performs only slightly better than random guessing</em></p><p><em>&nbsp;</em>Above,</p><p>Hypothesis ~ equation with its weights/parameters</p><p><strong>Takeaway of the paper:</strong></p><p>In the paper, it has been shown that 2 notions of learnability are equivalent. In other words, if, a strong learner can solve a problem than a week learner should also solve it. The notion of weak learnability was introduced by Kearns and Valiant (1988,1989) who left open the question of whether the notions of strong and weak learnability are equivalent. The question was termed as: “hypothesis boosting mechanism” since showing the notions are equivalent requires a method of boosting the low accuracy of a weak learning hypothesis.</p><p>In the “Hypothesis Boosting Mechanism” instead of constructing one hypothesis we construct more than one hypothesis and have them all make prediction and then go by the majority vote. Thus, combining the hypothesis resulted in making stronger prediction which helped in improving the accuracy and thus&nbsp;making the notion of "weak learnability" equivalent equivalent to strong learnability</p><h2>3. Algorithms based on the concept of Hypothesis Boosting</h2><h3>3.1 Random Forests</h3><p>In the content above, I have discussed about the notion of strong and weak learnability and how these concepts inspired the discovery of the “Hypothesis Boosting Mechanism” which essentially meant combining more than one hypothesis for boosting the accuracy of an otherwise - single – weak hypothesis for solving a learning problem.</p><p>Let us now and in the subsequent sections look at some of these algorithms in some detail: Random Forests, Adaptive Boosting (AdaBoost), Gradient Boosting and XG Boost (eXtreme Gradient Boosting) .</p><p><strong>Decision Trees and Random Forests:</strong></p><p>Decision trees are the building blocks of Random Forests – a good source for the details on the Decision Trees is the MIT Lecture by Tamara Broderick (<a href="https://youtu.be/ZOiBe-nrmc4" target="_blank">https://youtu.be/ZOiBe-nrmc4</a>).</p><p>Since the Decision Trees are sensitive to the data on, the Random Forests algorithm randomly samples from the data set and uses each of the sample (each sample normally being of the same size N) for training each decision tree.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4E12AQEQp51SqCM6KQ" src="https://media.licdn.com/dms/image/C4E12AQEQp51SqCM6KQ/article-inline_image-shrink_1000_1488/0/1651269912914?e=1691625600&amp;v=beta&amp;t=6XB3w4DTRUduvGHHzmnL9iDeQ4y6GQ2RJRwVV1rnwyM"></div><p>Another very important to highlight different between Random Forests and Decision Trees is that – in a regular Decision Tree algorithm the ordering of features selected during each split of the tree is based on the minimum entropy (the term “entropy” denoting the measure of randomness in the prediction) that is: we select those features first which would result in a maximum “Information Gain” . Contrary to this, in Random Forests, we randomly select / sample the features for each tree.</p><p>Thus, in Random Forests the trees are trained on random samples of data sets as well as using a random distribution of features amongst the trees and then the class with the majority vote amongst all the trees is used for prediction.</p><p><strong>Why Randomness helps in Random Forests?</strong></p><p>The Random distribution of samples from the data sets amongst the trees as well as random distribution of features proves powerful in getting a good accuracy – the higher the randomness i.e. more the trees better will be the confidence in prediction.</p><p>This can be treated analogous to a Monte Carlo analysis. Considering an example, we’re using a random number generator to produce a number between 0 and 100 and betting on the number being 0 and 60. Greater the number of times you play the game greater will be the possibility of winning and doing a Monte-Carlo simulation on such a scenario will predict this – grater the number of times you play of using the random number generator to produce a number – the greater will be number of wins. This is the situation with the randomness in Random Forests – more the trees, more will be the random distribution of features and the data set samples and thus higher will be the confidence in prediction.</p><h3>3.2 Adaptive Boosting</h3><p>From the above content, it can generally be said that weak learners can be combined to make a strong prediction. Let us now look at another algorithm – “Adaptive Boosting” which also based on the notion of combining weak learners so that they become equivalent to a “strong learner”.</p><p>In the case of Random Forests, the weak learner was a full-sized Decision Tree, and it was mentioned in section 3.1 above that we sample the data set randomly and the features (randomly)amongst the trees. Each Decision tree has an equal say in the final decision.</p><p>In Adaptive Boosting we make the process more efficient. In Adaptive Boosting the overall model split into N decision trees (precisely N weak models – let us consider that the weak learner is a decision tree) – each decision tree is a decision stump (see figure below) with a single split – N here refers to the number of features. Thus, we create a decision stump for every feature and the first decision stump will be the one with the lowest measure of randomness (Entropy / Gini Index).</p><p>All the data samples are assigned weights and to start with all data samples are weighted equally. Onve we have trained on these data samples we then assign higher weights to those samples that are misclassified. Now the second decision stump (or weak model) will focus more on those samples which are misclassified. The weights or the importance of the hypothesis get updated in every instance of training and the final classifier used to make stronger decisions</p><p>As it can be interpreted (from the above paragraphs and the section on Random Forests), in Random Forests it is possible to parallelize jobs on a multiprocessor machine because each decision tree is made independent of the other – in Adapboost it is clear from the above explanation that the order of the stumps do matter. The error the first tree (decision stump) makes influences the weights of the training samples in the second stump because each stump is made by taking into account the mistakes of the preceding stump&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4E12AQHe-ea1bVgCtA" src="https://media.licdn.com/dms/image/C4E12AQHe-ea1bVgCtA/article-inline_image-shrink_400_744/0/1651490025462?e=1691625600&amp;v=beta&amp;t=YJCWsSxTrNUSV8pzQ1dwbLImIRkh-M_aVrsPxmkyxqI"></div><p><strong>                           Figure: Decision Stump (source: wikepedia)</strong></p><p><br></p><h3>3.3 Gradient Boosting</h3><p> The above sections emphasized on the concept of strong and weal learners [<a href="https://lnkd.in/eBgXxJzr" target="_blank">https://lnkd.in/eBgXxJzr</a>] followed by the discussion of some algorithms comprisiong of series of weak learners such as Random Forests [<a href="https://lnkd.in/eiFFrVSM" target="_blank">https://lnkd.in/eiFFrVSM</a>] and AdaBoost [<a href="https://lnkd.in/eBgj3uYS" target="_blank">https://lnkd.in/eBgj3uYS</a>]</p><p>In fact, Adaptive Boosting discussed in section 3.2 above may be considered as a special case of “Gradient Boosting”. In Adaptive Boosting the weighting of the data points is done by an exponential curve which means that if a training sample is misclassified by a weak learner, we really weight it high so that the next weak learner focusses on getting it right. The weighting of the Data Points in AdaBoost is shown in the mathematically equation below:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4E12AQHcZkEbXPuQRQ" src="https://media.licdn.com/dms/image/C4E12AQHcZkEbXPuQRQ/article-inline_image-shrink_1000_1488/0/1651869768724?e=1691625600&amp;v=beta&amp;t=8cNwKrinCDLK1_ySCGtVGozDLlTx1sCeLjyF0yvEALc"></div><p>The total error is the summation of all the sample weights of misclassified data points.</p><p>Contrary to the above (the approach for calculating the weights of the misclassified samples) in Gradient Boosting the model learns the weights through the gradient. The gradient is used to minimize the loss function and “learns” the weights. In each round of the training the error (prediction vs the truth) is computed, and the gradient is calculated by the partial derivative of the loss function. Since in gradient boosting, we’re combining the prediction of multiple models, the gradients are additive and will be updated through the training process of each tree.</p><p>Having the weights learnt through the allows far more flexibility than updated the weights exponentially as in Adaptive Boosting. </p><p>One of the caveats in the gradient boosting is that the training process becomes slower because of the gradient computation especially when the training data is enormous, and this part is taken care of in XGBoost</p><p><strong>XGBoost: eXtreme Gradient Boosting</strong></p><p>XGBoost is Gradient Boosting but with some performance enhancements. XGBoost stores training data in compressed sparse column (csc) format and uses second order gradient to calculate the loss function and uses L, L2 regularization to prevent overfitting and make generalizations better. Training can be parallel/distributed across clusters</p><p>As such, XGBoost has been a cornerstone in competitive machine learning, being the technique used to win and recommended by winners. For example, here is what some Kaggle competition winners have said:</p><p> </p><p> "<em>As the winner of an increasing amount of Kaggle competitions, XGBoost showed us again to be a great all-round algorithm worth having in your toolbox.</em>"</p><p> -- Dato Winners’ Interview</p><p> </p><p> "<em>When in doubt, use xgboost.</em>"</p><p> -- Avito Winner’s Interview</p><p>About csc format: <a href="https://scipy-lectures.org/advanced/scipy_sparse/csc_matrix.html" target="_blank">https://scipy-lectures.org/advanced/scipy_sparse/csc_matrix.html</a></p><h2><br></h2><h2>4.  List of tutorials (Jupyter notebooks)</h2><p>&nbsp;Here a set of simple tutorials that I compiled in Jupyter notebooks as an insight exercise with some sort of parametric study.</p><ol><li>Exercise 1: Training a Decision Tree (Salary Dataset)</li><li>Exercise 2: Training a Decision Tree (Titanic Dataset)</li><li>Exercise 3: Training a Random Forest (Digits Dataset)</li><li>Exercise 4: Training a Random Forest (Iris Dataset)</li><li>01_Introduction to Gradient Boosting</li><li>02_Introduction to XGBoost</li><li>03_Developing an XGBoost Model (Pima Indians Diabetes Dataset)</li><li>04_Monitor Perfromance and Early Stopping of XGBoost Model (Pima Indians Diabetes Dataset)</li><li>05_Feature Importance with XGBoost(Pima Indians Diabetes Dataset)</li><li>06_Configuring an XGBoost Model (Pima Indians Diabetes Dataset)</li><li>07_Hyperparam,eter Tuning with XGBoost Model (Pima Indians Diabetes Dataset)</li></ol><p><strong>Github</strong>: <a href="https://lnkd.in/eUgjwgTs" target="_blank">https://lnkd.in/eUgjwgTs</a></p><p>🚩<strong>Disclaimer:</strong></p><p>I have compiled these tutorials as a self learning/insightful exercise. The code may NOT be in the best form.</p><p><strong>References:</strong></p><ol><li><a href="http://rob.schapire.net/papers/strengthofweak.pdf" target="_blank">The Strength of Weak Learnability</a></li><li>XGBoost with Python, Jason Brownlie</li><li><a href="https://towardsdatascience.com/understanding-random-forest-58381e0602d2" target="_blank">https://towardsdatascience.com/understanding-random-forest-58381e0602d2</a></li><li><a href="https://machinelearningmastery.com/boosting-and-adaboost-for-machine-learning/" target="_blank">https://machinelearningmastery.com/boosting-and-adaboost-for-machine-learning/</a></li><li><a href="https://www.analyticsvidhya.com/blog/2021/09/adaboost-algorithm-a-complete-guide-for-beginners/" target="_blank">https://www.analyticsvidhya.com/blog/2021/09/adaboost-algorithm-a-complete-guide-for-beginners/</a></li><li><a href="https://lnkd.in/eAB4g8nJ" target="_blank">https://lnkd.in/eAB4g8nJ</a></li><li>XGBoost With Python | Jason Brownlee</li><li>Several web sources</li></ol></div>
+</body>
+</html>

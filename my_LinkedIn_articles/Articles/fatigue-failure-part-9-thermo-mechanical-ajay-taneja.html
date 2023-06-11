@@ -1,0 +1,231 @@
+<html>
+<head>
+  <title>On Fatigue Failure: Part 9 – Thermo-mechanical Fatigue</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGd2Dj7_nvvhg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-9-thermo-mechanical-ajay-taneja">On Fatigue Failure: Part 9 – Thermo-mechanical Fatigue</a></h1>
+    <p class="created">Created on 2018-12-15 17:53</p>
+  <p class="published">Published on 2018-12-15 18:09</p>
+  <div>
+  <h2>1.&nbsp;&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;Thermomechanical fatigue is the primary life limiting factor for engineering components in many high temperature applications. In early work, isothermal fatigue tests performed at various temperatures, mechanical strain ranges and strain rates were used to estimate life of members undergoing thermomechanical fatigue damage. Since, few years thermomechanical fatigue tests have been developed to simulate behaviour of material undergoing thermomechanical fatigue and it has thus been possible to develop TMF models that predict behaviour of materials under this type of loading. Some of these models are discussed in section 5 of this article.</p> 
+  <p>&nbsp;Section 2 and section 3 bring out some differences between isothermal and thermomechanical fatigue processes and explain the concept of In-Phase and Out-of-Phase effects. Section 4 of this article provides a background of different mechanisms that play a role in quantifying thermomechanical fatigue damage.</p> 
+  <h2>2.&nbsp;&nbsp;&nbsp;Isothermal vs. Thermomechanical fatigue</h2> 
+  <p>&nbsp;One of the major differences between isothermal and thermo-mechanical fatigue is the constraint. When heated, structures develop thermal gradients and they expand. Expansion is often not uniform and is constrained by surrounding cooler material. This results in mechanical strain causing stresses. These additional stresses due to thermal effects cause additional fatigue damage in structures.</p> 
+  <p>&nbsp;</p> 
+  <h2>3.&nbsp;&nbsp;&nbsp;In-Phase thermomechanical fatigue loading and out-of-phase thermomechanical loading</h2> 
+  <p>&nbsp;Thermomechanical fatigue loading is often described as out-of-phase (OP) or in-phase loading (IP). In out-of-phase loading, the material experiences compression at higher temperature and tension at low temperature. The inverse is observed for thermomechanical fatigue in-phase case. A schematic of the stress-strain behaviour is shown in the figure below. Out-of-phase loading is more likely to cause oxidation damage because an oxide film can form in compression at higher temperature and then rupture during subsequent low temperature tensile portion of the loading cycle where the oxide film becomes more brittle.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH9Fd65azfJlQ" src="https://media.licdn.com/dms/image/C5112AQH9Fd65azfJlQ/article-inline_image-shrink_400_744/0/1544896579973?e=1691625600&amp;v=beta&amp;t=nxZ9WseeuilHeRdomDWVZOB8ClwlQ7Pb6r7Fc2yWPU8"> 
+  </div> 
+  <p><strong>Figure 1: In-Phase and Out-of-Phase during thermomechanical loading</strong></p> 
+  <p>&nbsp;</p> 
+  <h2>4.&nbsp;&nbsp;&nbsp;Thermomechanical Fatigue mechanisms</h2> 
+  <p>&nbsp;</p> 
+  <p>Thermomechanical fatigue is caused by combined thermal and mechanical loading where both stress and temperature vary with time. This type of loading can be more damaging than an order of magnitude by isothermal fatigue (where cyclically varying load is imposed at constant temperature).</p> 
+  <p>&nbsp;Various mechanisms play a role in the type of damage formed in a material due to thermomechanical fatigue. These include;</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Material properties</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mechanical strain range</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Strain Rate</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temperature</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phasing between temperature and mechanical strain</p> 
+  <p>Thermomechanical damage mechanism prevalent in metals involves 3 major aspects;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Fatigue Damage</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Environmental Damage (Oxidation)</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creep Damage</p> 
+  <p><strong>Fatigue Damage:</strong></p> 
+  <p>Thermomechanical fatigue damage is time and temperature independent damage that exists whenever cyclic loading occurs. Fatigue damage may be cyclic plasticity driven.</p> 
+  <p><strong>Creep Damage:</strong></p> 
+  <p>Under thermomechanical fatigue loading, creep deformation contributes to formation and propagation of micro-cracks [<a href="https://www.corrosionpedia.com/definition/5709/microcrack" target="_blank">https://www.corrosionpedia.com/definition/5709/microcrack</a>]. Maximum stress rather than strain range has a dominant role in the formation of these micro-cracks. The interaction of strain rate and temperature has a strong influence on the stresses that are observed during cyclic loading.</p> 
+  <p><strong>Environmental Damage (Oxidation):</strong></p> 
+  <p><strong>&nbsp;</strong>In out-of-phase loading, an oxide layer can form when the material is hot and under compression. At lower temperatures (in tension), the oxide layer becomes brittle, cracks and thus exposing the new clean metal surfaces. This clean metal rapidly oxidizes and the process repeats during the next mechanical strain cycle.</p> 
+  <p>Oxide cracks can also form during In-Phase loading – the oxide layer can form in the hot portion of the material in tension and cracks as the material cools. Oxide formation occurs easier and faster at higher temperatures. The tendency of the oxide to develop micro-cracks depends on the cyclic stress strain range and the stress level.</p> 
+  <p>&nbsp;</p> 
+  <h2>5.&nbsp;&nbsp;&nbsp;Numerical models: Fatigue, Oxide and Creep Damage</h2> 
+  <p>&nbsp;</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fatigue Damage:</strong></p> 
+  <p>As stated above, traditional fatigue damage is time and temperature independent that exists whenever cyclic loading occurs. The damage may be cyclic plasticity driven.</p> 
+  <p>Damage models based on strain-life relation (Mason - Coffin relationship) is elaborated below (see section 4);</p> 
+  <p><a href="https://www.linkedin.com/pulse/fatigue-failure-part-8-strain-life-method-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-8-strain-life-method-ajay-taneja/</a></p> 
+  <p>Damage model based on stress-life relation are discussed here;</p> 
+  <p><a href="https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-2-stress-life-diagram-endurance-limit-taneja/</a></p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Oxidation Damage Model:</strong></p> 
+  <p>There are various oxidation models covered in the literature. The model by Neu and Sehitoglu is discussed below</p> 
+  <p>Oxidation damage is a function of strain range, strain rate and temperature. The oxidation damage formulation of Neu and Sehitoglu (Neu, R.W. and Sehitoglu, H., Metallurgical Transactions A, Vol. 20A, 1989, pp.1769-1783) is described below;</p> 
+  <p>If Δεmech &gt; ε0, then,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHgn3AHQO4MbQ" src="https://media.licdn.com/dms/image/C5112AQHgn3AHQO4MbQ/article-inline_image-shrink_400_744/0/1544896771105?e=1691625600&amp;v=beta&amp;t=bF2UyFZUC_TzKWpGTfjXlCqMbFWTbyjfmdbRY6qstwg"> 
+  </div> 
+  <p>ε0, threshold strain for oxide cracking</p> 
+  <p>Hcr, constant related to critical oxide thickness</p> 
+  <p>β, mechanical strain range exponent</p> 
+  <p>b, thermal strain rate sensitivity exponent</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEv00vz8lfacg" src="https://media.licdn.com/dms/image/C5112AQEv00vz8lfacg/article-inline_image-shrink_400_744/0/1544896862990?e=1691625600&amp;v=beta&amp;t=Mma5y1kBiHZaXCCxhyaoPsCUV6F-EonDGfwhBFSDU7k"> 
+  </div> 
+  <p>&nbsp;&nbsp;εox is used to account the type of oxide cracking that can occur in either IN-Phase or Out-of-Phase loading. Phasing is represented by the ratio between the thermal and the mechanical strain rates</p> 
+  <p>Oxidation rate is determined by the effective parabolic oxidation constant, Kpeff;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEOUTAT7ePhnQ" src="https://media.licdn.com/dms/image/C5112AQEOUTAT7ePhnQ/article-inline_image-shrink_400_744/0/1544897026221?e=1691625600&amp;v=beta&amp;t=cEN2vgeusvyvN71JfkuabFRjG6evJZe2tiE1rGbqz4Y"> 
+  </div> 
+  <p>ΔHox is the activation energy for oxidation</p> 
+  <p>D0 is the scaling constant for oxidation</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Creep Damage Model:</strong></p> 
+  <p>&nbsp;Creep damage model suggested by Neu and Sehitoglu is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEdNWQbfHmaPA" src="https://media.licdn.com/dms/image/C5112AQEdNWQbfHmaPA/article-inline_image-shrink_400_744/0/1544897103822?e=1691625600&amp;v=beta&amp;t=hLvZPd_DY8Ti8CxuFyQ9Ers2vkN7c5atFDEGQgjlK2Y"> 
+  </div> 
+  <p>Creep damage is a function of stress, time and temperature. Microstructural creep damage differs in tension and compression</p> 
+  <p>ΔHcr is the activation energy for creep</p> 
+  <p>Acr is the scaling constant for creep</p> 
+  <p>m is the creep stress exponent</p> 
+  <p>α1 is the stress state constant</p> 
+  <p>α2 is the hydrostatic stress sensitivity constant</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHbdQQ30lEtjg" src="https://media.licdn.com/dms/image/C5112AQHbdQQ30lEtjg/article-inline_image-shrink_400_744/0/1544897149391?e=1691625600&amp;v=beta&amp;t=0AoJ_bRJcToohQSBlc-ec9a0BBspav6OWpN6STffOXQ"> 
+  </div> 
+  <p>εcr is the the ratio between thermal and mechanical strains</p> 
+  <p>Creep damage is a function of stresses, tiem and temperature. Microstructural creep damage differs in tension and compression. It is commonly observed that micro-cracks do not grow in compression. If no creep damage occurs in compression:α1 = 1/3 and α2 =1</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p>
+ 
+</div>
+</body>
+</html>

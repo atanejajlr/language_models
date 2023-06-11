@@ -1,0 +1,451 @@
+<html>
+<head>
+  <title>Response Spectrum Analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQFyFijrBO_exQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/response-spectrum-analysis-ajay-taneja">Response Spectrum Analysis</a></h1>
+    <p class="created">Created on 2015-05-03 21:30</p>
+  <p class="published">Published on 2015-05-10 19:04</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h1><strong>1.&nbsp;</strong><strong>INTRODUCTION</strong></h1> 
+  <p>Response of a structure to earthquake excitation is generally obtained though one of the two approaches: a) Response history analysis or b) Response spectrum analysis.</p> 
+  <p>The response history analysis (‘time history analysis’) determines the displacement of the structure as a function of time, given the ground acceleration (also a function of time.)&nbsp; The ground acceleration &nbsp;&nbsp;is available from seismic records.</p> 
+  <p>The system is studied in a reference frame which moves with the ground.&nbsp; In such a coordinate system, the ground appears stationary, and every mass feels an applied force .&nbsp; This reduces the earthquake to a standard problem with loading:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFhXYLZ5uuIJA" src="https://media.licdn.com/dms/image/C5112AQFhXYLZ5uuIJA/article-inline_image-shrink_400_744/0/1520197660824?e=1691625600&amp;v=beta&amp;t=r7EdR8z61QAbEaMoeuTX3ScsO8jQ8VK_NDa8NvJoeys"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGoDBCNsr7Oig" src="https://media.licdn.com/dms/image/C5112AQGoDBCNsr7Oig/article-inline_image-shrink_1000_1488/0/1520196427671?e=1691625600&amp;v=beta&amp;t=4eiotOApHeIRxg8c2MZBs90xkfgJ6YDe5EYimBhblR8"> 
+  </div> 
+  <p class="center"><strong>Figure: Effective earthquake force</strong></p> 
+  <p>This procedure requires much computation, since it calculates the response of the structure in detail for each set of ground acceleration data.</p> 
+  <p>On the other hand, the response spectrum analysis (RSA) is a procedure for dynamic analysis of a structure subjected to earthquake excitation, but it reduces to a series of static analysis. For each mode, a static analysis of the structure is carried out (the forces being evaluated based on the peak response obtained from the spectrum) which is multiplied by the spectral ordinate of the pseudo acceleration response An to obtain the peak modal response. Thus, the response spectrum analysis avoids any dynamic analysis being carried out.</p> 
+  <p>However, RSA is still a dynamic analysis procedure as it used the vibration properties: natural frequencies, natural modes and modal damping ratios of the structure and the dynamic characteristics of the ground motion through the response spectrum.</p> 
+  <p>It is just that, in the response spectrum analysis, the user (or the software) will not need to carry out any response history calculations as it would have already been done in developing the earthquake response spectrum which becomes an input for the response spectrum analysis.</p> 
+  <p>The aim of this article is to discuss in detail the concepts involving the response spectrum analysis. This technical article is organized as follows;</p> 
+  <p>Section 2 of the article discusses fundamentally the response spectrum concept, which includes: the definition of a response spectrum, the response spectrum types- the deformation response spectrum, pseudo-velocity response spectrum, pseudo acceleration response spectrum as well as the physical interpretation of these response spectra.</p> 
+  <p>It is also explained in section 2, that, given the response spectrum, the equivalent static force can be arrived at and the internal forces in the structure be thus determined. The explanation in the section 2 is confined to SDOF systems</p> 
+  <p>Discussion in section 3 is confined to MDOF systems and it is explained that why the response for MDOF systems is not exact (i.e. the same as the response obtained from time history analysis) unlike that of SDOF systems.</p> 
+  <p>This is followed by a considerable detailed discussion on the modal combination rules: the absolute sum modal combination rule (ABSSUM), the square root of sum of squares modal combination rule (SRSS) and the complete quadratic combination (CQC) modal combination rule.</p> 
+  <p>Section 5 includes a note on the interpretation of the response spectrum analysis based on the details presented in section 2 through 4 and section 6 lists the step by step procedure concerning the analysis of a structure through response spectrum analysis.</p> 
+  <p>Finally, section 7 provides a numerical example of the analysis of a simple 2 storey frame through response spectrum analysis.</p> 
+  <h1><strong>2. RESPONSE SPECTRUM CONCEPT: REVIEW</strong></h1> 
+  <p>The response spectrum concept is a central concept in earthquake engineering which provides a convenient means to summarize the peak response of all possible SDOF systems to a particular component of ground motion. It provides a practical approach to apply the knowledge of structural dynamics to design of structures for earthquakes.</p> 
+  <h3><strong>2.1&nbsp;&nbsp; </strong><strong><em>What is ‘response spectrum’?</em></strong></h3> 
+  <p>A plot of the peak value of a response quantity as a function of the natural vibration period &nbsp;of the system, or a related parameter such as circular frequency &nbsp;or cyclic frequency , is called the response spectrum of the quantity.&nbsp;</p> 
+  <p>Each such plot is for SDOF systems having a fixed damping ratio ζ and several such plots for different values of ζ are included to cover the range of damping values encountered in actual structures.</p> 
+  <h3><strong>2.2&nbsp;&nbsp;&nbsp; </strong><strong>Response spectrum types</strong></h3> 
+  <h3><strong>2.2.1&nbsp;&nbsp; </strong><strong>Deformation Response Spectrum</strong>&nbsp;</h3> 
+  <p>The figure below shows how the deformation response spectrum is developed for El Centro ground motion shown in part (a) of the figure.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEbSRrmAw8r8w" src="https://media.licdn.com/dms/image/C5112AQEbSRrmAw8r8w/article-inline_image-shrink_1000_1488/0/1520066063074?e=1691625600&amp;v=beta&amp;t=6jcvYXPqxDWb22VnhcEk8uanzNia5bjsoR6Ume5lf1w"> 
+  </div> 
+  <p class="center"><strong>Figure: (a) Ground acceleration; (b) deformation response of three SDOF systems with ζ = 2% and Tn= 0.5,1 and 2 seconds&nbsp;; (c) deformation response spectrum for ζ = 2%</strong></p> 
+  <h3><strong>2.2.2&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>Pseudo velocity response spectra</strong></h3> 
+  <p>The pseudo velocity is defined by the quantity V which has the same units as velocity and is expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEHHp1Et2PgtA" src="https://media.licdn.com/dms/image/C5112AQEHHp1Et2PgtA/article-inline_image-shrink_400_744/0/1520172986249?e=1691625600&amp;v=beta&amp;t=Yxw0YebNrpZ6R05nkjjZ-IXZRlZWjvk7HBhVh-oCZZg"> 
+  </div> 
+  <p>The quantity V is related to the peak value of the strain energy stored in the system during the earthquake;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEPWwBs5BmMug" src="https://media.licdn.com/dms/image/C5112AQEPWwBs5BmMug/article-inline_image-shrink_400_744/0/1520240116026?e=1691625600&amp;v=beta&amp;t=ZJhjZAl0tNloyD7ugn0REk2xfJbuNTQm-beD3n0c0yo"> 
+  </div> 
+  <p>The relationship can be derived from the definition of strain energy;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG3Ay5UKn6tHQ" src="https://media.licdn.com/dms/image/C5112AQG3Ay5UKn6tHQ/article-inline_image-shrink_400_744/0/1520171914306?e=1691625600&amp;v=beta&amp;t=T-JzF7pTX53-b13frSkCm19IG-9-JrGxfsuYdlHt7xw"> 
+  </div> 
+  <p>The pseudo velocity response spectrum is a plot of V as a function of the natural vibration period , or the natural frequency &nbsp;of the system.</p> 
+  <p>The figure below shows the pseudo-velocity response spectra for the El Centro ground motion for ζ = 0.02;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEDnkzk7vDhYw" src="https://media.licdn.com/dms/image/C5112AQEDnkzk7vDhYw/article-inline_image-shrink_400_744/0/1520195533666?e=1691625600&amp;v=beta&amp;t=6m-_1uO58ZdhiaTW9mTkT5DpJ1GnCMik-cc5ZaiiByM"> 
+  </div> 
+  <p class="center"><strong>Figure: The pseudo-velocity response spectra for ζ = 0.02</strong>&nbsp;</p> 
+  <p>From the physical interpretation point of view, the pseudo-velocity response spectra is related to the peak value of strain energy stored in the system.</p> 
+  <h3><strong>2.2.3&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>Pseudo acceleration Response Spectrum</strong>&nbsp;</h3> 
+  <p>The pseudo acceleration is defined by the quantity ‘A’ which has the units of acceleration;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGzzm248ZYKgw" src="https://media.licdn.com/dms/image/C5112AQGzzm248ZYKgw/article-inline_image-shrink_400_744/0/1520201385303?e=1691625600&amp;v=beta&amp;t=S4L7-0TtQ4hz88D6rHAFQIjuIqQPUpQV0JDRYfOUw0s"> 
+  </div> 
+  <p>The quantity ‘A’ has the units of acceleration and is related to the peak value of equivalent static force;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGtTzjwbG3s6A" src="https://media.licdn.com/dms/image/C5112AQGtTzjwbG3s6A/article-inline_image-shrink_400_744/0/1520065362552?e=1691625600&amp;v=beta&amp;t=3ATzJNcrvDPLSrBggu1rgTfHkOa5ZjOPbU2OWqftJRI"> 
+  </div> 
+  <p>The pseudo acceleration response spectra for the El Centro ground motion is shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFmOOyHtl7JQw" src="https://media.licdn.com/dms/image/C5112AQFmOOyHtl7JQw/article-inline_image-shrink_400_744/0/1520040943055?e=1691625600&amp;v=beta&amp;t=SxlaboIWkAlfYSSJYHDBVE_cZezYdmHCwKRngu6G8S8"> 
+  </div> 
+  <p class="center"><strong>Figure: The pseudo-acceleration response spectra for ζ = 0.02 for the El Centro ground motion</strong></p> 
+  <p class="left"><strong>2.2.4&nbsp;&nbsp;&nbsp; </strong><strong>Physical interpretation of the Response spectra types</strong></p> 
+  <p><strong><em>Deformation response spectrum</em></strong> provides the peak deformation of a system. The pseudo-velocity response spectrum is related to the peak strain energy stored in the system whereas the pseudo acceleration response spectrum is related to the peak value of equivalent static force.</p> 
+  <p>It may occur to the mind, that, since the units of the quantity ‘V’ defined with regards to the <strong><em>pseudo-velocity response spectrum</em></strong> are the same as that of velocity, why not, use the velocity &nbsp;in its definition. The reason for this apparent by considering the derivation of the expression for the quantity (as illustrated again below);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE55_DH6f_v1g" src="https://media.licdn.com/dms/image/C5112AQE55_DH6f_v1g/article-inline_image-shrink_400_744/0/1520195001175?e=1691625600&amp;v=beta&amp;t=X8fQJujfOQOh1DN7FH5lwcpMDNb2i5m6QtXri6uUlsw"> 
+  </div> 
+  <p>Since strain energy is caused by deformation of stiff members, it is related to u, while &nbsp;is a velocity, and so it is related to the kinetic energy of the shaking building. &nbsp;&nbsp;However, it is strain energy which correlates with structural failure, and so this is what we want to compute.</p> 
+  <p>Another way to interpret the pseudo-velocity is that the amount of strain energy stored in the system is equivalent to the amount of stress.</p> 
+  <p>This is because the strain energy stored in the system and the strain energy is , integrated across the volume of the system.&nbsp;</p> 
+  <p>Since stress is proportional to strain, the strain energy is proportional to stress squared, and also proportional to strain squared and thus can be related to the stress.</p> 
+  <p>The term pseudo-velocity is used only because the units are same as that of velocity.</p> 
+  <h2><strong>2.3 &nbsp;&nbsp;&nbsp; </strong><strong>Equivalent static force from the response spectrum</strong></h2> 
+  <p>If the response spectrum for a given ground motion component is available, the peak value of deformation or an internal force in any linear SDOF system can be determined easily.</p> 
+  <p>This because computationally intensive dynamic analysis will already have been performed during the generating the response spectrum. So, corresponding to the natural period of vibration &nbsp;and the damping ration &nbsp;of the system, the values of D, V and A can be read from the spectrum.</p> 
+  <p>The peak value of the equivalent static force will be;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGKH0i-U6vvxA" src="https://media.licdn.com/dms/image/C5112AQGKH0i-U6vvxA/article-inline_image-shrink_400_744/0/1520041861323?e=1691625600&amp;v=beta&amp;t=soqigi8xJbjQU1088xocvl1C2doShwwAL5419kZre7M"> 
+  </div> 
+  <p>The above relation is obvious if one expresses k in terms on m;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFktaf-0FZdiA" src="https://media.licdn.com/dms/image/C5112AQFktaf-0FZdiA/article-inline_image-shrink_400_744/0/1520240814097?e=1691625600&amp;v=beta&amp;t=jADZSLC0DM09HvldKggFpstRLyogv8kTBXVBAl1S2QA"> 
+  </div> 
+  <p>Static analysis of the one storey frame subjected to lateral force &nbsp;provides the internal forces (e.g. shear and moments in beams and columns). This involves procedures of static structural analysis and no further dynamic analysis is required beyond that necessary to determine u (t).</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH-vLo9sggfLA" src="https://media.licdn.com/dms/image/C5112AQH-vLo9sggfLA/article-inline_image-shrink_400_744/0/1520040328841?e=1691625600&amp;v=beta&amp;t=sJrLe4soyuCdyrPoSNSwW-06Ms7m4YcCYZojUCuQ5nA"> 
+  </div> 
+  <p class="center"><strong>Figure: Equivalent static force on SDOF System</strong></p> 
+  <p class="left">&nbsp;</p> 
+  <h1><strong>3.&nbsp;</strong><strong>RESPONSE SPECTRUM ANALYSIS FOR MDOF SYSTEMS</strong></h1> 
+  <p>The explanation concerning the response spectrum concept in section 2 involved SDOF system only. It is clear through the description presented that in case of SDOF systems, the peak response can be directly determined directly from the response spectrum for the ground motion&nbsp; without carrying out a response history (otherwise termed as time history) analysis. The procedure to do that involved: a) compute the stiffness characteristics of the system b) compute the mass characteristics c) Calculate the natural time period d) Evaluate the peak deformation from the response spectrum corresponding to the damping ratio and natural time period e) Evaluate the equivalent static force f) Carry out static analysis to determine the internal forces.</p> 
+  <p>For MDOF systems, too, the peak response can be calculated from the response spectrum but the result is not exact: in the sense that it is not identical to the result that is obtained through response history analysis. However, the estimate obtained is accurate enough for structural design applications. This will be clear from the discussions that follow.</p> 
+  <h3>3.1 &nbsp;Peak Modal Responses</h3> 
+  <p>The exact value of the peak response of a MDOF system in its nth natural mode can be obtained from the earthquake response spectrum. This becomes evident considering the equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFcEVc57EMvUA" src="https://media.licdn.com/dms/image/C5112AQFcEVc57EMvUA/article-inline_image-shrink_400_744/0/1520240342271?e=1691625600&amp;v=beta&amp;t=b09CxoZCvogrysnGYwJDWmqGUxereyQ_HDsRxMle2GI"> 
+  </div> 
+  <p>derived / evaluated in the response history analysis procedure and by recalling that the peak value of An (t) is available from the pseudo acceleration response spectrum as its ordinate &nbsp;corresponding to the natural period Tn and damping ratio ζn.</p> 
+  <p>Therefore, the peak modal response is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHS3s7mI4z4zw" src="https://media.licdn.com/dms/image/C5112AQHS3s7mI4z4zw/article-inline_image-shrink_400_744/0/1520172626789?e=1691625600&amp;v=beta&amp;t=W4TPa4ahnTVl3mBfI-p0NvzjmOPc-eRbIX2I4iDjRhk"> 
+  </div> 
+  <p><em>[It may be noted that the subscript o in the notation </em> <em>&nbsp;denotes the maximum of the absolute value of the response quantity]</em></p> 
+  <p>The modal static response &nbsp;r_n^st denotes the static value of r due to the external forces &nbsp;sn which may be positive or negative.</p> 
+  <h1><strong>&nbsp;4.&nbsp;&nbsp;&nbsp;</strong><strong>Modal Combination Rules</strong></h1> 
+  <p>The question that needs to be answered is: how does one combine the peak modal responses rno&nbsp;&nbsp;(n = 1, 2,.., N) to determine the peak response r0 of the total&nbsp;&nbsp; response?</p> 
+  <p>It will not be possible to determine the exact value of r from r because, in general, the modal responses r (t) attain their peaks at different time instants and the combined response attains its peaks at yet another time instant.</p> 
+  <p>The phenomenon can be clearly observed in the figure below where the results of shear in the top story of a five story frame are presented.</p> 
+  <p>The individual modal responses &nbsp;v_5n (t) are shown together with the total response;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFYfmiBkMOFYg" src="https://media.licdn.com/dms/image/C5112AQFYfmiBkMOFYg/article-inline_image-shrink_1000_1488/0/1520041760216?e=1691625600&amp;v=beta&amp;t=F4e7Ss7o3ifOb8vTornvQdSvbq21YlRnXUe8WmJZH98"> 
+  </div> 
+  <p class="center"><strong>Figure: Five storey frame excited by ground acceleration&nbsp;u_double_dot(g)</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE-WPx6rSgxmw" src="https://media.licdn.com/dms/image/C5112AQE-WPx6rSgxmw/article-inline_image-shrink_1000_1488/0/1520173488302?e=1691625600&amp;v=beta&amp;t=XXmsh3NZZbUA_JYurBtHJ78P_o6oJgFhIcwSZUbHJPE"> 
+  </div> 
+  <p class="center"><strong>Figure: Modal responses for the results of shear at the top storey</strong></p> 
+  <p>Approximations must be introduced in combining the peak modal responses determines from the earthquake response spectrum because no information is available in the response spectrum when the peak modal response will occur.&nbsp;</p> 
+  <p>Most frequently encountered modal combination rules are described below;</p> 
+  <h3><strong>4.1 &nbsp;&nbsp; </strong><strong>Absolute sum modal combination rule (ABSSUM)</strong></h3> 
+  <p>The assumption that all the peaks will occur at the same time will provide an upper bound to the peak value of the total response;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHYr5qO7Q--oQ" src="https://media.licdn.com/dms/image/C5112AQHYr5qO7Q--oQ/article-inline_image-shrink_400_744/0/1520241588219?e=1691625600&amp;v=beta&amp;t=AUzAXPmSKx1tzbA7BtbpPXK3OgBgY4DE1_oHsK4jROc"> 
+  </div> 
+  <p>This upper bound is usually too conservative. Therefore, this <em>absolute sum</em> (ABSSUM) is not popular in structural design applications.</p> 
+  <h3><strong>4.2 &nbsp; </strong><strong>Square-root-of-sum-of-squares (SRSS) modal combination rule:</strong></h3> 
+  <p>The square-root-of-sum-of-squares (SRSS) rule for modal combination, developed in E. Rosenbleuth’s Ph.D. thesis, is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEJ_jL1adFGNQ" src="https://media.licdn.com/dms/image/C5112AQEJ_jL1adFGNQ/article-inline_image-shrink_400_744/0/1520239628513?e=1691625600&amp;v=beta&amp;t=85JAWCTQWZLyq-NCSOOjo96d0FwHRpUSbrfrUGo6spA"> 
+  </div> 
+  <p>The peak response in each mode is squared, the squared modal peaks are summed and the square root of the sum provides an estimate of the peak total response.</p> 
+  <p>This modal combination rule provides excellent response estimates for structures with well-separated natural frequencies.</p> 
+  <p>It should be noted that this limitation has not always been recognised in applying this rule to practical problems, and at times it has been misapplied to systems with closely spaced natural frequencies such as piping systems in nuclear power plants and multi-storey systems with unsymmetrical plan.</p> 
+  <p>The above statement concerning closely spaced natural frequencies in unsymmetrical buildings may be interpreted as follows;</p> 
+  <p>&nbsp;For example, a building which occupies an entire block for the first few storeys, and then has a tower which rises for several more storeys, but which has a smaller floor area than the lower part of the building.&nbsp; In this case, each part of the building will have a separate set of natural frequencies.&nbsp; Even though each set may be evenly space, when both are considered together, some frequencies from one set may lie very near to some frequencies from the other set.&nbsp;</p> 
+  <p>For instance, if the frequencies of one portion of the building are (in HZ) 1, 5, 9, 13, 17, 21, while the frequencies of the other portion are 4.1, 7.1, 10.1, 13.1, 16.1, 19.1.&nbsp; In each case, the frequencies are widely space (4 Hz apart for the first portion, 3 Hz apart for the second portion) but when both are considered together, the frequencies 13 and 13.1 Hz are very close together, hence the SRSS modal combination rule may not be obvious choice in such cases.</p> 
+  <p>The above may be difficult to imagine at first because&nbsp; in modal analysis all the degrees of freedom of the structure vibrate harmonically at the same frequency.</p> 
+  <p>However, if a building is composed to two parts (base and tower) which have different mode frequencies when analyzed separately, then when analyzed as complete building, the mode frequencies of the whole building are related to those of the separate parts.&nbsp;</p> 
+  <p>The relation is not very simple, but the mode frequencies of the whole are approximately sums and differences of the mode frequencies of the parts.&nbsp; This can cause some mode frequencies of the whole structure to lie very close together and hence SRSS might not be the choice concerning the modal combination rule..&nbsp;</p> 
+  <h3><strong>4.3&nbsp; </strong><strong>Complete quadratic combination (CQC) modal combination rule:</strong></h3> 
+  <p>The <em>complete quadratic rule for modal combination</em> (CQC) is applied to a wider class of structures as it overcomes the limitation of the SRSS rule. According to the CQC rule;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGKO-sz8X-qfQ" src="https://media.licdn.com/dms/image/C5112AQGKO-sz8X-qfQ/article-inline_image-shrink_400_744/0/1520241923566?e=1691625600&amp;v=beta&amp;t=7rzI6-eyzTrGVeUD0Yp8Mvxmlmkc2UIkiUJp9V7xe-s"> 
+  </div> 
+  <p>Each of the N2 terms on the right hand side of this equation is the product of the peak responses in the ith and the nth modes and the co-relation coefficient ρ for these two modes; ρ varies between 0 and 1 and ρ = 1 for i = n.</p> 
+  <p>The above equation may be re-written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFBWGLA6b9GTg" src="https://media.licdn.com/dms/image/C5112AQFBWGLA6b9GTg/article-inline_image-shrink_400_744/0/1520099157241?e=1691625600&amp;v=beta&amp;t=_frNLSfSv_jJaOfaW-Psmvhez8akvMJDVcb4urRjQOs"> 
+  </div> 
+  <h3><strong>4.4 &nbsp;</strong><strong>Assumptions underlying the SRSS and the CQC rules:</strong></h3> 
+  <p>It is important to understand the implications of the assumptions behind the derivations of the SRSS and the CQC rules which are based on random vibration theory;</p> 
+  <p>i . The assumptions indicate that the modal combination rules would be most accurate for earthquake excitations that contain a wide band of frequencies with long phases of strong shaking which are several times longer than the fundamental periods of the structures which are not too lightly damped. In particular, the modal combination rules will become less accurate for short duration impulsive ground motions.</p> 
+  <p>It may be noted that the seismic excitations may have frequency spectra from less than 1Hz up to around 20Hz or so, and the excitation may last for up to 60 seconds.&nbsp; This means that the time over which the excitation acts is long compared to the period of the excitation, since these have periods of between 1/20 second and 1 second.</p> 
+  <p>The point that is being tried to convey above is that,&nbsp;the earthquake lasts long enough to drive the structure through several complete cycles of oscillation, which means that the fundamental modes have had time to reach their equilibrium level of dynamic excitation (the oscillation amplitude at which energy input from the excitation is balanced against energy loss from damping).&nbsp;</p> 
+  <p>If the duration of the earthquake were too short, then the modes would not have time to reach their full excitation (i.e. the damping would not have been sufficiently active as in an impulse loading), and so the estimates given by the SRSS and CQC modal rules would be wrong.</p> 
+  <p>ii. Considering the SRSS and the CQC modal combination rules are based on the random vibration theory, r0 may be interpreted as the mean of the peak values of response to an ensemble of earthquake excitations. Thus, the modal combination rules are intended for use when the excitation is characterized by a smooth response spectrum based on the response spectrum of many earthquake excitations. Thus, the smooth spectrum may be the mean or the median of the individual response spectra or it be a more conservative response spectrum such as mean plus one standard deviation spectrum.</p> 
+  <p>&nbsp;iii. The CQC or the SRSS modal combination rule when used in conjunction with, say, the mean spectrum provides an estimate of the peak response that is reasonably close to the mean of the peak values of response to individual excitations.</p> 
+  <h1><strong> 5.&nbsp;</strong><strong>Interpretation of Response Spectrum Analysis</strong></h1> 
+  <p>As it may be observed from the preceding sections, the response spectrum analysis (RSA) is a procedure for dynamic analysis of a structure subjected to earthquake excitation, but it reduces to a series of static analyses.</p> 
+  <p>For each mode considered, static analyses of the structure subjected to forces &nbsp;provides the modal static response , which is multiplied by the spectral ordinate &nbsp;to obtain the peak modal responses &nbsp;( ).</p> 
+  <p>Thus, the RSA procedure avoids the dynamic analysis of the SDOF systems necessary for the response history analysis. However, the response spectrum analysis is still a dynamic analysis procedure because it uses the vibration properties: natural modes, natural frequencies and modal damping ratios of the structure and the dynamic characteristics of the ground motion through its response spectrum.</p> 
+  <p>It is just that the user (or the software) does not have to carry out any response history calculations; as that would have already been done in developing the earthquake response spectrum.</p> 
+  <h1><strong>&nbsp;6.&nbsp;</strong><strong>Response Spectrum Analysis: Step by step procedure</strong></h1> 
+  <p>&nbsp;</p> 
+  <p>The procedure to compute the peak response of a structure subjected to ground motion can be described as below;</p> 
+  <p>1. Define the structural properties.</p> 
+  <p><strong>a</strong>) Determine the mass matrix m and the stiffness matrix k</p> 
+  <p>b) Estimate the modal damping ratios</p> 
+  <p>2. Determine the natural frequencies (natural periods ) and the natural modes of vibration.</p> 
+  <p>3. Compute the peak response in the nth mode by the following steps to be repeated for all modes, n = 1,2,….,N:</p> 
+  <p>a) Corresponding to natural period and damping ratio ζ, read D and A, the deformation and the pseudo-acceleration respectively from the earthquake response spectrum or the design spectrum.</p> 
+  <p>b) Compute the floor displacements and story drifts using the following equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEx26sRfkmudg" src="https://media.licdn.com/dms/image/C5112AQEx26sRfkmudg/article-inline_image-shrink_400_744/0/1520240856367?e=1691625600&amp;v=beta&amp;t=eiF0EiHjytfIjswqRFil4Si2fJJHjU2VZ_5usDZEGsw"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFygL3YmLkUVA" src="https://media.licdn.com/dms/image/C5112AQFygL3YmLkUVA/article-inline_image-shrink_1000_1488/0/1520239807172?e=1691625600&amp;v=beta&amp;t=f11V9DCjmtjEbvr92RMuDtOOa2tzXwg2_8U3sso7-TI"> 
+  </div> 
+  <p>c) Compute the equivalent static forces f</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGe1BfqKK7tBg" src="https://media.licdn.com/dms/image/C5112AQGe1BfqKK7tBg/article-inline_image-shrink_400_744/0/1520200717425?e=1691625600&amp;v=beta&amp;t=q5OTr7UioWIgQWzH89yA4vm9icf-B65i5zanZa8IkEs"> 
+  </div> 
+  <p>d) Compute the internal forces: shears and moments by the static analysis of the structure</p> 
+  <p>iv) Determine an estimate for the peak value r of any response quantity by combining the peak modal values r according to the SRSS rule if the natural frequencies are well separated.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGTSQIOtppepQ" src="https://media.licdn.com/dms/image/C5112AQGTSQIOtppepQ/article-inline_image-shrink_400_744/0/1520198544285?e=1691625600&amp;v=beta&amp;t=HhFDlW9JgRdZxGR4A4XZrnndDPPK173h_pk2xRdfbbk"> 
+  </div> 
+  <p>The CQC rule is used if the natural frequencies are closely spaced;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEM7z9tUTIaXw" src="https://media.licdn.com/dms/image/C5112AQEM7z9tUTIaXw/article-inline_image-shrink_400_744/0/1520066261972?e=1691625600&amp;v=beta&amp;t=GFP8qR7VOa8M5ff7VlKee4vurz9nfIvihUIUGlCho8Q"> 
+  </div> 
+  <h1><strong>&nbsp;7.&nbsp;</strong><strong>Example illustration: Response spectrum analysis</strong></h1> 
+  <p>The peak response of a two story frame shown in the figure below to ground motion characterised by the design spectrum also shown below scaled to 0.5g peak ground acceleration is to be determined.</p> 
+  <p>The reinforced concrete frame has the following properties;</p> 
+  <p>E = 3 x 103 ksi; I = 1000 in4; h = 10 ft; L = 20 ft.</p> 
+  <p>Determine the lateral displacements of the frame and bending moments at both sides of the beam and the column.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHGaYXT1Hjc-w" src="https://media.licdn.com/dms/image/C5112AQHGaYXT1Hjc-w/article-inline_image-shrink_1000_1488/0/1520198044369?e=1691625600&amp;v=beta&amp;t=cmky-7vSFdK20EANtgoKfFtIZGzcpIdCZRtXAEpfKdc"> 
+  </div> 
+  <p class="center"><strong>Figure: 2 story frame for which the peak response is to be computed</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFZ7Yp6XY4zYw" src="https://media.licdn.com/dms/image/C5112AQFZ7Yp6XY4zYw/article-inline_image-shrink_1000_1488/0/1520066520362?e=1691625600&amp;v=beta&amp;t=VKlkJIFyJftN_HpDQWBnlfFMSgy9jR-01I83LJYH0zk"> 
+  </div> 
+  <p class="center"><strong>Figure: Elastic pseudo- acceleration design spectrum for ground motions with</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGzfLJC-OET0g" src="https://media.licdn.com/dms/image/C5112AQGzfLJC-OET0g/article-inline_image-shrink_400_744/0/1520172148919?e=1691625600&amp;v=beta&amp;t=EB-lcp4Suaw6JU_33VK2JFl6gOMASF_QkSVGm_fj_zw"> 
+  </div> 
+  <p>Solution:</p> 
+  <p><strong>Step 1: </strong><strong>Define the structural properties</strong>&nbsp;</p> 
+  <p>a) Determine the mass matrix m and the stiffness matrix</p> 
+  <p>b) Estimate the modal damping ratios</p> 
+  <p>Mass matrix <strong>m </strong>is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHKoCqU9G_VOA" src="https://media.licdn.com/dms/image/C5112AQHKoCqU9G_VOA/article-inline_image-shrink_400_744/0/1520201036683?e=1691625600&amp;v=beta&amp;t=QlXQ1cl4XDKYuikMkhk8oSOzlwoTGQvR5cSPMaHkZpE"> 
+  </div> 
+  <p>Stiffness matrix <strong>k</strong> in the direction of the dynamic degrees of freedom is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHghAX6kWAQow" src="https://media.licdn.com/dms/image/C5112AQHghAX6kWAQow/article-inline_image-shrink_400_744/0/1520170311713?e=1691625600&amp;v=beta&amp;t=_IZ5RE9k-J2vS-Ei2g0H2T_XAiMVTp_-wLS6Dbsvlgw"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>The above matrix is obtained by the static condensation of the original 6x6 matrix.</p> 
+  <p><strong>Step 2: To d</strong><strong>etermine the natural frequencies ω and natural modes Φ of the system</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEOzEAMsliCPw" src="https://media.licdn.com/dms/image/C5112AQEOzEAMsliCPw/article-inline_image-shrink_1000_1488/0/1520065874737?e=1691625600&amp;v=beta&amp;t=n7Kg-rqnYIpqu9ls_eCSKxOQYFpEOZp0zGXMGv3arMs"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGL3-BAmGFMJQ" src="https://media.licdn.com/dms/image/C5112AQGL3-BAmGFMJQ/article-inline_image-shrink_400_744/0/1520241891899?e=1691625600&amp;v=beta&amp;t=KiMIv-0gvViX5vuaTr0410-cRq_GNgIYjRv7Y9QFS38"> 
+  </div> 
+  <p><strong>Step 3: &nbsp;</strong>Compute the peak response in the nth mode by the following steps to be repeated for all modes, n = 1, 2,….,N:</p> 
+  <p>&nbsp;a) Corresponding to natural period and damping ratio ζ, read D and A, the deformation and the pseudo-acceleration respectively from the earthquake response spectrum or the design spectrum.</p> 
+  <p>Corresponding to these periods, the spectral ordinates are D1 = 13.72 in and D2 =&nbsp; 4.578 in.</p> 
+  <p>&nbsp;b) To determine the floor displacements and story drifts;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFirXBLwL50Jw" src="https://media.licdn.com/dms/image/C5112AQFirXBLwL50Jw/article-inline_image-shrink_400_744/0/1520065913411?e=1691625600&amp;v=beta&amp;t=yI-_V-sLXRft_JUD_si7Kfk6176fvOs87m3_uXh12As"> 
+  </div> 
+  <p>i.e. &nbsp;using the equation as obtained during time history analysis</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE5gYxVAIp3Tg" src="https://media.licdn.com/dms/image/C5112AQE5gYxVAIp3Tg/article-inline_image-shrink_400_744/0/1520239243928?e=1691625600&amp;v=beta&amp;t=yHLeSpo-cZxtlVgdOauQXUm0OK78CQ8lYDhWEkfswlo"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE2yPXCYc0XGw" src="https://media.licdn.com/dms/image/C5112AQE2yPXCYc0XGw/article-inline_image-shrink_1000_1488/0/1520241524847?e=1691625600&amp;v=beta&amp;t=7DMB5Ojn3qdPE-Dcd43ELTIEecSSRjkjMlxZzQX-x0Q"> 
+  </div> 
+  <p>Above computations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHvx1TB2i6Yng" src="https://media.licdn.com/dms/image/C5112AQHvx1TB2i6Yng/article-inline_image-shrink_1000_1488/0/1520173354452?e=1691625600&amp;v=beta&amp;t=o1y4It-o8YhLW9Y1Ga3bl2r-dAuW8jfoJzSgBLjKQys"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFnZAthAVJylg" src="https://media.licdn.com/dms/image/C5112AQFnZAthAVJylg/article-inline_image-shrink_400_744/0/1520170123432?e=1691625600&amp;v=beta&amp;t=XEeB8eaRtg83nxmgyLA-Zoa8-38HUM_04x_9F9gpDs0"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHTdrKLM6wDKg" src="https://media.licdn.com/dms/image/C5112AQHTdrKLM6wDKg/article-inline_image-shrink_1000_1488/0/1520040179392?e=1691625600&amp;v=beta&amp;t=kMuiFhrMeFSaCIFFcvRKYWT19q5vGK9V4Wisqm0zMhg"> 
+  </div> 
+  <p><strong>Step 4: </strong>Using the SRSS rule for modal combination, estimate for the peak values of floor displacements;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHUQ3F7LmSqUw" src="https://media.licdn.com/dms/image/C5112AQHUQ3F7LmSqUw/article-inline_image-shrink_400_744/0/1520040927467?e=1691625600&amp;v=beta&amp;t=cEG8eqaViD_g4cikeN-QVSP0FzhJJBbJDPqA3iWUttA"> 
+  </div> 
+  <p><strong>Step 5: </strong>Instead of implementing steps 3c and 3d as described in section 6, the computation of element forces is done from floor displacements and joint rotations.</p> 
+  <p>The elements and the nodes are numbered as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGRMHQqFI0yAQ" src="https://media.licdn.com/dms/image/C5112AQGRMHQqFI0yAQ/article-inline_image-shrink_1000_1488/0/1520040529422?e=1691625600&amp;v=beta&amp;t=BcBmZQBuhts8TTnRoS9ULp8pt9sv4ynPieHrBDB_Skw"> 
+  </div> 
+  <p class="center"><strong>Figure: Element and node numbers</strong></p> 
+  <p>Joint rotations can be obtained by expressing the relation between condensed degrees of freedom (i.e. dependent degrees of freedom which area the rotations in this case and the retained degrees of freedom).</p> 
+  <p>The above step is not illustrated here as it is not the main focus of the discussion.</p> 
+  <p>Joint rotations are obtained as;</p> 
+  <p>First mode;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFjInssV7OjjQ" src="https://media.licdn.com/dms/image/C5112AQFjInssV7OjjQ/article-inline_image-shrink_1000_1488/0/1520172868766?e=1691625600&amp;v=beta&amp;t=rmRMQyJ05NzLXMsQCJmxmpm_Su_M6GqqFwAyDsiZFVE"> 
+  </div> 
+  <p>Element forces can be determined using slope deflection equations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGHD9Q7FHhkVg" src="https://media.licdn.com/dms/image/C5112AQGHD9Q7FHhkVg/article-inline_image-shrink_400_744/0/1520168620586?e=1691625600&amp;v=beta&amp;t=xG23SdklGZCZO1GtbWq2W-D4vuz83uPUffSMcTz3ZlM"> 
+  </div> 
+  <p>The results of the values computed in each mode are shown in the table below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFI9SPUCt0MKA" src="https://media.licdn.com/dms/image/C5112AQFI9SPUCt0MKA/article-inline_image-shrink_400_744/0/1520042598719?e=1691625600&amp;v=beta&amp;t=GZ1-2cDZGTLMh8zH_xSU858qbIEC_JvlsG27gzQQFsw"> 
+  </div> 
+  <p><strong>Step 6: </strong>The peak values of the internal forces are obtained by combining the results in mode 1 and mode 2 by SRSS rule;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEbqI3nu3ohDw" src="https://media.licdn.com/dms/image/C5112AQEbqI3nu3ohDw/article-inline_image-shrink_400_744/0/1520170018184?e=1691625600&amp;v=beta&amp;t=EdpvTVPEwDgKvxaSZt0F3aMuNCnOtxOruMf5DbYoRmg"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p>
+ 
+</div>
+</body>
+</html>

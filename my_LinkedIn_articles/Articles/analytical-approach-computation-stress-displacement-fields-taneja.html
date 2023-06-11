@@ -1,0 +1,534 @@
+<html>
+<head>
+  <title>Analytical approach to the computation of stress and displacement fields in the vicinity of the crack tip</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQEWpoMRtpZ7lw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/analytical-approach-computation-stress-displacement-fields-taneja">Analytical approach to the computation of stress and displacement fields in the vicinity of the crack tip</a></h1>
+    <p class="created">Created on 2016-12-04 13:11</p>
+  <p class="published">Published on 2016-12-04 14:44</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2><b><strong>1. Introduction</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>This article is the continuation of my series of blogs on “Fracture Mechanics”.</p> 
+  <p>I had stated in my earlier article: “Revisiting – Theory of elasticity vs. Strength of materials” [<a href="https://www.linkedin.com/pulse/revisiting-theory-elasticity-vs-strength-materials-ajay-taneja?trk=prof-post" target="_blank">https://www.linkedin.com/pulse/revisiting-theory-elasticity-vs-strength-materials-ajay-taneja?trk=prof-post</a>] that there are two analytical approaches to determine displacement and stress fields in a body – displacement formulation and stress formulation.</p> 
+  <p>In the displacement formulation, the field equations that are solved are the equilibrium equations and in the stress formulation, the field equations that are solved are the compatibility equations [<em>compatibility indicates that during the deformation a continuous body remains continuous</em>]. The math behind the development of the equations corresponding to the displacement and stress formulation was discussed in detail in the above article.</p> 
+  <p>The equations developed in the above article were that of a general 3 dimensional body. Although, the governing differential equations for a general three dimensional body, have been formulated, if one looks at the analytical approach the number of three dimensional problems that are solvable are very less. And also, a very few problems three dimensional problems have been solved in totality. That is the main reason why numerical and experimental techniques are necessary in solving practical problems.</p> 
+  <p>Although, numerical techniques are widely / most frequently resorted to in solving industrial problems, I must say that in my experience in the industry, so far, I have come across situations wherein analytical solutions have been / are being used <span class="underline"><strong>especially in determining the stress and displacement fields in the vicinity of the crack tip </strong></span>for reasons such as: longer computational time using numerical procedures, uncertainty of the results using numerical procedures in many cases, etc. Thus, I feel this article is surely worthwhile.</p> 
+  <p>The aim of this article is to;</p> 
+  <ol> 
+   <li>To simplify the three dimensional equation (that were developed in the preceding article) for planar problems.</li> 
+   <li>To present the solution approach to the field equations in planar bodies in the vicinity of the crack tip.</li> 
+   <li>To provide the detailed analytic solution of an infinite plate with a central crack for mode I case of fracture.</li> 
+  </ol> 
+  <p>This article starts with the formal definition of a plane stress and plane strain problems in the section 2, laying emphasis on a three dimensional strain field in case of plane stress and in a three dimensional stress field in plane strain – which often cannot be neglected in case of the presence of a crack.</p> 
+  <p>Section 3 of this article starts with the introduction to the Airy’s stress function (Ф) using which, instead of solving three equations in planar problems to determine stress and the displacement field one tends to relate the stress components through a stress function Ф.</p> 
+  <p>The discussion in section 3 gradually leads to the biharmonic equation which is a single equation in terms of the stress function Ф that needs to be solved (?!) to get Ф and consequently the stress and the displacement fields.</p> 
+  <p>It is expressed through section 3 that the biharmonic equation is actually never “solved” in mechanics but instead suitable “candidates” of Ф are tried with which satisfy the boundary conditions of a given problem.</p> 
+  <p>The discussion then leads to section 4 wherein the analytical solution to stress and displacement for a mode I case of fracture considering an infinite plate with a central crack subjected to biaxial loading is presented in sufficient detail.</p> 
+  <p>Section 5 leads to some insights of the math discussed in section 4. These include the concepts of: crack opening displacement (COD), root-r singularity and the applicability of the biaxial loading condition to that of a uniaxial case.</p> 
+  <p>In order to present the solution approach in the case of a central crack in an infinite plate under biaxial loading, the article will tend to get a bit mathematically involving; however, it was felt that the rigorous math cannot be avoided when talking about the subject of “fracture mechanics”...!</p> 
+  <p>&nbsp;</p> 
+  <h2><b><strong>2. Plane elastic problems</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p><b><strong>2.1 Definition of plane strain and plane stress</strong></b></p> 
+  <p>Planar problems can be solved easily in the analytical approach than the general three dimensional problems. A variety of practical problems can be simplified either as plane stress or plane strain problems. In developing the field equations and then the solution approach to planar problems, following points are noteworthy:</p> 
+  <p>a) Thickness of the body must be uniform – it must be very thick or very thin.</p> 
+  <p>b) Normally, the plane strain approach is resorted to when the body is very thick relative to it lateral dimension.</p> 
+  <p>c) The plane stress approach is employed when the body is relatively thin in relation to its lateral dimension.</p> 
+  <p>d) The key point that should be noted in solution to planar problems is that the loading is assumed to be in the xy plane as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE-8cN5JRDauw" src="https://media.licdn.com/dms/image/C5112AQE-8cN5JRDauw/article-inline_image-shrink_400_744/0/1520242489591?e=1691625600&amp;v=beta&amp;t=bE0X1ji2pLpXYb2lnmisE-NUQvGs_Wm-416VGY6lZl0"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF8cIPydKOzrQ" src="https://media.licdn.com/dms/image/C5112AQF8cIPydKOzrQ/article-inline_image-shrink_400_744/0/1520249824699?e=1691625600&amp;v=beta&amp;t=JaWwlVA5QZBcqOHPIc0jWKk7le_8gKHpVwZVONbp1Qs"> 
+  </div> 
+  <p><strong>Figure: Plane strain case – lateral dimension is very large compared to the in plane dimensions. Loading uniform along the lateral surface</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGaLTpeyezMEw" src="https://media.licdn.com/dms/image/C4E12AQGaLTpeyezMEw/article-inline_image-shrink_400_744/0/1520486005115?e=1691625600&amp;v=beta&amp;t=b89hznOHhhi_y7eR4pYaZvr39UF98nv1fuzfkbP6M0k"> 
+  </div> 
+  <p><strong>Figure: Plane stress case – lateral dimension is very thin compared to the in plane dimensions</strong></p> 
+  <p>&nbsp;</p> 
+  <h3><b><strong>2.2 Strain and stress tensors in case of plane stress and plane strain case</strong></b></h3> 
+  <p>&nbsp;</p> 
+  <p><strong>Plane stress case:</strong></p> 
+  <ul> 
+   <li>Stress tensor in a plane stress case is given by;</li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEVD1pObrF2EA" src="https://media.licdn.com/dms/image/C4E12AQEVD1pObrF2EA/article-inline_image-shrink_400_744/0/1520486005380?e=1691625600&amp;v=beta&amp;t=YC4ZyOezb1ptlyw_jfTXmjStR59VD2zYC0lRaqHduj0"> 
+  </div> 
+  <ul> 
+   <li>Whereas, the strain tensor is given by;</li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEIy7xYkpKWEg" src="https://media.licdn.com/dms/image/C5112AQEIy7xYkpKWEg/article-inline_image-shrink_400_744/0/1520249661302?e=1691625600&amp;v=beta&amp;t=zhvZW1WnucK4DcfL9804hwZzr1DNFVVpGMDtVdmBANQ"> 
+  </div> 
+  <p>Points to be noted here are as follows;</p> 
+  <ol> 
+   <li>Even though the stress tensor is two dimensional i.e. there is no stress component in the lateral z direction, this is not the case in case of strain tensor</li> 
+   <li>The strain quantity is three dimensional, i.e. we have ε, εε</li> 
+  </ol> 
+  <p>This can be physically imagined by pulling a tension strip; in a <em>normal situation</em> one would not really recognise the change in thickness when the stress levels are reasonably small and the strain components are going to be much smaller. On the other hand, if one imagines a specimen which has a crack (as shown in the figure below), because of very high local stresses near the crack tip, a <em>dimple </em>will be formed as shown. The <em>dimple</em> is a result of high lateral strain because of significant local stress concentration near the crack tip.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGR8rrZeSrgYg" src="https://media.licdn.com/dms/image/C4E12AQGR8rrZeSrgYg/article-inline_image-shrink_400_744/0/1520486006546?e=1691625600&amp;v=beta&amp;t=uOndxOH4jKVFiyt0WbJDwWtC_C3dZaEy4XgWtVuCp0g"> 
+  </div> 
+  <p><strong>Figure: <em>Dimple</em> formation a plane stress case – high lateral strain because of high local stress concentrations</strong></p> 
+  <p>&nbsp;<strong>Plane strain case:</strong></p> 
+  <p>Similarly, in a plane strain situation the strain field is two dimensional but the stress field is three dimensional. The strain and stress tensors in a plane strain case are given by;</p> 
+  <p><strong>&nbsp;</strong><strong>Strain tensor:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEWRpu83PMnZA" src="https://media.licdn.com/dms/image/C4E12AQEWRpu83PMnZA/article-inline_image-shrink_400_744/0/1520486005378?e=1691625600&amp;v=beta&amp;t=k_clfNVf2iEaMhJWrttbPaty3zH-sem6iy_09JCOtXg"> 
+  </div> 
+  <p><strong>Stress tensor:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFv_G4hTDbv7w" src="https://media.licdn.com/dms/image/C4E12AQFv_G4hTDbv7w/article-inline_image-shrink_400_744/0/1520486005980?e=1691625600&amp;v=beta&amp;t=s8OQU-y_8oyAW7jh2riGVuZdMZnz6ogp8AbDgkrR1Vk"> 
+  </div> 
+  <p>This can be physically felt by imagining that if you take a slice of a body (in a plane strain case), the strain in the lateral direction has to be 0 - thus, the edges have to be straight. In order that the edges are straight, stresses are developed in lateral direction σ cannot be 0 if ε has to be maintained as 0.</p> 
+  <p>&nbsp;</p> 
+  <h3><strong>2.3 Stress formulation in solving plane elasticity problems</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>In this article, the solution methodology for planar problems (plane strain or plane stress) in the absence of body forces is considered. It can be understood from the preceding section (section 2.2) that in plane strain and plane stress cases, the number of independent strain or stress components is three. Thus, one requires three equations to solve for the three unknowns.The equilibrium equations for a general three dimensional case have been discussed in my preceding article. For a 2 dimensional problem, these equations can be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFkzWqQC4VmLQ" src="https://media.licdn.com/dms/image/C4E12AQFkzWqQC4VmLQ/article-inline_image-shrink_400_744/0/1520486007196?e=1691625600&amp;v=beta&amp;t=GkUGyw_lnrFlqhm-7OQF8ADAvH1EZB0ZfH27mR3-NCc"> 
+  </div> 
+  <p>Next, we look at the compatibility equations. In my earlier article:[<a href="https://www.linkedin.com/pulse/revisiting-theory-elasticity-vs-strength-materials-ajay-taneja?trk=prof-post" target="_blank">https://www.linkedin.com/pulse/revisiting-theory-elasticity-vs-strength-materials-ajay-taneja?trk=prof-post</a>]</p> 
+  <p>&nbsp;We had seen 6 compatibility equations for a general 3 dimensional body. In a two dimensional case, in the absence of body forces, the compatibility equation is just one as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGvDJmKtb9QJA" src="https://media.licdn.com/dms/image/C5112AQGvDJmKtb9QJA/article-inline_image-shrink_400_744/0/1520249377335?e=1691625600&amp;v=beta&amp;t=yW8Y_asS2fZF0qxw8oYoLYT4pVbcfmjJQlbWJEGDbCQ"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGBN4tve_vJTw" src="https://media.licdn.com/dms/image/C5112AQGBN4tve_vJTw/article-inline_image-shrink_400_744/0/1520146920034?e=1691625600&amp;v=beta&amp;t=LxRLaNth_W0DrEmbrep24pfHAzY9p9c0hwp4ibjkwZw"> 
+  </div> 
+  <h3><b><strong>2.4 An important observation:</strong></b></h3> 
+  <p>A very important to note is that in a two dimensional case of plane strain or plane stress, the governing equations do not contain any material constant. So, whatever stress one gets in an elastic analysis, the same will be obtained in an elastic analysis, the same will be obtained in an inelastic analysis although the deformations will be different. Thus, the stresses in a two dimensional case of plane strain or plane stress are independent of the material constants.</p> 
+  <p>&nbsp;</p> 
+  <h2><b><strong>3.Solution to plane elastic problems</strong></b></h2> 
+  <p><b><strong>3.1 Airy’s stress functions</strong></b></p> 
+  <p>Instead of solving 3 equations, the problem could be reduced to a single equation assuming a stress function which is related to the stress components as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEz0GhLiLAHGg" src="https://media.licdn.com/dms/image/C4E12AQEz0GhLiLAHGg/article-inline_image-shrink_400_744/0/1520486006408?e=1691625600&amp;v=beta&amp;t=WCJ4Umov0ddWSSNdUgSylTr8pYhwnTuOHNYJbsOPj3s"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHKU2uJelTKSg" src="https://media.licdn.com/dms/image/C4E12AQHKU2uJelTKSg/article-inline_image-shrink_400_744/0/1520486005506?e=1691625600&amp;v=beta&amp;t=a84cOHHVfijraQkCXT_NLlYV5xvtSUnUFh8FWiliiiY"> 
+  </div> 
+  <p>Thus, the moment the stress components are chosen as above, the equilibrium equations are automatically satisfied.</p> 
+  <p>&nbsp;Substituting the above equations in the compatibility equation, one gets;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEq70OCZI95ww" src="https://media.licdn.com/dms/image/C4E12AQEq70OCZI95ww/article-inline_image-shrink_400_744/0/1520486006293?e=1691625600&amp;v=beta&amp;t=9fIw-EqKnlRLhBo3wo1OjNrq2yL33SApyzmYUv-1TF0"> 
+  </div> 
+  <p>That is,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGqA_lwntF30w" src="https://media.licdn.com/dms/image/C5112AQGqA_lwntF30w/article-inline_image-shrink_400_744/0/1520145389535?e=1691625600&amp;v=beta&amp;t=034hxVU6m5-PKbtqUGtZlvSrd4ZMtbTxfzYVQ8uEmVY"> 
+  </div> 
+  <p>The equation is termed as <strong>‘biharmonic equation’</strong>. Thus, the solution to planar problems reduces to finding the function ϕ from the above equations satisfying the boundary conditions.</p> 
+  <p>&nbsp;</p> 
+  <p>Thus, the problem remains to find out ϕ. Once ϕ is obtained the problem is solved since σ, σ and τ using the above relations. From the stresses, one evaluates the strains from the stress strain relation and then the displacements from the strain-displacement relation.</p> 
+  <p>&nbsp;</p> 
+  <h3><b><strong>3.2 Inverse approach</strong></b></h3> 
+  <p>&nbsp;</p> 
+  <p>In practice, to obtain the stress field for a given problem, one does not solve the biharmonic equation to obtain ϕ satisfying the boundary conditions. Instead, one follows an “inverse” approach wherein the function ϕ’s (the Airy’s stress function) are listed. The functions, then, individually or in linear combination are investigated to see what problem it represents physically. Thus, an inverse approach is adopted.That is, one is using an inverse approach wherein one is not solving the problem up-front instead one looks at what functions of ϕ are valid candidates to satisfy the bi-harmonic equation and then wee which physical problem the stress functions represent. So, the challenge in the analytical approach is to find ϕ</p> 
+  <h3><b><strong>3.3 Forms of stress function ϕ in Cartesian coordinates</strong></b></h3> 
+  <p>&nbsp;</p> 
+  <p>Some forms of ϕ in Cartesian co-ordinates include;<strong>&nbsp;</strong></p> 
+  <ul> 
+   <li>Polynomial functions</li> 
+   <li>Fourier series</li> 
+   <li>Analytical function</li> 
+  </ul> 
+  <p>Complex analytic functions are used as stress functions to develop crack tip stress and displacement fields. The mathematical meaning of complex analytic functions would be worthwhile to discuss before elaborating on the stress and displacements in the vicinity of the crack tip. This is done in the following section.&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <h3><b><strong>3.4 Complex analytic functions</strong></b></h3> 
+  <p>&nbsp;</p> 
+  <p>A function whose range is in the complex numbers is said to be a “complex function”. Complex numbers <em>(of form: x + iy)</em> are abstract numbers and can be used in calculations and many times result on physical meaning solutions. E.g. in a vibration problem, the eigen values physically represent the frequency of the system. One can get either pre real, pure imaginary or complex eigen values. I have elaborated in some detail of the physical interpretation of the eigen values in my blog below<b>;</b></p> 
+  <p><b><a href="http://ajaytaneja-eigenphysinterpretation.blogspot.co.uk/" target="_blank">http://ajaytaneja-eigenphysinterpretation.blogspot.co.uk/</a>&nbsp;&nbsp;</b></p> 
+  <p>&nbsp;</p> 
+  <p>With regards to the current discussion, complex analytic functions are used as stress functions to determine stress and displacement fields in the vicinity of the crack tip.</p> 
+  <p>Let z = x + iy and f (z) = w = u(x, y) + i v(x,y) on some region “R” containing the point z. If f(z) satisfies <strong><em>Cauchy Reimann conditions</em></strong> and has continuous first order derivatives in the neighbourhood of z. Then, f’ (z) = dw/dz exists and is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGAJk3Fd5aOSQ" src="https://media.licdn.com/dms/image/C4E12AQGAJk3Fd5aOSQ/article-inline_image-shrink_400_744/0/1520486005444?e=1691625600&amp;v=beta&amp;t=mS7XLXsx1UfZHtECVqFm5vs1so6-nm_B581IJhlOSHw"> 
+  </div> 
+  <p><strong>Cauchy Reimann conditions:</strong></p> 
+  <p><strong>&nbsp;</strong>If w = f (z) = u(x,y) + iv(x,y), then, for f’(z) or dw/dz to exist, the following must be satisfied;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEgDYMr43bknA" src="https://media.licdn.com/dms/image/C5112AQEgDYMr43bknA/article-inline_image-shrink_400_744/0/1520168329831?e=1691625600&amp;v=beta&amp;t=v311pfr_SuszqFfjs1fRRpgFpO5WZIdPh0qQ01Qhk7M"> 
+  </div> 
+  <p>And;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEyL_kdbdxT5g" src="https://media.licdn.com/dms/image/C4E12AQEyL_kdbdxT5g/article-inline_image-shrink_400_744/0/1520486005678?e=1691625600&amp;v=beta&amp;t=15xvzRGx68Vr6JNSPVX2nPkQMerP0Ods_oYyslcMyxY"> 
+  </div> 
+  <h2><b><strong>4. Westergaard’s approach</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>One way to solve the biharmonic equation is to express Ф in terms of another complex function Z(z) for mode 1 problems. In other words, Z(z) is an intermediate solution which satisfies the biharmonic equation. It is chosen appropriately by Westergaard to suit the general characteristics of mode 1 problems.</p> 
+  <p>Then, to solve a specific problem, Z(z) is chosen to solve all the boundary conditions of the problem. Similarly, there is a Westergaard intermediate solution Zfor the biharmonic equation for Mode II problems. Since, the general characteristics of mode II problems are different from those of Mode I, Z has a different form.</p> 
+  <p>The case of Mode III is generally simpler and can be managed without taking the help from biharmonic equation. The problem is normally solved using the displacement formulation.<em>&nbsp;</em></p> 
+  <p><em>A general note: Stress and displacement based formulations</em></p> 
+  <p><em>It is reiterated that the stress formulation is being talked about (in this blog) to determine the stress and displacement fields for mode 1 and mode 2 problems. The stress formulation is more well known for analytical approaches in most cases whereas for numerical techniques such as the finite element method, the displacement formulation is normally resorted to how. <strong>Even in case of the finite element method, stress based formulations are often used to model incompressible materials like rubber.</strong></em></p> 
+  <h3><strong>4.1 Mode I problems</strong></h3> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHGeQcai8OHaw" src="https://media.licdn.com/dms/image/C5112AQHGeQcai8OHaw/article-inline_image-shrink_1000_1488/0/1520170610029?e=1691625600&amp;v=beta&amp;t=I-0e-kGx_PY7ElsIlDL5pAi1MKaI24E3rSmuSzBJcQc"> 
+  </div> 
+  <p class="center"><strong>Figure: Mode I (opening mode)</strong></p> 
+  <p><strong>&nbsp;</strong>For Mode I problems, Ф is expressed as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHDCet9UIEnwQ" src="https://media.licdn.com/dms/image/C4E12AQHDCet9UIEnwQ/article-inline_image-shrink_400_744/0/1520486005424?e=1691625600&amp;v=beta&amp;t=ITAFVBnrafUUXmFnjtK0cZDOtmVwTx35iTaVg0X5ERw"> 
+  </div> 
+  <p>where,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHHRwqWgAxUPg" src="https://media.licdn.com/dms/image/C4E12AQHHRwqWgAxUPg/article-inline_image-shrink_400_744/0/1520486006099?e=1691625600&amp;v=beta&amp;t=xAKOyu-ADZDjn4t_D8UKlJml3uiqUeUwYNBGMpVSxiM"> 
+  </div> 
+  <p>It should be noted that Z1 (double bar) and Z1 (single bar) represent the double and single integrals of Z1. It will be shown next that the above expression of Ф satisfies the biharmonic equation. The components: σ, σand σ will be expressed in terms of Z(z).</p> 
+  <h3>&nbsp;</h3> 
+  <h3><b><strong>4.1.1 Advantages in constructing the Westergaard’s Z(z)</strong></b></h3> 
+  <p>&nbsp;</p> 
+  <p>For many complex looking differential equations, such as the biharmonic equation, there are no set ways to solve them analytically. One keeps trying solutions on the basis of feel, intuition or clairvoyance until one satisfies the differential equation. Westergaard is credited for offering a simple solution. The integrals of and do not cause difficulties in determining the stress field of a problem, because Z(z) is differentiated at least twice and in the process, the integrals are eliminated.The proof to show that Z(z) satisfies the bi-harmonic equation as below,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEC0TtV4gHrRg" src="https://media.licdn.com/dms/image/C4E12AQEC0TtV4gHrRg/article-inline_image-shrink_400_744/0/1520486005282?e=1691625600&amp;v=beta&amp;t=bDPGCSevLUvX-E4YTu8o3OgVLR5sn-Qt9DMGDRKDVBU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGxlbtM0q-WRg" src="https://media.licdn.com/dms/image/C5112AQGxlbtM0q-WRg/article-inline_image-shrink_400_744/0/1520249347761?e=1691625600&amp;v=beta&amp;t=oV22aF0t5zJ5uqcBY7mZM4X9OLaXJ7FHWnHHD8QCNk4"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF7n7UF7Irz_g" src="https://media.licdn.com/dms/image/C5112AQF7n7UF7Irz_g/article-inline_image-shrink_400_744/0/1520117025165?e=1691625600&amp;v=beta&amp;t=-He2Y4YFho0grdZQ8lBz7kLvCw1WTBTZzwfHMeYtBKs"> 
+  </div> 
+  <p>Differentiating the equation for Ф and making use of the Cauchy-Riemann equations,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHFBUceNVry5g" src="https://media.licdn.com/dms/image/C4E12AQHFBUceNVry5g/article-inline_image-shrink_400_744/0/1520486005728?e=1691625600&amp;v=beta&amp;t=Zs4xD5Z1vAEq4MTQ89hZZPGQEJgENdqXijxelPP16qk"> 
+  </div> 
+  <p>Substituting in the biharmonic equation leads to,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEHX8woO5Tf2A" src="https://media.licdn.com/dms/image/C4E12AQEHX8woO5Tf2A/article-inline_image-shrink_400_744/0/1520486006209?e=1691625600&amp;v=beta&amp;t=syGgQfRH8B9bI4F4QptnbpRMpiP8r6DTs4mBti8_zeU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGtHsU74LIfOA" src="https://media.licdn.com/dms/image/C4E12AQGtHsU74LIfOA/article-inline_image-shrink_1000_1488/0/1520486005196?e=1691625600&amp;v=beta&amp;t=60D1BhZp4tLc6khNEdh1Ck205403TzGcIn3lFLqVeXY"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p><strong>Obtaining the stress field for plane stress condition:</strong></p> 
+  <p>&nbsp;Substituting the relevant partial derivatives in the equation for stresses,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHMZ0obOEo6Pg" src="https://media.licdn.com/dms/image/C5112AQHMZ0obOEo6Pg/article-inline_image-shrink_400_744/0/1520168854993?e=1691625600&amp;v=beta&amp;t=413BAB3VEktaC2XePwt5An_kQo0MV-LooTuwSE1RthI"> 
+  </div> 
+  <p>We get,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFHh3Kkh5t8tA" src="https://media.licdn.com/dms/image/C5112AQFHh3Kkh5t8tA/article-inline_image-shrink_400_744/0/1520241183312?e=1691625600&amp;v=beta&amp;t=Ib0RkYGWghNPPtRDNXc5mbaR_FyrI60lTJg_xczVu3A"> 
+  </div> 
+  <p>In order to solve a given problem, the proper form of Westergaard’s stress function Z(z) is chosen such that the stress components determined through the above equations satisfy all the boundary conditions. Once such a function is obtained, the stress field in the vicinity of the crack tip can be obtained through the above equations. Thus, the Westergaard’s analytic function does not solve the problem completely; it only aids in solving the problem. One still has to guess the form of complex function Z(z) for the specific problem.</p> 
+  <p>To determine the displacement field (u,u) in the vicinity of the crack tip, we convert the stress field to the strain field with the help of appropriate stress-strain relations – for plane stress or plane strain. Strains are then integrated to get the displacements.</p> 
+  <p>Considering first the case of plane stress and substituting the above relations for the stresses (σ, σ and σ) in the strain to stress relations discussed here (<a href="https://www.linkedin.com/pulse/revisiting-theory-elasticity-vs-strength-materials-ajay-taneja?trk=mp-reader-card" target="_blank">https://www.linkedin.com/pulse/revisiting-theory-elasticity-vs-strength-materials-ajay-taneja?trk=mp-reader-card</a>)</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEmHAI9dsdbMQ" src="https://media.licdn.com/dms/image/C5112AQEmHAI9dsdbMQ/article-inline_image-shrink_400_744/0/1520250028185?e=1691625600&amp;v=beta&amp;t=ekbY-EBQd_Ouzh9AzGIw6Juc2LrGKyHGHB4jQ4HsIjU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEnC4EJRz456w" src="https://media.licdn.com/dms/image/C4E12AQEnC4EJRz456w/article-inline_image-shrink_400_744/0/1520486006324?e=1691625600&amp;v=beta&amp;t=cRhYs21YTWZ1ImsqiLUu5-gKlq5tgK07HxRB2IYB0-8"> 
+  </div> 
+  <p><strong>And,</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEmTWM5a2n5Eg" src="https://media.licdn.com/dms/image/C5112AQEmTWM5a2n5Eg/article-inline_image-shrink_400_744/0/1520146127422?e=1691625600&amp;v=beta&amp;t=-zFPq6LBjUoDnLrRkdapySKvgkIi-Vqni16gzkWggHA"> 
+  </div> 
+  <p>Rearranging and making use of the relation,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHnTenbFj3Vsg" src="https://media.licdn.com/dms/image/C5112AQHnTenbFj3Vsg/article-inline_image-shrink_400_744/0/1520240039796?e=1691625600&amp;v=beta&amp;t=saAlE76Ns0m6ueKJAjWJtxFD9dC7L_cw-LqKBUovayI"> 
+  </div> 
+  <p>One can obtain,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGf-RKZ8D3cDQ" src="https://media.licdn.com/dms/image/C4E12AQGf-RKZ8D3cDQ/article-inline_image-shrink_400_744/0/1520486016174?e=1691625600&amp;v=beta&amp;t=544SKJzn8SiQS5oYtiFKJU27-z5a1BTgjqAHwOMaawQ"> 
+  </div> 
+  <p>Integrating the above relations and using the Cauchy Reimann conditions as outlined above, one can obtain,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHjoOKcxZmfIg" src="https://media.licdn.com/dms/image/C4E12AQHjoOKcxZmfIg/article-inline_image-shrink_400_744/0/1520486005211?e=1691625600&amp;v=beta&amp;t=fYyleSJjbPSjKCqp3YjFa2ED7ElrojHeTW2Z05xC7-s"> 
+  </div> 
+  <p>Where,</p> 
+  <p>&nbsp;f(x) and g(x) are functions of x and x respectively. In fracture mechanics problems, these functions can be equated to 0. Physically, this means that these functions correspond to rigid body translations / rotations and hence will not be included in the deformation expressions for u and u. This can be proved mathematically but this proof is not presented here.</p> 
+  <p>&nbsp;Thus, in case of plane stress, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFbyF9yjUJPOw" src="https://media.licdn.com/dms/image/C5112AQFbyF9yjUJPOw/article-inline_image-shrink_400_744/0/1520250077163?e=1691625600&amp;v=beta&amp;t=x-sdVYtljQXvU7dumBuSWsrxUe9OHufqfxclFOpm19U"> 
+  </div> 
+  <p>It should be noted that the Westergaard’s function does not solve a problem completely. The function solves it from where we have a much better chance to guess the form of Z1 by looking at the boundary conditions of a problem.</p> 
+  <p>&nbsp;The Westergaard approach comes out very handy for problems of an infinite plate because we do not have to concentrate much on satisfying the boundary conditions of far field stress. Consider an infinite plate with through-the-thickness crack length 2a. loaded under a biaxial field of stress σ as shown below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGGWq2EUJCPOQ" src="https://media.licdn.com/dms/image/C4E12AQGGWq2EUJCPOQ/article-inline_image-shrink_1000_1488/0/1520486005179?e=1691625600&amp;v=beta&amp;t=JbPt_4V0aXDcweF4cHjsZTav3zlt9YqdpJ9Hs84-kJk"> 
+  </div> 
+  <p><strong>Figure: A central crack in an infinite plate subjected to a biaxial stress field</strong></p> 
+  <p>&nbsp;The boundary conditions that should be met include,</p> 
+  <p>&nbsp;</p> 
+  <ol> 
+   <li>At the crack tip: σ22 = ∞</li> 
+   <li>On the cracked surfaces: (x2 = 0 , -a &lt;x1&lt;+a&nbsp;</li> 
+   <li>Far away from the crack (large |z|) : σ11 =σ, σ22 = σ, σ12 = 0&nbsp;</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <p>As mentioned above, the stress field is given by,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHUC3cW9dW_WA" src="https://media.licdn.com/dms/image/C4E12AQHUC3cW9dW_WA/article-inline_image-shrink_400_744/0/1520486005824?e=1691625600&amp;v=beta&amp;t=5qReKHWPqIpSEvhcRkgybhgJXkK4YauDFbVwAzhXVzs"> 
+  </div> 
+  <p>It can be shown that the functions which satisfies all the 3 boundary conditions can be taken as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFMwZJRrAaOpg" src="https://media.licdn.com/dms/image/C5112AQFMwZJRrAaOpg/article-inline_image-shrink_400_744/0/1520250262439?e=1691625600&amp;v=beta&amp;t=dvOqKTLhGiea-ZR3rFHlxUVL7wvQ8ngwhnNHWm-G2hM"> 
+  </div> 
+  <p>It may be recalled that:</p> 
+  <p class="center">z = x1 + i x2</p> 
+  <p>&nbsp;</p> 
+  <ol> 
+   <li>At the crack tip x1 approaches ‘a’ (or, -a). Thus, firstly the imaginary part is 0. And since x1 approaches ‘a’, the denominator is 0. Hence, σ22 approaches infinity. Thus, the first boundary condition is satisfied.</li> 
+   <li>Also, the second boundary condition is satisfied. That is: at the crack surface (it is a free surface) x2 approaches 0 and x1 lies between –a and + a. Thus, Z1 is simplified to,</li> 
+  </ol> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFk9peVGFNpxw" src="https://media.licdn.com/dms/image/C5112AQFk9peVGFNpxw/article-inline_image-shrink_400_744/0/1520146287967?e=1691625600&amp;v=beta&amp;t=5XC7ZfjV4XUyx51Mt0FDUr79VISGYN_3Z1tHiRsLwD8"> 
+  </div> 
+  <p>This Z1 is imaginary at the crack surface (since x1 lies between –a and +a). Thus, all the three stress components (σ11, σ12 and σ22) will vanish at the crack surface &nbsp;(the free surface).</p> 
+  <p>Similarly, it can be shown numerically the third boundary condition is also satisfied.</p> 
+  <p>&nbsp;&nbsp;</p> 
+  <p><strong>Shifting the origin from the centre of the crack to the crack tip:</strong></p> 
+  <p>For determining the stress field near the crack tip, it is convenient to transform the origin from the centre of the crack to the tip of the crack as shown in the figure below,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFuzuKXLCCA7Q" src="https://media.licdn.com/dms/image/C5112AQFuzuKXLCCA7Q/article-inline_image-shrink_400_744/0/1520170755549?e=1691625600&amp;v=beta&amp;t=qR76VMc7F79RWsF46roW3gkAEGX3efYk0UdPCxOdeP8"> 
+  </div> 
+  <p><strong>Figure: Sifting the origin from the crack centre to the crack tip – z0&lt;&lt;a</strong></p> 
+  <p>Thus,</p> 
+  <p>z = a+z0</p> 
+  <p>where,</p> 
+  <p>z0 is measured from the crack tip. Z1 then becomes,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEm9faU6ScgBQ" src="https://media.licdn.com/dms/image/C5112AQEm9faU6ScgBQ/article-inline_image-shrink_400_744/0/1520146925554?e=1691625600&amp;v=beta&amp;t=oYUKR2_WbKHzNl7cwz8zgTwgu_VEzmyhRdjfQ3h1Jtw"> 
+  </div> 
+  <p>In the vicinity of the crack tip, z0 approaches 0. Hence, in the vicinity of the crack tip, the above equation becomes,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG3jxJXxJuW0Q" src="https://media.licdn.com/dms/image/C5112AQG3jxJXxJuW0Q/article-inline_image-shrink_400_744/0/1520192403473?e=1691625600&amp;v=beta&amp;t=fltoq1jRho3PEWJBsp8WhMLT_LLkSFXPmxnDHOumnV4"> 
+  </div> 
+  <p>Expressing z0 in polar co-ordinates: z0 = rcosθ + i sinθ</p> 
+  <p>&nbsp;[<a href="http://www.varsitytutors.com/hotmath/hotmath_help/topics/polar-form-of-a-complex-number" target="_blank">http://www.varsitytutors.com/hotmath/hotmath_help/topics/polar-form-of-a-complex-number</a>]</p> 
+  <p>[<a href="http://www.mathportal.org/formulas/algebra/complex.php" target="_blank">http://www.mathportal.org/formulas/algebra/complex.php</a>]</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQE5iZD3j25AHQ" src="https://media.licdn.com/dms/image/C4E12AQE5iZD3j25AHQ/article-inline_image-shrink_400_744/0/1520486005863?e=1691625600&amp;v=beta&amp;t=3Fe4gRXXY3ONqx8Q9hRoDXW-v_azuDAOCjROV9HInP0"> 
+  </div> 
+  <p>In the vicinity of the crack tip,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEfSiY50AY37Q" src="https://media.licdn.com/dms/image/C4E12AQEfSiY50AY37Q/article-inline_image-shrink_400_744/0/1520486006581?e=1691625600&amp;v=beta&amp;t=90w3DtmjjFiG--ILr_9qomKO8Qq4k471TNkdtz-ikeU"> 
+  </div> 
+  <p><span class="underline"><strong>Stress components in the vicinity of the crack tip</strong></span></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEiy6LCDs0i-A" src="https://media.licdn.com/dms/image/C4E12AQEiy6LCDs0i-A/article-inline_image-shrink_400_744/0/1520486005627?e=1691625600&amp;v=beta&amp;t=kFFGubfZ9TlzjQdflWdIaCv3aRLb7A5tlZS3UYHjrwM"> 
+  </div> 
+  <p>Recalling that in polar co-ordinates,</p> 
+  <p class="center">x2 = i sinθ</p> 
+  <p>the above stress components can be given as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEDR3xi6znjFg" src="https://media.licdn.com/dms/image/C5112AQEDR3xi6znjFg/article-inline_image-shrink_400_744/0/1520240015874?e=1691625600&amp;v=beta&amp;t=kucLnKDLJRI7V4SSsVmHdOsom-hIwFucQcrBPm5VWlQ"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEyFaybU5-Apw" src="https://media.licdn.com/dms/image/C5112AQEyFaybU5-Apw/article-inline_image-shrink_400_744/0/1520249186947?e=1691625600&amp;v=beta&amp;t=0-Kn4edwjo_TNQyPAzi-Pts-HfEkWT9uTolHTLfY9Qk"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGKG1UYJmdgZA" src="https://media.licdn.com/dms/image/C5112AQGKG1UYJmdgZA/article-inline_image-shrink_400_744/0/1520250608498?e=1691625600&amp;v=beta&amp;t=-ww47ZJJD16khK4k15Lb6duZ-cofw8QwjuPXgTr4OA0"> 
+  </div> 
+  <p><strong>Displacement field:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGS-aNVE9Fczg" src="https://media.licdn.com/dms/image/C4E12AQGS-aNVE9Fczg/article-inline_image-shrink_400_744/0/1520486005858?e=1691625600&amp;v=beta&amp;t=fxThIKkRD1Vt_TU4cBtYoRXiR_-19EPxWFU5JQxkmqM"> 
+  </div> 
+  <p>It may be recalled that denotes the integral of Z and can be from the expression of Z :</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG_YwlYfQaLKw" src="https://media.licdn.com/dms/image/C5112AQG_YwlYfQaLKw/article-inline_image-shrink_400_744/0/1520189572883?e=1691625600&amp;v=beta&amp;t=a_74cY_ReyvPz9pt2y3YUII74H5rtiveWx8TXa7lHh0"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQErGNuaMp2ztA" src="https://media.licdn.com/dms/image/C5112AQErGNuaMp2ztA/article-inline_image-shrink_400_744/0/1520250368832?e=1691625600&amp;v=beta&amp;t=yq3JW3jH9RdgmauRxfabAym4SS9tSutz8AaJwL8Cxk8"> 
+  </div> 
+  <p>Thus, the displacement field in the vicinity of the crack tip can be expressed as follows,</p> 
+  <p><strong>Plane stress case:</strong></p> 
+  <p>As discussed, the displacement field in terms of Westergaard’s stress function ZI were expressed as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHkhq_RBWuRgQ" src="https://media.licdn.com/dms/image/C4E12AQHkhq_RBWuRgQ/article-inline_image-shrink_400_744/0/1520486005959?e=1691625600&amp;v=beta&amp;t=gJW16SSzFNLanVY-gCHuhNQg5lyuDGvxqRhE6boIXks"> 
+  </div> 
+  <p>Substituting the above values of ZI, one can obtain the following,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHSGEC_YZ4O-Q" src="https://media.licdn.com/dms/image/C4E12AQHSGEC_YZ4O-Q/article-inline_image-shrink_400_744/0/1520486005385?e=1691625600&amp;v=beta&amp;t=cAHgj_nEg_hr25A3ZKzH9vJr5m82T3KQsPfOe_TSL_4"> 
+  </div> 
+  <p><strong>Plane strain case:</strong></p> 
+  <p>For a plane strain case, the displacement field in terms of Westergaard’s stress function was expressed as,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFKjJSXDpPBqQ" src="https://media.licdn.com/dms/image/C4E12AQFKjJSXDpPBqQ/article-inline_image-shrink_400_744/0/1520486005292?e=1691625600&amp;v=beta&amp;t=um23zbVraFs8c_Vo2JHRHs_G2klpnOfHSRsvyO_9PRA"> 
+  </div> 
+  <p>Substituting, the values for ZI, following can be obtained,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGAXQCh3GwYNg" src="https://media.licdn.com/dms/image/C5112AQGAXQCh3GwYNg/article-inline_image-shrink_400_744/0/1520143365401?e=1691625600&amp;v=beta&amp;t=SyZDznWm3fEAXjOunSyiGZoEKHdEBXYDEMB-J9jSj_c"> 
+  </div> 
+  <h2><strong>5. Insight into the above math</strong></h2> 
+  <p><strong>The root r singularity (√r):</strong></p> 
+  <p>If we look at the stress components: σ11, σ22 and σ12 – the strength of all these components is determined by the value of “K” and the field variation of these stress components is defined by the expression involving r and θ. The magnitude is determined by a single parameter – the stress intensity factor “K”.</p> 
+  <p>And another point to note is that when r = 0, the stress components become ∞. This is known as the “<strong><em>root r (√r)”</em></strong> singularity and is the characteristic of linear elastic fracture mechanics.</p> 
+  <p><strong>Stress field for a uniaxial loading case:</strong></p> 
+  <p>The stress field discussed in this article was for a biaxial loading case as shown (again) below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQECDVdcUHF2Iw" src="https://media.licdn.com/dms/image/C5112AQECDVdcUHF2Iw/article-inline_image-shrink_400_744/0/1520194160051?e=1691625600&amp;v=beta&amp;t=HGNEAss0N6HtpNhIHLZG31VHwpTjyHefayGnDZybuNI"> 
+  </div> 
+  <p>This stress field can be claimed to be the field for a uniaxial loading case too. The stress σ11 does not cause any substantial change in the vicinity of the crack tip because σ11 does not open up the crack.</p> 
+  <p><strong>Crack opening displacement:</strong></p> 
+  <p>The displacement field for the case of a central crack in an infinite plate under biaxial loading has been discussed above.</p> 
+  <p>It’d be worthwhile at this point to mention about the terminology “crack opening displacement” (COD) at this point. The crack opening displacement (abbreviated as “COD”) is the distance between the two crack faces. For the current case of a central crack in an infinite plate under biaxial loading, COD is given by,</p> 
+  <p>(the expression is invoked by putting x2 =0 in the discussion above)</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEa5Qjb-A9lsw" src="https://media.licdn.com/dms/image/C4E12AQEa5Qjb-A9lsw/article-inline_image-shrink_400_744/0/1520486006306?e=1691625600&amp;v=beta&amp;t=NjB33ptrBtU-eaTziIRY56__1CkDk4VamHuJJrlS0qQ"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>&nbsp;</p> 
+  <p><b><strong>&nbsp;</strong></b></p>
+ 
+</div>
+</body>
+</html>

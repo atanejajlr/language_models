@@ -1,0 +1,757 @@
+<html>
+<head>
+  <title>SQL cheatsheet - Part 1</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD4E12AQGkeViWI-T84g" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/sql-cheatsheet-part-1-ajay-taneja">SQL cheatsheet - Part 1</a></h1>
+    <p class="created">Created on 2018-06-10 08:26</p>
+  <p class="published">Published on 2023-02-03 20:52</p>
+  <div><h2>1. Datatypes in SQL</h2><pre spellcheck="false">&nbsp;&nbsp;/*INT&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --Whole Numbers
+DECIMAL(M,N)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --Decimal Numbers - Exact Value
+VARCHAR(1)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --String of text of length 1
+BLOB&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --Binary large object
+DATE&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; --'YYYY-MM-DD'
+TIMESTAMP&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;--'YYY-MM-DD HH:MM:SS' - used for recording
+
+
+These are the basic data types that we are going to be using in sql.&nbsp;
+These aren't all of the data types. Depending upon the RDBMS we use&nbsp;
+there are differen data types to do different things.&nbsp;
+
+
+The above make the core SQL Data types. These are the most common datatypes&nbsp;
+but there are more. Specific database management systems allow you to
+use different datatypes&nbsp;depending on how they want to implement things.&nbsp;
+
+
+M, N are numbers. "M" refers to the total number of digits you want to store, N is the number of digits to be stored after the decimal point.
+
+
+BLOB is binary large object which is a structure which can sore large 
+amonts of binary data
+
+
+DATE - year, month, date 
+TIMESTAMP in the format mentiond. */
+
+
+</pre><p><br></p><h2>2. Create, Describe, Alter and Drop</h2><pre spellcheck="false">CREATE TABLE student (
+&nbsp; &nbsp; student_id INT PRIMARY KEY,
+&nbsp; &nbsp; name&nbsp; VARCHAR(20),
+&nbsp; &nbsp; major VARCHAR(20)
+);
+
+
+DROP TABLE student;
+ALTER TABLE student ADD gpa DECIMAL(3, 2);
+DESCRIBE student;
+ALTER TABLE student DROP COLUMN gpa;
+</pre><h2><br></h2><h2>3. Inserting data</h2><pre spellcheck="false">CREATE TABLE student (
+&nbsp; &nbsp; student_id INT PRIMARY KEY,
+&nbsp; &nbsp; name&nbsp; VARCHAR(20),
+&nbsp; &nbsp; major VARCHAR(20)
+);
+
+
+DROP TABLE student;
+
+
+SELECT * FROM student;
+INSERT INTO student(student_id, name, major)VALUES(1, 'Jack', 'Biology');
+INSERT INTO student(student_id, name, major)VALUES(2, 'Kate', 'Sociology');
+INSERT INTO student(student_id, name)VALUES(3, 'Claire');
+
+
+/* Adding with same primary id will raise an error*/
+
+
+INSERT INTO student(student_id, name, major)VALUES(2, 'Kate', 'Sociology');
+
+
+/*Adding with different ame and major but with different primary id is acceptable*/
+
+
+INSERT INTO student(student_id, name, major)VALUES(4, 'Jack', 'Biology');
+</pre><p><br></p><h2>4. Constraints</h2><pre spellcheck="false">/*1) NOT NULL, UNIQUE to constrain the dat
+&nbsp; 2) Setting default values
+&nbsp; 3) Setting primary keys as auto increment*/
+
+
+CREATE TABLE student (
+&nbsp; &nbsp; student_id INT AUTO_INCREMENT,
+&nbsp; &nbsp; name&nbsp; VARCHAR(20) NOT NULL, /*This column cannot be NULL*/
+&nbsp; &nbsp; major VARCHAR(20) UNIQUE,
+&nbsp; &nbsp; minor VARCHAR(20) DEFAULT 'undecided',
+&nbsp; &nbsp; PRIMARY KEY (student_id)
+);
+
+
+DROP TABLE student;
+
+
+SELECT * FROM student;
+INSERT INTO student(name, major)VALUES('Jack', 'Biology');
+INSERT INTO student(name, major)VALUES('Kate', 'Sociology');
+INSERT INTO student(name, major)VALUES(NULL, 'Chemistry');&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+/*This will create an error*/
+
+
+
+
+
+
+INSERT INTO student(name, major)VALUES('Kate', 'Sociology'); /* error because not unique*/
+
+
+/*Adding with different ame and major but with different primary id is acceptable*/
+
+
+INSERT INTO student(name, major)VALUES('Jack', 'Biology'); /*This will again create an error as there cannot&nbsp;
+be 2 people of name JAcck and Biology major*/&nbsp;
+INSERT INTO student(name, major)VALUES('Mike', 'Mathematics');
+</pre><p><br></p><h2>5. Updating and deleting</h2><pre spellcheck="false">CREATE TABLE student (
+&nbsp; &nbsp; student_id INT PRIMARY KEY,
+&nbsp; &nbsp; name&nbsp; VARCHAR(20),
+&nbsp; &nbsp; major VARCHAR(20)
+);
+
+
+DROP TABLE student;
+
+
+SELECT * FROM student;
+INSERT INTO student(student_id, name, major)VALUES(1, 'Jack', 'Biology');
+INSERT INTO student(student_id, name, major)VALUES(2, 'Kate', 'Chemistry');
+INSERT INTO student(student_id, name)VALUES(3, 'Claire');
+
+
+INSERT INTO student(student_id, name, major)VALUES(4, 'Rob', 'Physics');
+
+
+INSERT INTO student(student_id, name, major)VALUES(5, 'Bill', 'Computer Science');
+
+
+UPDATE student
+SET major = 'Bio'
+WHERE major = 'Biology';
+
+
+UPDATE student
+SET major = 'Computer Sci'
+WHERE major = 'Computer Science';
+
+
+UPDATE student
+SET major = 'Computer Sci'
+WHERE student_id = 4;
+
+
+UPDATE student
+SET major = 'Biochemistry'
+WHERE major = 'Bio' OR major = 'Chemistry';
+
+
+UPDATE student
+SET name = 'Tom', major = 'undecided'
+WHERE student_id = 1;
+
+
+#Deleting
+
+DELETE FROM student
+WHERE student_id = 5; # no row with student_d = 5 deleted following the run of his query
+
+
+DELETE FROM student
+WHERE name = 'Tom' AND major = 'undecided'; 
+#everything deleted from student&nbsp;
+
+</pre><p><br></p><h2>6. Basic Queries</h2><pre spellcheck="false">CREATE TABLE student 
+&nbsp; &nbsp; student_id INT PRIMARY KEY,
+&nbsp; &nbsp; name&nbsp; VARCHAR(20),
+&nbsp; &nbsp; major VARCHAR(20)
+);
+
+
+DROP TABLE student;
+
+
+INSERT INTO student(student_id, name, major)VALUES(1, 'Jack', 'Biology');
+INSERT INTO student(student_id, name, major)VALUES(2, 'Kate', 'Chemistry');
+INSERT INTO student(student_id, name)VALUES(3, 'Claire');
+
+
+INSERT INTO student(student_id, name, major)VALUES(4, 'Rob', 'Physics');
+
+
+INSERT INTO student(student_id, name, major)VALUES(5, 'Bill', 'Computer Science');
+
+
+SELECT * #* means all columns
+FROM student # from student table
+ORDER BY student_id DESC;
+
+
+SELECT student.name, student.major&nbsp;
+FROM student
+ORDER BY student_id ASC;
+
+
+SELECT * #* means all columns
+FROM student # from student table
+ORDER BY student_id ASC;
+
+
+SELECT student.name, student.major
+FROM student
+ORDER BY student_id DESC;
+
+
+SELECT*
+FROM student
+ORDER BY major, student_id DESC;&nbsp; &nbsp; &nbsp;
+#first it'll order by major and thn by 
+student_id
+
+
+
+</pre><p><br></p><pre spellcheck="false">SELECT*
+FROM student&nbsp;
+ORDER BY student_id DESC
+LIMIT 2;
+&nbsp;
+SELECT name, major&nbsp;
+FROM student
+WHERE major = 'Chemistry' OR name = 'Kate';
+
+
+SELECT *&nbsp;
+FROM student
+WHERE student_id &lt; 3;
+SELECT*
+FROM student
+WHERE name IN ('Claire', 'Kate', 'Mike');&nbsp;
+
+</pre><p><br></p><pre spellcheck="false">SELECT
+FROM student
+WHERE major IN ('Biology', 'Chemistry');
+
+
+SELECT*
+FROM student
+WHERE major IN ('Biology', 'Chemistry') AND student_id &gt; 2;
+
+
+</pre><p><br></p><pre spellcheck="false">SELECT*
+FROM student
+WHERE name IN ('Claire', 'Kate', 'Mike');&nbsp;
+</pre><p><br></p><pre spellcheck="false">SELECT name, major&nbsp;
+FROM student
+WHERE major = 'Chemistry' OR name = 'Kate';
+
+
+SELECT *&nbsp;
+FROM student
+WHERE student_id &lt; 3;
+
+
+</pre><p><br></p><pre spellcheck="false">SELECT*
+FROM student
+WHERE name IN ('Claire', 'Kate', 'Mike');
+</pre><p><br></p><pre spellcheck="false">&nbsp;#that is select from student table&nbsp; where the   
+# name is "in" the group of values
+</pre><p><br></p><pre spellcheck="false">SELECT*
+FROM student
+WHERE major IN ('Biology', 'Chemistry');
+
+
+SELECT*
+FROM student
+WHERE major IN ('Biology', 'Chemistry') AND student_id &gt; 2;*
+
+</pre><h2><br></h2><h2>7. Company Database</h2><p><br></p><pre spellcheck="false">/* Notes
+Until now, we have seen the fllowin fundamentals of sql:
+1)Datatypes
+2)Creating a table
+3)Inserting data into a table
+4)Deleting rows from a table
+5)Some basic queries: Aranging in ascending order, descending oder, ORDER B ql clause
+*/
+
+
+/*Company Database
+
+
+This comprises of several tables/
+
+
+1) Employee table
+2) Branch table
+3) Client table
+4) Works_wih table
+5) Branch Supplier table
+
+
+*/
+
+
+/*
+
+
+Employee table comrises of:
+
+
+1)employe_id (primary key)
+2)first name
+3)last name
+4)birth date
+5)sex
+6)salary
+
+
+Then, there are 2 secondary keys:
+1) super_id (i.e. supervisor id) - id of another employee who is the supervisor of the employee
+2) branch_id - bracnch where the employee works
+&nbsp;
+Then, there is the branch table which comprises of:
+
+
+1) branch_id (primary key)
+2) branch_name
+3) mgr_id (secondary key) - Eac branch has a manager - manager id is going to point to one of the employees in the employe table
+4) mgr_start_date
+
+
+
+
+Then, there is the cient table comprising of:
+
+
+1) client_id (pimary key)&nbsp; client woks with branch (denoted by branch id)
+2) client_name
+3) branch_id (foreign key) - denoting the client works with which branch
+
+
+Then, there is the branch suplier
+
+
+Important: Branch supplier table has to primary keys: branch_id and supplier_name - componet/composit key
+
+
+1) branch_id does not unquely identify each row
+2) suplier name does not uniquely identify each row
+3) Together, branch_id and supplier_name uniquely idenify ach row
+
+
+Then, there is thee works_with table which identifies the relationship between employees an clients
+
+
+1) employee works witth a client - employee sells some amount worth product to client
+2) Composite key: employee_id and clien_id
+*/
+
+:
+
+
+
+</pre><p><br></p><h2>8. Creating Company Database</h2><p><br></p><pre spellcheck="false"># Creating complex database in sq
+# Creating company database
+# Creating and populating the information
+# Code available here: https://www.mikedane.com/databases/sql/creating-company-database/
+
+
+
+DROP TABLE student;
+
+
+CREATE TABLE employee (
+&nbsp; emp_id INT PRIMARY KEY,
+&nbsp; first_name VARCHAR(40),
+&nbsp; last_name VARCHAR(40),
+&nbsp; birth_day DATE,
+&nbsp; sex VARCHAR(1),
+&nbsp; salary INT,
+</pre><p>&nbsp;</p><pre spellcheck="false">super_id INT, #supervisor id is a foreign key pointing to another employee&nbsp; 
+branch_id INT #branch id is a foreign key&nbsp;
+&nbsp;&nbsp;
+&nbsp; );
+&nbsp;&nbsp;
+&nbsp; /*
+&nbsp;&nbsp;
+&nbsp; 
+</pre><p><br></p><pre spellcheck="false">
+Note: 1) We cannot define the super_id and branch_id as foreign keys until the employe and branch table are create
+&nbsp;&nbsp;
+&nbsp; */
+&nbsp;&nbsp;
+</pre><p><br></p><pre spellcheck="false">&nbsp;&nbsp;
+&nbsp; CREATE TABLE branch (
+&nbsp; branch_id INT PRIMARY KEY,
+&nbsp; branch_name VARCHAR(40),
+&nbsp; mgr_id INT,&nbsp;
+&nbsp; mgr_start_date DATE,
+&nbsp; FOREIGN KEY(mgr_id) REFERENCES employee(emp_id) ON DELETE SET NULL
+&nbsp;&nbsp;
+</pre><p>&nbsp; <strong>#foreign</strong> key mgr_id references the emp_id in he employee table</p><pre spellcheck="false">&nbsp;);&nbsp;
+&nbsp;&nbsp;
+</pre><p>&nbsp; <strong>#We</strong> can now define the foreign keys in he employee table</p><p>&nbsp;&nbsp; <strong>#We</strong> can now define the foreign keys in he employee table</p><pre spellcheck="false">ALTER TABLE employee
+ADD FOREIGN KEY(branch_id)
+REFERENCES branch(branch_id)
+ON DELETE SET NULL;
+
+
+ALTER TABLE employee
+ADD FOREIGN KEY(super_id)
+REFERENCES employee(emp_id)
+ON DELETE SET NULL;
+
+
+</pre><p><strong>#Now</strong>, we can add he client table</p><p><br></p><pre spellcheck="false">CREATE TABLE client (
+&nbsp; client_id INT PRIMARY KEY,
+&nbsp; client_name VARCHAR(40),
+&nbsp; branch_id INT,
+&nbsp; FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE SET NULL
+);
+
+
+</pre><p><strong>#Next</strong>, create the works_with table</p><pre spellcheck="false">CREATE TABLE works_with (
+&nbsp; emp_id INT,
+&nbsp; client_id INT,
+&nbsp; total_sales INT,
+&nbsp; PRIMARY KEY(emp_id, client_id),
+&nbsp; FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE CASCADE,
+&nbsp; FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE
+);
+
+
+#Create the branch suplier table (similar to works_with table - compoiste key)
+CREATE TABLE branch_supplier (
+&nbsp; branch_id INT,
+&nbsp; supplier_name VARCHAR(40),
+&nbsp; supply_type VARCHAR(40),
+&nbsp; PRIMARY KEY(branch_id, supplier_name),
+&nbsp; FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE CASCADE
+);
+
+
+#Now, we have all the tables created. Lets insert&nbsp;
+#data
+
+</pre><h2><br></h2><h2>8. Inserting data</h2><pre spellcheck="false">/
+
+
+1) Insertion has to be done in spciifc order
+2) The blow code has been copied and pasted from here: https://www.mikedane.com/databases/sql/creating-company-database/
+3) You should know how to create table and here isa&nbsp; cicular relationship because of the foreign keys in the tables
+
+
+*/
+
+
+/*Corporate branch
+1) employee table and branch table have foreign table pointing to each other
+
+
+*/
+
+
+-- Corporate
+INSERT INTO employee VALUES(100, 'David', 'Wallace', '1967-11-17', 'M', 250000, NULL, NULL);
+
+
+INSERT INTO branch VALUES(1, 'Corporate', 100, '2006-02-09');
+
+
+UPDATE employee
+SET branch_id = 1
+WHERE emp_id = 100;
+
+
+INSERT INTO employee VALUES(101, 'Jan', 'Levinson', '1961-05-11', 'F', 110000, 100, 1);
+
+
+-- Scranton
+INSERT INTO employee VALUES(102, 'Michael', 'Scott', '1964-03-15', 'M', 75000, 100, NULL);
+
+
+INSERT INTO branch VALUES(2, 'Scranton', 102, '1992-04-06');
+
+
+UPDATE employee
+SET branch_id = 2
+WHERE emp_id = 102;
+
+
+INSERT INTO employee VALUES(103, 'Angela', 'Martin', '1971-06-25', 'F', 63000, 102, 2);
+INSERT INTO employee VALUES(104, 'Kelly', 'Kapoor', '1980-02-05', 'F', 55000, 102, 2);
+INSERT INTO employee VALUES(105, 'Stanley', 'Hudson', '1958-02-19', 'M', 69000, 102, 2);
+
+
+-- Stamford
+INSERT INTO employee VALUES(106, 'Josh', 'Porter', '1969-09-05', 'M', 78000, 100, NULL);
+
+
+INSERT INTO branch VALUES(3, 'Stamford', 106, '1998-02-13');
+
+
+UPDATE employee
+SET branch_id = 3
+WHERE emp_id = 106;
+
+
+INSERT INTO employee VALUES(107, 'Andy', 'Bernard', '1973-07-22', 'M', 65000, 106, 3);
+INSERT INTO employee VALUES(108, 'Jim', 'Halpert', '1978-10-01', 'M', 71000, 106, 3);
+
+
+
+
+-- BRANCH SUPPLIER
+INSERT INTO branch_supplier VALUES(2, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'Uni-ball', 'Writing Utensils');
+INSERT INTO branch_supplier VALUES(3, 'Patriot Paper', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'J.T. Forms &amp; Labels', 'Custom Forms');
+INSERT INTO branch_supplier VALUES(3, 'Uni-ball', 'Writing Utensils');
+INSERT INTO branch_supplier VALUES(3, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(3, 'Stamford Lables', 'Custom Forms');
+
+
+-- CLIENT
+INSERT INTO client VALUES(400, 'Dunmore Highschool', 2);
+INSERT INTO client VALUES(401, 'Lackawana Country', 2);
+INSERT INTO client VALUES(402, 'FedEx', 3);
+INSERT INTO client VALUES(403, 'John Daly Law, LLC', 3);
+INSERT INTO client VALUES(404, 'Scranton Whitepages', 2);
+INSERT INTO client VALUES(405, 'Times Newspaper', 3);
+INSERT INTO client VALUES(406, 'FedEx', 2);
+
+
+-- WORKS_WITH
+INSERT INTO works_with VALUES(105, 400, 55000);
+INSERT INTO works_with VALUES(102, 401, 267000);
+INSERT INTO works_with VALUES(108, 402, 22500);
+INSERT INTO works_with VALUES(107, 403, 5000);
+INSERT INTO works_with VALUES(108, 403, 12000);
+INSERT INTO works_with VALUES(105, 404, 33000);
+INSERT INTO works_with VALUES(107, 405, 26000);
+INSERT INTO works_with VALUES(102, 406, 15000);
+INSERT INTO works_with VALUES(105, 406, 130000);
+
+
+SELECT * FROM employee;
+SELECT * FROM works_with;
+
+*
+</pre><h2><br></h2><h2>9. More basic queries</h2><pre spellcheck="false">-- Find all employee
+
+
+SELECT*
+FROM employee;
+
+
+-- Find all clients
+
+
+SELECT*
+FROM client;
+
+
+-- Find all employes ordered by their salary
+
+
+SELECT *
+FROM employee
+ORDER BY salary;
+
+
+-- Find all employee ordered by salary with richest employee at the top
+
+
+SELECT *
+FROM employee
+ORDER BY salary DESC;
+
+
+-- Find all employes ordered by sex and then name
+
+
+SELECT *
+FROM employee
+ORDER BY sex, first_name, last_name;
+
+
+
+
+-- Find the first 5 employees from the table
+
+
+SELECT *
+FROM employee
+LIMIT 5;
+
+
+-- Find the first and the last name of all employees
+
+
+SELECT first_name, last_name
+FROM employee;
+
+
+-- Find the forename and last name of all employees
+
+
+SELECT first_name AS forename, last_name AS surname
+FROM employee;
+
+
+-- Find out all different genders
+
+
+SELECT DISTINCT sex
+FROM employee;
+
+
+-- Find out all distinct branch ids
+SELECT distinct branch_id
+FROM employee;
+
+
+
+</pre><p><br></p></div>
+</body>
+</html>

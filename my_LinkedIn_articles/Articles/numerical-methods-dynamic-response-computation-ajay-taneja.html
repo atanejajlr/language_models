@@ -1,0 +1,359 @@
+<html>
+<head>
+  <title>Numerical methods for dynamic response computation</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQHbn5vKuXcCsQ" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/numerical-methods-dynamic-response-computation-ajay-taneja">Numerical methods for dynamic response computation</a></h1>
+    <p class="created">Created on 2015-03-14 21:41</p>
+  <p class="published">Published on 2015-03-18 19:12</p>
+  <div>
+  <p> </p> 
+  <h1>1. INTRODUCTION</h1> 
+  <p>The response analysis procedures presented in my earlier notes:</p> 
+  <p><a href="https://www.linkedin.com/pulse/article/single-degree-freedom-system-under-impulse-general-dynamic-taneja/edit" target="_blank">https://www.linkedin.com/pulse/article/single-degree-freedom-system-under-impulse-general-dynamic-taneja/edit</a></p> 
+  <p><a href="https://www.linkedin.com/pulse/article/preview-frequency-domain-method-dynamic-analysis-ajay-taneja/edit" target="_blank">https://www.linkedin.com/pulse/article/preview-frequency-domain-method-dynamic-analysis-ajay-taneja/edit</a></p> 
+  <p>involved evaluation of many independent response contributions that are combined to get the total response. In the time domain procedure (Duhamel / convolution integral approach), the loading p(t) is considered to be a succession of short-duration impulses, and the free vibration response to each impulse becomes a separate contribution to the response history at any subsequent time.</p> 
+  <p><br>In the frequency domain method, it is assumed that the loading p(t) is periodic and has been resolved into discrete harmonic components by Fourier transformation. The corresponding harmonic response of the structure is obtained by multiplying the response due to unit harmonic force with the magnitude of the harmonic component and finally the total response of the structure is obtained by superposition of the responses to the discrete harmonic components.</p> 
+  <p><br>Because, superposition is applied to obtain the final result in both the processes neither of the method is suited for use in non-linear response. Therefore, engineering judgement must be resorted to in applying these procedures to determine the response due to earthquake excitation or other engineering scenarios wherein inelastic deformation is likely to occur.</p> 
+  <p><br>This write-up attempts to explain fundamentally the (so called) step-by-step procedure to dynamic analysis which is well suited to the analysis of non-linear response because it avoids any use of superposition. This article discusses in some detail the piecewise exact method based on the principle of step-by-step procedure wherein the total loading is divided into a series of linearly varying loads in each time step.</p> 
+  <p><br>The piecewise exact method, as discussed in section 3, uses the closed form analytical solution to the governing differential equation of a SDOF system subjected to a linearly varying load in each time step. However, as pointed out in section 4, it may not be always possible to split the applied loading into a series of loadings that linearly vary in each time step. In such (practical) scenarios it would become absolutely essential to resort to numerical procedures to solve the governing differential in each time step. The requirements of these numerical procedures are discussed in section 4 of this write-up.</p> 
+  <p><br>Section 5 and section 6 discuss the explicit central difference method and the implicit Newmark’s method in considerable detail which are widely used in commercial software’s to solve the equations of motion. Emphasis is first laid to explain the terminologies “explicit” and “implicit” solution approaches followed by a reasonably detailed description of the central difference and Newmark’s integration schemes that are based on these respective approaches.</p> 
+  <h1>2. BASIC PRINCIPLE OF A STEP BY STEP DYNAMIC ANALYSIS PROCEDURE</h1> 
+  <p>There are many different step-by-step methods but fundamentally all are based on the same principle. That is:</p> 
+  <p>i. the loading and the response history are divided into a sequence of time intervals or steps.</p> 
+  <p>ii. the response during each step is calculated from the initial conditions ( displacement and velocity) existing at the beginning of the step and from the history of loading during that step</p> 
+  <p>iii. Thus, the response during in each step is an independent problem and there is no need to combine the responses within each step.</p> 
+  <p>Non-linear behaviour may be considered easily by this approach merely by assuming that the structural properties remain constant during each step and causing them to change with any specified form of behaviour from one step to the next. Thus, the nonlinear analysis is a sequence of linear analysis of a changing system. Any desired degree of refinement in the non-linear behaviour may be achieved in the procedure by making the time steps short enough; also it can be applied to any type of non-linearity including changing of mass and damping properties as well as the non-linearity’s due to change of stiffness.</p> 
+  <p>Step-by-step procedure provides the completely general approach to analysis of non-linear response; however the methods are equally valuable in the analysis of linear response because the same algorithms can be applied regardless of whether the structure is behaving linear or not. The procedures used in solving single degrees of freedom structures can be easily extended to deal with multi degree of freedom system by replacing the scalar quantities with matrices.</p> 
+  <h2>3. STEP BY STEP ANALYSIS PROCEDURE: PIECEWISE EXACT METHOD</h2> 
+  <p>The simplest step-by-step method of analysis is the so-called: Piecewise exact-method, which is based on the exact solution of the equation of motion for response of a linear structure to loading that varies linearly during a discrete time interval. When we say, exact solution, it means that the solution is a closed form solution obtained by conventional analytical approach.</p> 
+  <p>In using this method, the loading history is divided into time intervals usually defined by significant changes of slope in the actual loading history. Although the response expression derived for this linearly varying loads is exact, it must be recognised that the actual loading history is only approximated by constant slope steps. Thus, the calculated response is not an exact representation of the true response to the real loading; however, the error can be reduced to any acceptable value merely by reducing the length of the time steps and thus better approximating the loading. If desired, the length of the time steps can be varied from one interval to the next in order to achieve the best fir of the loading history by the sequence of straight line segments; however for reasons of computational efficiency a constant time step is normally followed.</p> 
+  <p>The notation used in formulating this method of analysis is defined for one step of the loading history as shown in the figure below; the duration of the step is denoted by h and it spans from t to t.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF3m89nxLXl-Q" src="https://media.licdn.com/dms/image/C5112AQF3m89nxLXl-Q/article-inline_image-shrink_1000_1488/0/1520116224442?e=1691625600&amp;v=beta&amp;t=_xrv9o9y9Ewb0uH83JyzzH6MC3483lCX393-2a-2hFI"> 
+  </div> 
+  <p class="center"><strong>Figure: Notation for piecewise exact analysis</strong></p> 
+  <p>The assumed linearly varying loading during the time step is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGou627AHJ7ZA" src="https://media.licdn.com/dms/image/C5112AQGou627AHJ7ZA/article-inline_image-shrink_400_744/0/1520065793947?e=1691625600&amp;v=beta&amp;t=TaCVJG2mmaPRnEk8-SR7JX-k8OeMLU3qAWl8t61Y8AQ"> 
+  </div> 
+  <p>where α is the constant slope, ζ is the time variable during the time step, and p0 is the initial loading. Introducing the loading expression in the equation of motion for a SDOF system with damping leads to;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGSgrRy1yQshw" src="https://media.licdn.com/dms/image/C5112AQGSgrRy1yQshw/article-inline_image-shrink_400_744/0/1520201108285?e=1691625600&amp;v=beta&amp;t=P3q73xYrxhuedN9INZK5hCr7YKtXw1O1ULpiZ-wyluQ"> 
+  </div> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left">The solution to the above comprises of the sum of the complimentary factor (which is the <em>transient </em>component that eventually dies out due to damping) and the particular integral (which is the <em>steady state </em>component which always persists and is due to the actual loading).</p> 
+  <p>The above differential equation can be solved analytically to obtain;</p> 
+  <p>Complimentary factor;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEBh5ZzWkgcfQ" src="https://media.licdn.com/dms/image/C5112AQEBh5ZzWkgcfQ/article-inline_image-shrink_400_744/0/1520062552204?e=1691625600&amp;v=beta&amp;t=z8DJarDrozxJV_N54TxrDc4XTqrnr-qrD3Hwy-p1tQs"> 
+  </div> 
+  <p>Particular integral;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHcpb0ShZ-WXQ" src="https://media.licdn.com/dms/image/C5112AQHcpb0ShZ-WXQ/article-inline_image-shrink_400_744/0/1520062357654?e=1691625600&amp;v=beta&amp;t=jLOtOF9o4nmhjo_s62F321uVLurNbJgbjR_Q2y0XRtw"> 
+  </div> 
+  <p> </p> 
+  <p> </p> 
+  <p>The constants A and B above can be evaluated from the initial conditions.</p> 
+  <p><em>[It is not the aim of this article to present the mathematical steps in the solution of the above differential equation as the emphasis is on the fundamentals of the dynamic analysis approach and the physics of the problem than getting lost in rigorous mathematics]</em></p> 
+  <p>The velocity and displacements at the end of this time step (i.e. the time step extending from t to t) become the initial conditions for the next time step and then the equivalent equations can be used to step forward to the end of that step and so on.</p> 
+  <p>For situations where the applied loading can be approximated by a series of straight line segments, the piecewise exact method is undoubtedly the most efficient means of calculating the response of SDOF system. However, it must be remembered that the loading being considered is only an approximation of the true loading history, which is usually a smoothly varying curve and that the step lengths must be chosen so as to achieve an acceptable approximation of the true response history.</p> 
+  <h2>4. NUMERICAL APPROXIMATION METHODS</h2> 
+  <p>In the majority of the practical problems, the applied loading may be arbitrary and it may not be easy to split the loading into series of loading each comprising of a linear variation from the start to the end of the time step. That is: it may not generally be easy to obtain a closed form solution of the equation of motion for the load step. In such cases, it would be deemed necessary to solve the governing differential equation for each time step using numerical approximation procedures.</p> 
+  <h3>4.1 BASIC CONSIDERATIONS IN A NUMERICAL APPROXIMATION PROCEDURE</h3> 
+  <p>Before the details of any of the procedures are described it may be useful to consider a few basic facts about the numerical approximation procedures in general;</p> 
+  <p>1. The methods may be classified into: explicit and implicit methods. An explicit method is one in which the new response values are calculated in each step depends only on the quantities obtained in the preceding step, so that the analysis directly proceeds from one step to the next. In an implicit method, on another hand, the expression giving the new values for a step include one or more values pertaining to that same step, so that the trial values for the necessary quantities must be assumed and are refined by successive iterations. In short, in an implicit method the response values obtained at each step depend only upon the various iterations that are carried out in each step.</p> 
+  <p>2. The primary factor to be considered in a numerical approximation procedure is efficiency: which concerns the computational effort required to achieve the desired degree of accuracy. It should be noted that accuracy alone cannot be the criteria for a selection of a numerical approximation procedure because any desired degree of accuracy can be obtained following any method if the time step involved is small enough.</p> 
+  <p>3.Factors that may contribute to the errors in a numerical approximation procedure include:</p> 
+  <p><strong>a) </strong>Round-off: resulting from the calculations being done using numbers expressed by too few digits.</p> 
+  <p><strong>b)</strong> Instability: caused by amplification of the errors from one step during the calculations in the succeeding step. Stability of any method is improved by reducing the length of the time step.</p> 
+  <p><strong>c)</strong> Truncation: using too few terms in the series expressions of quantities.</p> 
+  <h1>5. EXPLICIT CENTRAL DIFFERENCE METHOD</h1> 
+  <p>In this method the acceleration and velocity are approximated in terms of the displacements using the finite different expression and substituted in the equation of motion to solve for the displacement at that time step.</p> 
+  <p>That is;</p> 
+  <p>Considering the time steps;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFbv2MUi-8rhA" src="https://media.licdn.com/dms/image/C5112AQFbv2MUi-8rhA/article-inline_image-shrink_1000_1488/0/1520239119323?e=1691625600&amp;v=beta&amp;t=KO4onw4wUSCbKJfh4T27hlmtRDLafJXcFzZTPDLd8X4"> 
+  </div> 
+  <p class="center"><strong>Figure: Evaluation of central difference expressions</strong></p> 
+  <p class="left">Now;</p> 
+  <p> </p> 
+  <p>Central difference expression for velocity is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF4DSyZVaaamA" src="https://media.licdn.com/dms/image/C5112AQF4DSyZVaaamA/article-inline_image-shrink_400_744/0/1520172826927?e=1691625600&amp;v=beta&amp;t=_jjWqUQVskCY5vo8areTigF8c38go9DIx1-5xuz6A4c"> 
+  </div> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left">Central difference expression for acceleration is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHk9-l989rIcg" src="https://media.licdn.com/dms/image/C5112AQHk9-l989rIcg/article-inline_image-shrink_400_744/0/1520065822711?e=1691625600&amp;v=beta&amp;t=hRGeyyp-xIuZOIbZ3VcAiBZNzzn0bQ1IRaBD5fDPLpw"> 
+  </div> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left">(<em>we want ultimately the acceleration in terms of displacements at time steps i and i-1, therefore first express the velocities at time steps i-1/2 and i+1/2 using central difference expressions and then displacements at these steps)</em></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFUgJHRtRTmWg" src="https://media.licdn.com/dms/image/C5112AQFUgJHRtRTmWg/article-inline_image-shrink_400_744/0/1520109993943?e=1691625600&amp;v=beta&amp;t=C2UUWaM5PhSjm7x772wcE_VNIQaGP2L7-IRP5MQOJfA"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGXcPMrFEWBLQ" src="https://media.licdn.com/dms/image/C5112AQGXcPMrFEWBLQ/article-inline_image-shrink_400_744/0/1520201414856?e=1691625600&amp;v=beta&amp;t=xeK5j_yMBVBRoxaepie-V2GmNZbDEWYauwawu7OvZY0"> 
+  </div> 
+  <p>Thus, the velocity and the acceleration are expressed in terms of displacement;</p> 
+  <p>Substituting the expressions for velocity and acceleration in the governing differential equation we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHavmTrqkVIqQ" src="https://media.licdn.com/dms/image/C5112AQHavmTrqkVIqQ/article-inline_image-shrink_400_744/0/1520040433961?e=1691625600&amp;v=beta&amp;t=NNVhlLw6U6nt9GXUxKndEMAasC9RrLHpjOSq2uTwRBc"> 
+  </div> 
+  <p> </p> 
+  <p class="left"> </p> 
+  <p class="left">In this equation ui and ui-1 are known from the previous time step, therefore transforming the known quantities to the right hand side, we have;</p> 
+  <p class="left"> </p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH1dZQo5_3pPg" src="https://media.licdn.com/dms/image/C5112AQH1dZQo5_3pPg/article-inline_image-shrink_1000_1488/0/1520200730226?e=1691625600&amp;v=beta&amp;t=hHwFMEFp43SFpp64kWmIkTXsqL7eOXbBbX9Q3pDGd0A"> 
+  </div> 
+  <p class="left">or;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHiETfyaKfTvQ" src="https://media.licdn.com/dms/image/C5112AQHiETfyaKfTvQ/article-inline_image-shrink_400_744/0/1520106532944?e=1691625600&amp;v=beta&amp;t=97fK74jxuUmANAKrkaw5eNAoojt1Ig5Eg6qwfRQVwVY"> 
+  </div> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left">where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE7gpD-MfdWmA" src="https://media.licdn.com/dms/image/C5112AQE7gpD-MfdWmA/article-inline_image-shrink_400_744/0/1520062826454?e=1691625600&amp;v=beta&amp;t=R_0mi29MDRbK_KrnYmjnxCWL9zBcb1CnuMm6zWnjkdY"> 
+  </div> 
+  <p class="left">The unknown ui+1 is then given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGv2bmBDyULJQ" src="https://media.licdn.com/dms/image/C5112AQGv2bmBDyULJQ/article-inline_image-shrink_400_744/0/1520199824802?e=1691625600&amp;v=beta&amp;t=kclPVb2TL_S3oPWzfJGQ5__m4V8rLEBFHWdTkw4Jqyk"> 
+  </div> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left">Thus, it can be seen that the solution at time i+1 is determined from the solution at time i without using the equation of motion at time i+1. In particular, the elastic and damping forces can be determined explicitly using known displacements u and uand velocities. Such methods are called as <em>‘explicit’</em> methods.</p> 
+  <p>Thus, u0 and u-1 are required to determine u1; the specified initial displacement u0 is known. To determine u-1 we specialise the central difference expressions for velocities and accelerations i.e.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFUEFamtg8dSQ" src="https://media.licdn.com/dms/image/C5112AQFUEFamtg8dSQ/article-inline_image-shrink_400_744/0/1520041725934?e=1691625600&amp;v=beta&amp;t=iZDDAhOVH_b9EH4Vu6NT0DtL0tQj53am_FCPxUkfyp8"> 
+  </div> 
+  <p> </p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG9ppUI-o51hg" src="https://media.licdn.com/dms/image/C5112AQG9ppUI-o51hg/article-inline_image-shrink_400_744/0/1520066345509?e=1691625600&amp;v=beta&amp;t=1gbSJTCz9mmtY_vihCM6WWXxl1J27jq28gmsHPVNi6o"> 
+  </div> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left">for i=0 to obtain</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFvd_90oHIgCA" src="https://media.licdn.com/dms/image/C5112AQFvd_90oHIgCA/article-inline_image-shrink_400_744/0/1520194968917?e=1691625600&amp;v=beta&amp;t=EC3JeduQvPeh16P8wU3lUHqnhqSnq7yVO0UmYgpAteg"> 
+  </div> 
+  <p class="left">Solving for u1 in the first of the above equation and substituting in the second gives;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE3mfZP_Y_fAQ" src="https://media.licdn.com/dms/image/C5112AQE3mfZP_Y_fAQ/article-inline_image-shrink_400_744/0/1520172220703?e=1691625600&amp;v=beta&amp;t=Lu5tZFIc-N0KVRLRRrlSAO9RXGOSRs46YLNA35mP4Rc"> 
+  </div> 
+  <p>The initial displacement u and the initial velocity are given, and the equation of motion at time t=0 (t0 =0),</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF6eCRu1QzF3A" src="https://media.licdn.com/dms/image/C5112AQF6eCRu1QzF3A/article-inline_image-shrink_400_744/0/1520101866305?e=1691625600&amp;v=beta&amp;t=GJ16UCQ24mqqqvhzRyylqxUUxeuFQvKnQaB0-lkbu2U"> 
+  </div> 
+  <p class="left"> </p> 
+  <p> </p> 
+  <p>Provides the acceleration at time 0;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH04hk0azW2Tw" src="https://media.licdn.com/dms/image/C5112AQH04hk0azW2Tw/article-inline_image-shrink_400_744/0/1520240006654?e=1691625600&amp;v=beta&amp;t=FOR2pXAKsR_WxL53J0WYAc4jlKOQ8dG3mEQbckbpvsI"> 
+  </div> 
+  <p class="left"> </p> 
+  <h3> </h3> 
+  <h3><strong>5.1 </strong><strong>TYPICAL STEPS IN THE CENTRAL DIFFERENCE METHOD</strong></h3> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFM-E5X51b1Pg" src="https://media.licdn.com/dms/image/C5112AQFM-E5X51b1Pg/article-inline_image-shrink_1000_1488/0/1520197774772?e=1691625600&amp;v=beta&amp;t=gJRh-A1qbx771JdCthvmTvN25nx3BLoOFICWKXrMpWw"> 
+  </div> 
+  <h1>6. NEWMARK’S METHOD</h1> 
+  <p>In the explicit central difference method discussed in section 5, the response at time t+Δt is obtained by considering the equation of motion at time t (or it may be stated that the response at time-step i+1 is obtained by considering the equation of motion at time step i);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGhnwG5LYmqtA" src="https://media.licdn.com/dms/image/C5112AQGhnwG5LYmqtA/article-inline_image-shrink_400_744/0/1520240893988?e=1691625600&amp;v=beta&amp;t=0ywcKvsuGo4FEtOQQUikccoDaQZWeDiQ0DKfSyF1jtk"> 
+  </div> 
+  <p> </p> 
+  <p> </p> 
+  <p>In case of Newmark’s (implicit) method, the response at the time t+Δt is obtained by through the equation of motion at that time i.e. t+Δt;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFGRMDTlRLuKA" src="https://media.licdn.com/dms/image/C5112AQFGRMDTlRLuKA/article-inline_image-shrink_400_744/0/1520199271476?e=1691625600&amp;v=beta&amp;t=1wav7Y8v3x2GVU4kSznVCVlgMDdGKxeIEjjLeWybOZo"> 
+  </div> 
+  <p>The Taylor series of a real or complex-valued function ƒ(x) that is infinitely differentiable at a real or complex number ‘a’ is the power series:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGD-CU0CfmT0A" src="https://media.licdn.com/dms/image/C5112AQGD-CU0CfmT0A/article-inline_image-shrink_400_744/0/1520240625992?e=1691625600&amp;v=beta&amp;t=49rpsnSH_756iYhIWG_6Xb2MuPMRC3UxBbmTpvlXFSo"> 
+  </div> 
+  <p>which can be written in the more compact sigma notation as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG0w_BhBtibKw" src="https://media.licdn.com/dms/image/C5112AQG0w_BhBtibKw/article-inline_image-shrink_400_744/0/1520115385578?e=1691625600&amp;v=beta&amp;t=YVHblhu2fiFBeuoN5MUusV6wGYO0YmoSxEYaYUJ4-44"> 
+  </div> 
+  <p>Newmark truncated the infinite series using the following;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFDEwgTnaRX0w" src="https://media.licdn.com/dms/image/C5112AQFDEwgTnaRX0w/article-inline_image-shrink_400_744/0/1520201255686?e=1691625600&amp;v=beta&amp;t=bxYwjCjbNVUj0P-koBZbUNMI_ZQDbxr4egoIxZZDC-4"> 
+  </div> 
+  <p>in which he assumed the acceleration variation within the time step as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEw3U6o5c4Q6g" src="https://media.licdn.com/dms/image/C5112AQEw3U6o5c4Q6g/article-inline_image-shrink_400_744/0/1520042527812?e=1691625600&amp;v=beta&amp;t=VEY7WiNoQvpxGg-GRFKhF3EY741sIfMuXZZfp9b9hoc"> 
+  </div> 
+  <p> </p> 
+  <p> </p> 
+  <p>In addition to the Taylor series expressions for displacement and velocity as stated above, also considering the equation of motion(s) at time (t+Δt);</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGWQkZdAPrVRQ" src="https://media.licdn.com/dms/image/C5112AQGWQkZdAPrVRQ/article-inline_image-shrink_400_744/0/1520042418928?e=1691625600&amp;v=beta&amp;t=JJVVA8UwnbKuIQEGegKF9kFF9wYL8J541n5KW7q08eQ"> 
+  </div> 
+  <p> </p> 
+  <p> </p> 
+  <p class="left">Thus, we have same number of unknowns and the equations at time (t+Δt) which can be solved.</p> 
+  <h3>6.1 TYPICAL STEPS IN THE IMPLICIT NEWMARK’S METHOD</h3> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGFCqQz-r9h7Q" src="https://media.licdn.com/dms/image/C5112AQGFCqQz-r9h7Q/article-inline_image-shrink_1000_1488/0/1520241308439?e=1691625600&amp;v=beta&amp;t=t_lns0VVuNBsxxY5ErySLpOKJSJwH2wGhXR41jlIMO4"> 
+  </div> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p class="left"> </p> 
+  <p> </p> 
+  <p class="left"> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p>
+ 
+</div>
+</body>
+</html>

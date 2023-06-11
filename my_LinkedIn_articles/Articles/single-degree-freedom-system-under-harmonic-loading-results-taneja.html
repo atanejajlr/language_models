@@ -1,0 +1,268 @@
+<html>
+<head>
+  <title>Single degree of freedom system under harmonic loading: significance and results</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQG0xaEGHM1I9A" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/single-degree-freedom-system-under-harmonic-loading-results-taneja">Single degree of freedom system under harmonic loading: significance and results</a></h1>
+    <p class="created">Created on 2015-01-30 03:40</p>
+  <p class="published">Published on 2015-02-04 19:38</p>
+  <div>
+  <p> </p> 
+  <h3><strong>1. INTRODUCTION</strong></h3> 
+  <p>This write up attempts to explain the results and interpretation of single degree of freedom system under harmonic excitation. It should be noted that understanding the response to harmonic excitations provides an insight on how a system will respond to other types of forces. This is true because any arbitrary loading function can be expressed as a sum of sine and cosine functions by Fourier series/ transform, thus,the results of a harmonic excitation are useful for all practical purposes. Also: harmonic excitations are encountered engineering systems such as force due to unbalanced rotating machinery and has several useful applications in earthquake engineering.</p> 
+  <p>Section 2 of this write-up presents the mathematical steps involved in solving the governing differential equation of a SDOF system subjected to harmonic force. Though this section appears comprising of complex mathematical equations and terminologies, it lays emphasis on the physical interpretation of terms like: complimentary factor and particular integral which are often not explained in text books. IT is also attempted to explain the interpretation of each term involved in the response equation.</p> 
+  <p>Section 3 explains the inferences one may draw through the solution of the governing differential equation of SDOF subjected to harmonic excitation.</p> 
+  <h3><strong>2. RESPONSE OF A SDOF SYSTEM TO </strong><strong>HARMONIC LOADING</strong></h3> 
+  <p><strong>2.1 Harmonic force</strong></p> 
+  <p>A harmonic force is p(t)= p0 sin ω t or p(t)= p0 cos ω t where p0 is the maximum value of the force and it’s frequency ω is called the exciting frequency . T= 2Π / ω is the forcing or the exciting period.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG9yeeRHXQsvA" src="https://media.licdn.com/dms/image/C5112AQG9yeeRHXQsvA/article-inline_image-shrink_400_744/0/1520041816606?e=1691625600&amp;v=beta&amp;t=4aGF3GUlbWDUz9zZkNdSJmKN5V2X4NSi8xNEfDlVmeM"> 
+  </div> 
+  <p class="center"><strong>Figure: Harmonic force</strong></p> 
+  <p><strong>2.2 Governing differential equation</strong></p> 
+  <p>From, Newton’s second law, the differential equation of forces harmonic vibration of the system may be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG1nNq-Bb_9ZQ" src="https://media.licdn.com/dms/image/C5112AQG1nNq-Bb_9ZQ/article-inline_image-shrink_400_744/0/1520214573134?e=1691625600&amp;v=beta&amp;t=f6iGofwp-TWjnojsqNMGfnq8lGYuwgmMhx1ydeN-0fQ"> 
+  </div> 
+  <p><strong>2.3 Physical interpretation of complementary factor and particular integral</strong></p> 
+  <p>We observe that the above equation of motion is:</p> 
+  <p>Linear | inhomogeneous | second order | ordinary | differential equation | with constant coefficients</p> 
+  <p>If there was no external (i.e. harmonic) force acting on the system, the above equation would become;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEXbDepesZ1AA" src="https://media.licdn.com/dms/image/C5112AQEXbDepesZ1AA/article-inline_image-shrink_400_744/0/1520042136994?e=1691625600&amp;v=beta&amp;t=re3eLn9hwEwYLKgJgaEvVuARsDsie1k3w9MmT0-m9Ns"> 
+  </div> 
+  <p>Thee above equation is;</p> 
+  <p>Linear | homogeneous | second order | ordinary | differential equation | with constant coefficients</p> 
+  <p>The inhomogeneous equation has a solution which is the sum of;</p> 
+  <ol> 
+   <li>Complimentary function</li> 
+   <li>Particular integral</li> 
+  </ol> 
+  <p>The <em>Complementary Function </em>is (physically speaking):</p> 
+  <ul> 
+   <li>independent of the source and</li> 
+   <li>depends on the initial conditions.</li> 
+  </ul> 
+  <p>Thus, it contains the <strong><em>transient </em></strong><em>behaviour </em>which follows from the way the system was “started off”. On physical grounds this will die away after sufficient time.</p> 
+  <p>The Particular<em> Integral </em>is:</p> 
+  <ul> 
+   <li>independent of the initial conditions, and</li> 
+   <li>It depends upon the source.</li> 
+  </ul> 
+  <p>This (particular integral) is the form of the solution at times sufficiently long that the initial transients have died out. When the source is some sort of continuous function the particular integral may be referred to as a <em>steady state </em>solution.</p> 
+  <p><strong><strong>2.4 The complete solution.</strong></strong></p> 
+  <p>Thus, the complementary function is the free vibration response of the system and is obtained as</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGd88FK9bpp0Q" src="https://media.licdn.com/dms/image/C5112AQGd88FK9bpp0Q/article-inline_image-shrink_400_744/0/1520211282985?e=1691625600&amp;v=beta&amp;t=6jdMmzqXJlfht2wlaEf5TxVxrpVC__QOc7uk74lrDKM"> 
+  </div> 
+  <p>The particular solution to the differential equation is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGIcBwWumFBjA" src="https://media.licdn.com/dms/image/C5112AQGIcBwWumFBjA/article-inline_image-shrink_400_744/0/1520040203846?e=1691625600&amp;v=beta&amp;t=r3T8xWhRV6kD01KKTXIvmMEOWTKiepu839qEkFlOIB4"> 
+  </div> 
+  <p>And the complete solution is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHzxR76cYa1CA" src="https://media.licdn.com/dms/image/C5112AQHzxR76cYa1CA/article-inline_image-shrink_400_744/0/1520213935279?e=1691625600&amp;v=beta&amp;t=Wq1kNocNFelgqfjw_C3FGWnZ01WKbyNIHZnYLhBocTU"> 
+  </div> 
+  <p>The constants A and B can be obtained from the initial conditions.</p> 
+  <p>If the initial conditions at time t=0 be denoted by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG6svoeoEyPUw" src="https://media.licdn.com/dms/image/C5112AQG6svoeoEyPUw/article-inline_image-shrink_400_744/0/1520040716015?e=1691625600&amp;v=beta&amp;t=2F6rMiPWUAZuijHctAPAUg56poMcS7cq6XdyxYhTKLw"> 
+  </div> 
+  <p>The complete solution is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHbhsfxw53FiQ" src="https://media.licdn.com/dms/image/C5112AQHbhsfxw53FiQ/article-inline_image-shrink_400_744/0/1520240301721?e=1691625600&amp;v=beta&amp;t=64Zm5IB97BDoZ2boGxClFJuY33OTTgwPpl1A98_W6Qw"> 
+  </div> 
+  <p><strong>2.5 Plotting the response to harmonic loading</strong></p> 
+  <p>The complete solution is plotted in the figure below taking ω / ωn as 0.2, u (0) = 0 and omega/omega_n = 2;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGA68gVL8d7rQ" src="https://media.licdn.com/dms/image/C5112AQGA68gVL8d7rQ/article-inline_image-shrink_400_744/0/1520239958516?e=1691625600&amp;v=beta&amp;t=QmKVrSgeB_NUUJE9bxZ54oOR7GKTnBCgEr_ObtIy_q4"> 
+  </div> 
+  <p class="center"><strong>Figure: Total response to harmonic loading</strong></p> 
+  <p><strong>2.6 Interpretation of the solution.</strong></p> 
+  <p>The equation (the complete solution) in section 2.4 contains two distinct vibration components;</p> 
+  <p>1. the sin ωt term which gives the oscillation at the forcing or exciting frequency</p> 
+  <p>2. the sin ω_nt and cos ω_nt terms giving the oscillation at the natural frequency of the system</p> 
+  <p>The first of these is the forced vibration or the steady state vibration for it is present because of the applied force no matter what the initial conditions. The latter is the transient vibration which depends on the initial displacements and velocity. <strong>It exists even if u (0) = 0 and (0) = 0</strong></p> 
+  <p>In the figure in section 2.5, the transient component is shown as the difference between the solid and and dashed lines where it is seen to continue forever. This is only an academic result because in real systems damping is present which makes the free vibration decay with time and for this reason the component is termed as <em>‘transient component’</em></p> 
+  <p><strong>2.7 Steady state dynamic response</strong></p> 
+  <p> </p> 
+  <p>The steady state dynamic response at the forcing frequency may be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFyVs6dA-AMiQ" src="https://media.licdn.com/dms/image/C5112AQFyVs6dA-AMiQ/article-inline_image-shrink_400_744/0/1520239256605?e=1691625600&amp;v=beta&amp;t=IZ20YmkzmBKMoCtVxAKvJ_nJVROt1dU7KtVHAV6EAE0"> 
+  </div> 
+  <p><strong>2.8 Static response</strong></p> 
+  <p> </p> 
+  <p>Ignoring the dynamic effects signified by the acceleration term in the equation in the governing differential equation (section 2.2) gives the static deformation at instant;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEYB-Nq9pC-uQ" src="https://media.licdn.com/dms/image/C5112AQEYB-Nq9pC-uQ/article-inline_image-shrink_400_744/0/1520212133775?e=1691625600&amp;v=beta&amp;t=YfPYupQ9UR7JQLJiwLHe63JlMowrP55NDYI23Zwt_kM"> 
+  </div> 
+  <p>The maximum value of the static deformation is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFpd3xSEsMWbw" src="https://media.licdn.com/dms/image/C5112AQFpd3xSEsMWbw/article-inline_image-shrink_400_744/0/1520239256023?e=1691625600&amp;v=beta&amp;t=60dEspk_t_dyYbpmVjDGxppmV7OajMvHfNvwjb73OMQ"> 
+  </div> 
+  <h3><strong>3. INFERENCES FROM THE OF RESPONSE OF HARMONIC LOADING</strong></h3> 
+  <p><strong><strong>3.1 Deformation or the displacement response factor</strong></strong></p> 
+  <p> </p> 
+  <p>The deformation or the displacement response factor is the ratio of the amplitude of the dynamic (or vibratory) deformation to the static deformation.</p> 
+  <p>The figure below shows the deformation response factor plotted as a function of ω / ω.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE9mHEVkUAFkA" src="https://media.licdn.com/dms/image/C5112AQE9mHEVkUAFkA/article-inline_image-shrink_400_744/0/1520240296612?e=1691625600&amp;v=beta&amp;t=gw9hp2muvu_s7g7C94zMVPBoRKaJUkxm5piGUN_HWUk"> 
+  </div> 
+  <p class="center"><strong>Figure: Frequency ratio vs. deformation response factor </strong></p> 
+  <p>Following inferences may be drawn from the above diagram;</p> 
+  <ul> 
+   <li>When ω / ωn is small (i.e. the force is “slowly varying”) the deformation response factor is only slightly greater than 1 i.e. the amplitude of vibration is essentially the same as static deformation.</li> 
+   <li>When ω / ωn &gt; √2 Rd &lt;1 i.e. the deformation amplitude is less than the static deformation.</li> 
+   <li>As ω / ωn increases beyond √2, Rd becomes smaller and approaches zero as ω / ωn -&gt;∞</li> 
+  </ul> 
+  <p>The above statements indicate;</p> 
+  <p>a) Very fast excitations produce nearly no deformation, while very slow ones are nearly static.</p> 
+  <p>b) Near resonance, the deformation can be very large, and it is here that oscillating loads can cause mechanical failure of the material (usually metal fatigue because the large deformations stretch the material beyond its elastic limit, so that permanent plastic deformation occurs). Note that when systems have many degrees of freedom, they will have many natural frequencies, so that resonances are possible at many different forcing frequencies. Excessive deformation is then much more difficult to avoid.</p> 
+  <p>c) People who carry out vibration analysis of large freight trucks experience during major part of their job calculating the many natural frequencies of the truck body, comparing them to the forcing frequencies (which come from bumps in the road as the truck passes over them), and recommend changes to the truck design which will move the natural frequencies of the truck far away from the forcing frequencies.</p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p> 
+  <p> </p>
+ 
+</div>
+</body>
+</html>

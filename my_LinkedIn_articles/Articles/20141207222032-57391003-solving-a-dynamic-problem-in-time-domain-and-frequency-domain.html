@@ -1,0 +1,157 @@
+<html>
+<head>
+  <title>Solving a dynamic problem in time domain and frequency domain</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQFXGQbkMcJztg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/20141207222032-57391003-solving-a-dynamic-problem-in-time-domain-and-frequency-domain">Solving a dynamic problem in time domain and frequency domain</a></h1>
+    <p class="created">Created on 2014-12-07 22:20</p>
+  <p class="published">Published on 2014-12-07 22:20</p>
+  <div>
+  <p> Given a dynamical system, it is usually described by one or more differential equations, for instance x'' + ax' + bx = f(t). To solve in the time domain is to find the function x(t) by the usual differential equation method.</p> 
+  <p>A problem in frequency domain is the Fourier transform of the same problem in the time domain.</p> 
+  <p>To understand the Fourier t<span>ransform of a function, you must know that most functions f(t) can be alternately expressed as F(w), where w is the angular frequency. F(w) is the Fourier transform of f(t). </span></p> 
+  <p><span>The basic idea here is that a given function of time can be built up as a linear combination of sines and cosines, or (more convenient mathematically), complex exponentials such as exp(iwt), where i=sqrt(-1). </span></p> 
+  <p><span>This is difficult to see at first, since the graph of f(t) may look nothing like a sine or cosine. Nevertheless, it is true that by finding an appropriate mixture of sines and cosines, nearly any f(t) can be expressed as a combination of them. (When we say "nearly any f(t)" it means that the Fourier transform works for any function f(t) which satisfies the condition: integral of |f(t)|dt from neg infinity to pos infinity must be a finite number. In other words, the integral of the absolute value of f(t) must converge.) Fourier transform theory provides a standard method for computing F(w) from f(t) and also getting back to f(t) if you know F(w). You can find all the equations you need in Wikipedia's "Fourier Transform" article.</span></p> 
+  <p>An important property of the Fourier transform is that it converts differentiation into multiplication by a factor (iw). In other words, if the Fourier transform of x(t) is X(w), the the Fourier transform of x'(t) is iwX(w). Because of this, a differential equation in the time domain (functions of t) becomes an ordinary algebra equation in the frequency domain (functions of w).</p> 
+  <p>This makes the dynamical problem much easier to solve, but gives the answer X(w) instead of x(t). You can of course compute x(t) once you know X(w), so you can get the solution to the original problem in the time domain in this way. However, many people choose to leave the solution as X(w) and study the properties of the dynamical system by examining X(w) instead of x(t). X(w) tells about how the system is vibrating at every frequency. For instance, X(10) is a complex number which tells the amplitude and phase of the vibration at frequency 10 radians/second. By examining the peaks on the graph of X(w), one can see which frequencies are showing a large amplitude of vibration, which is a very important consideration for dynamical systems, since large vibrations can cause fatigue failure, and may be undesirable for other reasons. Studying X(w) is called analyzing the system in the frequency domain.</p> 
+  <p> </p>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Step 2 of ChatGPT training demystified: Part 2 of the ChatGPT series of my notes</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD4E12AQFPxr7Rx-lajg" alt="Training language models to follow instructions with human feedback:OpenAI" title="Training language models to follow instructions with human feedback:OpenAI" />
+      <h1><a href="https://www.linkedin.com/pulse/step-2-chatgpt-training-demystified-part-series-my-blogs-ajay-taneja">Step 2 of ChatGPT training demystified: Part 2 of the ChatGPT series of my notes</a></h1>
+    <p class="created">Created on 2015-07-20 06:41</p>
+  <p class="published">Published on 2023-03-10 21:33</p>
+  <div><h2>1.&nbsp;Introduction</h2><p>&nbsp;</p><p>In my <a href="https://www.linkedin.com/pulse/chatgpt-how-works-my-notes-part-1-ajay-taneja/" target="_blank">l</a>ast blog on ChatGPT[<a href="https://www.linkedin.com/pulse/chatgpt-how-works-my-notes-part-1-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/chatgpt-how-works-my-notes-part-1-ajay-taneja/</a>], I had briefly discussed the steps involved during ChatGPT training. The training of ChatGPT involved 3 fundamental steps – outlined below, again:</p><p>i)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fine tuning of the Generative Pre-Trained Transformer (GPT) model where we had human labellers providing the prompt and the response. This step is termed is supervised fine tuning where we had both the questions and the answers available for the training analogous to a classification problem where we have both – the features and a label. </p><p>ii)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the step 2 of the ChatGPT training, we train a “Rewards” model. Here, we collect data from the Supervised fine-tuned model and then we have human labellers ranking the responses – the ranking (or otherwise called as “reward”) was proportional to the quality of the response. We use the data to train the “Rewards” model.</p><p>Thus, the input to the Rewards model will be both the prompt and the response by the model (one or more models may be involved here) and the output will be a scalar which is a measure of the quality of the response.</p><p>&nbsp;</p><p>iii)&nbsp;&nbsp;&nbsp;&nbsp;In Step 3 of GPT training, both the supervised fine-tuned model of step 1 and the Rewards model are used. </p><p><br></p><p>Here we first pass an unseen prompt to the supervised fine-tuned model (trained in step 1) and then get the response. We then assess the quality of the response using the Rewards model which was trained in Step 2. The rank returned as the output from The Rewards model is used to further fine tune the Supervised Fine-tuned model. </p><p>&nbsp;</p><p>Let us now demystify the step 2 of ChatGPT training as described above in some detail. Thus, firstly let us try and understand why ChatGPT may generate different responses for the same prompt.</p><p><br></p><h2>2.&nbsp;Why ChatGPT may different generate responses for the same prompt?</h2><p>&nbsp;</p><p>It should be underscored that ChatGPT may not give you the same response for your (same) prompt each time. And the simple reason for that ChatGPT is trained to generate a probabilistic response not deterministic! It has been trained to generate a probabilistic response to achieve a more human like behaviour because humans tend to say words which might not be the most optimal each time they speak.</p><p>To understand this better let us throw light on some decoding strategies for response generation. It may be recalled that the generation of a response by a language model is done by generating one token at a time. Following strategies are the most common ones that may be employed whilst generating text:</p><ul><li><strong>Greedy Approach</strong> – The Greedy Approach uses the most probabilistic response of all based on the training data available but might not always generate the best response. For example, in the prompt:</li></ul><p>Context: Try this beer, I have been brewing since last 3 weeks</p><p>Response 1: This is ok</p><p>Response 2: That tastes great!</p><p>In this case, using a greedy response, the model will choose the response: “This is ok” because of the word “is” in the Response 1 which is part of the training data. This is a counter-intuitive based on human behaviour of answering to the query.</p><p>&nbsp;</p><ul><li><strong>Temperature sampling</strong>: In case of greedy approach, we look for a stochastic process to avoid the response being a generic or deterministic one. For example, if we are to generate the first token corresponding to a response, the greedy approach will always give the token with the highest probability as explained above whereas an approach such <strong>Random sampling</strong> will generate very random based on all possible worlds/tokens. </li></ul><p>&nbsp;</p><p>We use Random sampling with temperature to increase the probability of probable tokens and reduce the ones which are not – this approach of temperature sampling is “less random” than employing Random sampling and temperature values between 0 &lt;= temperature &lt;= 1 are normally used. A temperature value of 1 indicates no effect at all and the process will work like greedy approach.</p><p><strong>&nbsp;</strong></p><ul><li>Top-K sampling: In Top K sampling, we eliminate the word s which are less probable and use the top-k words for temperature sampling </li></ul><p>This webpage: <a href="https://platform.openai.com/playground" target="_blank">Playground - OpenAI API</a>&nbsp;is very interesting and allows you to alter the temperature and Top-K values and see the difference between ChatGPT responses!</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFo0BPze_Uzhw" src="https://media.licdn.com/dms/image/D4E12AQFo0BPze_Uzhw/article-inline_image-shrink_400_744/0/1678482968257?e=1691625600&amp;v=beta&amp;t=bXoVwTBohdTujiRgvJHJZ_fpGcMSAyu9SpLmXubU1mQ"><figcaption>Figure: ChatGPT generating different responses for the same prompt (note the change in the last sentence, more different responses may be obtained when asking ChatGPT to write a code snippet/likewise than a conceptual question)</figcaption></figure><p><br></p><h2>3. How do labellers assess the quality of the responses to train the Rewards model?</h2><p>Thus, from the above it is clear that how ChatGPT may take the same prompt and yet generate different responses, and this is due to the probabilistic nature of the model meant to emulate human-like behaviour. </p><p>In the next part of Step 2, the labellers will have to rank multiple responses. By ranking, the labellers will have to assign a rewards value to the response because this rewards value is going to be used in the step-3 to further fine tune the supervised fine-tuned model of this step (step-2).</p><p>The question now needs to be addressed is that – in order for the labellers to rank the responses – how do you quantify the quality of the response? </p><p>The labellers assess the quality of the response based on the questionnaire as shown below:</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQHqSzlerzxxrQ" src="https://media.licdn.com/dms/image/D4E12AQHqSzlerzxxrQ/article-inline_image-shrink_400_744/0/1678483217087?e=1691625600&amp;v=beta&amp;t=mJFbLpnpm7-7F_mQP_FYFFVIwZ87S2V9D9aQAAhGphM"></figure><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQG68x4u3AJraA" src="https://media.licdn.com/dms/image/D4E12AQG68x4u3AJraA/article-inline_image-shrink_400_744/0/1678483228841?e=1691625600&amp;v=beta&amp;t=Hk8GPJDW2DUsud4bOmxIwAsxypY6TKhWfiHeuUVlodc"><figcaption>Figure: Screenshots of Labelling interface of Step 2 of ChatGPT Training: (a) For each output, labellers give a Likert score for overall quality on a 1-7 scale (b) After evaluating each output individually, labellers rank the output for a given prompt. </figcaption></figure><p>The above screenshots are taken from the paper: “Training Language Models to follow instructions with human feedback” by OpenAI and can be found in the <a href="https://github.com/atanejajlr/language_models" target="_blank">Github Link</a></p><p>This is important because we’d like ChatGPT To have an understanding of sensitive topics like: violent content, biased content, or sexually explicit content. All the human labellers will be asked to respond to the questionnaire and the response will then be aggregated. The responses are filled up and only the responses corresponding to the majority are considered. The ratings are used to train the “Rewards Model” &nbsp;</p><p>Rewards Model is similar to the supervised fine-tuned model but with a scalar output. I have not gone into more details of the Rewards model, but the details are available in the attached paper on InstructGPT. This Rewards model (after training) is then used to assess the quality of the response and further fine tune the fine-tuned model of step 1 in order to generate more human like responses which are factual and not toxic.</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQEMp9T6RBol6w" src="https://media.licdn.com/dms/image/D4E12AQEMp9T6RBol6w/article-inline_image-shrink_400_744/0/1678483397257?e=1691625600&amp;v=beta&amp;t=jKCxapwG2zAywGg0xcHkDzStiT49VjxTOTWojsrd_wk"><figcaption>Figure: Steps in ChatGPT Training </figcaption></figure></div>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<html>
+<head>
+  <title>Revisiting: Theory of elasticity vs. Strength of materials</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQE8nMYo51tyzA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/revisiting-theory-elasticity-vs-strength-materials-ajay-taneja">Revisiting: Theory of elasticity vs. Strength of materials</a></h1>
+    <p class="created">Created on 2016-09-18 18:22</p>
+  <p class="published">Published on 2016-09-18 18:45</p>
+  <div>
+  <h2><b><strong>1. Introduction</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>In the continuation of my series of blogs on Fracture Mechanics, I’ll be next moving to explain the approach to obtain analytical solution for the stress and displacement field fields in cracked solids (planar bodies). Since, these solutions will be obtained by solving the differential equations given the boundary conditions of the problem (as one might have done in a course on theory of elasticity for several scenarios); I find it worthwhile to discuss in some detail, at this point, the fundamental difference between strength of materials and theory of elasticity.</p> 
+  <p>Section 2 of this article explains the fundamental difference between the strength of material solution approach and the theory of elasticity solution approach.</p> 
+  <p>Section 3 goes into the detail of displacement based formulation and stress based formulation to solve the differential equations.</p> 
+  <p>Section 4 and 5 go into the math of obtaining the governing equations for a general 3 dimensional body based on displacement formulation and stress formulation respectively.</p> 
+  <p>&nbsp;</p> 
+  <h2><b><strong>2. Theory of elasticity and strength of materials: Fundamental difference</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>The fundamental difference between theory of elasticity and strength of materials is that: in theory of elasticity, no prior assumption on displacements is imposed whereas this is not the case with the strength of materials. If one recalls the undergraduate course on strength of materials, it may be noted that in order to derive the flexure formula/theory of pure bending, the assumption of plane sections plane before bending remain plane after bending was imposed and with this assumption, one was able to arrive at the stress field for <strong><em>slender</em></strong> members.</p> 
+  <p>Similarly, this assumption of planarity was used to arrive at the stress field for a beam subjected to twisting moment. This assumption of planarity is incorrect except for solid circular sections and hollow sections with constant thickness. Any other section will warp when twisted and the computation of stress distribution based on the assumption of planarity will give misleading results.</p> 
+  <p>So, it becomes necessary to go in for theory of elasticity approach when one does not impose any presumption on the displacement in general but in many cases experimental information on displacement may be used as part of the solution approach.</p> 
+  <p>Thus, in general, it may be stated that:</p> 
+  <ol> 
+   <li>In theory of elasticity, no prior assumption on the displacement is imposed.</li> 
+   <li>One attempts to evaluate the displacement and stress field by solving the governing differential equations satisfying the boundary conditions.</li> 
+   <li>One normally adopts the displacement or stress formulation for the solution procedure.&nbsp;</li> 
+  </ol> 
+  <h2><b><strong>3. Displacement formulation vs. stress formulation:</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>In a <strong>displacement formulation</strong>, one finds the displacements first, then, from the displacements, one moves on to determine the strains by invoking the strain displacement relation and finally gets the stresses by invoking the stress – strain relation.</p> 
+  <p>The other formulation is <strong>stress formulation</strong> which is more popular for analytical development. In the stress formulation, one finds the stresses first and then from the stress-strain relation computes the strains and then from the strain components, determine the displacements by invoking the strain – displacement relation. At this point, an astute reader might be able to find a catch. This is because the strain components are six whereas the displacement components are three. So, when one wants to compute the displacements from the strain displacement relation, unless the compatibility conditions are brought in, the displacements will be incorrect.</p> 
+  <p>The principle steps in a displacement and stress formulation are shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFiy_ktteqOCQ" src="https://media.licdn.com/dms/image/C5112AQFiy_ktteqOCQ/article-inline_image-shrink_400_744/0/1520063066830?e=1691625600&amp;v=beta&amp;t=SYEZz_5VHEIpzHy03znVO8T7pmhWV14HeLgG4vBiDDg"> 
+  </div> 
+  <h2><b><strong>4. Displacement formulation: Governing equations in three dimensions</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>In a displacement formulation, one can arrive at the governing equations by combining the stress equilibrium equations with the strain – displacement relations as summarized through the sections below.</p> 
+  <p><strong>Equilibrium equations in three dimensions: </strong></p> 
+  <p>To obtain the equations of equilibrium for a deformed solid body, we examine the general state of stress at an arbitrary point in a body via an infinitesimal differential element as shown below. Bx, By and Bz denote the body forces per unit volume.</p> 
+  <p>Applying the force equilibrium equations for the directions x, y and z in the figure yields the equilibrium equations.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHFFWqyu_Mh2g" src="https://media.licdn.com/dms/image/C5112AQHFFWqyu_Mh2g/article-inline_image-shrink_1000_1488/0/1520193459968?e=1691625600&amp;v=beta&amp;t=4GCdU_z-cQkP5RvLdRiLUugEws4M55Fc5jJ2AjrzyL0"> 
+  </div> 
+  <p class="center"><strong>Figure: A three dimensional element in a general state of stress</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFxqkdibYkycg" src="https://media.licdn.com/dms/image/C5112AQFxqkdibYkycg/article-inline_image-shrink_400_744/0/1520250337584?e=1691625600&amp;v=beta&amp;t=RYxgHzqFwSUIuCH6JYZylNC6iG4LG5XoQbt0--3awfM"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEE-EDAPPql9A" src="https://media.licdn.com/dms/image/C5112AQEE-EDAPPql9A/article-inline_image-shrink_400_744/0/1520251260373?e=1691625600&amp;v=beta&amp;t=Fl7xc0TSaadEJu9VgeE_5IFHmIcrEUG7NPHAbOjDLX0"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHCQgV0BWlRfA" src="https://media.licdn.com/dms/image/C5112AQHCQgV0BWlRfA/article-inline_image-shrink_400_744/0/1520173956894?e=1691625600&amp;v=beta&amp;t=EgDUx8iDE9tMap2tsobWL9zWEvp1gXx_-GQaYADRbcQ"> 
+  </div> 
+  <p><strong>Strain to stress relation gives</strong>:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHiOOzLVbRwPQ" src="https://media.licdn.com/dms/image/C4E12AQHiOOzLVbRwPQ/article-inline_image-shrink_1000_1488/0/1520519257111?e=1691625600&amp;v=beta&amp;t=_QA0KrIk4NE2y6fik210LeDD6ZBcDHvg2g2hwENE690"> 
+  </div> 
+  <p><strong>Stress to strain relation gives;</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEysHIJR3jijw" src="https://media.licdn.com/dms/image/C4E12AQEysHIJR3jijw/article-inline_image-shrink_400_744/0/1520519256933?e=1691625600&amp;v=beta&amp;t=L1k1-JxLcCYuxtt9ZVaBRX4Wim9WCTKnd3TfjcBNxug"> 
+  </div> 
+  <p><strong>Strain displacement relation:</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHe3rR7OIwqiw" src="https://media.licdn.com/dms/image/C5112AQHe3rR7OIwqiw/article-inline_image-shrink_400_744/0/1520170623027?e=1691625600&amp;v=beta&amp;t=taJlFO8O8NqYLXDb_ELXQgef-wMbiRoT_c-dZHZnHf8"> 
+  </div> 
+  <p>Thus, using the stress to strain relation and the strain displacement relation, the equilibrium equations may be re-written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFOFwnB1woqag" src="https://media.licdn.com/dms/image/C4E12AQFOFwnB1woqag/article-inline_image-shrink_1000_1488/0/1520519256836?e=1691625600&amp;v=beta&amp;t=GWPHfFHRrosLZJFEAXu8tA7sddZvyPl-xBzvu8VPktw"> 
+  </div> 
+  <p>Now, we have three equations and three unknowns and the displacements can thus be obtained.</p> 
+  <p><strong>Summary of the displacement formulation:</strong></p> 
+  <p>Thus, what is summarized through the above math and paragraphs on the displacement formulation is; that, in displacement formulation one evaluates the strain and then the stresses using the appropriate field equations. The displacements are evaluated satisfying the boundary conditions and the equilibrium equations.</p> 
+  <p>This means that the compatibility of displacements is automatically guaranteed in the displacement formulation. <em>In fact, the finite element method is based on the displacement formulation and one of the famous interview questions for positions related to </em>Finite Element Methods Development is that<em>:</em></p> 
+  <p><em>How/where the compatibility of displacement is satisfied during the finite element formulation? </em></p> 
+  <p><em>And, the answer is that in the displacement formulation the displacements are evaluated satisfying the <strong>boundary conditions</strong> and the equilibrium conditions, thus, satisfying the compatibility of displacements <strong>to begin with</strong>.</em></p> 
+  <p><em>If one recalls the undergraduate course on Structural Analysis during the late 2nd year of Engineering, the flexibility method is based on stress formulation where we solve the compatibility equations to determine the forces and then evaluate displacements’ whereas the stiffness matrix approach / finite element approach is based on displacement formulation.</em></p> 
+  <h2><b><strong>5. Stress formulation</strong></b></h2> 
+  <p>&nbsp;</p> 
+  <p>I’ve stated above that in case of stress formulation, one first evaluates the stresses and then using the stress strain relation and then computes the displacement using the strain – displacement relation.</p> 
+  <p>Thus, the displacements are evaluated through the strains. The strain components are six whereas the displacement components are three. That is: we have six equations and three unknowns. So, the number of equations exceeds the number of unknowns.</p> 
+  <p>In the stress formulation, one solves the compatibility equations to obtain the stresses first and then through the stresses, the strains and then the displacements. The discussion below may appear to be too mathematical, nevertheless, I feel it is worthwhile to present the details in order to get a full-fledged understanding of things.</p> 
+  <p>Two sets of compatibility equations can be constructed: first set expressing the shear strain in terms of normal strains and second set expressing normal strains in terms of shear strains as shown below;</p> 
+  <p>Set 1:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEgwKOiPYkNOg" src="https://media.licdn.com/dms/image/C5112AQEgwKOiPYkNOg/article-inline_image-shrink_400_744/0/1520170584913?e=1691625600&amp;v=beta&amp;t=bW1h22ta9X8Bn5ye0PIuaKJ5YOKQmTL6Am4FESZchmE"> 
+  </div> 
+  <p>Set 2:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEUKK1LdIa56Q" src="https://media.licdn.com/dms/image/C4E12AQEUKK1LdIa56Q/article-inline_image-shrink_400_744/0/1520519256490?e=1691625600&amp;v=beta&amp;t=IsOv20xwhOGaEfj7NDsmmEZJOWfc8lSCgRarMJ0IVWQ"> 
+  </div> 
+  <p>In the next step, to get the above equations in terms of stresses, we express strains in terms of stress (see section 4) and get the famously called “Beltrami – Mitchell” equations as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHgzfEiB6pIZw" src="https://media.licdn.com/dms/image/C4E12AQHgzfEiB6pIZw/article-inline_image-shrink_400_744/0/1520519257208?e=1691625600&amp;v=beta&amp;t=eKyKHRWJmaNZ6c_xc8obfRsL8w3wFoUFT84G-tic6ZM"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQESEyPMypF8CA" src="https://media.licdn.com/dms/image/C5112AQESEyPMypF8CA/article-inline_image-shrink_400_744/0/1520190929092?e=1691625600&amp;v=beta&amp;t=viST0XVIoSU25eV8w7Z5WEt-nF_5Dpk_rA27-2xu4SA"> 
+  </div> 
+  <p>Where;</p> 
+  <p>I = stress invariant;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHOVXuZtipU5Q" src="https://media.licdn.com/dms/image/C4E12AQHOVXuZtipU5Q/article-inline_image-shrink_400_744/0/1520519423415?e=1691625600&amp;v=beta&amp;t=_x8LhsB-DchuotmpMpmA2SOOJBezEmWd8jzOek5aaEU"> 
+  </div> 
+  <p>I is called the stress invariant (that is, it does not depend upon the orientation of the coordinate system).</p> 
+  <p>For constant body forces, right hand side of the Beltrami-Mitchell equations becomes 0.</p> 
+  <p>The above six equations can be written in the index notation form as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEpdrUfcYkmSw" src="https://media.licdn.com/dms/image/C4E12AQEpdrUfcYkmSw/article-inline_image-shrink_1000_1488/0/1520519258712?e=1691625600&amp;v=beta&amp;t=Hf5u-tx0hlLe3dDmuUQ_5VRBG15KFdQtY4Q_yrEiRB8"> 
+  </div> 
+  <p>[<strong>refer</strong>: <a href="http://mathworld.wolfram.com/EinsteinSummation.html" target="_blank">http://mathworld.wolfram.com/EinsteinSummation.html</a> to understand the rules to expand this notation]</p> 
+  <p><em>σij,kk </em> <em>means that one has to keep i and j as constant and run over k (the repeated index). The comma (,) indicates a partial differential.</em></p> 
+  <p>Following points may be noted;</p> 
+  <ol> 
+   <li>It may be noted that when the body force remains constant or is 0, the right hand side of the compatibility equations becomes 0.</li> 
+   <li>In case of the compatibility equations in 3 dimensions, the expression still contains the Poisson’s ratio indicating that in a three dimensional case, the material constant influences the stress field.</li> 
+   <li>Once one solves the compatibility equations in the stress formulation, you get the stress components and then from the stress components, the strain components can be evaluated followed by the evaluation of displacements from strain components.</li> 
+  </ol> 
+  <p>More details in solving planar problems will be covered in subsequent articles.</p>
+ 
+</div>
+</body>
+</html>

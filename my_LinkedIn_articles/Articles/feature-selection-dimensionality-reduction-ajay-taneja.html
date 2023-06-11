@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Feature Selection and Dimensionality Reduction</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQHF_Sa4pU-DQw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/feature-selection-dimensionality-reduction-ajay-taneja">Feature Selection and Dimensionality Reduction</a></h1>
+    <p class="created">Created on 2021-11-10 08:11</p>
+  <p class="published">Published on 2021-11-11 19:32</p>
+  <div><h2>1. Introduction</h2><p>&nbsp;This article is a consolidation of my 7 posts on LinkedIn involving the topic of: Feature Selection and Dimensionality Reduction.</p><p><strong>Feature Selection vs Dimensionality Reduction:</strong></p><p>Datasets are often high dimensional, containing a large number of features, although the relevancy of each feature for&nbsp;analysing this data is not always clear.</p><p> One shouldn't just throw everything at your machine learning model and rely on your training process to determine which features are actually useful – I have discussed this in my posts before. Thus, it is imperative to carry out feature selection and | or dimensionality reduction to reduce the number of features in a dataset. Whilst both ‘feature selection’ and ‘dimensionality reduction’ are used for reducing the number of features in a dataset, there is an important difference;</p><ul><li> Feature selection is simply selecting and excluding given features WITHOUT changing them</li><li> Whereas Dimensionally Reduction transforms the features into a lower dimension</li></ul><p>&nbsp;Feature selection identifies the features that best represent the relationship amongst all in the feature space as well as the target that the model will try to predict. Feature selection methods remove the features that do not influence the outcome. This reduces the size of the feature space, hence reducing the resource requirements for processing the data and model complexity too.</p><h2>2.&nbsp;&nbsp;&nbsp;Feature Selection Methods:</h2><p>Feature selection methods could be classified into: Unsupervised and Supervised Feature Selection. In the Unsupervised Feature Selection, the target variable relationship is not considered. Here, one determines the correlation between features. That is: if you have (say) 2 features and they are highly correlated, then, you obviously do not need both of these features.</p><p>&nbsp;For supervised feature selection, it is going to look at the target relationship – thus the relationship between each of the features and the target (or) the label is going to be used in the feature selection. The methods that fall under the supervised feature selection include Filter Methods, Wrapper Methods and Embedded Methods.&nbsp;</p><p>&nbsp;Filter Methods:</p><p>&nbsp;As stated above, the Filter Methods look at the corelated features and selects the best subset that you can give to your machine learning model. Popular filter methods include Pearson’s correlation – this is the correlation between the features and between the features and the target label. Thus, in Filer Methods we’re going to start with all of the features and we’re going to select the best subset that we will give to the Machine Learning Model and that’s going to give us the performance of the model with this subset of the features.</p><p>&nbsp;We will get a Correlation matrix which will tell us how the features are related to each other and the target variable. The Correlation will fall in the range of -1 and +1 where +1 is a Highly positive correlation and -1 is highly negative correlation. Some of the correlations often used include:</p><ul><li>Pearson’s correlation</li><li>Kendall Tau Rank Correlation</li><li>Spearman’s Rank Correlation</li></ul><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHvGJtblOuLfQ" src="https://media.licdn.com/dms/image/C4D12AQHvGJtblOuLfQ/article-inline_image-shrink_1000_1488/0/1636542557543?e=1691625600&amp;v=beta&amp;t=_-MEJu0fKDjzoShgE_kh1kWQnnWw4Mzn4oPfUyM-O4w"></div><p><strong>                                            Figure: Calculating the Error in PCA</strong></p><p> </p><h2> 3.&nbsp;&nbsp;&nbsp;Univariate Feature Selection in SKLearn:</h2><p>&nbsp;</p><p>The classes in the&nbsp;sklearn.feature_selection&nbsp;module can be used for feature selection / dimensionality reduction on sample sets, either to improve estimators’ accuracy scores or to boost their performance on very high-dimensional datasets. SKLearn has the following routines for feature selection:</p><p>&nbsp;</p><ul><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SelectKBest</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SelectPercentil</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GeenricUnivariateSelect</li><li>SelectKBest&nbsp;removes all but the&nbsp;k&nbsp;highest scoring features</li><li>SelectPercentile&nbsp;removes all but a user-specified highest scoring percentage of features</li></ul><p><br></p><h2>&nbsp;4.&nbsp;&nbsp;&nbsp;Wrapper Methods</h2><p>Popular Wrapper methods for selecting the sub-set that is spoken of above include.</p><ul><li>Forward Selection</li><li>Backward Selection</li><li>Recursive Feature Elimination</li></ul><p>How do the above Methods work?</p><p>&nbsp;<strong>Forward Selection:</strong></p><p> Forward selection is an iterative “greedy” method. This is because we select one feature at a time, pass it to the machine learning model and evaluate the performance. We repeat the process increasing the features in every iteration until no improvement in performance of the model is seen. At this point, we know we have generated the best subset of all the features. Thus, it is termed as: Forward Elimination.</p><p><br></p><p>&nbsp;<strong>Backward Selection:</strong></p><p>  Backward elimination – it’s just the reverse of forward selection. As one might guess it, in backward elimination we start with “all of the features” and we evaluate the model performance when **removing** each feature at a time. We tend to get better performance when removing one feature at a time and continue until there is no further improvement.</p><p>&nbsp;</p><p> <strong>Recursive feature elimination:</strong></p><p> In Recursive feature elimination, we use a model to evaluate feature importance. Random Forest Classifier is one of the model types wherein we can evaluate the feature importance.&nbsp;Firstly, we select the desired number of features and fit the model. The model ranks the features by importance and then we discard the least important features. We repeat until the desired number of features remain. Recursive Feature Selection often turns out to be best performing amongst all.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFHJwfYd5UE9Q" src="https://media.licdn.com/dms/image/C4D12AQFHJwfYd5UE9Q/article-inline_image-shrink_400_744/0/1636542756802?e=1691625600&amp;v=beta&amp;t=GFnW_RRxWE9UhtfL4_NPG4MUd5386lu45VSDtuYkkcM"></div><h2>5.&nbsp;&nbsp;&nbsp;Embedded Methods for Feature Selection</h2><p> </p><p> Embedded Methods are again a supervised method for feature selection.&nbsp;The method assigns score and discards features scored lower by feature importance. Looking at in SKLearn the feature importance class is in-built in Tree based models (e.g., RandomForestClassifier). Feature importance is available as a property in feature_importances_. We can then use SelectFromModel to select features from the trained model based on assigned feature importance’s.</p><p>&nbsp;Extracting feature importance’s:</p><p> Once Sklearn has been imported, the data cleaned, and the model instantiated as well as for on the training data, model.feature_importances_is what you need;</p><p> The methods for extracting from linear and logistic regression is a bit different.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEpQnb9X42CZQ" src="https://media.licdn.com/dms/image/C4D12AQEpQnb9X42CZQ/article-inline_image-shrink_1000_1488/0/1636542802749?e=1691625600&amp;v=beta&amp;t=NMD0lDFbI_-T4Pc5nEZE-dk-NjefFZqHKOlxTuWeznY"></div><p><strong>                                               Figure: Measuring Feature Importance</strong></p><p>&nbsp;</p><h2>6.&nbsp;&nbsp;&nbsp;Dimensionality Reduction</h2><p>As mentioned, / described in my posts earlier, datasets are often high dimensional, containing a large number of features, although all of the features are many times not relevant to the problem. It might thus become imperative to carry out feature elimination or dimensionality reduction of the data set. I have discussed some of the techniques/methods for feature elimination, such as: Filter Methods (like Pearson’s correlation), Univariate Feature Elimination, Wrapper methods and Embedded Methods from Part 1 through Part 3. Let’s now look at Dimensionality Reduction.</p><p> In contrast to the above methods for feature elimination (which just “knock off” features of less importance) WITHOUT causing any change in the features; dimensionality reduction “TRANSFORMS” the features into a lower dimension.</p><p>Motivation of Dimensionality Reduction:</p><p> The motivation behind dimensionality reduction is twofold:</p><p> 1)&nbsp;&nbsp;Firstly, as you transform the problem into a lower dimensional space, you reduce the total data that is stored in the computer memory as well as you speed up the learning algorithm as you’re reducing the feature space thus solving for a smaller number of parameters (weights) in your model.</p><p> 2)&nbsp;&nbsp;Second motivation being: Data Visualization – it is not easy to visualize data on more than three dimensions – we can reduce the data to 3 or less dimensions in order to plot it, we find the new features: z1, z2 (and perhaps z3) that can effectively “summarize” all of the other features.</p><p>&nbsp;Intuition of Dimensionality Reduction:</p><p> Let us say that we collected a dataset with several features – below we plot just two of the features. It is clear from the figure (Figure 1 below) that instead of having 2 features we can actually have just one feature along the dimension z1.</p><p> Similarly, we can reduce data from 3 dimensional to 2D (see Figure 2 below) – **it should be underscored that in a typical example we may have a 1000-dimensional problem which we’re reducing to fewer dimensions (Say) to 100 dimensions, however we cannot visualize such problems thus the intuition is best felt using such examples** – here (in Figure 2) we can project the data from 3 dimensions to a 2-dimensional plane as highlighted (along z1 and z2 directions). THUS, we have transformed the problem from coordinate system x1, x2, x3 to z1, z2 coordinate system.</p><p> Thus, with the above simple examples, dimensionality reduction helps in reducing the computer resources and importantly helps in optimizing the data pipelines.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQH3jqXOQXXxbQ" src="https://media.licdn.com/dms/image/C4D12AQH3jqXOQXXxbQ/article-inline_image-shrink_1000_1488/0/1636542924731?e=1691625600&amp;v=beta&amp;t=xJZPUil-9BnM1gSohVIUk6ssrJOnDI3_RcPcC7K6704"></div><p><strong>                                  Figure: An intuitive feel of Dimensionality Reduction</strong></p><p> </p><h2> 7.&nbsp;&nbsp;&nbsp;Data Visualization:</h2><p>Reducing the computer resources, speeding up the training process and optimizing data pipelines is one form of motivation for carrying out Dimensionality Reduction. Another motivation to carry out Dimensionality Reduction is Data Visualisation.</p><p> Considering the application of dimensionality reduction to the use case involving Data visualisation; it is not easy to visualize data that is more than three dimensions. We can reduce the dimensions of our data to 3 or less in order to plot it.</p><p> We need to find new features: z1, z2 (and, perhaps z3) that can effectively summarize all the other features. It is not directly interpretable what the new transformed features will denote – it is left up to the Machine Learning Engineer to deduce that considering the problem physics.</p><p> [One common use case I have come across in area of Fracture Mechanics wherein I have a component modelled in a finite element software in 3 dimensions, but Fracture Mechanics analytical solutions are available for 2 dimensional plates. Dimensionality Reduction using an algorithm as PCA (see below) could well be suited in a such a use case for a crack propagation analysis centred around area of interest]</p><p> Considering another common example here outside the area of Structural Mechanics to aid data visualization:</p><p> Hundreds of features related to a country's economic system may all be combined into one feature that you call "Economic Activity."</p><p> Using dimensionality reduction, we can summarize the above into 2 features as below and as mentioned it is left up to the Engineer to physically interpret the features. See Figures 3,4,5 below</p><p><strong> Dimensionality Reduction: Principal Component Analysis</strong></p><p> The most popular dimensionality reduction algorithm is Principal Component Analysis (PCA).</p><p> As described in Part 4 of this series of posts, given two features, x1 and x2 we want to find a single line that effectively describes both features at once. We then map our old features onto this new line to get a new single feature. The same can be done with three features, where we map them to a plane.</p><p> The goal of PCA is to reduce the average of all the distances of every feature to the projection line. This is the projection error and is illustrated in Figure 6</p><p> For a generic case we do as follows:</p><p> Reduce from n-dimension to k-dimension:&nbsp;so, find k vectors u(1), u(2),… u(k) onto which to project the data so as to minimize the projection error.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQG7-zyflhZKNw" src="https://media.licdn.com/dms/image/C4D12AQG7-zyflhZKNw/article-inline_image-shrink_1000_1488/0/1636543044928?e=1691625600&amp;v=beta&amp;t=IW17uLeGAfcAjbj0kJnVq4e0NI_AwB9Ne5D39mA6kVk"></div><p><strong>        Figure: An example of Dimensionality Reduction to aid Data Visualization</strong></p><p><br></p><h2> 8. Mathematical interpretation of Principal Component Analysis and the Principal Component Analysis Algorithm</h2><p> </p><p> The above sections covered more on the physical interpretation of the Principal Component Analysis (PCA) method for dimensionality reduction. Let us get into a bit of Linear Algebra and understand some of the mathematical background of PCA!</p><p> Principal component analysis (PCA) is a standard tool in modern data analysis used in diverse fields from neuroscience to computer graphics and engineering in general - because it is one of the simplest (hence, coolest!) methods for extracting relevant information from "confusing" data sets.</p><p> With minimal effort (3/4 lines of Python/Matlab code) PCA provides a roadmap for how to reduce a complex data set to a lower dimension to reveal many times hidden, simplified structures that often underlie it.</p><p>&nbsp;The goal of principal component analysis is to identify the most meaningful basis to re-express a&nbsp;data set. The hope is that this new basis will filter out the noise and reveal hidden structure - thus resulting in dimensionality reduction.</p><p> <strong>PCA Framework: Change of basis</strong></p><p> Thus, the question that PCA precisely asks is: Is there another basis, which is a linear combination of the original basis, that best re-expresses our data ? Thus, PCA aims to re-express the original data X as a linear combination of the basis P. That is,</p><p> PX = Y</p><p> What is the best choice of P in PCA?</p><p> In the above equation, P is the stretch and the rotation one would give to the vectors along the columns of X (considering that we have organized all the features along the columns of X and the numbers of rows of X constitute the number of training examples - in the data visualization example, the number of rows corresponding to the number of countries considered in the example) so that they get aligned to a new basis or the principal directions.</p><p> </p><p> We would want that the new basis be such that where we have the spread/variance of the data (with respect to the mean) as much as possible. This enables us to remove those dimensions where the data is almost flat. This decreases the dimension of the data whilst keeping the variance (or spread) among the data as close as possible to the original data.</p><p>&nbsp;</p><p> Algorithm to implement PCA: See image / figure below</p><p> </p><p> <strong>Mean normalization in PCA:</strong></p><p> It is important before implementing the algorithm for PCA, we carry out a mean normalization. This is important in PCA since PCA is variance maximizing exercise as described above. It projects your original data onto directions which maximize the variance.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQGFHVlmF9Ff6Q" src="https://media.licdn.com/dms/image/C4D12AQGFHVlmF9Ff6Q/article-inline_image-shrink_400_744/0/1636543148521?e=1691625600&amp;v=beta&amp;t=dmQC4DwW-aiSKNOxxB7z_G11JEwrOvoXJ0vp_sKPO9s"></div><p><strong>                       Figure: Coding the Principal Component Analysis algorithm</strong></p><p>&nbsp;</p><h2>9. How to choose the number of principal components - number of reduced dimensions?</h2><p><br></p><p>This is the final post in series of discussions on: “Feature Selection and Dimensionality Reduction” and the emphasis here in calculating the error in PCA.</p><p> PCA helps in reducing the solution time because by transforming the features into a lower dimension one solves for a lesser number of parameters thus accelerating the learning process. But how do we evaluate that the error in PCA is small so that no important information is lost whilst projecting the data thus reducing the dimensions?</p><p>I had mentioned in the post 4, that, there will surely be a projection error when one “transforms” the features into lower dimensions – again shown below in Figure 1. It should be noted that the visualization is straight forward here because you’re simply transforming the problem from 2 dimensions to a single dimension, but this will surely ‘NOT’ be the case for a real business problem!</p><p> </p><p> To calculate the error in PCA one divides the projection error by the total variance as shown below and then limit the ratio to &lt; 0.01. That is,</p><p> </p><ul><li> Calculate the average square projection error – we take the square so that positive and negative numbers do not cancel out and we also put a high ‘penalty’ on large errors by squaring.</li><li> Calculate the total variation in the data</li><li> Choose ‘k’ (the number of dimensions) so that the ratio of the average squared projection error to the variation &lt; = 0.01 </li></ul><p> Common misuse of PCA:</p><ul><li> PCA to avoid over-fitting – One should not attempt PCA to avoid overfitting - in order to tackle over-fitting, go for regularization but ‘NOT’ PCA!</li></ul><p> </p><ul><li> Do not ‘pre-plan’ PCA before attempting to solve the problem with the intended features! Solve your problem in logical ‘steps’ and do not tend to ‘oversimplify’ things before getting the bigger picture</li></ul><p><br></p><p> </p><p> </p><p><br></p><p> </p><p> </p><p> </p><p><br></p><p> </p><p> </p><p><br></p></div>
+</body>
+</html>

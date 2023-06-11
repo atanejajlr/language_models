@@ -1,0 +1,387 @@
+<html>
+<head>
+  <title>Continuum mechanics variables for geometric non-linear finite element analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQFRyNIw6_N2Og" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/continuum-mechanics-variables-geometric-non-linear-finite-ajay-taneja">Continuum mechanics variables for geometric non-linear finite element analysis</a></h1>
+    <p class="created">Created on 2016-01-29 20:50</p>
+  <p class="published">Published on 2016-01-29 22:13</p>
+  <div>
+  <p>&nbsp;</p> 
+  <h2><strong>1. &nbsp;</strong><strong>Introduction</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>This article describes and illustrates and explains in detail the various continuum mechanics variables that are used in the geometric non-linear analysis formulations for finite element analysis. These include;</p> 
+  <ol> 
+   <li>Deformation gradient tensor,</li> 
+   <li>Right Cauchy Green deformation gradient tensor,</li> 
+   <li>Green Lagrangian strain tensor,</li> 
+   <li>2nd Piola Kirchhoff stress tensor,</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <p>All the above variables are of utmost importance during the formulation of geometric non-linear finite element equations whether through the total Lagrangian formulation or through the updated Lagrangian formulation.</p> 
+  <p>This article is organized as follows;</p> 
+  <p>&nbsp;Section 2 of the document describes in detail the definition, math expressions, and illustrative examples concerning the deformation gradient tensor. It is also attempted to point some differences between the deformation gradient tensor and the strain tensor that is used in small deformations.</p> 
+  <p>&nbsp;Section 3 explains the definition, math expressions and the importance of the Right Cauchy green deformation gradient tensor.</p> 
+  <p>&nbsp;The Green Lagrangian strain tensor which I had discussed in some detail in my article: <a href="https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card" target="_blank">https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card</a> can be written in several equivalent ways. This forms the discussion and illustrations involving this topic in section 4.</p> 
+  <p>&nbsp;The 2nd Piola Kirchhoff stress that I had discussed in my preceding article (as stated in the above paragraph) is briefly recapitulated in the section 5.</p> 
+  <p>&nbsp;Finally, some very important properties of the 2nd Piola Kirchhoff stress tensor and the Green Lagrangian strain tensor are discussed in section 6.</p> 
+  <h2><strong>2.</strong>&nbsp;&nbsp;&nbsp; <strong>Deformation gradient tensor</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>A fundamental measure of the deformation of the body is given by the deformation gradient and is defined as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQH7mqRBkM2etg" src="https://media.licdn.com/dms/image/C4E12AQH7mqRBkM2etg/article-inline_image-shrink_400_744/0/1520562981916?e=1691625600&amp;v=beta&amp;t=r6QC20T5V0MfYae8OZyDdL-8vMrA_4qg8NIfU3hLHvM"> 
+  </div> 
+  <p>The deformation gradient tensor describes the stretches and the rotations that the material fibres have undergone from 0 to time t.</p> 
+  <p>&nbsp;Another way to write the deformation gradient tensor is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQE_5vPNmy5tUA" src="https://media.licdn.com/dms/image/C4E12AQE_5vPNmy5tUA/article-inline_image-shrink_400_744/0/1520562982470?e=1691625600&amp;v=beta&amp;t=G8_MDwidqDYH_6533w3ePmMirdHRecny2Cz0TgG2m3w"> 
+  </div> 
+  <h3><strong>2.1</strong>&nbsp;&nbsp; <strong>Physical explanation of the deformation gradient tensor</strong></h3> 
+  <p>As stated earlier, the deformation gradient tensor describes the deformations (rotations and stretches) of the material fibres;</p> 
+  <p>This can be illustrated clearly through the diagram below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEFPJUIJBMT8A" src="https://media.licdn.com/dms/image/C4E12AQEFPJUIJBMT8A/article-inline_image-shrink_400_744/0/1520562981180?e=1691625600&amp;v=beta&amp;t=7TAPYVqRjH0otlOSYigDsXpNoY02wjKep18KvYHashU"> 
+  </div> 
+  <p>In the above figure, the vectors;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEIcbxKaN6k2A" src="https://media.licdn.com/dms/image/C4E12AQEIcbxKaN6k2A/article-inline_image-shrink_400_744/0/1520562981780?e=1691625600&amp;v=beta&amp;t=IQsTDbqprVwj8ElW2z98mMGIXWlSFJejiY0OKE65qQM"> 
+  </div> 
+  <p>Represent the orientation and the length of the material fibres at times 0 and t.</p> 
+  <p>They are related through the deformation gradient by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFZt4d7q7Zvlg" src="https://media.licdn.com/dms/image/C4E12AQFZt4d7q7Zvlg/article-inline_image-shrink_400_744/0/1520562982041?e=1691625600&amp;v=beta&amp;t=uomwtPQNOi-I80WZerS4T2114ZKSAmxRWMcXTIWznMI"> 
+  </div> 
+  <h3><strong>2.2</strong>&nbsp;&nbsp; <strong>Examples involving deformation gradient in one and two dimension</strong></h3> 
+  <p>&nbsp;</p> 
+  <h2><strong>2.2.1</strong>&nbsp;&nbsp;&nbsp; <strong>One dimensional deformation</strong></h2> 
+  <p>&nbsp;</p> 
+  <p><em>Example 1;</em></p> 
+  <p>&nbsp;Consider a one dimensional deformation of a bar as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEtzeGl1Pv6eg" src="https://media.licdn.com/dms/image/C5112AQEtzeGl1Pv6eg/article-inline_image-shrink_400_744/0/1520194884224?e=1691625600&amp;v=beta&amp;t=N8FePvZtYlVrSTCqJ2i7XlqndBRor1-rwHjH89P8XEM"> 
+  </div> 
+  <p class="center"><strong>Figure: One dimensional deformation of a bar</strong></p> 
+  <p>In the above figure, the deformed state of the bar at time t=0 and at time‘t’ are shown.</p> 
+  <p>&nbsp;Let us say that the deformation field is known and is denoted by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEPoC3N3uZvWQ" src="https://media.licdn.com/dms/image/C4E12AQEPoC3N3uZvWQ/article-inline_image-shrink_400_744/0/1520562981178?e=1691625600&amp;v=beta&amp;t=qxiUDnesMZtN5hxi01p6kLOJHG22rWBTaGhUecy1dtM"> 
+  </div> 
+  <p>The deformation gradient will thus be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEUGiTdlpb-IQ" src="https://media.licdn.com/dms/image/C5112AQEUGiTdlpb-IQ/article-inline_image-shrink_400_744/0/1520241297208?e=1691625600&amp;v=beta&amp;t=QCcHa4StFzT4eakv3s5PurNvP1uYLQerCyHKrDacT_M"> 
+  </div> 
+  <p>In the above figure, the deformation of fibres is shown corresponding to the known deformation field.</p> 
+  <p><strong>&nbsp;</strong><em>Example 2;</em></p> 
+  <p>&nbsp;Let us now again consider a one dimensional deformation and express the deformation gradient without the use of differential operator;</p> 
+  <p>&nbsp;Let us consider a material fibre at a distance of x1=0.8 (i.e. the distance from the Cartesian x axis) at time t=0 and the same material fibre deforms to a distance x1=1.12 from the Cartesian x axis at time “t” as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEHat2fHWyZsA" src="https://media.licdn.com/dms/image/C4E12AQEHat2fHWyZsA/article-inline_image-shrink_400_744/0/1520562981257?e=1691625600&amp;v=beta&amp;t=bfhlVyKPp1p9YtEtH7R3v2hsw7AkJWp1BXTLGXjKAHA"> 
+  </div> 
+  <p><strong>Figure: Deformation undergone by a material fibre from time t=0 to a time “t”</strong></p> 
+  <p>&nbsp;Now, consider an adjacent material fibre close to the fibre considered in the above example, which undergoes a deformation along the Cartesian x axis from 0.85 to 1.211 through time t=0 t time “t” as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGnoQ5cV_rHIQ" src="https://media.licdn.com/dms/image/C5112AQGnoQ5cV_rHIQ/article-inline_image-shrink_400_744/0/1520065620066?e=1691625600&amp;v=beta&amp;t=2ySFy-b8nLBoVhYjC-4xeN8z7ZOTtkk4qVMZwSS95i0"> 
+  </div> 
+  <p><strong>Figure: Deformation undergone by an adjacent material fibre from time t=0 to a time “t”</strong></p> 
+  <p>Now, the deformation gradient which expresses the measure of deformation (rotations/ stretches) from time 0 to time “t” is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHgvyT5Kt9cyQ" src="https://media.licdn.com/dms/image/C5112AQHgvyT5Kt9cyQ/article-inline_image-shrink_400_744/0/1520196146661?e=1691625600&amp;v=beta&amp;t=vupx0aTi_1apxmYTGmiCAnxPdDf6d92qMgUwrpbGIEw"> 
+  </div> 
+  <p>This result is an estimate since the differential operator is not used thus not considering fibres that are infinitesimally close.</p> 
+  <h3>&nbsp;</h3> 
+  <h3><strong>2.2.2</strong>&nbsp;&nbsp;&nbsp; <strong>Two dimensional deformation</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Now, let us consider 1 two dimensional deformation. The deformed configuration of the body is represented as shown in the figure below at time t=0 and at time “t”.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEATwgbzKfVBg" src="https://media.licdn.com/dms/image/C4E12AQEATwgbzKfVBg/article-inline_image-shrink_400_744/0/1520562981466?e=1691625600&amp;v=beta&amp;t=2q5NILgrJx56inEi4gnKje3HOvdCEzSG4OXk0p0NBVw"> 
+  </div> 
+  <p><strong>Figure: Deformed configuration of a two dimensional body at time 0 and at time “t”</strong></p> 
+  <p><strong>&nbsp;</strong>Let us say the deformation gradient for the above deformed state of the two dimensional body is known and is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFvwO-4AvlpkA" src="https://media.licdn.com/dms/image/C4E12AQFvwO-4AvlpkA/article-inline_image-shrink_400_744/0/1520562981187?e=1691625600&amp;v=beta&amp;t=jMh4Q5suza4ADBX06QDpcLgZVy2Vczre5meM2TLxFtM"> 
+  </div> 
+  <p>For the above example, the deformation gradient is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQF5CJvm1vgaJw" src="https://media.licdn.com/dms/image/C4E12AQF5CJvm1vgaJw/article-inline_image-shrink_400_744/0/1520562981119?e=1691625600&amp;v=beta&amp;t=nuSaBwgP7pNO1Wp9DHarNU2IyJ6FC_ljxGYtaAuakHM"> 
+  </div> 
+  <p>Now, considering</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG_qMHGr18FeQ" src="https://media.licdn.com/dms/image/C4E12AQG_qMHGr18FeQ/article-inline_image-shrink_1000_1488/0/1520562980992?e=1691625600&amp;v=beta&amp;t=D62PEBWYx1q6Xi4kY577z8HJMiC9bmU1i2gMrzQqyrc"> 
+  </div> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHLWX3Om4kxcg" src="https://media.licdn.com/dms/image/C4E12AQHLWX3Om4kxcg/article-inline_image-shrink_400_744/0/1520562981354?e=1691625600&amp;v=beta&amp;t=P4JFkfyBRSlrO6zHskQ9sE2impToQx4x9u8TRbxIx6k"> 
+  </div> 
+  <p>Similarly, considering the other material fibre as shown in the figure of the deformed configuration, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHDdL05Yf3hXQ" src="https://media.licdn.com/dms/image/C5112AQHDdL05Yf3hXQ/article-inline_image-shrink_1000_1488/0/1520062840081?e=1691625600&amp;v=beta&amp;t=XhPGlkdhgMX4Ll9kkIhDeDefJnzOVSlF9f0jRWhXElU"> 
+  </div> 
+  <h3><strong>2.3</strong>&nbsp;&nbsp; <strong>Using the deformation gradient to relate the mass densities at time‘t’ and at time 0</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>It should be noted that mass densities at time t=0 and at time‘t’ can be related using the deformation gradient;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHRXvwLbXUGeQ" src="https://media.licdn.com/dms/image/C4E12AQHRXvwLbXUGeQ/article-inline_image-shrink_400_744/0/1520562980938?e=1691625600&amp;v=beta&amp;t=7uOZMiNUvhdfTMCERm3kNaU4gdGxB_QnVyBuy5fpOEQ"> 
+  </div> 
+  <p><strong>Figure: Volume change between time’s t=0 and ‘t’</strong></p> 
+  <p>&nbsp;It can be mathematically shown that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHU0Zkt1EDtZQ" src="https://media.licdn.com/dms/image/C4E12AQHU0Zkt1EDtZQ/article-inline_image-shrink_400_744/0/1520562981470?e=1691625600&amp;v=beta&amp;t=KxTc81EkSzFDvxA9L0tyRnGjTZGXhvMwaSTHmq5dnZw"> 
+  </div> 
+  <h2><strong>2.3.1</strong>&nbsp;&nbsp;&nbsp; <strong>Example demonstrating the computation of mass density using the deformation gradient</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Let us consider a one dimensional stretching as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGnMeM0OE19qw" src="https://media.licdn.com/dms/image/C5112AQGnMeM0OE19qw/article-inline_image-shrink_400_744/0/1520062810072?e=1691625600&amp;v=beta&amp;t=p7TQhP4XD8TubOnB-UXvtZHqaBxEn8cXnkUMZ28dhSc"> 
+  </div> 
+  <p><strong>Figure: One dimensional stretching example to demonstrate the computation of mass densities at different times using the deformation gradient</strong></p> 
+  <p>&nbsp;The deformation field is denoted by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGLFaGZqXb3Xg" src="https://media.licdn.com/dms/image/C5112AQGLFaGZqXb3Xg/article-inline_image-shrink_400_744/0/1520063148201?e=1691625600&amp;v=beta&amp;t=bVMYc3bpcpifFOlMQcwZxNlP2MNquOjh1TCubrmlFb4"> 
+  </div> 
+  <p>The deformation gradient;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEo6-oI10BxbQ" src="https://media.licdn.com/dms/image/C4E12AQEo6-oI10BxbQ/article-inline_image-shrink_400_744/0/1520562981265?e=1691625600&amp;v=beta&amp;t=g8S29DdxOv3Krd3pDeo36YOUpyjrxzARO3RhRC8yhPQ"> 
+  </div> 
+  <p>The determinant of the deformation gradient: 1.25</p> 
+  <p>&nbsp;The mass densities time’s t=0 and t time‘t’ are related through;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFs5_4CtiHeWw" src="https://media.licdn.com/dms/image/C4E12AQFs5_4CtiHeWw/article-inline_image-shrink_400_744/0/1520562981502?e=1691625600&amp;v=beta&amp;t=rAd3rRHfgSZGzWOk_BuCqSou-xf6Ssu3m8ZqV9WmQNM"> 
+  </div> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGAPGoJDd4eHw" src="https://media.licdn.com/dms/image/C5112AQGAPGoJDd4eHw/article-inline_image-shrink_400_744/0/1520239501601?e=1691625600&amp;v=beta&amp;t=9fT4Afy24e1qLwnPvFoQImqIw88fjJaSvxzel8XKfys"> 
+  </div> 
+  <p>This makes physical sense as density reduces at time‘t’ as a result of stretching.</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <h3><strong>2.4</strong>&nbsp;&nbsp; <strong>Decomposition of the deformation gradient into stretch and rotation matrices</strong></h3> 
+  <p>&nbsp;An important property of the deformation gradient is that is possible to split it into stretch and rotation matrix as illustrated in the following figure;</p> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGF2XksFdoP2A" src="https://media.licdn.com/dms/image/C5112AQGF2XksFdoP2A/article-inline_image-shrink_400_744/0/1520196061373?e=1691625600&amp;v=beta&amp;t=nAN1Twk7jiKI2sgfB_X4_OQaFypQkTOdIbpBbeK2GTw"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHT-M1KxQNMGw" src="https://media.licdn.com/dms/image/C5112AQHT-M1KxQNMGw/article-inline_image-shrink_1000_1488/0/1520063047014?e=1691625600&amp;v=beta&amp;t=p2VhP9uvQLo0CsExjJ61bc4rTjx78CikRjJtTpH8Vn0"> 
+  </div> 
+  <p><strong>tensor</strong></p> 
+  <p>&nbsp;</p> 
+  <h2><strong>3.</strong>&nbsp;&nbsp;&nbsp;<strong>Right Cauchy Green Deformation Tensor</strong></h2> 
+  <p>&nbsp;It should be noted that the deformation gradient tensor includes the effect of rigid body rotation. But, using the deformation gradient tensor, it is possible to define a tensor which is invariant under a rigid body rotation and depends on the stretch tensor.</p> 
+  <p>&nbsp;The (right) Cauchy Green deformation tensor is defined as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQENYSnD60-5gg" src="https://media.licdn.com/dms/image/C5112AQENYSnD60-5gg/article-inline_image-shrink_400_744/0/1520238759138?e=1691625600&amp;v=beta&amp;t=PEEetHCLX2YqGqewO1GHU2Y2k9gwjZF8psyltm_0vsk"> 
+  </div> 
+  <p>Since, the deformation gradient tensor can be decomposable into a stretch and rotation tensor, we have;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHpCZznFXA_Jw" src="https://media.licdn.com/dms/image/C5112AQHpCZznFXA_Jw/article-inline_image-shrink_400_744/0/1520197728499?e=1691625600&amp;v=beta&amp;t=yAGhdaDLkZqwJdnmPfa3gq2nPVfXrBy2njuiS0hzR7s"> 
+  </div> 
+  <p>Hence, the (right) Cauchy Green deformation tensor is invariant under a rigid body rotation.</p> 
+  <p>&nbsp;</p> 
+  <p>It may be said that the small strain tensor which is used in small deformation analysis is a linearized version of the (right) Cauchy Green deformation tensor.</p> 
+  <p>&nbsp;<strong>3.1 </strong>&nbsp;&nbsp; <strong>Example illustration and comparison: Deformation gradient tensor and the (right) Cauchy Green deformation tensor</strong></p> 
+  <p>The illustration below demonstrates the difference between deformation gradient tensor and the (right) Cauchy Green deformation tensor.</p> 
+  <p>The important point to note here is that the deformation gradient tensor changes with a rigid body rotation and the (right) Cauchy Green deformation tensor is invariant with rigid body rotation.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEiG6mNe56YqA" src="https://media.licdn.com/dms/image/C4E12AQEiG6mNe56YqA/article-inline_image-shrink_1000_1488/0/1520562981600?e=1691625600&amp;v=beta&amp;t=_dQTu4r7BY9GyGYgz5yPTN8czxLNr9q6WNbeAibt4CY"> 
+  </div> 
+  <p><strong>Figure: Example demonstration illustrating that the (right) Cauchy Green deformation tensor is invariant under rigid body rotation</strong></p> 
+  <p>&nbsp;</p> 
+  <h2><strong>4.</strong>&nbsp;&nbsp;<strong>Green Lagrangian strain tensor</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The Green Lagrangian strain tensor measures the stretching deformations. It can be written in several different forms. It is also invariant under rigid body rotations.</p> 
+  <ol> 
+   <li>As discussed, in my article on “Stress measures in geometric non-linear finite element analysis” (<a href="https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card" target="_blank">https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card </a>), one form of expressing the Green Lagrangian strain tensor is:</li> 
+  </ol> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHavA6-Wqoz-g" src="https://media.licdn.com/dms/image/C4E12AQHavA6-Wqoz-g/article-inline_image-shrink_400_744/0/1520562981626?e=1691625600&amp;v=beta&amp;t=0Ccky-oVgBZGpv2RzCRsCA9Vi8fkjLIElfusLZ2F3_U"> 
+  </div> 
+  <p>The above expression has been written in indicial notation and its expansion is shown in my article mentioned above.</p> 
+  <p>2. Another form of expressing the Green Lagrangian strain tensor is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFzjlHH_rLTMg" src="https://media.licdn.com/dms/image/C5112AQFzjlHH_rLTMg/article-inline_image-shrink_400_744/0/1520196221340?e=1691625600&amp;v=beta&amp;t=B6d9MIontTb_p0paZCb8d5tip4FjGG3HfNKGJG0vD3k"> 
+  </div> 
+  <h3><strong>4.1 Properties of the Green Lagrangian strain tensor:</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Following points may be noted with regards to the Green Lagrangian strain tensor;</p> 
+  <ol> 
+   <li>The Green Lagrangian strain tensor is symmetric.</li> 
+   <li>As stated, the Green Lagrangian strain tensor is invariant under a rigid body motion. Hence;</li> 
+  </ol> 
+  <ul> 
+   <li>For a rigid body motion between times ‘t’ and ‘t+Δt’;</li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGoDODLHo9mXA" src="https://media.licdn.com/dms/image/C4E12AQGoDODLHo9mXA/article-inline_image-shrink_400_744/0/1520562981644?e=1691625600&amp;v=beta&amp;t=S0TwaQxjpAj4anw6y1R6wnbs6aZCxhG8vnv3udiOAL0"> 
+  </div> 
+  <ul> 
+   <li>For a rigid body motion between times 0 and t;</li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG4kwjpniiOqg" src="https://media.licdn.com/dms/image/C5112AQG4kwjpniiOqg/article-inline_image-shrink_400_744/0/1520168364080?e=1691625600&amp;v=beta&amp;t=_b8UKnr4HvykYtCgbVE2dIweDurgwgVVONVMlEH-bmA"> 
+  </div> 
+  <h3><strong>4.2</strong>&nbsp;&nbsp; <strong>Example illustration and comparison: Deformation gradient tensor, the (right) Cauchy Green deformation tensor, the Green Lagrangian deformation tensor</strong></h3> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFODt7kQ0gUmQ" src="https://media.licdn.com/dms/image/C4E12AQFODt7kQ0gUmQ/article-inline_image-shrink_1000_1488/0/1520562981779?e=1691625600&amp;v=beta&amp;t=BcDjSzcbJ8jyW16RArVHtO-oN71296U_fR4_XsKWsq8"> 
+  </div> 
+  <h2><strong>5.</strong>&nbsp;&nbsp;&nbsp; <strong>2nd Piola Kirchhoff stress tensor</strong></h2> 
+  <h1><strong>&nbsp;</strong></h1> 
+  <h3>The necessity and of introducing the 2nd Piola Kirchhoff stress tensor and the Green Lagrangian strain tensor has been elaborated in my earlier article:</h3> 
+  <p>&nbsp;</p> 
+  <p><a href="https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card" target="_blank">https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card </a>)</p> 
+  <p>The expressions for the 2nd Piola Kirchhoff stress tensor, its important properties are pointed out below.</p> 
+  <h2><strong>5.1</strong>&nbsp;&nbsp; <strong>Expressions for 2nd Piola Kirchhoff stress tensor</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The expressions for this stress tensor in the indicial and matrix notation are given as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHX3V4qbI-t2Q" src="https://media.licdn.com/dms/image/C5112AQHX3V4qbI-t2Q/article-inline_image-shrink_400_744/0/1520239942701?e=1691625600&amp;v=beta&amp;t=S4Ydig_R2bah-YaWP18MQlGJaU7WbQ86iTv6v_qSgSw"> 
+  </div> 
+  <p>The indicial notation has been expanded in my earlier article mentioned above and the above terms include: deformation gradient, Cauchy stress.</p> 
+  <h3><strong><strong>5.2 Properties of the 2nd Piola Kirchhoff stress tensor:</strong></strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Following points may be noted with regards to the 2nd Piola Kirchhoff stress tensor;</p> 
+  <ol> 
+   <li>The stress tensor is symmetric.</li> 
+   <li>&nbsp;It is invariant under a rigid body motion (translation or rotation)</li> 
+   <li>&nbsp;The 2nd Piola Kirchhoff stress may be interpreted as a force in the reference configuration acting on the area in the reference configuration. However, it is not directly interpretable in an experiment.</li> 
+  </ol>
+ 
+</div>
+</body>
+</html>

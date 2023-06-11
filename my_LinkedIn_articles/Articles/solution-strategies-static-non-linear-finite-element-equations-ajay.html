@@ -1,0 +1,394 @@
+<html>
+<head>
+  <title>Solution strategies for static non-linear finite element equations</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQHvwlnuX_pk4w" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/solution-strategies-static-non-linear-finite-element-equations-ajay">Solution strategies for static non-linear finite element equations</a></h1>
+    <p class="created">Created on 2015-12-16 20:49</p>
+  <p class="published">Published on 2015-12-16 22:32</p>
+  <div>
+  <h2><strong>1. INTRODUCTION</strong>&nbsp;</h2> 
+  <p>&nbsp;</p> 
+  <p>In a non-linear finite element analysis procedure, the total load on the structure is divided into a series of load steps and consequently the stiffness characteristics of the structure are updated based on the deformed configuration of the structure in each load step. This requires a re-computation of the stiffness matrix based on the state of the structure during each load step as well as the re-computation of the load vector if the loading on the structure is a deformation dependent loading (often termed as ‘follower forces’ in commercial finite element software’s).</p> 
+  <p>This task to obtain the stiffness matrix based on the current state of the structure is not trivial from the computational point of view and is iterative in nature. The aim of this article is to discuss in detail some of the solution strategies to solve the nonlinear finite element equations; in particular the strategies to obtain the stiffness matrix based on the desired degree of accuracy and thus obtaining the most accurate response of the structure.</p> 
+  <p>There are quite a few solution strategies that are used in commercial finite element software’s, the most common techniques being;</p> 
+  <ul> 
+   <li>Full Newton-Raphson approach,</li> 
+   <li>Modified Newton Raphson approach,</li> 
+   <li>Initial stress approach.</li> 
+  </ul> 
+  <p>The aim of this article is to present in detail the physics and the math involved in the above solution approaches for static non-linear finite element analysis.</p> 
+  <p>I have attempted to logically organize the content of this article with;</p> 
+  <ul> 
+   <li>The section 2 and section 3 providing a background of the problem in a general non-linear finite element analysis.</li> 
+   <li>It should be noted that the modified Newton-Raphson as well as the initial stress method have their origins from the full Newton-Raphson technique and it is attempted to bring out the difference and the motivation behind each of the techniques in section 4.</li> 
+   <li>Section 5 presents in detail the physics and the math behind the Newton-Raphson technique and in section 6 the initial stress and the modified Newton-Raphson technique have been elaborated.</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <h2><strong>2. PROBLEM DESCRIPTION IN A GENERAL NON-LINEAR FINITE ELEMENT ANALYSIS</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The basic problem in a general non-linear analysis is to find the state of equilibrium of a body corresponding to the applied loads. To put this more clearly, the aim in a non-linear analysis is to find the deformed configuration for which the external forces are in equilibrium with the internal forces.</p> 
+  <p>Assuming that the externally applied loads are described as a function of time (or, a <em>pseudo </em>time if we dealing with static problem with rate independent plasticity), the equilibrium conditions of a system of finite elements representing the body under consideration can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGfT8kqKMIsyg" src="https://media.licdn.com/dms/image/C4E12AQGfT8kqKMIsyg/article-inline_image-shrink_400_744/0/1520422814482?e=1691625600&amp;v=beta&amp;t=YHSRM0OwkNBiphV0zvh9UEQm7tTiYslaMLKlH3xZB9U"> 
+  </div> 
+  <p>Where;</p> 
+  <p>The vector tR lists the externally applied nodal point forces in the configuration at time t and the vector tF lists the nodal point forces that correspond to the element stresses in this configuration.</p> 
+  <p>Also;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGzWebmziHgoA" src="https://media.licdn.com/dms/image/C5112AQGzWebmziHgoA/article-inline_image-shrink_400_744/0/1520066527850?e=1691625600&amp;v=beta&amp;t=6LcmMWcXOwjDL_eOhTstWq1bcWdEZm6AxZCWKo8Avl8"> 
+  </div> 
+  <p>Where;</p> 
+  <p>tR: represent the body forces</p> 
+  <p>tR: represent the surface forces</p> 
+  <p>tR: represent the nodal concentrated forces</p> 
+  <p>It should be noted that the relation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQGBBD-gQaYHWg" src="https://media.licdn.com/dms/image/C4E12AQGBBD-gQaYHWg/article-inline_image-shrink_400_744/0/1520422814233?e=1691625600&amp;v=beta&amp;t=KXDB6JVbwpQX2xkiGXrpC8p9J95IpMD08urCpX4nCzk"> 
+  </div> 
+  <p>must express the equilibrium of the system in the <strong>current deformed geometry</strong> taking due account of all the non-linearities.</p> 
+  <p>Also, it should be noted that in a dynamic analysis, the vector tR would include inertial and damping forces.</p> 
+  <p>The equilibrium in the above equation must be satisfied throughout the complete history of load application i.e. the time variable t may take on any value from zero to the maximum time of interest. <strong>In a static analysis without time effects, time is only a convenient variable which denotes different intensities of load applications and correspondingly different configurations.</strong></p> 
+  <p>However, in a dynamic analysis and a static analysis with material time effects (like creep, strain rate effects), the time variable is an actual variable to be properly included in the modelling of the actual physical situation.</p> 
+  <h2><strong>3. APPROACH IN AN INCREMENTAL STEP-BY-STEP SOLUTION</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The basic approach in an incremental step-by-step solution is to assume that the solution for the discreet time‘t’ is known and that the solution for the discreet time t+Δt is required, where Δt is a suitable chosen time increment.</p> 
+  <p>Hence, the equilibrium equation at time t+Δt can be written as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQERmRn5LfpOBQ" src="https://media.licdn.com/dms/image/C4E12AQERmRn5LfpOBQ/article-inline_image-shrink_400_744/0/1520422814884?e=1691625600&amp;v=beta&amp;t=0Dp2woTvHm-kehcoj5l6n_cX_7s09QcQqQVX8l7vI0o"> 
+  </div> 
+  <p>where the left superscript denotes “at time t+Δt”.</p> 
+  <p>Assume that t+ΔtR is independent of the deformations. Since the solution is known at the time‘t’ we can write;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFwqB96LT6Lkg" src="https://media.licdn.com/dms/image/C4E12AQFwqB96LT6Lkg/article-inline_image-shrink_400_744/0/1520422815205?e=1691625600&amp;v=beta&amp;t=Q42opOR8wU5_t7QdLJD1tI8E7txdie4nJQDikdM0GEc"> 
+  </div> 
+  <p>where F is the increment in nodal point forces corresponding to an increment in element displacement and stresses from time t to t+Δt.</p> 
+  <p>The vector F can be approximated using a tangent stiffness matrix tK which corresponds to the geometric and material conditions at time‘t’.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG2o7M62IuLEA" src="https://media.licdn.com/dms/image/C5112AQG2o7M62IuLEA/article-inline_image-shrink_400_744/0/1520238805336?e=1691625600&amp;v=beta&amp;t=-PsIRIYdDAZXGq6o_o8tpHOP8kig83aJRTVzsYBoeMI"> 
+  </div> 
+  <p>where;</p> 
+  <p>U is a vector of incremental nodal point displacements and</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEkTXRPTk7Baw" src="https://media.licdn.com/dms/image/C5112AQEkTXRPTk7Baw/article-inline_image-shrink_400_744/0/1520065919656?e=1691625600&amp;v=beta&amp;t=wTVWgZMTyl9it6Nl0PeDrTrK8Lti1pC8_fch_EIIxm8"> 
+  </div> 
+  <p>Hence,</p> 
+  <p>The tangent stiffness matrix corresponds to the derivative of the internal element nodal point forces tF with respect to the nodal point displacements tU.</p> 
+  <p>Substituting the value of tK in the equilibrium equation, we obtain;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFKajXzk4zXKQ" src="https://media.licdn.com/dms/image/C5112AQFKajXzk4zXKQ/article-inline_image-shrink_400_744/0/1520198271818?e=1691625600&amp;v=beta&amp;t=VwL41Df9xGw3CjB00OxlXVR3JMKmZSO0_R67rOpxYM0"> 
+  </div> 
+  <p>And solving for U, we can calculate an approximation to the displacements at time t+Δt</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHg9IERdx66jg" src="https://media.licdn.com/dms/image/C5112AQHg9IERdx66jg/article-inline_image-shrink_400_744/0/1520200273373?e=1691625600&amp;v=beta&amp;t=gweAAdQh7nAICgUldx94mOC9cwASy0eiYWfJXoi32UQ"> 
+  </div> 
+  <p>The exact displacements at time t+Δt are those that correspond to the applied loads t+ΔtR. The equation,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHfPQ63RabqUw" src="https://media.licdn.com/dms/image/C5112AQHfPQ63RabqUw/article-inline_image-shrink_400_744/0/1520173443698?e=1691625600&amp;v=beta&amp;t=ebMRSKz7Yl2mLCqC230MXIxxVy8dCFNaD5AV7Zrdcmo"> 
+  </div> 
+  <p>results in an approximation to the displacements (because the stiffness at the preceding iteration or, the preceding time step is made use of).</p> 
+  <p>Thus, having evaluated an approximation to the displacements, we could then solve for the an approximation to the stresses and corresponding nodal point forces at time t+Δt, and then proceed to the next time increment calculations.</p> 
+  <p>However, because of the approximation introduced such a solution may be subjected to significant errors and depending upon the time (or, load step) sizes may sometimes be unstable. In practice, it is therefore necessary to iterate until the solution of:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHHtg1wShb14w" src="https://media.licdn.com/dms/image/C5112AQHHtg1wShb14w/article-inline_image-shrink_400_744/0/1520062875603?e=1691625600&amp;v=beta&amp;t=JETJexDhyaH4JgPTsXXH8yxZM5mrWZyNa6yVkAAjmVo"> 
+  </div> 
+  <p>to sufficient accuracy.</p> 
+  <p>The widely used iteration methods in finite element analysis are based on the classical Newton Raphson technique.</p> 
+  <h2><strong>4. THE NEWTON RAPHSON ITERATION TECHNIQUE</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The method is an extension of the simple incremental procedure. That is, having calculated an <em>increment</em> in the nodal point displacements, which defines a <em>new total</em> displacement vector, we can repeat the incremental solution presented above using the currently known total displacements instead o</p> 
+  <p>f displacement vector at time‘t’.</p> 
+  <p>The equations used in Newton-Raphson iteration are, or i=1, 2, 3...</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF_vQIdlD3ZYQ" src="https://media.licdn.com/dms/image/C5112AQF_vQIdlD3ZYQ/article-inline_image-shrink_400_744/0/1520062415041?e=1691625600&amp;v=beta&amp;t=pj2bP3UuSz60XfEUnPgzLI9qBK4BRbKUxW9l9toOnRg"> 
+  </div> 
+  <p>With initial conditions;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHwQ-CiYtE2mQ" src="https://media.licdn.com/dms/image/C5112AQHwQ-CiYtE2mQ/article-inline_image-shrink_400_744/0/1520173311942?e=1691625600&amp;v=beta&amp;t=G3RZz68XBB2a2T577czprkJW_dD317HFvKrbv7DpI1Y"> 
+  </div> 
+  <p>The out-of-balance load vector t+ΔtR - t+ΔtF(i-1) correspond to load vector that is not balanced by element stresses, and hence an increment in the nodal point displacement is required. This updating of the nodal point displacement is continued until the out-of-balance loads and the incremental displacements are small</p> 
+  <h3><strong>4.1</strong>&nbsp;<strong>Motivation of other (slightly different) schemes than the Newton-Raphson’s technique</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>An important point for the solution nonlinear finite element equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEMB9G2Q6cy8A" src="https://media.licdn.com/dms/image/C4E12AQEMB9G2Q6cy8A/article-inline_image-shrink_400_744/0/1520422814081?e=1691625600&amp;v=beta&amp;t=-H1S-3FSHo99B_EJFi_6w9VyOSXyQAc8Xjy7L9e4KYk"> 
+  </div> 
+  <p>Is the calculation of t+ΔtF(i-1) from (t+Δt)U(i-1).</p> 
+  <p>Any errors in this calculation will, in general, result in incorrect response prediction.</p> 
+  <p>The correct evaluation of the tangent stiffness matrix (t+Δt)K(i-1) is also crucial. The use of proper tangent stiffness matrix may be necessary for convergence and, in general, will result in less iteration until convergence is reached.</p> 
+  <p>However, because of the expense involved in evaluating and factoring a new tangent stiffness matrix, in practice (as in the Newton Raphson technique), it can be more efficient, depending upon the non-linearity’s present in the analysis, to evaluate the new tangent stiffness matrix only at certain times/load levels.</p> 
+  <h3><strong>4.2</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Modified Newton Raphson and the initial stress method</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Specifically, in the modified Newton Raphson method new tangent stiffness matrix iterations is established at the beginning of each load step and in the initial stress method, secant stiffness matrix is used instead of the tangent stiffness matrix.</p> 
+  <p>It should be noted that the question of which scheme to use is a matter of computation efficiency provided that the convergence is reached.</p> 
+  <p>Thus, it may be stated that, whichever iterative technique is used, the basic requirements in the solution of non-linear finite element equilibrium equations are:</p> 
+  <ol> 
+   <li>Evaluation of the (tangent) stiffness matrix corresponding to a given state</li> 
+   <li>The evaluation the nodal force vector corresponding to the stresses in that state (the state being tU or t+ΔtU(i-1), i=1,2,3..). That means, we are using the displacement vector of the preceding iteration whenever iteration number i&gt;1 and when i=1, we use the displacement vector of the preceding time step/load level.</li> 
+  </ol> 
+  <p>It may be noted that both the modified Newton Raphson and the initial stress method are just a convenient extension of the Newton Raphson iteration scheme- they differ from the Newton Raphson iteration scheme through the consideration of <strong>when </strong>the stiffness matrix is updated: for the Newton Raphson scheme the stiffness matrix being updated in every iteration, in the modified Newton Raphson, the stiffness matrix being updated only at the beginning of each load step (or time) and in the initial stress the stiffness corresponds to the initial stiffness at time t=0 i.e. the stiffness matrix corresponding to the undeformed configuration.</p> 
+  <p>Considering the inherent importance of the Newton Raphson iteration scheme, the topic is dealt in considerable detail in the subsequent sections.</p> 
+  <h2><strong>5.</strong>&nbsp;<strong>MATHEMATICAL AND PHYSICAL BACKGROUND BEHIND THE NEWTON RAPHSON’S ITERATION TECHNIQUE</strong></h2> 
+  <p><strong>&nbsp;</strong></p> 
+  <h3><strong>5.1</strong>&nbsp;&nbsp;&nbsp;<strong>The Newton Raphson approach</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>In numerical analysis, the Newton-Raphson method is a method for finding successively better approximations to the roots (or zeroes) of a real valued function;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHJ6HaB9n2QMQ" src="https://media.licdn.com/dms/image/C4E12AQHJ6HaB9n2QMQ/article-inline_image-shrink_400_744/0/1520422814870?e=1691625600&amp;v=beta&amp;t=QN4ZifBC8kIDqP3k0y-UPxs4_nY4DvLHX3dzbjWEU_w"> 
+  </div> 
+  <p>That is, we need to find the value of ‘x’ for which f(x) =0.</p> 
+  <p>The idea of the method is as follows;</p> 
+  <p>One starts with an initial guess which is reasonably close to the true root, then the function is approximated by its tangent line (which can be computed using the tools of calculus) and one computes the x-intercept of the tangent line (which is easily done using elementary algebra). This x intercept will be a better approximation of the function’s root than the original guess and the method can be iterated.</p> 
+  <h3><strong>5.2</strong>&nbsp;&nbsp;<strong>Illustration of the Newton-Raphson approach in one variable</strong></h3> 
+  <p><strong>&nbsp;</strong></p> 
+  <p>The above steps are illustrated in the figures below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFGiSy2tYXtDA" src="https://media.licdn.com/dms/image/C4E12AQFGiSy2tYXtDA/article-inline_image-shrink_1000_1488/0/1520422814720?e=1691625600&amp;v=beta&amp;t=MvhSYsZA9RZwfeMXpKbwHOpTddV6tvF81CbqqoVUOAk"> 
+  </div> 
+  <p class="center"><strong>Figure 1: Initial approximation x1 and the function approximation by a tangent line</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEyUuCYYM8gTQ" src="https://media.licdn.com/dms/image/C5112AQEyUuCYYM8gTQ/article-inline_image-shrink_1000_1488/0/1520241184567?e=1691625600&amp;v=beta&amp;t=3eL7qfKZOXPntdPZBiwKs1BtbLvrkXbsFlWo8Tme28A"> 
+  </div> 
+  <p class="center"><strong>Figure 2: The x intercept of the tangent line is a better approximation to the function’s root</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFmr2rn_2QakQ" src="https://media.licdn.com/dms/image/C4E12AQFmr2rn_2QakQ/article-inline_image-shrink_1000_1488/0/1520422814978?e=1691625600&amp;v=beta&amp;t=b6Fp8S4vgJ4Ng1jxhUCPdpeidWAmQB83mh4_gHAfUPk"> 
+  </div> 
+  <p class="center"><strong>Figure 3: The next tangent line (iteration process) and its intercept (x3) is still a better approximation to the root.</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEyemUwPWo1wA" src="https://media.licdn.com/dms/image/C5112AQEyemUwPWo1wA/article-inline_image-shrink_1000_1488/0/1520063681695?e=1691625600&amp;v=beta&amp;t=jza9O5NA0SSdKjJSH_6n96bOnFWeIwmH5WJYEq-sU9g"> 
+  </div> 
+  <p><strong>Figure 4: Subsequent iterations will yield still better approximations of the root of the equation f(x) =0</strong></p> 
+  <p>&nbsp;</p> 
+  <h3><strong>5.3</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Derivation of the Newton Raphson approach</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>The formula for converging to the root of f(x) can be easily derived. Suppose, we have some current approximation x. Then, the for a better approximation x can be derived (refer the illustrations in the preceding section as you read the below).</p> 
+  <p>The equation to the tangent line to the curve y=f(x) at the point x=xn is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGomu2NTpdLLQ" src="https://media.licdn.com/dms/image/C5112AQGomu2NTpdLLQ/article-inline_image-shrink_400_744/0/1520065727784?e=1691625600&amp;v=beta&amp;t=V3PZmvzHTv5PWA8tce1L0TpGu7ObwQy0dD5koXZPh_s"> 
+  </div> 
+  <p>Where; f’ denotes the derivative of f(x)</p> 
+  <p>The x intercept of the line (the value of x such that y=0) is then used as the next approximation to the root, x. In other words, setting y to 0 and x to x gives;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQF8yXw7LqAEyA" src="https://media.licdn.com/dms/image/C4E12AQF8yXw7LqAEyA/article-inline_image-shrink_400_744/0/1520422814593?e=1691625600&amp;v=beta&amp;t=StvcuYYnd94Qk_k6jAjdnog63_MShSA55ooFohmZIxA"> 
+  </div> 
+  <p>Solving for x gives;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQF1Z56BB3Ey5g" src="https://media.licdn.com/dms/image/C4E12AQF1Z56BB3Ey5g/article-inline_image-shrink_400_744/0/1520422814703?e=1691625600&amp;v=beta&amp;t=1ZsEgstUcLeROeNoaf9OACsXL-FAncuGHbbLSwRkp9w"> 
+  </div> 
+  <h3><strong>5.4</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Newton Raphson iterations considering the finite element variables</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>In this section, firstly the derivation of the Newton Raphson approach is considered in a more formal manner considering the finite element variables;</p> 
+  <p>The finite element equilibrium requirements amount to finding the solution of the equations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFudd-eTe1Jfw" src="https://media.licdn.com/dms/image/C5112AQFudd-eTe1Jfw/article-inline_image-shrink_400_744/0/1520200383911?e=1691625600&amp;v=beta&amp;t=xF1FNiPoEQxVbAh4v4gSs5O155UbKlmfUIFQWXog2RY"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHVGIoGFxZYFQ" src="https://media.licdn.com/dms/image/C5112AQHVGIoGFxZYFQ/article-inline_image-shrink_400_744/0/1520065667466?e=1691625600&amp;v=beta&amp;t=w-FhkxhGDyRqD0JZqpZ_1yTMJ3hLL2eHtAWsgF0d-dc"> 
+  </div> 
+  <p>That is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG5rpZ9edVfTQ" src="https://media.licdn.com/dms/image/C4E12AQG5rpZ9edVfTQ/article-inline_image-shrink_400_744/0/1520422814432?e=1691625600&amp;v=beta&amp;t=Z2wmkpjS7UGu695oNfjk0w_ANhEFpJ7aSgJxEzU95rE"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>Where;</p> 
+  <p>t+ΔtKi-1 is the current tangent stiffness matrix.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQExmyW-RHqAKQ" src="https://media.licdn.com/dms/image/C4E12AQExmyW-RHqAKQ/article-inline_image-shrink_400_744/0/1520422814355?e=1691625600&amp;v=beta&amp;t=dWvIHvza-Xm4oml6F6Bipslz6lgOwUsPaXteLarGmFI"> 
+  </div> 
+  <p>and the improved displacement solution is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG1kdiD8B0qOg" src="https://media.licdn.com/dms/image/C4E12AQG1kdiD8B0qOg/article-inline_image-shrink_400_744/0/1520422814380?e=1691625600&amp;v=beta&amp;t=3in2GTyttYxCuBe0Fcc7--yOKNtCs5CH9M8_i3Bul-g"> 
+  </div> 
+  <p>The above relations constitute the Newton Raphson solution of the equation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGj55jTX3PI3g" src="https://media.licdn.com/dms/image/C5112AQGj55jTX3PI3g/article-inline_image-shrink_400_744/0/1520241966235?e=1691625600&amp;v=beta&amp;t=O0md7-ooYC5Wp9HDADqMlGX8d_hb7xco3iNriTdgFzA"> 
+  </div> 
+  <p>Since an incremental analysis is performed with time (or load) steps of size Δt, the initial conditions in the Newton Raphson iterations are;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHdMLTFxDHnrw" src="https://media.licdn.com/dms/image/C4E12AQHdMLTFxDHnrw/article-inline_image-shrink_400_744/0/1520422814415?e=1691625600&amp;v=beta&amp;t=d0nt4AW5DaWTbrBNP5vjKevSRQIjNIej58zZpN5GVok"> 
+  </div> 
+  <p>The iterations are continued until appropriate convergence criteria are satisfied.</p> 
+  <p>A characteristic of this iteration scheme is that a new tangent stiffness matrix is calculated in <em>each</em> iteration, which is why the method is also referred to as the f<em>ull </em>Newton-Raphson method.</p> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></p> 
+  <h3><strong>5.5</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Convergence in Newton Raphson iteration technique</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>Following points may be noted with regards to the convergence in Newton Raphson iterations;</p> 
+  <ol> 
+   <li>The approximations obtained using Newton Raphson’s iterations exhibit quadratic convergence if the approximations are “close” to the root. The convergence rate is quire rapid one the quadratic convergence is obtained.</li> 
+   <li>However, if the first approximation us “far” from the root, Newton Raphson iteration may not converge to the desired value.</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <h3><strong>5.6</strong>&nbsp; <strong>Schematic illustration of Newton Raphson iteration technique at load step t+ΔtR</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>The figure below illustrates a typical Newton Raphson iteration at load step t+ΔtR;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQET21OWLxIXTw" src="https://media.licdn.com/dms/image/C5112AQET21OWLxIXTw/article-inline_image-shrink_1000_1488/0/1520239474855?e=1691625600&amp;v=beta&amp;t=Z7bugkigVzIZgp9lXZUGqZRdgsAE1-Tu40Dd7xOzAp0"> 
+  </div> 
+  <p><strong>Figure: Schematic illustration of typical Newton Raphson iterations at a load step t+ΔtR</strong></p> 
+  <h2><strong>6.</strong>&nbsp;&nbsp;&nbsp;&nbsp; <strong>INITIAL STRESS METHOD AND MODIFIED NEWTON RAPHSON METHOD</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Considering the Newton-Raphson iteration process, it is recognized that in general, the major computational cost per iteration lies in the calculation of the tangent stiffness matrix. Since the calculation can be quite expensive, the use of a modification of the full Newton Raphson algorithm can be effective.</p> 
+  <p>&nbsp;</p> 
+  <h3><strong>6.1</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Initial stress method</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>One such modification is to use the initial stress matrix 0K and operate on the equations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGjuYLOJqvVaA" src="https://media.licdn.com/dms/image/C5112AQGjuYLOJqvVaA/article-inline_image-shrink_400_744/0/1520240257151?e=1691625600&amp;v=beta&amp;t=coSOE_cY3liTImCim_jM_M3UUYhfw6mUwVXPjD0vXa4"> 
+  </div> 
+  <p>with the initial conditions;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQG2qgboZxYMcg" src="https://media.licdn.com/dms/image/C4E12AQG2qgboZxYMcg/article-inline_image-shrink_400_744/0/1520422814271?e=1691625600&amp;v=beta&amp;t=-M_AFDKAXzY7fBEIRb1FVSOCjUf4uuQIctyLqnm17yg"> 
+  </div> 
+  <p>In this case, only the matrix 0K needs to be factorized, thus, avoiding the expense of recalculating and factorizing many times the coefficient matrix.</p> 
+  <p>However, the initial stress method may require several more iterations than a full Newton-Raphson method and thus converge very slowly or even diverge.</p> 
+  <h3>&nbsp;</h3> 
+  <h3><strong>6.1</strong>&nbsp;&nbsp;&nbsp;<strong>Modified Newton Raphson</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>The modified Newton Raphson is an approach somewhat between the full Newton-Raphson iteration technique and the initial stress.</p> 
+  <p>In the modified Newton Raphson, the stiffness is matrix is updated at the beginning of each load step only and not during the subsequent iterations that follow in the load step.</p> 
+  <h3><strong>6.2</strong>&nbsp;&nbsp;&nbsp;<strong>Full Newton-Raphson vs. Modified Newton Raphson and Initial stress method</strong></h3> 
+  <p>&nbsp;</p> 
+  <p>It may be noted that the initial stress method and the modified Newton-Raphson method much less costly than the full Newton-Raphson method per iteration. However, many more iterations are necessary to achieve the same accuracy and more importantly the initial stress method and the Modified Newton Raphson “cannot” exhibit quadratic convergence when closer to the root.</p>
+ 
+</div>
+</body>
+</html>

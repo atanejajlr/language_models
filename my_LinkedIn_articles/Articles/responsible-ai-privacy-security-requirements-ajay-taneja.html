@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Responsible AI - Privacy and Security Requirements</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5612AQHdp5QmG9w82Q" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/responsible-ai-privacy-security-requirements-ajay-taneja">Responsible AI - Privacy and Security Requirements</a></h1>
+    <p class="created">Created on 2021-10-26 18:32</p>
+  <p class="published">Published on 2022-01-22 19:42</p>
+  <div><p>Training data and prediction requests can both contain sensitive information about people / business which has to be protected. How do you safeguard the privacy of the individuals? What steps are taken to ensure that individuals have control of their data? There are regulations in countries to ensure privacy and security.</p><p>&nbsp;In Europe you have the GDPR&nbsp;(General Data Protection Regulations) and in California there is CCPA (California Consumer Privacy Act,). Fundamentally, both give an individual control over its Data and requires that companies should protect the Data being used in the model.&nbsp;When Data processing is based on consent, then am individual has the right to revoke the consent at any time.</p><p><strong>&nbsp;Defending ML Models against attacks – Ensuring privacy of consumer data:</strong></p><p>&nbsp;I have discussed about very briefly about the tools for adversarial training – CleverHans and FoolBox Python libraries here:&nbsp;<a href="https://www.linkedin.com/pulse/model-debugging-sensitivity-analysis-adversarial-training-ajay-taneja/" target="_blank">Model Debugging: Sensitivity Analysis, Adversarial Training, Residual Analysis</a>&nbsp; . Let us now look at more stringent means of protecting a ML model against attacks. It is important to protect the ML model against attacks, thus, ensuring the privacy and security of data. An ML model may be attacked in different ways – some literature classifies the attacks into: “Information Harms” and “Behavioural Harms”. Information Harm occurs when the information is allowed to leak from the model. There are different forms of Information Harms: Membership Inference, Model Inversion and Model Extraction. In Membership Inference, the attacker can determine if some information is part of the training data or not. In Model Inversion, the attacker can extract all the training data from the model and Model Extraction, the attacker is able to extract the entire model!</p><p>&nbsp;Behavioural Harm occurs when the attacker can change the behaviour of the ML model itself – example: by inserting malicious data. In this post – I have given an example of an autonomous vehicle in this article:&nbsp;<a href="https://www.linkedin.com/pulse/model-debugging-sensitivity-analysis-adversarial-training-ajay-taneja/" target="_blank">Model Debugging: Sensitivity Analysis, Adversarial Training, Residual Analysis</a></p><p><strong>Cryptography | Differential privacy to protect data</strong></p><p>You should consider privacy enhancing technologies like Secure Multi Party Computation ,(SMPC) and Fully Homomorphic Encryption (FHE).&nbsp;SMPC involves multiple systems to train or serve the model whilst the actual data is kept secure</p><p>In FHE the data is encrypted. Prediction requests involve encrypted data and training of the model is also carried out on encrypted data. This results in heavy computational cost because the data is never decrypted except by the user. Users will send encrypted prediction requests and will receive back an encrypted result. The goal is that using cryptography you can protect the consumers data.</p><p><strong>Differential Privacy in Machine Learning</strong></p><p>Differential privacy involves protection of the data by adding noise to the data so that the attackers cannot identify the real content. SmartNoise is an open-source project that contains components for building machine learning solutions with differential privacy. SmartNoise is made of following top level components:</p><p>✔️Smart Noise Core Library </p><p>✔️Smart Noise SDK Library</p><p>This is a good read to understand about Differential Privacy: <a href="https://docs.microsoft.com/en-us/azure/machine-learning/concept-differential-privacy" target="_blank">https://docs.microsoft.com/en-us/azure/machine-learning/concept-differential-privacy</a></p><p><strong>&nbsp;Private Aggregation of Teacher Ensembles (PATE)</strong></p><p>This follows the Knowledge Distillation concept that I discussed here: <a href="https://www.linkedin.com/posts/ajay-taneja-47727817_deeplearning-knowledgedistillation-teacher-activity-6855966829664382976-YoaP" target="_blank">Post 1- Knowledge Distillation</a>, <a href="https://www.linkedin.com/posts/ajay-taneja-47727817_machinelearning-mlops-knowledgedistillation-activity-6855653380518354944-7d2F" target="_blank">Post - 2 Knowldge Distillation</a>. PATE begins by dividing the data into “k” partitions with no overlaps. It then trains k models on that data and then aggregates the results on an aggregate teacher model. During the aggregation for the aggregate teacher, you will add noise to the data and the output.</p><p>For deployment, you will use the student model. To train the student model you take unlabelled public data and feed it to the teacher model and the result is labelled data with which the student model is trained. For deployment, you use only the student model.</p><p>The process is illustrated in the figure below:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQGOWKprJ0sc2A" src="https://media.licdn.com/dms/image/C5612AQGOWKprJ0sc2A/article-inline_image-shrink_1500_2232/0/1642880277989?e=1691625600&amp;v=beta&amp;t=ObQY8vfPIiCjBed0oqlRmj0Q25LO4SI2F0kk_IUqwdo"></div><p><strong>                  PATE (Private Aggregation of Teacher Ensembles)</strong></p><p><strong>Credits:</strong></p><ul><li><strong>MLOps Specialization [Course 4 | Course 2] at deeplearning.ai</strong></li><li><a href="https://docs.microsoft.com/en-us/azure/machine-learning/concept-differential-privacy" target="_blank">https://docs.microsoft.com/en-us/azure/machine-learning/concept-differential-privacy</a></li><li>&nbsp;<a href="https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.linkedin.com%2Fpulse%2Fmodel-debugging-sensitivity-analysis-adversarial-training-ajay-taneja%2F&amp;data=04%7C01%7Cataneja%40jaguarlandrover.com%7C487e87de333447dc5fe908d9dd408eb9%7C4c087f801e074f729e41d7d9748d0f4c%7C0%7C0%7C637784092005103052%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&amp;sdata=GFW8krgI3khV2nFKaZ5F6Tqsg8YA%2BF5PtLmUBXGzjp8%3D&amp;reserved=0" target="_blank">https://www.linkedin.com/pulse/model-debugging-sensitivity-analysis-adversarial-training-ajay-taneja/</a></li></ul></div>
+</body>
+</html>

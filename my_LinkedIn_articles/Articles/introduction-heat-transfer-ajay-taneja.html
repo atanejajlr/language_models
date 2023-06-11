@@ -1,0 +1,667 @@
+<html>
+<head>
+  <title>An introduction to heat transfer</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQFy29nlttKX_w" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/introduction-heat-transfer-ajay-taneja">An introduction to heat transfer</a></h1>
+    <p class="created">Created on 2015-07-17 09:52</p>
+  <p class="published">Published on 2015-07-25 18:04</p>
+  <div>
+  <h2>&nbsp;&nbsp;1. INTRODUCTION</h2> 
+  <p>The aim of this write-up is to illustrate the fundamental concepts and principles that underlie the heat transfer processes.</p> 
+  <p>Section 2 of this article briefly describes the heat transfer modes: conduction, convection and radiation.</p> 
+  <p>Section 3 explains the physical origins of these modes and the rate equations involved in the heat transfer carried out through conduction, convection, radiation. The phenomenon of conduction is elaborated (with an emphasis to get a physical insight)&nbsp;through an example of a gas that occupies a space between two surfaces at different temperatures which results in heat transfer through the transfer of energy from the more energetic to the less energetic molecules. &nbsp;The concepts of velocity, thermal and concentration boundary layer have been discussed whilst elaborating on the physics of heat transfer by convection.</p> 
+  <p>Section 4 provides lays emphasis on the definition, physical and the mathematical interpretation of the fundamental and the subsidiary laws of physics which form the basis of the subject of heat transfer. It may be noted that whether it is the governing differential equation concerning heat transfer through conduction or the governing differential equations for convective heat transfer, these equations are formulated through these laws. Hence, it is felt that a clear understanding of these laws is imperative.</p> 
+  <p>Section&nbsp;5 brings out the importance / relevance of the study of heat transfer by pointing out examples in the gas turbine industry, electronics and biomedical engineering where the heat transfer study plays a significant role.</p> 
+  <h2>2. Heat transfer: definition and modes of heat transfer</h2> 
+  <h3>&nbsp;</h3> 
+  <h3>2.1 Definition of heat transfer:</h3> 
+  <p>Heat transfer (or heat) may be defined as the thermal energy in transit due to a spatial temperature difference.</p> 
+  <h3>2.2 Modes of heat transfer:</h3> 
+  <p>The different types of heat transfer processes as illustrated in the figure below may be referred to as <em>modes</em>.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGxvrxjOIO0rQ" src="https://media.licdn.com/dms/image/C5112AQGxvrxjOIO0rQ/article-inline_image-shrink_1000_1488/0/1520198102711?e=1691625600&amp;v=beta&amp;t=Uk627X9jJJBYMnaL7Sh1k-nzVTH3oxLsxQILoiNSbzY"> 
+  </div> 
+  <p>&nbsp;<strong>Figure: Conduction, convection and radiation modes of heat transfer</strong></p> 
+  <p><strong>&nbsp;</strong><strong>Conduction:</strong></p> 
+  <p>When a temperature gradient exists in a stationary medium, which may be a solid or a liquid or a gas, we use the term “conduction” to refer to the heat transfer that will occur across the medium.</p> 
+  <p><strong>Convection:</strong></p> 
+  <p>In contrast to conduction, convection refers to the heat transfer that will occur between a surface and a moving fluid when they are at different temperatures.</p> 
+  <p><strong>Thermal radiation:</strong></p> 
+  <p>The third mode of heat transfer is thermal radiation. All surfaces at a finite temperature emit energy in the form of electromagnetic waves. Hence, in the absence of intervening medium, there is net heat transfer between two surfaces at different temperatures.</p> 
+  <h2><strong>3. Physical origins and rate equations</strong></h2> 
+  <p>&nbsp;This section explains the physical mechanisms which underlie the heat transfer modes and to illustrate the rate equations that quantify the amount of heat transfer per unit time.</p> 
+  <h3><strong>3.1 Conduction</strong></h3> 
+  <p>&nbsp;Conduction may be viewed as the transfer of energy from more energetic to the less energetic particles of a substance due to interaction between the particles.</p> 
+  <p>The physical mechanism of conduction can be explained by considering a gas in which a temperature gradient exists, and assume that there is no bulk or macroscopic, motion.</p> 
+  <p>The gas may occupy space between two surfaces that are maintained at different temperatures as shown in the figure below.C</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH0xebCm8C84Q" src="https://media.licdn.com/dms/image/C5112AQH0xebCm8C84Q/article-inline_image-shrink_1000_1488/0/1520171681141?e=1691625600&amp;v=beta&amp;t=PZK6AWjDKyxe5AAqlcqsYJWMel3m7op0Kg0czpCUSS8"> 
+  </div> 
+  <p class="center"><strong>Figure: Association of conduction heat transfer with the diffusion of energy due to conduction heat transfer</strong></p> 
+  <p>&nbsp;The molecules of the gas are in motion: translatory, rotational as well as well as vibrational motion i.e. the molecules of the gas translate, rotate and vibrate. When the neighboring molecules collide- as they are constantly doing, a transfer of energy from the more energetic to the less energetic molecules occurs. In the presence of a temperature gradient, energy transfer by conduction must then occur in the direction of decreasing temperature. This would be true even in the absence of collisions.</p> 
+  <p>The hypothetical plane at xo (in the above picture) is constantly being crosses by molecules from above due to their random motion. However, the molecules from above are associated with a higher temperature than those from below, in which case there must be a net transfer of energy in the positive x direction. The collisions between the molecules enhance this energy transfer.</p> 
+  <p>The situation is similar in a liquid, although the molecules are more closely spaced and the molecular interactions are stronger and more frequent.</p> 
+  <p>Similarly, in a solid, the conduction may be attributed to the atomic activity in the form of lattice vibrations.</p> 
+  <h3>&nbsp;<strong>3.1.1 Quantification of heat conduction</strong></h3> 
+  <p>&nbsp;Heat transfer processes can be quantified in terms of appropriate equations. These equations may be used to compute the amount of energy being transferred per unit time. For heat conduction, the rate equation is termed as Fourier’s law.</p> 
+  <p class="left">For the one dimensional plane wall as shown in the figure below, having a temperature distribution T (x), the rate equation is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHV3TfA_FXCzg" src="https://media.licdn.com/dms/image/C5112AQHV3TfA_FXCzg/article-inline_image-shrink_400_744/0/1520172562458?e=1691625600&amp;v=beta&amp;t=OaBwi-pn70VNG78pAn4n44Hx3dYXxwycmvlQupldIyk"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGtADmstSJB9Q" src="https://media.licdn.com/dms/image/C5112AQGtADmstSJB9Q/article-inline_image-shrink_400_744/0/1520062449694?e=1691625600&amp;v=beta&amp;t=HZgK3yNb2lPUOjQSzOi8C65sYTY1Q8QzjJRbnDHtgbs"> 
+  </div> 
+  <p class="center"><strong>Figure: One dimensional heat transfer by conduction</strong></p> 
+  <p>&nbsp;The heat flux qx’’ (W / m2) is the heat transfer rate in the x direction per unit area perpendicular to the direction of transfer and it is proportional to the temperature gradient, dT / dx in this direction. The parameter k is a transport property known as <em>thermal conductivity</em> (W / m. K) and is a characteristic of the wall material.</p> 
+  <p>The minus sign is a convention denoting that heat is transferred in the direction of decreasing temperature. Under steady state conditions, where the temperature distribution is linear, the temperature gradient may be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFbR4inw4qgKQ" src="https://media.licdn.com/dms/image/C5112AQFbR4inw4qgKQ/article-inline_image-shrink_400_744/0/1520242368052?e=1691625600&amp;v=beta&amp;t=krxhed3UHU5eWlrBeXQROfNe2OVfgooi9bRgErMwpew"> 
+  </div> 
+  <p>And the heat flux is then given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEUGOA5cbqnIg" src="https://media.licdn.com/dms/image/C5112AQEUGOA5cbqnIg/article-inline_image-shrink_400_744/0/1520040262299?e=1691625600&amp;v=beta&amp;t=QxFaK2JLwZcGG5nGqzaP7rQWZ0XluCArzwf2XYajd1E"> 
+  </div> 
+  <p>or;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQE1tNscXA8euA" src="https://media.licdn.com/dms/image/C5112AQE1tNscXA8euA/article-inline_image-shrink_400_744/0/1520062360987?e=1691625600&amp;v=beta&amp;t=0Vh8GE8DExM1IyYbRCOAr9PAjsBHTfjrkm5SbDMK444"> 
+  </div> 
+  <p>&nbsp;It should be noted that the above equation provides a heat flux, that is, the rate of heat transfer per unit area. The heat rate by conduction, qx (Watt), through a plane wall of area A is then the product of the flux and the area, i.e. qx = qx’’ . A</p> 
+  <h3><strong>3.2 Convection</strong></h3> 
+  <p>&nbsp;The convection heat transfer mode is comprised of two mechanisms. In addition to the transfer due to the random molecular motion (diffusion) is in the conduction process, energy is also transferred by the bulk or the macroscopic motion of the fluid.</p> 
+  <p>This fluid motion is associated with the fact that, at any instant, large number of molecules are moving collectively or as aggregates. Such motion in the presence of temperature gradient contributes to heat transfer. Because the molecules in the aggregate retain their random motion, the total heat transfer is then due to a superposition of energy transport by the random motion of the molecules and by the bulk motion of the fluid.</p> 
+  <p>Convective heat transfer occurs between a fluid in motion and a bounding surface when the two are at different temperatures.</p> 
+  <h3>3.2.1 Hydrodynamic or the velocity boundary layer</h3> 
+  <p>&nbsp;Consider the fluid flow over the heated surface as shown in the figure below. A consequence of the fluid surface interaction is the development of a region in the fluid through which the velocity varies from zero at the surface to a finite value u associated with the flow. This region of the fluid is known as the <em>hydrodynamic</em> or the <em>velocity </em>boundary layer.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGtI2rS8t1wNw" src="https://media.licdn.com/dms/image/C5112AQGtI2rS8t1wNw/article-inline_image-shrink_400_744/0/1520168259223?e=1691625600&amp;v=beta&amp;t=cDQIUrmMw8MgA1rue4M6a8ww9Z-QJhOKdXLW8v3h3Hw"> 
+  </div> 
+  <p><strong>Figure: Boundary layer development in convective heat transfer</strong></p> 
+  <p><strong>Figure: One dimensional heat transfer by conduction</strong></p> 
+  <h3>3.2.2 &nbsp;&nbsp;&nbsp; Thermal boundary layer</h3> 
+  <p>&nbsp;If the surface and the flow temperatures differ, there will be a region through which temperature varies from Ts at y =0 to T in the outer flow. This region is called the thermal boundary layer, may be smaller or larger or the same size as that through which the velocity varies. In any case, if Ts &gt; T, convective heat transfer will occur from the surface to the outer flow.</p> 
+  <p>Convective heat transfer mode is sustained both by random molecular motion and by the bulk motion of the fluid within the boundary layer. The contribution due to the random molecular motion (diffusion) dominates near the surface where the fluid velocity is low. In fact, at the interface between the surface and the fluid (y = 0), the fluid velocity is zero, and the heat is transferred by this mechanism only. The contribution due to the bulk fluid motion originates from the fact that the boundary layer grows as the fluid velocity progresses in the x- direction.</p> 
+  <h3>&nbsp;3.2.3&nbsp;&nbsp;&nbsp; Forced and free (natural) convection</h3> 
+  <p>&nbsp;Convection heat transfer may be classified according to the nature of the flow. <em>Forced convection</em> is when the flow is caused by external means, such as by a fan, pump or atmospheric winds.</p> 
+  <p>In contrast, for free (or natural convection), the flow is induced by buoyancy forces, which are due to density differences caused by temperature variations in the fluid.</p> 
+  <p>Above, the convective heat transfer occuring within the fluid due to combined effects of conduction and bulk fluid motion have been described. However, for some convective proceses, there is, in addition, latent heat exchange.</p> 
+  <p>This latent heat exchange is asscoaited with a phase change between the liquid and vapour states of the fluid. Two sepcial cases worth a mention being: boiling and condensation. For example, convection heat tarsnfer results from the fluid motion induced by vapour bubbles generated at the bottom of a pan of boiling water or by condensation of water vapour on the outer surface of a cold water pipe.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGUtww_K9o2Nw" src="https://media.licdn.com/dms/image/C5112AQGUtww_K9o2Nw/article-inline_image-shrink_400_744/0/1520197971512?e=1691625600&amp;v=beta&amp;t=geSNJlXLoO5nI5FkmoVTb08SmZcYGck47ZatQcKQKI0"> 
+  </div> 
+  <p><strong>Figure: Convective heat transfer- boiling and condensation</strong></p> 
+  <h3>3.2.4&nbsp;&nbsp; Quantification of convection heat transfer</h3> 
+  <p>Regardless of the nature of the convection heat transfer process, the appropriate heat equation is of the form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFpbi_qXXH3Bg" src="https://media.licdn.com/dms/image/C5112AQFpbi_qXXH3Bg/article-inline_image-shrink_400_744/0/1520200516983?e=1691625600&amp;v=beta&amp;t=A-_LVNrJi47mUyzfhg0V3k3a08_M4ti5ICQrL7_57F4"> 
+  </div> 
+  <p class="left">&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>Where;</p> 
+  <p>q’’ is the convective heat flux (W /m2) is proportional to the difference between the surface and the surrounding fluid temperature Tand T respectively. The expression is known as Newton’s law of cooling and the parameter h (W/m2 .K) is termed as the convective heat transfer coefficient.</p> 
+  <p>The coefficient depends upon the conditions in the boundary layer, which are influenced by the surface geometry, the nature of the fluid motion and an assortment of fluid thermodynamic and transport properties.</p> 
+  <h3>&nbsp;<strong>3.3&nbsp;Radiation</strong></h3> 
+  <p>&nbsp;Thermal radiation is the energy emitted by matter that is at non-zero temperature. Radiation may be emitted from solid surface or liquids or gases. The energy of radiation is transported by electromagnetic waves (or alternatively, photons). While the transfer of energy by conduction or convection requires presence of material medium, radiation does not. In fact, radiation occurs most efficiently in a vacuum.</p> 
+  <p>Consider radiation transfer processes for the surface of the figure shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEwWk6wxmPr6g" src="https://media.licdn.com/dms/image/C5112AQEwWk6wxmPr6g/article-inline_image-shrink_400_744/0/1520239457089?e=1691625600&amp;v=beta&amp;t=-c9t_hg99Y3UY_P1nEbFqvRH0cT8gKPGrdeJZFuH1xc"> 
+  </div> 
+  <p class="center"><strong>Figure: Radiation exchange – at a surface</strong></p> 
+  <p>Radiation that is <em>emitted</em> by the surface originates from the thermal energy of matter bounded by the surface, and the rate at which energy is released per unit area (W/m2) is termed as the surface emissive power ‘E’.</p> 
+  <p>There is an upper limit to the emissive power which is prescribed by the Stefen Boltzmann law;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF26gmF3CTSnw" src="https://media.licdn.com/dms/image/C5112AQF26gmF3CTSnw/article-inline_image-shrink_400_744/0/1520113594123?e=1691625600&amp;v=beta&amp;t=P8ojknjBDuakjKs8DLd_r9pch2ktyhrlGv5fEWXxrv8"> 
+  </div> 
+  <p>&nbsp;where Ts is the absolute temperature (K) of the surface and σ is the Stefen Boltzmann constant (σ = 5.67 x 10-8 W/ m2. K4). Such a surface is called an ideal radiator or blackbody.</p> 
+  <p>The heat flux emitted by a real surface is less than that of a blackbody at the same temperature and is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFg_jVNkdOxYg" src="https://media.licdn.com/dms/image/C5112AQFg_jVNkdOxYg/article-inline_image-shrink_400_744/0/1520065377572?e=1691625600&amp;v=beta&amp;t=LmFUsHgCntWxbhkeL4c3WG3IKoSkJ2pyyKHDCO1_TxM"> 
+  </div> 
+  <p>&nbsp;&nbsp;Where;</p> 
+  <p>ε is a radiative property of the surface termed the <em>emissivity</em>.</p> 
+  <p>With values in the range 0 ≤ε ≤1 the property provides a measure of how efficiently a surface emits energy relative to a blackbody.</p> 
+  <h2><strong>4.&nbsp; Relevance of heat transfer</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>A few examples as illustrated below illustrate the rich breadth of applications in which heat transfer plays a critical role.</p> 
+  <ol> 
+   <li>The efficiency of a gas turbine engine can be significantly increased by increasing its operating temperature. The temperature of the combustion gases inside the engines far exceeds the melting point of the exotic alloys used to manufacture the turbine blades and vanes. Safe operation is typically achieved by three means;</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <p>i. Firstly, relatively cools gases are injected through small holes at the leading edge of the turbine blade. The gases hug the blade and as they are carried downstream, they help downstream they help insulate the blade from the hot combustion gases.</p> 
+  <p>&nbsp;ii. Secondly thin layers of low conductivity, ceramic thermal barrier coating are applied to the blades to provide an extra layer of insulation. These coatings are produced by spraying molten ceramic powders onto the engine components using extremely high temperature sources such as <em>plasma spray guns (</em><a href="https://en.wikipedia.org/wiki/Thermal_spraying" target="_blank"><em>https://en.wikipedia.org/wiki/Thermal_spraying</em></a><em>) </em> that can operate in excess of 10,000 kelvins.</p> 
+  <p>iii. Thirdly, the blade and the vanes are designed with intricate, internal cooling passages, all carefully configures by the heat transfer engineer to allow the gas turbine engine to operate at such extreme conditions.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQECNZsOpM5pWQ" src="https://media.licdn.com/dms/image/C5112AQECNZsOpM5pWQ/article-inline_image-shrink_400_744/0/1520200309062?e=1691625600&amp;v=beta&amp;t=tFpir8FjtVRbbTheKuxl3JIhre4tatXeNb4K4724gSM"> 
+  </div> 
+  <p><strong>Figure: Gas turbine blade (a) External view showing blades for injection of cooling gases. (b) X ray view showing the internal cooling passages</strong></p> 
+  <p>&nbsp;2. For personal computers, cooling fins (also known as heat sinks) are fabricated of a high thermal conductivity material (usually aluminium) and attached to the microprocessors to reduce their operating temperatures as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGunXdDsfE0gQ" src="https://media.licdn.com/dms/image/C5112AQGunXdDsfE0gQ/article-inline_image-shrink_1000_1488/0/1520198165853?e=1691625600&amp;v=beta&amp;t=Y5Go7WSsmPfiWUmm0fK2ae_SAcH9bBRFLDmCLZttWYk"> 
+  </div> 
+  <p><strong>Figure: A finned heat sink and fan assembly (left) and microprocessor (right)</strong></p> 
+  <p>The cumulative energy that is consumed worldwide just to power the small fans that provide airflow over the fins and manufacture the heat sinks for personal computers , is estimated over 109 kW. h per year.</p> 
+  <p>3. Recent advances in <em>biomedical engineering</em>, such as laser surgery, have been enabled by successfully applying heat transfer principles. While increased temperatures resulting from contact with hot objects may cause thermal burns, beneficial hypothermal treatments are being used to purposely destroy, for example, cancerous lesions.</p> 
+  <p>&nbsp;In a similar manner, very low temperatures might induce <em>frostbite</em>, but purposeful localised freezing can selectively destroy diseased tissue during cryosurgery / cryotherapy.</p> 
+  <p>Many medical therapies and devices therefore operate by destructively heating or cooling diseased tissue, while leaving the surrounding healthy tissue unaffected.</p> 
+  <h2><strong>4.&nbsp; The Laws of Heat Transfer</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>Like all subjects in the physical sciences, the foundations of heat transfer rests on a number of fundamental and subsidiary laws. When we say, fundamental laws, it means, that, these laws can be explained and the necessary governing equations derived from the forts principles. Whereas, the subsidiary laws are more empirical in nature and the governing equations are derived from the experimental / observed phenomenon unlike the fundamental laws.</p> 
+  <p>The aim of this section is to clearly explain these laws both from the physical and the math point of view.</p> 
+  <p>The fundamental laws include,</p> 
+  <ul> 
+   <li>the law of conservation of mass,</li> 
+   <li>Newton’s second law of motion,</li> 
+   <li>The first law of thermodynamics.</li> 
+  </ul> 
+  <p>Whereas, the subsidiary laws include;</p> 
+  <ul> 
+   <li>Fourier’s law of heat conduction</li> 
+   <li>Newton’s law of cooling</li> 
+   <li>The law of thermal radiation</li> 
+   <li>Stokes stress rate of strain relation</li> 
+   <li>Equation of state.</li> 
+  </ul> 
+  <p>The laws listed above; will be clearly discussed in this section.</p> 
+  <p><strong>&nbsp;</strong><strong>Law of conservation of mass</strong></p> 
+  <p>The continuity equation (as widely termed in the subject of fluid mechanics) is an expression of principle of mass conservation. It is a statement that the fluid mass is conserved: all fluid particles that flow into any fluid region must flow out i.e. the mass of the system of the fluid remains constant.</p> 
+  <p>To obtain this equation, we consider a cubical control volume inside a fluid. Mass conservation requires that the net flow through the control volume is zero.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHgYrmlIXqrCA" src="https://media.licdn.com/dms/image/C5112AQHgYrmlIXqrCA/article-inline_image-shrink_400_744/0/1520193856077?e=1691625600&amp;v=beta&amp;t=cHKKLWK7VtenuF1CAcfaFBgdiE-X0huVx02j7O-PQ0U"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>Mass of the control volume at any time‘t’;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH4yF8dMALKkg" src="https://media.licdn.com/dms/image/C5112AQH4yF8dMALKkg/article-inline_image-shrink_400_744/0/1520241746699?e=1691625600&amp;v=beta&amp;t=PdWTVao-6E025MqsehY2-1_gwatCv2x1hKG-HkroZ6E"> 
+  </div> 
+  <p>The time rate change of mass in the control volume;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEROByqsgfxDA" src="https://media.licdn.com/dms/image/C5112AQEROByqsgfxDA/article-inline_image-shrink_400_744/0/1520065544902?e=1691625600&amp;v=beta&amp;t=oeE837OJKQKVM9HhVRBsVs0tTcGdOLVlBFwfmeYX6jY"> 
+  </div> 
+  <p>Now, we can compute the net flow through the control volume faces. Starting with the x direction, the net flow is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFZJYEZTg7klg" src="https://media.licdn.com/dms/image/C5112AQFZJYEZTg7klg/article-inline_image-shrink_400_744/0/1520065555059?e=1691625600&amp;v=beta&amp;t=BZfniJMOwvszIE5jcXGBsDTcPiwPYHI1OGClKvdT8fQ"> 
+  </div> 
+  <p>Similarly, the net flow through the y faces is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG3bB6lkv93cw" src="https://media.licdn.com/dms/image/C5112AQG3bB6lkv93cw/article-inline_image-shrink_400_744/0/1520066185122?e=1691625600&amp;v=beta&amp;t=ift8CHIzLwHEaZzjgGkoby_HaaxDELHqWgsC_KRhxm0"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;while through the z faces is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGv1J3_ylrC-g" src="https://media.licdn.com/dms/image/C5112AQGv1J3_ylrC-g/article-inline_image-shrink_400_744/0/1520240793730?e=1691625600&amp;v=beta&amp;t=i-BZuAPRU79NS9dVxTYiz3dvym6cKUuBEjqYG0Otsuo"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;Upon adding up the resulting net flow and dividing by the volume of the fluid element (i.e. dxdydz), we get the continuity equation in the Cartesian coordinates;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQET0cPtfPHKdw" src="https://media.licdn.com/dms/image/C5112AQET0cPtfPHKdw/article-inline_image-shrink_400_744/0/1520168423857?e=1691625600&amp;v=beta&amp;t=zWWe57w-wbUIIAAiRvJ3zl9VLjdd7Txi0ZwAM1V5PQE"> 
+  </div> 
+  <p>&nbsp;For a steady flow;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQES26jxg0we6A" src="https://media.licdn.com/dms/image/C5112AQES26jxg0we6A/article-inline_image-shrink_400_744/0/1520199756111?e=1691625600&amp;v=beta&amp;t=CjVblz5re1MF2Dr95fa25NbX6Z1HGsYiWMr44fg_-2A"> 
+  </div> 
+  <p>&nbsp;&nbsp;If the flow is incompressible, the density of the fluid remains constant;</p> 
+  <p>&nbsp;That is;</p> 
+  <p>That is, the continuity equation for a steady incompressible flow would become;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFgVuY_ENxTSg" src="https://media.licdn.com/dms/image/C5112AQFgVuY_ENxTSg/article-inline_image-shrink_400_744/0/1520041722041?e=1691625600&amp;v=beta&amp;t=GI_WNApajSvRsuyzBbcWYZCCuTTTc7oZ0HUHay1P5hs"> 
+  </div> 
+  <p>&nbsp;For a two dimensional flow, the continuity becomes;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFmKVHIgic4BQ" src="https://media.licdn.com/dms/image/C5112AQFmKVHIgic4BQ/article-inline_image-shrink_400_744/0/1520065758910?e=1691625600&amp;v=beta&amp;t=TiFrB8YqkczFqYb0W4g8Jo7EhI0dSdi4JCxx4AJQ-1g"> 
+  </div> 
+  <p>&nbsp;<strong>Newton’s second law:</strong></p> 
+  <p>The second fundamental law that is pertinent to the flow of a viscous fluid is Newton’s second law of motion. For a differential control volume, this requirement states that the sum of all the forces acting on the control volume must equal the net rate at which momentum leaves the control volume (outflow – inflow).</p> 
+  <p>Two kinds of forces may act on the fluid;</p> 
+  <ul> 
+   <li>Body forces which are proportional to the volume</li> 
+   <li>Surface forces which are proportional to the area</li> 
+  </ul> 
+  <p>&nbsp;Gravitational, centrifugal, magnetic may contribute to the body force and we designate the x and y components of this force as X and Y respectively.</p> 
+  <p>Surface forces are due to fluid static pressure as well as due to viscous stresses. At any point in a fluid, the viscous stress may be resolved into two perpendicular components: a normal stress σ and a shear stress τ as shown in the figure below.</p> 
+  <p>&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGseXdj5dqOGg" src="https://media.licdn.com/dms/image/C5112AQGseXdj5dqOGg/article-inline_image-shrink_400_744/0/1520066277863?e=1691625600&amp;v=beta&amp;t=qCERhaIjTGELobRX7bJzBu1MkEHMeng9EV6jSDWwvEc"> 
+  </div> 
+  <p>&nbsp;<strong>Figure: Normal and shear viscous stresses for a differential control volume (dx.dy.1) in two- dimensional flow of a viscous fluid.</strong></p> 
+  <p>A double subscript notation is used to specify the stress components (as in case of solids). The first subscript indicates the surface orientation by providing the direction of the outward normal, and the second subscript indicates the direction of the force component. Accordingly, for the x surface for the figure above, the normal stress σxx corresponds to a force component normal to the surface and the shear stress τ corresponds to a force in the y direction.</p> 
+  <p>&nbsp;Each of the stresses may continuously change in each of the coordinate directions.</p> 
+  <p>Using a Taylor series expansion for the stresses, the net surface for each of the two directions may be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEx7xzqkCbmDw" src="https://media.licdn.com/dms/image/C4E12AQEx7xzqkCbmDw/article-inline_image-shrink_400_744/0/1520519771675?e=1691625600&amp;v=beta&amp;t=31m59L2BGBqJB9EtLDW9eu0tQy2ovOiJlhMBbjponGQ"> 
+  </div> 
+  <p>To use Newton’s second law, the fluid momentum fluxes for the control volume must also be evaluated. If we focus on the x direction, the relevant fluxes are shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHaQ3ZocRo-oA" src="https://media.licdn.com/dms/image/C5112AQHaQ3ZocRo-oA/article-inline_image-shrink_400_744/0/1520239172611?e=1691625600&amp;v=beta&amp;t=lGTOxYqVJdAkIHCezMPc3EwcgPeTklyQ826HXAmyTRM"> 
+  </div> 
+  <p>Figure: Momentum fluxes for a differential control volume (dx.dy.1) in two dimensional flow of a viscous fluid.</p> 
+  <p>A contribution to the total x momentum flux is made by the mass flow in each of the two directions. For example, the mass flux through the x surface (in the y-z plane) is (ρu), the corresponding x momentum flux is (ρu) u.</p> 
+  <p>Similarly, the x momentum flux due to the mass flow through the y surface (in the x-z plane) is (ρv) u.</p> 
+  <p>These fluxes may change in each of the coordinate directions and the new rate at which x momentum leaves the control volume is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGH4zQgrDpHpQ" src="https://media.licdn.com/dms/image/C5112AQGH4zQgrDpHpQ/article-inline_image-shrink_400_744/0/1520229083048?e=1691625600&amp;v=beta&amp;t=QG38v0ckkCs4ZgZnVnuEA_0d8XnS9GB978bkSs4__rI"> 
+  </div> 
+  <p>Equating the rate of change in the x momentum of the fluid to the sum of the forces in the x direction, we then obtain</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHtxxSBLUIZqg" src="https://media.licdn.com/dms/image/C4E12AQHtxxSBLUIZqg/article-inline_image-shrink_400_744/0/1520519775285?e=1691625600&amp;v=beta&amp;t=tgKo6bNC_0QjyoQI8-Li5GajVIdalufvtUJOfm0jAgs"> 
+  </div> 
+  <p>This expression may be put in a more convenient form by expanding the derivatives on the left hand side and substituting from the continuity equation (assuming two dimensional, steady, incompressible flow), giving;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEc9176053cPw" src="https://media.licdn.com/dms/image/C4E12AQEc9176053cPw/article-inline_image-shrink_400_744/0/1520519770813?e=1691625600&amp;v=beta&amp;t=3HidGG-NvysRqeQtn0XlqRqEQyAPQnI0KtTz0OkXwAo"> 
+  </div> 
+  <p>A similar expression may be obtained for the y-direction and is of the form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGpbl_k88zIOw" src="https://media.licdn.com/dms/image/C5112AQGpbl_k88zIOw/article-inline_image-shrink_400_744/0/1520066878295?e=1691625600&amp;v=beta&amp;t=OJBHDb0ZV8XZ_4ZFbVPsXbwltn1x8lAqA5gKjlx4_Yk"> 
+  </div> 
+  <p>It may be noted that;</p> 
+  <ul> 
+   <li>The 2 terms on the left hand side of the above equations represent the new rate of momentum flow from the control volume</li> 
+   <li>The terms on the right hand side account for the net viscous and pressure as well as body forces.</li> 
+  </ul> 
+  <p>The equations must be satisfied at every point and together with the continuity equation must be solved for the velocity field.</p> 
+  <p>The viscous stresses may be related to the other flow variables. The stresses are associated with the deformation of the fluid and are a function of the fluid viscocity and velocity gradients.</p> 
+  <p>From the figure below, it is clear that a normal stress must produce linear deformation of the fluid whereas shear stress produces angular deformation.</p> 
+  <p>The magnitude of the stress is proportional to the rate at which deformation occurs and the rate of deformation is proportional to fluid viscosity and velocity gradients in the flow</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGE0ZqitqsUjw" src="https://media.licdn.com/dms/image/C5112AQGE0ZqitqsUjw/article-inline_image-shrink_400_744/0/1520241808540?e=1691625600&amp;v=beta&amp;t=G6GH9Pj3y-aqxmddW-oldA5_AatUbrT5-8ZH40x06n4"> 
+  </div> 
+  <p>Figure: Deformation of the fluid element due to viscous stresses.</p> 
+  <ul> 
+   <li>Linear deformation due to normal stress (b) Angular deformation due to shear stress.</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;It can be shown that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHr3_z3LXUdzw" src="https://media.licdn.com/dms/image/C5112AQHr3_z3LXUdzw/article-inline_image-shrink_400_744/0/1520042294624?e=1691625600&amp;v=beta&amp;t=WF_YpkTi2cGLXjEstLXBqW2nyixgST1MSPISFPW8QdQ"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>[It might be worthwhile to read through the note:<a href="https://www.teachengineering.org/view_lesson.php?url=collection/cub_/lessons/cub_surg/cub_surg_lesson03.xml" target="_blank">https://www.teachengineering.org/view_lesson.php?url=collection/cub_/lessons/cub_surg/cub_surg_lesson03.xml</a> ] go get some physical feel of the above relations.</p> 
+  <p>&nbsp;&nbsp;Substituting the above equations, in the x and the y momentum equations;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHpb3THMOKeVw" src="https://media.licdn.com/dms/image/C4E12AQHpb3THMOKeVw/article-inline_image-shrink_400_744/0/1520519772685?e=1691625600&amp;v=beta&amp;t=lkckHrfqpPeOjk4juxNQ0qDwLMG5m9PhDNd775MR9x4"> 
+  </div> 
+  <p>Substituting the continuity equations and re-arranging;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFH6OQnFbipNg" src="https://media.licdn.com/dms/image/C5112AQFH6OQnFbipNg/article-inline_image-shrink_400_744/0/1520239760205?e=1691625600&amp;v=beta&amp;t=DedGrQwa3vJ8E9w_NP9WyaiwTCwIkAQqk_8LuKFMxhU"> 
+  </div> 
+  <p>The above equations are termed as x and the y momentum equations respectively.</p> 
+  <p><strong>&nbsp;</strong></p> 
+  <p><strong>Fourier’s law of heat conduction:</strong></p> 
+  <p>Fourier’s law of heat conduction has been briefly discussed in section 3.2. In the paragraphs below, emphasis is laid on the origin of Fourier’s law.</p> 
+  <p>Fourier’s law is <em>phenomenological</em>; that is; it is developed from the observed phenomenon rather than being derived from the first principles. Hence, the heat conduction rate equation may be viewed as generalisation based on much experimental evidence.</p> 
+  <p>For example, consider the steady state conduction experiment of the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGYIm9GHZNiTA" src="https://media.licdn.com/dms/image/C5112AQGYIm9GHZNiTA/article-inline_image-shrink_400_744/0/1520065589276?e=1691625600&amp;v=beta&amp;t=LWFQzfh0f_mTl4SVA7WgDgWMVJXsKK03CVAtSpEIXx8"> 
+  </div> 
+  <p class="center">&nbsp;&nbsp;&nbsp;<strong>Figure: Steady state conduction experiment</strong></p> 
+  <p>&nbsp;A cylindrical rod of known of known material is insulated on its lateral surface while its end faces are maintained at different temperatures with T1 &gt; T2.</p> 
+  <p>&nbsp;The temperature difference causes conduction heat transfer in the positive x direction. We are able to measure the heat transfer rate qx and we seek to determine how qx depends upon the following variables.</p> 
+  <ul> 
+   <li>Δ T, the temperature difference</li> 
+   <li>Δx, the rod length</li> 
+   <li>A, the cross sectional area.</li> 
+  </ul> 
+  <p>A clear physical insight on how qx heat transfer rate depends upon the above variables can be got through the examples below;</p> 
+  <ul> 
+   <li><strong>Length:</strong></li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGVL_dnHK9UfA" src="https://media.licdn.com/dms/image/C5112AQGVL_dnHK9UfA/article-inline_image-shrink_400_744/0/1520242403410?e=1691625600&amp;v=beta&amp;t=EfN37m8xo9SFnirCKf2R1hy6tp5bPvfs-UChl9am4bI"> 
+  </div> 
+  <ul> 
+   <li><strong>Cross- sectional area:</strong></li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEF9N94ti2FcQ" src="https://media.licdn.com/dms/image/C5112AQEF9N94ti2FcQ/article-inline_image-shrink_400_744/0/1520198742314?e=1691625600&amp;v=beta&amp;t=XO62WlNtg5IpQqKoeln7-Xmqi5kGowHpe2HfKJiH4wQ"> 
+  </div> 
+  <p>Hence, heat transfer rate is <strong>directly</strong> proportional the <strong>cross-sectional area</strong> of the cylinder.</p> 
+  <ul> 
+   <li><strong>Temperature difference:</strong></li> 
+  </ul> 
+  <p>A hot plate gives out more heat each second when it’s temperature is high. Heat transfers from hot to cold at a higher rate if the temperature difference is large.</p> 
+  <p>Thus;</p> 
+  <p>The heat transfer rate qx;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQE7jNn5tqpywA" src="https://media.licdn.com/dms/image/C4E12AQE7jNn5tqpywA/article-inline_image-shrink_400_744/0/1520519771559?e=1691625600&amp;v=beta&amp;t=eBbc1wqvB_mRZvduhzs8WYh2WFeagNScTtLca2ucd2w"> 
+  </div> 
+  <p>In changing the material (e.g., from a metal to a plastic), we find that this proportionality still remains valid. However, it is also found, that for equal values of A, Δx and ΔT, the value of qx would be smaller if the material was plastic than a metal.</p> 
+  <p>This suggests that the proportionality may be converted to equality by introducing a coefficient that is a measure of the material behaviour. Hence, we can write;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-left"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHV_Drs5ZTnDg" src="https://media.licdn.com/dms/image/C5112AQHV_Drs5ZTnDg/article-inline_image-shrink_400_744/0/1520240906755?e=1691625600&amp;v=beta&amp;t=MST4bl6nJyJXGj3m3VDk8SBF82tlfqEhKqrPKoAJWEE"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>where;</p> 
+  <p>L, the the thermal conductivity (W/m.K) is an important <em>property</em> of the material.</p> 
+  <p>Evaluating the expression in the limit as Δx →0, we obtain the heat rate;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQETBqpI7XnMog" src="https://media.licdn.com/dms/image/C5112AQETBqpI7XnMog/article-inline_image-shrink_400_744/0/1520065874209?e=1691625600&amp;v=beta&amp;t=4MqiiiCmXvs0Qtc5EW8yNtGRU1qzb_Fr8tXOBwv30X4"> 
+  </div> 
+  <p>Or for the heat flux;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEWbzjqzeX0Mw" src="https://media.licdn.com/dms/image/C5112AQEWbzjqzeX0Mw/article-inline_image-shrink_400_744/0/1520193814608?e=1691625600&amp;v=beta&amp;t=WbXQ0MbHXdbM0KflEeU2cuwVomG-MqSkvmVOavjUSA0"> 
+  </div> 
+  <p>The minus sign is necessary because heat is transferred in the direction of decreasing temperature.</p> 
+  <p>&nbsp;<strong>Newton’s law of cooling:</strong></p> 
+  <p>As explained in section 3.2, convective heat transfer process involves;</p> 
+  <ul> 
+   <li>Energy transfer due to random molecular motion (diffusion / conduction).</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <ul> 
+   <li>Energy transfer due to motion of the fluid.</li> 
+  </ul> 
+  <p>Convective heat transfer may be classified according to the nature of the flow: forced convection when the flow is caused by external means such as by a fan, a pump or atmospheric winds; natural convection when the flow is induced by buoyancy forces, which are due to density differences caused by the temperature variations in the fluid.</p> 
+  <p>Regardless of the nature of the convection heat transfer process, the appropriate equation is of the form;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG_ML9BbatnEg" src="https://media.licdn.com/dms/image/C5112AQG_ML9BbatnEg/article-inline_image-shrink_400_744/0/1520141640395?e=1691625600&amp;v=beta&amp;t=QZfXslqaKQcYMZ9ZDHalXYFm0FGydbL5Dejn8UF9Ta0"> 
+  </div> 
+  <p>Where;</p> 
+  <p>q’’ is the convective heat flux (W / m2), is proportional to the difference between the surface and fluid temperature T and T respectively [<em>this pertains to the convective heat transfer flow that occurs between a fluid in motion and a bounding surface when the two are at different temperatures. A consequence of the fluid surface interaction is the formation of the velocity boundary later and the thermal boundary later as elaborated in the section 3.2] </em></p> 
+  <p>The above expression is known as the “Newton’s law of cooling and parameter h (W/ m2 . K) is termed as the convective heat transfer coefficient.</p> 
+  <p>The coefficient depends upon the conditions in the boundary layer, which are influenced by surface geometry, the nature of the fluid motion and fluid and thermal properties.</p> 
+  <p>Any study of convection ultimately reduces to a study of the means by which h may be determined. Typical values of h are expressed in the table below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHp1QOXjzambw" src="https://media.licdn.com/dms/image/C4E12AQHp1QOXjzambw/article-inline_image-shrink_400_744/0/1520519776742?e=1691625600&amp;v=beta&amp;t=-MyH9ByeRGaU4IjKnvwWI3cKWDwwgCV1DbCKzK25384"> 
+  </div> 
+  <p><strong>The First law of thermodynamics</strong></p> 
+  <p>The first law of thermodynamics, also known as the conservation of energy principle, states that energy can neither be created nor destroyed; it can only change forms. Therefore, every bit of energy must be accounted for during a process.</p> 
+  <p>The conservation of energy principle (or the energy balance) for any system undergoing any process may be expressed as: <em>The net change (increase or decrease) in the total energy of the system during process is equal to the difference between the total energy entering and the total energy leaving the system during that process.</em></p> 
+  <p>That is;</p> 
+  <p>(Total energy entering the system) – (Total energy leaving the system) = (Change in total energy of the system).</p> 
+  <p>Noting that energy can be transferred to or from a system ny heat, work and mass flow , and that the total energy of a simple system, comprises of internal, kinetic and potential energies, the energy balance for any system undergoing any process can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH5tiQjFQAJWg" src="https://media.licdn.com/dms/image/C5112AQH5tiQjFQAJWg/article-inline_image-shrink_400_744/0/1520175075621?e=1691625600&amp;v=beta&amp;t=q3o-GtujVs3VEI6QU6zlo8tI5TNdEcmbzTmWaEkg2Zw"> 
+  </div> 
+  <p>or, in the rate form, as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGZFDJD_kadXQ" src="https://media.licdn.com/dms/image/C5112AQGZFDJD_kadXQ/article-inline_image-shrink_400_744/0/1520042117310?e=1691625600&amp;v=beta&amp;t=1FOhwhEJMou0Quj2gIvGcoFXtpFwUjuszucQKrk9CWM"> 
+  </div> 
+  <p><em>Steady system:</em></p> 
+  <p>Energy is a property, and the value of the property does not change unless the state if the system changes. Therefore, the energy change of the system is zero (ΔE = 0) if the state of the system does not change during the process, that is, the process is steady. The energy in this case reduces to (see also figure below);</p> 
+  <p>&nbsp;</p> 
+  <p><em>Steady rate form;</em></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHEHU-6oUIYRg" src="https://media.licdn.com/dms/image/C5112AQHEHU-6oUIYRg/article-inline_image-shrink_1000_1488/0/1520144168962?e=1691625600&amp;v=beta&amp;t=adl9reSK6rXQvy3HlJlWuWW-0VrAxM6pIDGsfzqwjw4"> 
+  </div> 
+  <p><em>Heat transfer analysis (through the first law of thermodynamics):</em></p> 
+  <p>In heat transfer analysis, we are usually interested only in the forms of energy that can be transferred as a result of temperature difference, that is, heat or thermal energy. In such cases it is convenient to write a <strong>heat balance </strong>and to treat the conversion of nuclear, chemical, electrical energies into thermal energy as <em>heat generation.</em></p> 
+  <p>The energy balance in that case can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEEbKnz6MYzMw" src="https://media.licdn.com/dms/image/C5112AQEEbKnz6MYzMw/article-inline_image-shrink_400_744/0/1520114476099?e=1691625600&amp;v=beta&amp;t=Y_5xP4TXajomG5Q_LNEo3AKTHkVzic07EbShjF6VUlE"> 
+  </div> 
+  <p>Energy transferred for closed systems:</p> 
+  <p>A closed system consists of a <em>fixed mass</em>. The total energy E for most systems encountered in practice consists of the internal energy U. This is especially the case for stationary systems since they don’t involve any changes in their velocity or elevation during a process. The energy balance relation in that case reduces to;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHsDW9waIlNzQ" src="https://media.licdn.com/dms/image/C5112AQHsDW9waIlNzQ/article-inline_image-shrink_400_744/0/1520062795157?e=1691625600&amp;v=beta&amp;t=ZbdjJUD9gxU0APENT1Ot4xEaDhL7-oj01R8fY2OGYTY"> 
+  </div> 
+  <p>where we expressed the internal energy change in terms of mass m, the specific heat at constant volume Cv and the temperature change ΔT of the system. When the system involves heat transfer only and no work interactions across its boundary, the energy balance relation further reduces to;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGjM26RYrJ3bA" src="https://media.licdn.com/dms/image/C5112AQGjM26RYrJ3bA/article-inline_image-shrink_400_744/0/1520063023722?e=1691625600&amp;v=beta&amp;t=HqGz-kuPLgRx5Uyo7uEHBDH6cPoJOUwbh5l-WPvH8DQ"> 
+  </div> 
+  <p><strong>Figure: In the absence of any work interaction, the change in the energy content of a closed system is equal to the net heat transfer</strong></p> 
+  <p>Where, the internal energy is expressed in terms of mass m, the specific heat at constant volume Cv and the temperature change ΔT of the system. When the system involves heat transfer only and no work interactions across the boundary, the energy balance relation reduces to;</p> 
+  <p><em>For stationary closed system, no work;</em></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEC9bLLbosEXw" src="https://media.licdn.com/dms/image/C5112AQEC9bLLbosEXw/article-inline_image-shrink_400_744/0/1520173364276?e=1691625600&amp;v=beta&amp;t=Ls_N2ltCoMRuYhikMlaZHcCwFmOqWt_-9h7-aWjTIxY"> 
+  </div> 
+  <p>&nbsp;&nbsp;Where; Q is the net heat transfer to and from the system, this is the form of the energy balance relation used when dealing with fixed mass.</p> 
+  <p>&nbsp;<em>Energy balance for steady flow systems:</em></p> 
+  <p>A large number of engineering devices such as water heaters and car radiators involve mass flow in and out of a system, and are modelled as <em>control volumes</em>. Most control volumes are analysed under steady operating conditions. The term steady means <em>no change with time</em> at a specified location. The opposite of steady is unsteady or transient.</p> 
+  <p>The total energy content of a control volume during a <em>steady flow process</em> remains constant. That is, the change in the total energy of the control volume during such a process is zero (Δ E = constant). Thus, the amount of energy entering a control volume in all forms (heat, work and mass transfer) for a steady flow process must equal the amount of energy leaving it.</p> 
+  <p>The amount of mass flowing through a cross section of a flow device per unit time is called the <strong>mass flow rate</strong> and is denoted by . A fluid may flow in and out of the control volume and the mass flow rate of a fluid flowing in a pipe or a duct is proportional to the cross sectional area Ac of the pipe or duct, the density ρ and the velocity ‘v’ of the fluid. The mass flow rate through a differential area dAc can be expressed as:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFXff-ApTQOGA" src="https://media.licdn.com/dms/image/C5112AQFXff-ApTQOGA/article-inline_image-shrink_400_744/0/1520173280609?e=1691625600&amp;v=beta&amp;t=P5kVCusxUxq4tKh6yM8Tq48vScdlV3lC_Gl62PsVbCM"> 
+  </div> 
+  <p>where ‘v’ is the velocity normal to the cross sectional area dAc.</p> 
+  <p>The mass flow rate through the pipe or duct can be expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQELpGCg-H2HMg" src="https://media.licdn.com/dms/image/C5112AQELpGCg-H2HMg/article-inline_image-shrink_400_744/0/1520110341322?e=1691625600&amp;v=beta&amp;t=_l7PLQiijcOdTNMRQkSR5bNdJNi5GhAuiHYw-6VFu3E"> 
+  </div> 
+  <p>Where, ρ is the fluid density, v is the average fluid velocity in the flow direction and Ac is the cross sectional area of the pipe or the duct.</p> 
+  <p>The volume of the fluid flowing through a pipe or duct per unit time is called the <strong>volume flow rate</strong> and is expressed as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEivRYuFDXHqQ" src="https://media.licdn.com/dms/image/C5112AQEivRYuFDXHqQ/article-inline_image-shrink_400_744/0/1520066890739?e=1691625600&amp;v=beta&amp;t=Gq98OO6qEbqhv_nRzvVmBJVVgpvCOrC7FUb-2aIMHog"> 
+  </div> 
+  <p>&nbsp;It should be noted that the mass flow rate through a pipe or duct remains constant during a steady flow. This is not the case for volume flow rate m however, unless the density of the fluid remains constant.</p> 
+  <p>For a steady flow system with one inlet and one exit, the rate of mass flow into the control volume must be equal to the rate of mass flow out of it.</p> 
+  <p>That is,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQERPWkPw2ZEww" src="https://media.licdn.com/dms/image/C5112AQERPWkPw2ZEww/article-inline_image-shrink_400_744/0/1520145673609?e=1691625600&amp;v=beta&amp;t=J90R7MlIQ4nHSDJMOLCWBqD48vi7mDBrQz7qpUcUEgs"> 
+  </div> 
+  <p>When there is no work interaction,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG7m519iV5GwA" src="https://media.licdn.com/dms/image/C5112AQG7m519iV5GwA/article-inline_image-shrink_400_744/0/1520041933953?e=1691625600&amp;v=beta&amp;t=chh7c8vheubFV2_GF2smNgh4QypeNpMfP1OxB_dkOMc"> 
+  </div> 
+  <p><strong>Figure: Under steady state conditions the net rate of energy transfer to a fluid in a control volume is equal to the rate of increase in the energy of the fluid stream flowing through the control volume.</strong></p> 
+  <ul> 
+   <li>Example illustrations of heat transfer in a closed system</li> 
+   <li>2 kg of liquid water initially at 15°C is to be heated to 95°C in a teapot equipped with 1200-W electric heating equipment inside as shown below;</li> 
+  </ul> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFzv5Q4P_cC9g" src="https://media.licdn.com/dms/image/C5112AQFzv5Q4P_cC9g/article-inline_image-shrink_400_744/0/1520066820416?e=1691625600&amp;v=beta&amp;t=RpgUjL5TygNGKPCJhkh4OW0Xlnv2w6xMRNTSgfagrZY"> 
+  </div> 
+  <p>The teapot is 0.5 kg and has an average specific heat of 0.7 kJ/kg. °C. The specific heat of water is 4.18 kJ/kg. °C and disregarding any heat loss from the teapot, determine how long it will take for the water to be heated.</p> 
+  <p><strong>Solution:</strong></p> 
+  <p>&nbsp;</p> 
+  <ul> 
+   <li>Points to be noted</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <ul> 
+   <li>System is a closed system comprising of tea pot and water</li> 
+   <li>It is assumed that there is no heat loss from the teapot / heat loss from the tea pot is negligible.</li> 
+   <li>First law of thermodynamics will be applied.</li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <ul> 
+   <li>Properties: The average specific heat capacities of the material tea-pot and water are: 0.7 kJ/kg. °C and 4.8 kJ/kg. °C</li> 
+  </ul> 
+  <p>It may be recalled that the <em>specific heat is defined as the energy required to raise the temperature of a unit mass of the substance by on degree.</em></p> 
+  <p>&nbsp;</p> 
+  <ul> 
+   <li>Analysis:</li> 
+  </ul> 
+  <p>First law of thermodynamics;</p> 
+  <p>According to the first law of thermodynamics;</p> 
+  <p>(Total energy entering the system) – (Total energy leaving the system) = (Change in total energy of the system).</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGE9tJjx0x9xw" src="https://media.licdn.com/dms/image/C5112AQGE9tJjx0x9xw/article-inline_image-shrink_400_744/0/1520240122725?e=1691625600&amp;v=beta&amp;t=eN43mgE2NEZ10x8H82B6lUnqP3gSOTWJRxTVHQn3i5I"> 
+  </div> 
+  <p>E = 0: since it is assumed that there is no heat loss from the tea-pot.</p> 
+  <p>E = ΔU</p> 
+  <p>&nbsp;</p> 
+  <p>To compute the amount of energy needed to raise the temperature of water and teapot from 15°C to 95°C.</p> 
+  <p>Therefore,</p> 
+  <p>E = (mCΔT) + (mCΔT)</p> 
+  <p>= (1.2 kg ) * (4.18 kJ / kg. °C )* (95- 15) °C + (0.5 kg ) * (0.7 kJ / kg. °C )* (95- 15) °C</p> 
+  <p>= 429.3 kJ</p> 
+  <p>The 1200- W electric heating unit will supply energy at a rate of 1.2 kW or 1.2. kJ per second.</p> 
+  <p>Therefore, the time needed for this heater to supply 429.3 kJ of heat is given by;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFJdLq55yULSg" src="https://media.licdn.com/dms/image/C5112AQFJdLq55yULSg/article-inline_image-shrink_400_744/0/1520042110958?e=1691625600&amp;v=beta&amp;t=6D2sSYOeK-R-vIuZ7mgMBTJsUHvZQtr5z_zwrvcojpc"> 
+  </div> 
+  <p><strong>Note: In reality, it will take more than 6 minutes to complete this task since, some heat loss is inevitable.</strong></p> 
+  <p><strong>Heat loss from heating ducts in a basement</strong></p> 
+  <p>A 5 m long section of an air heating system of a house passes through an unheated space in the basement as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFMS5nZ6OAAqw" src="https://media.licdn.com/dms/image/C5112AQFMS5nZ6OAAqw/article-inline_image-shrink_400_744/0/1520066571712?e=1691625600&amp;v=beta&amp;t=cjEogf2sXZHFtEDK8hahU_O08udjNUhwbgErnaUy11g"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>The cross section of the rectangular duct of the heating system is 20 cm x 25 cm. Hot air enters the duct at 100kPa and 60°C at an average velocity of 5m/s. The temperature of air in the duct drops to 54°C as a result of heat loss from the air in the duct to the basement under steady conditions.</p> 
+  <p>&nbsp;</p> 
+  <p>Determine the rate of heat loss from the air in the duct to the basement under steady conditions. Also, determine the cost of this heat loss per hour if the house is heated by a natural gas furnace that has an efficiency of 80% and the cost of the natural gas in the area is $ 0.6 / therm ( 1 therm = 105,500 kJ).</p> 
+  <p>&nbsp;</p> 
+  <p><strong>Assume the density of air at inlet conditions: 1.046 kg/m</strong></p> 
+  <p><strong>Specific heat of air = 1.007 kJ/kg.°C.</strong></p> 
+  <p>&nbsp;</p> 
+  <p>Analysis:</p> 
+  <p>&nbsp;</p> 
+  <p>Rate of heat loss from the air in the duct can be determined from;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHB_8QLFRnVXQ" src="https://media.licdn.com/dms/image/C4E12AQHB_8QLFRnVXQ/article-inline_image-shrink_400_744/0/1520519772708?e=1691625600&amp;v=beta&amp;t=qWrqvx0Q7fkH1kOqfRUvkAPkA6Wzbq9fVf6R1plsNFM"> 
+  </div> 
+  <p>&nbsp;Cross sectional area of the duct;</p> 
+  <p>A = (0.2 m) (0.25m) = 0.05m2</p> 
+  <p>&nbsp;&nbsp;Then,</p> 
+  <p>&nbsp;The mass flow rate of the air through the duct,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEQ3d4I-CFJJA" src="https://media.licdn.com/dms/image/C4E12AQEQ3d4I-CFJJA/article-inline_image-shrink_400_744/0/1520519771253?e=1691625600&amp;v=beta&amp;t=XSdIP48rWLZfDiOIRMQsr07H8d3ji6zdACVKyedLRvQ"> 
+  </div> 
+  <p>And;</p> 
+  <p>&nbsp;Rate of heat loss from the air in the duct;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFBJ3cfwkEpJA" src="https://media.licdn.com/dms/image/C5112AQFBJ3cfwkEpJA/article-inline_image-shrink_1000_1488/0/1520198429245?e=1691625600&amp;v=beta&amp;t=mTzzhzzoFTgmJO82FqEAIB-2n3LytiHv7YzSIgy-oXA"> 
+  </div> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong></p>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Model Debugging: Sensitivity Analysis, Adversarial Training, Residual Analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQGxVB6ca3YllA" alt="Image taken from the MLOps specialization courses on deeplearning.ai" title="Image taken from the MLOps specialization courses on deeplearning.ai" />
+      <h1><a href="https://www.linkedin.com/pulse/model-debugging-sensitivity-analysis-adversarial-training-ajay-taneja">Model Debugging: Sensitivity Analysis, Adversarial Training, Residual Analysis</a></h1>
+    <p class="created">Created on 2021-11-15 20:21</p>
+  <p class="published">Published on 2021-11-22 07:28</p>
+  <div><h2>1.&nbsp;Introduction</h2><p>In this article, I have attempted to consolidate my notes, highlighting: some common techniques for model debugging, some commercial libraries for the purpose, further, I have tried to point out a few scenarios wherein a Deep Neural Network can be "fooled" hence bringing out the importance of "adversarial" training and/ or testing the vulnerability of your Machine Learning Model to "attacks" and  highlighted the Python libraries available for the purpose&nbsp;</p><p>Sensitivity Analysis is an important way to evaluate your model performance including vulnerability to adversarial attacks. Sensitivity analysis helps you understand your model by examining the impact each feature has on the model prediction. In sensitivity analysis, you experiment by changing each feature value while holding other features constant and examining the model results. If changing the feature values causes the models results to be drastically different, it means the feature has significant impact on the prediction. It should be noted that in sensitivity analysis, you’re not looking if the prediction is correct or not but on how much ‘change’ the feature causes.</p><p><br></p><h2>2.&nbsp;&nbsp;&nbsp;&nbsp;Tools for conducting Sensitivity Analysis</h2><p>&nbsp;What-if-tool for conducting Sensitivity Analysis </p><p>&nbsp;One of the tools available for conducting sensitivity Analysis is the What-if-tool of TensorFlow. The What-if-tool allows you to visualize the results of sensitivity analysis and understand and debug the model performance. &nbsp;The&nbsp;<a href="https://pair-code.github.io/what-if-tool/learn/tutorials/walkthrough/" target="_blank"><strong>What-if tool</strong></a>&nbsp;supports Tensor Flow models out of the box and can also support models built with any other framework. Using the What-if-tool it is possible, to evaluate high level model performance using feature-based slices in the data set and visualize the distribution of each feature in the loaded dataset with some summary statistics.</p><p>&nbsp;</p><h2>Partial Dependence Plots</h2><p>&nbsp;Partial Dependence Plot proves extremely useful for the following:</p><p>a) studying the effect of the interaction of features on the target variable</p><p> b) visualize / understand how the target prediction varies for a particular feature</p><p> As shown in the figure below, a Partial Dependence Plot can show whether the relationship between a feature and the target variable is linear or more complex. You can visualize how two features interact in terms of impacting the target variable. It is possible to get interaction between more than 2 features but will not help visualizing for the human eye!</p><p>The PDPbox [Partial Dependence Plot Toolbox] is a <a href="https://pythonrepo.com/repo/SauceCat-PDPbox-python-deep-learning-model-explanation" target="_blank">Python library</a> that helps visualize the impact of certain features towards model prediction for any supervised learning algorithms – the PDPbox&nbsp;repository is supported by all scikit-learn algorithms. This is an improvement over the conventional Random Forest wherein one would get the metric of “importance” for every feature.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEwrDHQ2UbPjQ" src="https://media.licdn.com/dms/image/C4D12AQEwrDHQ2UbPjQ/article-inline_image-shrink_400_744/0/1637565337621?e=1691625600&amp;v=beta&amp;t=R7uBIJtqQSvh7oz7TeSguBdozhllExzBTvpXxKzsMfI"></div><p><strong>Figure: Partial Dependence Plots for bicycle count prediction model based on each feature of temperature, humidity and wind speed</strong></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQHiIoteJi1rFA" src="https://media.licdn.com/dms/image/C4D12AQHiIoteJi1rFA/article-inline_image-shrink_400_744/0/1637565359245?e=1691625600&amp;v=beta&amp;t=1BRLGGTNAcqQia-OYULrCBEeahF8MY0EWxkJ5dO2dcs"></div><p><strong>Figure: Partial Dependence Plot of Cancer Probability considering the interaction of age and number of pregnancies</strong></p><p>The above 2 figures are taken from the following reference: <a href="https://christophm.github.io/interpretable-ml-book/pdp.html" target="_blank">https://christophm.github.io/interpretable-ml-book/pdp.html</a></p><p>From the second figure (above) it can be seen that there is an increased in cancer probability at age 45. For ages below 25, women who had 1 or 2 pregnancies have a lower predicted cancer risk. </p><p><strong>Feature importance’s extraction following the instantiation of the Random Forest Classifier model: </strong></p><p>In this post, <a href="https://www.linkedin.com/pulse/feature-selection-dimensionality-reduction-ajay-taneja/?trackingId=2OLqb9S98o19%2FZf2r%2BfTUg%3D%3D" target="_blank">https://www.linkedin.com/pulse/feature-selection-dimensionality-reduction-ajay-taneja/?trackingId=2OLqb9S98o19%2FZf2r%2BfTUg%3D%3D</a> I have discussed how feature importance’s can be extracted from linear and logistic regression following the instantiation of Random Forest Classifier model.&nbsp;</p><h2>3.&nbsp;&nbsp;&nbsp;&nbsp;Vulnerability of the models to attacks</h2><p>&nbsp;Several machine learning models including neural networks can be fooled by misclassifying by making small but carefully designed changes to the data so that the model returns an incorrect answer with high confidence, It is thus important to test your model for vulnerabilities and harden the model and making it resilient to attacks. </p><p>&nbsp;Example of adversarial Attacks</p><p><a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/generative/adversarial_fgsm.ipynb" target="_blank">Here</a> (picture shown below) is an example wherein starting with the image of a panda, the attacker adds small pertuberances (distortions) to the original image which results in the model labelling the image as a gibbon with high confidence</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQEsq-dn0yDo5Q" src="https://media.licdn.com/dms/image/C4D12AQEsq-dn0yDo5Q/article-inline_image-shrink_400_744/0/1637565490131?e=1691625600&amp;v=beta&amp;t=rwrELj818e9iK0G06d0MHyVw1iX3MEC7yyvIXGwatyI"></div><p>&nbsp;                             <strong>Figure: Adversarial attack on an image classification example</strong></p><p>Another example of an adversarial attack could be that of an autonomous vehicle where the “Stop” sign is altered as sown below which could result in a crash:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQFsccLHBcGGyQ" src="https://media.licdn.com/dms/image/C4D12AQFsccLHBcGGyQ/article-inline_image-shrink_400_744/0/1637565530366?e=1691625600&amp;v=beta&amp;t=71U4U9NiIEs4JcpQEFSGmEbW25r7vUNhHQDsw3MXmVE"></div><p><strong>Figure: Adversarial attack on a classification model built to aid Autonomous Driving</strong></p><p>&nbsp;Similarly, one can take an example of a security bag scanner wherein one is using an object detection model in the background, it could result in misclassifying a knife as an umbrella</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQH7Hk3ajCyWaA" src="https://media.licdn.com/dms/image/C4D12AQH7Hk3ajCyWaA/article-inline_image-shrink_400_744/0/1637565565405?e=1691625600&amp;v=beta&amp;t=QHtCDcqwVcvaLuEeZaLc5LppJWbt6r0hRBBZI0gtdlQ"></div><p><strong>Figure: Adversarial attack on a classifier model built to aid Security Scanners at an Airport</strong></p><h2>5.&nbsp;&nbsp;&nbsp;&nbsp;Adversarial Training on the Model</h2><p>&nbsp;To harden your model to adversarial attacks, one approach is to include sets of adversarial images in your training data so that the classifier is able to understand the distribution of noise and that the model learns to identify the correct class.</p><p>&nbsp;</p><h2>Tools for Adversarial Training: CleverHans&nbsp;</h2><p>&nbsp;Examples created by tools such as CleverHans: <a href="https://cleverhans.readthedocs.io/en/latest/" target="_blank">https://cleverhans.readthedocs.io/en/latest/</a> can be added to the datasets so that the model is able to detect noise/distortions in data. It should be noted that in doing so – adding adversarial examples – limits the ability to test models’ vulnerability. </p><p>FoolBox &nbsp;(<a href="https://foolbox.readthedocs.io/en/stable/" target="_blank">https://foolbox.readthedocs.io/en/stable/</a>) is another library that creates adversarial examples that fool your DNN and hence testing the vulnerability</p><p>&nbsp;</p><h2>6.&nbsp;&nbsp;&nbsp;&nbsp;Residual Analysis</h2><p>&nbsp;Another model debugging technique is Residual Analysis. In most cases, this can be used for regression models. Residual Analysis requires measuring the distance between the prediction and the ground truth. In general, whilst measuring the distance between the prediction and the ground truth you want the residuals to follow a random distribution as shown in the figure below. If the residuals follow a pattern, it is usually a sign that your model has to be improved.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C4D12AQH2gAiV61D7Aw" src="https://media.licdn.com/dms/image/C4D12AQH2gAiV61D7Aw/article-inline_image-shrink_400_744/0/1637565623277?e=1691625600&amp;v=beta&amp;t=t2qKNZ40oDthH621aVRKRMQF7MkkY3CMYs3tWTZntbY"></div><p>Thus, using a residual plot one would visually inspect the distribution of residuals. IF your model is well trained and has captured the predictive information in the data, then, the residuals should be randomly distributed.</p><p><strong>Co-relation between Residuals</strong></p><p>Also – Residuals should not be co-related with each other. If you can use one residual to predict another Residual, the, the Residuals are co-related which means that there is some predictive information that is not being c captured.&nbsp;Performing a Durbin-Watson test is also useful for detecting auto-correlation</p><p>&nbsp;</p><p><strong>Durbin-Watson Test</strong></p><p>A Durbin-Watson will report a test statistic with a value between 0 and 4, where:</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Value of 2 is no correlation</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 to &lt;2 is positive correlation</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;2 to 4 is negative correlation</p><p>As a rule of thumb, the test statistic value in the range of 1.5 to 2.5 is relatively normal.&nbsp;</p><p>Durbin Watson Test in Python: https://www.statology.org/durbin-watson-test-python/</p></div>
+</body>
+</html>

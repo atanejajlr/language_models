@@ -1,0 +1,319 @@
+<html>
+<head>
+  <title>Features of fracture toughness testing: Part II</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQGYvvjCp3CCFA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/features-fracture-toughness-testing-part-ii-ajay-taneja">Features of fracture toughness testing: Part II</a></h1>
+    <p class="created">Created on 2017-05-21 11:35</p>
+  <p class="published">Published on 2017-05-21 12:30</p>
+  <div>
+  <h2><strong>1.&nbsp;&nbsp;&nbsp;Introduction:</strong></h2> 
+  <p>This article is the continuation of my series of blogs on "Fracture Mechanics".</p> 
+  <p>My preceding article, titled, <em>“Features of fracture toughness testing – Part I”</em> [<a href="https://www.linkedin.com/pulse/features-fracture-toughness-testing-part-i-ajay-taneja" target="_blank">https://www.linkedin.com/pulse/features-fracture-toughness-testing-part-i-ajay-taneja</a> ],&nbsp;emphasized on plane strain fracture toughness testing. The article underscored that plane strain fracture toughness testing involved very stringent pre-requirements, such as;</p> 
+  <p>o&nbsp;&nbsp;Use of standard specimens for the test for which the analytical expressions for stress intensity factor were known. The specimens included: compact tension specimen, three point bend specimen and C specimen.</p> 
+  <p>o&nbsp;&nbsp;It was highlighted that prior to loading the specimen to fracture, it had to be fatigue loaded so that a <strong><em>“natural”</em></strong> fatigue pre-crack could develop.</p> 
+  <p>o&nbsp;&nbsp;Specialized notch such as the “chevron” notch had to be used so that the origin and the plane of fatigue crack growth could be controlled.</p> 
+  <p><br></p> 
+  <p>The requirements necessary for conducting a plane strain fracture toughness test have been well documented in the codes of practise: E399-06 (standard test method for plane strain toughness of metallic materials), B645 – 07 – standard test method for linear elastic plane strain toughness of aluminium alloys. The procedure for measuring fracture toughness in plane strain is well documented but the procedure for plane stress fracture toughness is still developing and a number of parameters come into play for a plane stress fracture toughness test.</p> 
+  <p>This article talks of plane stress fracture toughness testing. An elaborate discussion on the topic is not in the scope of this article but essential salient features of a plane stress fracture toughness test are discussed in (I think) considerable detail. This article is organized as follows;</p> 
+  <p>Firstly, in section 2, some fundamental differences between a plane strain fracture toughness test and a plane stress fracture toughness test are highlighted.</p> 
+  <p>Energy balance concept (which remains one of the most significant contribution in the subject of Fracture mechanics) is revisited and it is attempted to relate its philosophy to the process of a plane stress fracture toughness test. The importance of ensuring a slow crack growth during a plane stress fracture toughness test is highlighted. Topics of critical crack length, question of growth of crack by a slit are addressed in this section.</p> 
+  <p>The discussion in section 3 is resorted to anti-buckling guides which are quite frequently provided during a plane stress fracture toughness test due to resulting compression around the vicinity of the crack tip.</p> 
+  <p>Concepts of: influence of panel width in plane stress, residual strength following a crack and apparent toughness are discussed in section 4, 5 and 6 respectively.</p> 
+  <h2><strong>2.&nbsp;&nbsp;&nbsp;Fundamental differences between plane strain fracture toughness testing and plane stress fracture toughness testing:</strong></h2> 
+  <p>Unlike, plane strain test specimens, the specimens used for plane stress fracture toughness testing need not be always fatigue cracked. In case of a plane stress fracture toughness test, the flaw may be introduced into the specimen in the form of a saw cut (i.e. by cutting out a slit in the specimen). Then, using the geometric dimensions of the specimen, the length of the crack and stress required to fracture the specimen, the fracture toughness can be principally calculated.</p> 
+  <p>It should be noted that if the fracture of the plane stress specimen is not preceded by slow crack growth, the simulation of the crack by means of a saw cut is not permissible. This can be explained on the basis of energy balanced concept. The energy balance concept was discussed in one of earlier blog in this series [<a href="https://www.linkedin.com/pulse/extension-griffiths-analysis-ajay-taneja?trk=mp-reader-card" target="_blank">https://www.linkedin.com/pulse/extension-griffiths-analysis-ajay-taneja?trk=mp-reader-card</a>] and is repeated with a view to explain the physical reasoning for a slow crack growth during a plane stress fracture toughness test.</p> 
+  <p><br></p> 
+  <p><strong>Energy balance concept:</strong></p> 
+  <p>I had pointed out in the above article that in a plane stress condition (thin plates), that the resistance “R” to crack growth does not remain constant and increases as the crack grows. The increase in resistance with increase with crack growth is attributed to the effect of plastic zone i.e. the resistance to crack growth increase as the material “flows”/ “plasticizes”.</p> 
+  <p>It was also elaborated in the article that a “flaw” / “crack” in a component (or, a “thin” plate) will start to grow when an energy equal to the resistance “R” – the surface energy of the material can be delivered to form 2 new surfaces above and below the plane of crack;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF9rEtv6ayClg" src="https://media.licdn.com/dms/image/C5112AQF9rEtv6ayClg/article-inline_image-shrink_1000_1488/0/1520211712255?e=1691625600&amp;v=beta&amp;t=HUwTQOjAf7sOXg9-e07tlZu0xaQdeOr5UNYWdphBGO0"> 
+  </div> 
+  <p><strong> Figure: Energy contribution to crack growth</strong></p> 
+  <p><br></p> 
+  <p>This resistance “R” is different for different materials and in case of ductile materials increases as the material plasticizes.</p> 
+  <p><br></p> 
+  <p>Recalling the figure below, which I had elaborately discussed in <a href="https://www.linkedin.com/pulse/extension-griffiths-analysis-ajay-taneja" target="_blank">this</a> blog;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHLS43b0NNdWw" src="https://media.licdn.com/dms/image/C5112AQHLS43b0NNdWw/article-inline_image-shrink_400_744/0/1520170722698?e=1691625600&amp;v=beta&amp;t=waE8UJfPd4_wb0oyjiBfP-YjRcOru--JEiTsJOmjv1Q"> 
+  </div> 
+  <p><strong> Figure: ‘R’ curve in case of thin plates (plane stress case)</strong></p> 
+  <p>Following could be interpreted from the above figure;</p> 
+  <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At stress level, σ1, the resistance “R” offered by the specimen (note: I do not use the word ‘material’ but use ‘specimen’), exceeds the energy release rate “G”</p> 
+  <p><br></p> 
+  <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At stress level, σ2, the energy release rate “G” equals the resistance “R” and the cracks starts growing – this is the initiation of the fracture process (or, perhaps the ‘stable’ fracture process) before catastrophic failure.</p> 
+  <p><br></p> 
+  <p>iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It is noticed that as stress level σi increases, the resistance “R” increases which is the result of the plastic deformation (this may be imagined as analogous to strain hardening).</p> 
+  <p><br></p> 
+  <p>iv.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thus, as the stress level is increased, the crack continues to grow but will not lead to a catastrophic failure until a stage is reached where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEXGygOnkrlTQ" src="https://media.licdn.com/dms/image/C5112AQEXGygOnkrlTQ/article-inline_image-shrink_400_744/0/1520189366787?e=1691625600&amp;v=beta&amp;t=NLAlmXOUCVT_fuljVtI6KlhKLz5Ub4NZJZrGLQLgikE"> 
+  </div> 
+  <p>v.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It may be thus be stated that the necessary and sufficient conditions for fracture may be taken as;</p> 
+  <p><br></p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G = R</p> 
+  <p><br></p> 
+  <p>That is, a stable fracture is initiated when the energy release rate “G” equals the resistance “R”.</p> 
+  <p>and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b)</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHuzSfru7K3xg" src="https://media.licdn.com/dms/image/C5112AQHuzSfru7K3xg/article-inline_image-shrink_400_744/0/1520142480806?e=1691625600&amp;v=beta&amp;t=G1eyGSIEU3pdQywBTqROy5Gvpb1ShzW5fAU13WnWeOs"> 
+  </div> 
+  <p><br></p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;This condition implies that if the slope of “G” equals “R”, a catastrophic failure occurs.</p> 
+  <p><strong>Ensuring a slow crack growth:</strong></p> 
+  <p>If the crack is sharp enough i.e. the “saw cut” simulated crack is sharp enough, slow crack growth begins when G = R and catastrophic failure occurs when;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEohgRN8C2fDg" src="https://media.licdn.com/dms/image/C5112AQEohgRN8C2fDg/article-inline_image-shrink_400_744/0/1520189645231?e=1691625600&amp;v=beta&amp;t=K-rS3-YQSt8TI1lk4JaVcmr4Y-q5yNLREldwFc6cHE0"> 
+  </div> 
+  <p>The process in this case is that of a stable fracture.</p> 
+  <p>Whereas, saw cuts can be made so blunt that a crack growth does not occur until a stress σ3 larger than σc. In that case no energy balance can be reached and immediate fracture instability occurs, not preceded by slow growth. This might imply, that the saw cut induced crack has already caused plastic deformation of the material (which is demarcated by the bluntness of the crack), thus resulting in immediate catastrophic failure not preceded by a stable fracture / slow crack growth – as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQHz9Knv54dCSA" src="https://media.licdn.com/dms/image/C4E12AQHz9Knv54dCSA/article-inline_image-shrink_1000_1488/0/1520592871105?e=1691625600&amp;v=beta&amp;t=hPdJyyuT4APbzNprv9y64mU87dstKdkgY1TDoJDq_FQ"> 
+  </div> 
+  <p><br></p> 
+  <p><strong> Figure: Blunt crack tips in plane stress testing</strong></p> 
+  <p><br></p> 
+  <p>The permissible bluntness depends upon the material properties; sharper cracks are required for materials with lower toughness.</p> 
+  <p><br></p> 
+  <p><strong>What is the critical crack length?</strong></p> 
+  <p>The question that arises is whether one will report ‘a1’ as the critical crack length or (a1 + Δa1) as the critical crack length. It should be noted that ideally, the critical crack length is “a1” but due to the process of stable fracture, it has extended to a1 to Δa1 – the extension from a1 to Δa1 is not due to any growth mechanism like fatigue or stress corrosion cracking.</p> 
+  <p><strong>Growth of crack by cutting a slit</strong></p> 
+  <p>The question sometimes arises whether it is permissible to establish the critical crack size by cutting a slit while the specimen is under constant load. Tests have shown that this could result in an overestimation of the critical crack length.</p> 
+  <p>It was stated in the aforementioned paragraph that if “sawing” is continued beyond the stress associated with the critical crack length and then the specimen loaded, a catastrophic failure is seen without the occurrence of a stable fracture. It was also mentioned that the “bluntness” of the crack may be the reason attributed to this behaviour but it has been argued through tests that bluntness of the crack cannot be regarded as the sole cause of the discrepancy. Thus, there is another recommendation that to always grow the crack by loading than to first by sawing to the point where slow crack growth initiation / stable fracture was about to occur.</p> 
+  <h2><strong>3.&nbsp;&nbsp;&nbsp;Anti - buckling guides</strong></h2> 
+  <p><strong>Providing anti-buckling guide in thin panels – for plane stress fracture toughness testing</strong></p> 
+  <p>To start the discussion in this topic, let us first consider the problem of a plate with a hole subjected to uniaxial tension as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEDdgHh2P8yjA" src="https://media.licdn.com/dms/image/C5112AQEDdgHh2P8yjA/article-inline_image-shrink_400_744/0/1520142098472?e=1691625600&amp;v=beta&amp;t=R_XYQrXfZ3734LrTxxZLcsYynfn3v7GeLRKpecyM7rM"> 
+  </div> 
+  <p><strong> Figure: Plate with a hole in under uniaxial tension</strong></p> 
+  <p>It can be derived that, at r = a,</p> 
+  <p>σθθ = σxx (1 – 2 cos θ)</p> 
+  <p><br></p> 
+  <p>The stress variation around the hole can be plotted as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGT12Qw6pnMZg" src="https://media.licdn.com/dms/image/C5112AQGT12Qw6pnMZg/article-inline_image-shrink_1000_1488/0/1520142557298?e=1691625600&amp;v=beta&amp;t=Lw2XnHA5FOkqz-3x1fNzG5bFGzXgvjVBZ5zXhNXI3Hk"> 
+  </div> 
+  <p><strong>Figure: Variation of stresses around the crack tip</strong></p> 
+  <p>It can be clearly seen that the normal stress on the boundary of the hole varies from 3σ to –σ and is 0 at four points on the boundary. Point to be noted here is that along the x-axis, the stress level is minus (–) of the far field stress i.e. compression. This can be mathematically seen through the expression:</p> 
+  <p><strong> σθθ = σxx (1 – 2 cos θ)</strong></p> 
+  <p>At θ = 0;</p> 
+  <p><strong> σθθ =&nbsp;– σxx </strong></p> 
+  <p>Thus, even though the load applied is uniaxial tension (along x- axis), there exists compressive stresses at the boundary of the hole along x axis. Similar observation is seen in case of a crack. Because of compressive stresses developed, buckling of the panel is possible since it is relatively thin in plane stress conditions. From the plane fracture toughness testing point of view, it may be questioned if this buckling is desirable or not and whether it should be prevented during a plane stress fracture toughness test.</p> 
+  <p>This is actually a debatable point. In thin panels, crack buckling can occur if the load is increased. If this (buckling) is to be avoided, anti-buckling guides, as shown in the figure below are provided:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG_iiDwyzHoeA" src="https://media.licdn.com/dms/image/C5112AQG_iiDwyzHoeA/article-inline_image-shrink_1000_1488/0/1520146642326?e=1691625600&amp;v=beta&amp;t=a9pTJiUXyHc78MSxamOIYRe-zkefJZ2SchaLIAVMgkI"> 
+  </div> 
+  <p><strong> Figure: Crack buckling and anti-buckling guides</strong></p> 
+  <p><br></p> 
+  <p>Thus, one point of view is to prevent the crack buckling during plane stress fracture toughness testing by providing anti-buckling guides. Another point of view is that in actual / real structure, the buckling might not be fully restrained. Thus, the result without the anti-buckling guides is preferred in many instances.</p> 
+  <p><br></p> 
+  <h2><strong>4.&nbsp;&nbsp;&nbsp;Influence of panel width in plane stress:</strong></h2> 
+  <p>As mentioned before, the fracture toughness value is a function of panel width in case of specimen under plane stress. The KIC value is lower for narrower panels and then gradually increases to a constant value for large panels – the real KIC of the material with a given thickness.</p> 
+  <p>The figure below shows the variation of KIC with panel width for a aluminium alloy – the x axis shows the panel width and on y axis is the corresponding panel width value.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGndCjuBS41ow" src="https://media.licdn.com/dms/image/C5112AQGndCjuBS41ow/article-inline_image-shrink_400_744/0/1520144306009?e=1691625600&amp;v=beta&amp;t=i7-MZ9obXQBEBAh2SklfK_kZwAo3LdaMlb87US38nqw"> 
+  </div> 
+  <p><strong> Figure: Panel width vs. fracture toughness at catastrophic failure</strong></p> 
+  <p><br></p> 
+  <h2><strong>5.&nbsp;&nbsp;&nbsp;Residual strength:</strong></h2> 
+  <p><br></p> 
+  <p>Another concept that one will have to look at in fracture mechanics is the “residual strength”.That is, the measure of the residual strength in the presence of a crack. This could be illustrated&nbsp;through the explanation as follows;</p> 
+  <p>Consider a sheet with a central transverse crack which is loaded as shown in the figure below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH1IG6_mFgR2g" src="https://media.licdn.com/dms/image/C5112AQH1IG6_mFgR2g/article-inline_image-shrink_400_744/0/1520239309737?e=1691625600&amp;v=beta&amp;t=I6LlmrPjMjmybAwYHnlxtPSsHvodp9H7UKapP3nazkM"> 
+  </div> 
+  <p><strong> Figure: Plate with a central crack under tensile loading</strong></p> 
+  <p><br></p> 
+  <p>Let us assume that this is the initial crack present in the plate. The stress can be raised to value σi&nbsp;at which the crack will start to extend slowly. The slow crack growth is “stable”; i.e. the crack growth stops immediately when the load is kept constant.</p> 
+  <p>Eventually, if the loading is continued,&nbsp;a catastrophic failure occurs at&nbsp;σc. The diagram below shows a plot between the residual strength σc in the presence of a crack;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFXXwfMfNMjdg" src="https://media.licdn.com/dms/image/C5112AQFXXwfMfNMjdg/article-inline_image-shrink_400_744/0/1520114807492?e=1691625600&amp;v=beta&amp;t=80VesAVHZA-64JpHB-XLx6RpUTJukkwjoBTRYEJGJ8M"> 
+  </div> 
+  <p><strong> Figure: Crack length vs. residual strength diagram</strong></p> 
+  <p>Following conclusions can be drawn from the above plot between the crack length and the residual strength;</p> 
+  <p>o&nbsp;&nbsp;It can be understood from the graph that, if the initial crack length is larger, the residual strength.</p> 
+  <p>o&nbsp;&nbsp;Lower and when the initial crack length is lower, the residual strength is larger Physically, there&nbsp;is a limit to the residual strength being not greater than the yield stress of the material&nbsp;/ based on the yield criterion of the material.</p> 
+  <p>o&nbsp;&nbsp;It can also be observed from the graph that for a lower value of fracture toughnes, the residual strength is lower whereas for a higher value of fracture toughness the residual strength is higher.</p> 
+  <h2><strong>6.&nbsp;&nbsp;&nbsp;Apparent toughness:</strong></h2> 
+  <p>It may not be possible to measure the critical crack length precisely during a fracture toughness test. This is because; one would not be able to distinguish between the original crack length and the phase followed during stable fracture. This results in the definition of the concept of “stable fracture”. The apparent toughness is denoted by KIe and is defined as:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGNantbN9NX3g" src="https://media.licdn.com/dms/image/C5112AQGNantbN9NX3g/article-inline_image-shrink_400_744/0/1520201209923?e=1691625600&amp;v=beta&amp;t=bWrZESinq-A_XVkL7Yqt-aoXL-woHRIV0vCJ1147Ddg"> 
+  </div> 
+  <p>Thus, in literature one will normally find the following definitions of toughness’s:</p> 
+  <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toughness at which the crack initiates</p> 
+  <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toughness at which catastrophic failure occurs</p> 
+  <p>iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apparent toughness</p> 
+  <p><br></p> 
+  <p><strong>Feddersen’s concept of apparent toughness:</strong></p> 
+  <p>In case of thin panels (as in aerospace structures) , one needs to access KIc data for a variety&nbsp;of thicknesses. For panels wide enough to produce the real KIC, the relationship between the&nbsp;residual strength and crack length was illustrated in the figure in the preceding section</p> 
+  <p>The residual strength for smaller crack lengths cannot actually be got through the figure above&nbsp;because for low values of crack length, the figure shows residual strength greater than the yield&nbsp;stress of the material. In the region where the residual strength exceeds the yield stress of the material, the specimen will exhibit an apparent toughness less than that of KIC.</p> 
+  <p>Feddersen proposed an engineering approach to determine the residual strength of the component in region of lower crack length where the fracture strength – in the above diagram appears greater than the yield stress of the material.</p> 
+  <p>Considering the graph between – the crack length and the residual strength of the component, Feddersen proposed that 2 straight / linear tangents to the idealized curve may be drawn;</p> 
+  <p>o&nbsp;&nbsp;the first tangent drawn from the point σ = σys, where σys is the yield strength of the material</p> 
+  <p>o&nbsp;&nbsp;another tangent drawn from the point “W” on the axis – where “W” is the width of the specimen.</p> 
+  <p>This is illustrated in the figure below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQEpPtmelslTRw" src="https://media.licdn.com/dms/image/C4E12AQEpPtmelslTRw/article-inline_image-shrink_1000_1488/0/1520592871371?e=1691625600&amp;v=beta&amp;t=vcTlBU3ke2nDZKmxEcdI2SQuV_rXQLJoz28bOI8m6rg"> 
+  </div> 
+  <p><strong>Figure: Feddersen’s <em>engineering </em>approach to obtain the residual strength diagram</strong></p> 
+  <p><br></p> 
+  <p>Thus, for crack lengths between 2a1 and 2a2, the residual strength is determined by the curved portion and for crack lengths less than 2a1 and between 2a2 and W, the residual strength is determined by the straight line portion of the above diagram.</p> 
+  <p>It should be noted that the straight line portions do not have any physical basis and are just a design measure proposed by Feddersen.</p> 
+  <p><br></p> 
+  <p><strong>Minimum panel width for plane stress fracture toughness:</strong></p> 
+  <p>It is also possible to determine the minimum panel width for plane stress fracture toughness testing using the above diagram as explained below:</p> 
+  <p>In order to obtain the minimum panel width, suppose one draws a number of tangents from “W” as shown in the diagram below – moving towards the left, then, at a particular panel width it will be observed that there will only be a “straight line” portion and no curved portion.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG_vBgn8spPBQ" src="https://media.licdn.com/dms/image/C5112AQG_vBgn8spPBQ/article-inline_image-shrink_400_744/0/1520042181012?e=1691625600&amp;v=beta&amp;t=13rJxBLd5wNWhi18swNQ5t6PTHWlY1MmxI1Af8N72aA"> 
+  </div> 
+  <p><strong>Figure: Arriving at the minimum panel width for plane stress fracture toughness through the residual strength diagram</strong></p> 
+  <p>If “W” is the minimum panel width for which the residual strength diagram is applicable, then,</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG9X-iU-ObkOw" src="https://media.licdn.com/dms/image/C5112AQG9X-iU-ObkOw/article-inline_image-shrink_400_744/0/1520210989054?e=1691625600&amp;v=beta&amp;t=WBYOQkiBxvLPmGfRCFlHnTzITYHpmC0OEXXDR1rVYqM"> 
+  </div> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p> 
+  <p><br></p>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Step 3 of ChatGPT training demystified: Part 3 of the ChatGPT series of my notes</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaD4E12AQESyJzEgdKc8Q" alt="Proximal Policy Optimisation" title="Proximal Policy Optimisation" />
+      <h1><a href="https://www.linkedin.com/pulse/step-3-chatgpt-training-demystified-part-series-my-notes-ajay-taneja">Step 3 of ChatGPT training demystified: Part 3 of the ChatGPT series of my notes</a></h1>
+    <p class="created">Created on 2016-01-29 20:49</p>
+  <p class="published">Published on 2023-03-18 19:04</p>
+  <div><h2>1.&nbsp;Introduction</h2><p>I have 2 published 2 blogs [<a href="https://www.linkedin.com/pulse/chatgpt-how-works-my-notes-part-1-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/chatgpt-how-works-my-notes-part-1-ajay-taneja/</a> | <a href="https://www.linkedin.com/pulse/step-2-chatgpt-training-demystified-part-series-my-blogs-ajay-taneja/" target="_blank">https://www.linkedin.com/pulse/step-2-chatgpt-training-demystified-part-series-my-blogs-ajay-taneja/</a>] so far on ChatGPT training. In the blog 1, I have tried and qualitatively explained the 3 fundamental steps involved in ChatGPT training as illustrated in the picture below. In the second blog, I went into finer details of step 2 of ChatGPT training. </p><p>This blog will go into the finer details of Step 3 of ChatGPT training and describe the components of the Step 3. The following paragraphs will throw some light on how Reinforcement Learning is used in ChatGPT training. Before we go into these intricacies, let us revisit the fundamental steps of ChatGPT training one again!</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D5612AQGBW2lIN0aXwA" src="https://media.licdn.com/dms/image/D5612AQGBW2lIN0aXwA/article-inline_image-shrink_400_744/0/1679165517328?e=1691625600&amp;v=beta&amp;t=FoG5uWm3HEujGY9uZlXZ4ue1uqTcmSRshLVnyxrGfHg"><figcaption>Figure: The 3 steps in ChatGPT training</figcaption></figure><p><br></p><p><br></p><h2>2.&nbsp;Overview of the steps of ChatGPT training</h2><p>ChatGPT training can be split into 3 fundamental steps:</p><p>i)  ChatGPT uses the Generative Pretrained Transformer model which is pre-trained to understand language. This pre-trained transformer model is further fine-tuned – in order to fine tune this model, we have human labellers who provide the initial prompt as well as the response. This is&nbsp;then fed to the network for the fine tuning. The network is trained to get the set of parameters for the fine-tuned model.</p><p>&nbsp;</p><p>ii)  In the Step 2 of ChatGPT Training, we take a prompt and pass it through the same model multiple times, so that, we get “n” different responses. I have explained in the second blog[<a href="https://www.linkedin.com/pulse/step-2-chatgpt-training-demystified-part-series-my-blogs-ajay-taneja/%5d%20" target="_blank">https://www.linkedin.com/pulse/step-2-chatgpt-training-demystified-part-series-my-blogs-ajay-taneja/]</a> about how the same language model can provide different responses to the same prompt. We then have human labellers rank these responses and the rank represents the quantification of the quality of the responses i.e., how well the “human labellers” likes the responses. The ranking happens in a scaled between 1 and 7 – the scale being termed as “Likert Scale” which is a rating system used in questionnaires that is designed to measure people’s attitudes, opinions or perceptions [<a href="https://www.britannica.com/topic/Likert-Scale" target="_blank">https://www.britannica.com/topic/Likert-Scale</a>].</p><p>&nbsp;</p><p>The ranking used to train another “Rewards” model which takes an input prompt and response, and outputs is going to be a scalar – a “reward” – which is number between 1 and 7. </p><p><br></p><p>iii)  In the step 3 of the ChatGPT training, we’re going to use the “Rewards” model – what essentially happens in step 3 is that we pass an unseen prompt and the response to the supervised fine-tuned model, and we get a response. The response through the “Rewards” model – the Rewards model outputs a rank which is used to fine tune the parameters of the supervised fine-tuned model to output a more factual, admissible response. The resultant model then becomes the ChatGPT.</p><p>We will now demystify the Step 3 of the ChatGPT Training. In order to do that, the remaining of this blog is comprised of the following sections:</p><p><br></p><ul><li>&nbsp;In the section 3, we go into a bit detail of how ChatGPT generates response.</li><li>In the section 4, we talk about the “Rewards” model being used to further fine tune the Supervised fine-tuned model of Step 1. Most importantly, in the section 4 we talk about the concept of <strong>Proximal Policy Optimisation </strong>and the corresponding loss function used that is “maximised” during the training process to generate more factual and admissible response to the prompt.</li></ul><p><br></p><h2>3.  How does ChatGPT generate response?</h2><p>Let us now focus on the step 3 specifically and let us attempt and describe each of the components shown below in greater detail. This section will highlight how Reinforcement Learning is used in ChatGPT.</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGhLQeI0PwOCA" src="https://media.licdn.com/dms/image/D4E12AQGhLQeI0PwOCA/article-inline_image-shrink_1000_1488/0/1679092746918?e=1691625600&amp;v=beta&amp;t=QFrcpJ4p9cZTmU9bgA_55KYTYaIjVd1vnLR8UWRD80k"><figcaption>Figure: Step 3 of ChatGPT training</figcaption></figure><p>We have a Supervised Fine-tuned model to which we pass a prompt, and we generate a response. Let us see how a response looks like from GPT.&nbsp;</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQFc_DuzJIZRDQ" src="https://media.licdn.com/dms/image/D4E12AQFc_DuzJIZRDQ/article-inline_image-shrink_1000_1488/0/1679092898751?e=1691625600&amp;v=beta&amp;t=9juuNDXAW5ibWjvtczsGG2-JBRAwuaowhSRxTbbrqIg"></figure><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQGI_1VGhHnH_g" src="https://media.licdn.com/dms/image/D4E12AQGI_1VGhHnH_g/article-inline_image-shrink_1000_1488/0/1679092941201?e=1691625600&amp;v=beta&amp;t=mQ-MXEEz_90hPom6QpU4e17cFEMdqEvqv_b4KXl4bgA"><figcaption>Figure: The sequence of a complete response from ChatGPT</figcaption></figure><p>Thus, it should be underscored that the GPT (3.5/4) will generate one word at a time using all the words that had come before as an <strong>input context.</strong></p><p>Thus, we have an input prompt, and we pass it to the supervised fine-tuned model to generate one word at a time (As highlighted in the figure below) until all the words have been generated for that response.</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQHrZgNT9_8GxA" src="https://media.licdn.com/dms/image/D4E12AQHrZgNT9_8GxA/article-inline_image-shrink_1000_1488/0/1679093015030?e=1691625600&amp;v=beta&amp;t=hzE2R99zkqWGd6DjdZTJ1QRFQwiyjghNyroU1Gcm3js"><figcaption>Figure: Step 3 of ChatGPT training demystified</figcaption></figure><h2>4. How is the Rewards model of Step 2 utilised?</h2><p>&nbsp;</p><p>Next, the prompt and the response are passed to the “Rewards” model – that is already trained – to get the scalar value – the Reward which tells us how good the response was. We then use the Reward to fine tune the original supervised fine-tuned model of step 1. Thus, the parameters of the original supervised fine-tuned model have to be updated. Let us see how this happened next.</p><p>The parameters of the Supervised fine-tuned model are updated using the “Proximal Policy Optimisation” which are a class of techniques to maximise the reward by including the reward in the loss function itself.&nbsp;</p><p><br></p><p><strong>Mathematics of the loss function of the loss function of the Proximal Policy Optimisation (PPO):</strong></p><p>As mentioned, in the Proximal Policy Optimisation, the Reward is used in the loss function itself. Let us examine the mathematics of the Loss function in a bit detail. </p><p>The equation below is taken from the paper: Proximal Policy Optimization Algorithms:</p><figure class="slate-resizable-image-embed slate-image-embed__resize-full-width"><div></div><div></div><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:D4E12AQHRRdcXvRkVwg" src="https://media.licdn.com/dms/image/D4E12AQHRRdcXvRkVwg/article-inline_image-shrink_400_744/0/1679093110792?e=1691625600&amp;v=beta&amp;t=w26wPK2zOhDZmhOw0l4VnSRCTLzn7PbidKwqM3AH5P0"><figcaption>The Loss Function of the Proximal Policy Optimisation (PPO)</figcaption></figure><p>Reiterating, the Reward generated has to be utilized to further fine tune the Supervised Fine-tuned model. The above us the loss function used to make the gradient updates.&nbsp;In the above equation:</p><ul><li>ϴ is the parameter in the Supervised Fine-Tuned model which we will be updating</li><li>t is the time step</li><li>Every single time step we have one complete response that is one-time step.</li><li>r is the Rewards ratio – it is the ratio of the rewards with the new parameters for the given input divided by the reward of the old parameters with the same given input</li></ul><p>Therefore, if the rewards ratio is higher than 1 it means the training is going in the right direction.</p><ul><li>“A” is the Advantage Function – in Reinforcement learning, the advantage function assesses how high quality the output was with respect to the input. Thus, it is a number that is proportional to the reward.</li></ul><p><br></p><p>Thus, the product r.A is going to be very high if the response is very good. </p><ul><li>clip – we do not want to make the gradient update too fast – we will clip the upper and the lower bound of the ratio by ϵ - how large the ϵ is will determine how much we are allowing the gradient update to change.</li></ul><p><br></p><ul><li>We then have an expectation – and this goes to the fact that we can generate for the same input prompt multiple kind of responses. So, we want to emulate this – we take the average of the values and so the entire proximal policy optimisation is not reliant on one output from ChatGPT. We make the gradient updates through “Gradient Ascend” as we’re maximizing the value.</li></ul><p><br></p><h2>References</h2><ol><li><a href="https://openai.com/blog/chatgpt" target="_blank">OpenAI Blog</a></li><li><a href="https://arxiv.org/abs/1707.06347" target="_blank">Proximal Policy Optimisation </a></li><li><a href="https://arxiv.org/abs/2203.02155" target="_blank">InstructGPT</a></li><li><a href="https://www.assemblyai.com/blog/how-chatgpt-actually-works/" target="_blank">AssemblyAI Blog</a></li><li><a href="https://www.youtube.com/@CodeEmporium" target="_blank">Codeemporium</a></li></ol><p><br></p></div>
+</body>
+</html>

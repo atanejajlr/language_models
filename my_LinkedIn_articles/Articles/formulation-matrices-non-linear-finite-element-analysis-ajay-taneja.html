@@ -1,0 +1,207 @@
+<html>
+<head>
+  <title>Formulation of matrices for non-linear finite element analysis</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQFb98AmUq7lKg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/formulation-matrices-non-linear-finite-element-analysis-ajay-taneja">Formulation of matrices for non-linear finite element analysis</a></h1>
+    <p class="created">Created on 2016-03-28 19:35</p>
+  <p class="published">Published on 2016-03-28 19:54</p>
+  <div>
+  <h2><strong>1.</strong>&nbsp;&nbsp; <strong>Introduction</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>In my earlier articles, I had discussed and presented the continuum mechanics equations in the Total and the Updated Lagrangian formulation starting from the principle of virtual displacements. The aim of this article is to generate the resulting finite element matrices through the corresponding continuum mechanics equations.</p> 
+  <p>First and foremost, in section 2, I have attempted to provide a reasonable background of a non-linear analysis problem by re-visiting / summarizing the discussion of my preceding articles on the topic of non-linear finite element analysis.</p> 
+  <p>&nbsp;In section 3, the finite element matrix equations corresponding to the continuum mechanics equations are obtained for static analysis, dynamic analysis using implicit time integration and dynamic analysis using explicit time integration.</p> 
+  <p>&nbsp;Section 4 enumerates the evaluation of each matrix term in the finite element equations. These terms include: linear stiffness matrix, non-linear stiffness (sometimes termed as the geometric stiffness) matrix, external load vector terms.</p> 
+  <h2><strong>2.</strong>&nbsp;&nbsp; <strong>Background of a non-linear finite element analysis problem</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>My earlier articles on the topic of non-linear finite element analysis provide a reasonable background of non-linear FEA. I have attempted to summarize the discussions of each of those articles through the paragraphs below;</p> 
+  <ul> 
+   <li><em><em><strong>Continuum mechanics variables for geometric non-linear finite element</strong>&nbsp; <strong>analysis</strong> </em>[<a href="https://www.linkedin.com/pulse/continuum-mechanics-variables-geometric-non-linear-finite-ajay-taneja?trk=mp-reader-card" target="_blank"><em>https://www.linkedin.com/pulse/continuum-mechanics-variables-geometric-non-linear-finite-ajay-taneja?trk=mp-reader-card</em></a>]:This article elaborated in detail on the physical and the mathematical interpretation of the various continuum mechanics variables. These included: deformation gradient tensor, right Cauchy Green deformation gradient tensor, Green Lagrangian strain tensor, 2nd Piolla Kirchhoff stress tensor.</em></li> 
+  </ul> 
+  <ul> 
+   <li><strong><em><em>Stress measures in geometric non-linear analysis:</em><em>&nbsp; </em></em></strong><em>[</em><a href="https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card" target="_blank"><em>https://www.linkedin.com/pulse/stress-measures-geometric-non-linear-finite-element-analysis-taneja?trk=mp-reader-card</em></a><em>]</em></li> 
+  </ul> 
+  <p>Through this article, I had to tried to emphasize upon the basic concepts of a non-linear analysis problem. Firstly, a geometric non-linear analysis meant to establish theequilibrium of the body at each discreet time (or, load) interval 0, Δt, 2Δt, …. Thus, the stiffness matrix evaluation at each time /load corresponds to the deformed state of the structure at the preceding time step.</p> 
+  <p>This is unlike a linear analysis wherein the stiffness computation is based on the undeformed state of the structure. The principle of virtual displacement which may be interpreted as a statement of equilibrium, compatibility and constitutive relation was elaborated mathematically and the difficulty in application of the principle of virtual displacement at time t+Δt was explained in considerable detail.</p> 
+  <p>&nbsp;This led to the discussion of different stress and strain measures in a non-linear FE analysis problem, namely: 2nd Piolla Kirchhoff stress and the Green Lagrangian strain tensor.</p> 
+  <ul> 
+   <li><strong><em>Total Lagrangian vs. Updated Lagrangian formulation:&nbsp;&nbsp;&nbsp;</em></strong><em>[</em><a href="https://www.linkedin.com/pulse/total-lagrangian-vs-updated-formulation-geometric-nonlinear-taneja?trk=mp-reader-card" target="_blank"><em>https://www.linkedin.com/pulse/total-lagrangian-vs-updated-formulation-geometric-nonlinear-taneja?trk=mp-reader-card</em></a><em>]</em></li> 
+  </ul> 
+  <p>&nbsp;Though, this article, I had discussed the most commonly used formulations in commercial finite element software’s: the Total Lagrangian formulation and the updated Lagrangian formulation. The two formulations differed depending upon whether the static and the kinematic variables correspond to the initial configuration (at, time t=0) or the last calculated configuration (at a time ‘t’). It was also pointed out the two formulations are analogous except the theoretical difference between the two being the choice of different reference configurations.</p> 
+  <p>One of the most important concept discussed in this article involved the concept of linearization of the principle of virtual displacements by neglecting the non-linear strain increment term (please refer section 3 and 4 of this article for more details on this).</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>3.</strong>&nbsp;&nbsp; <strong>General matrix equations for displacement based continuum elements</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The basic steps in the derivation of the governing finite element equations are the same as those used in linear analysis: selection of the interpolation functions and the interpolation of the element coordinates and displacements with these functions. The linearized principle of virtual displacements may be invoked in the continuum form or instead linearized with respect to the finite element variables.</p> 
+  <p>&nbsp;As in the linear analysis, we need to consider only a single element of a specific type in the derivation because the governing equilibrium equations of an assemblage of elements can be obtained using a direct stiffness approach.</p> 
+  <p>&nbsp;In considering the element coordinate and displacement interpolations, we should recognize that it is important to employ the same interpolation functions for the&nbsp;coordinates and the displacements at any and all the times during the motion of the element. Since, the element coordinates are obtained by adding the element displacement to the original co-ordinates; it follows that the use of same interpolations for the displacements and the co-ordinates represent the correct approach throughout the motion of the system in a non-linear analysis.</p> 
+  <p>Substituting the element co-ordinate and the displacement interpolations into the continuum mechanics equations (already dealt in an earlier article as briefly summarized in section 2 above), one would obtain the following corresponding to each analysis type as in the table below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFN7qOfXSe9Qg" src="https://media.licdn.com/dms/image/C4E12AQFN7qOfXSe9Qg/article-inline_image-shrink_1000_1488/0/1520637893481?e=1691625600&amp;v=beta&amp;t=8tlpZmMJLayjnzt0QtRgaBcTZAtnrKJLtTzd88qhGkg"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHBY5egVJSp1Q" src="https://media.licdn.com/dms/image/C5112AQHBY5egVJSp1Q/article-inline_image-shrink_1000_1488/0/1520199952375?e=1691625600&amp;v=beta&amp;t=8rMYEXjjEWIgv-j6LyhlL7O5OfbfOM5kt4X9C3ONXGc"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF-uYL41-G8nQ" src="https://media.licdn.com/dms/image/C5112AQF-uYL41-G8nQ/article-inline_image-shrink_1000_1488/0/1520174308847?e=1691625600&amp;v=beta&amp;t=ZbOL9EEUE9mHwuQOQt5vaNlZNH842RR3BAr4eoe_6Ng"> 
+  </div> 
+  <p>In the above finite element discretisation, damping effects have not been considered. It has also been assumed that the externally applied forces are deformation independent and thus the load vector corresponding to all load (or, time steps) can be calculated prior to the incremental analysis.</p> 
+  <p>&nbsp;</p> 
+  <h2><strong>4.</strong>&nbsp;&nbsp; <strong>Evaluation of the finite element matrices for non-linear analysis</strong></h2> 
+  <p>&nbsp;</p> 
+  <p>The above finite element matrices are evaluated as in linear analysis. The table below summarizes – for a single element – the basic integrals being considered and the corresponding matrix evaluations. The notions used for the element matrices are as below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQE3l0CJTslWRg" src="https://media.licdn.com/dms/image/C4E12AQE3l0CJTslWRg/article-inline_image-shrink_1000_1488/0/1520637869772?e=1691625600&amp;v=beta&amp;t=3Jx_IW194lCJ3B7uA9jtNvORaQJEsAYTEs_ELGH0vMY"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFiAGTTnpOgvQ" src="https://media.licdn.com/dms/image/C5112AQFiAGTTnpOgvQ/article-inline_image-shrink_1000_1488/0/1520066181213?e=1691625600&amp;v=beta&amp;t=cxtVfM-MTGXhwa-rUhmTxA22x7aIO0YOG1P2Z2sRdoo"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFH5KlCZ8hr9Q" src="https://media.licdn.com/dms/image/C4E12AQFH5KlCZ8hr9Q/article-inline_image-shrink_1000_1488/0/1520637873220?e=1691625600&amp;v=beta&amp;t=m2tCjxMaJRC7XCJXnVKp1cGcWQ8u0AJlwHxPPbWwpBU"> 
+  </div> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C4E12AQFJdyug3z8DVg" src="https://media.licdn.com/dms/image/C4E12AQFJdyug3z8DVg/article-inline_image-shrink_400_744/0/1520637870146?e=1691625600&amp;v=beta&amp;t=8xTe_rwDawUcdok6muDmsp06Gm6IXdR1jmqYEz-St2E"> 
+  </div> 
+  <p>These matrices depend upon the specific element considered. The subsequent articles will concentrate upon the calculation of the strain displacement and the stress matrices and vectors pertaining to the continuum elements including: truss element, plane stress element, etc.</p>
+ 
+</div>
+</body>
+</html>

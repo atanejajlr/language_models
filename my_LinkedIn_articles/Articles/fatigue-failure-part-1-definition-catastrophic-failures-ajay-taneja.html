@@ -1,0 +1,233 @@
+<html>
+<head>
+  <title>On Fatigue Failure: Part 1 – definition, catastrophic failures due to fatigue, static and fatigue loading, stages in a fatigue process</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQG0utVMvxoKZw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-1-definition-catastrophic-failures-ajay-taneja">On Fatigue Failure: Part 1 – definition, catastrophic failures due to fatigue, static and fatigue loading, stages in a fatigue process</a></h1>
+    <p class="created">Created on 2018-02-04 17:45</p>
+  <p class="published">Published on 2018-02-04 18:15</p>
+  <div>
+  <p><br></p> 
+  <h2>1.&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;</p> 
+  <p><strong>What is fatigue failure?</strong></p> 
+  <p>A fatigue failure is a fracture of a component under repeated or cyclic loading at stress levels insufficient to cause fracture in a single cycle.</p> 
+  <p><strong>Everyday examples of fatigue failure:</strong></p> 
+  <p>Most people – even without engineering background – intuitively understand the concept of fatigue failure. Some of such everyday examples of fatigue failure include;</p> 
+  <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When a person bends a paper clip or any other piece of wire back and forth, he is deliberately – although unknowingly – introducing a fatigue failure.</p> 
+  <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A light bulb may suddenly burn off after many on – off cycles due to fatigue.</p> 
+  <p>iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The faucet handle of a kitchen sink may suddenly break off in your hand – as a result of fatigue of a period of time.</p> 
+  <p>The above <em>regular </em>instances are illustrated in the figures below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHZP4Em1_bI9w" src="https://media.licdn.com/dms/image/C5112AQHZP4Em1_bI9w/article-inline_image-shrink_400_744/0/1520153861513?e=1691625600&amp;v=beta&amp;t=xfpHVGzslJdo0TPiQbuw9G2RwcpB7yl0MLRcEK_rxwY"> 
+  </div> 
+  <blockquote> 
+   <strong>Figure 1: Fracture of a paper clip due to bending back and forth</strong> 
+  </blockquote> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFRlVBerZzLPA" src="https://media.licdn.com/dms/image/C5112AQFRlVBerZzLPA/article-inline_image-shrink_1000_1488/0/1520191636076?e=1691625600&amp;v=beta&amp;t=Kvpdh7MFbFzM4BR2WfvUlKR8MBl5W2fjbgz8LodriRg"> 
+  </div> 
+  <blockquote> 
+   <strong> Figure 2: Burning off of a light bulb due to repeated on – off cycles</strong> 
+  </blockquote> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHUbMMTpDSeow" src="https://media.licdn.com/dms/image/C5112AQHUbMMTpDSeow/article-inline_image-shrink_400_744/0/1520166405177?e=1691625600&amp;v=beta&amp;t=n8bO79Z5hTdF2GmpshRkD_YcyjGSXXqkVEaFBO723w0"> 
+  </div> 
+  <blockquote> 
+   <strong> Figure 3: Breaking off of the faucet handle of sink due to fatigue over a period of time </strong> 
+  </blockquote> 
+  <p><strong>Catastrophic examples of fatigue failure</strong></p> 
+  <p>At other times, fatigue fractures can be major catastrophes such as those causing airplanes to crash or bridges to collapse. Two important case studies related to such catastrophes will be discussed in details during a later series / module of my blogs on fatigue failure. These being;</p> 
+  <p><strong>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comet Disaster (1953 – 54)</strong></p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The failure highlighted that cracks could occur in stress concentration zones and grow in service due to fatigue loading causing failure</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The failure also highlighted the importance of proper simulation of service loads during testing. The flexing of the wings had been neglected during testing.</p> 
+  <p><strong>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aloha airlines fuselage failure (April 28th, 1988)</strong></p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The failure highlighted the importance of stress corrosion cracking.</p> 
+  <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It gave the motivation to improve design approaches for corrosion prevention and control</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHh6DAmLBg39w" src="https://media.licdn.com/dms/image/C5112AQHh6DAmLBg39w/article-inline_image-shrink_1000_1488/0/1520169001011?e=1691625600&amp;v=beta&amp;t=VA6-HpEhfJrueWs70bGRxv2KjL4VtNCUnDYH9QctyAg"> 
+  </div> 
+  <blockquote> 
+   <strong>Figure 4: One of the Comet Disasters being reported</strong> 
+  </blockquote> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH1GnNjy6XMEQ" src="https://media.licdn.com/dms/image/C5112AQH1GnNjy6XMEQ/article-inline_image-shrink_1000_1488/0/1520214245077?e=1691625600&amp;v=beta&amp;t=Ln4qACK1RagLf9tRpv_I8G8JctmtR54Zu3DG0W-1RhY"> 
+  </div> 
+  <blockquote> 
+   <strong>Figure 5: Aloha Airlines fuselage collapse (April 28th, 1988)</strong> 
+  </blockquote> 
+  <p><br></p> 
+  <h2>2.&nbsp;&nbsp;Static loading vs. fatigue loading</h2> 
+  <p>&nbsp;</p> 
+  <p>The stress – strain curve of a material describes how a material behaves as it is fractured in one loading cycle from zero stress and strain through yielding and ultimate fracture. However in cyclic loading fracture is possible at stresses well below the yield strength. Tiny defects that are present in all materials can over many cycles of stress application grow into large cracks that weaken the structure ultimately leading to sudden failure.</p> 
+  <p><br></p> 
+  <p>The figure 6 below shows the stress – strain curve of a material under monotonic loading going through the elastic limit of the material, strain hardening and ultimate strength / fracture of the material. The figure 7 shows the growth of the fatigue crack with time as the component goes through varying stresses with time.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQG1D6ksjP9Y6A" src="https://media.licdn.com/dms/image/C5112AQG1D6ksjP9Y6A/article-inline_image-shrink_400_744/0/1520219661012?e=1691625600&amp;v=beta&amp;t=_DL79f3WHcuekHh4ULB1xQt0gRHIrMudL7l6nlsPBxc"> 
+  </div> 
+  <blockquote> 
+   <strong>Figure 6: Stress strain curve of a material under monotonic loading</strong> 
+  </blockquote> 
+  <p><br></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEb1TayY_M_BQ" src="https://media.licdn.com/dms/image/C5112AQEb1TayY_M_BQ/article-inline_image-shrink_400_744/0/1520169379187?e=1691625600&amp;v=beta&amp;t=bvHP6kU3gLG_TqFlApl1CBgQMK-iyrAacLePHcXHEmk"> 
+  </div> 
+  <blockquote> 
+   <strong>Figure 7: Growth of a fatigue crack with time under varying stresses</strong> 
+  </blockquote> 
+  <p><br></p> 
+  <p><br></p> 
+  <h2>3.&nbsp;&nbsp;Stages in a fatigue process</h2> 
+  <h2><br></h2> 
+  <p>Fatigue is a cumulative process which may or may not result in a failure. Fatigue progresses through 3 stages;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Crack nucleation stage</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Crack propagation stage</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;Stage of unstable crack growth and fracture</p> 
+  <p><strong>Crack nucleation stage</strong></p> 
+  <p>Any structural component – made from any material has tiny defects that are undetectable by inspection. These defects may be voids or inclusions in the base metals, tiny scratches, cracks or burrs from machining or forming processes, etc. After a series of cycles of stress application, the defects may develop into a tiny crack.</p> 
+  <p>Sometimes, even a sharp notch or corner in a highly stressed area on a part can concentrate enough stress to generate a minute crack at the tip.</p> 
+  <p><strong>Crack propagation stage</strong></p> 
+  <p>The next stage in a fatigue process is the crack propagation stage. At each stress cycle, stress is concentrated at the crack tip. The material will undergo localized yielding and the crack will slightly enlarge. At each subsequent cycle, the crack will be again larger than the previous cycle resulting in greater amount of stress concentration. It should be noted that the tip of the crack can / will experience plastic deformation as it expands even if the calculated stress in the overall part is less than the elastic limit of the material. It is this concentrated stress at the crack tip that will govern whether or not the crack will advance. Thus – the crack propagation is not inevitable and will not occur if the stress in the material is sufficiently low.</p> 
+  <p><strong>Stage of unstable crack growth / fracture</strong></p> 
+  <p>Eventually the stress in the material will become so large that the overall stress in the part will exceed the fracture strength of the material and the part will experience the next stage of fatigue failure – sudden fracture. It should be noted that for a fatigue crack to propagate, the stresses in the material must be significant, cyclic and tensile. This means that the localized stresses increase due to high tension, decrease and increase again repeatedly. This could be due to load of varying intensity or even due to load of constant magnitude but varying direction.</p> 
+  <p>The stresses may be applied due to pure tension, bending, torsion or in a combined stress state.</p>
+ 
+</div>
+</body>
+</html>

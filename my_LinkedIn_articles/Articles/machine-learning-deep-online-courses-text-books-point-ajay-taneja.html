@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>On Machine Learning and Deep Learning - Online courses and Text books - A point of view - Cross Validation (Part 1)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC4D12AQGcdolTK-KSZA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/machine-learning-deep-online-courses-text-books-point-ajay-taneja">On Machine Learning and Deep Learning - Online courses and Text books - A point of view - Cross Validation (Part 1)</a></h1>
+    <p class="created">Created on 2020-09-22 16:35</p>
+  <p class="published">Published on 2020-09-22 17:04</p>
+  <div><p>Having taken the Machine Learning course offered by Coursera and Stanford University as well as the 5 course Deep Learning Specialization, I thought it was time I go the conventional text book route and polish the concepts gained through the course lectures, assignments and notes. </p><p>With this in mind and observing the popularity of the book: “Approaching (Almost) Any Machine Learning Problem” on LinkedIn and other AI forums, I got the paperback copy as well as the kindle version of this last week and started to give the book a go last night. The book is authored by Abhishek Thakur. The book seems a delight to read (although I’m just at the start) – I’m not sure I get that feeling since I have gone through the lectures of Andrew Ng and have started making my hands dirty on solving practical problems! As Abhishek puts it - the book is not for pure theoretical basics but rather for people who are approaching to solve real time/practical machine learning problems</p><p>I would like to highlight that these notes in form of my LinkedIn posts help me to build my own set of lecture notes / summary notes which help me when I re-visit these concepts in practical application in my work field/area. In the process if other readers/ML / DL enthusiasts find the content worthwhile, I’m surely privileged</p><p>The book starts with an informal definition and explanatory notes on supervised and unsupervised learning followed by a nice chapter on Cross-Validation. I like the way Abhishek Thakur defines Cross validation with a simple sentence which I feel is the primary requirement to have the cross validation set in creating a Machine Learning Model. As succinctly put by the author: <em>“Cross Validation is a step in the process of building a Machine Learning model which helps ensure that the model fits the data accurately and also ensures that we do not overfit..”</em></p><p>The definition follows with the explanation of “Overfitting”. The author then brings out some terms with regards to “Cross-validation" which were not entirely covered in the courses of Andrew Ng and thus were very informative and educative. These include definitions / terminologies as: </p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>k- fold cross validation</strong> – Here you divide the data set into k different sets. The best thing I like about the book is that the author gives a sample Python code accompanying each of the one liner explanation which underscores that the book is intended for a practicing AI Engineer! E.g. in this case a sample Python code is explained in which the data is divided into k equal parts using KFold from scikit learn</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>stratified k-fold cross validation </strong>– This type of cross validation is primarily meant if you have a skewed data set comprising of a larger percentage of positive examples and lesser negative examples / likewise. Using stratifies cross validation, we keep the ratio of labels in&nbsp;each fold constant. This ensures that whatever metric one sues you get similar results across each fold. Again a sample code using model_selection. Stratified fold puts your thought process in the right direction! </p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>hold out based validation: </strong>The author refers to this for large data sets – although the concept in the of the &nbsp;Deep Learning Specialization – the term “hold-out” was not clearly stated! The explanation is similar as explained by Andrew wherein (suppose) we have 1 million samples in the data set, we can divide it into 10 folds and leave the 9 samples (900k) for training and hold-out the 100k samples (1 fold) to calculate the loss, accuracy, etc. Andrew Ng contrasts this with small data sets with 60-20-20 split.</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>group k- fold cross validation</strong>: The author then throws like on group k-fold cross validation – a classic example being wherein one is building machine learning model to detect cancer of a particular organ by reading the images of the X-ray/CT scan. In such a case a single patient may have multiple image and it is thus important patients in training data do not appear in validation data. Group-k fold solves this problem</p></div>
+</body>
+</html>

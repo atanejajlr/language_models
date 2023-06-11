@@ -1,0 +1,316 @@
+<html>
+<head>
+  <title>On Fatigue Failure –  Part 6: Randomly Varying Stresses, Miner’s Rule – the Linear Cumulative Damage Rule</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5112AQEFUZhvPUabKg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/fatigue-failure-part-6-randomly-varying-stresses-miners-ajay-taneja">On Fatigue Failure –  Part 6: Randomly Varying Stresses, Miner’s Rule – the Linear Cumulative Damage Rule</a></h1>
+    <p class="created">Created on 2018-04-22 22:45</p>
+  <p class="published">Published on 2018-04-22 23:27</p>
+  <div>
+  <h2>1.&nbsp;&nbsp;&nbsp;Introduction</h2> 
+  <p>&nbsp;This article is the continuation of my series of blogs on “Fatigue Failure”</p> 
+  <p>In my preceding blogs, I had been speaking about;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Fully Reversible Stresses</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Fluctuating Stresses</p> 
+  <p>I had attempted to elucidate that in the absence of S – N curve, the stress data (in case of Fully Reversible Stresses) may be approximated through the relation;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEHRHYGPBiahA" src="https://media.licdn.com/dms/image/C5112AQEHRHYGPBiahA/article-inline_image-shrink_400_744/0/1524437243895?e=1691625600&amp;v=beta&amp;t=TgvNRj8HrMARqreZge-Dlx6YGGe86kh6uJ_A30qNnhU"> 
+  </div> 
+  <p>Where;</p> 
+  <p>Sf is the fatigue strength;</p> 
+  <p>Ni = Number of cycles for life</p> 
+  <p>a and b are based on the ultimate strength, endurance limit and “f” which is the fraction of the fatigue strength remaining at 10^3 cycles.</p> 
+  <p>And when Sf is known, the number of cycles to failure can be denoted through the expression;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFBrZwTD-RaJQ" src="https://media.licdn.com/dms/image/C5112AQFBrZwTD-RaJQ/article-inline_image-shrink_400_744/0/1524437346083?e=1691625600&amp;v=beta&amp;t=otDD2bgUErcNw1JLDlIUt9qgI12WWc3Ai6c5nuERvik"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEUuodLSz3KTg" src="https://media.licdn.com/dms/image/C5112AQEUuodLSz3KTg/article-inline_image-shrink_400_744/0/1524437422843?e=1691625600&amp;v=beta&amp;t=Pt1yz2fwkXuKQYG4FjjxzFqNkOl6tFt12-NJp4tCN48"> 
+  </div> 
+  <p>f =&nbsp;fatigue strength fraction of the ultimate strength at 10^3 cycles.</p> 
+  <p>Typically ‘f’ has to be known or can be approximated through the following expression;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFWbxLPRoZAcA" src="https://media.licdn.com/dms/image/C5112AQFWbxLPRoZAcA/article-inline_image-shrink_400_744/0/1524437498870?e=1691625600&amp;v=beta&amp;t=lN39ebDK0v9YXiSh_o48Zsar-P4oMtZDHtXIJtJgIcE"> 
+  </div> 
+  <p>Where;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFu4k409xtG8Q" src="https://media.licdn.com/dms/image/C5112AQFu4k409xtG8Q/article-inline_image-shrink_400_744/0/1524437568491?e=1691625600&amp;v=beta&amp;t=2pbnC6-HVtFr3I8S51GIeV2bwgzmcmJFMnWHollawYk"> 
+  </div> 
+  <p>The above quantification is valid only for fully reversible stresses.</p> 
+  <p><br></p> 
+  <p>In case of fluctuating loading – covered in my previous blog: <a href="https://www.linkedin.com/pulse/fatigue-failure-part-5-fluctuating-stresses-goodman-diagram-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-5-fluctuating-stresses-goodman-diagram-taneja/</a> it was made clear that for a component being subjected to fluctuating stress (R ≠ - 1), the stress pattern remains the same through all the cycles and the mean stress and the alternating stress are evaluated as;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHCaWfur4LnSA" src="https://media.licdn.com/dms/image/C5112AQHCaWfur4LnSA/article-inline_image-shrink_400_744/0/1524437655418?e=1691625600&amp;v=beta&amp;t=PzYNscKe5vF02Amjeq2g32XZAws2V81oFZej5g9XV5Q"> 
+  </div> 
+  <p><strong>Figure 1: Stress Pattern in case of Fluctuating Stresses</strong></p> 
+  <p><br></p> 
+  <p>It was shown through the Goodman diagram that one could ascertain whether the part lies in the finite or the infinite life region and it was possible to obtain an equivalent fully reversible stress that caused the same amount of damage as the fluctuating stress pattern by mapping the Goodman equation to the equation of the straight line and determine the Y – intercept that corresponded to the equivalent fully reversible stress value.</p> 
+  <p>In this article, we go one step ahead and the discussion revolves around fluctuating varying stresses. Fluctuating varying stresses are most commonly observed in several practical scenarios.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQEjmNPSULT5ig" src="https://media.licdn.com/dms/image/C5112AQEjmNPSULT5ig/article-inline_image-shrink_1000_1488/0/1524437709216?e=1691625600&amp;v=beta&amp;t=zZe5A_OUJ1bN9m9pgz1jBddF3KGOST_EgnpdwUWFn70"> 
+  </div> 
+  <p><strong> Figure 1: Stress Pattern in case of Fluctuating Stresses</strong></p> 
+  <p>The content of this article is organized as follows;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Section 2 of the article explains of the definition of the fluctuating varying stresses.</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Section 3 of the document describes of the process involving quantification of randomly varying stresses. It goes into the detail of the Miner’s rule – also known as the linear cumulative damage rule widely used to calculate the cumulative damage through the whole cycle of randomly varying stresses.</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Section 4 illustrates an example evaluation to calculate the cumulative damage through a mission and the total life of the component through the application of the Miner’s rule (or, the linear cumulative damage rule).</p> 
+  <h2>2.&nbsp;&nbsp;&nbsp;What are Randomly Varying Stresses?</h2> 
+  <p>&nbsp;Suppose that&nbsp;a part (at a critical location) instead of being subjected to a fully reversible stress history block composed of “n” cycles or a block of similar stress pattern through the whole mission cycle (as in case of fluctuating&nbsp;stresses)&nbsp;is subjected to a time line of stresses exhibiting many and different peaks and valleys as shown below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHNCCwD3i9kLA" src="https://media.licdn.com/dms/image/C5112AQHNCCwD3i9kLA/article-inline_image-shrink_1000_1488/0/1524437873022?e=1691625600&amp;v=beta&amp;t=0jBMidHMvB3-C4g-eq4JWyQmQUgxKQdX5B_hwU-wUqU"> 
+  </div> 
+  <p><strong> Figure 2: Fluctuating varying stresses</strong></p> 
+  <p>In this case, the stress pattern through the cycle is not uniform (as in case of Fluctuating Stresses – see figure 1). Such irregular stress pattern may be termed as: ‘fluctuating varying stress’ pattern or a randomly varying stress pattern.</p> 
+  <h2>3.&nbsp;&nbsp;&nbsp;Quantification of Randomly Varying Stresses</h2> 
+  <p>&nbsp;In order to quantify the randomly varying stresses, one has to look at the total life of the feature (being subjected to a randomly varying stress pattern) and find out how much life is taken away due to the stress at each cycle.</p> 
+  <p>The fundamental principle involved in this approach is called the “Miner’s Rule” or the “Linear Cumulative Damage Rule”. The rule states that;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFmlO8VNCfwag" src="https://media.licdn.com/dms/image/C5112AQFmlO8VNCfwag/article-inline_image-shrink_400_744/0/1524438000478?e=1691625600&amp;v=beta&amp;t=_f-85c3j-NFC4-E_sKSOA5tongfoWz7PbPM9teg4bQo"> 
+  </div> 
+  <p>Where;</p> 
+  <p>ni&nbsp;=&nbsp;the number of cycles at stress level σi</p> 
+  <p>Ni = the number of cycles that would cause failure at stress level σi</p> 
+  <p>Thus, the rule considers the ratio of the number of cycles the feature of the part will experience (ni) to the number of cycles that will be required to cause the failure of the part at a certain stress level σi.</p> 
+  <h2><strong>3.1&nbsp;&nbsp;&nbsp;&nbsp;How to apply Miner’s rule?</strong></h2> 
+  <p>This is best illustrated through the example evaluation discussed in the section 4.</p> 
+  <p>However, let us summarize the process below.</p> 
+  <p>Imagine that you have a component that goes through a series of fluctuating stress patterns.</p> 
+  <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let us say that the first stress pattern has maximum and minimum stress given by;</p> 
+  <p>σmax&nbsp;=&nbsp;140 MPa</p> 
+  <p>σmin&nbsp;&nbsp;=&nbsp;&nbsp;- 420 MPa</p> 
+  <p>Let us say that this stress pattern is repeated 5 times. Now, given the ultimate strength of the material and the endurance limit of the material, it will be possible to calculate the life of the feature using modified Goodman equation as elaborated in my blog here: <a href="https://www.linkedin.com/pulse/fatigue-failure-part-5-fluctuating-stresses-goodman-diagram-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-5-fluctuating-stresses-goodman-diagram-taneja/</a></p> 
+  <p>The steps will involve calculated the equivalent fully reversible stress by mapping the equation of the straight line into the modified Goodman equation as described in my blog stated above. This will result in the calculated life as:&nbsp;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF4sSvt3pti0g" src="https://media.licdn.com/dms/image/C5112AQF4sSvt3pti0g/article-inline_image-shrink_400_744/0/1524438138239?e=1691625600&amp;v=beta&amp;t=0kQIidZPu2kzKZFE7OQvnFjtG-L27W-E8cMD1_LwIrA"> 
+  </div> 
+  <p>Thus, the ratio of the number of cycles at stress level σi (i.e. from σ max&nbsp;=&nbsp;140 MPa to σmin = - 420 MPa) is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFj0zGz9adE4w" src="https://media.licdn.com/dms/image/C5112AQFj0zGz9adE4w/article-inline_image-shrink_400_744/0/1524438205163?e=1691625600&amp;v=beta&amp;t=69l34f6mXQu20xpi1P9yyZdC1b2hEzzL1BZpw6uutvg"> 
+  </div> 
+  <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now, let us say that the next stress pattern the component is subjected to involves a stress of σmax = 70 MP and σmin = -210 MPa being applied 3 times.</p> 
+  <p>Again, the life of the feature of the component can be calculated using the equivalent fully reversible stress as calculated through modified Goodman equation which will evaluate to;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQF2lyj_NUBOuw" src="https://media.licdn.com/dms/image/C5112AQF2lyj_NUBOuw/article-inline_image-shrink_400_744/0/1524438301519?e=1691625600&amp;v=beta&amp;t=r2S8LJp5LiVnoNLjLaUD-yHOUD9-BPr9WDnlQqRh-0k"> 
+  </div> 
+  <p>Thus, the ratio of the number of cycles at stress level σi (i.e. from σ max&nbsp;=&nbsp;70 MPa to σmin = - 210 MPa) is;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH9kWCnRi1TLg" src="https://media.licdn.com/dms/image/C5112AQH9kWCnRi1TLg/article-inline_image-shrink_400_744/0/1524438370884?e=1691625600&amp;v=beta&amp;t=zI4Cb8NFr5bUAQ3Ba-lZKKh-GTYtVAMMf1ZRo1D1XAI"> 
+  </div> 
+  <p>The idea is that when the damage “D” equals 1, then, failure will occur.</p> 
+  <p><br></p> 
+  <p>The next section deals with an example evaluation to calculate the life of the feature of a component being subjected to varying fluctuating stresses which will make the above content clear.</p> 
+  <h2>4.&nbsp;&nbsp;&nbsp;Example evaluation of a component feature being subjected to randomly varying stresses</h2> 
+  <p>&nbsp;This example illustrates in significant detail the steps involved in calculating the life of c component feature being subjected to randomly varying stresses.</p> 
+  <p><strong>Problem:</strong></p> 
+  <p>The fluctuating stresses shown below are found at the critical location of a component. The material is steel and the fully adjusted endurance limit is 210 MPa. The ultimate strength of the material is 825 MPa. f = 0.82 – where ‘f’ denotes the fatigue strength fraction of the ultimate strength at 10^3 cycles.</p> 
+  <p>Compute:</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;The accumulated damage of this part</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;Life of the part in hours if the stress pattern continues to repeat for the remainder of the part’s life.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH-WzWdFusBUA" src="https://media.licdn.com/dms/image/C5112AQH-WzWdFusBUA/article-inline_image-shrink_1000_1488/0/1524438450426?e=1691625600&amp;v=beta&amp;t=gAwQkRp1vRg6D_QcVeOZ-B4bHBUwj5YtprwNP1LzW0w"> 
+  </div> 
+  <p><strong> Figure 3: Example evaluation section 4</strong></p> 
+  <p>Solution: The solution will involve the following steps;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Break down the randomly varying stress cycles into a series of cycles each with a maximum and minimum stress</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;For each cycle calculate the equivalent fully reversible stress</p> 
+  <p>c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calculate the corresponding number of cycles to failure</p> 
+  <p>d)&nbsp;&nbsp;&nbsp;&nbsp;Calculate the Damage “D” as per Miner’s rule</p> 
+  <p>e)&nbsp;&nbsp;&nbsp;&nbsp;Calculate the life of the part if these cycles of randomly varying stresses were to repeat every 20 seconds</p> 
+  <p>Step a)</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Break down the randomly varying stress cycles into a series of cycles each with a maximum and minimum stress</p> 
+  <p>This can be done as shown in the figure below.</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGW4OyG4F5WYg" src="https://media.licdn.com/dms/image/C5112AQGW4OyG4F5WYg/article-inline_image-shrink_1000_1488/0/1524438617715?e=1691625600&amp;v=beta&amp;t=uTdjnWvisnPBeL5_mGq-tbnx33uLvWdRNBTRxiSovfA"> 
+  </div> 
+  <p><strong>Figure 3: Break down the randomly varying stress cycles into a series of cycles each with a maximum and minimum stress</strong></p> 
+  <p>Thus, there are 4 cycles identified above. The maximum and minimum stresses during each stress cycle and the total number of cycles with the stress pattern (ni) are shown in the table below. As it may be seen from the figure above, there are 4 stress patterns which may be identified as stress pattern I (red colour) , stress pattern II (green colour), stress pattern III (blue colour) and stress pattern IV (purple colour).</p> 
+  <p><strong>Table 1: Maximum and minimum stress cycles for randomly varying stresses as shown in Figure 3</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQFTZcBLc1wsJg" src="https://media.licdn.com/dms/image/C5112AQFTZcBLc1wsJg/article-inline_image-shrink_400_744/0/1524438744985?e=1691625600&amp;v=beta&amp;t=VkTc0QoN4W9eNma76HiQADpELTePU5QQf2Gg_azd36o"> 
+  </div> 
+  <p>Having obtained the maximum and minimum stresses during each of the cycle identified above, the alternating and mid-range stresses can be obtained as re-iterated in section 1.</p> 
+  <p>These are tabulated below;</p> 
+  <p><strong>Table 2: Alternating and mid-range stresses Corresponding to the cycles of randomly Varying stresses shown in Figure 3</strong></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGKd-vVppKk5A" src="https://media.licdn.com/dms/image/C5112AQGKd-vVppKk5A/article-inline_image-shrink_1000_1488/0/1524438936527?e=1691625600&amp;v=beta&amp;t=6mnh7n6sFP4OC3ALhtFC48wcDDN4bJ5fJDlePJ44gsg"> 
+  </div> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;For each cycle calculate the equivalent fully reversible stress</p> 
+  <p>The equivalent fully reversible stresses for each cycle can be computed as explained in my preceding blog: <a href="https://www.linkedin.com/pulse/fatigue-failure-part-5-fluctuating-stresses-goodman-diagram-taneja/" target="_blank">https://www.linkedin.com/pulse/fatigue-failure-part-5-fluctuating-stresses-goodman-diagram-taneja/</a></p> 
+  <p>These are tabulated in the Table below;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGgnDvhIiSdHA" src="https://media.licdn.com/dms/image/C5112AQGgnDvhIiSdHA/article-inline_image-shrink_1000_1488/0/1524439061456?e=1691625600&amp;v=beta&amp;t=97FBsRUVFW3uQCQ2RgdNnqyZn1AZFIgrTfbEbPuG15s"> 
+  </div> 
+  <p>It may be noted that to total number of cycles failure for the stress pattern D is ∞ because the stress point corresponding to (mid-range, alternating stress) lies in the infinite life region.</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Calculate the Damage “D” as per Miner’s rule</p> 
+  <p>As per Miner’s rule;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGJrto8vB-cYw" src="https://media.licdn.com/dms/image/C5112AQGJrto8vB-cYw/article-inline_image-shrink_400_744/0/1524439145799?e=1691625600&amp;v=beta&amp;t=9T3cOfGZTlg4py11Rmmz-4T9SMFS3DXQsQhYhIqUd8Y"> 
+  </div> 
+  <p>Thus;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-middle"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQGZ-Qau2up4kA" src="https://media.licdn.com/dms/image/C5112AQGZ-Qau2up4kA/article-inline_image-shrink_400_744/0/1524439210998?e=1691625600&amp;v=beta&amp;t=kxgQqBm6fZs2whTIi7jyBkeU5WisVIK4RdrMNA-iSWg"> 
+  </div> 
+  <p>This evaluates to;</p> 
+  <p>D = 0.00029</p> 
+  <p>That is, every 10 seconds, the part will be getting a total damage of 0.00029</p> 
+  <p>That is: the total accumulated damage the feature of the part would have undergone in 10 seconds = 0.00029.</p> 
+  <p>Next to calculate the life: that is – how many hours the part can withstand the stress cycles that repeat over and over again.</p> 
+  <p>Thus;</p> 
+  <p>Total Damage obtained = 0.00029</p> 
+  <p>To calculate the life of the part in hours that is: how many hours the part can withstand the stress cycles that repeat over and over again.</p> 
+  <p>That will be;</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHWipIYOKe_Xw" src="https://media.licdn.com/dms/image/C5112AQHWipIYOKe_Xw/article-inline_image-shrink_1000_1488/0/1524439461710?e=1691625600&amp;v=beta&amp;t=zW6rWhPeUO3S7CjuC5dYWCM_7DWWfdRdNNb9N4JXi8o"> 
+  </div> 
+  <p><br></p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQH9KZ9r8d9mIA" src="https://media.licdn.com/dms/image/C5112AQH9KZ9r8d9mIA/article-inline_image-shrink_1000_1488/0/1524439474942?e=1691625600&amp;v=beta&amp;t=tOyFN8nc_M0r1kEJTaOzeQFOWYm1R7pxbV7H-ZgU0LA"> 
+  </div> 
+  <p><br></p> 
+  <h2>5.&nbsp;&nbsp;&nbsp;Limitation of Miners Rule</h2> 
+  <p>&nbsp;The limitation of Miner’s rule can be described as below;</p> 
+  <p>a)&nbsp;&nbsp;&nbsp;&nbsp;Firstly, the Miner’s rule does not take into account the order in which the cycles were applied.</p> 
+  <p>b)&nbsp;&nbsp;&nbsp;&nbsp;That is: in some cases the cycle causing damage to the part might result in reduction of the endurance limit of the material.&nbsp;For example, in the case above (section 4), the last cycle does not cause any damage as the stress points (mid-range, alternating stress) lie in the infinite life region. However, it may so happen, that as a result of the damage caused due to the preceding cycles there might be a reduction in the endurance limit of the materials in effect resulting in a calculated damage in the stress pattern D in the above example. Miner’s Rule does not account for this.</p> 
+  <p>Calculating the number of cycles / cycle counting given a randomly varying stress pattern and then arriving at the maximum and minimum stresses is a complex process. And based on the methods used to carry out the cycle counting, there might be missed in the process which can be incorporated using more involved methods like: “Rainflow Count Method” which will form the topic of my next blog in the series !</p> 
+  <p>&nbsp;</p>
+ 
+</div>
+</body>
+</html>

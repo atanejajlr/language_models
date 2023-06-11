@@ -1,0 +1,247 @@
+<html>
+<head>
+  <title>Flexural stiffness of reinforced concrete beams and columns </title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+      <h1>Flexural stiffness of reinforced concrete beams and columns </h1>
+    <p class="created">Created on 2016-03-20 21:43</p>
+  <p class="published">Published on 1970-01-01 00:00</p>
+  <div>
+  <p><em>[Note: This was one of the research project that I had worked upon during 2004 while I was a Faculty in&nbsp; Structural Engineering&nbsp;at the Jerusalem College of Engineering - Affiliated to Anna University in&nbsp;&nbsp;Chennai, India.]</em></p> 
+  <h2><strong>1. INTRODUCTION</strong></h2> 
+  <p><strong>&nbsp;</strong><b><strong>1.1 GENERAL</strong></b></p> 
+  <p>Traditionally, design engineers use rough estimates of effective flexural stiffness EI of beams and columns in the analysis of reinforced concrete structures. The assumed stiffness can affect the structural analysis and design in two significant ways:</p> 
+  <p>&nbsp;</p> 
+  <p>a) <strong>P-δ effects</strong></p> 
+  <p>&nbsp;</p> 
+  <p>The assumption of lower stiffness for column increases the&nbsp;geometric non linear effects in columns&nbsp;and causes an overall increase in&nbsp; moments.</p> 
+  <p>b) Internal force distribution</p> 
+  <p>For regular structures it is generally assumed that the internal force distribution is negligibly affected by the stiffness assumption of various structural members. This is more or less the case as long as the relative stiffness of members meeting at a joint essentially remains the same as the structure is subjected to increasing loads. Even in such cases the P-δ effects / geometric non linear effects&nbsp;can cause the enhancement of internal forces at column ends.</p> 
+  <p>Given the above justification, the project examines the variation of flexural stiffness of beam or column section with the parameters like reinforcement ratio, aspect ratio, compression steel ratio, axial load ratio, eccentricity ratio, the compression strength of concrete.The following sections describe the formal definition of the problem.</p> 
+  <h3><b><strong>1.2 CAUSES FOR VARIATION IN FLEXURAL STIFFNESS</strong></b></h3> 
+  <p>In general, it can be said that the variation in flexural stiffness of an RC section (whether beam or column) occurs due to low tensile cracking of concrete. Tensile cracking of concrete on the other hand is likely to be affected by variables like tension steel area, magnitude of axial load, compression steel area, aspect ratio (b/d), equivalent eccentricity ratio (e/D).</p> 
+  <p>The tensile cracking of concrete is likely to be detrimental following yielding of steel which results in a larger drop in the flexural stiffness.</p> 
+  <h3><b><strong>1.3 NEED FOR STUDY</strong></b></h3> 
+  <p>As mentioned earlier improper assumption of flexural stiffness of structural members can lead to unconservative results pertaining to internal force distribution. For example, considering the frames shown in the figures below:</p> 
+  <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"> 
+   <img data-media-urn="urn:li:digitalmediaAsset:C5112AQHt9thR4JtEJQ" src="https://media.licdn.com/dms/image/C5112AQHt9thR4JtEJQ/article-inline_image-shrink_400_744/0/1520100099279?e=1691625600&amp;v=beta&amp;t=h96oYMmdazK_WxtFLfWU-1Gy8QHIQL_jWRXuvDHS9vk"> 
+  </div> 
+  <p>It is found that, through a linear elastic analysis performed on both the frames, the internal force distribution in frame ‘A’ is 30% larger than the internal force distribution in frame ‘B’; thus leading to a conclusion that the need for realistic values of EI being required for frame analysis.</p> 
+  <p>The above effect of variation in internal force distribution is likely to get aggravated if the columns considered are slender which could cause a considerable increase in the secondary moment due to P-δ effects.</p> 
+  <p><b><strong>1.4 SCOPE AND OBJECTIVE OF WORK</strong></b></p> 
+  <p>The purpose of this project is to study the influence of the following parameters on effective stiffness:</p> 
+  <ol> 
+   <li>The Tension reinforcement ratio, ρ</li> 
+   <li>The Compression steel ratio, ρ′</li> 
+   <li>Aspect ratio, b/d</li> 
+   <li>Compression strength of concreteThe above parameters are considered for beams.</li> 
+  </ol> 
+  <p>For columns, the parameters selected for study include.</p> 
+  <ol> 
+   <li>The Gross steel ratio</li> 
+   <li>Axial load ratio P/P</li> 
+   <li>Eccentricity ratio e/D</li> 
+   <li>Compression strength of concrete, f.</li> 
+  </ol> 
+  <p>An expression for computing the flexural stiffness of beams and column published in the ACI journal&nbsp; is used and it is found that the results for effective stiffness obtained using the analytical study compares reasonably with those obtained using the expression in the published work.</p> 
+  <p><strong>3.1 GENERAL</strong></p> 
+  <p>&nbsp;</p> 
+  <p>In order to study the influence of various parameters affecting the flexural stiffness of RC members, the thrust moment curvature relationship for RC sections has been programmed in C language. The program developed gives the moment curvature relationship for a typical RC section for various values of compressive strain in extreme fibre of section upto ultimate strain, for a particular value of axial force. The moment of resistance divided by the corresponding curvature gives the stiffness “EI” at the corresponding strain level for a particular value of axial force.</p> 
+  <p>&nbsp;</p> 
+  <p>The variation in stiffness by altering the parameters viz. tension steel ratio, compression steel ratio, aspect ratio, axial load ratio, eccentricity ratio, gross steel ratio is then studied.</p> 
+  <p>&nbsp;</p> 
+  <p><strong>3.2 THEORETICAL CONSIDERATION</strong></p> 
+  <p>&nbsp;</p> 
+  <p><strong>3.2.1 Assumptions Made in Analysis</strong></p> 
+  <p>&nbsp;</p> 
+  <p>The following assumptions have been made in the non-linear behavior.</p> 
+  <p>&nbsp;</p> 
+  <ol> 
+   <ol> 
+    <li>Euler Bernoulli hypothesis is valid.</li> 
+    <li>The axial deformation has been neglected.</li> 
+    <li>Tensile strength of concrete has been neglected in case of columns.</li> 
+    <li>Modulus of elasticity of steel is been taken as 2 x 105 N/mm2.</li> 
+    <li>Ultimate strain in concrete has been taken as 0.0035.</li> 
+    <li>Compressive strength of concrete in the structure is taken as 0.67 times the characteristic strength. The factor 0.67 is introduced to account for the difference in strength indicated by cube strength in structure.&nbsp;<strong>&nbsp;</strong><strong>Model Formulation</strong>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0Є = ЄЄ Є = Єf = f [((2* Є)/Є)- (Є/ Є)2]For strain,f= ff = Stress in any fibre at a distance ‘y’ from neutral axis. Є = Strain at peak stress. E&nbsp;&nbsp; = Modulus of elasticity of concrete = 5000 √ fЄ = Crushing strain of concrete.&nbsp;&nbsp;</li> 
+    <li><strong>3.2.2.2 Steel:</strong></li> 
+    <li>f &nbsp;&nbsp;&nbsp;= 0.446 f</li> 
+    <li>f&nbsp;&nbsp; = 28 day cube strength of concrete</li> 
+    <li>f&nbsp;&nbsp; = Tensile strength of concrete.</li> 
+    <li>Є= Strain in the corresponding fibre.</li> 
+    <li>Where,</li> 
+    <li>Є Є= Є</li> 
+    <li>&nbsp;</li> 
+    <li>Є = f / E</li> 
+    <li>f = Є E</li> 
+    <li>For strain,</li> 
+    <li><strong>3.2.2.1 Concrete</strong></li> 
+    <li><strong>3.2.2 Material Models</strong></li> 
+    <li>Material models used for concrete and steel have been described in the next section.</li> 
+   </ol> 
+  </ol> 
+  <ul> 
+   <li><b><strong>Mild Steel</strong>For mild steel the proportion to the strain upto the yield point and thereafter the strain increases at a constant stress. The ultimate strain of mild steel has been taken as 0.2; which is 160 times more than the yield strain.&nbsp;</b></li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <ol> 
+   <ol> 
+    <li>&nbsp;</li> 
+    <li>&nbsp;</li> 
+   </ol> 
+  </ol> 
+  <ul> 
+   <li><b><strong>Cold worked bars</strong>For cold worked bars the stress is proportional to the strain upto a stress of 0.8 f. Therefore the inelastic strains have been given as under.<strong>&nbsp;</strong>0.8 f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nil0.90 f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.00030.975 f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0010</b></li> 
+  </ul> 
+  <p>&nbsp;</p> 
+  <ol> 
+   <li>1.0 f &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0020</li> 
+   <li>0.95 f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0007</li> 
+   <li>0.85 f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0001</li> 
+   <li><strong>Stress</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Inelastic Strain</strong></li> 
+   <li><strong>&nbsp;</strong></li> 
+   <li>&nbsp;</li> 
+  </ol> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p><strong>&nbsp;</strong></p>
+ 
+</div>
+</body>
+</html>

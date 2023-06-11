@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Model Serving: Patterns, Infrastructure and Scaling</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://media.licdn.com/mediaC5612AQFiuxnhgGcxmw" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/model-serving-patterns-infrastructure-scaling-ajay-taneja">Model Serving: Patterns, Infrastructure and Scaling</a></h1>
+    <p class="created">Created on 2021-10-26 19:02</p>
+  <p class="published">Published on 2022-01-29 19:22</p>
+  <div><h2>1.&nbsp;&nbsp;&nbsp;Introduction</h2><p>&nbsp;This is a collection of my notes that I wrote whilst taking the last course in the MLOps specialization at <a href="http://deeplearning.ai" target="_blank">deeplearning.ai</a>. This is the Week 2 of the fourth course – “Deploying Machine Learning Models in Production” and covers topics around Model Serving: Patterns, Infrastructure and Scaling.</p><p>&nbsp;This article is comprised of following sections:</p><ul><li>Section 2 describes the choices for model serving which could be on your own premises or through outsourcing the infrastructure to a cloud provider.</li><li>&nbsp;Section 3 briefly describes the architecture of model servers including: TensorFlow serving and Nvidia serving. The reader is referred to the documentation for detailed reading.</li><li>Section 4 goes into some detail of Scaling and highlights the concepts of Horizontal and Vertical Scaling.</li><li>Section 5 elaborates on the Scaling and explains about Horizontal and Vertical Scaling</li><li>Section 6,7, 8 go into details of Online and Batch Inference, different frameworks and optimizing the inferences</li></ul><h2>2.&nbsp;&nbsp;&nbsp;Model Serving</h2><p>&nbsp;The 2 main places where you can run your infrastructure on which your machine learning models are going to be built and used include:</p><p>&nbsp;A) Your own premises i.e., you have all the hardware and software required on your own premises or,</p><p>B) You can outsource to a cloud provider who will provide all the hardware management as well as software services such as pipelines and management</p><p>&nbsp;<strong>Model Serving on your own premises:</strong></p><p>&nbsp;When you run on your own premises, you have complete control of your hardware infrastructure which is of course v flexible, and you can be nimble to provide changes to be the requirements v easily. However, this comes at a cost as you have to procure, install, configure and maintain all the hardware infrastructure which can get complicated, time consuming and hence cost consuming!</p><p>&nbsp;Procuring, configuring and maintaining your own hardware infrastructure comes at a cost and is complimented. Larger companies tend to follow this approach because of extensive experience and ability to independently control the infrastructure.</p><p>&nbsp;<strong>Outsourcing Infrastructure needs:</strong></p><p>The other option which many companies tend to follow is to outsource their infrastructure needs to experts in building, managing, scaling their hardware and software configurations. Examples of such services which help in managing the software and hardware configurations include Amazon Web Services, Google cloud and Microsoft Azure</p><p>&nbsp;When you're running on your own premises, you have the option to select the model server and you're responsible for installing, configuring and maintaining it. You can use prebuilt model servers like NVidia, TensorFlow serving and Kubeflow serving</p><p>&nbsp;If you're doing model Serving on cloud, you can create virtual machines on their infrastructure, use prebuilt model servers and use the provided ML workflow.</p><p>So, if you're using Google cloud platform, you have access to AutoML or any of Google cloud services.</p><h2>3.&nbsp;&nbsp;&nbsp;Model Severs:</h2><p>&nbsp;Let's now look at Model Servers and explore the options available. You could use: Pytorch serving, NVidia servers, TensorFlow, Kubeflow servers. The High-Level architecture of Model servers looks like this:&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQG-_6NjlM733g" src="https://media.licdn.com/dms/image/C5612AQG-_6NjlM733g/article-inline_image-shrink_400_744/0/1643482577162?e=1691625600&amp;v=beta&amp;t=n2aGjWjU1P7KiZkoB9SdK1shO9ZWTfDSTv4iTv7blCA"></div><p><strong>Figure 1: High level operations involving the Model, Model Server and the interface for the Client </strong></p><p>&nbsp;The model file has to be read by the model server whose job is to instantiate the model and make the methods of the model available to the client.</p><p>&nbsp;So, for example, if the model is an image classifier, the model will require tensors of a particular size and shape. The model server will receive, it will format it into desired size and shape and pass it to the model and get the inference back.&nbsp;</p><p>&nbsp;The model server should also be able to handle multiple versions of the model as one might use to cater to different clients. In this case, the model server would expose that API to the client. Choices of model servers include: TensorFlow serving, Torch serve, Kubeflow, NVidia Triton Inference server.</p><p>&nbsp;Looking at the architecture of some of the model servers:</p><ul><li>&nbsp;<strong>TensorFlow Serving:</strong></li></ul><p>&nbsp;It is a flexible, high performing serving system for Machine Learning in models. It provides out of the box of integration with TensorFlow models but can also be extended to other models.&nbsp;</p><p>TensorFlow model serving allows both batch and real time inference. By batch inference it means you can get a bunch of prediction at a single time which might be the use case for a recommendation engine and real time inference involves getting the prediction for a single task. TensorFlow serving allows to use multiple models for the same task as highlighted above.</p><p>&nbsp;The architecture of the TensorFlow server looks like the below (Reference: <a href="https://www.tensorflow.org/tfx/serving/architecture" target="_blank">https://www.tensorflow.org/tfx/serving/architecture</a>)</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQGvl6wdQIDRTw" src="https://media.licdn.com/dms/image/C5612AQGvl6wdQIDRTw/article-inline_image-shrink_400_744/0/1643482726881?e=1691625600&amp;v=beta&amp;t=XDPHy13NSnJRtyGUL3fUoJhraT0cNizii5ugpQxXL58"></div><p><strong>     Figure2 : TensorFlow Model Serving Architecture </strong>(Image Credits:          <a href="https://www.tensorflow.org/tfx/serving/architecture" target="_blank">https://www.tensorflow.org/tfx/serving/architecture</a>)</p><p><strong>&nbsp;Highlights of the architecture:</strong></p><p>&nbsp;1. A typical <strong>servable</strong> is a TensorFlow model.&nbsp;</p><p>&nbsp;2. The <strong>loader</strong> handles the servable’ s lifecycle.</p><p>&nbsp;3. Together, the servable and loader produce "aspire versions" and these represent the servable versions that should be loaded and ready.</p><p>&nbsp;4. <strong>Sources</strong> communicate the set of servable versions and when the "manager" receives the new sets of versions, it supersedes the older versions.</p><p>&nbsp;5. The <em>Manager</em> then handles the full lifecycle of the servable's. The Manager will listen to the sources and track all versions.</p><p>&nbsp;6. The <strong>servable handle</strong> provides the exterior interface to the <strong>client</strong>.</p><p><strong>&nbsp;The Triton Inference Server:</strong></p><p>&nbsp;The Triton Inference server - an offering from Nvidia is an open source serving software that lets deploy AI models from any framework: Pytorch, TensorFlow or even a custom framework. The Triton Inference server runs multiple models on a single GPU. In multiple GPU server, it automatically creates an instance of the model on each GPU. No extra coding is required to carry out the configuration.</p><p>&nbsp;Triton Inference Server can easily scale to any number of servers to allow help handle increased Inference loads for any model.</p><p>&nbsp;An illustration of the Triton Serving Architecture model is shown in the figure below</p><p>&nbsp;Source : <a href="https://developer.nvidia.com/nvidia-triton-inference-server" target="_blank">https://developer.nvidia.com/nvidia-triton-inference-server</a></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQFIirfSqRn7TQ" src="https://media.licdn.com/dms/image/C5612AQFIirfSqRn7TQ/article-inline_image-shrink_1000_1488/0/1643483099805?e=1691625600&amp;v=beta&amp;t=mwQqdzX5EGh3W1JFHD4-00dl9GLiobj8C7qr-IXozxA"></div><p><strong>                Figure 3: The Triton Model Serving Architecture</strong></p><p><br></p><h2>4.&nbsp;&nbsp;&nbsp;Scaling: Why is Scaling important?</h2><p>&nbsp;Consider a model as shown below. This is a v simple example. Actual models will be much larger and complicated.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQGEym76eyLnoA" src="https://media.licdn.com/dms/image/C5612AQGEym76eyLnoA/article-inline_image-shrink_400_744/0/1643483178530?e=1691625600&amp;v=beta&amp;t=dNF3NpMef5Yjd6uIcbzvqGAODHx90_eaMZrw5FMiJdc"></div><p><strong>                                         Figure 4: A simple neural network</strong></p><p><br></p><p>Next, consider the cost of training with several samples, billions of operations.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQEF1VcBstiD4w" src="https://media.licdn.com/dms/image/C5612AQEF1VcBstiD4w/article-inline_image-shrink_400_744/0/1643483255115?e=1691625600&amp;v=beta&amp;t=8XNOLgiCyzMlYdLwRKI50J77zTlYcw-g5_kKzQUPUl8"></div><p><strong>                Figure 5: A simple neural network with several training samples</strong></p><p>Real time models could days to complete the training on a standard CPU or a single GPU too. If you scale out the hardware on which the training runs or even distribute the training across different items of the hardware or distribute the data, you can make the training more efficient. </p><p>Besides the training cost, when the ML model is deployed to the server, huge volume of requests can overwhelm the server, huge volume of requests to the server can overwhelm it. So, it is important to scale the runtime inference as well as the training. </p><p>There are 2 main ways to scale: Horizontal Scaling and Vertical Scaling – this is discussed in the subsequent section&nbsp;&nbsp;</p><h2>5.&nbsp;&nbsp;&nbsp;Horizontal and Vertical Scaling</h2><p>&nbsp;<strong>Vertical Scaling:</strong></p><p>Let us discuss vertical scaling first s it is simpler. One could understand vertical and horizontal scaling through an analogy. Let us say you have to transport 100 passengers and have 10 cars available and let us say you can at the most accommodate 5 passengers per car. So, to transport all the passengers, you have 2 options: first is use bigger cars than the ones available – this is vertical scaling. In terms of hardware, we use bigger and more powerful hardware – more RAM, newer GPUs, TPUs and other types of power.</p><p><strong>Horizontal Scaling:</strong></p><p>Next, in horizontal scaling, you add more devices to work.&nbsp;– i.e., more cars in the analogy. Here we add more GPUs/CPUS as and when the load increases. Following the same analogy, another option could be to borrow cars – and that is where cloud computing comes in. Horizontal Scaling is definitely a more preferred option because based on the load, one could shrink or grow the nodes.</p><p>Another disadvantage in vertical scaling will be that in vertical scaling, you will have to take the application offline but in horizontal scaling, you just scale up the number of machines. One would also want – in horizontal scaling – that as when you add more nodes/machines, you would expect the machines to eb up and running immediately. The following documentation gives a good background of a typical system architecture, virtual machine and Container Architecture pointing out the advantages of VMs over a typical system architecture and container over the VM.</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Containers vs Virtual Machines: <a href="https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/containers-vs-vm" target="_blank">https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/containers-vs-vm</a></p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use Containers to Build, Share, Run your application: <a href="https://www.docker.com/resources/what-container" target="_blank">https://www.docker.com/resources/what-container</a></p><p>An illustration of typical system architecture, Virtual Machine (VM) architecture and a Container Architecture is shown below:</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQF_E-dUq19uSw" src="https://media.licdn.com/dms/image/C5612AQF_E-dUq19uSw/article-inline_image-shrink_400_744/0/1643483370016?e=1691625600&amp;v=beta&amp;t=pMlAJbIy5og_5WaDuKWXkvZneKq-n6t1wXvCEVkM1p0"></div><p><strong>                              Figure 6 : Typical System Architecture</strong></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQH5t5arnmIyeA" src="https://media.licdn.com/dms/image/C5612AQH5t5arnmIyeA/article-inline_image-shrink_400_744/0/1643483428811?e=1691625600&amp;v=beta&amp;t=OmF1TxYRuOdNSEA1MUzdvzDizJxef4MWy-_aFfHB7G8"></div><p><strong>                            Figure 7: Virtual Machine Architecture</strong></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQEA3GOfsyZIuA" src="https://media.licdn.com/dms/image/C5612AQEA3GOfsyZIuA/article-inline_image-shrink_400_744/0/1643483517078?e=1691625600&amp;v=beta&amp;t=Y4-6l-DkkstNoojsJbukoC02HPrqPd-TMnt5WKCljIs"></div><p><strong>                         Figure 8: Container Architecture</strong></p><p><strong>Container Orchestration Tools:</strong></p><p>Container Orchestration refers to a set of tools that manage the lifecycle of the container including its scaling. Example:</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes</p><p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Docker Swarm</p><p>Kubernetes: <a href="https://kubernetes.io/" target="_blank">https://kubernetes.io/</a></p><p><br></p><h2>6.&nbsp;&nbsp;&nbsp;Online Inference</h2><p>&nbsp;A typical scenario between a model and caller online is illustrated below. As explained in section 2 the interaction takes place through a REST API.&nbsp;</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQFLJ7yI9AOepg" src="https://media.licdn.com/dms/image/C5612AQFLJ7yI9AOepg/article-inline_image-shrink_400_744/0/1643483614629?e=1691625600&amp;v=beta&amp;t=lM7ij-Ge5QbQqN07QClU6lAp5jeZ6JXBy94f5zd0YKA"></div><p><strong>                           Figure 9: Interaction between the model and caller online</strong></p><p><strong>Model serving: Metrics to optimize – Latency, Throughput and Cost</strong></p><p><strong>Latency</strong></p><p>Let us discuss the metrics to optimize the model serving in context of online inference as shown in the above figure – we have to optimize latency i.e., very simply - the time one has to wait to get the result. Precisely, latency is the time taken for data to be passed to the server for the inference to execute and then for the response to be handled. From the end user’s perspective, it is the delay in their action. It is of primary importance to manage latency of the whole system not just the Machine Learning model. </p><p><strong>&nbsp;Throughput:</strong></p><p>Throughput is the number of data units processed per unit of time. Horizontal scaling as discussed above can prove to be v effective to optimize throughput. While throughput is important for all systems, the throughput measured in requests managed per unit time is often more important for&nbsp;noncustomer facing systems like intensive data processing apps.&nbsp;</p><p>&nbsp;<strong>Cost: </strong></p><p>In order make latency and throughput efficient in a system, there will be a cost involved which isn’t unlimited.</p><p>&nbsp;</p><h2>7.&nbsp;&nbsp;&nbsp;Optimizing the Inference:</h2><p>&nbsp;In order to optimize the inference, the infrastructure used to serve the models and handle the user input and output. This can be scaled with powerful hardware as well as virtual or containerized environments as discussed above can be utilized. The second of course, is to understand your model architecture and&nbsp;the metrics was trained and tested with.&nbsp;Often there's a trade-off between inference speed and accuracy,&nbsp;if a 99% accurate model is 10 times slower than a 98% accurate model,&nbsp;is it really worth the extra cost?</p><p><strong>Optimization – Pre and post processing of data</strong></p><p>Let us now throw some light on the pre and post processing of data. Looking at the diagram (again), it must be highlighted that the input data passed into the system will be particular format whereas the model might require in a different format. For example, let us say you have a language model. Now, the input data might be in form of a sentence but the NLP model a word is mapped to a point in space known as the embedding slave, so, there will be a vector associated with each word. Hence each word in the sentence is transformed into a vector and somewhere this pre-processing of data has to be done.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQFRERv8xoI8IQ" src="https://media.licdn.com/dms/image/C5612AQFRERv8xoI8IQ/article-inline_image-shrink_400_744/0/1643483711212?e=1691625600&amp;v=beta&amp;t=j3Xt19HoQCMxSn31lR4VM2KDlQqVjtMhNZrZcUKXheA"></div><p><strong>                   Figure 10: Optimizing pre and post processing operations</strong></p><p>Pre-processing operations before Inference: Data Cleansing,&nbsp;Feature Tuning, Feature Construction, Representing Transformation, Feature Selection.</p><p>Details of possible pre-processing operations</p><p>Let us put some insight into each of these operations and then see the tools available that can automatically carry out such pre-processing. </p><p><strong>Data cleansing:</strong> This refers to invalid values in incoming data. For example, if one has a image classifier model, and the incoming picture from the user is too big, you have an option to reject the picture or correct it based on the size the model requires</p><p><strong>Feature Tuning:</strong> In fine tuning, you do some transformation of the data to make it suitable for the model. For example, again for an image classification problem, you would normally have the pixel values lying between 0 and 1. Neural networks process inputs using small weight values, and inputs with large integer values can disrupt or slow down the learning process. As such it is good practice to normalize the pixel values so that each pixel value has a value between 0 and 1.</p><p>Or for a string coming into the model, you would one-hot-encode it based on the vocabulary considered for the model.</p><p><strong>Feature construction</strong>: Often models require, data pre-processing to include feature construction. For example, if you have a model to predict the price of the house, the model might be trained on the total floor area of the house. But the input data might be available based on the size of each room. Feature crossing may be used to multiply (or any arithmetic operation) to get the feature corresponding the model is trained on.</p><p>Another example could be polynomial expansion, where you get the feature corresponding to the model by using a formula taking the available inputs</p><p><strong>Feature Tuning</strong> and <strong>feature construction </strong>can also form a <strong>Representation Transformation</strong> where the input data needs to be transformed for the model to understand it</p><p>One example is one hot encoding of data</p><p><strong>Smart caching of features:</strong></p><p>You could also have smart caching of features and cache them a prior. For example, in case of one hot encoding or getting the word representation in the embedding space, one could pre-process and carry out transformation of common sentences and put them in the cache</p><p><strong>Tools that can help in pre-processing:</strong></p><p>Apache Beam and TensorFlow Transform can really help in the task of pre-processing. The background documentation can be found here:</p><p>Apache Beam: <a href="https://beam.apache.org/get-started/try-apache-beam/" target="_blank">https://beam.apache.org/get-started/try-apache-beam/</a></p><p>TensorFlow Transform: <a href="https://www.tensorflow.org/tfx/transform/get_started" target="_blank">https://www.tensorflow.org/tfx/transform/get_started</a></p><h2>8.&nbsp;&nbsp;&nbsp;Predictions based on Batch Inference</h2><p>&nbsp;<strong>Performance and Resource Requirements for Batch Inference</strong></p><p>&nbsp;Having looked at Model serving, model servers and their architecture, online inference and their optimization strategies; let's talk about batch inference.</p><p>An ML model may be required to make predictions in batches which may be useful later i.e., it is not required to generate predictions in real time. This might be useful in use cases such as Recommendation Engine where you can make predictions based on a user’s history of products secured in earlier interactions. Batch inference gives the benefit that such inferences are not required to be made in real time and hence a complex machine can be employed as latency (discussed in section 6) is NOT of primary importance. Batch inferences are stored in a database and then can be picked directly when a user makes an associated online request for inference.</p><p>Disadvantages of Batch Inference</p><p>Batch Inferences have certain disadvantages too. As mentioned above, batch inference relies on history of user’s interactions, thus, for a first-time user, no records of history will be available. In such cases, if a batch inference is run, then, a history of another user’s interactions may be utilized based on similar demographic location or age/sex/Likewise as the new user. This is the closest one would be able to get to.</p><p><strong>Metric to optimize in Batch Inference</strong></p><p>The most important metric to optimize in a Batch Inference is Throughput. This is because when data is available in batches one would want that number of units of data processed should be high. As stated above, one is not really bothered about latency as the end user is not physically waiting for the request to be processed as in Online/ Real time request.</p><p><strong>Use cases for Batch Inference</strong></p><p>As stated above one of the use cases for Batch inference is that of a Recommendation Engine because recommendations can be made on users’ history of interactions which fits in v well in the scenario. Another use cases of batch inference is that of a sentiment analysis model. Again, a sentiment analysis is never triggered based in users request and can be done once all users have reviewed a product/ software / movie / likewise.</p><p>&nbsp;</p><h2>9.&nbsp;&nbsp;&nbsp;Extract – Transform – Load (ETL) Pipeline</h2><p>&nbsp;Before data is used for batch prediction, it has to be extracted from various sources such as CSV files, APIs or another aps. The extracted data has to be transformed in order to make it of compatible format that the ML model requires and then finally loaded into the database from where it can be sent to prediction requests. </p><p>&nbsp;The entire pipeline that prepares the data is known as "ETL pipeline". ETL stands for: Extract - Transform - Load is a set of processes that extracts, transform and loads the data into the final destination from where it could be used for multiple purposes such as: making predictions, data mining, etc. Extraction of data can be performed in a distributed manner. I have spoken of Distributed training in these posts:</p><p>&nbsp;Let's us now look at some frameworks that can help us carry out the ETL process:</p><p>The ETL on data is performed by engines like Apache Spark or Google Cloud Dataflow,&nbsp;</p><p>making use of the Apache Beam programming paradigm.&nbsp;The transformed data is stored into data warehouses like&nbsp;BigQuery and can be sent&nbsp;back into a data lake like Google Cloud Storage,&nbsp;before it's sent for batch prediction.</p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img alt="No alt text provided for this image" data-media-urn="urn:li:digitalmediaAsset:C5612AQGYNXUQbeSjIA" src="https://media.licdn.com/dms/image/C5612AQGYNXUQbeSjIA/article-inline_image-shrink_400_744/0/1643483971805?e=1691625600&amp;v=beta&amp;t=fp5SFpQF9IyX11gmlVOuEk1I4jppUnrkX9duDLDE2cs"></div><p><strong>Figure 11: The ETL (Extract – Transform – Load) process Frameworks</strong></p><p>&nbsp;</p><p><br></p></div>
+</body>
+</html>
