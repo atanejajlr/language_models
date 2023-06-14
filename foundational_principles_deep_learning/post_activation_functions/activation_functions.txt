@@ -1,0 +1,25 @@
+Purpose of activation function:
+
+The point of activation function is to introduce non-linearities to the data/ Almost all real-world data linear in nature, thus, if we want to deal with those datasets, we need models which are also non-linear so that the models can capture the kind of patterns in the data.
+To understand this better, let us say we have a dataset as shown in the figure (see Figure: Non-Linear Dataset)
+
+ 
+
+Suppose given this dataset, we have to construct a decision boundary i.e., a boundary separating the red and the green dots. Now, if were to use only a straight line to separate the green and the red points, the best we could do is to separate as shown in the Figure: Straight line (linear approach) to construct the decision boundary below:
+
+
+Thus, the problem cannot be solved effectively using a linear approach and we will have to resort to non-linearity which helps to deal with such types of problems. The non-linear activation functions allow us to deal with non-linear data which makes the neural networks very powerful. 
+
+
+Further, it may be underscored that since we’re just multiplying the inputs with the corresponding weights and adding them together, the problem remains a linear problem until we introduce non-linearities using non-linear activation functions.
+
+Types of non-linear activation functions:
+
+Some types of activation functions include,
+•	Sigmoid Activation Function
+•	Tan hyperbolic/ Hyperbolic Tangent activation function
+•	ReLu activation function
+
+These are illustrated in the figure below:
+
+Using an activation function the neural network can achieve a non linear model as shown in the Figure: Decision boundary after using non-linear decision boundary
